@@ -116,16 +116,12 @@ for push
 * read about: nextjs 'next/head'
 * read ./training.md
   * please understand everything here: https://www.vocabularyof.tech/vcs/git/new-git-repo
-  * practice your snippets on Friday afternoons (if you have an coding challenge interview where the interviewers watch you type code, I want them to say, "Wow, this guy is fast")
+  * ongoing: practice your snippets on Friday afternoons (if you have an coding challenge interview where the interviewers watch you type code, I want them to say, "Wow, this guy is fast!")
 ## depends on DM
-  * set up Jira (Duncan will create an account and provide the details)
+  * set up Jira (Duncan will create an account and provide the details)(will be delayed past Tuesday)
 
 # Duncan tasks
 ## next
-* send Moise Jira plan
-  * look around
-  * describe how it should work
-* buy the new React course by Comeau - see if pass it to Moise
 ## depends on MM
 * take Moise Agile notes and adapt to a document of OUR process (Moise will add his )
 ## done: 
@@ -135,7 +131,11 @@ for push
 ## for Monday: 
 * start with an HTML-only example, with list of similar HTML-only
 * put portfolio HTML into React, as a complete example (that uses CSS and scripts JS)
-## next, in order of priority
+## will be delayed
+* send Moise Jira plan
+  * look around
+  * describe how it should work
+## future, in order of priority
 * coding standards (initial)
 * GitLab account
 * coding standards (more detail)

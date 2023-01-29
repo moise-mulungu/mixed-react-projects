@@ -16,18 +16,29 @@
   * blocked
   * done
 * 2-week sprints
-* workflow   **!!!!!!!!!!! START HERE !!!!!!!!!!!!**
-  * lead: create ticket, set the sprint, if will work on it immediately, or leave it in the "backlog"
-  * lead: assign ticket to dev (initially in dev's "to do" column)
+* workflow   (todoDM: diagram)
+  * lead: create ticket:
+    * set the sprint, if will work on it immediately, or leave it in the "backlog"
+  * lead: assign ticket to dev: 
+    * set to the current the sprint
   * dev: to do -> in progress
-    * when dev starts working on the ticket
-    * dev codes, tests locally 
+    * dev starts working on the ticket
+    * dev codes, tests locally in the browser
     * create a MR in gitlab
-  * dev: in progress -> code review & test (dev assigns the ticket to lead, ping him on slack)
-    * code review & test
+      * MR name: "jiraTicket - short description of the ticket"
+      * MR description: provide URL to the Jira Ticket
+      * ticket: leave instructions on how to test in browser ("blast radius")
+  * dev: in progress -> code review & test 
+    * ephemeral is built based on the MR (domain: jiraTicketNumber-test.domainName.com)
+    * dev assigns the ticket to lead, then dev pings lead on slack (todo: Jira-Slack auto notifications)
+    * lead: code review & test
       * code review: todoDM: detail
+      * test in browser using the ephemeral domain
+      * if passes: move to "test"
+      * if fails: add notes to the MR; move ticket to "to do"
   * code review & test -> test
-    * integration? test in browser - make sure code works with the other 
+    * integration? test in browser - thorough test, making sure code integrates with the other tickets
+  * todoDM: finish this
 
 ## what's missing from the work configuration
 * can't see who did the work on the card that you move around in the 'kanban' area
