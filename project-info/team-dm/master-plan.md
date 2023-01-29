@@ -10,6 +10,8 @@
 * branches: main, development, duncan, moise
   * task-based branches based on Jira ticket names: bug/photon-1234, feat/photon-1234
 
+for push
+
 # Mission Statement
 * excellent product
 * work-life balance
