@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import { appTitle } from '@/constants/portfolio' // DM: let's use this one repo for multiple projects
+import Portfolio from '@/features/portfolio' // DM: let's use this one repo for multiple projects
 
 // Static Site Generation - pre-render page at build time
 // https://nextjs.org/docs/basic-features/data-fetching/get-static-props
@@ -15,7 +16,7 @@ export async function getStaticProps() {
 }
 
 export default function Index(props) {
-  let { data, types, weaknesses } = props
+  let { data } = props
 
   return (
     <div>
@@ -23,7 +24,7 @@ export default function Index(props) {
         <title>{appTitle}</title>
       </Head>
 
-      <Pokedex data={data} types={types} weaknesses={weaknesses} />
+      <Portfolio data={data} />
     </div>
   )
 }
