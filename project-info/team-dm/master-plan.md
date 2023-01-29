@@ -1,8 +1,14 @@
 
+# Team Name: 
+
 # Goals (revisit weekly)
 * Duncan: have the experience in the following roles: tech lead, project manager, employer; be ready to interview for a tech lead position; (Duncan will be leaning heavily on his mentors who have experience in project mgmt, tech lead, unit testing, freelance)
 * Moise: have experience working on an agile team (git, jira, etc: very important), full-stack portfolio site, full-stack real-world app, full-stack training (todo: elaborate); be ready to interview for Junior Dev position AND be ready to work as a Junior Dev on freelance projects
 * Team: freelance-ready starter repo and work process - let's get come clients and make some money.
+
+# git
+* branches: main, development, duncan, moise
+  * task-based branches based on Jira ticket names: bug/photon-1234, feat/photon-1234
 
 # Mission Statement
 * excellent product
@@ -52,6 +58,7 @@
 ## Shared Docs
 * Google Doc team account
 ## VS Code (.md files in the repo)
+## Slack (when our work time overlaps)
 
 # Developer Toolbox
 * VS Code
@@ -102,16 +109,20 @@
   * DM todo: vocabulary list,
   * etc: pair programming, code review, frequent testing, "adaptable" (make sure everything running), "saving" (once task done correctly, avoid re-do), individual carries his weight (don't slow down everyone else)
 * site hierarchy - bullet points
+  * DM todo: move to repo
 * semantic html: https://developer.mozilla.org/en-US/docs/Glossary/Semantics
   * read up, try to use those names when writing and talking about the site structure
+  * Duncan todo: ensure proper use in the portfolio project
 * review JS for React ohq page: https://observablehq.com/d/26916509ce268668
 * done: send Duncan hierarchy doc link (or put in the repo)
 * ttd: add above: ongoing: src/utils - start recording what you learn as functions
 * Moise next tasks
-  * upload Agile notes on google Doc
 * Duncan next tasks
+  * upload Agile notes on google Doc
   * google Group/Team for shared Google Docs
   * take Moise Agile notes and adapt to a document of OUR process
+
+Feb 1: 
 
 # Duncan
 * naming of parts of a page - list 
@@ -119,8 +130,8 @@
   * content
     * todo: semantic html items; see tailwindui for naming
 * apply Moise's hierarchy to skeleton React in portfolio repo
-* move Explorer stuff ex constants into named directory
-* top-level 6-month plan, agile, etc
+* done: move Explorer stuff ex constants into named directory
+* done, ongoing: top-level 6-month plan, agile, etc
 
 Thursdays: 8:15
 Sundays: 9:00
