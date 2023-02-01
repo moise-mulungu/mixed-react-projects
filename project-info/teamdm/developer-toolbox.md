@@ -16,6 +16,7 @@
     * Tailwind Docs ***(done)
     * template string converter(done)
     * VS Code React Refactor **(not found)
+      * "VSCode React Refactor"
 * Chrome
   * Extensions: 
     * Grammarly: test grammar of your comments by copy/paste into an email; 

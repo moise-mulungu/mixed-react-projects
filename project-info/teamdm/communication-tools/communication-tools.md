@@ -10,13 +10,17 @@
 * in .js comments or .md files
   * word? - the "?" signifies doubt about the correct word (??? signifies doubt about the concept, approach)
 * !!! means "important" depending on the number of "!"
-* comments in code: 
-  * Duncan's comments start with: // DM: 
-  * Moise's comments start with: // MM: 
-  * ex
+* comments: DM: | MM: (on a a new line above the line the comment references)
+  * in JS code: // DM: 
+  * in .md (Markdown) files: DM: 
+  * examples
 	```js
 	// DM: duncan's comment goes here
   ```
+  ```markdown
+  MM: moise's comment goes here
+  ```
+  * note: putting changes on newlines makes it easier for Git to merge (I assume)
 * TODOs: "todoDM: ", "todoMM: "
 
 ## knowledge base (KB): this repo will serve as a 'repository' our our accumulated knowledge

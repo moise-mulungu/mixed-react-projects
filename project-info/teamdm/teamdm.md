@@ -47,6 +47,9 @@ for push
 * daily schedule
   * !! consistency is important: always meet, even if the work is behind schedule; plan ahead: if we can't make a standup, reschedule ahead of time.
   * daily standups (max 5/week) 
+    * 6am/3pm - 8am/5pm: Slack
+      * discuss everything that can be discussed well via text
+      * we can try voice huddles later, maybe that will work in lieu of Zoom
     * 7AM MT (4PM Goma); duration: 10 to 30 minutes
       * Duncan will open the Zoom meeting up 15 minutes before the start time; Moise will connect 15 min ahead to allow for issues like rain (unpredictable internet)
     * Moise brings up any blockers, questions, training, reports what was completed yesterday, discuss plan for today.
@@ -89,57 +92,50 @@ for push
   * Duncan and Moise 
 
 
-# Week One starting Wed Feb 1
-* git lessons, jira, 
 
 
 
-# Moise tasks
-* Agile videos - methodology DEVs use to take work from development to production; breaking down work into individual tasks; ensures quality - avoids unexpected problems at the end of a project.
-  * steps: development, code review/UI sanity check (blast radius), test (individual tasks), 
-  * DM todo: vocabulary list,
-  * etc: pair programming, code review, frequent testing, "adaptable" (make sure everything running), "saving" (once task done correctly, avoid re-do), individual carries his weight (don't slow down everyone else)
-* site hierarchy - bullet points
-  * DM todo: move to repo
-* semantic html: https://developer.mozilla.org/en-US/docs/Glossary/Semantics
-  * read up, try to use those names when writing and talking about the site structure
-  * Duncan todo: ensure proper use in the portfolio project
-* review JS for React ohq page: https://observablehq.com/d/26916509ce268668
-* done: send Duncan hierarchy doc link (or put in the repo)
-* ttd: add above: ongoing: src/utils - start recording what you learn as functions
-
-# Moise tasks
+# Moise tasks (ordered by priority)
 ## next
-* add your Agile notes to project-info/team-dm/agile.md
-* add Chrome and VS Code extensions (see ./developer-toolbox)
-* add detail and questions to this file 
+* find out what "liveServer" means when it is in the .vscode/settings.json
+* uncertain: the change in package.json nextjs version from 'latest' to 12.1.6
+  * DM: I think I may have
 * read about: nextjs 'next/head'
 * read ./training.md
   * please understand everything here: https://www.vocabularyof.tech/vcs/git/new-git-repo
-  * ongoing: practice your snippets on Friday afternoons (if you have an coding challenge interview where the interviewers watch you type code, I want them to say, "Wow, this guy is fast!")
+  * experiment with GitLens
 ## depends on DM
   * set up Jira (Duncan will create an account and provide the details)(will be delayed past Tuesday)
+    * for now, focus on adding more columns the sprint board
+## done
+* add your Agile notes to project-info/team-dm/agile/agile.md
+* add Chrome and VS Code extensions (see ./developer-toolbox)
+## ongoing
+* Joy of React course (focus on this the majority of the workday)
+* practice your vscode snippets and vscode shortcuts on Friday afternoons (if you have an coding challenge interview where the interviewers watch you type code, I want them to say, "Wow, this guy is fast!")
+* src/utils - start recording what you learn as functions (to import and use) and snippets (to copy and paste)
 
 # Duncan tasks
 ## next
-## depends on MM
 * take Moise Agile notes and adapt to a document of OUR process (Moise will add his )
+* coding
+  * npm i and make sure site runs
+  * start with an HTML-only example, with list of similar HTML-only
+  * put portfolio HTML into React, as a complete example (that uses CSS and scripts JS)
+* GitLab account
+## depends on MM
 ## done: 
 * list: Chrome and VS Code extensions
 * start training list:common git commands; code snippets
 * set up Slack: https://teamdm-global.slack.com
-## for Monday: 
-* start with an HTML-only example, with list of similar HTML-only
-* put portfolio HTML into React, as a complete example (that uses CSS and scripts JS)
 ## will be delayed
 * send Moise Jira plan
   * look around
   * describe how it should work
 ## future, in order of priority
 * coding standards (initial)
-* GitLab account
 * coding standards (more detail)
 ## ongoing
+* Joy of React course (read along, to discuss with MM, answer questions)
 * UI vocabulary
 * coding standards
-
