@@ -99,11 +99,17 @@ for push
 ## next
 * set up GitHub notifications in Slack to a #GitHub channel
 * find out what "liveServer" means when it is in the .vscode/settings.json
+    - (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). I still do not know how did this land in the project, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html
+
 * uncertain: the change in package.json nextjs version from 'latest' to 12.1.6
   * DM: I think I may have
 * read about: nextjs 'next/head'
+  - next/head is a NextJs module that imports <Head> from, a built-in component in ReactJs that allows to modify the metadata of the page(<head>).
+  source: https://nextjs.org/learn/basics/assets-metadata-css/metadata
+
 * read ./training.md
   * please understand everything here: https://www.vocabularyof.tech/vcs/git/new-git-repo
+  <!-- ???DM: Is it required to start the git process from the($ echo "# repo-name" >> README.md), or someone can skip it?  -->
   * experiment with GitLens
 ## depends on DM
   * set up Jira (Duncan will create an account and provide the details)(will be delayed past Tuesday)
