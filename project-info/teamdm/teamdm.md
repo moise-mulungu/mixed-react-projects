@@ -98,6 +98,8 @@ for push
 # Moise tasks (ordered by priority)
 ## next
 * find out what "liveServer" means when it is in the .vscode/settings.json
+    - (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). I still do not know how did this land in the project, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html
+
 * uncertain: the change in package.json nextjs version from 'latest' to 12.1.6
   * DM: I think I may have
 * read about: nextjs 'next/head'
