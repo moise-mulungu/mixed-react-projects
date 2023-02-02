@@ -1,3 +1,4 @@
+https://teamdm.atlassian.net/secure/ViewPersonalSettings.jspa
 
 # initial setup
 * added on Confluence

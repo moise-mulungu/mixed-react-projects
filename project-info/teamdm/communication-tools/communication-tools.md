@@ -4,24 +4,30 @@
 ## email: moisemlg90@gmail.com, dmckeeve9@gmail.com
 
 ## leaving notes for each other in .js and .md files
+* !each person always use this own initials, that way you can always find what you wrote (works better if there is more than 2 people on the team)
 * ??? aka "fishhooks" means there is a question, concern, "hey look at this"
   * ???DM, ???MM
     * ???DM Moise, is MM your preferred initials (of your names)
 * in .js comments or .md files
-  * word? - the "?" signifies doubt about the correct word (??? signifies doubt about the concept, approach)
+  * word? - the "?" signifies doubt about the correct word (?? signifies doubt about the concept, approach)
 * !!! means "important" depending on the number of "!"
 * comments: DM: | MM: (on a a new line above the line the comment references)
   * in JS code: // DM: 
   * in .md (Markdown) files: DM: 
   * examples
 	```js
-	// DM: duncan's comment goes here
+	// DM: comments or questions Duncan writes go here
   ```
   ```markdown
-  MM: moise's comment goes here
+  MM: comments or questions Moise writes go here
   ```
   * note: putting changes on newlines makes it easier for Git to merge (I assume)
 * TODOs: "todoDM: ", "todoMM: "
+* after a task is completed, add (done) or (partial - explain what's left, in this case). Examples:
+  * (done) Moise's task 1
+  * (partial) Moise's task 2
+    * MM: I still need to do subtask 3
+
 
 ## knowledge base (KB): this repo will serve as a 'repository' our our accumulated knowledge
 * leave notes anywhere (in-context notes are best)

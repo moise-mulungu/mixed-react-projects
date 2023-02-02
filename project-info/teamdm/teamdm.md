@@ -96,24 +96,36 @@ for push
 
 
 # Moise tasks (ordered by priority)
+## daily routine
+* pull Duncan's latest commits and look at the diffs (compare your last commit before my commit to the working tree in GitLens to see what changes I made)
+* update repo with notes and (done, partial) when task
+* 3pm push repo to the remote
+* 3-5pm be on Slack (Duncan's 6-8am)
+* 8am (or when finished) commit and push
+* 5pm commit and push (if any additional changes)
 ## next
+* when you complete a task, put (done) or (partial - explain what's left to do)
+* focus mostly on Joy of React
+  * start collecting snippets in the src/utils directory when you see new JS and React techniques
+  * as you read, I'd like you to make a React vocabulary list in tech/react/vocabulary/index.md - this will be very helpful for both of us.
 * set up GitHub notifications in Slack to a #GitHub channel
 * find out what "liveServer" means when it is in the .vscode/settings.json
     - (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). I still do not know how did this land in the project, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html
+    - ok, good job, I don't think it will hurt to leave it there. Leave a comment in the .vscode/settings.json saying that it wasn't added manually by us, and add your above summary to the comment also.
 
-* uncertain: the change in package.json nextjs version from 'latest' to 12.1.6
-  * DM: I think I may have
+* (done) the change in package.json nextjs version from 'latest' to 12.1.6. DM: I think I may have told you to do this
 * read about: nextjs 'next/head'
-  - next/head is a NextJs module that imports <Head> from, a built-in component in ReactJs that allows to modify the metadata of the page(<head>).
-  source: https://nextjs.org/learn/basics/assets-metadata-css/metadata
+  - next/head is a NextJs module that imports <Head> from, a built-in component in ReactJs that allows to modify the metadata of the page(<head>). source: https://nextjs.org/learn/basics/assets-metadata-css/metadata
+  - great, put this as a comment above the next/head import in src/pages/portfolio/index.jsx
 
 * read ./training.md
   * please understand everything here: https://www.vocabularyof.tech/vcs/git/new-git-repo
-  <!-- ???DM: Is it required to start the git process from the($ echo "# repo-name" >> README.md), or someone can skip it?  -->
+  <!-- ???MM: Is it required to start the git process from the($ echo "# repo-name" >> README.md), or someone can skip it?  --> It's required only if you're starting with an empty repo.
   * experiment with GitLens
 ## depends on DM
-  * set up Jira (Duncan will create an account and provide the details)(will be delayed past Tuesday)
+  * (done for now) set up Jira (Duncan will create an account and provide the details)(will be delayed past Tuesday)
     * for now, focus on adding more columns the sprint board
+    * DM: moise wrote: Created some sprints on Jira according to the basic portfolio tasks.
 ## done
 * add your Agile notes to project-info/team-dm/agile/agile.md
 * add Chrome and VS Code extensions (see ./developer-toolbox)
@@ -123,19 +135,24 @@ for push
 * src/utils - start recording what you learn as functions (to import and use) and snippets (to copy and paste)
 
 # Duncan tasks
-## next
+## daily routine
+* 7-8am be on Slack
+* pull Moise's latest commits
+* answer questions made in the repo or texted in Slack
+* updates to the repo
+* 8am (or when finished) commit and push
+* 5pm commit and push (if any additional changes)
+## next (most tasks will be done on Sundays)
+* look at Jira: "Meanwhile, you may check how I created sprints on Jira, fit seemed confusing at first. I need your assessment on that as well. Thanks"
 * take Moise Agile notes and adapt to a document of OUR process (Moise will add his )
 * coding
   * npm i and make sure site runs
   * start with an HTML-only example, with list of similar HTML-only
   * put portfolio HTML into React, as a complete example (that uses CSS and scripts JS)
-* GitLab account
-
+* GitLab account setup
+* elaborate on training list: common git commands; code snippets
 ## depends on MM
 ## done: 
-* list: Chrome and VS Code extensions
-* start training list:common git commands; code snippets
-* set up Slack: https://teamdm-global.slack.com
 ## will be delayed
 * send Moise Jira plan
   * look around
@@ -147,6 +164,9 @@ for push
 * Joy of React course (read along, to discuss with MM, answer questions)
 * UI vocabulary
 * coding standards
-
-
-# you can edit your current file here, while also seeing the diffs with the previous version
+## Sunday plan:
+* go over our communication process
+* talk about Jira
+* plan, train, etc. 
+* talk about the vocabulary list
+* talk about snippets in src/utils (maybe a starter page to show react snippets in teh browser)
