@@ -108,7 +108,7 @@ for push
 
 * read ./training.md
   * please understand everything here: https://www.vocabularyof.tech/vcs/git/new-git-repo
-  //???DM: Is it required to start the git process from the($ echo "# repo-name" >> README.md), or someone can skip it? 
+  <!-- ???DM: Is it required to start the git process from the($ echo "# repo-name" >> README.md), or someone can skip it?  -->
   * experiment with GitLens
 ## depends on DM
   * set up Jira (Duncan will create an account and provide the details)(will be delayed past Tuesday)
