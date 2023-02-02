@@ -103,11 +103,12 @@ for push
 * uncertain: the change in package.json nextjs version from 'latest' to 12.1.6
   * DM: I think I may have
 * read about: nextjs 'next/head'
-  - next/head is a NextJs module that allows to import <Head>, a built-in component in ReactJs that allows to modify the metadata of the page(<head>).
+  - next/head is a NextJs module that imports <Head> from, a built-in component in ReactJs that allows to modify the metadata of the page(<head>).
   source: https://nextjs.org/learn/basics/assets-metadata-css/metadata
-   
+
 * read ./training.md
   * please understand everything here: https://www.vocabularyof.tech/vcs/git/new-git-repo
+  //???DM: Is it required to start the git process from the($ echo "# repo-name" >> README.md), or someone can skip it? 
   * experiment with GitLens
 ## depends on DM
   * set up Jira (Duncan will create an account and provide the details)(will be delayed past Tuesday)
