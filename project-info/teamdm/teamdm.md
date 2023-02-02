@@ -97,6 +97,7 @@ for push
 
 # Moise tasks (ordered by priority)
 ## next
+* set up GitHub notifications in Slack to a #GitHub channel
 * find out what "liveServer" means when it is in the .vscode/settings.json
 * uncertain: the change in package.json nextjs version from 'latest' to 12.1.6
   * DM: I think I may have
@@ -123,6 +124,7 @@ for push
   * start with an HTML-only example, with list of similar HTML-only
   * put portfolio HTML into React, as a complete example (that uses CSS and scripts JS)
 * GitLab account
+
 ## depends on MM
 ## done: 
 * list: Chrome and VS Code extensions
@@ -139,3 +141,6 @@ for push
 * Joy of React course (read along, to discuss with MM, answer questions)
 * UI vocabulary
 * coding standards
+
+
+# you can edit your current file here, while also seeing the diffs with the previous version
