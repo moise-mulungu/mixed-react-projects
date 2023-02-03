@@ -113,7 +113,14 @@ for push
     * JS techniques
   * as you read, I'd like you to make a React vocabulary list in tech/react/vocabulary/index.md - this will be very helpful for both of us.
 * set up GitHub notifications in Slack to a #GitHub channel
-* (done) find out what "liveServer" means when it is in the .vscode/settings.json
+  * ???MM: Can you have tips on how to set up GitHub notifications on Slack. 
+    * DM: I'd like you to research it and see if it is possible. I assume slack-github are integrated so that a notification will come to Slack each time one of us pushes to the repository. We have this at work with gitlab-webex.
+    * DM: In general, when I give your a random task, you may ask yourself, how long to try/research?: Google it for 5-10 minutes. if you are totally blocked, leave a note like "not possible", or "nothing on google indicates it is possible". If it IS possible, read some tutorials/instructions and give it a try. Don't spend more than like 30 minutes or an hour on it. If you get blocked, or you know it will take longer than an hour, stop, leave some notes on what you found out, what you did so far, with the links that are good, and we'll return to it. You could finish it later or we may decide it not to be worth the additional effort.
+      * This is good practice for when the boss gives you random assignments. I would always expect you to research a bit, not ask me how to do it.
+        * If you did research it and found nothing, or found limitations, you can tell me. 
+        * If I didn't describe the assignment clearly, ask for clarification. At my job, this is very important and happens a lot. If my boss gives me a vague assignment and I guess his intent wrongly, he'll get mad, and he'll tell me I should always ask for clarification before wasting my time possibly doing the wrong thing. 
+        * how much time to spend on it? You can assume that I think it is important, but that you should't lose half a day on it. Practice finding the right stopping point and report back your progress so far.
+* find out what "liveServer" means when it is in the .vscode/settings.json
     - (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). I still do not know how did this land in the project, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html
     - ok, good job, I don't think it will hurt to leave it there. Leave a comment in the .vscode/settings.json saying that it wasn't added manually by us, and add your above summary to the comment also.
 

@@ -1,3 +1,5 @@
+// - next/head is a NextJs module that imports <Head> from, a built-in component in ReactJs that allows to modify the metadata of the page(<head>). source: https://nextjs.org/learn/basics/assets-metadata-css/metadata
+// DM: temporary note: in general, put comments on the line above the code the comment refers to
 import Head from 'next/head'
 
 import { appTitle } from '@/constants/portfolio' // DM: let's use this one repo for multiple projects
