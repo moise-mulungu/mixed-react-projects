@@ -109,6 +109,7 @@ for push
   * start collecting snippets in the src/utils directory when you see new JS and React techniques
   * as you read, I'd like you to make a React vocabulary list in tech/react/vocabulary/index.md - this will be very helpful for both of us.
 * set up GitHub notifications in Slack to a #GitHub channel
+<!-- ???DM: Can you have tips on how to set up GitHub notifications on Slack -->
 * find out what "liveServer" means when it is in the .vscode/settings.json
     - (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). I still do not know how did this land in the project, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html
     - ok, good job, I don't think it will hurt to leave it there. Leave a comment in the .vscode/settings.json saying that it wasn't added manually by us, and add your above summary to the comment also.
