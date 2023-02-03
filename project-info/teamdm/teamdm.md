@@ -46,7 +46,9 @@ for push
 * time to complete tasks are estimated as "story points": 1 point == one day work (allow for can't program 8hrs/day) (skill: how to extimate and manage the boss's expectations);
 * daily schedule
   * !! consistency is important: always meet, even if the work is behind schedule; plan ahead: if we can't make a standup, reschedule ahead of time.
-  * daily standups (max 5/week) 
+  * first: pull the repo, read all the diffs, answer questions, 
+  * ongoing: record progress in our Tasks section, marking tasks as "(done)" and detailing progress on tasks, asking questions. 
+  * daily standups
     * 6am/3pm - 8am/5pm: Slack
       * discuss everything that can be discussed well via text
       * we can try voice huddles later, maybe that will work in lieu of Zoom
@@ -75,6 +77,7 @@ for push
 * JS
   * React
 * TailwindCSS
+  * answer
 * database
   * mySql (DaaS? database as a service)
   * MongoDB (for prototyping) with Mongoose (ODM - object-document model)
@@ -95,10 +98,10 @@ for push
 
 
 
-# Moise tasks (ordered by priority)
+# Moise tasks
 ## daily routine
 * pull Duncan's latest commits and look at the diffs (compare your last commit before my commit to the working tree in GitLens to see what changes I made)
-* update repo with notes and (done, partial) when task
+* update repo with notes and (done, partial) when task is complete or you have worked on it
 * 3pm push repo to the remote
 * 3-5pm be on Slack (Duncan's 6-8am)
 * 8am (or when finished) commit and push
@@ -107,15 +110,16 @@ for push
 * when you complete a task, put (done) or (partial - explain what's left to do)
 * focus mostly on Joy of React
   * start collecting snippets in the src/utils directory when you see new JS and React techniques
+    * JS techniques
   * as you read, I'd like you to make a React vocabulary list in tech/react/vocabulary/index.md - this will be very helpful for both of us.
 * set up GitHub notifications in Slack to a #GitHub channel
-* find out what "liveServer" means when it is in the .vscode/settings.json
+* (done) find out what "liveServer" means when it is in the .vscode/settings.json
     - (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). I still do not know how did this land in the project, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html
     - ok, good job, I don't think it will hurt to leave it there. Leave a comment in the .vscode/settings.json saying that it wasn't added manually by us, and add your above summary to the comment also.
 
-* (done) the change in package.json nextjs version from 'latest' to 12.1.6. DM: I think I may have told you to do this
+* (done) the change in package.json nextjs version from 'latest' to 12.1.6. DM: I think I may have told you to do this32
 * read about: nextjs 'next/head'
-  - next/head is a NextJs module that imports <Head> from, a built-in component in ReactJs that allows to modify the metadata of the page(<head>). source: https://nextjs.org/learn/basics/assets-metadata-css/metadata
+  - howtohtml: next/head is a NextJs module that imports <Head> from, a built-in component in ReactJs that allows to modify the metadata of the page(<head>). source: https://nextjs.org/learn/basics/assets-metadata-css/metadata
   - great, put this as a comment above the next/head import in src/pages/portfolio/index.jsx
 
 * read ./training.md
