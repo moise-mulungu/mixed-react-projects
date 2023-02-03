@@ -1,3 +1,5 @@
 {
     "liveServer.settings.port": 5501
 }
+
+// (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). this wasn't added manually by us, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html
