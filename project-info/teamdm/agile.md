@@ -24,5 +24,5 @@ Note: The building process starts from the development and ends to the productio
 # duncan's quotes he will merge into this document in later
 "methodology DEVs use to take work from development to production; breaking down work into individual tasks; ensures quality - avoids unexpected problems at the end of a project."
   * steps: development, code review/UI sanity check (blast radius), test (individual tasks), 
-  * DM todo: vocabulary list,
+  * todoDM: vocabulary list,
   * etc: pair programming, code review, frequent testing, "adaptable" (make sure everything running), "saving" (once task done correctly, avoid re-do), individual carries his weight (don't slow down everyone else)

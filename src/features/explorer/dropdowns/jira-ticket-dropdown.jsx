@@ -1,4 +1,4 @@
-import { ticketDescriptions } from '@/constants'
+import { ticketDescriptions } from '@/constants/explorer'
 import { useEffect } from 'react'
 import SelectDropdown from './common/select-dropdown'
 

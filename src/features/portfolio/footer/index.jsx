@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function (props) {
+export default function Footer(props) {
   const {} = props
 
   return <></>

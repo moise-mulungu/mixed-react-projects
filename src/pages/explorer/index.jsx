@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Explorer from '@/features/explorer'
-import { appTitle } from '@/constants'
+import { appTitle } from '@/constants/explorer'
 
 export async function getStaticProps() {
   return {

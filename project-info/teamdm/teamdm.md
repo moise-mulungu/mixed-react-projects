@@ -58,6 +58,7 @@ for push
     * !!! Duncan, Moise both git-commit before the other wakes up in the morning :)
   * Moise 1 hour/day working on specific technical skills
     * (Duncan, Moise TODO) list the skills: CSS, JS, back-end (RDB, REST, GraphQL)
+* Sundays - planning, teaching, feedback for D and M
 * every 6th week, retrospective, cooldown
   * cooldown: Moise chooses a task/skill of his interest, but that is related to the projects)
 * WU transfer: first business day of each month (??? is this OK? can do more often, WU makes the submission process easy, but since it requires a trip downtown)
@@ -86,7 +87,7 @@ for push
 
 # Project Management (medium- and long-term schedule, progress tracking)
 
-# Project Standards (DM todo)
+# todoDM: Project Standards
 * !!!!! consistency - makes the workday go smoothly and reduces cognitive load
 * avoid capital letters? (todo DM: think more on it)
 ## code standards: ex: ideal directory structure; file-naming (lowercase, snake-case), variable-naming standards (pascalCase unless React Component or constant); 
@@ -101,17 +102,27 @@ for push
 # Moise tasks
 ## daily routine
 * pull Duncan's latest commits and look at the diffs (compare your last commit before my commit to the working tree in GitLens to see what changes I made)
-* update repo with notes and (done, partial) when task is complete or you have worked on it
+* update repo with notes and "(done)" or "(partial)" when task is complete or you have worked on it
 * 3pm push repo to the remote
 * 3-5pm be on Slack (Duncan's 6-8am)
-* 8am (or when finished) commit and push
-* 5pm commit and push (if any additional changes)
-## next
-* when you complete a task, put (done) or (partial - explain what's left to do)
-* focus mostly on Joy of React
+* 5pm (i.e., whenever you stop for the day) commit and push (if any additional changes)
+## Monday Feb 6 I'd like you to work in this order, after pulling the repo:
+* as usual, check all diffs for the new info I've pushed - see if there is anything I put that you need to do or respond to
+* add "(done)" or comments to your tasks in the section ## next 
+* spend 30 minutes solving src/utils/array/snippets/sort.js
+* with the time that's left, 1/2 on each of:
+  * Joy of React (let's discuss your vocabulary entries Monday) 
+  * Portfolio - implement portfolio finding all the needed components in tailwindui
+  * Note: if your brain likes to code first, then study next, feel free to change the order
+* btw, always check package.json, to see if there's anything I installed that you need to install: there-s one new one:@heroicons/react
+* note on Tailwindcss/ui: it is very customizable, so you can really make it your own, but I think it's best to implement it quickly for the full portfolio site first, making the least changes to taiwindui as is possible. So, find in tailwindui the components you need to match your current portfolio site, or you may wish to adapt your layout a bit to use what tailwindui has available if you see something you like. Then, we'll get the React and interactivity fully implemented. Once you see the whole thing together, that is a good time to start tweaking it visually to fit your preferences. 
+## next (unless there is a specific list for the day above)
+* when you complete a task, put "(done)" or "(partial)" - explain what's left to do)
+* focus 1/2 on portfolio, 1/2 on Joy of React
   * start collecting snippets in the src/utils directory when you see new JS and React techniques
     * JS techniques
   * as you read, I'd like you to make a React vocabulary list in tech/react/vocabulary/index.md - this will be very helpful for both of us.
+  * let me know which chapter you are reading, so I know what to discuss, teach you.
 * set up GitHub notifications in Slack to a #GitHub channel
   * ???MM: Can you have tips on how to set up GitHub notifications on Slack. 
     * DM: I'd like you to research it and see if it is possible. I assume slack-github are integrated so that a notification will come to Slack each time one of us pushes to the repository. We have this at work with gitlab-webex.
@@ -119,15 +130,14 @@ for push
       * This is good practice for when the boss gives you random assignments. I would always expect you to research a bit, not ask me how to do it.
         * If you did research it and found nothing, or found limitations, you can tell me. 
         * If I didn't describe the assignment clearly, ask for clarification. At my job, this is very important and happens a lot. If my boss gives me a vague assignment and I guess his intent wrongly, he'll get mad, and he'll tell me I should always ask for clarification before wasting my time possibly doing the wrong thing. 
-        * how much time to spend on it? You can assume that I think it is important, but that you should't lose half a day on it. Practice finding the right stopping point and report back your progress so far.
+        * how much time to spend on it? You can assume that I think it is important, but that you should't lose too much time on it. One hour is good, 1/2 day is not (better to stop and report). Practice finding the right stopping point and report back your progress so far. 
+  * Moise, when I leave a big comment, just leave a note: "MM: read, thanks". I'll remove it later, or move it to another area.
 * find out what "liveServer" means when it is in the .vscode/settings.json
     - (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). I still do not know how did this land in the project, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html
     - ok, good job, I don't think it will hurt to leave it there. Leave a comment in the .vscode/settings.json saying that it wasn't added manually by us, and add your above summary to the comment also.
 
 * (done) the change in package.json nextjs version from 'latest' to 12.1.6. DM: I think I may have told you to do this32
-* read about: nextjs 'next/head'
-  - howtohtml: next/head is a NextJs module that imports <Head> from, a built-in component in ReactJs that allows to modify the metadata of the page(<head>). source: https://nextjs.org/learn/basics/assets-metadata-css/metadata
-  - great, put this as a comment above the next/head import in src/pages/portfolio/index.jsx
+* (done) read about: nextjs 'next/head'
 
 * read ./training.md
   * please understand everything here: https://www.vocabularyof.tech/vcs/git/new-git-repo
@@ -154,9 +164,11 @@ for push
 * 8am (or when finished) commit and push
 * 5pm commit and push (if any additional changes)
 ## next (most tasks will be done on Sundays)
+* ensure this app runs
+* update docs with items discussed today
 * look at Jira: "Meanwhile, you may check how I created sprints on Jira, fit seemed confusing at first. I need your assessment on that as well. Thanks"
 * take Moise Agile notes and adapt to a document of OUR process (Moise will add his )
-* coding
+* (done) coding
   * npm i and make sure site runs
   * start with an HTML-only example, with list of similar HTML-only
   * put portfolio HTML into React, as a complete example (that uses CSS and scripts JS)

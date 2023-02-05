@@ -1,5 +1,5 @@
 // howtojs: arrays: sort numbers
-// DM: exercise for Moise
-;[2, 5, 3, 14, 11].sort()
+// todoMM: solve this exercise
+;[2, 5, 3, 14, 11].sort(/* google the syntax to sort numbers goes here */)
 
-// DM todo: write exercise to sort array of objects
+// todoDM: write exercise to sort array of objects

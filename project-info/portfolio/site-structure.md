@@ -1,4 +1,4 @@
-## Top Nav
+# Top Nav
 - Name
 - Site link
     - Portfolio
@@ -10,7 +10,7 @@
     - Twitter
     - AngelList
 
-## A main (Content)Content (main)
+# A main (Content)Content (main)
 - section: Overview information
 - Social links
     - AngelList
@@ -58,7 +58,7 @@
     - Text field
 - Submit button
 
-## Footer
+# Footer
 - Social links
     - LinkedIn
     - Medium

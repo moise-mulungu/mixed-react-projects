@@ -1,5 +1,5 @@
 import Link from '@/ui/link'
-import { jiraTicketBaseUrl } from '@/constants'
+import { jiraTicketBaseUrl } from '@/constants/explorer'
 
 export default function JiraLink({ ticketDescriptionObj }) {
   return (
