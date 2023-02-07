@@ -26,3 +26,5 @@ Note: The building process starts from the development and ends to the productio
   * steps: development, code review/UI sanity check (blast radius), test (individual tasks), 
   * todoDM: vocabulary list,
   * etc: pair programming, code review, frequent testing, "adaptable" (make sure everything running), "saving" (once task done correctly, avoid re-do), individual carries his weight (don't slow down everyone else)
+  (done)
+  
