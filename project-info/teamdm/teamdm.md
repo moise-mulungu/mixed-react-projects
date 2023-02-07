@@ -106,8 +106,9 @@ for push
 * 3pm push repo to the remote
 * 3-5pm be on Slack (Duncan's 6-8am)
 * 5pm (i.e., whenever you stop for the day) commit and push (if any additional changes)
-## Monday Feb 6 I'd like you to work in this order, after pulling the repo:
+## Week ofMonday Feb 6 I'd like you to work in this order, after pulling the repo:
 * as usual, check all diffs for the new info I've pushed - see if there is anything I put that you need to do or respond to
+* see new exercise in utils/array/snippets
 * add "(done)" or comments to your tasks in the section ## next 
 * (done) spend 30 minutes solving src/utils/array/snippets/sort.js
 * with the time that's left, 1/2 on each of:
