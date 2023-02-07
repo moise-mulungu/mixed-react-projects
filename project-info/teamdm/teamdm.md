@@ -109,7 +109,7 @@ for push
 ## Monday Feb 6 I'd like you to work in this order, after pulling the repo:
 * as usual, check all diffs for the new info I've pushed - see if there is anything I put that you need to do or respond to
 * add "(done)" or comments to your tasks in the section ## next 
-* spend 30 minutes solving src/utils/array/snippets/sort.js(done)
+* (done) spend 30 minutes solving src/utils/array/snippets/sort.js
 * with the time that's left, 1/2 on each of:
   * Joy of React (let's discuss your vocabulary entries Monday) 
   * Portfolio - implement portfolio finding all the needed components in tailwindui

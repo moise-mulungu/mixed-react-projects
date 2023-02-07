@@ -3,8 +3,10 @@ Quotes are used for creating strings while backticks are for embedding variables
 e.g: const userName = ‘Mail’
 const dynamicString = `hello {userName}`/ ${}
 
-# Normal function vs Arrow function
-
+# regular function vs arrow function
+* note: "regular" is most common on google, but also used: ordinary, normal, traditional)
+* DM: if you're cutting and pasting don't worry too much about it, but if you're typing, let's stick to lower case, unless it is a proper noun (name, place, thing)
+* 
 e.g : function exclaim(string) {
  return string + '!';
 }
@@ -29,27 +31,31 @@ Const name = user.name
 Const country = user.country
 
 # Module
+
 A module is a JavaScript file that can contain one or more exports. We can pull the code from one module into another using the import statement.
 
 # A callback function
 The term “callback function” refers to a function that we pass to another function
 
 # JavaScript loop methods
-- forEach: when we want to perform some sort of action on every item in an array.
+## forEach: when we want to perform some sort of action (side effect) on every item in an array.
+```js
 const pizzaToppings = [
- 'cheese',
- 'avocado',
- 'halibut',
- 'custard',
+'cheese',
+'avocado',
+'halibut',
+'custard',
 ];
-
-
-
+```
+* side effect like console.log or assignment `myObj.property = value` in contrast to map/filter/reduce which return values and thus can be chained. forEach is usually last in a chain of array methods
+* cannot await promises in forEach
+```js
 pizzaToppings.forEach((topping, index) => {
- console.log(index, topping);
+console.log(index, topping);
 });
-
-- filter: In many ways, filter is very similar to forEach. It takes a callback function, and that callback function will be called once per item in the array.
+```
+DM: use the backticks ```js so we can see color formatting
+## filter: takes a callback function, and that callback function will be called once per item in the array.
 const students = [
  { name: 'Aisha', grade: 89 },
  { name: 'Bruno', grade: 55 },
@@ -64,10 +70,9 @@ const studentsWhoPassed = students.filter(student => {
 
 console.log(studentsWhoPassed);
 
-- Map: In many ways, map is quite a lot like forEach. We give it a callback function, and it iterates over the array, calling the function once for each item in the array.
+## Map: In many ways, map is quite a lot like forEach. We give it a callback function, and it iterates over the array, calling the function once for each item in the array.
 const people = [
  { name: 'Aisha', grade: 89 },
-
  { name: 'Bruno', grade: 55 },
  { name: 'Carlos', grade: 68 },
  { name: 'Dacian', grade: 71 },
