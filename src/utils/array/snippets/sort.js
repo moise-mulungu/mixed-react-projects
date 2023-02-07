@@ -7,8 +7,13 @@ function sortArray(a, b) {
     return a - b
 }
 
+// join the array into a string
 myArray.join();
+
+// sort the array
 myArray.sort();
+
+// sort the array using the function
 myArray.sort(sortArray);
 console.log(myArray)
 
