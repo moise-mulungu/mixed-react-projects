@@ -7,8 +7,9 @@ function sortArray(a, b) {
     return a - b
 }
 
-myArray.join(' ');
-myArray.sort(sortArray).join(' ')
+myArray.join();
+myArray.sort();
+myArray.sort(sortArray);
 console.log(myArray)
 
 // todoDM: write exercise to sort array of objects
