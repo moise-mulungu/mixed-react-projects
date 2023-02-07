@@ -7,5 +7,5 @@ consistency saves time and energy, helps avoid typo bugs
 * functions - camelCase
 * database (relational) column names - snake_case
 * acronyms - strict camel case, acronyms not capitalized
-  * myHtml, myUrl, myUi, myId - KISS, simpler is better
+  * myHtml, myUrl, myUi, myId - KISS, simpler is better(done)
 * 
