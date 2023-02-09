@@ -1,4 +1,4 @@
-# Difference between quotes(“ ”) and backticks(`` );
+# difference between quotes(“ ”) and backticks(`` );
 Quotes are used for creating strings while backticks are for embedding variables in a string
 e.g: const userName = ‘Mail’
 const dynamicString = `hello {userName}`/ ${}
@@ -12,7 +12,7 @@ e.g : function exclaim(string) {
 }
 const exclaim = string => string + '!';
 
-# Object destructuring vs Object accessing
+# object destructuring vs Object accessing
 
 ```js 
 const user = {
@@ -55,7 +55,7 @@ const pizzaToppings = [
 pizzaToppings.forEach((topping, index) => {
 console.log(index, topping);
 });
-
+```
 DM: use the backticks ```js so we can see color formatting
 ## filter: takes a callback function, and that callback function will be called once per item in the array.
 ```js
@@ -74,7 +74,7 @@ const studentsWhoPassed = students.filter(student => {
 
 console.log(studentsWhoPassed);
 
-## Map: In many ways, map is quite a lot like forEach. We give it a callback function, and it iterates over the array, calling the function once for each item in the array.
+## map: In many ways, map is quite a lot like forEach. We give it a callback function, and it iterates over the array, calling the function once for each item in the array.
 
 ```js
 const people = [
