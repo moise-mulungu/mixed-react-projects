@@ -11,19 +11,19 @@ export default function Footer(props) {
           </span>
           <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
               <li>
-                  <a href="" class="mr-4 hover:underline md:mr-6 ">GitHub</a>
+                  <a href="https://github.com/moise-mulungu" class="mr-4 hover:underline md:mr-6 ">GitHub</a>
               </li>
               <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/moisemulungu/" class="mr-4 hover:underline md:mr-6">LinkedIn</a>
               </li>
               <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6">AngelList</a>
+                  <a href="https://angel.co/u/moise-mulungu" class="mr-4 hover:underline md:mr-6">AngelList</a>
               </li>
               <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6">Medium</a>
+                  <a href="https://medium.com/@moisemlg90" class="mr-4 hover:underline md:mr-6">Medium</a>
               </li>
               <li>
-                  <a href="#" class="hover:underline">Twitter</a>
+                  <a href="https://twitter.com/moise_mulungu" class="hover:underline">Twitter</a>
               </li>
           </ul>
       </footer>
