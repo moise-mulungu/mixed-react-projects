@@ -14,6 +14,7 @@ const exclaim = string => string + '!';
 
 # Object destructuring vs Object accessing
 
+```js 
 const user = {
  name: 'François Bouchard',
  city: 'Saint-Louis-du-Ha! Ha!',
@@ -56,6 +57,7 @@ console.log(index, topping);
 ```
 DM: use the backticks ```js so we can see color formatting
 ## filter: takes a callback function, and that callback function will be called once per item in the array.
+```js
 const students = [
  { name: 'Aisha', grade: 89 },
  { name: 'Bruno', grade: 55 },
@@ -67,10 +69,13 @@ const students = [
 const studentsWhoPassed = students.filter(student => {
  return student.grade >= 60
 });
+```
 
 console.log(studentsWhoPassed);
 
 ## Map: In many ways, map is quite a lot like forEach. We give it a callback function, and it iterates over the array, calling the function once for each item in the array.
+
+```js
 const people = [
  { name: 'Aisha', grade: 89 },
  { name: 'Bruno', grade: 55 },
