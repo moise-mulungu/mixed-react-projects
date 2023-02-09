@@ -47,14 +47,15 @@ const pizzaToppings = [
 'halibut',
 'custard',
 ];
-```
+`
 * side effect like console.log or assignment `myObj.property = value` in contrast to map/filter/reduce which return values and thus can be chained. forEach is usually last in a chain of array methods
 * cannot await promises in forEach
+
 ```js
 pizzaToppings.forEach((topping, index) => {
 console.log(index, topping);
 });
-```
+
 DM: use the backticks ```js so we can see color formatting
 ## filter: takes a callback function, and that callback function will be called once per item in the array.
 ```js
