@@ -16,6 +16,7 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import SiteLinks from './site-links'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -67,6 +68,7 @@ export default function Example() {
                     </a>
                   </div>
                 </div>
+                <SiteLinks />
               </div>
               <div className="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
                 <div className="w-full max-w-lg lg:max-w-xs">
