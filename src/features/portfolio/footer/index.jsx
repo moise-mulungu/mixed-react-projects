@@ -11,16 +11,19 @@ export default function Footer(props) {
           </span>
           <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
               <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6 ">About</a>
+                  <a href="" class="mr-4 hover:underline md:mr-6 ">GitHub</a>
               </li>
               <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6">Privacy Policy</a>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">LinkedIn</a>
               </li>
               <li>
-                  <a href="#" class="mr-4 hover:underline md:mr-6">Licensing</a>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">AngelList</a>
               </li>
               <li>
-                  <a href="#" class="hover:underline">Contact</a>
+                  <a href="#" class="mr-4 hover:underline md:mr-6">Medium</a>
+              </li>
+              <li>
+                  <a href="#" class="hover:underline">Twitter</a>
               </li>
           </ul>
       </footer>
