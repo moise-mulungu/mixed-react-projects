@@ -32,3 +32,4 @@ export default function Footer(props) {
     
   )
 }
+// ???DM: how to add font awesome icons to this footer with nextjs.
