@@ -3,3 +3,5 @@
 `` ctr + x ``: cut empty line
 `` alt + arrow keys(up/down) ``: to move the line up/down
 `` ctr + ] / ctr + [``: indent/outdent  a line
+`` Home / end``: go to the beginning/end of the line
+`` ctr + Home/end``: go to the beginning/end of the file
