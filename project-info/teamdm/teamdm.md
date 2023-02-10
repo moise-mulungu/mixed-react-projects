@@ -117,7 +117,8 @@ for push
   * Note: if your brain likes to code first, then study next, feel free to change the order
 * btw, always check package.json, to see if there's anything I installed that you need to install: there-s one new one:@heroicons/react
 * note on Tailwindcss/ui: it is very customizable, so you can really make it your own, but I think it's best to implement it quickly for the full portfolio site first, making the least changes to taiwindui as is possible. So, find in tailwindui the components you need to match your current portfolio site, or you may wish to adapt your layout a bit to use what tailwindui has available if you see something you like. Then, we'll get the React and interactivity fully implemented. Once you see the whole thing together, that is a good time to start tweaking it visually to fit your preferences. 
-## next (unless there is a specific list for the day above)
+## next (unless there is a specific list for the day above) 
+<!-- read -->
 * when you complete a task, put "(done)" or "(partial)" - explain what's left to do)
 * focus 1/2 on portfolio, 1/2 on Joy of React
   * start collecting snippets in the src/utils directory when you see new JS and React techniques
@@ -133,7 +134,7 @@ for push
         * If I didn't describe the assignment clearly, ask for clarification. At my job, this is very important and happens a lot. If my boss gives me a vague assignment and I guess his intent wrongly, he'll get mad, and he'll tell me I should always ask for clarification before wasting my time possibly doing the wrong thing. 
         * how much time to spend on it? You can assume that I think it is important, but that you should't lose too much time on it. One hour is good, 1/2 day is not (better to stop and report). Practice finding the right stopping point and report back your progress so far. 
   * Moise, when I leave a big comment, just leave a note: "MM: read, thanks". I'll remove it later, or move it to another area.
-* find out what "liveServer" means when it is in the .vscode/settings.json
+* (done)find out what "liveServer" means when it is in the .vscode/settings.json
     - (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). I still do not know how did this land in the project, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html
     - ok, good job, I don't think it will hurt to leave it there. Leave a comment in the .vscode/settings.json saying that it wasn't added manually by us, and add your above summary to the comment also.
 

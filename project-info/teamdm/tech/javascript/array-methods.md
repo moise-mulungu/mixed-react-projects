@@ -1,4 +1,4 @@
-# Difference between quotes(“ ”) and backticks(`` );
+# difference between quotes(“ ”) and backticks(`` );
 Quotes are used for creating strings while backticks are for embedding variables in a string
 e.g: const userName = ‘Mail’
 const dynamicString = `hello {userName}`/ ${}
@@ -12,8 +12,9 @@ e.g : function exclaim(string) {
 }
 const exclaim = string => string + '!';
 
-# Object destructuring vs Object accessing
+# object destructuring vs Object accessing
 
+```js 
 const user = {
  name: 'François Bouchard',
  city: 'Saint-Louis-du-Ha! Ha!',
@@ -46,9 +47,10 @@ const pizzaToppings = [
 'halibut',
 'custard',
 ];
-```
+`
 * side effect like console.log or assignment `myObj.property = value` in contrast to map/filter/reduce which return values and thus can be chained. forEach is usually last in a chain of array methods
 * cannot await promises in forEach
+
 ```js
 pizzaToppings.forEach((topping, index) => {
 console.log(index, topping);
@@ -56,6 +58,7 @@ console.log(index, topping);
 ```
 DM: use the backticks ```js so we can see color formatting
 ## filter: takes a callback function, and that callback function will be called once per item in the array.
+```js
 const students = [
  { name: 'Aisha', grade: 89 },
  { name: 'Bruno', grade: 55 },
@@ -67,10 +70,13 @@ const students = [
 const studentsWhoPassed = students.filter(student => {
  return student.grade >= 60
 });
+```
 
 console.log(studentsWhoPassed);
 
-## Map: In many ways, map is quite a lot like forEach. We give it a callback function, and it iterates over the array, calling the function once for each item in the array.
+## map: In many ways, map is quite a lot like forEach. We give it a callback function, and it iterates over the array, calling the function once for each item in the array.
+
+```js
 const people = [
  { name: 'Aisha', grade: 89 },
  { name: 'Bruno', grade: 55 },
@@ -84,3 +90,22 @@ const screamedNames = people.map(person => {
 });
 
 console.log(screamedNames);
+
+// examples with array.prototypes.sort();
+
+;[2, 5, 3].sort((a, b) => a - b) // !!! never a > b! I've done this a few times. Doesn't work because ... a>b returns a boolean, not a number
+
+// todoMM: remove all the below once you've moved these to other files
+
+const myArray = [2, 5, 3, 14, 11]
+
+// join the array into a string
+myArray.join()
+// DM: make another file named join.js if you'd like to explore that, but keep each file small, one topic, succinct
+
+// sort the array
+myArray.sort() // DM: move to sort-alphabetic.js if you'd like snippets for that
+
+// sort the array using the function // DM: syntax examples and variants move those to the tech/javascript/ section as needed. in src/utils keep only the code you'd copy and paste into other code
+myArray.sort(sortArray)
+console.log(myArray)
