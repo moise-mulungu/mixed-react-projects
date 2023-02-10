@@ -5,3 +5,5 @@
 `` ctr + ] / ctr + [``: indent/outdent  a line
 `` Home / end``: go to the beginning/end of the line
 `` ctr + Home/end``: go to the beginning/end of the file
+
+<!-- These shortcuts are specific only for Linux and Windows, not for MacOs -->
