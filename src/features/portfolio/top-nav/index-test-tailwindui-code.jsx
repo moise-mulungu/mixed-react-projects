@@ -10,13 +10,33 @@
       require('@tailwindcss/forms'),
     ],
   }
+
+  Friday, do a Pramp soft-skills practice interview.
+
+
+dmckeeve9
+  2 minutes ago
+Do a few exercises on code wars. only easy ones - focus on readability and basics, not hard math stuff. Copy the question and your code solution into our repo so I can do a code review.
+
+
+dmckeeve9
+  2 minutes ago
+Also, pick a new VS Code keyboard shortcut that is useful - put in into a new file the project-info directory. Each Friday, add a new one, and practice them all.
+
+
   ```
+DM: going forward, put the tailwindui.com URL where you got the code in the file, so that we know where to find it later.
+DM: if you need @tailwindcss/forms, go ahead, install it and config it. While you do, record your steps to install and config, so that I can read. But, if you don't need it for this code to work, no need to install it. 
 */
 import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+// ???MM: how to import this component with all its related links into the navbar?
+//   DM: hey, be sure to put your initials MM??? next your questions (pretend we're a larger team, anyone could answer, and they need to know WHO asked the question)
+//   DM: be sure to put your comments ABOVE the line the comment is about
+// DM: s is mapped to /src (see "paths") in the ./tsconfig.json file
+import SiteLinks from './site-links'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import SiteLinks from './site-links'// ???DM: how to import this component with all its related links into the navbar?
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -45,7 +65,10 @@ export default function Example() {
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
                     {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-                    <a href="#" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">
+                    <a
+                      href="#"
+                      className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                    >
                       Dashboard
                     </a>
                     <a

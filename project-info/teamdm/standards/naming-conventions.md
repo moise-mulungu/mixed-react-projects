@@ -2,6 +2,10 @@
 # consistency saves time and energy, helps avoid typo bugs
 * in order to have consistency, you have to have rules (standards) to follow
 
+# conventions followed makes everything easier
+* tooling more likely to format your code better. ex: GitLab side-by-side diffs hard-to-read with 180 character lines
+* 
+
 * directory names - kebab-case
 * Components - PascalCase
 * functions - camelCase
@@ -14,4 +18,4 @@
   * exception: ok is very short functions ex: releases.map(r => r.name)
   * why
     * people use different abbreviations for the same word (lacks consistency). it is better, if you remember something is named "start button" to always know the variable will be startButton. 
-    * they are often cryptic to read(done)
+    * they are often cryptic to read
