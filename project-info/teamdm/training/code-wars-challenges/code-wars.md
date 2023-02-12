@@ -47,9 +47,9 @@ Complete the solution so that it reverses the string passed into it.
 
 ```js
 function solution(str) {
-    let splitString = str.split('');
-    let reversedString = splitString.reverse();
-    let joinedString = reversedString.join('');
+    let splitString = str.split(''); // split a given string ('s','t','r')
+    let reversedString = splitString.reverse(); // ('r', 's', 't')
+    let joinedString = reversedString.join(''); // (rst)
     return joinedString
     // or return reversedString.split('').reverse().join('')
 }
