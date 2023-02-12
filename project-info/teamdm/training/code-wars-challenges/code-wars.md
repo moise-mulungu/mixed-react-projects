@@ -66,7 +66,7 @@ function removeChar(str: ''){ <----- if str is undefined, it will be assigned ''
   // when "called", this line is executed
   // the value of str will be the value you pass in the "call" below
   // if you pass nothing to removeChar, str will be "undefined" by default
-  let subStr = str.slice(1, str.length -1);
+  const subStr = str.slice(1, str.length -1);
 };
 removeChar(); // this is the "call" of the function; it does not provide an argument
 
@@ -81,11 +81,12 @@ Complete the solution so that it reverses the string passed into it.
 
 ```js
 function solution(str) {
-    let splitString = str.split(''); // split a given string ('s','t','r')
-    let reversedString = splitString.reverse(); // ('r', 's', 't')
-    let joinedString = reversedString.join(''); // (rst)
+    const splitString = str.split(''); // split a given string ('s','t','r')
+    const reversedString = splitString.reverse(); // ('r', 's', 't')
+    const joinedString = reversedString.join(''); // (rst)
     return joinedString
-    // or return reversedString.split('').reverse().join('')
+    // or return str.split('').reverse().join('')
 }
-
+// 
 solution('');
+```
