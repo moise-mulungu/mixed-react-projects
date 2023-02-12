@@ -38,6 +38,7 @@ function removeChar(str){ //
   // the value of str will be the value you pass in the "call" below
   // if you pass nothing to removeChar, str will be undefined by default
   let subStr = str.slice(1, str.length -1);
+  return subStr;
 };
 removeChar(); // this is the "call" of the funtion
 
@@ -71,4 +72,20 @@ removeChar(); // this is the "call" of the function; it does not provide an argu
 
 
 
+removeChar('');
 ```
+
+## Reversed Strings
+DESCRIPTION:
+Complete the solution so that it reverses the string passed into it.
+
+```js
+function solution(str) {
+    let splitString = str.split(''); // split a given string ('s','t','r')
+    let reversedString = splitString.reverse(); // ('r', 's', 't')
+    let joinedString = reversedString.join(''); // (rst)
+    return joinedString
+    // or return reversedString.split('').reverse().join('')
+}
+
+solution('');

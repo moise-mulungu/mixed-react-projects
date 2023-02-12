@@ -109,3 +109,5 @@ myArray.sort() // DM: move to sort-alphabetic.js if you'd like snippets for that
 // sort the array using the function // DM: syntax examples and variants move those to the tech/javascript/ section as needed. in src/utils keep only the code you'd copy and paste into other code
 myArray.sort(sortArray)
 console.log(myArray)
+
+// I installed Quokka, a javascript and typescript playground extension for vscode. It helps to console log
