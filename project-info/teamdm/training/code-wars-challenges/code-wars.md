@@ -40,3 +40,18 @@ function removeChar(str){
 
 removeChar('');
 ```
+
+## Reversed Strings
+DESCRIPTION:
+Complete the solution so that it reverses the string passed into it.
+
+```js
+function solution(str) {
+    let splitString = str.split('');
+    let reversedString = splitString.reverse();
+    let joinedString = reversedString.join('');
+    return joinedString
+    // or return reversedString.split('').reverse().join('')
+}
+
+solution('');
