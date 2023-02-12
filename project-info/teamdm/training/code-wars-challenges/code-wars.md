@@ -35,7 +35,8 @@ solution:
 function removeChar(str){
 
   let subStr = str.slice(1, str.length -1);
+  return subStr;
 };
 
-removeChar();
+removeChar('');
 ```
