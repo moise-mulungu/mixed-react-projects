@@ -2,6 +2,7 @@
 
 // more descriptive name, possibly, topNavLinks?
 export const defaultTopNavSiteLinkId = 'work'
+export const defaultFooterSocialLinkId = 'github'
 export const topNavSiteLinks = [
   { id: 'work', name: 'Portfolio', anchor: 'work' },
   { id: 'about', name: 'About', anchor: 'about' },
