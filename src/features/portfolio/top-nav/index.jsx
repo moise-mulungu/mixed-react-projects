@@ -32,8 +32,6 @@ import { theMan } from '@/constants/portfolio'
 // todoMM: '@/ui/link' - don't explicitly name index '@/ui/link' works for ui/link.js AND ui/link/index.js, depending on which one is there
 import { classNames } from '@/ui/link/index'
 
-
-
 //const theMan = 'Moise M Mulungu' :todoMM: move to constants
 const defaultSiteLinkId = defaultTopNavSiteLinkId
 
@@ -55,10 +53,7 @@ export default function Example(props) {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   />
-<<<<<<< HEAD
                   {/* note: curly brackets means JS goes inside. since this is a variable containing plain text, use curly brackets so JS can evaluate the variable which resolves to text.*/}
-=======
->>>>>>> 28f8be34b70164d470fe909b9103b84310e7407e
                   {theMan}
                   <img
                     className="hidden h-8 w-auto lg:block"
