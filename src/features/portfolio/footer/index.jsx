@@ -5,8 +5,11 @@ import { footerSocialLinks, defaultFooterSocialLinkId } from '../../../constants
 // step two: move this to constants/portfolio
 // step three: same for other files
 
+const defaultSocialLinkId = defaultFooterSocialLinkId
+
 export default function Footer(props) {
-  const {} = props
+  const { _ } = props
+  const [selectedSocialLinkId, setSelectedSocialLinkId] = useState([defaultSocialLinkId])
 
   return (
     <>
