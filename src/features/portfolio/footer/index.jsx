@@ -21,13 +21,30 @@ export default function Footer(props) {
           </a>
           . All Rights Reserved.
         </span>
-        {/* <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
-            <a href="https://github.com/moise-mulungu" className="mr-4 hover:underline md:mr-6 ">
+            {footerSocialLinks.map(({ id, name, url }) => {
+              console.log('wout', { id, name, url })
+                return (
+                  <a
+                    href={`#${url}`}
+                      className={classNames(
+                        id === selectedSocialLinkId
+                          ? 'mr-4 hover:underline md:mr-6'
+                          : 'hover:underline'
+                      )}
+                      onClick={() => setSelectedSocialLinkId(id)}
+                        >
+                      {name}
+                      </a>
+                    )
+              })
+            }
+            {/* <a href="https://github.com/moise-mulungu" className="mr-4 hover:underline md:mr-6 ">
               GitHub
-            </a>
+            </a> */}
           </li>
-          <li>
+          {/* <li>
             <a
               href="https://www.linkedin.com/in/moisemulungu/"
               className="mr-4 hover:underline md:mr-6"
@@ -49,8 +66,8 @@ export default function Footer(props) {
             <a href="https://twitter.com/moise_mulungu" className="hover:underline">
               Twitter
             </a>
-          </li>
-        </ul> */}
+          </li> */}
+        </ul>
       </footer>
     </>
   )
