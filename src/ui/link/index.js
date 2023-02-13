@@ -22,6 +22,7 @@ export default function Link({ href, className = 'underline', ...rest }) {
 
 // todoMM: put this in ui/utils.js
 // each file should contain only on function or multiple related functions
+// ...classes is called "rest parameters"
 export function classNames(...classes) {
   // short for: return classes.filter((class) => Boolean(class)).join(' ')
   return classes.filter(Boolean).join(' ')
