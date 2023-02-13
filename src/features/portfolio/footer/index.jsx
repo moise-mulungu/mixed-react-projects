@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { footerSocialLinks, defaultFooterSocialLinkId } from '../../../constants/portfolio'
 
 // step one: define var with all data, use map
 // step two: move this to constants/portfolio
