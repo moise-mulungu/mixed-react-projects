@@ -26,6 +26,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { topNavSiteLinks, defaultTopNavSiteLinkId } from '@/constants/portfolio'
+// you can add this constant to the previous line
 import { theMan } from '../../../constants/portfolio'
 
 // todoMM: move to src/ui/utils/
@@ -55,7 +56,8 @@ export default function Example(props) {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   />
-                  < theMan />
+                  {/* note: curly brackets means JS goes inside. since this is a variable containing plain text, use curly brackets so JS can evaluate the variable which resolves to text.*/}
+                  {theMan}
                   <img
                     className="hidden h-8 w-auto lg:block"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"

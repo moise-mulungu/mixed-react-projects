@@ -25,22 +25,20 @@ export default function Footer(props) {
         <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
             {footerSocialLinks.map(({ id, name, url }) => {
-              console.log('wout', { id, name, url })
-                return (
-                  <a
-                    href={`#${url}`}
-                      className={classNames(
-                        id === selectedSocialLinkId
-                          ? 'mr-4 hover:underline md:mr-6'
-                          : 'hover:underline'
-                      )}
-                      onClick={() => setSelectedSocialLinkId(id)}
-                        >
-                      {name}
-                      </a>
-                    )
-              })
-            }
+              // todoMM: the <li></li> are repeated in the originL, so bring them inside the map
+              console.log('footer', { id, name, url })
+              return (
+                <a
+                  href={`#${url}`}
+                  className={classNames(
+                    id === selectedSocialLinkId ? 'mr-4 hover:underline md:mr-6' : 'hover:underline'
+                  )}
+                  onClick={() => setSelectedSocialLinkId(id)}
+                >
+                  {name}
+                </a>
+              )
+            })}
             {/* <a href="https://github.com/moise-mulungu" className="mr-4 hover:underline md:mr-6 ">
               GitHub
             </a> */}
