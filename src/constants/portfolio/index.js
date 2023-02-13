@@ -7,3 +7,5 @@ export const topNavSiteLinks = [
   { id: 'about', name: 'About', anchor: 'about' },
   { id: 'contact', name: 'Contact', anchor: 'contact' },
 ]
+
+export const theMan = 'Moise M Mulungu';

@@ -26,6 +26,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { topNavSiteLinks, defaultTopNavSiteLinkId } from '@/constants/portfolio'
+import { theMan } from '../../../constants/portfolio'
 
 // todoMM: move to src/ui/utils/
 // ...classes is called "rest parameters"
@@ -33,7 +34,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ') // short for: return classes.filter((class) => Boolean(class)).join(' ')
 }
 
-const theMan = 'Moise M Mulungu' // todoMM: move to constants
+//const theMan = 'Moise M Mulungu' :todoMM: move to constants
 const defaultSiteLinkId = defaultTopNavSiteLinkId
 
 // change in props or state causes the component to "run"
@@ -54,6 +55,7 @@ export default function Example(props) {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   />
+                  < theMan />
                   <img
                     className="hidden h-8 w-auto lg:block"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
