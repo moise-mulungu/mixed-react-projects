@@ -27,3 +27,7 @@ export default function Link({ href, className = 'underline', ...rest }) {
     />
   );
 }
+
+export function classNames(...classes) {
+  return classes.filter(Boolean).join(' ') // short for: return classes.filter((class) => Boolean(class)).join(' ')
+}
