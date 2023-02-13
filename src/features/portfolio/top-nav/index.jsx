@@ -26,13 +26,14 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { topNavSiteLinks, defaultTopNavSiteLinkId } from '@/constants/portfolio'
+import { classNames } from '../../../ui/link/index'
 import { theMan } from '../../../constants/portfolio'
 
 // todoMM: move to src/ui/utils/
 // ...classes is called "rest parameters"
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ') // short for: return classes.filter((class) => Boolean(class)).join(' ')
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(' ') // short for: return classes.filter((class) => Boolean(class)).join(' ')
+// }
 
 //const theMan = 'Moise M Mulungu' :todoMM: move to constants
 const defaultSiteLinkId = defaultTopNavSiteLinkId
