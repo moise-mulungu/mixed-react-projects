@@ -17,7 +17,7 @@ export default function Footer(props) {
           </a>
           . All Rights Reserved.
         </span>
-        <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+        {/* <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
           <li>
             <a href="https://github.com/moise-mulungu" className="mr-4 hover:underline md:mr-6 ">
               GitHub
@@ -46,7 +46,7 @@ export default function Footer(props) {
               Twitter
             </a>
           </li>
-        </ul>
+        </ul> */}
       </footer>
     </>
   )
