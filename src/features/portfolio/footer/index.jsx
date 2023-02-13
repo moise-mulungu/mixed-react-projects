@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { footerSocialLinks, defaultFooterSocialLinkId } from '../../../constants/portfolio'
-import classNames from '../../../ui/link/index'
+import classNames from '@/ui/utils'
 
 // step one: define var with all data, use map
 // step two: move this to constants/portfolio
@@ -23,26 +23,26 @@ export default function Footer(props) {
           . All Rights Reserved.
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
-          <li>
             {footerSocialLinks.map(({ id, name, url }) => {
               // todoMM: the <li></li> are repeated in the originL, so bring them inside the map
               console.log('footer', { id, name, url })
               return (
-                <a
-                  href={`#${url}`}
-                  className={classNames(
-                    id === selectedSocialLinkId ? 'mr-4 hover:underline md:mr-6' : 'hover:underline'
-                  )}
-                  onClick={() => setSelectedSocialLinkId(id)}
-                >
-                  {name}
-                </a>
+                <li>
+                  <a
+                    href={`#${url}`}
+                    className={classNames(
+                      id === selectedSocialLinkId ? 'mr-4 hover:underline md:mr-6' : 'hover:underline'
+                    )}
+                    onClick={() => setSelectedSocialLinkId(id)}
+                  >
+                    {name}
+                  </a>
+                </li>
               )
             })}
             {/* <a href="https://github.com/moise-mulungu" className="mr-4 hover:underline md:mr-6 ">
               GitHub
             </a> */}
-          </li>
           {/* <li>
             <a
               href="https://www.linkedin.com/in/moisemulungu/"

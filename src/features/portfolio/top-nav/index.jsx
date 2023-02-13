@@ -26,13 +26,8 @@ import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { topNavSiteLinks, defaultTopNavSiteLinkId } from '@/constants/portfolio'
-// todoMM: you can add this constant to the previous line
+import { classNames } from '@/ui/utils'
 import { theMan } from '@/constants/portfolio'
-// todoMM: move to src/ui/utils/
-// todoMM: '@/ui/link' - don't explicitly name index '@/ui/link' works for ui/link.js AND ui/link/index.js, depending on which one is there
-import { classNames } from '@/ui/link/index'
-
-//const theMan = 'Moise M Mulungu' :todoMM: move to constants
 const defaultSiteLinkId = defaultTopNavSiteLinkId
 
 // change in props or state causes the component to "run"
