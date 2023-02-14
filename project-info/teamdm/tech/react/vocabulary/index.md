@@ -19,7 +19,30 @@ Correc. there may be some differences, but much code can be shared. . Ionic Reac
 * state - local state
 * props - parent's state
 * lifting state
-* 
 
+## JavaScript vs React
 
+``` js
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 
+// Hello world in JavaScript
+const element = React.createElement(
+  'h1',
+  {
+    id: 'hello',
+  },
+  'Hello World!'
+);
+
+// Hello world in React
+const element = (
+  <h1 id="hello">
+    Hello World!
+  </h1>
+);
+
+const container = document.querySelector('#root');
+const root = createRoot(container);
+root.render(element);
+``
