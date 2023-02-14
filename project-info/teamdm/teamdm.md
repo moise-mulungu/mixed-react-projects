@@ -157,6 +157,9 @@ for push
 * practice your vscode snippets and vscode shortcuts on Friday afternoons (if you have an coding challenge interview where the interviewers watch you type code, I want them to say, "Wow, this guy is fast!")
 * src/utils - start recording what you learn as functions (to import and use) and snippets (to copy and paste)
 
+## Todays' tasks
+I read about sort an array of object in JavaScript : https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
+
 # Duncan tasks
 ## daily routine
 * 7-8am be on Slack
