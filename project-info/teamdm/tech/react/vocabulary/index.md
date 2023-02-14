@@ -45,4 +45,7 @@ const element = (
 const container = document.querySelector('#root');
 const root = createRoot(container);
 root.render(element);
-``
+```
+## expression slot
+Is a slot that we can put any JavaScript expression into, and it will be forwarded along untouched by react.
+
