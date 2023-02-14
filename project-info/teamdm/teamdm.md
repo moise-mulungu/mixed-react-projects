@@ -157,13 +157,15 @@ for push
 * practice your vscode snippets and vscode shortcuts on Friday afternoons (if you have an coding challenge interview where the interviewers watch you type code, I want them to say, "Wow, this guy is fast!")
 * src/utils - start recording what you learn as functions (to import and use) and snippets (to copy and paste)
 
-## Today's tasks
+## Tuesday's tasks
 I read about 
   * sort an array of object in JavaScript : https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
   * Joy of react(ongoing learning, React fundamentals)
     * DM: great. be sure to add snippets if you see something unfamiliar or hard. (snippets help remember and also lets me code review your snippet and adjust vocabulary)
     * DM: also, start adding JS vocabulary
-# Duncan tasks
+    * DM: just a reminder, you want to reasearch and try each new hard thing you run into for the right amount of time (15-30 minutes), but don't get into a situation where you lose 2 hours on one hard thing. You can add a question for me - if I think you need to try more, I'll tell you. Better to write a question, then move on, optimizing your time. Think on this, it's not a hard-and-fast rule, but what I described will be the kind of decisions you'll have to make your entire career.
+    * DM: Wednesday: 
+# Duncan tasks (todoDM: these out of date, bad mentor!, clean up Sunday and start editing daily)
 ## daily routine
 * 7-8am be on Slack
 * pull Moise's latest commits
