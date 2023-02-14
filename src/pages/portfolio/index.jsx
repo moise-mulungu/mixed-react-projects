@@ -18,7 +18,7 @@ export async function getStaticProps() {
 }
 
 export default function Index(props) {
-  let { data } = props
+  const { data } = props
 
   return (
     <div>

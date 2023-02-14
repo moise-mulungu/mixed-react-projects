@@ -1,4 +1,6 @@
 
+// DM: great! making some edits for clarity, grammar, etc. This will turn into a permanent knowledge-base for you, so going to polish it as we go along.
+
 # vocabulary term
 * meaning 1
 * meaning 2 (if needed)
@@ -14,8 +16,8 @@ Correc. there may be some differences, but much code can be shared. . Ionic Reac
  -->
 
 ## a few examples
-* component 'run'
-* component 'render'
+* components 'run'
+* components 'render'
 * state - local state
 * props - parent's state
 * lifting state
@@ -26,21 +28,11 @@ Correc. there may be some differences, but much code can be shared. . Ionic Reac
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
-// Hello world in JavaScript
-const element = React.createElement(
-  'h1',
-  {
-    id: 'hello',
-  },
-  'Hello World!'
-);
-
-// Hello world in React
-const element = (
-  <h1 id="hello">
-    Hello World!
-  </h1>
-);
+// DM: as long as it's still very readable, one line is easier/faster to read than multiple short lines.
+// Hello World in JavaScript (no JSX)
+const element = React.createElement('h1', { id: 'hello' }, 'Hello World!');
+// equivalent Hello World in React
+const element = (<h1 id="hello">Hello World!</h1>);
 
 const container = document.querySelector('#root');
 const root = createRoot(container);
@@ -48,4 +40,5 @@ root.render(element);
 ```
 ## expression slot
 Is a slot that we can put any JavaScript expression into, and it will be forwarded along untouched by react.
-
+// DM: excellent - this is why I wanted you to list vocabulary. Because in this case, Comeau made up his own vocab. I did a google search a while back and did not find widespread use of this term at all. But, let's leave it here for a while, let it percolate, so to speak. Maybe we'll come to like it.
+// todoDM: research and find the more common word for "expression slot"

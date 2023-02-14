@@ -1,48 +1,49 @@
-import { useEffect, useState } from "react";
-import matchSorter from "match-sorter";
+import { useEffect, useState } from 'react'
+import matchSorter from 'match-sorter'
 
-import { isSubsetOf } from "@/utils/array";
+import { isSubsetOf } from '@/utils/array'
 
-import { appTitle } from "@/constants/pokedex";
+import { appTitle } from '@/constants/pokedex'
 
-import TableHeader from "./table-header";
-import TableBody from "./table-body";
+import TableHeader from './table-header'
+import TableBody from './table-body'
 
 export default function Table(props) {
-  const { data, types, weaknesses, setOpenDetail, setDetailPokemon } = props;
+  const { data, types, weaknesses, setOpenDetail, setDetailPokemon } = props
 
-  const [filteredData, setFilteredData] = useState(data);
+  const [filteredData, setFilteredData] = useState(data)
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTypes, setSelectedTypes] = useState([]);
-  const [selectedWeaknesses, setSelectedWeaknesses] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedTypes, setSelectedTypes] = useState([])
+  const [selectedWeaknesses, setSelectedWeaknesses] = useState([])
 
   useEffect(() => {
-    const hasSearchTerm = !!searchTerm;
-    const hasSelectedTypes = selectedTypes.length > 0;
-    const hasSelectedWeaknesses = selectedWeaknesses.length > 0;
+    const hasSearchTerm = !!searchTerm
+    const hasSelectedTypes = selectedTypes.length > 0
+    const hasSelectedWeaknesses = selectedWeaknesses.length > 0
 
-    let localFilteredData = data;
+    // todoDM: write a comment justifying the use of 'let'
+    let localFilteredData = data
 
     if (hasSearchTerm) {
       // fuzzy match, sorts by relevance
       localFilteredData = matchSorter([...localFilteredData], searchTerm, {
-        keys: ["name"],
-      });
+        keys: ['name'],
+      })
     }
     if (hasSelectedTypes) {
       localFilteredData = localFilteredData.filter((pokemon) => {
-        return isSubsetOf(selectedTypes, pokemon.types);
-      });
+        return isSubsetOf(selectedTypes, pokemon.types)
+      })
     }
     if (hasSelectedWeaknesses) {
       localFilteredData = localFilteredData.filter((pokemon) => {
-        return isSubsetOf(selectedWeaknesses, pokemon.weaknesses);
-      });
+        return isSubsetOf(selectedWeaknesses, pokemon.weaknesses)
+      })
     }
 
-    setFilteredData(localFilteredData);
-  }, [searchTerm, selectedTypes, selectedWeaknesses]);
+    setFilteredData(localFilteredData)
+  }, [searchTerm, selectedTypes, selectedWeaknesses])
 
   return (
     <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mt-4">
@@ -76,5 +77,5 @@ export default function Table(props) {
         </div>
       </div>
     </div>
-  );
+  )
 }

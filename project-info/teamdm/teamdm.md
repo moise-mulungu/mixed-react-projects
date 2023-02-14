@@ -161,6 +161,8 @@ for push
 I read about 
   * sort an array of object in JavaScript : https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
   * Joy of react(ongoing learning, React fundamentals)
+    * DM: great. be sure to add snippets if you see something unfamiliar or hard. (snippets help remember and also lets me code review your snippet and adjust vocabulary)
+    * DM: also, start adding JS vocabulary
 # Duncan tasks
 ## daily routine
 * 7-8am be on Slack

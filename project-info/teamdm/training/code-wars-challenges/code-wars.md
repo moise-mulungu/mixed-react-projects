@@ -37,7 +37,7 @@ function removeChar(str){ //
   // when "called", this line is executed
   // the value of str will be the value you pass in the "call" below
   // if you pass nothing to removeChar, str will be undefined by default
-  let subStr = str.slice(1, str.length -1);
+  const subStr = str.slice(1, str.length -1);
   return subStr;
 };
 removeChar(); // this is the "call" of the funtion

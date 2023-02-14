@@ -14,19 +14,20 @@
   Friday, do a Pramp soft-skills practice interview.
 
   ```
+// todoMM: please do this before memory fades of where you got it
 DM: going forward, put the tailwindui.com URL where you got the code in the file, so that we know where to find it later.
 DM: if you need @tailwindcss/forms, go ahead, install it and config it. While you do, record your steps to install and config, so that I can read. But, if you don't need it for this code to work, no need to install it. 
 */
 import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-// ???MM: how to import this component with all its related links into the navbar?
-//   DM: hey, be sure to put your initials MM??? next your questions (pretend we're a larger team, anyone could answer, and they need to know WHO asked the question)
-//   DM: be sure to put your comments ABOVE the line the comment is about
+
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { topNavSiteLinks, defaultTopNavSiteLinkId } from '@/constants/portfolio'
 import { classNames } from '@/ui/utils'
+// todoDM: add my ES Modules vocabulary to the project-info area
+// todoMM: combine with the above line that also has 'named imports'
 import { theMan } from '@/constants/portfolio'
 const defaultSiteLinkId = defaultTopNavSiteLinkId
 
