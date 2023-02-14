@@ -90,3 +90,25 @@ function solution(str) {
 // 
 solution('');
 ```
+
+## Is n divisible by x and y?
+
+description: create a function that checks if a number n is divisible by two numbers x AND y. All inputs are positive, non-zero numbers.
+
+```js
+
+// I can resolve this with two solutions
+//  the first is to define a variable with a boolean true/false and return that opposite of that boolean after an if condition is passed.
+// the second is just simple to return a remainder operation with AND operator
+function isDivisible(n, x, y) {
+    let result = true;
+    if (!(n % x === 0 && n % y === 0)) {
+        result = false;
+    }
+    return result;
+    // return n % x === 0 && n % y === 0
+
+}
+
+console.log(isDivisible(3, 3, 4));
+
