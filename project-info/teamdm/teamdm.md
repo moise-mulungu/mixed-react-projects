@@ -210,6 +210,7 @@ I read about
 * 3 hours on Joy of React (put vocabulary and snippets in the repo)(in progress)
   * gotta give JS and React significant priority - more knowledge will speed up your progress on the portfolio. BUt, yes it's also good to work the portfolio to have real-world React to work through. 
 * let's plan on 3 hours portfolio, 5 hours learning going forward. todoDM: add this to main 'moise tasks' section
+* Fixed the `joy of react game converter`
 
 Note: If you don't hear from me later about getting access to the template, focus your portfolio time tomorrow on styling the footer with tailwind utility classes. Have a deep-dive into tailwindcss.com and start a vocabulary file for tailwind in the project-info section. "utility class" is a good term to understand, for example.
 
