@@ -13,6 +13,7 @@
     objectProperty2: 4,
   },
 ]./* your code goes here */
+  find((object) => object.objectProperty1 === 3)
 
 // expected result:
 ;{
