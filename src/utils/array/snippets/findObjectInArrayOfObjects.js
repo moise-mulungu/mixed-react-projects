@@ -16,7 +16,7 @@
   find((object) => object.objectProperty1 === 3)
 
 // expected result:
-;{
-	objectProperty1: 3,
-	objectProperty2: 4,
-}
+// {
+// 	objectProperty1: 3,
+// 	objectProperty2: 4,
+// }
