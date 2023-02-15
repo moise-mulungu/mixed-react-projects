@@ -2,7 +2,7 @@
 // DM: good work! I'm going to make this super concise now
 ;[2, 5, 3].sort((a, b) => a - b) // !!! never a > b! I've done this a few times. Doesn't work because ... a>b returns a boolean, not a number
 
-// todoMM: remove all the below once you've moved these to other files
+// DM: todoMM: remove all the below once you've moved these to other files
 
 const myArray = [2, 5, 3, 14, 11]
 

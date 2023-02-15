@@ -25,12 +25,14 @@
   * note: putting changes on newlines makes it easier for Git to merge (I assume)
 * TODOs: 
   * MM: todoDM: MM tells DM a task to do
+  * MM: todoMM: MM tells MM a task to do
   * DM: todoMM: DM tells MM a task to do
+  * DM: todoDM: DM tells DM a task to do
 * after a task is completed, add (done) or (partial - explain what's left, in this case). Examples:
   * (done) Moise's task 1
   * (partial) Moise's task 2
     * MM: I still need to do subtask 3 (DM: tell me this in context, i.e., write it where subtask 3 is in the repo files)
-  * DM: hey, if I don't put todoMM but my comment is an instruction to do something, put (done) afterwards
+  * DM: hey, definitely put (done), (read), (ok), or (any message) after each "DM:" - that way I can know when to delete them later.
 
 ## knowledge base (KB): this repo will serve as a 'repository' our our accumulated knowledge
 * leave notes anywhere (in-context notes are best)

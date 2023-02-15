@@ -21,7 +21,7 @@
 // 	objectProperty2: 4,
 // }
 
-// DM: super, todoMM: now add to the statement so that it resolves to the value of objectProperty2 (after you do this, I'll show you how to improve your constants file so that it has fewer "hard-coded" values)
+// DM: todoMM: super, now add to the statement so that it resolves to the value of objectProperty2 (after you do this, I'll show you how to improve your constants file so that it has fewer "hard-coded" values)
 ;[
   {
     objectProperty1: 1,

@@ -45,7 +45,7 @@ Is a slot that we can put any JavaScript expression into, and it will be forward
 
 ## reserved word(reserved identifier)
 Is a word that cannot be used as an identifier, such as the name of a variable, function, or labels.
-* DM: super! todoMM: now look up the difference between a reserved word and a reserved identifier (i.e., are some reserved words not used as identifiers)
+* DM: todoMM: super! now look up the difference between a reserved word and a reserved identifier (i.e., are some reserved words not used as identifiers)
   * move these to JS vocabulary file
   * make a new JS vocab entry for just "identifier"
 

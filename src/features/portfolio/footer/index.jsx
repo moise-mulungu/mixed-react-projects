@@ -24,10 +24,9 @@ export default function Footer(props) {
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
           {footerSocialLinks.map(({ id, name, url }) => {
-            // todoMM: the <li></li> are repeated in the originL, so bring them inside the map
             console.log('footer', { id, name, url })
             {
-              /* todoMM: I added 'ml-2'. Add some more tailwind styling here. I think the example you found was intentionally blank so that you could add you own styling. tailwindcss.com ctrl-K to search for what you want to do. You may have to Google how to do it in raw CSS first, if you don't know. */
+              /* DM: todoMM: I added 'ml-2'. Add some more tailwind styling here. I think the example you found was intentionally blank so that you could add you own styling. tailwindcss.com ctrl-K to search for what you want to do. You may have to Google how to do it in raw CSS first, if you don't know. */
             }
             return (
               <li className="ml-2">

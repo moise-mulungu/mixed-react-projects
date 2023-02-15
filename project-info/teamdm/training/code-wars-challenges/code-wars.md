@@ -102,8 +102,8 @@ description: create a function that checks if a number n is divisible by two num
 // the second is just simple to return a remainder operation with AND operator
 // DM: great (and good job writing your solution out in English, this helps practice how you would talk aloud during a coding interview)
 // DM: the second solution is fine in this situation, but for practice, do the following (don't erase your original solution here - I want to show you the comparison after you complete the exercises):
-// todoMM: exercise 1: refactor the first solution without the 'let'; use 'const' only
-// todoMM: exercise 2: starting with the results of exercise 1, assign each logical expression to a variable. ex: const varName = n % x === 0; give the variable a descriptive name
+// DM: todoMM: exercise 1: refactor the first solution without the 'let'; use 'const' only
+// DM: todoMM: exercise 2: starting with the results of exercise 1, assign each logical expression to a variable. ex: const varName = n % x === 0; give the variable a descriptive name
 function isDivisible(n, x, y) {
     let result = true;
     if (!(n % x === 0 && n % y === 0)) {
