@@ -41,13 +41,18 @@ root.render(element);
 ## expression slot
 Is a slot that we can put any JavaScript expression into, and it will be forwarded along untouched by react.
 // DM: excellent - this is why I wanted you to list vocabulary. Because in this case, Comeau made up his own vocab. I did a google search a while back and did not find widespread use of this term at all. But, let's leave it here for a while, let it percolate, so to speak. Maybe we'll come to like it.
-// todoDM: research and find the more common word for "expression slot"
+// DM: todoDM: research and find the more common word for "expression slot"
 
 ## reserved word(reserved identifier)
 Is a word that cannot be used as an identifier, such as the name of a variable, function, or labels.
+* DM: super! todoMM: now look up the difference between a reserved word and a reserved identifier (i.e., are some reserved words not used as identifiers)
+  * move these to JS vocabulary file
+  * make a new JS vocab entry for just "identifier"
 
 ## JSX case-sensitive attributes
 
 All attributes need to be camelCase, except for `data` and `ARIA`
 e.g: `data-test-id`, and `aria-label` 
-<!-- ???DM: How to use data attributes in a react code ?-->
+* ???MM: How to use data attributes in a react code?
+  * DM: in the context of JSX, "attributes" means props `<MyComponent myProp="I am an attribute of MyComponent" >`
+    * the wider meaning of "attribute" is from XML, HTML `<tag attribute="value">`

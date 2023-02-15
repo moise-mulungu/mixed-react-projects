@@ -5,6 +5,7 @@
 
 ## leaving notes for each other in .js and .md files
 * !each person always use this own initials, that way you can always find what you wrote (works better if there is more than 2 people on the team)
+  * todoXX is the exception
 * ??? aka "fishhooks" means there is a question, concern, "hey look at this"
   * ???DM, ???MM
     * ???DM Moise, is MM your preferred initials (of your names)
@@ -22,12 +23,14 @@
   MM: comments or questions Moise writes go here
   ```
   * note: putting changes on newlines makes it easier for Git to merge (I assume)
-* TODOs: "todoDM: ", "todoMM: "
+* TODOs: 
+  * MM: todoDM: MM tells DM a task to do
+  * DM: todoMM: DM tells MM a task to do
 * after a task is completed, add (done) or (partial - explain what's left, in this case). Examples:
   * (done) Moise's task 1
   * (partial) Moise's task 2
-    * MM: I still need to do subtask 3
-
+    * MM: I still need to do subtask 3 (DM: tell me this in context, i.e., write it where subtask 3 is in the repo files)
+  * DM: hey, if I don't put todoMM but my comment is an instruction to do something, put (done) afterwards
 
 ## knowledge base (KB): this repo will serve as a 'repository' our our accumulated knowledge
 * leave notes anywhere (in-context notes are best)

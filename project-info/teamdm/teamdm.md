@@ -204,7 +204,7 @@ I read about
 * talk about the vocabulary list
 * talk about snippets in src/utils (maybe a starter page to show react snippets in teh browser)
 
-# plan for Wednesday 2023-02-15 (these are my same posts on slack)
+# same plan for Thursday 2023-02-16
 * 3 hours on the portfolio(1/2 done)
 * 2 hours on the findObjectInArrayOfObjects.js exercise plus some codeWars (put your solutions in the repo so we can discuss them)(done)
 * 3 hours on Joy of React (put vocabulary and snippets in the repo)(in progress)
@@ -212,7 +212,7 @@ I read about
 * let's plan on 3 hours portfolio, 5 hours learning going forward. todoDM: add this to main 'moise tasks' section
 * Fixed the `joy of react game converter`
 
-Note: If you don't hear from me later about getting access to the template, focus your portfolio time tomorrow on styling the footer with tailwind utility classes. Have a deep-dive into tailwindcss.com and start a vocabulary file for tailwind in the project-info section. "utility class" is a good term to understand, for example.
+DM: Note: If you don't hear from me later about getting access to the template, focus your portfolio time tomorrow on styling the footer with tailwind utility classes. Have a deep-dive into tailwindcss.com and start a vocabulary file for tailwind in the project-info section. "utility class" is a good term to understand, for example.
 
-BTW, I'm starting a TypeScript snippets folder in my personal repo, just like I'm having you do here with react, js, tailwind. I'll systematically record all my TS solutions. I keep learning then forgetting TW (it's like CSS, I run into situations not frequently, so I forget ...). t's waste of time and slowing me down at work, so I'll make a searchable knowledge base of my TS solutions.
+DM: BTW, I'm starting a TypeScript snippets folder in my personal repo, just like I'm having you do here with react, js, tailwind. I'll systematically record all my TS solutions. I keep learning then forgetting TW (it's like CSS, I run into situations not frequently, so I forget ...). t's waste of time and slowing me down at work, so I'll make a searchable knowledge base of my TS solutions.
 
