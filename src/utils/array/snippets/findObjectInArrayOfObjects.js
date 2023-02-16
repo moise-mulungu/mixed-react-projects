@@ -46,6 +46,7 @@ export const topNavSiteLinks = [
   { id: 'contact', name: 'Contact', anchor: 'contact' },
 ]
 export const defaultTopNavSiteLinkId = topNavSiteLinks /* your solution goes here */
+console.log(defaultTopNavSiteLinkId[0].id)
 
 // expected result:
 // 'work'
