@@ -139,4 +139,25 @@ function squareSum(numbers){
   }
   
 console.log(squareSum([1,2,2]));
+```
 
+## Even or Odd
+
+description:
+Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
+
+```js
+function evenOrOdd(number) {
+  const evenNumber = number % 2 === 0; 
+  // const oddNumber = number % 2 === 1;
+  if (evenNumber) {
+    return "Even";
+  }
+  return "Odd";
+
+  // return "Not a number";
+  
+}
+
+console.log(evenOrOdd(-7));
+```
