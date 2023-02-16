@@ -109,7 +109,7 @@ function isDivisible(n, x, y) {
     const nDivisibleByX = n % x === 0;
     const nDivisibleByY = n % y === 0;
     if (!(nDivisibleByX  &&  nDivisibleByY)) {
-        result = false;
+        result = true;
     }
     return result;
     // return n % x === 0 && n % y === 0
