@@ -205,8 +205,8 @@ I read about
 * talk about snippets in src/utils (maybe a starter page to show react snippets in teh browser)
 
 # same plan for Thursday 2023-02-16
-* 3 hours on the portfolio(1/2 done)
-* 2 hours on the findObjectInArrayOfObjects.js exercise plus some codeWars (put your solutions in the repo so we can discuss them)(done)
+* 3 hours on the portfolio(unfinished)
+* 2 hours on the findObjectInArrayOfObjects.js exercise plus some codeWars (put your solutions in the repo so we can discuss them)(js exercise done, codewars later tonight)
 * 3 hours on Joy of React (put vocabulary and snippets in the repo)(in progress)
   * gotta give JS and React significant priority - more knowledge will speed up your progress on the portfolio. BUt, yes it's also good to work the portfolio to have real-world React to work through. 
 * let's plan on 3 hours portfolio, 5 hours learning going forward. todoDM: add this to main 'moise tasks' section
