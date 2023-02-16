@@ -114,8 +114,29 @@ function isDivisible(n, x, y) {
 }
 console.log(isDivisible(3, 3, 4));
 ```
-
-
 # #####################
 # new solutions found in the top of this file
 # #####################
+
+
+## Square(n) Sum
+
+description:
+Complete the square sum function so that it squares each number passed into it and then sums the results together.
+```js
+function squareSum(numbers){
+  // declare a variable to hold the sum
+    let sum = 0;
+  // loop through the array
+    for (let i = 0; i < numbers.length; i++) {
+  // square each number
+      const squaredNumbers = numbers[i] * numbers[i];
+  // add the squared number to the sum
+      sum += squareNumbers; //I struggle understanding the logic behind this line
+    }
+  // return the sum
+    return sum;
+  }
+  
+console.log(squareSum([1,2,2]));
+
