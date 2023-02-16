@@ -207,7 +207,7 @@ I read about
 # same plan for Thursday 2023-02-16
 * 3 hours on the portfolio(unfinished, next step is to add utility classes to the footer. ready in an hour)
 * 2 hours on the findObjectInArrayOfObjects.js exercise plus some codeWars (put your solutions in the repo so we can discuss them)(js exercise done, codewars later tonight)
-* 3 hours on Joy of React (put vocabulary and snippets in the repo)(in progress)
+* 3 hours on Joy of React (put vocabulary and snippets in the repo)(start with components lessons, in progress)
   * gotta give JS and React significant priority - more knowledge will speed up your progress on the portfolio. BUt, yes it's also good to work the portfolio to have real-world React to work through. 
 * let's plan on 3 hours portfolio, 5 hours learning going forward. todoDM: add this to main 'moise tasks' section
 * Fixed the `joy of react game converter`
