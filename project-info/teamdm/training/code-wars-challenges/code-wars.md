@@ -105,9 +105,14 @@ description: create a function that checks if a number n is divisible by two num
 // DM: todoMM: exercise 1: refactor the first solution without the 'let'; use 'const' only
 // DM: todoMM: exercise 2: starting with the results of exercise 1, assign each logical expression to a variable. ex: const varName = n % x === 0; give the variable a descriptive name
 function isDivisible(n, x, y) {
-    let result = true;
-    if (!(n % x === 0 && n % y === 0)) {
-        result = false;
+    const result = true;
+    const nDivisibleByX = n % x === 0;
+    const nDivisibleByY = n % y === 0;
+    if (!(nDivisibleByX  &&  nDivisibleByY)) {
+        // you can't do this, because "result" is a const
+        result = true; 
+        // always test your code (maybe we should convert this to a .js file, but I think you have an extension that will run any code you hightlight(select), correct?)
+        // hint, the best solution looks like your second solution (commented out below)
     }
     return result;
     // return n % x === 0 && n % y === 0

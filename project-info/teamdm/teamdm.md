@@ -206,13 +206,15 @@ I read about
 * talk about the vocabulary list
 * talk about snippets in src/utils (maybe a starter page to show react snippets in teh browser)
 
-# same plan for Thursday 2023-02-16
-* 3 hours on the portfolio(1/2 done)
-* 2 hours on the findObjectInArrayOfObjects.js exercise plus some codeWars (put your solutions in the repo so we can discuss them)(done)
-* 3 hours on Joy of React (put vocabulary and snippets in the repo)(in progress)
+# same plan for Friday 2023-02-17 (focus on all the todoMM for up to 2 hours, then split remaining time as below)
+* // DM: ok, read, I'm removing your progress comments to keep the instructions clean
+* 3 hours on the portfolio
+* 2 hours on the findObjectInArrayOfObjects.js exercise plus some codeWars (put your solutions in the repo so we can discuss them)
+* 3 hours on Joy of React (put vocabulary and snippets in the repo)(start with components lessons, in progress)
   * gotta give JS and React significant priority - more knowledge will speed up your progress on the portfolio. BUt, yes it's also good to work the portfolio to have real-world React to work through. 
 * let's plan on 3 hours portfolio, 5 hours learning going forward. todoDM: add this to main 'moise tasks' section
-* Fixed the `joy of react game converter`
+* Fixed the `joy of react game converter` 
+  * DM: todoMM: pls explain or put something about this into a file in the repo, so that I can understand what that is about
 
 DM: Note: If you don't hear from me later about getting access to the template, focus your portfolio time tomorrow on styling the footer with tailwind utility classes. Have a deep-dive into tailwindcss.com and start a vocabulary file for tailwind in the project-info section. "utility class" is a good term to understand, for example.
 
