@@ -4,6 +4,7 @@
 ## email: moisemlg90@gmail.com, dmckeeve9@gmail.com
 
 ## leaving notes for each other in .js and .md files
+* why: why all this specificity? communicating by git diff is really great, because all my notes and instructions can be IN CONTEXT which saves a lot of time. But, there has to be a way of cleaning up/removing these notes later.
 * !each person always use this own initials, that way you can always find what you wrote (works better if there is more than 2 people on the team)
   * todoXX is the exception
 * ??? aka "fishhooks" means there is a question, concern, "hey look at this"
@@ -33,7 +34,10 @@
   * (partial) Moise's task 2
     * MM: I still need to do subtask 3 (DM: tell me this in context, i.e., write it where subtask 3 is in the repo files)
   * DM: hey, definitely put (done), (read), (ok), or (any message) after each "DM:" - that way I can know when to delete them later.
-
+  * why: if there's any glitch in git diffs, merges, etc. it can be hard to tell who wrote what. 
+  * DM: todoDM: 2023-02-15 organize this section better on 3 topics: random comments, comments starting with XX:, comments starting with XX: todoXX:
+    * disregard for now: idea, date extension; idea: priority number: ugh ... XX: todoXX[1-3]: YYYY-MM-DD
+    * disregard for now: knowledge-base enhancements; write doc with strategy for prioritizing tasks (ease*impact) - very easy, high impact - do these first.
 ## knowledge base (KB): this repo will serve as a 'repository' our our accumulated knowledge
 * leave notes anywhere (in-context notes are best)
   * all notes start with "lesson: "

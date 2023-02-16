@@ -101,9 +101,10 @@ for push
 
 # Moise tasks
 ## daily routine
-* pull Duncan's latest commits and look at the diffs (compare your last commit before my commit to the working tree in GitLens to see what changes I made)
+* first thing: pull Duncan's latest commits and look at the diffs (compare your last commit before my commit to the working tree in GitLens to see what changes I made)
 * update repo with notes and "(done)" or "(partial)" when task is complete or you have worked on it
 * 3pm push repo to the remote
+  *  push what you have - just wrap up what you can, mark whatever is unfinished like this: "// MM: todoMM: unfinished, next steps: step1, step2, ..." Yesterday , I was thinking, that going forward I want to review what you have at 6am MT, so just plan on wrapping up and pushing at 6. You can keep working the rest of the day, and push that work the next day at 6. This will keep it simpler overall. So, you can save the work that generates a lot of questions for me for the 6-9MT time period, since I'll be around to answer.
 * 3-5pm be on Slack (Duncan's 6-8am)
 * 5pm (i.e., whenever you stop for the day) commit and push (if any additional changes)
 ## Week ofMonday Feb 6 I'd like you to work in this order, after pulling the repo:
@@ -118,6 +119,7 @@ for push
 * btw, always check package.json, to see if there's anything I installed that you need to install: there-s one new one:@heroicons/react
 * note on Tailwindcss/ui: it is very customizable, so you can really make it your own, but I think it's best to implement it quickly for the full portfolio site first, making the least changes to taiwindui as is possible. So, find in tailwindui the components you need to match your current portfolio site, or you may wish to adapt your layout a bit to use what tailwindui has available if you see something you like. Then, we'll get the React and interactivity fully implemented. Once you see the whole thing together, that is a good time to start tweaking it visually to fit your preferences. 
 ## next (unless there is a specific list for the day above) 
+*  Hey, start thinking about a "cooldown" project. At work, previously at least, there used to be a 'cooldown' agile cycle each 6 weeks, where the team wraps up unfinished stuff that accumulates and each DEV gets to suggest a few 3-day projects that are of personal interest, but related to the goals of the team. THe manager picks one of the projects. So, start thinking about what you might like to focus on: a skill, an approach, a component. See what comes to mind over the next few weeks.
 <!-- read -->
 * when you complete a task, put "(done)" or "(partial)" - explain what's left to do)
 * focus 1/2 on portfolio, 1/2 on Joy of React
