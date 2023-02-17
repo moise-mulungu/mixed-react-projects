@@ -1,3 +1,12 @@
+
+# DM: Moise, check this to see git diffs, but do all future work in the code-wars.js file I created in this directory
+
+
+
+
+
+
+
 ## Function 1 - hello world
 
 Description:
@@ -100,17 +109,11 @@ description: create a function that checks if a number n is divisible by two num
 // I can resolve this with two solutions
 //  the first is to define a variable with a boolean true/false and return the opposite of that boolean after an if condition is passed
 // the second is just simple to return a remainder operation with AND operator
-// DM: great (and good job writing your solution out in English, this helps practice how you would talk aloud during a coding interview)
-// DM: the second solution is fine in this situation, but for practice, do the following (don't erase your original solution here - I want to show you the comparison after you complete the exercises):
-// DM: todoMM: exercise 1: refactor the first solution without the 'let'; use 'const' only
-// DM: todoMM: exercise 2: starting with the results of exercise 1, assign each logical expression to a variable. ex: const varName = n % x === 0; give the variable a descriptive name
+// DM: good job. short and sweet. readable.
 function isDivisible(n, x, y) {
-   
-    const nDivisibleByX = n % x === 0;
-    const nDivisibleByY = n % y === 0;
-    
-    return nDivisibleByX  && nDivisibleByY
-
+  const nDivisibleByX = n % x === 0;
+  const nDivisibleByY = n % y === 0;
+  return nDivisibleByX && nDivisibleByY // previous: return n % x === 0 && n % y === 0
 }
 console.log(isDivisible(3, 3, 4));
 ```
@@ -119,27 +122,6 @@ console.log(isDivisible(3, 3, 4));
 # #####################
 
 
-## Square(n) Sum
-
-description:
-Complete the square sum function so that it squares each number passed into it and then sums the results together.
-```js
-function squareSum(numbers){
-  // declare a variable to hold the sum
-    let sum = 0;
-  // loop through the array
-    for (let i = 0; i < numbers.length; i++) {
-  // square each number
-      const squaredNumbers = numbers[i] * numbers[i];
-  // add the squared number to the sum
-      sum += squareNumbers; //I struggle understanding the logic behind this line
-    }
-  // return the sum
-    return sum;
-  }
-  
-console.log(squareSum([1,2,2]));
-```
 
 ## Even or Odd
 
@@ -147,14 +129,17 @@ description:
 Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.
 
 ```js
+// DM: great. I added an error handling as a learning point
 function evenOrOdd(number) {
+  if (Number.isNaN(number)) throw new Error('you must pass a number to evenOrOdd()')
   const evenNumber = number % 2 === 0; 
-  // const oddNumber = number % 2 === 1;
-  if (evenNumber) {
-    return "Even";
-  }
+  // DM: correct, it is clear without defining oddNumber
+  // const oddNumber = number % 2 === 1; 
+  // DM: all one one line easier to read
+  if (evenNumber) return "Even";
   return "Odd";
 
+  // see above
   // return "Not a number";
   
 }

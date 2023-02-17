@@ -43,7 +43,7 @@ Is a slot that we can put any JavaScript expression into, and it will be forward
 // DM: excellent - this is why I wanted you to list vocabulary. Because in this case, Comeau made up his own vocab. I did a google search a while back and did not find widespread use of this term at all. But, let's leave it here for a while, let it percolate, so to speak. Maybe we'll come to like it.
 // DM: todoDM: research and find the more common word for "expression slot"
 
-## JSX case-sensitive attributes
+## JSX case-sensitive attributes (props)
 
 All attributes need to be camelCase, except for `data` and `ARIA`
 e.g: `data-test-id`, and `aria-label` 
@@ -53,6 +53,8 @@ e.g: `data-test-id`, and `aria-label`
 
 ## gotcha
 In programming, a gotcha is a valid construct in a system, program or programming language that works as documented but is counter-intuitive and almost invites mistakes because it is both easy to invoke and unexpected or unreasonable in its outcome.(source: https://en.wikipedia.org/wiki/Gotcha_(programming))
+// DM: todoMM: cool, move this to tech-vocabulary.md
 
 ## what is an opinionated formatter
 an opinionated formatter enforces a consistent style by parsing your code and re-printing it with its own rules that take the maximum line length into account, wrapping code when necessary.(i.e: Prettier, consistent formatting is wonderful).
+// DM: todoMM: cool, move this to tech-vocabulary.md

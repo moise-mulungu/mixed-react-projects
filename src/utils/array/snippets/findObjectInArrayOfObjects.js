@@ -33,9 +33,7 @@ console.log(
     },
   ].find((object) => object.objectProperty1 === 3 && object.objectProperty2 === 4)
 )
-// by this "add to the statement so that it resolves to the value of objectProperty2" I mean, get the value of objectProperty2
-
-// expected result:
+// DM: todoMM: by this "add to the statement so that it resolves to the value of objectProperty2" I mean, get the value of objectProperty2. // expected result:
 4
 
 // new exercise
@@ -45,8 +43,5 @@ export const topNavSiteLinks = [
   { id: 'about', name: 'About', anchor: 'about' },
   { id: 'contact', name: 'Contact', anchor: 'contact' },
 ]
-export const defaultTopNavSiteLinkId = topNavSiteLinks /* your solution goes here */
-console.log(defaultTopNavSiteLinkId[0].id)
-
-// expected result:
-// 'work'
+export const defaultTopNavSiteLinkId = topNavSiteLinks[0].id
+// good, check out the constants file for more
