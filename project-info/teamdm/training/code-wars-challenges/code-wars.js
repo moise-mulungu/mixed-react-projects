@@ -13,7 +13,7 @@ function squareSumWithLet(numbers) {
     // square each number
     const squaredNumbers = numbers[i] * numbers[i]
     // add the squared number to the sum
-    sum += squareNumbers //I struggle understanding the logic behind this line
+    sum += squaredNumbers //I struggle understanding the logic behind this line
   }
   // return the sum
   return sum
@@ -24,24 +24,26 @@ console.log(squareSumWithLet([1, 2, 2]))
 //   so, your next exercise is to redo this without using 'let' (no loops)
 //   let's do it in 2 steps first, then all together
 //   step 1: square each number in the passed array
-function squareThemAll(numbers) {
-	return numbers.map./* your code goes here */
-}
-console.log(squareThemAll([1, 2, 2])) // 2, 4, 4
+// function squareThemAll(numbers) {
+// 	return numbers.map(num => num * num)/* your code goes here */
+// }
+// console.log(squareThemAll([1, 2, 2])) // 2, 4, 4
 
 //   step 2: add together all the numbers in the array. 
-function addThemUp(numbers) {
-	// check out array.reduce on MDN
-	return numbers.reduce.((acc, cur) => {
-		/* your code goes here */
-	}, 0)
-}
-console.log(addThemUp([2, 4, 4])) // 10
+// function addThemUp(numbers) {
+// 	// check out array.reduce on MDN
+//    const sum = 0;
+//  return numbers.reduce((acc, cur) => 
+// 	/* your code goes here */
+//   acc + cur
+//  , 0) // I removed the curly braces and return statement because it was not needed
+// }
+// console.log(addThemUp([2, 4, 4])) // 10
 
 //   step 3: combine both into one function
 function squareSum(numbers) {
-	return numbers./* your code goes here. chain the array methods numbers.map(...).reduce(...) so they are on the same line */
+	return numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)/* your code goes here. chain the array methods numbers.map(...).reduce(...) so they are on the same line */
 }
-console.log(addThemUp([2, 4, 4])) // 10
+console.log(squareSum([2, 4, 4])) // 10
 
 
