@@ -103,12 +103,13 @@ for push
 ## daily routine
 // DM: todoMM: read this section. I've made updates. 
 * first thing: pull Duncan's latest commits and look at the diffs (compare your last commit before my commit to the working tree in GitLens to see what changes I made)
-* update repo with notes and "(done)" or "(partial)" when task is complete or you have worked on it
+* todoMMs: update repo with notes and "(done)" or "(partial)" when task is complete or you have worked on it
 * work plan
   * focus on all the todoMM for up to 2 hours, then split remaining time as below (temporary until you're caught up on the todoMM)
     * if there are todoMM that you've already completed, mark them as (done) and I'll have a look
+    * please follow up on all my todoMM ASAP, if they are quick tasks - if they are larger tasks, they can be done later. We'll start using Jira soon, but for now, if you can't finish a todoMM before the next 6:45am meeting, leave a note estimating how many hours you estimate you'll need to complete it (this is good practice, and hard - my boss always asks me to estimate ...ugh)
   * 33% hours on the portfolio
-  * 33% on any assigned exercises then codeWars when you're done
+  * 33% Core JS - any assigned exercises then codeWars when you're done
     * put all solutions in the repo so we can discuss them
     * I increased this percentage to emphasize core JS. I will start assigning you more exercises. 
   * 33% hours on Joy of React (put vocabulary and snippets in the repo)(start with components lessons, in progress)
@@ -116,11 +117,11 @@ for push
   * all learning tasks: keep adding to the vocabulary files
   * Fixed the `joy of react game converter` 
     * DM: todoMM: pls explain or put something about this into a file in the repo, so that I can understand what that is about
-      * DM: what is `joy of react game converter` - please follow up on all my todoMM ASAP, if they are quick tasks - if they are larger tasks, they can be done later. We'll start using Jira soon, but for now, if you can't finish a todoMM before the next 6:45am meeting, leave a note estimating how many hours you estimate you'll need to complete it (this is good practice, and hard - my boss always asks me to estimate ...ugh)
+      * DM: what is `joy of react game converter` 
 * 3:45pm push repo to the remote
   *  push what you have - just wrap up what you can, mark whatever is unfinished like this: "// MM: todoMM: unfinished, next steps: step1, step2, ..." Yesterday , I was thinking, that going forward I want to review what you have at 6:45am MT, so just plan on wrapping up and pushing at 6:45. You can keep working the rest of the day, and push that work the next day at 6. This will keep it simpler overall. So, you can save the work that generates a lot of questions for me for the 6:45-9MT time period, since I'll be around to answer.
 * 3:45-5pm be on Slack (Duncan's 6:45-8am)
-## next (unless there is a specific list for the day above) 
+## next (unless there is a specific list for the day above)
 *  Hey, start thinking about a "cooldown" project. At work, previously at least, there used to be a 'cooldown' agile cycle each 6 weeks, where the team wraps up unfinished stuff that accumulates and each DEV gets to suggest a few 3-day projects that are of personal interest, but related to the goals of the team. THe manager picks one of the projects. So, start thinking about what you might like to focus on: a skill, an approach, a component. See what comes to mind over the next few weeks.
 <!-- read -->
 * when you complete a task, put "(done)" or "(partial)" - explain what's left to do)

@@ -1,12 +1,15 @@
-// todoDM: fix eslint not showing string missing ''
+import { GithubIcon } from '@/ui/icons'
 
 // more descriptive name, possibly, topNavLinks?
-export const defaultTopNavSiteLinkId = 'work'
 export const topNavSiteLinks = [
   { id: 'work', name: 'Portfolio', anchor: 'work' },
   { id: 'about', name: 'About', anchor: 'about' },
   { id: 'contact', name: 'Contact', anchor: 'contact' },
 ]
+// DM: todoMM: get 'work' from topNavSiteLinks instead of 'hard-coding' it. hint, use techniques in findObjectInArrayOfObjects
+//     why? because you know that the default link is always the first one in topNavSiteLinks
+//          if you change the order in the future, you don't have to edit defaultTopNavSiteLinkId, less chance of bugs from type of forgetting, more maintainable code
+export const defaultTopNavSiteLinkId = 'work'
 
 export const theMan = 'Moise M Mulungu'
 
@@ -14,7 +17,7 @@ export const theMan = 'Moise M Mulungu'
 export const defaultFooterSocialLinkId = 'github'
 // DM: good name
 export const footerSocialLinks = [
-  { id: 'github', name: 'Github', url: 'https://github.com/moise-mulungu/' },
+  { id: 'github', title: 'Github', Icon: GithubIcon, url: 'https://github.com/moise-mulungu/' },
   { id: 'linkedin', name: 'LinkedIn', url: 'https://www.linkedin.com/in/moisemulungu/' },
   { id: 'wellfound', name: 'Wellfound', url: 'https://angel.co/u/moise-mulungu' },
   { id: 'medium', name: 'Medium', url: 'https://medium.com/@moisemlg90' },

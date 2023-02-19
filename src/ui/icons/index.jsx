@@ -1,18 +1,46 @@
-const svgImages = [
-  { id: 'github', name: 'GitHub', class: 'h-6 w-6', fill: 'currentColor', viewBox: '0 0 24 24' },
-  { id: 'linkedin', name: 'LinkedIn', class: 'h-6 w-6', fill: 'currentColor', viewBox: '0 0 24 24' },
-  { id: 'twitter', name: 'Twitter', class: 'h-6 w-6', fill: 'currentColor', viewBox: '0 0 24 24' },
-  { id: 'medium', name: 'Medium', class: 'h-6 w-6', fill: 'currentColor', viewBox: '0 0 24 24' },
-  { id: 'wellfound', name: 'Wellfound', class: 'h-6 w-6', fill: 'currentColor', viewBox: '0 0 24 24' },
-]
+/* 
 
-svgImages.map((id, name, class, fill, viewBox) => (
-    
-))
+DM: what I did:
 
-export const footerSocialLinksIcons = (props) => {
-    return (
+npm install react-icons
+import { IconContext } from "react-icons";
+docs: https://github.com/react-icons/react-icons#configuration
 
-    )
+find icons: (this page has SM icons)
+https://react-icons.github.io/react-icons/icons?name=di
+import { IconName } from "react-icons/di";
+
+*/
+
+import { IconContext } from 'react-icons'
+import { DiGithubBadge } from 'react-icons/di'
+
+export const GithubIcon = (props) => {
+  const {
+    size = '2em',
+    className = 'text-gray-400 hover:text-gray-500',
+    title = 'Social Media Link',
+  } = props
+  return (
+    <IconContext.Provider
+      value={{
+        size,
+        className: `shared-classNames-go-here ${className}`,
+        title,
+      }}
+    >
+      <div>
+        <DiGithubBadge />
+      </div>
+    </IconContext.Provider>
+  )
 }
-    
+
+/* 
+
+next steps:
+do the same for linkedIn
+notice how much of the two icons code is identical
+probably we want to abstract the identical part into a common function, let's talk next week about it
+
+*/
