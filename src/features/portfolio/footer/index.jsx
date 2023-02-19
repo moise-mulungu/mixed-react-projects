@@ -75,3 +75,19 @@ export default function Footer(props) {
 }
 // ???DM: how to add font awesome icons to this footer with nextjs.
 // to keep it simple, let's use the heroicons provided with tailwindui - every type of icon you need will be among in the heroicon collection
+// MM toDM: After checking the heroicons, I could not find the social platform icons. another idea that came to mind is to try with the existing icons, so I found that the image tag of the used heroicon has three values(className, src, and alt). the first step would take:
+  // * add the image tag to the footerSocialLinks as an object
+  // export const footerSocialLinks = [
+  //   { id: 'github', image={className: , src: , alt: }, url: 'https://github.com/moise-mulungu/' },
+  //   { id: 'linkedin', image={className: , src: , alt: }, url: 'https://www.linkedin.com/in/moisemulungu/' },
+  //   { id: 'wellfound', image={className: , src: , alt: }, url: 'https://angel.co/u/moise-mulungu' },
+  //   { id: 'medium', image={className: , src: , alt: }, url: 'https://medium.com/@moisemlg90' },
+  //   { id: 'twitter', image={className: , src: , alt: }, url: 'https://twitter.com/moise_mulungu' },
+  // ]
+  // * map the image object within the footerSocialLinks
+  // const myImage = image.map((className, src, alt) => {
+  //   return (
+  //     <img className={className} src={src} alt={alt} />
+  //   )
+  // })
+  // I am not sure if this is the right approach, help me to understand if this is the right approach or not.
