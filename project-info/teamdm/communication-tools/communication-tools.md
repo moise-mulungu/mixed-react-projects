@@ -9,7 +9,7 @@
   * todoXX is the exception
 * ??? aka "fishhooks" means there is a question, concern, "hey look at this"
   * ???DM, ???MM
-    * ???DM Moise, is MM your preferred initials (of your names)
+  * example: MM: ???DM: a question for Duncan
 * in .js comments or .md files
   * word? - the "?" signifies doubt about the correct word (?? signifies doubt about the concept, approach)
 * !!! means "important" depending on the number of "!"

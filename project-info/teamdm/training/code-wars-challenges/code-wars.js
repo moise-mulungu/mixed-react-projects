@@ -13,7 +13,9 @@ function squareSumWithLet(numbers) {
     // square each number
     const squaredNumbers = numbers[i] * numbers[i]
     // add the squared number to the sum
-    sum += squaredNumbers //I struggle understanding the logic behind this line
+    // MM: ???DM: I struggle understanding the logic behind this line
+    // DM: equivalent to : sum = sum + squaredNumbers
+    sum += squaredNumbers
   }
   // return the sum
   return sum
@@ -24,26 +26,31 @@ console.log(squareSumWithLet([1, 2, 2]))
 //   so, your next exercise is to redo this without using 'let' (no loops)
 //   let's do it in 2 steps first, then all together
 //   step 1: square each number in the passed array
-// function squareThemAll(numbers) {
-// 	return numbers.map(num => num * num)/* your code goes here */
-// }
-// console.log(squareThemAll([1, 2, 2])) // 2, 4, 4
-
-//   step 2: add together all the numbers in the array. 
-// function addThemUp(numbers) {
-// 	// check out array.reduce on MDN
-//    const sum = 0;
-//  return numbers.reduce((acc, cur) => 
-// 	/* your code goes here */
-//   acc + cur
-//  , 0) // I removed the curly braces and return statement because it was not needed
-// }
-// console.log(addThemUp([2, 4, 4])) // 10
-
-//   step 3: combine both into one function
-function squareSum(numbers) {
-	return numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)/* your code goes here. chain the array methods numbers.map(...).reduce(...) so they are on the same line */
+function squareThemAll(numbers) {
+  return numbers.map((num) => num * num)
 }
-console.log(squareSum([2, 4, 4])) // 10
+console.log(squareThemAll([1, 2, 2])) // 2, 4, 4
 
+//   step 2: add together all the numbers in the array.
+function addThemUp(numbers) {
+  // check out array.reduce on MDN
+  const sum = 0
+  return numbers.reduce((acc, cur) => acc + cur, 0) // I removed the curly braces and return statement because it was not needed
+}
+console.log(addThemUp([2, 4, 4])) // 10
 
+// DM: todoMM: great! now make this the only solution (remove the other solutions above this line, once you've read my comments/answers in them)
+function squareSum(numbers) {
+  return (
+    numbers
+      .map((num) => num * num)
+      // DM: correct! But, something is missing (that is in your code above in step 2)
+      // DM: but, though missing, reduce() still worked. why? todoMM: add a JS vocab entry: "type coercion"
+      //     also, when you remove these comments, you'll see that the solution fits on one line, and is very readable
+      .reduce((acc, cur) => acc + cur)
+  )
+}
+console.log(squareSum([1, 2, 2])) // 10
+// DM: as an arrow function, concise, but it starts to feel slightly less readable, IMO
+const squareSumAf = (numbers) => numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)
+// DM: todoDM: write an exercise to assign the array method callbacks to variables with descriptive names

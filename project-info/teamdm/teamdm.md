@@ -101,23 +101,25 @@ for push
 
 # Moise tasks
 ## daily routine
+// DM: todoMM: read this section. I've made updates. 
 * first thing: pull Duncan's latest commits and look at the diffs (compare your last commit before my commit to the working tree in GitLens to see what changes I made)
 * update repo with notes and "(done)" or "(partial)" when task is complete or you have worked on it
-* 3pm push repo to the remote
-  *  push what you have - just wrap up what you can, mark whatever is unfinished like this: "// MM: todoMM: unfinished, next steps: step1, step2, ..." Yesterday , I was thinking, that going forward I want to review what you have at 6am MT, so just plan on wrapping up and pushing at 6. You can keep working the rest of the day, and push that work the next day at 6. This will keep it simpler overall. So, you can save the work that generates a lot of questions for me for the 6-9MT time period, since I'll be around to answer.
-* 3-5pm be on Slack (Duncan's 6-8am)
-* 5pm (i.e., whenever you stop for the day) commit and push (if any additional changes)
-## Week ofMonday Feb 6 I'd like you to work in this order, after pulling the repo:
-* as usual, check all diffs for the new info I've pushed - see if there is anything I put that you need to do or respond to
-* see new exercise in utils/array/snippets
-* add "(done)" or comments to your tasks in the section ## next 
-* (done) spend 30 minutes solving src/utils/array/snippets/sort.js
-* with the time that's left, 1/2 on each of:
-  * Joy of React (let's discuss your vocabulary entries Monday) 
-  * Portfolio - implement portfolio finding all the needed components in tailwindui
-  * Note: if your brain likes to code first, then study next, feel free to change the order
-* btw, always check package.json, to see if there's anything I installed that you need to install: there-s one new one:@heroicons/react
-* note on Tailwindcss/ui: it is very customizable, so you can really make it your own, but I think it's best to implement it quickly for the full portfolio site first, making the least changes to taiwindui as is possible. So, find in tailwindui the components you need to match your current portfolio site, or you may wish to adapt your layout a bit to use what tailwindui has available if you see something you like. Then, we'll get the React and interactivity fully implemented. Once you see the whole thing together, that is a good time to start tweaking it visually to fit your preferences. 
+* work plan
+  * focus on all the todoMM for up to 2 hours, then split remaining time as below (temporary until you're caught up on the todoMM)
+    * if there are todoMM that you've already completed, mark them as (done) and I'll have a look
+  * 33% hours on the portfolio
+  * 33% on any assigned exercises then codeWars when you're done
+    * put all solutions in the repo so we can discuss them
+    * I increased this percentage to emphasize core JS. I will start assigning you more exercises. 
+  * 33% hours on Joy of React (put vocabulary and snippets in the repo)(start with components lessons, in progress)
+    * gotta give JS and React significant priority - more knowledge will speed up your progress on the portfolio. BUt, yes it's also good to work the portfolio to have real-world React to work through. 
+  * all learning tasks: keep adding to the vocabulary files
+  * Fixed the `joy of react game converter` 
+    * DM: todoMM: pls explain or put something about this into a file in the repo, so that I can understand what that is about
+      * DM: what is `joy of react game converter` - please follow up on all my todoMM ASAP, if they are quick tasks - if they are larger tasks, they can be done later. We'll start using Jira soon, but for now, if you can't finish a todoMM before the next 6:45am meeting, leave a note estimating how many hours you estimate you'll need to complete it (this is good practice, and hard - my boss always asks me to estimate ...ugh)
+* 3:45pm push repo to the remote
+  *  push what you have - just wrap up what you can, mark whatever is unfinished like this: "// MM: todoMM: unfinished, next steps: step1, step2, ..." Yesterday , I was thinking, that going forward I want to review what you have at 6:45am MT, so just plan on wrapping up and pushing at 6:45. You can keep working the rest of the day, and push that work the next day at 6. This will keep it simpler overall. So, you can save the work that generates a lot of questions for me for the 6:45-9MT time period, since I'll be around to answer.
+* 3:45-5pm be on Slack (Duncan's 6:45-8am)
 ## next (unless there is a specific list for the day above) 
 *  Hey, start thinking about a "cooldown" project. At work, previously at least, there used to be a 'cooldown' agile cycle each 6 weeks, where the team wraps up unfinished stuff that accumulates and each DEV gets to suggest a few 3-day projects that are of personal interest, but related to the goals of the team. THe manager picks one of the projects. So, start thinking about what you might like to focus on: a skill, an approach, a component. See what comes to mind over the next few weeks.
 <!-- read -->
@@ -159,17 +161,10 @@ for push
 * practice your vscode snippets and vscode shortcuts on Friday afternoons (if you have an coding challenge interview where the interviewers watch you type code, I want them to say, "Wow, this guy is fast!")
 * src/utils - start recording what you learn as functions (to import and use) and snippets (to copy and paste)
 
-## Tuesday's tasks
-I read about 
-  * sort an array of object in JavaScript : https://www.javascripttutorial.net/array/javascript-sort-an-array-of-objects/
-  * Joy of react(ongoing learning, React fundamentals)
-    * DM: great. be sure to add snippets if you see something unfamiliar or hard. (snippets help remember and also lets me code review your snippet and adjust vocabulary)
-    * DM: also, start adding JS vocabulary
-    * DM: just a reminder, you want to reasearch and try each new hard thing you run into for the right amount of time (15-30 minutes), but don't get into a situation where you lose 2 hours on one hard thing. You can add a question for me - if I think you need to try more, I'll tell you. Better to write a question, then move on, optimizing your time. Think on this, it's not a hard-and-fast rule, but what I described will be the kind of decisions you'll have to make your entire career.
-    * DM: Wednesday: 
+
 # Duncan tasks (todoDM: these out of date, bad mentor!, clean up Sunday and start editing daily)
 ## daily routine
-* 7-8am be on Slack
+* 6:45-8am be on Slack
 * pull Moise's latest commits
 * answer questions made in the repo or texted in Slack
 * updates to the repo
@@ -200,23 +195,15 @@ I read about
 * UI vocabulary
 * coding standards
 ## Sunday plan:
+* pull (since MM sometimes has more commits by Sunday), respond, push
+* review task lists
 * go over our communication process
 * talk about Jira
 * plan, train, etc. 
 * talk about the vocabulary list
 * talk about snippets in src/utils (maybe a starter page to show react snippets in teh browser)
 
-# same plan for Friday 2023-02-17 (focus on all the todoMM for up to 2 hours, then split remaining time as below)
-* // DM: ok, read, I'm removing your progress comments to keep the instructions clean
-* 3 hours on the portfolio
-* 2 hours on the findObjectInArrayOfObjects.js exercise plus some codeWars (put your solutions in the repo so we can discuss them)
-* 3 hours on Joy of React (put vocabulary and snippets in the repo)(start with components lessons, in progress)
-  * gotta give JS and React significant priority - more knowledge will speed up your progress on the portfolio. BUt, yes it's also good to work the portfolio to have real-world React to work through. 
-* let's plan on 3 hours portfolio, 5 hours learning going forward. todoDM: add this to main 'moise tasks' section
-* Fixed the `joy of react game converter` 
-  * DM: todoMM: pls explain or put something about this into a file in the repo, so that I can understand what that is about
 
-DM: Note: If you don't hear from me later about getting access to the template, focus your portfolio time tomorrow on styling the footer with tailwind utility classes. Have a deep-dive into tailwindcss.com and start a vocabulary file for tailwind in the project-info section. "utility class" is a good term to understand, for example.
 
-DM: BTW, I'm starting a TypeScript snippets folder in my personal repo, just like I'm having you do here with react, js, tailwind. I'll systematically record all my TS solutions. I keep learning then forgetting TW (it's like CSS, I run into situations not frequently, so I forget ...). t's waste of time and slowing me down at work, so I'll make a searchable knowledge base of my TS solutions.
+
 
