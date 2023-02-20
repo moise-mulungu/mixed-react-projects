@@ -1,6 +1,6 @@
 import { GithubIcon } from '@/ui/icons'
-import { FaLinkedin } from 'react-icons/fa'
 import { LinkedInIcon } from '../../ui/icons'
+import { AngelListIcon } from '../../ui/icons'
 
 // more descriptive name, possibly, topNavLinks?
 export const topNavSiteLinks = [
@@ -15,13 +15,6 @@ export const defaultTopNavSiteLinkId = topNavSiteLinks[0].id
 
 export const theMan = 'Moise M Mulungu'
 
-// DM: moving this to just above footerSocialLinks in order to keep keep associated stuff together
-// DM: this used to be
-//     export const defaultFooterSocialLinkId = 'github'
-// DM: todoDM: when you make a change in code, be sure to run the app in the browser to be sure your change works correctly
-//     if you 'npm run dev' now, there is a ReferenceError. Try it and see if you can fix it.
-export const defaultFooterSocialLinkId = footerSocialLinks[0].id
-// DM: good name
 export const footerSocialLinks = [
   { id: 'github', title: 'Github', Icon: GithubIcon, url: 'https://github.com/moise-mulungu/' },
   {
@@ -30,7 +23,8 @@ export const footerSocialLinks = [
     Icon: LinkedInIcon,
     url: 'https://www.linkedin.com/in/moisemulungu/',
   },
-  { id: 'wellfound', name: 'Wellfound', url: 'https://angel.co/u/moise-mulungu' },
+  { id: 'wellfound', title: 'Wellfound', Icon: AngelListIcon, url: 'https://angel.co/u/moise-mulungu' },
   { id: 'medium', name: 'Medium', url: 'https://medium.com/@moisemlg90' },
   { id: 'twitter', name: 'Twitter', url: 'https://twitter.com/moise_mulungu' },
 ]
+export const defaultFooterSocialLinkId = footerSocialLinks[0].id
