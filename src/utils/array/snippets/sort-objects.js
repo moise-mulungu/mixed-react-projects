@@ -1,5 +1,4 @@
-// reverse sort by the value of objectProperty2
-// tip: array.reverse() works the same as sort
+// howtojs: sort an array of objects
 ;[
   {
     objectProperty1: 1,
@@ -23,6 +22,6 @@
 //   },
 // ]
 
-// note: forEach is for "side effects", unike the other common  array methods
+// vocab: forEach is for "side effects", unike the other common  array methods
 
 // todoDM: periodically clean all my non-permanent comments out of snippets files
