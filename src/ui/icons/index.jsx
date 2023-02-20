@@ -39,7 +39,7 @@ export const GithubIcon = (props) => {
 /* 
 
 next steps:
-do the same for linkedIn
+do the same for linkedIn(in progress)
 notice how much of the two icons code is identical
 probably we want to abstract the identical part into a common function, let's talk next week about it
 
