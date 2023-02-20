@@ -1,4 +1,6 @@
 import { GithubIcon } from '@/ui/icons'
+import { FaLinkedin } from 'react-icons/fa'
+import { LinkedInIcon } from '../../ui/icons'
 
 // more descriptive name, possibly, topNavLinks?
 export const topNavSiteLinks = [
@@ -18,7 +20,12 @@ export const defaultFooterSocialLinkId = 'github'
 // DM: good name
 export const footerSocialLinks = [
   { id: 'github', title: 'Github', Icon: GithubIcon, url: 'https://github.com/moise-mulungu/' },
-  { id: 'linkedin', name: 'LinkedIn', url: 'https://www.linkedin.com/in/moisemulungu/' },
+  {
+    id: 'linkedin',
+    title: 'LinkedIn',
+    Icon: LinkedInIcon,
+    url: 'https://www.linkedin.com/in/moisemulungu/',
+  },
   { id: 'wellfound', name: 'Wellfound', url: 'https://angel.co/u/moise-mulungu' },
   { id: 'medium', name: 'Medium', url: 'https://medium.com/@moisemlg90' },
   { id: 'twitter', name: 'Twitter', url: 'https://twitter.com/moise_mulungu' },

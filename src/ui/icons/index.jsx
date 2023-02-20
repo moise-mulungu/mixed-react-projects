@@ -14,6 +14,7 @@ import { IconName } from "react-icons/di";
 
 import { IconContext } from 'react-icons'
 import { DiGithubBadge } from 'react-icons/di'
+import { FaLinkedin } from 'react-icons/fa'
 
 export const GithubIcon = (props) => {
   const {
@@ -31,6 +32,28 @@ export const GithubIcon = (props) => {
     >
       <div>
         <DiGithubBadge />
+      </div>
+    </IconContext.Provider>
+  )
+}
+
+export const LinkedInIcon = (props) => {
+  const {
+    size = '2em',
+    className = 'text-gray-400 hover:text-gray-500',
+    title = 'Social Media Link',
+  } = props
+  return (
+    <IconContext.Provider
+
+      value={{
+        size,
+        className: `shared-classNames-go-here ${className}`,
+        title,
+      }}
+    >
+      <div>
+        <FaLinkedin />
       </div>
     </IconContext.Provider>
   )
