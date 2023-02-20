@@ -9,7 +9,7 @@ export const topNavSiteLinks = [
 // DM: todoMM: get 'work' from topNavSiteLinks instead of 'hard-coding' it. hint, use techniques in findObjectInArrayOfObjects(in progress)
 //     why? because you know that the default link is always the first one in topNavSiteLinks
 //          if you change the order in the future, you don't have to edit defaultTopNavSiteLinkId, less chance of bugs from type of forgetting, more maintainable code
-export const defaultTopNavSiteLinkId = 'work'
+export const defaultTopNavSiteLinkId = topNavSiteLinks[0].id
 
 export const theMan = 'Moise M Mulungu'
 
