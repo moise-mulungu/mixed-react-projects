@@ -17,3 +17,5 @@
 - a word that cannot be used as an identifier, such as the name of a variable, function, or labels.
 - ex: `let`, `sort`, `this`, `charAt`, `function`
 
+## Type coercion
+Type Coercion refers to the process of automatic or implicit conversion of values from one data type to another. This includes conversion from Number to String, String to Number, Boolean to Number etc. when different types of operators are applied to the values.
