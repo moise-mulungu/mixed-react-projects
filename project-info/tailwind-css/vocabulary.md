@@ -1,13 +1,3 @@
-## plug-in
-plug-in also called add-on or extension is a computer software that adds new functions to a host program without altering the host program itself.
-* DM: great, todoMM: move this to the new tech-vocabulary.md file
-  * btw, if I indent a bullet point after a "DM:" this means that all the indented bullet points are part of the upper-level bullet point where I put "DM:"
-
-## IDE(integrated development environment)
-
-A software application that helps programmers develop software code efficiently. It increases developer productivity by combining capabilities such as software editing, building, testing, and packaging in an easy-to-use application.
-* DM: todoMM: also move to tech-vocabluary.md
-
 # utility classes (a predefined design system)
 
 1. flexbox: `flex`, `shrink-0`
