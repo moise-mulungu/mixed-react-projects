@@ -1,3 +1,6 @@
+
+Utilities are simple HTML classes typically scoped to a single CSS property, like border-style or background-color . Utilities can be used additively to style an object from scratch or to override a style defined in component CSS
+
 # utility classes (a predefined design system)
 
 1. flexbox: `flex`, `shrink-0`
@@ -13,7 +16,7 @@
 11. text-color: `text-black`
 12. font-weight: `font-medium`
 
-* DM: todoMM: write a short paragraph on the benefits of using utility classes (hint: just look for why TailwindCSS chose them)
+* DM: todoMM: write a short paragraph on the benefits of using utility classes (hint: just look for why TailwindCSS chose them)(done)
 * Duncan's opinion: inline CSS (or TW utility classes) is better than separate .css files, because you don't have to look back and forth from .css file to .js file in order to see what each CSS class means - it's right there in the JSX. 
 
 ## responsive utility designs
