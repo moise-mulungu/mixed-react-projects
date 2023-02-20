@@ -16,6 +16,10 @@ export const defaultTopNavSiteLinkId = topNavSiteLinks[0].id
 export const theMan = 'Moise M Mulungu'
 
 // DM: moving this to just above footerSocialLinks in order to keep keep associated stuff together
+// DM: this used to be
+//     export const defaultFooterSocialLinkId = 'github'
+// DM: todoDM: when you make a change in code, be sure to run the app in the browser to be sure your change works correctly
+//     if you 'npm run dev' now, there is a ReferenceError. Try it and see if you can fix it.
 export const defaultFooterSocialLinkId = footerSocialLinks[0].id
 // DM: good name
 export const footerSocialLinks = [

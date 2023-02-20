@@ -1,4 +1,4 @@
-
+DM: capitalizing this filename so that it is more visible in the VS Code file browser pane
 # Team Name Ideas 
 * suggestions:
   * Duncan: The IG (the Ingenious Geniuses)
@@ -101,7 +101,6 @@ for push
 
 # Moise tasks
 ## daily routine
-// DM: todoMM: read this section. I've made updates.(done) 
 * first thing: pull Duncan's latest commits and look at the diffs (compare your last commit before my commit to the working tree in GitLens to see what changes I made)
 * todoMMs: update repo with notes and "(done)" or "(partial)" when task is complete or you have worked on it
 * work plan

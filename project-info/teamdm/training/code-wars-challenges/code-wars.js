@@ -16,16 +16,11 @@ function squareSumWithLet(numbers) {
 }
 console.log(squareSumWithLet([1, 2, 2]))
 
-
-// DM: todoMM: great! now make this the only solution (remove the other solutions above this line, once you've read my comments/answers in them)
 function squareSum(numbers) {
-  return (
-    numbers
-      .map((num) => num * num)
-      .reduce((acc, cur) => acc + cur)
-  )
+  return numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)
 }
 console.log(squareSum([1, 2, 2])) // 10
 // DM: as an arrow function, concise, but it starts to feel slightly less readable, IMO
 const squareSumAf = (numbers) => numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)
 // DM: todoDM: write an exercise to assign the array method callbacks to variables with descriptive names
+// DM: todoDM: clean up this page of my comments or extra stuff

@@ -9,7 +9,6 @@ docs: https://github.com/react-icons/react-icons#configuration
 find icons: (this page has SM icons)
 https://react-icons.github.io/react-icons/icons?name=di
 import { IconName } from "react-icons/di";
-
 */
 
 import { IconContext } from 'react-icons'
@@ -45,7 +44,6 @@ export const LinkedInIcon = (props) => {
   } = props
   return (
     <IconContext.Provider
-
       value={{
         size,
         className: `shared-classNames-go-here ${className}`,
@@ -65,5 +63,6 @@ next steps:
 do the same for linkedIn(in progress)
 notice how much of the two icons code is identical
 probably we want to abstract the identical part into a common function, let's talk next week about it
-
+// DM, good!, next 'll think on how to abstract, in the meantime:
+// DM: todoMM: make a list of what the two icon functions have in common
 */
