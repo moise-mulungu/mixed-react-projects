@@ -6,7 +6,7 @@ export const topNavSiteLinks = [
   { id: 'about', name: 'About', anchor: 'about' },
   { id: 'contact', name: 'Contact', anchor: 'contact' },
 ]
-// DM: todoMM: get 'work' from topNavSiteLinks instead of 'hard-coding' it. hint, use techniques in findObjectInArrayOfObjects
+// DM: todoMM: get 'work' from topNavSiteLinks instead of 'hard-coding' it. hint, use techniques in findObjectInArrayOfObjects(in progress)
 //     why? because you know that the default link is always the first one in topNavSiteLinks
 //          if you change the order in the future, you don't have to edit defaultTopNavSiteLinkId, less chance of bugs from type of forgetting, more maintainable code
 export const defaultTopNavSiteLinkId = 'work'

@@ -1,6 +1,6 @@
 // reverse sort by the value of objectProperty2
 // tip: array.reverse() works the same as sort
-// DM: todoMM: check your prettier configuration so that you can auto-format JS; if we're not both using prettier it makes for fewer formatting-only diffs; I mention it because this file was formatted a lot by prettier when I saved it (my vscode setting formats prettier on-save, but you can use the default prettier shortcut, also.)
+// DM: todoMM: check your prettier configuration so that you can auto-format JS; if we're not both using prettier it makes for fewer formatting-only diffs; I mention it because this file was formatted a lot by prettier when I saved it (my vscode setting formats prettier on-save, but you can use the default prettier shortcut, also.)(done)
 ;[
   {
     objectProperty1: 1,
