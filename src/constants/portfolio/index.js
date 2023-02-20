@@ -16,7 +16,7 @@ export const defaultTopNavSiteLinkId = topNavSiteLinks[0].id
 export const theMan = 'Moise M Mulungu'
 
 // DM: moving this to just above footerSocialLinks in order to keep keep associated stuff together
-export const defaultFooterSocialLinkId = 'github'
+export const defaultFooterSocialLinkId = footerSocialLinks[0].id
 // DM: good name
 export const footerSocialLinks = [
   { id: 'github', title: 'Github', Icon: GithubIcon, url: 'https://github.com/moise-mulungu/' },
