@@ -44,3 +44,24 @@ function xor(a, b) {
 }
 
 console.log(xor(8, -4));
+
+
+// ASCII Total
+function uniTotal(string) {
+  // total up dem unicodes!
+  let total = 0
+
+  // declare a variable to hold the array of characters
+  const stringArray = string.split('')
+  console.log(stringArray)
+  // map over the array of characters and add the unicode value to the total
+  stringArray.map((char) => {
+    total += char.charCodeAt(0)
+  })
+  // for (let i = 0; i < string.length; i++) {
+  //   total += string.charCodeAt(i)
+  // }
+  // return the total
+  return total
+}
+console.log(uniTotal('aloha'))
