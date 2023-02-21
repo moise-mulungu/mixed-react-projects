@@ -24,3 +24,23 @@ console.log(squareSum([1, 2, 2])) // 10
 const squareSumAf = (numbers) => numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)
 // DM: todoDM: write an exercise to assign the array method callbacks to variables with descriptive names
 // DM: todoDM: clean up this page of my comments or extra stuff
+
+//Exclusive "or" (xor) Logical Operator
+
+function xor(a, b) {
+  // TODO: Program Me
+  const isTrue = a || b
+  const isFalse = a && b
+
+  if (isTrue && !isFalse) {
+    return true
+  } else if (!isTrue && isFalse) {
+    return true
+  } else {
+    return false
+  }
+  // return (a || b) && !(a && b)
+  
+}
+
+console.log(xor(8, -4));
