@@ -65,3 +65,25 @@ function uniTotal(string) {
   return total
 }
 console.log(uniTotal('aloha'))
+
+
+// Count consonants
+function consonantCount(str) {
+  // declare an array of vowels
+  const vowels = ['a', 'e', 'i', 'o', 'u']
+  // declare a variable to hold the count
+  let count = 0
+  // loop through the string
+  for (let i = 0; i < str.length; i++) {
+    // if the current character is not a vowel, increment the count
+    if (!vowels.includes(str[i])) {
+      count++
+    }
+  }
+  // return the count
+  return count
+}
+
+console.log(consonantCount('ahddbsa'))
+
+// MM: todoMM: some test cases are failing, I think it's because of the case sensitivity and some special characters.
