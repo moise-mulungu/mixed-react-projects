@@ -39,7 +39,7 @@ function xor(a, b) {
   } else {
     return false
   }
-  // return (a || b) && !(a && b)
+  // return (a || b) && !(a && b); this is the short version
   
 }
 
