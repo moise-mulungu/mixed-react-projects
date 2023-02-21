@@ -1,34 +1,18 @@
-// Square(n) Sum
-// description: Complete the square sum function so that it squares each number passed into it and then sums the results together.
+// DM: this file will get big, let's put new ones at the top so we don't have to scroll
 
-function squareSumWithLet(numbers) {
-  // declare a variable to hold the sum
-  let sum = 0
-  // loop through the array
-  for (let i = 0; i < numbers.length; i++) {
-    // square each number
-    const squaredNumbers = numbers[i] * numbers[i]
-    // add the squared number to the sum
-    sum += squaredNumbers
-  }
-  // return the sum
-  return sum
-}
-console.log(squareSumWithLet([1, 2, 2]))
+/* 
 
-function squareSum(numbers) {
-  return numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)
-}
-console.log(squareSum([1, 2, 2])) // 10
-// DM: as an arrow function, concise, but it starts to feel slightly less readable, IMO
-const squareSumAf = (numbers) => numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)
-// DM: todoDM: write an exercise to assign the array method callbacks to variables with descriptive names
-// DM: todoDM: clean up this page of my comments or extra stuff
+2 guidlines for codewars solutions:
+* never use 'let'
+* assign all logical expressions to a well-named variable
+* don't make me think!
 
+*/
+
+// DM: todoMM: good! now assign this logical expression: isTrue && !isFalse to a well-named variable - the goal is to make it so that I can read this more easily without having to google and refresh my memory of xor
 //Exclusive "or" (xor) Logical Operator
-
 function xor(a, b) {
-  // TODO: Program Me
+  // TODO: Program Me // DM: is there still something left to do here?
   const isTrue = a || b
   const isFalse = a && b
 
@@ -40,12 +24,11 @@ function xor(a, b) {
     return false
   }
   // return (a || b) && !(a && b); this is the short version
-  
 }
 
-console.log(xor(8, -4));
+console.log(xor(8, -4)) // DM: todoMM: put the expected result here
 
-
+// DM: todoMM: now, do this without 'let'. see the example at the bottom of this file where we did that. hint: string.split().map().reduce()
 // ASCII Total
 function uniTotal(string) {
   // total up dem unicodes!
@@ -66,7 +49,7 @@ function uniTotal(string) {
 }
 console.log(uniTotal('aloha'))
 
-
+// DM: todoMM: same, do it without let
 // Count consonants
 function consonantCount(str) {
   // declare an array of vowels
@@ -86,4 +69,32 @@ function consonantCount(str) {
 
 console.log(consonantCount('ahddbsa'))
 
-// MM: todoMM: some test cases are failing, I think it's because of the case sensitivity and some special characters.
+// MM: todoMM: some test cases are failing, I think it's because of the case sensitivity and some special characters. // DM: can you give me an example of which is failing?
+
+// Square(n) Sum
+// description: Complete the square sum function so that it squares each number passed into it and then sums the results together.
+function squareSum(numbers) {
+  return numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)
+}
+console.log(squareSum([1, 2, 2])) // 10
+// DM: as an arrow function, concise, but it starts to feel slightly less readable, IMO
+const squareSumAf = (numbers) => numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)
+// DM: todoDM: write an exercise to assign the array method callbacks to variables with descriptive names
+// DM: todoDM: clean up this page of my comments or extra stuff
+
+/* 
+function squareSumWithLet(numbers) {
+  // declare a variable to hold the sum
+  let sum = 0
+  // loop through the array
+  for (let i = 0; i < numbers.length; i++) {
+    // square each number
+    const squaredNumbers = numbers[i] * numbers[i]
+    // add the squared number to the sum
+    sum += squaredNumbers
+  }
+  // return the sum
+  return sum
+}
+console.log(squareSumWithLet([1, 2, 2]))
+*/

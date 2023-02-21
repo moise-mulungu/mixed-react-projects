@@ -1,5 +1,6 @@
 import { GithubIcon } from '@/ui/icons'
 import { LinkedInIcon } from '../../ui/icons'
+// DM: todoMM: import all three in the same line
 import { AngelListIcon } from '../../ui/icons'
 
 // more descriptive name, possibly, topNavLinks?
@@ -23,8 +24,14 @@ export const footerSocialLinks = [
     Icon: LinkedInIcon,
     url: 'https://www.linkedin.com/in/moisemulungu/',
   },
-  { id: 'wellfound', title: 'Wellfound', Icon: AngelListIcon, url: 'https://angel.co/u/moise-mulungu' },
+  {
+    id: 'wellfound',
+    title: 'Wellfound',
+    Icon: AngelListIcon,
+    url: 'https://angel.co/u/moise-mulungu',
+  },
   { id: 'medium', name: 'Medium', url: 'https://medium.com/@moisemlg90' },
   { id: 'twitter', name: 'Twitter', url: 'https://twitter.com/moise_mulungu' },
 ]
 export const defaultFooterSocialLinkId = footerSocialLinks[0].id
+// DM: yup, see, now you don't have 'githup' hard-coded. no "magic strings"!

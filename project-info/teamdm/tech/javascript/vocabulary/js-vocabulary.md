@@ -20,16 +20,27 @@
 ## Type coercion
 Type Coercion refers to the process of automatic or implicit conversion of values from one data type to another. This includes conversion from Number to String, String to Number, Boolean to Number etc. when different types of operators are applied to the values.
 
+
+
+// DM: good choice. just say "the logical AND operator" - so many DEVs say junk like "the double ampersand operator" ... sigh...
 ## Logical AND(&&) and OR(||) operators
-* AND operator uses the double `ampersand(&&)` to represent the logical AND operator.
+* logical AND operator - uses the double `ampersand(&&)` to represent the logical AND operator.
     The result of the `&&` operator is true only if both values are true, otherwise, it is false.
-* OR operator uses the double `pipe(||)` to represent the logical OR operator.
+* logical OR operator - uses the double `pipe(||)` to represent the logical OR operator.
     The result of the `||` operator is true if either of the values is true.
+// DM: todoMM: look up "short-circuiting evaluation" - an important way to describe logical expressions, then refine your definitions of &&, ||
+* DM: "expr1 || expr2" evaluates to expr1
+
+// DM: todoDM: what are both operators called as a group? also, what is the exact word for 'result' of the evaluation of a "logical expression"?
 
 ## string interpolation
-string interpolation in JavaScript is a process in which an expression is inserted or placed in the string. To insert or embed this expression into the string a `template literal` is used. By using string interpolation in JavaScript, values like variables and mathematical expressions and calculations can also be added.
+string interpolation in JavaScript is a process in which an expression is inserted or placed in the string. To insert or embed this expression into the string a "template literal" (previously called "template string")is used. By using string interpolation in JavaScript, values like variables and mathematical expressions and calculations can also be added.
 
 ## difference between string interpolation and template literal
 
-<!-- MM: toDD: These two expressions seem to be confusing at first to me, but I think string interpolation is the process to insert or embed, but template literal or string literal is the place to insert the string interpolation.
-For example, a box with pens inside, a box is a template literal and pens are string interpolation -->
+<!-- MM: ???DM: These two expressions seem to be confusing at first to me, but I think string interpolation is the process to insert or embed, but template literal or string literal is the place to insert the string interpolation.
+For example, a box with pens inside, a box is a template literal and pens are string interpolation 
+DM: yes, in the sense that the template literal is what JS employs to make string interpolation happen. This will help clarify the differenct: string interpolation is an item for tech-vocabluary.md, and template literal belongs in this file.
+DM: but yes the ${} is where the string interpolation happens in `text, text ${} more text`
+DM: and: `text, text ${ 'any expression here will be coerced to a String' } more text`
+-->

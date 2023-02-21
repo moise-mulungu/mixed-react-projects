@@ -1,4 +1,4 @@
-# Top Nav
+# Header and Top Nav (together)
 - Name
 - Site link
     - Portfolio
@@ -10,8 +10,9 @@
     - Twitter
     - AngelList
 
-# A main (Content)Content (main)
-- section: Overview information
+# Content (main)
+
+## section: Overview information
 - Social links
     - AngelList
     - GitHub
@@ -20,6 +21,14 @@
     - Medium
 - Text(I am Moise. A software developer: I can help you build products, and features,... )
 - image(from FIgma design)
+
+# Content
+## Section
+## Section
+## Section
+## Section
+
+using the terms but we still need an example of a page that holds 2+ main sections, each section filling 100% of the horizontal content
 
 ## section: projects(cards)
 - title(My recent work)
