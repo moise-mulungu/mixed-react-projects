@@ -25,3 +25,11 @@ Type Coercion refers to the process of automatic or implicit conversion of value
     The result of the `&&` operator is true only if both values are true, otherwise, it is false.
 * OR operator uses the double `pipe(||)` to represent the logical OR operator.
     The result of the `||` operator is true if either of the values is true.
+
+## string interpolation
+string interpolation in JavaScript is a process in which an expression is inserted or placed in the string. To insert or embed this expression into the string a `template literal` is used. By using string interpolation in JavaScript, values like variables and mathematical expressions and calculations can also be added.
+
+## difference between string interpolation and template literal
+
+<!-- MM: toDD: These two expressions seem to be confusing at first to me, but I think string interpolation is the process to insert or embed, but template literal or string literal is the place to insert the string interpolation.
+For example, a box with pens inside, a box is a template literal and pens are string interpolation -->
