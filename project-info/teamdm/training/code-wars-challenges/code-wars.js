@@ -26,13 +26,13 @@ function xor(a, b) {
   // return (a || b) && !(a && b); this is the short version
 }
 
-console.log(xor(8, -4)) // DM: todoMM: put the expected result here
+console.log(xor(8, -4)) // DM: todoMM: put the expected result here(expected result: false)
 
 // DM: todoMM: now, do this without 'let'. see the example at the bottom of this file where we did that. hint: string.split().map().reduce()
 // ASCII Total
 function uniTotal(string) {
   // total up dem unicodes!
-  let total = 0
+  let total = 0 // if I change let to const, I get an error: Assignment to constant variable.
 
   // declare a variable to hold the array of characters
   const stringArray = string.split('')
@@ -55,7 +55,7 @@ function consonantCount(str) {
   // declare an array of vowels
   const vowels = ['a', 'e', 'i', 'o', 'u']
   // declare a variable to hold the count
-  let count = 0
+  let count = 0 // the same error as above: Assignment to constant variable.
   // loop through the string
   for (let i = 0; i < str.length; i++) {
     // if the current character is not a vowel, increment the count
