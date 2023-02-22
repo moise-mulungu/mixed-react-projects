@@ -13,12 +13,13 @@ function xor(a, b) {
   
   // DM: todoMM: good! now assign this logical expression: isTrue && !isFalse to a well-named variable - the goal is to make it so that I can read this more easily without having to google and refresh my memory of xor
   // DM: todoMM: what does isTrue && !isFalse mean? describe it in the variable name 
-  const pleaseGiveMeAName = isTrue && !isFalse
+  const truthyValue = isTrue && !isFalse
+  const falsyValue = !isTrue && isFalse
 
-  if (pleaseGiveMeAName) {
+  if (truthyValue) {
     return true
   // do the same for this logical expression
-  } else if (!isTrue && isFalse) {
+  } else if (falsyValue) {
     return true
   } else {
     return false
