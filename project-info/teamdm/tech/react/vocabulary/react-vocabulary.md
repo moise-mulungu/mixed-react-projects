@@ -51,3 +51,13 @@ e.g: `data-test-id`, and `aria-label`
   * DM: in the context of JSX, "attributes" means props `<MyComponent myProp="I am an attribute of MyComponent" >`
     * the wider meaning of "attribute" is from XML, HTML `<tag attribute="value">`
 
+## react as a component-based framework/ what is a component?
+components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Components come in two types, Class components and Function components.
+
+## mechanisms of reuse
+A mechanism is reusable, if it can be employed for several domains and tasks . Focusing on usability can lead to application-specific mechanisms, that is, can reduce reusability
+* A partial is a chunk of HTML that can be inserted into another HTML document.
+* In CSS, a class is the mechanism we have for reuse.
+* In JavaScript, a function is the mechanism for reuse
+* In react, the reuse mechanism is the component. but a component all the three reuse mechanisms into one.
+
