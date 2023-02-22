@@ -87,5 +87,21 @@ notice how much of the two icons code is identical
 probably we want to abstract the identical part into a common function, let's talk next week about it
 // DM, good!, next 'll think on how to abstract, in the meantime:
 // DM: todoMM: make a list of what the two icon functions have in common
-// DM: todoMM: this is the next step to abastract, to make a list described in the line above
+// DM: todoMM: this is the next step to abstract, to make a list described in the line above
 */
+export const commonIconElements = [
+  {
+    props: {
+      size: '2em',
+      className: 'text-gray-400 hover:text-gray-500',
+      title: 'Social Media Link',
+    },
+  },
+  {
+    iconContextProvider: {
+      value: { size, className: `shared-classNames-go-here ${className}`, title },
+    },
+  },
+]
+
+// MM: todoDM: this is the list of what the three functions have in common, and the next step to abstract.

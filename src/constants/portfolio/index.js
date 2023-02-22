@@ -1,7 +1,5 @@
-import { GithubIcon } from '@/ui/icons'
-import { LinkedInIcon } from '../../ui/icons'
-// DM: todoMM: import all three in the same line
-import { AngelListIcon } from '../../ui/icons'
+import { GithubIcon, LinkedInIcon, AngelListIcon } from '@/ui/icons'
+// DM: todoMM: import all three in the same line(done)
 
 // more descriptive name, possibly, topNavLinks?
 export const topNavSiteLinks = [
