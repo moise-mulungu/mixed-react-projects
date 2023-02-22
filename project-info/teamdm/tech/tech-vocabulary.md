@@ -25,3 +25,6 @@ plug-in also called add-on or extension is a computer software that adds new fun
 A software application that helps programmers develop software code efficiently. It increases developer productivity by combining capabilities such as software editing, building, testing, and packaging in an easy-to-use application.
 
 // DM: todoMM: make a new file programming-vocabulary.md and research, write new definitions: "guard clause" (google "programming guard clause"), imperative VS declarative programming - these will help understand some of what I'm saying in your code-wars exercises. ex: using 'let' and loops is imperative programming (explicitly write each step), using chained JS array methods is declarative. BTW, I'm enjoying your definitions research, and learning myself. This understanding and vocabulary will make you stand out, so keep up the good work!(thanks, done!)
+
+## string interpolation
+string interpolation in JavaScript is a process in which an expression is inserted or placed in the string. To insert or embed this expression into the string a "template literal" (previously called "template string")is used. By using string interpolation in JavaScript, values like variables and mathematical expressions and calculations can also be added.

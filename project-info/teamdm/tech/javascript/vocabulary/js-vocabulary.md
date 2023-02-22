@@ -32,10 +32,6 @@ Type Coercion refers to the process of automatic or implicit conversion of value
 * DM: "expr1 || expr2" evaluates to expr1
 
 // DM: todoDM: what are both operators called as a group? also, what is the exact word for 'result' of the evaluation of a "logical expression"?
-
-## string interpolation
-string interpolation in JavaScript is a process in which an expression is inserted or placed in the string. To insert or embed this expression into the string a "template literal" (previously called "template string")is used. By using string interpolation in JavaScript, values like variables and mathematical expressions and calculations can also be added.
-
 ## difference between string interpolation and template literal
 
 <!-- MM: ???DM: These two expressions seem to be confusing at first to me, but I think string interpolation is the process to insert or embed, but template literal or string literal is the place to insert the string interpolation.
