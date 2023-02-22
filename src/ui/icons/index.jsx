@@ -104,4 +104,45 @@ export const commonIconElements = [
   },
 ]
 
-// MM: todoDM: this is the list of what the three functions have in common, and the next step to abstract.
+// MM: todoDM: this is the list of what the three functions have in common, and the next step to abstract. here you go:
+// DM: todoMM: abstract it
+//     I copied AngelListIcon and changed the name to Icon
+//     next step, you can abstract it by adding to props whatever is unique to each individual icon 
+export const Icon = (props) => {
+  const {
+    size = '2em',
+    className = 'text-gray-400 hover:text-gray-500',
+    title = 'Social Media Link',
+    IconComponent // ex: FaAngellist
+  } = props
+  return (
+    <IconContext.Provider
+      value={{
+        size,
+        className: `shared-classNames-go-here ${className}`,
+        title,
+      }}
+    >
+      <div>
+      {/*   
+        see which one works
+      {<IconComponent />}
+        // or?
+        {IconComponent} */}
+      </div>
+    </IconContext.Provider>
+  )
+}
+// DM: now try to write a new Angellist icon
+export const AngelListIcon = (props) => {
+  // <FaAngellist />
+  const {
+    // DM: you don't need defaults that apply to all icons here, only AngerList defaults
+    size, //  = '2em',
+    className, //  = 'text-gray-400 hover:text-gray-500',
+    title = 'Angel List',
+  } = props
+  return (
+    <Icon {/* DM: todoMM: pass the 3 props forward adding IconComponent prop */} />
+  )
+}

@@ -1,23 +1,23 @@
 // DM: this file will get big, let's put new ones at the top so we don't have to scroll
-
 /* 
-
 2 guidlines for codewars solutions:
 * never use 'let'
 * assign all logical expressions to a well-named variable
 * don't make me think!
-
 */
 
-// DM: todoMM: good! now assign this logical expression: isTrue && !isFalse to a well-named variable - the goal is to make it so that I can read this more easily without having to google and refresh my memory of xor
 //Exclusive "or" (xor) Logical Operator
 function xor(a, b) {
-  // TODO: Program Me // DM: is there still something left to do here?
   const isTrue = a || b
   const isFalse = a && b
+  
+  // DM: todoMM: good! now assign this logical expression: isTrue && !isFalse to a well-named variable - the goal is to make it so that I can read this more easily without having to google and refresh my memory of xor
+  // DM: todoMM: what does isTrue && !isFalse mean? describe it in the variable name 
+  const pleaseGiveMeAName = isTrue && !isFalse
 
-  if (isTrue && !isFalse) {
+  if (pleaseGiveMeAName) {
     return true
+  // do the same for this logical expression
   } else if (!isTrue && isFalse) {
     return true
   } else {
@@ -26,28 +26,10 @@ function xor(a, b) {
   // return (a || b) && !(a && b); this is the short version
 }
 
-console.log(xor(8, -4)) // DM: todoMM: put the expected result here(expected result: false)
+console.log(xor(8, -4)) // false
 
-// DM: todoMM: now, do this without 'let'. see the example at the bottom of this file where we did that. hint: string.split().map().reduce()
-// ASCII Total
-function uniTotal(string) {
-  // total up dem unicodes!
-  let total = 0 // if I change let to const, I get an error: Assignment to constant variable.
-
-  // declare a variable to hold the array of characters
-  const stringArray = string.split('')
-  console.log(stringArray)
-  // map over the array of characters and add the unicode value to the total
-  stringArray.map((char) => {
-    total += char.charCodeAt(0)
-  })
-  // for (let i = 0; i < string.length; i++) {
-  //   total += string.charCodeAt(i)
-  // }
-  // return the total
-  return total
-}
-console.log(uniTotal('aloha'))
+// DM: todoMM: that was a good start!, I showed the rest in ./imperative-to-declarative-transformation.js 
+// DM:: todoMM once you understand that, do similar for consonantCount()
 
 // DM: todoMM: same, do it without let
 // Count consonants
@@ -74,11 +56,11 @@ console.log(consonantCount('ahddbsa'))
 // Square(n) Sum
 // description: Complete the square sum function so that it squares each number passed into it and then sums the results together.
 function squareSum(numbers) {
-  return numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)
+  return numbers.map((num) => num * num).reduce((acc, cur) => acc + cur, 0)
 }
 console.log(squareSum([1, 2, 2])) // 10
 // DM: as an arrow function, concise, but it starts to feel slightly less readable, IMO
-const squareSumAf = (numbers) => numbers.map((num) => num * num).reduce((acc, cur) => acc + cur)
+const squareSumAf = (numbers) => numbers.map((num) => num * num).reduce((acc, cur) => acc + cur, 0)
 // DM: todoDM: write an exercise to assign the array method callbacks to variables with descriptive names
 // DM: todoDM: clean up this page of my comments or extra stuff
 

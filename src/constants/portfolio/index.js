@@ -1,15 +1,12 @@
 import { GithubIcon, LinkedInIcon, AngelListIcon } from '@/ui/icons'
-// DM: todoMM: import all three in the same line(done)
 
-// more descriptive name, possibly, topNavLinks?
+
 export const topNavSiteLinks = [
   { id: 'work', name: 'Portfolio', anchor: 'work' },
   { id: 'about', name: 'About', anchor: 'about' },
   { id: 'contact', name: 'Contact', anchor: 'contact' },
 ]
-// DM: todoMM: get 'work' from topNavSiteLinks instead of 'hard-coding' it. hint, use techniques in findObjectInArrayOfObjects(in progress) DM: I think you're done with this one.
-//     why? because you know that the default link is always the first one in topNavSiteLinks
-//          if you change the order in the future, you don't have to edit defaultTopNavSiteLinkId, less chance of bugs from type of forgetting, more maintainable code(done)
+
 export const defaultTopNavSiteLinkId = topNavSiteLinks[0].id
 
 export const theMan = 'Moise M Mulungu'
@@ -33,3 +30,4 @@ export const footerSocialLinks = [
 ]
 export const defaultFooterSocialLinkId = footerSocialLinks[0].id
 // DM: yup, see, now you don't have 'githup' hard-coded. no "magic strings"!
+// DM: todoMM: add "magic strings" to programming vocab file

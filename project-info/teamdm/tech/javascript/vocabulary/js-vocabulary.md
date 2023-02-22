@@ -41,5 +41,6 @@ DM: but yes the ${} is where the string interpolation happens in `text, text ${}
 DM: and: `text, text ${ 'any expression here will be coerced to a String' } more text`
 -->
 
-## short-circuit evaluation
-In JavaScript, short-circuiting is the evaluation of an expression from left to right with || and && operators. If the condition is met and the rest of the conditions won't affect the already evaluated result, the expression will short-circuit and return that result (value)
+## short-circuiting evaluation
+the evaluation of an expression from left to right with || and && operators. If the condition is met and the rest of the conditions won't affect the already evaluated result, the expression will short-circuit and return that result (value)
+DM: todoDM: concise examples from my Anki
