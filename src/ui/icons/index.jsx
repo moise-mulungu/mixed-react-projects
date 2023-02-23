@@ -146,3 +146,5 @@ export const AngelListIcon = (props) => {
     <Icon {/* DM: todoMM: pass the 3 props forward adding IconComponent prop */} />
   )
 }
+
+// MM: toDM: I'm not sure what you mean by "pass the 3 props forward adding IconComponent prop, can explain more, please?"
