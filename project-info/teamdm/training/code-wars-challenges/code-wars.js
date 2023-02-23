@@ -10,15 +10,15 @@
 function xor(a, b) {
   const isTrue = a || b
   const isFalse = a && b
-  
+
   // DM: todoMM: good! now assign this logical expression: isTrue && !isFalse to a well-named variable - the goal is to make it so that I can read this more easily without having to google and refresh my memory of xor
-  // DM: todoMM: what does isTrue && !isFalse mean? describe it in the variable name 
+  // DM: todoMM: what does isTrue && !isFalse mean? describe it in the variable name
   const truthyValue = isTrue && !isFalse
   const falsyValue = !isTrue && isFalse
 
   if (truthyValue) {
     return true
-  // do the same for this logical expression
+    // do the same for this logical expression
   } else if (falsyValue) {
     return true
   } else {
@@ -29,7 +29,7 @@ function xor(a, b) {
 
 console.log(xor(8, -4)) // false
 
-// DM: todoMM: that was a good start!, I showed the rest in ./imperative-to-declarative-transformation.js 
+// DM: todoMM: that was a good start!, I showed the rest in ./imperative-to-declarative-transformation.js
 // DM:: todoMM once you understand that, do similar for consonantCount()
 
 // DM: todoMM: same, do it without let
@@ -52,6 +52,15 @@ function consonantCount(str) {
 
 console.log(consonantCount('ahddbsa'))
 
+const myConsonantCount = (str) => {
+  const vowels = ['a', 'e', 'i', 'o', 'u']
+  let count = 0
+  const selectedConsonants = str.split('').filter((char) => !vowels.includes(char))
+
+  return (count = selectedConsonants.length)
+}
+
+console.log(myConsonantCount('arestationary'))
 // MM: todoMM: some test cases are failing, I think it's because of the case sensitivity and some special characters. // DM: can you give me an example of which is failing?
 
 // Square(n) Sum
