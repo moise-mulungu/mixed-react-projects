@@ -16,8 +16,8 @@ export async function getStaticProps() {
     },
   }
 }
-
-export default function Index(props) {
+// DM: always give a descriptive name to a Component - easier to find in React Dev Tools and other IDE tooling
+export default function PortfolioTopLevelComponent(props) {
   const { data } = props
 
   return (
