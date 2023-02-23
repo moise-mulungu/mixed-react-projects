@@ -13,6 +13,10 @@ function xor(a, b) {
 
   // DM: todoMM: good! now assign this logical expression: isTrue && !isFalse to a well-named variable - the goal is to make it so that I can read this more easily without having to google and refresh my memory of xor
   // DM: todoMM: what does isTrue && !isFalse mean? describe it in the variable name
+  // DM: the names truthyValue and falsyValue don't help me understand the XOR logic
+  //     Name these variables according to what they mean in the context of XOR logic
+  //     honestly, right now, I don't remember what XOR is. A rule of clear programming: "don't make me think" - explain XOR logic to me with good variable names) - if you need to write long explanatory comments above each statement, that is OK, also. You can do that as a  first step, then we can pick a good variable name as the next step
+  //     it's OK if you need to research about XOR in order to choose a good name
   const truthyValue = isTrue && !isFalse
   const falsyValue = !isTrue && isFalse
 
@@ -57,10 +61,17 @@ const myConsonantCount = (str) => {
   let count = 0
   const selectedConsonants = str.split('').filter((char) => !vowels.includes(char))
 
+  // DM: excellent! you;re almost there! 
+  // write the 'return' statement like this:
+  // return selectedConsonants.length
+  // and you can get rid of the variable count (and the 'let')
+  // can you see how you don't even need a variable to hold the "return value"?
+  // because the desired return value is right there in selectedConsonants.length
+  // you just have to return that and you're done
   return (count = selectedConsonants.length)
 }
-
 console.log(myConsonantCount('arestationary'))
+
 // MM: todoMM: some test cases are failing, I think it's because of the case sensitivity and some special characters. // DM: can you give me an example of which is failing?
 
 // Square(n) Sum

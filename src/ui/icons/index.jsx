@@ -147,4 +147,7 @@ export const AngelListIcon = (props) => {
   )
 }
 
-// MM: toDM: I'm not sure what you mean by "pass the 3 props forward adding IconComponent prop, can explain more, please?"
+// MM: ???DM: I'm not sure what you mean by "pass the 3 props forward adding IconComponent prop, can explain more, please?"
+// DM: in addition to size, className and title props, pass to <Icon/> the icon you imported from react-icon, FaAngellist
+//     FaAngellist can be passed as a prop - name the prop: IconComponent - give it a try
+// DM: todoDM: naming conventions: should IconComponent be in StartCase?

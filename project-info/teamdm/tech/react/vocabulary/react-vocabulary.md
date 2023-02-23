@@ -54,7 +54,7 @@ e.g: `data-test-id`, and `aria-label`
 ## react as a component-based framework/ what is a component?
 components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Components come in two types, Class components and Function components.
 
-// DM: cool! new to me (the term, not the concept :) 
+// DM: todoMM: let's put this in programming-vocab, even though there is a small mention of React, it is a general concept
 ## mechanisms of reuse
 * A mechanism is reusable, if it can be employed for several *domains* and tasks.
 * DM: todoDM: read more on this. usability UX? usability/reusability balance
@@ -64,3 +64,4 @@ components are independent and reusable bits of code. They serve the same purpos
 * In JavaScript, a function is the *mechanism of reuse*
 * In react, the reuse mechanism is the component. But, a component all the three reuse mechanisms into one.
 
+## DM: todoMM: render props
