@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import TestExample from '@/features/component-examples/test-example'
+import TestExample2 from '@/features/component-examples/test-example2'
 
 
 
@@ -13,7 +14,7 @@ export default function ComponentExamples(props) {
       </Head>
 
       <TestExample person={'Moise'} />
-      <TestExample person={'Duncan'} />
+      <TestExample2 person={'Duncan'} />
     </div>
   )
 }
