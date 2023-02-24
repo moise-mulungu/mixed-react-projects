@@ -17,3 +17,10 @@ const colors = ['red', 'green', 'blue']
 const [firstColor, secondColor] = colors  // this one is similar to const firstColor = colors[0] and const secondColor = colors[1]
 console.log(firstColor) // ‘red’
 console.log(secondColor) // ‘green’
+
+// parameter destructuring
+function printUser({ name, country }) {
+    console.log(name, country)
+    }
+printUser(user) // ‘Moise theMan Congo’
+

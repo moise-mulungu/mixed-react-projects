@@ -49,3 +49,7 @@ DM: todoDM: concise examples from my Anki
 The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
 Example can be found in the `src/utils/array/snippets/destructuring.js`
 
+## default values
+this method allows to get a default value of a destructuring parameter property that has not been given.
+
+
