@@ -45,7 +45,7 @@ DM: and: `text, text ${ 'any expression here will be coerced to a String' } more
 the evaluation of an expression from left to right with || and && operators. If the condition is met and the rest of the conditions won't affect the already evaluated result, the expression will short-circuit and return that result (value)
 DM: todoDM: concise examples from my Anki
 
-## object destructuring(destructuring assignment)
+## destructuring assignment(object and array destructuring)
 The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
 Example can be found in the `src/utils/array/snippets/destructuring.js`
 
