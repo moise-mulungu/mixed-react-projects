@@ -1,3 +1,4 @@
+
 # difference between quotes(“ ”) and backticks(`` );
 Quotes are used for creating strings while backticks are for embedding variables in a string
 e.g: const userName = ‘Mail’
@@ -30,6 +31,7 @@ console.log(country); // ‘Canada’
 
 Const name = user.name
 Const country = user.country
+```
 
 # Module
 
@@ -38,7 +40,18 @@ A module is a JavaScript file that can contain one or more exports. We can pull 
 # A callback function
 The term “callback function” refers to a function that we pass to another function
 
-# JavaScript loop methods
+# JavaScript array (looping) methods
+array.filter is to make an array into a smaller array - "smaller array" is the key concept, not the logic of the filter callback
+array.map is to transform each element of an array into something different
+array.reduce is to transform an array into something else (ex: into a number, or an object)
+
+array.forEach is for "side effects" 
+* the callback return value is always undefined! you cannot chain
+* side effects: ex: like console.log
+* try to use different array function 
+
+// DM: todoDM: individual drills, log the current value in the callback, forEach first (log value, log index, return value), map (return value), filter, reduce
+
 ## forEach: when we want to perform some sort of action (side effect) on every item in an array.
 ```js
 const pizzaToppings = [
@@ -95,4 +108,3 @@ console.log(screamedNames);
 
 ;[2, 5, 3].sort((a, b) => a - b) // !!! never a > b! I've done this a few times. Doesn't work because ... a>b returns a boolean, not a number
 
-// DM: todoMM: remove all the below once you've moved these to other files(done)

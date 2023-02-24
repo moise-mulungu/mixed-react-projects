@@ -1,4 +1,6 @@
-//object destructuring
+// types of "destructuring assignment"
+
+// object destructuring
 const user = {
   name: 'Moise theMan',
   city: 'Goma',
@@ -12,7 +14,7 @@ const { name, country } = user
 console.log(name) // ‘Moise theMan’
 console.log(country) // ‘Congo’
 
-//array destructuring
+// array destructuring
 const colors = ['red', 'green', 'blue']
 const [firstColor, secondColor] = colors  // this one is similar to const firstColor = colors[0] and const secondColor = colors[1]
 console.log(firstColor) // ‘red’
@@ -24,3 +26,4 @@ function printUser({ name, country }) {
     }
 printUser(user) // ‘Moise theMan Congo’
 
+// DM: todoMM: excellent!, now add "rest parameters" 

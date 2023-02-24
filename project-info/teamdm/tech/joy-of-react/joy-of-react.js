@@ -1,3 +1,4 @@
+
 // Extract component
 function App() {
   return (
@@ -35,9 +36,9 @@ function App() {
 
 export default App
 
+// DM: todoMM: put this example into the new component-examples page
 // Solution
-
-unction ContactCard({ name, job, email }) {
+function ContactCard({ name, job, email }) {
   return (
     <li className="contact-card">
       <h2>{name}</h2>
@@ -135,6 +136,7 @@ function Button({ color, borderColor, children }) {
   );
 }
 
+// DM: good job! learning about the 'children' prop!
 // Solution 2
 function Button({ themeColor, children }) {
   return (
@@ -159,6 +161,8 @@ function Button({ themeColor, children }) {
 function Button({ status, children }) {
   let themeColor;
 
+  // DM: todoMM: read about the JS switch statement, and try using it here (another way to avoid 'let', and it will be more readable)
+  //             after you do that, put this into src/ui/forms/button.jsx
   if (status === 'cancel') {
     themeColor = 'red'
   } else if (status === 'confirm') {

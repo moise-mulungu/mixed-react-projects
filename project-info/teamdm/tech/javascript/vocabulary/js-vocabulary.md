@@ -51,5 +51,6 @@ Example can be found in the `src/utils/array/snippets/destructuring.js`
 
 ## default values
 this method allows to get a default value of a destructuring parameter property that has not been given.
+ex: const { property1 = 'defaultValue} = {}
 
-
+DM: good stuff!

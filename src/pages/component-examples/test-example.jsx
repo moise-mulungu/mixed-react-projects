@@ -14,6 +14,11 @@ export default function ComponentExamples(props) {
       </Head>
 
       <TestExample person={'Moise'} />
+      {/* 
+       DM: '@/features/component-examples/test-example2' is the same as '@/features/component-examples/test-example'
+       DM: todoMM: try <TestExample person={'Duncan'} />
+                   as you can now realize, my instructions were not the best way to do it
+      */}
       <TestExample2 person={'Duncan'} />
     </div>
   )

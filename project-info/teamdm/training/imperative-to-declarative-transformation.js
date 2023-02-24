@@ -34,9 +34,12 @@ function uniTotalTransformationStep2(string) {
 console.log(uniTotalTransformationStep2('aloha'))
 
 // use array.map to transform array of characters to an array of charCodes
-//     array.map is for transform each element of an array
 // use array.reduce to perform the calculation and remove the need for 'let'
-//     array.reduce is to transform an array into something else (ex: a number, or an object)
+// use array.filter is to make an array into a smaller array - "smaller array" is the key concept, not the nature of the filter
+
+
+
+
 function uniTotalTransformationStep3(string) {
 	const chars = string.split('') // ['a', 'l', 'o', 'h', 'a', ]
 	const charCodes = chars.map((char) =>  {

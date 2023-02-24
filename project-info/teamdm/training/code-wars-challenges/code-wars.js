@@ -117,5 +117,6 @@ console.log(squareSumWithLet([1, 2, 2]))
 
 function chromosomeCheck(sperm) {
   // in progress
+  // DM: first step: determine what are the "inputs" and what are the "outputs"
 }
 

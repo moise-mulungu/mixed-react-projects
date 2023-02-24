@@ -23,7 +23,8 @@ export default function ComponentExamples(props) {
       <Head>
         <title>Component Examples</title>
       </Head>
-
+      {/* DM todoMM: later: choose from TWui a layout/grid to hold these example links */}
+      {/* DM todoDM: maybe show each example in a (pop-up) modal? instead of linking */}
       <Link href={'/component-examples/test-example'}>Test Example</Link>
       <Link href={'/component-examples/test-example2'}>Test Example 2</Link>
     </div>
