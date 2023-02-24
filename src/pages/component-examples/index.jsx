@@ -25,6 +25,7 @@ export default function ComponentExamples(props) {
       </Head>
 
       <Link href={'/component-examples/test-example'}>Test Example</Link>
+      <Link href={'/component-examples/test-example2'}>Test Example 2</Link>
     </div>
   )
 }

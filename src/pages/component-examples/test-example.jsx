@@ -12,7 +12,8 @@ export default function ComponentExamples(props) {
         <title>Component Examples - Test Example</title>
       </Head>
 
-      <TestExample person={"Moise"}/>
+      <TestExample person={'Moise'} />
+      <TestExample person={'Duncan'} />
     </div>
   )
 }
