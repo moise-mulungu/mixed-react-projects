@@ -14,6 +14,6 @@
 [1, 2, 3].reduce((sum, number) => sum + number, 0)
 
 // create a new array of the same length, multiplying each element by 10
-[1, 2, 3].forEach((number) => number * 10) // [10, 20, 30]
+[1, 2, 3].map((number) => number * 10) // [10, 20, 30]
 // create a smaller array containing only the values that are less than 3
 [1, 2, 3].filter((number) => number < 3)
