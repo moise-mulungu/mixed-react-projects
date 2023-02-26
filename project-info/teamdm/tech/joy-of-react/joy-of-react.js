@@ -36,5 +36,5 @@ function App() {
 
 export default App
 
-// DM: todoMM: put this example into the new component-examples page
+
 // Solution

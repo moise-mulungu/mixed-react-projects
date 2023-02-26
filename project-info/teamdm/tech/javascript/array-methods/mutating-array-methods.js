@@ -28,16 +28,28 @@
 // slice: copy a portion of an array
 [1, 2, 3].slice(1, 2) // 2
 
+// note, I started omitting the const so that I don't get errors in the node REPL when I re-declare the same variable 
 
+// background information: what happens when you mutate
+myArray = []
+myArrayCloned = [...myArray] // a new array is created
+myArrayCloned === myArray // false
+myArrayCopied = myArray // the same array is copied
+myArrayCopied === myArray // true
 
 // DM: todoDM: great, now edit your above examples to do each operation without mutating, like this:
 [...[2, 1]].sort() // 1, 2
-// typically, you'll have an existing variable that you don't want to mutate (a good rule, unless use up too much memory making multiple copies)
-const myArray = [2, 1]
-const mySortedArray = [...myArray].sort() //  [1, 2]
+// typically, you'll have an existing variable that you don't want to mutate 
+myArray = [2, 1]
+mySortedArray = [...myArray].sort() //  [1, 2]
 myArray // still [2, 1]
 // but..., if you 
-const mySortedArray = myArray.sort() // [1, 2]
+mySortedArray = myArray.sort() // [1, 2]
 myArray // [1, 2]
 mySortedArray === myArray // true - it is the same array, not just the same order of elements
+// but, so that the examples above remain concise, we won't create a variable, but simply use an array literal in order to have each example on only one line
+
+
+
+
 
