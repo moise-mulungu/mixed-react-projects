@@ -38,3 +38,25 @@ const evenNumbers = numbers.filter((num) => {
 }) 
 
 // great!
+
+// All Star Code Challenge
+function strCount(str, letter) {
+  //code here
+  const arrayOfLetters = str.split('')
+  const filteredArray = arrayOfLetters.filter((char) => {
+    return char === letter
+  }
+  )
+  return filteredArray.length
+
+  //2. return str.split('').filter((char) => char === letter).length
+
+  // 3. const count = 0;
+  // const mappedString = str.map((char) => {
+  //   if (char === letter) {
+  //     count++
+  //   }
+  // }
+  // )
+  // return count
+} 
