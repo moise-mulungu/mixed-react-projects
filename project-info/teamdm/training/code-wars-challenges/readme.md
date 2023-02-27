@@ -12,14 +12,14 @@ DM: Moise, follow all of these when doing any coding exercise problem. It will w
 1. describe the inputs and outputs in detail
 2. validate the input (convert types or transform if possible) (defensive coding)
 3. break down the the 'variable' elements of the solution into the most granular (smallest) parts
-   * assign each to a well-named, descriptive variable
+   * assign each part (string, boolean expression, etc.) to a well-named, descriptive variable
 4. use the named parts to create a readable solution
 5. list and describe anything that is unclear in the challenge description
    * these would be the questions you'd be expected to ask in a interview situation
    * practice reading the challenge description carefully
 6. write tests that cover the input variants
 * note: via these tasks, you are essentially repeating the key elements of the challenge description in the code
-* 
+
 * example (somewhat exaggerated to cover all 6 points)
 ```js
 // Determine offspring sex based on genes XX and XY chromosomes

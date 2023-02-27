@@ -14,7 +14,8 @@ e.g : function exclaim(string) {
 const exclaim = string => string + '!';
 
 # object destructuring vs Object accessing
- is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
+an expression used to unpack values from arrays, or properties from objects, into distinct variables
+DM: this is a great definition. I made it a little shorter (faster to read)
 
 # Module
 A module is a JavaScript file that can contain one or more exports. We can pull the code from one module into another using the import statement.
@@ -35,14 +36,22 @@ array.forEach is for "side effects"
 // DM: todoDM: individual drills, log the current value in the callback, forEach first (log value, log index, return value), map (return value), filter, reduce
 
 ## forEach: 
-when we want to perform some sort of action (side effect) on every item in an array.
+to perform some sort of action (side effect) on every item in an array.
 
 ## filter: 
-takes a callback function, and that callback function will be called once per item in the array.
+takes a callback function which will be called once per item in the array.
 
 
 ## map: 
-In many ways, map is quite a lot like forEach. We give it a callback function, and it iterates over the array, calling the function once for each item in the array. 
+iterates over the array, and, once for each element in the array, invokes the callback function (which must return the new value at that index in the array)
 
 ## difference between map and forEach 
-Both of the two array methods iterate through an array with a callback function, but map produces a new array, and does not mutate the original array, unlike forEach which mutate the initial array.
+Both of the two array methods iterate through an array with a callback function, but with map the elements of the resulting new array are determined by the value returned by the callback. with forEach it does not matter what value the callback function returns
+... that was wordy, sometimes examples are OK
+[1,2].map(e => e) // [1,2]
+[1,2].foreach(e => e) // [undefined, undefined]
+
+## array **element**
+let's only use 'element' for a member of an array, just to be consistent (why? for consistent callback parameter names: element, e) (ok to break the rule against abbreviations for brevity in callback functions)
+
+DM: good work thinking about these and moving code to the .js file. I made some edits, which is the plan, you don't have to get the exact correct answer, but learn from the process of trying, then seeing my edits. super!

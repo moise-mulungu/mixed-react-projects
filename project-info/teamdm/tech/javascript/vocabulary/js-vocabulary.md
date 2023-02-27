@@ -56,9 +56,15 @@ ex: const { property1 = 'defaultValue} = {}
 DM: good stuff!
 
 ## module
-
-A module in JavaScript is just a file containing related code. we use the `import` and `export` keywords to share and receive functionalities respectively across different modules. The `export` keyword is used to make a variable, function, class or object accessible to other modules.
-
-## default vs name export
-* named export allows to export one or more exports(functions, variables) per module, and import with squiggly(curly) brackets.
+a file containing related code. we use the `import` and `export` keywords to share and receive functionalities respectively across different modules. The `export` keyword is used to make a variable, function, class or object accessible to other modules.
+* DM: great! keep making new entries for any term you see that is not familiar
+* 
+## default export vs named export
+* named export - export one or more values (functions, variables) per module, and import with *curly brackets*.
 * default export allows only one export per module and without any curly brackets.
+
+## brackets
+{} curly brackets
+() parentheses
+[] square brackets
+<> angle brackets

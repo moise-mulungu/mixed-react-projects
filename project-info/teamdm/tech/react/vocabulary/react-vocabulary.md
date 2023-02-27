@@ -67,5 +67,6 @@ components are independent and reusable bits of code. They serve the same purpos
 ## DM: todoMM: render props
 
 ## fragments
-A fragment is a special React component that does not produce a DOM node or  let you group a list of children without adding extra nodes to the DOM.
+A fragment is 
+* a special React component that does not produce a DOM node * lets you group a list of children without adding extra nodes to the DOM
 `<React.Fragment></React.Fragment>` or with an empty tags `<></>`.

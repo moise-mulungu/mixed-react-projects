@@ -1,5 +1,3 @@
-// DM: !!!: this file will get big, let's put new ones at the top so we don't have to scroll
-
 //Exclusive "or" (xor) Logical Operator
 function xor(a, b) {
   const isTrue = a || b
@@ -32,9 +30,9 @@ console.log(xor(8, -4)) // false
 // DM: that was a good start!, I showed the rest in ./imperative-to-declarative-transformation.js
 // DM:: todoMM once you understand that, do similar for consonantCount()
 
-// DM: same, do it without let
+//////////////////////////////////////////////////////////////////////
 // Count consonants
-function consonantCount(str) {
+function consonantCountWithLet(str) {
   // declare an array of vowels
   const vowels = ['a', 'e', 'i', 'o', 'u']
   // declare a variable to hold the count
@@ -50,14 +48,13 @@ function consonantCount(str) {
   return count
 }
 
-console.log(consonantCount('ahddbsa'))
+console.log(consonantCountWithLet('ahddbsa'))
 
 const myConsonantCount = (str) => {
   const vowels = ['a', 'e', 'i', 'o', 'u']
   let count = 0
   const selectedConsonants = str.split('').filter((char) => !vowels.includes(char))
 
-  // DM: excellent! you;re almost there!
   // DM: todoMM: excellent! you;re almost there!
   // write the 'return' statement like this:
   // return selectedConsonants.length
@@ -71,6 +68,7 @@ console.log(myConsonantCount('are stationary'))
 
 // MM: todoMM: some test cases are failing, I think it's because of the case sensitivity and some special characters. // DM: todoMM: can you give me an example of which is failing?
 
+//////////////////////////////////////////////////////////////////////
 // Square(n) Sum
 // description: Complete the square sum function so that it squares each number passed into it and then sums the results together.
 function squareSum(numbers) {
@@ -88,6 +86,7 @@ function squareSumPrev(numbers) {
 }
 console.log(squareSum([1, 2, 2])) // 10
 
+//////////////////////////////////////////////////////////////////////
 // Determine offspring sex based on genes XX and XY chromosomes
 // Description
 // The male gametes or sperm cells in humans and other mammals are heterogametic and contain one of two types of sex chromosomes. They are either X or Y. The female gametes or eggs however, contain only the X sex chromosome and are homogametic.
@@ -131,12 +130,15 @@ function chromosomeCheck(sperm) {
   //   return "Congratulations! You're going to have a daughter."
   // }
 }
+// 6) test input variants
+chromosomeCheck('Y') // "Congratulations! You're going to have a son."
+chromosomeCheck('y') // "Congratulations! You're going to have a son."
+chromosomeCheck('X') // "Congratulations! You're going to have a daughter."
 
-// console.log(chromosomeCheck('XY')) // "Congratulations! You're going to have a son."
-
-// Be Concise I - The Ternary Operator
+//////////////////////////////////////////////////////////////////////
+// Be Concise I - The Conditional (ternary) Operator
 // Description
-// You are given a function describeAge / describe_age that takes a parameter age (which will always be a positive integer) and does the following:
+// You are given a function describeAge / describe_age that takes a parameter age (which will *always* be a *positive integer*) and does the following:
 
 // If the age is 12 or lower, it return "You're a(n) kid"
 // If the age is anything between 13 and 17 (inclusive), it return "You're a(n) teenager"
@@ -154,7 +156,12 @@ function describeAge(age) {
       ? 'adult'
       : 'elderly'
   }`
-  // MM: todoDM: this solution has 168 characters, but the challenge is to limit to 137 characters. Any ideas on how to do that?
+  // MM: todoDM: (done) this solution has 168 characters, but the challenge is to limit to 137 characters. Any ideas on how to do that?
+  // DM: age >= 13 can be removed, it has already been ruled out. can you see another condition that has been removed?
+  //     warning: conciseness removes clarity. motto: "more lines makes for faster reading", so in a code review, I would NOT tell you to remove: age >= 13
+  //     but for purposes of this exercise, it is a valid tactic, and your use of the "template literal" is a great way to remove repeated text.
+  // DM: todoMM: write another solution for this exercise, following the new Rules and Steps that I put into ./readme.md. Once you do that, I can show you how to make it more readable (note: deeply nesting the conditional operator is discouraged because it's hard to read), and, once you've done step 3, is't possible we can make the solution even more concise.
+
   // return age <= 12
   //   ? "You're a(n) kid"
   //   : age >= 13 && age <= 17
@@ -173,7 +180,20 @@ function describeAge(age) {
   //     return "You're a(n) elderly";
   //   }
 }
-// 6) test input variants
-chromosomeCheck('Y') // "Congratulations! You're going to have a son."
-chromosomeCheck('y') // "Congratulations! You're going to have a son."
-chromosomeCheck('X') // "Congratulations! You're going to have a daughter."
+
+// DM: todoMM: be sure to finish all the todoMMs in this file before doing any more codewars exercises. Let's get those concepts/approaches completed first (they will serve as patterns for future codewars exercises)
+
+/* 
+
+
+Moise, for 2023-02-28, focus on these two:
+
+1) understanding how to add component examples to the structure I set up yesterday. Start with the repo homepage pages/index.jsx and follow the code. Get familiar with it and ask questions. It's really important that you be able to reproduce Joy of React examples in the repo in features/component-examples
+
+2) training/code-wars-challenges/
+* check out the new readme.md 
+* finish all the todoMM in codewars.js before getting new codewars exercises. It's super-important that you get these techniques firmly mastered.
+
+
+
+*/

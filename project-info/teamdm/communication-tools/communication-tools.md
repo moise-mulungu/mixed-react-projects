@@ -29,6 +29,9 @@
   * MM: todoMM: MM tells MM a task to do
   * DM: todoMM: DM tells MM a task to do
   * DM: todoDM: DM tells DM a task to do
+  * upon completion: add (done) just after the last ":". 
+    * ex: MM: todoDM: (done) MM tells DM a task to do
+    * then Moise can erase this line once he's sure DM has completed the task
 * after a task is completed, add (done) or (partial - explain what's left, in this case). Examples:
   * (done) Moise's task 1
   * (partial) Moise's task 2
