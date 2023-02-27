@@ -17,3 +17,5 @@
 [1, 2, 3].map((number) => number * 10) // [10, 20, 30]
 // create a smaller array containing only the values that are less than 3
 [1, 2, 3].filter((number) => number < 3)
+
+// great!
