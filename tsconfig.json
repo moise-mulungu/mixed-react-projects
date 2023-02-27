@@ -14,11 +14,32 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "baseUrl": "src/",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["/*"], // for baseUrl
+      "@/constants/*": ["constants/*"],
+      "@/features/*": ["features/*"],
+      "@/server/*": ["server/*"],
+      "@/ui/*": ["ui/*"],
+      "@/utils/*": ["utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }
+
+/* "baseUrl": "src/",
+// Module Path Aliases
+"paths": {
+  "@/*": ["/*"], // for baseUrl
+  "@/constants/*": ["constants/*"],
+  "@/data/*": ["data/*"],
+  "@/features/*": ["features/*"],
+  "@/lib/*": ["lib/*"],
+  "@/server/*": ["server/*"],
+  "@/ui/*": ["ui/*"],
+  "@/utils/*": ["utils/*"],
+  // todo: remove these
+  "@/data-prep/*": ["lib/data-prep/*"],
+  "@/layouts/*": ["ui/layouts/*"]
+}, */

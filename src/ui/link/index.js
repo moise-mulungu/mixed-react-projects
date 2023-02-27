@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import { default as NextLink } from 'next/link'
-// todo: detail, as in link2refactor
+// DM: todoMM: add to the ui-examples page 3 examples representing each of the link types in the logic below
 export default function Link({ href, className = 'underline', ...rest }) {
   const isInternalLink = href && href.startsWith('/')
   const isAnchorLink = href && href.startsWith('#')

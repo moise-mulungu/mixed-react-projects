@@ -1,14 +1,17 @@
 import { createElement } from 'react'
 /* 
 
-DM: Moise, this is a configurable H tag. this is one way of doing it, putting it here as an example to think about, don't use it for now
+DM: Moise, this is a configurable H tag. this is one way of doing it, putting it here as an example to think about
 
+usage: 
+import Heading from '@ui/heading'
+  <Heading level="1" >My Heading</Heading>
 
 */
 export default function Heading({ children, level, className = '' }) {
   // level can be either h1 or 1, h2 or 2, ...
   const hTagName = 'h' + level.replace('h', '')
-  // <div className="my-2"></div>;
+
   function styles() {
     const shared = `
     ${/* font-semibold */ ''}

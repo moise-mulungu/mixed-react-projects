@@ -36,3 +36,5 @@ const numbers = [5, 12, 15, 31, 40]
 const evenNumbers = numbers.filter((num) => {
   return num % 2 === 0
 }) 
+
+// great!
