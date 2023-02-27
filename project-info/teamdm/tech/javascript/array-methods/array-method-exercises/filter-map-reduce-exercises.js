@@ -15,5 +15,24 @@
 
 // create a new array of the same length, multiplying each element by 10
 [1, 2, 3].map((number) => number * 10) // [10, 20, 30]
+const people = [
+  { name: 'Aisha', grade: 89 },
+  { name: 'Bruno', grade: 55 },
+  { name: 'Carlos', grade: 68 },
+  { name: 'Dacian', grade: 71 },
+  { name: 'Esther', grade: 40 },
+]
+
+const screamedNames = people.map((person) => {
+  return person.name.toUpperCase()
+})
+
+console.log(screamedNames) // ['AISHA', 'BRUNO', 'CARLOS', 'DACIAN', 'ESTHER']
+
 // create a smaller array containing only the values that are less than 3
 [1, 2, 3].filter((number) => number < 3)
+const numbers = [5, 12, 15, 31, 40]
+
+const evenNumbers = numbers.filter((num) => {
+  return num % 2 === 0
+}) 

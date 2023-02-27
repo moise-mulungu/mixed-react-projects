@@ -14,27 +14,9 @@ e.g : function exclaim(string) {
 const exclaim = string => string + '!';
 
 # object destructuring vs Object accessing
-
-```js 
-const user = {
- name: 'François Bouchard',
- city: 'Saint-Louis-du-Ha! Ha!',
- province: 'Québec',
- country: 'Canada',
- postalCode: 'A1B 2C3',
-};
-
-const { name, country } = user;
-
-console.log(name); // ‘François Bouchard’
-console.log(country); // ‘Canada’
-
-Const name = user.name
-Const country = user.country
-```
+ is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
 
 # Module
-
 A module is a JavaScript file that can contain one or more exports. We can pull the code from one module into another using the import statement.
 
 # A callback function
@@ -52,59 +34,15 @@ array.forEach is for "side effects"
 
 // DM: todoDM: individual drills, log the current value in the callback, forEach first (log value, log index, return value), map (return value), filter, reduce
 
-## forEach: when we want to perform some sort of action (side effect) on every item in an array.
-```js
-const pizzaToppings = [
-'cheese',
-'avocado',
-'halibut',
-'custard',
-];
-`
-* side effect like console.log or assignment `myObj.property = value` in contrast to map/filter/reduce which return values and thus can be chained. forEach is usually last in a chain of array methods
-* cannot await promises in forEach
+## forEach: 
+when we want to perform some sort of action (side effect) on every item in an array.
 
-```js
-pizzaToppings.forEach((topping, index) => {
-console.log(index, topping);
-});
-```
-DM: use the backticks ```js so we can see color formatting
-## filter: takes a callback function, and that callback function will be called once per item in the array.
-```js
-const students = [
- { name: 'Aisha', grade: 89 },
- { name: 'Bruno', grade: 55 },
- { name: 'Carlos', grade: 68 },
- { name: 'Dacian', grade: 71 },
- { name: 'Esther', grade: 40 },
-];
+## filter: 
+takes a callback function, and that callback function will be called once per item in the array.
 
-const studentsWhoPassed = students.filter(student => {
- return student.grade >= 60
-});
-```
 
-console.log(studentsWhoPassed);
+## map: 
+In many ways, map is quite a lot like forEach. We give it a callback function, and it iterates over the array, calling the function once for each item in the array. 
 
-## map: In many ways, map is quite a lot like forEach. We give it a callback function, and it iterates over the array, calling the function once for each item in the array.
-
-```js
-const people = [
- { name: 'Aisha', grade: 89 },
- { name: 'Bruno', grade: 55 },
- { name: 'Carlos', grade: 68 },
- { name: 'Dacian', grade: 71 },
- { name: 'Esther', grade: 40 },
-];
-
-const screamedNames = people.map(person => {
- return person.name.toUpperCase();
-});
-
-console.log(screamedNames);
-
-// examples with array.prototypes.sort();
-
-;[2, 5, 3].sort((a, b) => a - b) // !!! never a > b! I've done this a few times. Doesn't work because ... a>b returns a boolean, not a number
-
+## difference between map and forEach 
+Both of the two array methods iterate through an array with a callback function, but map produces a new array, and does not mutate the original array, unlike forEach which mutate the initial array.

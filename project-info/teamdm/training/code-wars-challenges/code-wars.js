@@ -54,9 +54,6 @@ function consonantCount(str) {
   return count
 }
 
-
-
-
 console.log(consonantCount('ahddbsa'))
 
 const myConsonantCount = (str) => {
@@ -64,7 +61,7 @@ const myConsonantCount = (str) => {
   let count = 0
   const selectedConsonants = str.split('').filter((char) => !vowels.includes(char))
 
-  // DM: excellent! you;re almost there! 
+  // DM: excellent! you;re almost there!
   // write the 'return' statement like this:
   // return selectedConsonants.length
   // and you can get rid of the variable count (and the 'let')
@@ -119,8 +116,7 @@ function chromosomeCheck(sperm) {
   // DM: first step: determine what are the "inputs" and what are the "outputs"
   if (sperm === 'XY') {
     return "Congratulations! You're going to have a son."
-  }
-  else{
+  } else {
     return "Congratulations! You're going to have a daughter."
   }
 }
