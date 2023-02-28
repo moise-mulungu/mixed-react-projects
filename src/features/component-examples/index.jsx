@@ -16,21 +16,35 @@ DM: todoDM: bring over my Header component
 */
 
 export default function ComponentExamples() {
+  const data = [
+    {name:"Moïse Mulungu", job:"The Man", email:"mm@acme.co"},
+    {name:"Duncan McKeever", job:"Inventer of Torturous Exercises", email:"dm@acme.co"}
+  ]
   return (
     <div>
       {/* <Heading level="1">Component Examples</Heading> */}
       <h2>Hello</h2>
       <Hello />
       <Hello name="Moïse" className=" bg-slate-100" />
+      {/* MM: toDM: as i did not map the data object, can i use {data.name} for name='Moise'? and add className as props to the ComponentExamples? */}
 
       <h2>ContactCard</h2>
       <ul>
-        <ContactCard name="Moïse Mulungu" job="The Man" email="mm@acme.co" />
+        {data.map((item, index) => (
+          <ContactCard 
+          key={index}
+          name={item.name}
+          job={item.job}
+          email={item.email}
+          />
+        ))}
+        {/* <ContactCard name="Moïse Mulungu" job="The Man" email="mm@acme.co" />
         <ContactCard
           name="Duncan McKeever"
           job="Inventer of Torturous Exercises"
           email="dm@acme.co"
         />
+        I tried to replace the above code with mapping a data object that holds the key-value pairs of Moise and Duncan */}
       </ul>
     </div>
   )
