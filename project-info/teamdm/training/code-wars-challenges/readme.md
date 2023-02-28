@@ -8,6 +8,9 @@ DM: Moise, follow all of these when doing any coding exercise problem. It will w
   * don't make me think! I want to read code fast.
 	* benefit: self-documenting code
 
+# rules for debugging
+* always return a variable, for each debugging via console.log 
+
 # steps
 1. describe the inputs and outputs in detail
 2. validate the input (convert types or transform if possible) (defensive coding)
@@ -17,8 +20,8 @@ DM: Moise, follow all of these when doing any coding exercise problem. It will w
 5. list and describe anything that is unclear in the challenge description
    * these would be the questions you'd be expected to ask in a interview situation
    * practice reading the challenge description carefully
-6. write tests that cover the input variants
 * note: via these tasks, you are essentially repeating the key elements of the challenge description in the code
+6. write test(s) that cover the input variants
 
 * example (somewhat exaggerated to cover all 6 points)
 ```js
@@ -54,6 +57,8 @@ function chromosomeCheck(sperm) {
 
   const message = `Congratulations! You're going to have a ${daughterOrSon}.`
 
+  // always return a variable. This makes it easy to:   
+  // console.log('i am easy to debug by logging', { sperm, spermCleaned, spermSexChromosome, zygoteGender, daughterOrSon, message })
   return message
 
 }
