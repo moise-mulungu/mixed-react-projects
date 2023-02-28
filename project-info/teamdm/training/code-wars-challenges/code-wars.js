@@ -71,3 +71,63 @@ function describeAge(age) {
 //             write tests that covers all the logic (i.e., all the age groups)
 
 // DM: todoMM: be sure to finish all the todoMMs in this file before doing any more codewars exercises. Let's get those concepts/approaches completed first (they will serve as patterns for future codewars exercises)
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Strings Mix https://www.codewars.com/kata/526dbd6c8c0eb53254000110/train/javascript
+///////////////////////////////////////////////////////////////////////////////////////////////////
+/* 
+Description: 
+
+In this example you have to validate if a user input string is alphanumeric. The given string is not nil/null/NULL/None, so you don't have to check that.
+
+The string has the following conditions to be alphanumeric:
+
+At least one character ("" is not valid)
+Allowed characters are uppercase / lowercase latin letters and digits from 0 to 9
+No whitespaces / underscore
+
+*/
+// function alphanumeric(string) {
+function isAlphanumeric(stringDirty) {
+  /*   
+  1) describe the inputs and outputs, their types and possible values
+     inputs: 
+       string: string|number; values: any string   
+     output:
+       boolean
+  */
+
+  // 2) validate the input or convert if possible
+  // defensive coding
+  const string = typeof stringDirty === 'number' ? Number.parseInt(stringDirty) : stringDirty
+  if (typeof string !== 'string')
+    throw new Error('alphanumeric() requires an argument of type string')
+
+  // 3) break down the the 'variable' elements of the solution into the most granular (smallest) parts; assign each to a well-named, descriptive variable (rename input if needed)
+  // At least one character ("" is not valid)
+  const stringLength = string.length
+  // Allowed characters are uppercase / lowercase latin letters and digits from 0 to 9, No whitespaces / underscore
+  const allowedCharactersRegExp = /^[a-zA-Z0-9]+$/
+
+  // 4) code the solution (logical expressions)
+  const emptyString = stringLength < 1
+  const containsBadCharacters = !allowedCharactersRegExp.test(string)
+
+  // 5) return the solution
+  // always return a variable, or, use only variables in return statements (all logical expressions must be assigned to a variable)
+  // This makes it easy to debug by logging
+  // console.log('i am easy to debug by logging', { var1, var2 })
+  if (emptyString || containsBadCharacters) return false
+  return true
+
+  // 6) list and describe anything that is unclear in the challenge description
+  // none
+}
+// 7) test input variants
+isAlphanumeric('') // false
+isAlphanumeric(123) // throw error
+isAlphanumeric('123') // true
+isAlphanumeric('abc') // true
+isAlphanumeric('abc123') // true
+isAlphanumeric('abc 123') // false
+isAlphanumeric('abc_123') // false
