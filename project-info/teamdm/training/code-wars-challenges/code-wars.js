@@ -1,7 +1,9 @@
 //Exclusive "or" (xor) Logical Operator
 function xor(a, b) {
-  const isTrue = a || b
-  const isFalse = a && b
+  // const isTrue = a || b
+  // const isFalse = a && b
+
+  const booleanValues = a - b;
 
   // DM: todoMM: let's finish the exercises on this page before doing any more new code-wars exercises
 
@@ -11,18 +13,19 @@ function xor(a, b) {
   //     Name these variables according to what they mean in the context of XOR logic
   //     honestly, right now, I don't remember what XOR is. A rule of clear programming: "don't make me think" - explain XOR logic to me with good variable names) - if you need to write long explanatory comments above each statement, that is OK, also. You can do that as a  first step, then we can pick a good variable name as the next step
   //     it's OK if you need to research about XOR in order to choose a good name
-  const truthyValue = isTrue && !isFalse
-  const falsyValue = !isTrue && isFalse
+  // const truthyValue = isTrue && !isFalse
+  // const falsyValue = !isTrue && isFalse
 
-  if (truthyValue) {
-    return true
-    // do the same for this logical expression
-  } else if (falsyValue) {
-    return true
-  } else {
-    return false
-  }
+  // if (truthyValue) {
+  //   return true
+  //   // do the same for this logical expression
+  // } else if (falsyValue) {
+  //   return true
+  // } else {
+  //   return false
+  // }
   // return (a || b) && !(a && b); this is the short version
+  return booleanValues ? true : false;
 }
 
 console.log(xor(8, -4)) // false
@@ -52,7 +55,7 @@ console.log(consonantCountWithLet('ahddbsa'))
 
 const myConsonantCount = (str) => {
   const vowels = ['a', 'e', 'i', 'o', 'u']
-  let count = 0
+  // let count = 0
   const selectedConsonants = str.split('').filter((char) => !vowels.includes(char))
 
   // DM: todoMM: excellent! you;re almost there!
@@ -62,9 +65,9 @@ const myConsonantCount = (str) => {
   // can you see how you don't even need a variable to hold the "return value"?
   // because the desired return value is right there in selectedConsonants.length
   // you just have to return that and you're done
-  return (count = selectedConsonants.length)
+  return selectedConsonants.length
 }
-console.log(myConsonantCount('are stationary'))
+console.log(myConsonantCount('stationary'))
 
 // MM: todoMM: some test cases are failing, I think it's because of the case sensitivity and some special characters. // DM: todoMM: can you give me an example of which is failing?
 
@@ -80,11 +83,13 @@ const squareSumAf = (numbers) => numbers.map((num) => num * num).reduce((acc, cu
 // DM: todoMM: assign the array method callbacks to variables with descriptive names
 function squareSumPrev(numbers) {
   // const squares = numbers.your code goes here
+  const squares = numbers.map((num) => num * num)
   // const sumOfSquares = squares.your code goes here
+  const sumOfSquares = squares.reduce((acc, cur) => acc + cur, 0)
   // console.log('i am easy to debug by logging', { squares, sumOfSquares })
-  // return sumOfSquares
+  return sumOfSquares
 }
-console.log(squareSum([1, 2, 2])) // 10
+console.log(squareSumPrev([2, 2, 2]))
 
 //////////////////////////////////////////////////////////////////////
 // Determine offspring sex based on genes XX and XY chromosomes
@@ -150,9 +155,9 @@ function describeAge(age) {
   return `You're a(n) ${
     age <= 12
       ? 'kid'
-      : age >= 13 && age <= 17
+      : age <= 17
       ? 'teenager'
-      : age >= 18 && age <= 64
+      : age <= 64
       ? 'adult'
       : 'elderly'
   }`
