@@ -20,7 +20,11 @@ console.log(xor(8, -4)) // false
 //////////////////////////////////////////////////////////////////////
 const myConsonantCount = (str) => {
   const vowels = ['a', 'e', 'i', 'o', 'u']
-  const selectedConsonants = str.split('').filter((char) => !vowels.includes(char))
+  const containsAllCharacters = [/^[a-zA-Z0-9]+$/]
+  const charactersOfVowels = [...vowels, ...containsAllCharacters.toString()] 
+console.log(charactersOfVowels)
+
+  const selectedConsonants = str.split('').filter((char) => !charactersOfVowels.includes(char))
   /* DM: todoMM: good job! Now use array.reduce to count instead of length
                  my mentor also insists on this ... array.length works
                  but reduce explicitly communicates that your are adding up a total            
@@ -29,7 +33,7 @@ const myConsonantCount = (str) => {
   // return countOfConsonants
   return selectedConsonants.length
 }
-console.log(myConsonantCount('stationary'))
+console.log(myConsonantCount('@#$%^&*()_+s'))   
 
 //////////////////////////////////////////////////////////////////////
 // Square(n) Sum
@@ -59,14 +63,73 @@ squareSum([2, 2, 2]) // 12
 // Your task is to shorten the code as much as possible. Note that submitting the given code will not work because there is a character limit of 137.
 
 function describeAge(age) {
-  return `You're a(n) ${
-    age <= 12 ? 'kid' : age <= 17 ? 'teenager' : age <= 64 ? 'adult' : 'elderly'
-  }`
+  // return `You're a(n) ${
+  //   age <= 12 ? 'kid' : age <= 17 ? 'teenager' : age <= 64 ? 'adult' : 'elderly'
+  // }`
+  // 1. describe the inputs and outputs, their types and possible values
+  //    inputs:
+  //      age: number; values: any number
+  //    outputs:
+  //      string: string; values: 'You're a(n) kid', 'You're a(n) teenager', 'You're a(n) adult', 'You're a(n) elderly'
+  // 2. describe the steps to solve the problem
+  //    1. if age is less than or equal to 12, return 'You're a(n) kid'
+  //    2. if age is less than or equal to 17, return 'You're a(n) teenager'
+  //    3. if age is less than or equal to 64, return 'You're a(n) adult'
+  //    4. if age is greater than 64, return 'You're a(n) elderly'
+  // 3. defensive programming: check for invalid inputs
+  //    if age is not a number, throw an error
+  const isNumber = typeof age === 'number' && age >= 0;
+  if (!isNumber) {
+    throw new Error('age must be a number greater than or equal to 0')
+  }
+
+  // break the problem down into small parts
+
+  // declare a variable to hold the string
+  const str = "You're a(n) "
+
+  // 1. if age is less than or equal to 12, return 'You're a(n) kid'
+  const isKid = age <= 12
+  if (isKid) {
+    return str + 'kid'
+  }
+
+  // 2. if age is less than or equal to 17, return 'You're a(n) teenager'
+  const isTeenager = age <= 17
+  if (isTeenager) {
+    return str + 'teenager'
+  }
+
+  // 3. if age is less than or equal to 64, return 'You're a(n) adult'
+  const isAdult = age <= 64
+  if (isAdult) {
+    return str + 'adult'
+  }
+
+  // 4. if age is greater than 64, return 'You're a(n) elderly'
+  const isElderly = age > 64
+  if (isElderly) {
+    return str + 'elderly'
+  }
+
+
+
   // MM: todoDM: (done) this solution has 168 characters, but the challenge is to limit to 137 characters. Any ideas on how to do that?
   // DM: age >= 13 can be removed, it has already been ruled out. can you see another condition that has been removed?
   //     warning: conciseness removes clarity. motto: "more lines makes for faster reading", so in a code review, I would NOT tell you to remove: age >= 13
   //     but for purposes of this exercise, it is a valid tactic, and your use of the "template literal" is a great way to remove repeated text.
 }
+
+describeAge(5) // "You're a(n) kid"
+describeAge(12) // "You're a(n) kid"
+describeAge(13) // "You're a(n) teenager"
+describeAge(17) // "You're a(n) teenager"
+describeAge(18) // "You're a(n) adult"
+describeAge(64) // "You're a(n) adult"
+describeAge(65) // "You're a(n) elderly"
+describeAge(100) // "You're a(n) elderly"
+describeAge('teen') // Error: age must be a number greater than or equal to 0
+
 // DM: todoMM: write another solution for this exercise, following the new Rules and Steps that I put into ./readme.md. Once you do that, I can show you how to make it more readable (note: deeply nesting the conditional operator is discouraged because it's hard to read), and, once you've done step 3, is't possible we can make the solution even more concise.
 //             write tests that covers all the logic (i.e., all the age groups)
 
