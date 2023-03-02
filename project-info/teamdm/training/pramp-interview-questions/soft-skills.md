@@ -1,13 +1,18 @@
 # Pramp most asked questions
 
+* DM: good work. Can you take each paragraph and look at it here: https://www.grammarly.com/grammar-check it will give you grammar tips. Once you've done that I will look at this file in detail.
+
 ## Tell me a bit about your professional experience in 2-3 minutes.
  I'm a full-stack software developer, who graduated from Microverse, a remote software development school that uses pair programming and real-world projects to teach development.
 
 I worked in different fields such as telecommunication, and local NGOs for a couple of years. I worked every day with diverse people in high-pressure and fast-paced environments, working towards daily, weekly and monthly targets, so even before I started working as a developer, I was already a pro at juggling empathy, communication, and work ethic needed to succeed in the dev world. 
 
 I am working as a part-time Student Project Reviewer at Microverse, where I review students’ professional projects such as GitHub, AngelList, LinkedIn profiles, Resumes, cover letters, and elevator pitches after spending the last several months working on a number of projects while in the program: my personal portfolio, APIs app, and using some excellent JavaScript and CSS frameworks while pair-programming with diverse developers from around the world. I continue improving my skills by resolving two to three code-wars challenges a day, and build new projects using NextJS.
-<!-- MM: toDM: Can I add the ongoing six month-training? If so, how to describe what we are doing? Is it a simple training, an internship, or something else.
-I would like to describe our program as well in my speech.-->
+
+* MM: toDM: Can I add the ongoing six month-training? If so, how to describe what we are doing? Is it a simple training, an internship, or something else.
+  * I would like to describe our program as well in my speech. 
+  * DM: good thought, I think it is ok, what we're doing is something like: "a kind of 'custom, individualized bootcamp' with a Senior Full-Stack Developer ". Try to describe it in more detail on Pramp next time, then I'll help you refine it.
+
 ## What are you looking for in your next role?
 I am looking for a junior developer position in ReactJS as front-end and NodeJS as back-end at a multi diverse environment that can help me improve my technical and soft skills. 
 ## What’s an example of a difficult problem you solved? Be specific about how the problem was diagnosed and your process for approaching it.

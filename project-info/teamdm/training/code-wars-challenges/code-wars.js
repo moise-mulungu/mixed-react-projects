@@ -2,7 +2,6 @@
 // Exclusive "or" (xor) Logical Operator
 //////////////////////////////////////////////////////////////////////
 function xor(a, b) {
-
   // describe the inputs and outputs
   // inputs: a, b: numbers, values: any number
   // outputs: boolean, values: true, false
@@ -49,10 +48,12 @@ console.log(xor(-8, 4)) // false
 //////////////////////////////////////////////////////////////////////
 const myConsonantCount = (str) => {
   const vowels = ['a', 'e', 'i', 'o', 'u']
+  // DM: todoMM: /^[a-zA-Z0-9]+$/ is a 'regular expression' (regexp); read MDN site on regular expressions, and the methods you can use on them, such as .test()
   const containsAllCharacters = [/^[a-zA-Z0-9]+$/]
-  const charactersOfVowels = [...vowels, ...containsAllCharacters.toString()] 
-console.log(charactersOfVowels)
+  const charactersOfVowels = [...vowels, ...containsAllCharacters.toString()]
+  console.log(charactersOfVowels)
 
+  // your original solution was good, just get the total number via array.reduce()
   const selectedConsonants = str.split('').filter((char) => !charactersOfVowels.includes(char))
   /* DM: todoMM: good job! Now use array.reduce to count instead of length
                  my mentor also insists on this ... array.length works
@@ -62,7 +63,7 @@ console.log(charactersOfVowels)
   // return countOfConsonants
   return selectedConsonants.length
 }
-console.log(myConsonantCount('@#$%^&*()_+s'))   
+console.log(myConsonantCount('@#$%^&*()_+s'))
 
 //////////////////////////////////////////////////////////////////////
 // Square(n) Sum
@@ -105,10 +106,17 @@ function describeAge(age) {
   //    2. if age is less than or equal to 17, return 'You're a(n) teenager'
   //    3. if age is less than or equal to 64, return 'You're a(n) adult'
   //    4. if age is greater than 64, return 'You're a(n) elderly'
+
   // 3. defensive programming: check for invalid inputs
   //    if age is not a number, throw an error
-  const isNumber = typeof age === 'number' && age >= 0;
+  const isNumber = typeof age === 'number' && age >= 0
   if (!isNumber) {
+    // DM: super! isValidNumber - 'valid' would describe the 2nd part of the
+    //     but, one of the rules is to assign each logical expression to a variable, like so:
+    // isNumber = typeof age === 'number'
+    // isValidAge = age >= 0
+    // if (!isNumber || !isValidAge) {...}
+    //  try that. Pro tip: start collecting a list of useful works for vairable names. I have my own list. Helps think of good variable names quickly.
     throw new Error('age must be a number greater than or equal to 0')
   }
 
@@ -116,6 +124,11 @@ function describeAge(age) {
 
   // declare a variable to hold the string
   const str = "You're a(n) "
+
+  // DM: good idea repeating the #2 steps. when you get nervous in a coding interview, this will save you butt.
+
+  // DM: todoMM: instead of 'string' + 'string' is preferred nowadays to use template literals. in fact some linters warn against it. use a template literal (with `` backticks) to combine the test similar to this:  const message = `Congratulations! You're going to have a ${daughterOrSon}.`
+  // DM: bonus challenge: make the output better by customizing "a(n)" to the kid|teenager|adult|elderly. hint: use a construct like this to determine if 'a' or 'an': const daughterOrSon = { female: 'daughter', male: 'son' }[zygoteGender]
 
   // 1. if age is less than or equal to 12, return 'You're a(n) kid'
   const isKid = age <= 12
@@ -140,13 +153,6 @@ function describeAge(age) {
   if (isElderly) {
     return str + 'elderly'
   }
-
-
-
-  // MM: todoDM: (done) this solution has 168 characters, but the challenge is to limit to 137 characters. Any ideas on how to do that?
-  // DM: age >= 13 can be removed, it has already been ruled out. can you see another condition that has been removed?
-  //     warning: conciseness removes clarity. motto: "more lines makes for faster reading", so in a code review, I would NOT tell you to remove: age >= 13
-  //     but for purposes of this exercise, it is a valid tactic, and your use of the "template literal" is a great way to remove repeated text.
 }
 
 describeAge(5) // "You're a(n) kid"
@@ -159,8 +165,7 @@ describeAge(65) // "You're a(n) elderly"
 describeAge(100) // "You're a(n) elderly"
 describeAge('teen') // Error: age must be a number greater than or equal to 0
 
-// DM: todoMM: write another solution for this exercise, following the new Rules and Steps that I put into ./readme.md. Once you do that, I can show you how to make it more readable (note: deeply nesting the conditional operator is discouraged because it's hard to read), and, once you've done step 3, is't possible we can make the solution even more concise.
-//             write tests that covers all the logic (i.e., all the age groups)
+// DM: great! it works! Once you have done the suggestions above, try another code-wars challenge, using the steps and rules. BTW, work on code-wars challenges tagged 'string', 'regexp', logic, etc. rather than mathematics. WebDev and even back-end work is more about text processing and logic, rarely hard math.
 
 // DM: todoMM: be sure to finish all the todoMMs in this file before doing any more codewars exercises. Let's get those concepts/approaches completed first (they will serve as patterns for future codewars exercises)
 
