@@ -2,7 +2,36 @@
 // Exclusive "or" (xor) Logical Operator
 //////////////////////////////////////////////////////////////////////
 function xor(a, b) {
-  const booleanValues = a - b
+
+  // describe the inputs and outputs
+  // inputs: a, b: numbers, values: any number
+  // outputs: boolean, values: true, false
+  // defensive programming: check for invalid inputs
+  // if a and b are not numbers, throw an error
+  const isValueInteger = Number.isInteger(a) && Number.isInteger(b)
+  if (!isValueInteger) {
+    throw new Error('a and b must be integers')
+  }
+
+  // describe the steps to solve the problem
+  // 1. if a and b are both true, return false
+  // 2. if a and b are both false, return false
+  // 3. if a and b are not both true or false, return true
+
+  // break the problem down into small parts
+  // declare a variable to hold the boolean values
+  const booleanValues = []
+  const sortedValues = [a, b].sort()
+  const isBothTrue = sortedValues[0] === 1 && sortedValues[1] === 1
+  const isBothFalse = sortedValues[0] === 0 && sortedValues[1] === 0
+  if (isBothTrue || isBothFalse) {
+    booleanValues.push(false)
+  } else {
+    booleanValues.push(true)
+  }
+  return booleanValues[0]
+
+  // const booleanValues = a - b
   // DM: this doesn't return false, console.log 'booleanValues' to know why
 
   // DM: todoMM: let's start this one over. I want you to write this in a way that teaches me
@@ -10,10 +39,10 @@ function xor(a, b) {
   //             break this down into small parts, using wellNamed variables so that I can understand xor by the variable names. write out the concepts of xor in detail first, each small part, it will help you plan your code, and will help come up with variable names. always break hard things down into small parts.
   //             hint: you can `Boolean(a)` or `!!a` (double negation operator) to find out if a and b are truthy or falsy
   //             also, if you attempt a solution but it doesn't work, always leave a note telling me where you got blocked, and what you were thinking so far. This is important practice because you'll do this during an interview when you get blocked, the interviewer will give hints. ALso it helps us collaborate.
-  return booleanValues ? true : false
+  // return booleanValues ? true : false
 }
 
-console.log(xor(8, -4)) // false
+console.log(xor(-8, 4)) // false
 
 //////////////////////////////////////////////////////////////////////
 // Count consonants
