@@ -7,28 +7,39 @@ function exclusive0r(a, b) {
   // outputs: boolean, values: true, false
   // defensive programming: check for invalid inputs
   // if a and b are not numbers, throw an error
-  const isValueInteger = Number.isInteger(a) && Number.isInteger(b)
-  if (!isValueInteger) {
-    throw new Error('a and b must be integers')
+  const isAInteger = Number.isInteger(a)
+if (!isAInteger) {
+    throw new Error('a is not an integer')
+  }
+
+  const isBInteger = Number.isInteger(b)
+if (!isBInteger) {
+    throw new Error('b is not an integer')
+  }
+
+  const diffAB = isAInteger - isBInteger
+  if (diffAB === 0) {
+    throw new Error('a and b should not be the same type')
   }
 
   // describe the steps to solve the problem
   // 1. if a and b are both true, return false
+if (isAInteger && isBInteger) {
+    return false
+  }
+  else if (!isAInteger && !isBInteger) {
+    return false
+  }
+  else {
+    return true
+  }
+// MM: todoDM: I am doubting with this approach, can you help?
   // 2. if a and b are both false, return false
   // 3. if a and b are not both true or false, return true
 
   // break the problem down into small parts
   // declare a variable to hold the boolean values
-  const booleanValues = []
-  const sortedValues = [a, b].sort()
-  const isBothTrue = sortedValues[0] === 1 && sortedValues[1] === 1
-  const isBothFalse = sortedValues[0] === 0 && sortedValues[1] === 0
-  if (isBothTrue || isBothFalse) {
-    booleanValues.push(false)
-  } else {
-    booleanValues.push(true)
-  }
-  return booleanValues[0]
+  
 
   // const booleanValues = a - b
   // DM: this doesn't return false, console.log 'booleanValues' to know why
@@ -41,8 +52,7 @@ function exclusive0r(a, b) {
   // return booleanValues ? true : false
 }
 
-console.log(exclusive0r(-8, 4)) // false
-
+console.log(exclusive0r(10, 0))
 //////////////////////////////////////////////////////////////////////
 // Count consonants
 //////////////////////////////////////////////////////////////////////
