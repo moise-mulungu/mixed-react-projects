@@ -49,8 +49,8 @@ console.log(exclusive0r(-8, 4)) // false
 const myConsonantCount = (str) => {
   const vowels = ['a', 'e', 'i', 'o', 'u']
   // DM: todoMM: /^[a-zA-Z0-9]+$/ is a 'regular expression' (regexp); read MDN site on regular expressions, and the methods you can use on them, such as .test()
-  const containsAllCharacters = [/^[a-zA-Z0-9]+$@/]
-  const charactersOfVowels = [...vowels, ...containsAllCharacters.toString()]
+  const containsAllCharacters = /^[a-zA-Z0-9]+$@/
+  const charactersOfVowels = vowels.concat(containsAllCharacters.toString().split(''))
   console.log(charactersOfVowels)
 
   // your original solution was good, just get the total number via array.reduce()
@@ -64,7 +64,7 @@ const myConsonantCount = (str) => {
 
   return countOfConsonants
 }
-console.log(myConsonantCount('moise@')) 
+console.log(myConsonantCount('moie@')) 
  // the output is 4 after running node, but it should be 2. why?
 
 //////////////////////////////////////////////////////////////////////
