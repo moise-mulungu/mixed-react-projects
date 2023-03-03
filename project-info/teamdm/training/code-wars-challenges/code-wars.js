@@ -49,7 +49,7 @@ console.log(exclusive0r(-8, 4)) // false
 const myConsonantCount = (str) => {
   const vowels = ['a', 'e', 'i', 'o', 'u']
   // DM: todoMM: /^[a-zA-Z0-9]+$/ is a 'regular expression' (regexp); read MDN site on regular expressions, and the methods you can use on them, such as .test()
-  const containsAllCharacters = [/^[a-zA-Z0-9]+$/]
+  const containsAllCharacters = [/^[a-zA-Z0-9]+$@/]
   const charactersOfVowels = [...vowels, ...containsAllCharacters.toString()]
   console.log(charactersOfVowels)
 
@@ -64,7 +64,8 @@ const myConsonantCount = (str) => {
 
   return countOfConsonants
 }
-console.log(myConsonantCount('moise@')) // the output is 4 after running node, but it should be 2. why?
+console.log(myConsonantCount('moise@')) 
+ // the output is 4 after running node, but it should be 2. why?
 
 //////////////////////////////////////////////////////////////////////
 // Square(n) Sum
@@ -110,8 +111,9 @@ function describeAge(age) {
 
   // 3. defensive programming: check for invalid inputs
   //    if age is not a number, throw an error
-  const isNumber = typeof age === 'number' && age >= 0
-  if (!isNumber) {
+  const isNumber = typeof age === 'number';
+  const isValidAge = age >= 0;
+  if (!isNumber || !isValidAge) {
     // DM: super! isValidNumber - 'valid' would describe the 2nd part of the
     //     but, one of the rules is to assign each logical expression to a variable, like so:
     // isNumber = typeof age === 'number'
@@ -124,39 +126,40 @@ function describeAge(age) {
   // break the problem down into small parts
 
   // declare a variable to hold the string
-  const str = "You're a(n) "
-
+  const str = "You're"
+  const aOrAn = { kid: 'a', teenager: 'a', adult: 'an', elderly: 'an' }
+  const message = `${str} ${aOrAn[age <= 12 ? 'kid' : age <= 17 ? 'teenager' : age <= 64 ? 'adult' : 'elderly']} ${age <= 12 ? 'kid' : age <= 17 ? 'teenager' : age <= 64 ? 'adult' : 'elderly'}`
   // DM: good idea repeating the #2 steps. when you get nervous in a coding interview, this will save you butt.
 
   // DM: todoMM: instead of 'string' + 'string' is preferred nowadays to use template literals. in fact some linters warn against it. use a template literal (with `` backticks) to combine the test similar to this:  const message = `Congratulations! You're going to have a ${daughterOrSon}.`
-  // DM: bonus challenge: make the output better by customizing "a(n)" to the kid|teenager|adult|elderly. hint: use a construct like this to determine if 'a' or 'an': const daughterOrSon = { female: 'daughter', male: 'son' }[zygoteGender]
+  // DM: bonus challenge: make the output better by customizing "a(n)" to the kid|teenager|adult|elderly. hint: use a construct like this to determine if 'a' or 'an': const daughterOrSon = { female: 'daughter', male: 'son' }[zygoteGender]. It was very difficult for me to figure out how to do this. I spent more than 2 hours on it.
 
   // 1. if age is less than or equal to 12, return 'You're a(n) kid'
   const isKid = age <= 12
   if (isKid) {
-    return str + 'kid'
+    return message
   }
 
   // 2. if age is less than or equal to 17, return 'You're a(n) teenager'
   const isTeenager = age <= 17
   if (isTeenager) {
-    return str + 'teenager'
+    return message
   }
 
   // 3. if age is less than or equal to 64, return 'You're a(n) adult'
   const isAdult = age <= 64
   if (isAdult) {
-    return str + 'adult'
+    return message
   }
 
   // 4. if age is greater than 64, return 'You're a(n) elderly'
   const isElderly = age > 64
   if (isElderly) {
-    return str + 'elderly'
+    return message
   }
 }
 
-describeAge(5) // "You're a(n) kid"
+console.log(describeAge(55))   
 describeAge(12) // "You're a(n) kid"
 describeAge(13) // "You're a(n) teenager"
 describeAge(17) // "You're a(n) teenager"
