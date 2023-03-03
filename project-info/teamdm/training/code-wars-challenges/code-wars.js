@@ -1,45 +1,54 @@
 //////////////////////////////////////////////////////////////////////
 // Exclusive "or" (xor) Logical Operator
 //////////////////////////////////////////////////////////////////////
+// AKA "exclusive or"
 function exclusive0r(a, b) {
   // describe the inputs and outputs
-  // inputs: a, b: numbers, values: any number
+  // inputs: a, b: integers, values: any number
   // outputs: boolean, values: true, false
   // defensive programming: check for invalid inputs
-  // if a and b are not numbers, throw an error
+  // if a and b are not integers, throw an error
   const isAInteger = Number.isInteger(a)
-if (!isAInteger) {
+  // DM: todoMM: great, go ahead and evaluate both variables in the same IF statement, for brevity
+  if (!isAInteger) {
     throw new Error('a is not an integer')
   }
 
   const isBInteger = Number.isInteger(b)
-if (!isBInteger) {
+  if (!isBInteger) {
     throw new Error('b is not an integer')
   }
 
+  // DM: nice var name
   const diffAB = isAInteger - isBInteger
   if (diffAB === 0) {
-    throw new Error('a and b should not be the same type')
+    throw new Error('a and b should not be the same value')
   }
+
+  // DM: todoMM: hey, here's something you can do for me, since I don't really know: google the proper/conventional/best way to write error messages. For example, should the message be stated as a positive? "a should be ..." OR "a is not ...", see if you can find a list of "standards", "best practices"
 
   // describe the steps to solve the problem
   // 1. if a and b are both true, return false
-if (isAInteger && isBInteger) {
+  // DM: todoMM: write a new variable noting the readme rule: "assign all logical expressions to a well-named variable" - this will help understand and self-document what
+  // DM: you already know "isAInteger && isBInteger)" is true, because you threw errors if not. When you throw an error, execution stops and execution starts wherever in your code you 'catch' the error.
+  if (isAInteger && isBInteger) {
     return false
-  }
-  else if (!isAInteger && !isBInteger) {
+  } else if (!isAInteger && !isBInteger) {
     return false
-  }
-  else {
+  } else {
     return true
   }
-// MM: todoDM: I am doubting with this approach, can you help?
+  // DM: todoMM: try to do the above IF statement using fewer characters, but still very readable. ex: in JS if the if statement clause is only one line, you can omit the {} and: if (booleanVar) return true.
+
+  // MM: ???DM: I am doubting with this approach, can you help?
   // 2. if a and b are both false, return false
   // 3. if a and b are not both true or false, return true
+  // DM: try: const isATruthy = Boolean(a) // then continue from there
+
+  // DM: todoMM: (in project-info/team-dm/) make the file: tech/javascript/try-catch/try-catch-exercises.js look up try-catch on MDN and put a few examples (each example should be inside a function, I'll tell you why later)
 
   // break the problem down into small parts
   // declare a variable to hold the boolean values
-  
 
   // const booleanValues = a - b
   // DM: this doesn't return false, console.log 'booleanValues' to know why
@@ -69,13 +78,13 @@ const myConsonantCount = (str) => {
                  my mentor also insists on this ... array.length works
                  but reduce explicitly communicates that your are adding up a total            
   */
- /* your code here */
+  /* your code here */
   const countOfConsonants = selectedConsonants.reduce((acc, cur) => acc + cur)
 
   return countOfConsonants
 }
-console.log(myConsonantCount('moie@')) 
- // the output is 4 after running node, but it should be 2. why?
+console.log(myConsonantCount('moie@'))
+// the output is 4 after running node, but it should be 2. why?
 
 //////////////////////////////////////////////////////////////////////
 // Square(n) Sum
@@ -121,8 +130,8 @@ function describeAge(age) {
 
   // 3. defensive programming: check for invalid inputs
   //    if age is not a number, throw an error
-  const isNumber = typeof age === 'number';
-  const isValidAge = age >= 0;
+  const isNumber = typeof age === 'number'
+  const isValidAge = age >= 0
   if (!isNumber || !isValidAge) {
     // DM: super! isValidNumber - 'valid' would describe the 2nd part of the
     //     but, one of the rules is to assign each logical expression to a variable, like so:
@@ -138,7 +147,9 @@ function describeAge(age) {
   // declare a variable to hold the string
   const str = "You're"
   const aOrAn = { kid: 'a', teenager: 'a', adult: 'an', elderly: 'an' }
-  const message = `${str} ${aOrAn[age <= 12 ? 'kid' : age <= 17 ? 'teenager' : age <= 64 ? 'adult' : 'elderly']} ${age <= 12 ? 'kid' : age <= 17 ? 'teenager' : age <= 64 ? 'adult' : 'elderly'}`
+  const message = `${str} ${
+    aOrAn[age <= 12 ? 'kid' : age <= 17 ? 'teenager' : age <= 64 ? 'adult' : 'elderly']
+  } ${age <= 12 ? 'kid' : age <= 17 ? 'teenager' : age <= 64 ? 'adult' : 'elderly'}`
   // DM: good idea repeating the #2 steps. when you get nervous in a coding interview, this will save you butt.
 
   // DM: todoMM: instead of 'string' + 'string' is preferred nowadays to use template literals. in fact some linters warn against it. use a template literal (with `` backticks) to combine the test similar to this:  const message = `Congratulations! You're going to have a ${daughterOrSon}.`
@@ -169,7 +180,7 @@ function describeAge(age) {
   }
 }
 
-console.log(describeAge(55))   
+console.log(describeAge(55))
 describeAge(12) // "You're a(n) kid"
 describeAge(13) // "You're a(n) teenager"
 describeAge(17) // "You're a(n) teenager"
