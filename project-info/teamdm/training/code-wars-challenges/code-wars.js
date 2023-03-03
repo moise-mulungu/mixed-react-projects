@@ -1,7 +1,7 @@
 //////////////////////////////////////////////////////////////////////
 // Exclusive "or" (xor) Logical Operator
 //////////////////////////////////////////////////////////////////////
-function xor(a, b) {
+function exclusive0r(a, b) {
   // describe the inputs and outputs
   // inputs: a, b: numbers, values: any number
   // outputs: boolean, values: true, false
@@ -41,7 +41,7 @@ function xor(a, b) {
   // return booleanValues ? true : false
 }
 
-console.log(xor(-8, 4)) // false
+console.log(exclusive0r(-8, 4)) // false
 
 //////////////////////////////////////////////////////////////////////
 // Count consonants
@@ -59,11 +59,12 @@ const myConsonantCount = (str) => {
                  my mentor also insists on this ... array.length works
                  but reduce explicitly communicates that your are adding up a total            
   */
-  // const countOfConsonants = selectedConsonants.reduce/* your code here */
-  // return countOfConsonants
-  return selectedConsonants.length
+ /* your code here */
+  const countOfConsonants = selectedConsonants.reduce((acc, cur) => acc + cur)
+
+  return countOfConsonants
 }
-console.log(myConsonantCount('@#$%^&*()_+s'))
+console.log(myConsonantCount('moise@')) // the output is 4 after running node, but it should be 2. why?
 
 //////////////////////////////////////////////////////////////////////
 // Square(n) Sum
