@@ -22,20 +22,12 @@
 - Text(I am Moise. A software developer: I can help you build products, and features,... )
 - image(from FIgma design)
 
-# Content
-## Section
-## Section
-## Section
-## Section
-
-using the terms but we still need an example of a page that holds 2+ main sections, each section filling 100% of the horizontal content
-
 ## section: projects(cards)
 - title(My recent work)
 - My Profile picture
 - Lists of complex projects(a card each with full description)
 
-## About stacks
+## About stacks (Skills)
 - Text(Asking for contact me for any further discussion )
 - A button that links to my Resume
 - Image(from Figma design)

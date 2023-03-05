@@ -3,19 +3,28 @@
 # projects (updated 2023-02-26)
 * apps
   * stack: NextJS, React, RDB (mySql or PostGres)
-  * portfolio (2 months)
+  * portfolio (duration: 2 months)
     * current html portfolio (intro, skills, apps, contact) 
       * html to React (1 month)
       * new features (1 month, ongoing)
         * improve the 'apps' section
-          * show complex projects
+          * so that can demonstrate complex projects
         * blog (to show off communication skills by blogging about the full-stack app)
-  * complicated full-stack app (2 months, when portfolio is "done")
+    * March plan, to break up into 4 weeds
+      * header, content, footer
+        * content: 4 sections
+        1. DM: todoDM: monday grid/flex/TW structure to hold the 4 sections (see TWui for examples)
+           1. an example of a page that holds 2+ main sections, each section filling 100% of the horizontal content
+        2. Overview - more layout, styling
+        3. Skills - grid of cards
+        4. Contact - send email
+        5. Projects - most complex, last, dynamic (data-driven?)
+  * complicated full-stack app (duration: 2 months, when portfolio is "done")
     * complex defined:
-      * personalized (view varies per user, auth, )
+      * personalized (view varies per user, includes auth, etc. )
       * custom back end
     * possible apps:
-      * weather forecast application (really complicated during MV)
+      * weather forecast application (Moise saw that it was really complicated during MV)
       * restaurant
       * netflix clone
 * training: (ordered by priority)
@@ -26,33 +35,89 @@
     * vocabulary (interview success)
   * React - Joy of React
   * CSS (I have a Comeau training)(when Joy of React read)
+    * Tailwindcss ... learn as you go along building apps
   * API (start when start complicated full-stack app, custom back end)
     * Basic express server (express the most common API server framework for Node)
     * MongoDB
     * RDB
     * Ruby
   * allocate time among each
-    * first 3 months
-    * last 3 months
-* interview/job search preparation (5th month)
+    * first 3 months: core JS, React
+    * last 3 months: core JS, React, CSS, API
+* interview/job search preparation (6th month)
   * MV materials as template
   * interview questions: React, Node, CSS, HTML/Web
   * DM todoDM: elaborate
-* ongoing, starting the 5th month:
+* ongoing, starting the 6th month:
   * job hunting
   * improving portfolio and complex app
 
 # Monthly: revisit at end of March, should be done
-* core JS for React (ongoing after that)
-  * ref Duncan's observable hq document DM: todoDM: get link
-* Joy of React - first read completed
-* Tailwindcss ... learn as you go along building apps
 * portfolio
   * main structure
   * 2 sections
-* todoDM todoMM revisit next Sunday 2023-03-04, then start making weekly plans
-  * what completed more specifically for the next week
-  * 
+* core JS for React (ongoing after that)
+  * ref Duncan's observable hq document DM: todoDM: get link
+* Joy of React - first read completed
 
-# Weekly: 
-* 
+
+# Weekly
+* schedule - carefully "time-box" each day
+  * 33% hours on the portfolio
+  * 33% Core JS
+    * firm system for each code-wars or exercise ... code-wars/readme.md rules, steps
+    * plan to reduce to 20%
+    * DM: todoDM: go thru code-wars and extract super-simple examples of each concept, maybe to utils/*/snippets
+  * 33% hours on Joy of React
+* daily: options
+  * 33% each daily? or weekly
+    * daily
+      * MM: better for time management to shift each 2 hours
+      * MM: each of 3 tasks can cross-pollinate ideas
+      * DM: shifting is a good skill
+      * DM: 
+  * time-boxing
+    * 33% max, but don't do less
+    * overwhelmed or blocked
+      * shift to a different sub-topic
+  * weekly (not preferred)
+    * 1 day on JS
+    * 1 day on Joy
+    * ...
+    * 
+## the portfolio plan
+  * MM: work on overview, as much as can in 1 week, revisit on Sunday
+  * DM: monday: grid that contains 1 sections
+
+# DM: todoDM:
+* break code-wars exercises out into separate files
+* internet outages
+* talk about holidays, vacation time
+## typical US, per year: https://getsling.com/blog/average-vacation-pto-time
+10 days paid holiday 
+14 days paid vacation
+2 days paid personal leave
+8 days paid sick leave
+## how about (yearly)
+24 days PTO (14 paid vacation, 2 paid personal leave, 8 sick)
+(all US work holidays plus DRC work holidays)
+
+### DRC: (are these all employee holidays?)
+January 1	New Year's Day[1]	
+January 4	Martyrs Day	Beginning of independence movement, 1959.[2]
+January 16	Laurent-Désiré Kabila Assassination	2001
+January 17	Patrice Lumumba Assassination	1961
+May 1	Labor Day	
+May 17	Liberation Day	Zaire renamed Democratic Republic of the Congo, 1997[3]
+June 30	Independence Day	From Belgium, 1960[4]
+August 1	Parents' Day[5]	
+November 17	Army Day[6]	
+December 25	Christmas Day[6]
+
+### US (that are not same as DRC)(maybe other same depending on which day)
+* these are the days I won't be working
+Birthday of Martin Luther King, Jr. (Third Monday in January).
+Memorial Day (Last Monday in May).
+Independence Day (July 4).
+Labor Day (First Monday in September).
+Thanksgiving Day (Fourth Thursday in November).

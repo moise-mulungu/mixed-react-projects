@@ -62,12 +62,32 @@ function exclusive0r(a, b) {
 }
 
 console.log(exclusive0r(10, 0))
+
 //////////////////////////////////////////////////////////////////////
 // Count consonants
 //////////////////////////////////////////////////////////////////////
 const myConsonantCount = (str) => {
   const vowels = ['a', 'e', 'i', 'o', 'u']
   // DM: todoMM: /^[a-zA-Z0-9]+$/ is a 'regular expression' (regexp); read MDN site on regular expressions, and the methods you can use on them, such as .test()
+
+  // most naive: /[bcdfg...BC...]/
+
+  // input: string: any characters
+  // think of ways to get from input to output
+  // Moie7@
+  // identify the consonants
+  //   write a regex? no, naive
+  //   replace non-consonants with '' , you get Moie.split.reduce
+  //   Moie7@ to Moie, break it down
+  //     tools: /[a-zA-Z]/
+  //     tools: const vowels = ['a', 'e', 'i', 'o', 'u']
+  //     tools: string.toUpperCase()
+  //     tools: string.replace(//, ''); string.replace('', '')
+  //     tools: regex: \w alphanumeric and _
+  //     tools: regex: \W not \w
+  //     tools: MDN String.methods*
+  // output: number, count of consonants
+
   const containsAllCharacters = /^[a-zA-Z0-9]+$@/
   const charactersOfVowels = vowels.concat(containsAllCharacters.toString().split(''))
   console.log(charactersOfVowels)
@@ -90,7 +110,6 @@ console.log(myConsonantCount('moie@'))
 // Square(n) Sum
 //////////////////////////////////////////////////////////////////////
 // description: Complete the square sum function so that it squares each number passed into it and then sums the results together.
-// DM: good!
 function squareSum(numbers) {
   const squares = numbers.map((num) => num * num)
   const sumOfSquares = squares.reduce((acc, cur) => acc + cur, 0)
@@ -98,8 +117,6 @@ function squareSum(numbers) {
   return sumOfSquares
 }
 squareSum([2, 2, 2]) // 12
-
-// DM: offspring challenge moved to ./readme.md
 
 //////////////////////////////////////////////////////////////////////
 // Be Concise I - The Conditional (ternary) Operator
@@ -144,40 +161,26 @@ function describeAge(age) {
 
   // break the problem down into small parts
 
-  // declare a variable to hold the string
-  const str = "You're"
-  const aOrAn = { kid: 'a', teenager: 'a', adult: 'an', elderly: 'an' }
-  const message = `${str} ${
-    aOrAn[age <= 12 ? 'kid' : age <= 17 ? 'teenager' : age <= 64 ? 'adult' : 'elderly']
-  } ${age <= 12 ? 'kid' : age <= 17 ? 'teenager' : age <= 64 ? 'adult' : 'elderly'}`
-  // DM: good idea repeating the #2 steps. when you get nervous in a coding interview, this will save you butt.
-
-  // DM: todoMM: instead of 'string' + 'string' is preferred nowadays to use template literals. in fact some linters warn against it. use a template literal (with `` backticks) to combine the test similar to this:  const message = `Congratulations! You're going to have a ${daughterOrSon}.`
-  // DM: bonus challenge: make the output better by customizing "a(n)" to the kid|teenager|adult|elderly. hint: use a construct like this to determine if 'a' or 'an': const daughterOrSon = { female: 'daughter', male: 'son' }[zygoteGender]. It was very difficult for me to figure out how to do this. I spent more than 2 hours on it.
-
   // 1. if age is less than or equal to 12, return 'You're a(n) kid'
-  const isKid = age <= 12
-  if (isKid) {
-    return message
-  }
-
   // 2. if age is less than or equal to 17, return 'You're a(n) teenager'
-  const isTeenager = age <= 17
-  if (isTeenager) {
-    return message
-  }
-
   // 3. if age is less than or equal to 64, return 'You're a(n) adult'
-  const isAdult = age <= 64
-  if (isAdult) {
-    return message
-  }
-
   // 4. if age is greater than 64, return 'You're a(n) elderly'
-  const isElderly = age > 64
-  if (isElderly) {
-    return message
-  }
+  // do the 'naive' solution first
+  //   what's wrong with the naive solution? readability? no, it's readable if you know JS
+  const ageCategory =
+    age <= 12
+      ? 'kid' //
+      : age <= 17
+      ? 'teenager'
+      : age <= 64
+      ? 'adult'
+      : 'elderly'
+
+  const ageCategoryToIndefiniteArticle = { kid: 'a', teenager: 'a', adult: 'an', elderly: 'an' }
+  const indefiniteArticle = ageCategoryToIndefiniteArticle[ageCategory]
+  const message = `You're ${indefiniteArticle} ${ageCategory}`
+  // console.log({ each var here })
+  return message
 }
 
 console.log(describeAge(55))
