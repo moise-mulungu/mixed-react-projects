@@ -4,9 +4,6 @@
 
 
 
-
-
-
 ## Function 1 - hello world
 
 Description:
