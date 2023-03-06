@@ -106,14 +106,14 @@
 January 1	New Year's Day[1]	[OK]
 January 4	Martyrs Day	Beginning of independence movement, 1959.[2]
 January 16	Laurent-Désiré Kabila Assassination	2001
-January 17	Patrice Lumumba Assassination	1961
+January 17	Patrice Lumumba Assassination	1961 [OK]
 May 1	Labor Day	[OK]
 May 17	Liberation Day	Zaire renamed Democratic Republic of the Congo, 1997[3]
 June 30	Independence Day	From Belgium, 1960[4] [OK]
 August 1	Parents' Day[5]	
 November 17	Army Day[6]	[this one is outdated, it was in the period of the late dictator Mobutu Seseseko]
 December 25	Christmas Day[6]
-<!-- MM: It seems like my vacation days are so many than yours, for that I can pick only the three most important and drop the rest. They are not necessary. -->
+<!-- MM: It seems like my vacation days are so many than yours, for that I can pick only the four most important and drop the rest. They are not necessary. -->
 
 ### US (that are not same as DRC)(maybe other same depending on which day)
 * these are the days I won't be working
