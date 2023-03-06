@@ -1,4 +1,9 @@
 // First challenge
+/* 
+
+
+
+*/
 
 // App.js
 import Avatar from './Avatar'
