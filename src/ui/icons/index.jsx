@@ -22,7 +22,7 @@ export const Icon = (props) => {
     size = '2em',
     className = 'text-gray-400 hover:text-gray-500',
     title = 'Social Media Link',
-    IconComponent
+    IconComponent,
   } = props
   return (
     <IconContext.Provider
@@ -41,11 +41,11 @@ export const Icon = (props) => {
 
 export const AngelListIcon = (props) => {
   // DM: you don't need defaults that apply to all icons here, only AngerList-specific defaults
-  const { size, className, title = 'Angel List'} = props
-  return (<Icon size={size} className={className} title={title} IconComponent={FaAngellist} />)
+  const { size, className, title = 'Angel List' } = props
+  return <Icon size={size} className={className} title={title} IconComponent={FaAngellist} />
 }
 
-// DM: todoMM: adapt the remaining icons below as I've done the AngelListIcon - follow the logic from the footer.jsx to here, make sure you understand how it works, ask me questions.
+// DM: todoMM: (bump) adapt the remaining icons below as I've done the AngelListIcon - follow the logic from the footer.jsx to here, make sure you understand how it works, ask me questions.
 
 export const GithubIcon = (props) => {
   const {
@@ -88,8 +88,3 @@ export const LinkedInIcon = (props) => {
     </IconContext.Provider>
   )
 }
-
-
-
-
-

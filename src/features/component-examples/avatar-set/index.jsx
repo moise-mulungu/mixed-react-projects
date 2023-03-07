@@ -1,10 +1,9 @@
 import Avatar from './avatar'
 /* 
 
-DM: todoDM: next:
-* implement in src/pages
-* describe what React techniques this is an example of
+DM: todoMM: implement the uuid package for your unique keys here, instead of hard-coding 'id' in the data; see the code at the end of the page - you don't have to read the article: https://blog.devgenius.io/the-quicky-lazy-but-effective-way-to-create-unique-keys-for-react-elements-e45d574028a3
 
+DM: todoMM: find another JoR component and implement it
 
 */
 const data = [
@@ -26,7 +25,7 @@ const data = [
   },
 ]
 
-function App() {
+export default function AvatarSet() {
   return (
     <div className="avatar-set">
       {data.map(({ id, alt }) => (
@@ -39,5 +38,3 @@ function App() {
     </div>
   )
 }
-
-export default App

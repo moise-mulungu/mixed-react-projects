@@ -114,9 +114,6 @@ for push
   * 33% hours on Joy of React (put vocabulary and snippets in the repo)(start with components lessons, in progress)
     * gotta give JS and React significant priority - more knowledge will speed up your progress on the portfolio. BUt, yes it's also good to work the portfolio to have real-world React to work through. 
   * all learning tasks: keep adding to the vocabulary files
-  * Fixed the `joy of react game converter` 
-    * DM: todoMM: pls explain or put something about this into a file in the repo, so that I can understand what that is about
-      * DM: what is `joy of react game converter` 
 * 3:45pm push repo to the remote
   *  push what you have - just wrap up what you can, mark whatever is unfinished like this: "// MM: todoMM: unfinished, next steps: step1, step2, ..." Yesterday , I was thinking, that going forward I want to review what you have at 6:45am MT, so just plan on wrapping up and pushing at 6:45. You can keep working the rest of the day, and push that work the next day at 6. This will keep it simpler overall. So, you can save the work that generates a lot of questions for me for the 6:45-9MT time period, since I'll be around to answer.
 * 3:45-5pm be on Slack (Duncan's 6:45-8am)
