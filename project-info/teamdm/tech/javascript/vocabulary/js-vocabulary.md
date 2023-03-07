@@ -68,3 +68,7 @@ a file containing related code. we use the `import` and `export` keywords to sha
 () parentheses
 [] square brackets
 <> angle brackets
+
+## class prototype
+Prototypes are the mechanism by which JavaScript objects inherit features from one another
+<!-- an example from the ./class-prototype/class.js -->
