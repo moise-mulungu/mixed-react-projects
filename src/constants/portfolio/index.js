@@ -1,6 +1,5 @@
 import { GithubIcon, LinkedInIcon, AngelListIcon } from '@/ui/icons'
 
-
 export const topNavSiteLinks = [
   { id: 'work', name: 'Portfolio', anchor: 'work' },
   { id: 'about', name: 'About', anchor: 'about' },
@@ -30,7 +29,6 @@ export const footerSocialLinks = [
 ]
 export const defaultFooterSocialLinkId = footerSocialLinks[0].id
 // DM: yup, see, now you don't have 'githup' hard-coded. no "magic strings"!
-// DM: todoMM: add "magic strings" to programming vocab file
 
 export const contentOverviewHeaderText = 'Hey there, I am Moise. a software developer'
 export const contentOverviewParagraphText =
