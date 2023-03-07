@@ -31,3 +31,7 @@ export const footerSocialLinks = [
 export const defaultFooterSocialLinkId = footerSocialLinks[0].id
 // DM: yup, see, now you don't have 'githup' hard-coded. no "magic strings"!
 // DM: todoMM: add "magic strings" to programming vocab file
+
+export const contentOverviewHeaderText = 'Hey there, I am Moise. a software developer'
+export const contentOverviewParagraphText =
+  'I can help you build a product, feature or website Look through some of my work experience! You like what you see and have a project you need coded, do not hesitate to contact me.'
