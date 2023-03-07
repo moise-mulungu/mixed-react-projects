@@ -1,10 +1,10 @@
 
 
-        * features
-          * DM: todoMM: anytime next week, research
-        * back end src/pages/api
-          * ingest existing weather API, adding/calculating/manipulating
-            * merge with another API (country data, etc.)
+* features
+  * DM: todoMM: anytime, research
+* back end src/pages/api
+  * ingest existing weather API, adding/calculating/manipulating
+    * merge with another API (country data, etc.)
 
 
 * see a few existing sites, what do you like, pick features

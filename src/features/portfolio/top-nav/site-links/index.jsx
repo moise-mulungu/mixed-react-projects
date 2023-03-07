@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 export default function SiteLinks(props) {
-  const {} = props
+  // const {} = props
 
   const links = [
     { name: 'Portfolio', anchor: 'work' },
@@ -12,9 +12,10 @@ export default function SiteLinks(props) {
   return (
     <ul>
       {links.map(({ name, anchor }) => {
-        console.log('wut', { name, anchor })
+        // console.log('wut', { name, anchor })
+        // DM: using anchor for 'key' because it is unique
         return (
-          <li>
+          <li key={anchor}>
             <a href={`#${anchor}`}>{name}</a>
           </li>
         )

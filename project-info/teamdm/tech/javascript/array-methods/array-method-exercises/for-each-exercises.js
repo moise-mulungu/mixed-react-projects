@@ -1,3 +1,5 @@
+// DM: todoMM: this page is important, review the way the array methods work and then finish up the todoMMs
+
 // run this line and see what is logged
 const result1 = [1, 2, 3].forEach((number) => console.log('the current number is: ', number))
 // what is the value of "result1"?
