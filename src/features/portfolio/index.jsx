@@ -8,10 +8,13 @@ export default function Portfolio(props) {
   const { data } = props
 
   return (
-    <>
+    <div className="bg-white">
       <TopNav />
-      <Content />
+      {/* hero section? */}
+      <main>
+        <Content />
+      </main>
       <Footer />
-    </>
+    </div>
   )
 }
