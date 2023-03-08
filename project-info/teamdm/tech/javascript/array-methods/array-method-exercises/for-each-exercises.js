@@ -23,7 +23,8 @@ const result2 = [1, 2, 3].filter((number) => {
   console.log('the current number is: ', number)
   return number > 1
 })
-result2 /* DM: todoMM: write the value of result2 here */
+result2 // [2, 3]
+/* DM: todoMM: write the value of result2 here */
 /* DM: todoMM: write the output of console.log here */
 const students = [
   { name: 'Aisha', grade: 89 },
@@ -44,18 +45,21 @@ const result3 = [1, 2, 3].map((number) => {
   console.log('the current number is: ', number)
   return number ** number
 })
-result3 /* DM: todoMM: write the value of result3 here */
+  result3 // [1, 4, 27]
+ /* DM: todoMM: write the value of result3 here */
 /* DM: todoMM: write the output of console.log here */
 
 const result4 = [1, 2, 3].reduce((acc, cur, idx, arr) => {
   console.log('argument values are: ', acc, cur, idx, arr)
   return { ...acc, [cur]: cur }
 }, {})
-result4 /* DM: todoMM: write the value of result4 here */
+result4 // { 1: 1, 2: 2, 3: 3 }
+ /* DM: todoMM: write the value of result4 here */
 /* DM: todoMM: write the output of console.log here */
 // DM: bonus: can you give better names to the first two arguments?
 
 // DM: todoMM: be sure to always list the expected output
 const nums = [1, 2, 3]
-nums.forEach((num) => num + 1)
-console.log(nums)
+nums.forEach((num) => num)
+nums // [1, 2, 3]
+
