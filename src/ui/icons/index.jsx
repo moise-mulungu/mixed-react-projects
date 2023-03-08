@@ -16,6 +16,8 @@ import { IconContext } from 'react-icons'
 import { DiGithubBadge } from 'react-icons/di'
 import { FaLinkedin } from 'react-icons/fa'
 import { FaAngellist } from 'react-icons/fa'
+import { FaMediumM } from 'react-icons/fa'
+import { FaTwitter } from 'react-icons/fa'
 
 export const Icon = (props) => {
   const {
@@ -51,7 +53,7 @@ export const GithubIcon = (props) => {
   const {
     size = '2em',
     className = 'text-gray-400 hover:text-gray-500',
-    title = 'Social Media Link',
+    title = 'Github',
   } = props
   return (
     <IconContext.Provider
@@ -72,7 +74,7 @@ export const LinkedInIcon = (props) => {
   const {
     size = '2em',
     className = 'text-gray-400 hover:text-gray-500',
-    title = 'Social Media Link',
+    title = 'LinkedIn',
   } = props
   return (
     <IconContext.Provider
@@ -84,6 +86,48 @@ export const LinkedInIcon = (props) => {
     >
       <div>
         <FaLinkedin />
+      </div>
+    </IconContext.Provider>
+  )
+}
+
+export const MediumIcon = (props) => {
+  const {
+    size = '2em',
+    className = 'text-gray-400 hover:text-gray-500',
+    title = 'Medium',
+  } = props
+  return (
+    <IconContext.Provider
+      value={{
+        size,
+        className: `shared-classNames-go-here ${className}`,
+        title,
+      }}
+    >
+      <div>
+        <FaMediumM />
+      </div>
+    </IconContext.Provider>
+  )
+}
+
+export const TwitterIcon = (props) => {
+  const {
+    size = '2em',
+    className = 'text-gray-400 hover:text-gray-500',
+    title = 'Twitter',
+  } = props
+  return (
+    <IconContext.Provider
+      value={{
+        size,
+        className: `shared-classNames-go-here ${className}`,
+        title,
+      }}
+    >
+      <div>
+        <FaTwitter />
       </div>
     </IconContext.Provider>
   )
