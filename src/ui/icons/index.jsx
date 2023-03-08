@@ -16,6 +16,8 @@ import { IconContext } from 'react-icons'
 import { DiGithubBadge } from 'react-icons/di'
 import { FaLinkedin } from 'react-icons/fa'
 import { FaAngellist } from 'react-icons/fa'
+import { FaMediumM } from 'react-icons/fa'
+import { FaTwitter } from 'react-icons/fa'
 
 export const Icon = (props) => {
   const {
@@ -48,43 +50,21 @@ export const AngelListIcon = (props) => {
 // DM: todoMM: (bump) adapt the remaining icons below as I've done the AngelListIcon - follow the logic from the footer.jsx to here, make sure you understand how it works, ask me questions.
 
 export const GithubIcon = (props) => {
-  const {
-    size = '2em',
-    className = 'text-gray-400 hover:text-gray-500',
-    title = 'Social Media Link',
-  } = props
-  return (
-    <IconContext.Provider
-      value={{
-        size,
-        className: `shared-classNames-go-here ${className}`,
-        title,
-      }}
-    >
-      <div>
-        <DiGithubBadge />
-      </div>
-    </IconContext.Provider>
-  )
+  const { size, className, title = 'GitHub' } = props
+  return <Icon size={size} className={className} title={title} IconComponent={DiGithubBadge} />
 }
 
 export const LinkedInIcon = (props) => {
-  const {
-    size = '2em',
-    className = 'text-gray-400 hover:text-gray-500',
-    title = 'Social Media Link',
-  } = props
-  return (
-    <IconContext.Provider
-      value={{
-        size,
-        className: `shared-classNames-go-here ${className}`,
-        title,
-      }}
-    >
-      <div>
-        <FaLinkedin />
-      </div>
-    </IconContext.Provider>
-  )
+ const { size, className, title = 'LinkedIn' } = props
+  return <Icon size={size} className={className} title={title} IconComponent={FaLinkedin} />
+}
+
+export const MediumIcon = (props) => {
+  const { size, className, title = 'Medium' } = props
+  return <Icon size={size} className={className} title={title} IconComponent={FaMediumM} />
+}
+
+export const TwitterIcon = (props) => {
+  const { size, className, title = 'Twitter' } = props
+  return <Icon size={size} className={className} title={title} IconComponent={FaTwitter} />
 }
