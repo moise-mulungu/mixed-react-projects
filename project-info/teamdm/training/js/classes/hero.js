@@ -37,15 +37,16 @@
 // health:	100
 // damage:	5
 // experience:	0
+// howtojs: classes: basic "constructor function", i.e., without using the 'class' keyword, callable via the 'new' operator
 function Hero(name) {
-  // this is the most simple solution, but I"m not sure,
-  // DM: todoMM: please copy the tests for this exercise from code-wars and any more information that might help know what the return value should be.
-  // Might need a JS Class to do this, but fyi a 'prototype' has a special meaning in JS, as part of the phrase "prototypal inheritance" JS's approach to object oriented programming. Let's set this aside for a later time.
-  return {
-    name,
-    position: '00',
-    health: 100,
-    damage: 5,
-    experience: 0,
-  }
+  this.name = name || 'Hero'
+  this.position = '00'
+  this.health = 100
+  this.damage = 5
+  this.experience = 0
 }
+myHero = new Hero()
+myHero.name === 'Hero' // true
+new Hero('Greg').name === 'Greg' // true
+new Hero('Greg').position === '00' // true
+// DM: that's how it's done, but let's leave JS OOP for later, it's one of those things you should know about, but not learn. better to use functional programming, as does React since hooks no longer use "class components"

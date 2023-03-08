@@ -2,11 +2,11 @@
 
 // run this line and see what is logged
 const result1 = [1, 2, 3].forEach((number) => console.log('the current number is: ', number))
-// what is the value of "result1"?
-result1 /* DM: todoDM: write the value of "result1" here */
+result1 /* DM: todoDM: write the value of "result1" here - still todo, this part is important check MDN if you're not sure what [].foreach() returns */
 // the current number is:  1
 // the current number is:  2
 // the current number is:  3
+// DM: todoMM: it's very important that you write the output of the console.log in all the exercises below, like in the previous 3 lines, this is a key part of ensuring you understand the array looping methods
 
 const pizzaToppings = ['cheese', 'avocado', 'halibut', 'custard']
 
@@ -24,8 +24,8 @@ const result2 = [1, 2, 3].filter((number) => {
   return number > 1
 })
 result2 // [2, 3]
-/* DM: todoMM: write the value of result2 here */
-/* DM: todoMM: write the output of console.log here */
+/* DM: todoMM: write the output of console.log here, what does console.log log? */
+
 const students = [
   { name: 'Aisha', grade: 89 },
   { name: 'Bruno', grade: 55 },
@@ -33,11 +33,9 @@ const students = [
   { name: 'Dacian', grade: 71 },
   { name: 'Esther', grade: 40 },
 ]
-
 const studentsWhoPassed = students.filter((student) => {
   return student.grade >= 60 && student.name !== 'Dacian'
 })
-
 console.log(studentsWhoPassed)
 // [{ name: 'Aisha', grade: 89 }, { name: 'Carlos', grade: 68 }}]
 
@@ -45,8 +43,7 @@ const result3 = [1, 2, 3].map((number) => {
   console.log('the current number is: ', number)
   return number ** number
 })
-  result3 // [1, 4, 27]
- /* DM: todoMM: write the value of result3 here */
+result3 // [1, 4, 27]
 /* DM: todoMM: write the output of console.log here */
 
 const result4 = [1, 2, 3].reduce((acc, cur, idx, arr) => {
@@ -54,12 +51,9 @@ const result4 = [1, 2, 3].reduce((acc, cur, idx, arr) => {
   return { ...acc, [cur]: cur }
 }, {})
 result4 // { 1: 1, 2: 2, 3: 3 }
- /* DM: todoMM: write the value of result4 here */
 /* DM: todoMM: write the output of console.log here */
-// DM: bonus: can you give better names to the first two arguments?
+// DM: bonus: can you give better names to the first two arguments (to the reduce callback: acc, cur?
 
-// DM: todoMM: be sure to always list the expected output
 const nums = [1, 2, 3]
 nums.forEach((num) => num)
 nums // [1, 2, 3]
-

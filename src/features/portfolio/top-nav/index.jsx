@@ -30,18 +30,19 @@ export default function Example(props) {
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
                 <div className="flex-shrink-0">
-                  <img
+                  {/*    <img
                     className="block h-8 w-auto lg:hidden"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
-                  />
+                  /> */}
                   {/* note: curly brackets means JS goes inside. since this is a variable containing plain text, use curly brackets so JS can evaluate the variable which resolves to text.*/}
-                  {theMan}
-                  <img
+                  {/* DM: todoMM: add some TW utility classes for color and size and any other styling you like */}
+                  <span className="">{theMan}</span>
+                  {/*    <img
                     className="hidden h-8 w-auto lg:block"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
-                  />
+                  /> */}
                 </div>
 
                 <div className="hidden lg:ml-6 lg:block">
