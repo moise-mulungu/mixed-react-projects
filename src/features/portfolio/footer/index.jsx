@@ -27,7 +27,7 @@ export default function Footer(props) {
             console.log('footer', { id, name, title, Icon, url })
             // DM: todoMM: check the console warnings: you need a React key property anytime you use array.map to create a list of JSX. Hint, use "id" because it is unique. Check out React's new document site: https://beta.reactjs.org/learn/rendering-lists#keeping-list-items-in-order-with-key
             return (
-              <li className="ml-2 font-medium">
+              <li key={id} className="ml-2 font-medium">
                 <a
                   // href={`#${url}`}
                   href={url}
