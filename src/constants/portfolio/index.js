@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedInIcon, AngelListIcon } from '@/ui/icons'
+import { GithubIcon, LinkedInIcon, AngelListIcon, MediumIcon, TwitterIcon } from '@/ui/icons'
 
 export const topNavSiteLinks = [
   { id: 'work', name: 'Portfolio', anchor: 'work' },
@@ -24,8 +24,8 @@ export const footerSocialLinks = [
     Icon: AngelListIcon,
     url: 'https://angel.co/u/moise-mulungu',
   },
-  { id: 'medium', name: 'Medium', url: 'https://medium.com/@moisemlg90' },
-  { id: 'twitter', name: 'Twitter', url: 'https://twitter.com/moise_mulungu' },
+  { id: 'medium', name: 'Medium', Icon: MediumIcon, url: 'https://medium.com/@moisemlg90' },
+  { id: 'twitter', name: 'Twitter', Icon: TwitterIcon, url: 'https://twitter.com/moise_mulungu' },
 ]
 export const defaultFooterSocialLinkId = footerSocialLinks[0].id
 // DM: yup, see, now you don't have 'githup' hard-coded. no "magic strings"!

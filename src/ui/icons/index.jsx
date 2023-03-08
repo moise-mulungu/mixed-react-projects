@@ -50,11 +50,7 @@ export const AngelListIcon = (props) => {
 // DM: todoMM: (bump) adapt the remaining icons below as I've done the AngelListIcon - follow the logic from the footer.jsx to here, make sure you understand how it works, ask me questions.
 
 export const GithubIcon = (props) => {
-  const {
-    size = '2em',
-    className = 'text-gray-400 hover:text-gray-500',
-    title = 'Github',
-  } = props
+  const { size = '2em', className = 'text-gray-400 hover:text-gray-500', title = 'Github' } = props
   return (
     <IconContext.Provider
       value={{
@@ -92,11 +88,7 @@ export const LinkedInIcon = (props) => {
 }
 
 export const MediumIcon = (props) => {
-  const {
-    size = '2em',
-    className = 'text-gray-400 hover:text-gray-500',
-    title = 'Medium',
-  } = props
+  const { size = '2em', className = 'text-gray-400 hover:text-gray-500', title = 'Medium' } = props
   return (
     <IconContext.Provider
       value={{
@@ -113,11 +105,7 @@ export const MediumIcon = (props) => {
 }
 
 export const TwitterIcon = (props) => {
-  const {
-    size = '2em',
-    className = 'text-gray-400 hover:text-gray-500',
-    title = 'Twitter',
-  } = props
+  const { size = '2em', className = 'text-gray-400 hover:text-gray-500', title = 'Twitter' } = props
   return (
     <IconContext.Provider
       value={{
