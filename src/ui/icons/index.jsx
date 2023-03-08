@@ -50,73 +50,21 @@ export const AngelListIcon = (props) => {
 // DM: todoMM: (bump) adapt the remaining icons below as I've done the AngelListIcon - follow the logic from the footer.jsx to here, make sure you understand how it works, ask me questions.
 
 export const GithubIcon = (props) => {
-  const { size = '2em', className = 'text-gray-400 hover:text-gray-500', title = 'Github' } = props
-  return (
-    <IconContext.Provider
-      value={{
-        size,
-        className: `shared-classNames-go-here ${className}`,
-        title,
-      }}
-    >
-      <div>
-        <DiGithubBadge />
-      </div>
-    </IconContext.Provider>
-  )
+  const { size, className, title = 'GitHub' } = props
+  return <Icon size={size} className={className} title={title} IconComponent={DiGithubBadge} />
 }
 
 export const LinkedInIcon = (props) => {
-  const {
-    size = '2em',
-    className = 'text-gray-400 hover:text-gray-500',
-    title = 'LinkedIn',
-  } = props
-  return (
-    <IconContext.Provider
-      value={{
-        size,
-        className: `shared-classNames-go-here ${className}`,
-        title,
-      }}
-    >
-      <div>
-        <FaLinkedin />
-      </div>
-    </IconContext.Provider>
-  )
+ const { size, className, title = 'LinkedIn' } = props
+  return <Icon size={size} className={className} title={title} IconComponent={FaLinkedin} />
 }
 
 export const MediumIcon = (props) => {
-  const { size = '2em', className = 'text-gray-400 hover:text-gray-500', title = 'Medium' } = props
-  return (
-    <IconContext.Provider
-      value={{
-        size,
-        className: `shared-classNames-go-here ${className}`,
-        title,
-      }}
-    >
-      <div>
-        <FaMediumM />
-      </div>
-    </IconContext.Provider>
-  )
+  const { size, className, title = 'Medium' } = props
+  return <Icon size={size} className={className} title={title} IconComponent={FaMediumM} />
 }
 
 export const TwitterIcon = (props) => {
-  const { size = '2em', className = 'text-gray-400 hover:text-gray-500', title = 'Twitter' } = props
-  return (
-    <IconContext.Provider
-      value={{
-        size,
-        className: `shared-classNames-go-here ${className}`,
-        title,
-      }}
-    >
-      <div>
-        <FaTwitter />
-      </div>
-    </IconContext.Provider>
-  )
+  const { size, className, title = 'Twitter' } = props
+  return <Icon size={size} className={className} title={title} IconComponent={FaTwitter} />
 }
