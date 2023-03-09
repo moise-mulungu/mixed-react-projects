@@ -283,9 +283,9 @@ function removeDuplicateWords(array) {
     // loop through the array
     for (let i = 0; i < array.length; i++) {
       // I want to filter array[i] from the array and add it to the singleItems, but I am not sure!
-      const filteredItems = array.filter(array[i] !== array[i])
+      const filteredArray = array.filter((item,index) => array.indexOf(item === index))
       // add the filtered items to singleItems
-      singleItems.push(filteredItems)
+      singleItems.push(filteredArray)
     }
     return singleItems
 
