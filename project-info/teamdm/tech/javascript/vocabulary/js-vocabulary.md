@@ -72,3 +72,12 @@ a file containing related code. we use the `import` and `export` keywords to sha
 ## class prototype
 Prototypes are the mechanism by which JavaScript objects inherit features from one another
 <!-- an example from the ./class-prototype/class.js -->
+
+## number zero in JavaScript
+
+Every number in JavaScript is `truthy`(a truthy value is a value that is considered true when encountered in a Boolean context), except zero(`0`) which is `falsy` just like how an empty string (`''`) is the only `falsy` string.
+* other falsy values are : `false`, `null`, `undefined`, `NaN`
+
+## boolean constructor
+The Boolean() constructor can create boolean objects or return primitive values of type boolean.
+`Boolean(value)`

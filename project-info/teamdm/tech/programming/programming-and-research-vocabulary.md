@@ -16,3 +16,6 @@ magic strings are string values that are specified directly within application c
 DM: todoMM: read some opinion articles, or reddit, etc. - why are magic strings to be avoided?
 
 ## DM: todoMM add "pre-coded models" to this file (this one is new to me)
+
+## screen-reader
+Screen readers are software programs that allow blind or visually impaired users to read the text that is displayed on the computer screen with a speech synthesizer or braille display. A screen reader is the interface between the computer's operating system, its applications, and the user.
