@@ -5,8 +5,11 @@ import {
 } from '@/constants/portfolio/index'
 
 const Overview = (props) => {
-  const { empty = {} } = props // MM: toDM: I did this to avoid the eslint error: here is the resources I used to fix it: https://eslint.org/docs/latest/rules/no-empty-pattern.
+  // MM: ???DM: I did this to avoid the eslint error: here is the resources I used to fix it: https://eslint.org/docs/latest/rules/no-empty-pattern. super! typically the variable '_' can mean 'not used'
+  const { _ = {} } = props
   return (
+    // DM: ???MM: did you have an idea for 'overview' class? can you use TW utility classes?
+    // DM: todoDM: write example of a 'wrapper' component that serves only to make chosen TW utility classes reusable
     <div className="overview">
       <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
         {footerSocialLinks.map(({ id, name, title, Icon, url }) => {
@@ -18,8 +21,6 @@ const Overview = (props) => {
               </a>
             </li>
           )
-          // MM: ???DM: i was getting this error: "Missing key prop for the element iterator". I then added it to the <li></li> element, is it a good practice to add it to the <li></li> element instead of to the <a></a> element?
-          // DM: Yes, you add the key prop to the element that repeats within it's containing element; 'a' does not repeat within it's containing element (which is 'li'), but 'li' repeats within the 'div'.
         })}
       </ul>
 

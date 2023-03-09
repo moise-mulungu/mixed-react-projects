@@ -14,49 +14,42 @@ DM: Moise, follow all of these when doing any coding exercise problem. It will w
 # rules for debugging
 * always return a variable, for each debugging via console.log 
 
-# steps
-1. describe the inputs and outputs in detail: their types and possible values
-2. validate the input (convert types or transform if needed) (*defensive coding*)
-3. break down the the 'variable' elements of the solution into the most granular (smallest) parts
-   * assign each part (string, boolean expression, etc.) to a well-named, descriptive variable
-4. use the named parts to create a readable solution
-5. return the solution
-6. list and describe anything that is unclear in the challenge description
-   * these would be the questions you'd be expected to ask in a interview situation
-   * practice reading the challenge description carefully
-* note: via these tasks, you are essentially repeating the key elements of the challenge description in the code
-7. write test(s) that cover the input variants
-
-* starter function
+# steps (in a starter function, which you can copy and paste each time you start a new challenge)
 ```js
 function myFunction(parameter1, parameter2) {
   /*   
-  1) describe the inputs and outputs, their types and possible values
+  1. describe the inputs and outputs in detail: their types and possible values
+     sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
+
      inputs: 
-       parameter1: string|number|...; values: 
-       parameter2: string|number|...; values:
+       parameter1: string|number|...; possible values: 
+       parameter2: string|number|...; possible values:
        
-     output:
- 
+     output: string|number|...; possible values: 
   */
 
-  // 2) validate the input or convert if possible
+  // 2. validate the input (convert types or transform if needed) (*defensive coding*)
 
-  // 3) break down the the 'variable' elements of the solution into the most granular (smallest) parts; assign each to a well-named, descriptive variable (rename input if needed)
+  // 3. break down the the 'variable' elements of the solution into the most granular (smallest) parts
+  //    assign each part (string, boolean expression, etc.) to a well-named, descriptive variable
+  //    each logical expressions must be assigned to a variable
 
-  // 4) code the solution (logical expressions)
+  // 4. use the named parts to create a readable solution
 
-  // always return a variable, or, use only variables in return statements (all logical expressions must be assigned to a variable)
-  // This makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+  // 5. return the solution
+  //    always return a variable, or, use only variables in return statements ()
+  //    this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
   return ''
 
-  // 5. list and describe anything that is unclear in the challenge description
-
+  // 6. list and describe anything that is unclear in the challenge description
+  //    these would be the questions you'd be expected to ask in a interview situation
+  //    practice reading the challenge description carefully
 }
-// 6) test input variants
+//7. write test(s) that cover the input variants
 myFunction('','') // expected result
-
 ```
+
+// DM: todoDM: update the steps 
 * example (somewhat exaggerated to cover all 6 points)
 ```js
 // Determine offspring sex based on genes XX and XY chromosomes

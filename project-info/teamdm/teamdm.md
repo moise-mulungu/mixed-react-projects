@@ -194,13 +194,25 @@ for push
 ## Sunday plan:
 * pull (since MM sometimes has more commits by Sunday), respond, push
 * review task lists
-* go over our communication process
-* talk about Jira
-* plan, train, etc. 
-* talk about the vocabulary list
-* talk about snippets in src/utils (maybe a starter page to show react snippets in teh browser)
-
-
+* communication process (email, slack, git diffs, zoom) 6:45 MT
+* talk about our
+* plan, train, etc.
+* review Friday's code exercises 
+* specific topics
+  * Jira - using Git diffs to communicate works well (?), however part of Duncan's learning ideally would be to pretend we are on a multi-person team, and that likely requires more thorough communication tools like Jira.
+  * GitLab - again, Duncan's learning should include setting up CI/CD for the eventual production site
+  * Internet outages
+  * slack/git VS in-person - which is better for each situation:
+    * learning NEW JS concepts, NEW procedures
+    * practicing independent research-based learning (97% of all your learning as a DEV will be self-driven)
+    * note: 
+      * slack/git implies independent research and building up a permanent knowledge-base in this repo
+      * in-person teaching allows for more interaction
+        * possibly: for any NEW process, work in-person to refine the process quickly, learn by example, etc. Afterwards, written communications may suffice. examples: 
+          * JoR examples to the /component-examples
+    * DM: likely we need to think about which sorts of interactions are better in-person
+  * DM: I notice I feel like spending the entire week focusing intensely on the portfolio, instead of splitting the time among the 3 ... but this is my feeling, it never happens that way at real work. However, when I get tickets, that is my full-time focus (but about 30% of the day is taken up by standups, reviewing others' code, testing other's work ...), but each day/few days/week, there is one main focus. Boss likes DEVs to do ONE ticket at a time, focus intensely and get it done. 
+* DM: todoMM: list any topics here that you'd like to discuss (and feel free to comment on my bullet points here)
 
 
 
