@@ -3,4 +3,3 @@ export function classNames(...classes) {
     // short for: return classes.filter((class) => Boolean(class)).join(' ')
     return classes.filter(Boolean).join(' ')
   }
-  

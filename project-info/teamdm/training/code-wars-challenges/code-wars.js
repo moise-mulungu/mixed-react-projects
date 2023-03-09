@@ -258,3 +258,38 @@ isAlphanumeric('abc') // true
 isAlphanumeric('abc123') // true
 isAlphanumeric('abc 123') // false
 isAlphanumeric('abc_123') // false
+
+ // remove duplicate words https://www.codewars.com/kata/5b39e3772ae7545f650000fc/train/javascript
+  // the aim is to remove from a string but I want to overthink of an array which may contains string or integer.
+
+function removeDuplicateWords(array) {
+  // your perfect code...
+  // 1. describe the inputs and outputs
+      // inputs: string or integer
+      // outputs: string or integer
+  // 2. defensive coding
+  const isArrayValueString = typeof array === 'string' 
+  if (isArrayValueString !== 'string') {
+    throw new Error('array must be a string')
+  }
+  const isArrayValueInteger = typeof array === Number.parseInt
+  if (isArrayValueInteger !== Number.parseInt) {
+    throw new Error('array must be an integer')
+  }
+
+  // 3. define steps to follow:
+    // create a variable that will contain the single first entries
+    let singleItems = [];
+    // loop through the array
+    for (let i = 0; i < array.length; i++) {
+      // I want to filter array[i] from the array and add it to the singleItems, but I am not sure!
+      const filteredItems = array.filter(array[i] !== array[i])
+      // add the filtered items to singleItems
+      singleItems.push(filteredItems)
+    }
+    return singleItems
+
+}
+
+removeDuplicateWords['any played music in the any text of the music']
+removeDuplicateWords[1, 4, 6, 2, 7, 2, 5, 1, 3, 8]
