@@ -5,7 +5,7 @@ import {
 } from '@/constants/portfolio/index'
 
 const Overview = (props) => {
-  const {} = props
+  const { empty = {} } = props // MM: toDM: I did this to avoid the eslint error: here is the resources I used to fix it: https://eslint.org/docs/latest/rules/no-empty-pattern.
   return (
     <div className="overview">
       <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
