@@ -45,13 +45,18 @@ const result3 = [1, 2, 3].map((number) => {
 })
 result3 // [1, 4, 27]
 /* DM: todoMM: write the output of console.log here */
-
+// the current number is:  1 
+// the current number is:  2 
+// the current number is:  3
 const result4 = [1, 2, 3].reduce((acc, cur, idx, arr) => {
   console.log('argument values are: ', acc, cur, idx, arr)
   return { ...acc, [cur]: cur }
 }, {})
 result4 // { 1: 1, 2: 2, 3: 3 }
 /* DM: todoMM: write the output of console.log here */
+// argument values are:  {} 1 0 [ 1, 2, 3 ] 
+// argument values are:  { 1: 1 } 2 1 [ 1, 2, 3 ] 
+// argument values are:  { 1: 1, 2: 2 } 3 2 [ 1, 2, 3 ]
 // DM: bonus: can you give better names to the first two arguments (to the reduce callback: acc, cur?
 
 const nums = [1, 2, 3]
