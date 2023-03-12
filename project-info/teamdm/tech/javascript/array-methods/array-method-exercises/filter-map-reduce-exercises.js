@@ -11,18 +11,13 @@
 
 // DM: todoMM: be sure to fix all errors on the page, no that we have esLint. prettier won't auto-format until you fix all JS errors on the entire pages. when prettier fails to auto-format, that is how I know that there is an error somewhere on the page. You are doing so much work lately, that I can't review quickly unless the JS syntax is correct, so be sure to ensure that each time you edit a JS file.
 
-;[1, 2, 3]
-  .map((number) => number + 5) // [6, 7, 8]
+[1, 2, 3].map((number) => number + 5) // [6, 7, 8]
 
-  [
-    // write code to get 1 number which is the sum of the elements
-    (1, 2, 3)
-  ].reduce((sum, number) => sum + number, 0)
+// write code to get 1 number which is the sum of the elements
+;[1, 2, 5].reduce((sum, number) => sum + number, 0)  
 
-  [
-    // create a new array of the same length, multiplying each element by 10
-    (1, 2, 3)
-  ].map((number) => number * 10) // [10, 20, 30]
+// create a new array of the same length, multiplying each element by 10
+;[1, 2, 3].map((number) => number * 10) // [10, 20, 30]
 
 const people = [
   { name: 'Aisha', grade: 89 },
@@ -37,10 +32,8 @@ const screamedNames = people.map((person) => {
 console
   .log(screamedNames) // ['AISHA', 'BRUNO', 'CARLOS', 'DACIAN', 'ESTHER']
 
-  [
-    // create a smaller array containing only the values that are less than 3
-    (1, 2, 3)
-  ].filter((number) => number < 3)
+  // create a smaller array containing only the values that are less than 3
+;[1, 2, 3].filter((number) => number < 3)
 const numbers = [5, 12, 15, 31, 40]
 
 const evenNumbers = numbers.filter((num) => {

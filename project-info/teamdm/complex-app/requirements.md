@@ -1,7 +1,7 @@
 
 
 * features
-  * DM: todoMM: anytime, research
+  * DM: todoMM: anytime, research 
 * back end src/pages/api
   * ingest existing weather API, adding/calculating/manipulating
     * merge with another API (country data, etc.)
