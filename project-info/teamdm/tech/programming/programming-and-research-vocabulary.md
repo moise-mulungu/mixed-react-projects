@@ -17,5 +17,12 @@ DM: todoMM: read some opinion articles, or reddit, etc. - why are magic strings 
 
 ## DM: todoMM add "pre-coded models" to this file (this one is new to me)
 
+A pre-trained model is a saved network that was previously trained on a large dataset, typically on a large-scale image-classification task. You either use the pre-trained model as is or use transfer learning to customize this model to a given task(here they talk about pre-trained instead of pre-coded)
+
 ## screen-reader
 Screen readers are software programs that allow blind or visually impaired users to read the text that is displayed on the computer screen with a speech synthesizer or braille display. A screen reader is the interface between the computer's operating system, its applications, and the user.
+
+## react as a component-based framework/ what is a component?
+components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Components come in two types, Class components and Function components.
+
+// DM: todoMM: let's put this in programming-vocab, even though there is a small mention of React, it is a general concept

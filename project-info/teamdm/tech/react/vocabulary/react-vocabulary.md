@@ -51,10 +51,6 @@ e.g: `data-test-id`, and `aria-label`
   * DM: in the context of JSX, "attributes" means props `<MyComponent myProp="I am an attribute of MyComponent" >`
     * the wider meaning of "attribute" is from XML, HTML `<tag attribute="value">`
 
-## react as a component-based framework/ what is a component?
-components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Components come in two types, Class components and Function components.
-
-// DM: todoMM: let's put this in programming-vocab, even though there is a small mention of React, it is a general concept
 ## mechanisms of reuse
 * A mechanism is reusable, if it can be employed for several *domains* and tasks.
 * DM: todoDM: read more on this. usability UX? usability/reusability balance
