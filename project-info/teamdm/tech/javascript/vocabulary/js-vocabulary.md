@@ -93,3 +93,9 @@ Note We cannot include Math object in those built-in constructors because Math i
 ## custom constructors
 DM: todoDM
 
+## array literal
+An array literal is a list of zero or more expressions, each of which represents an array element, enclosed in square brackets ( [] )
+
+## object literal
+
+An object literal is a list of zero or more pairs of property names and associated values of an object, enclosed in curly braces ( {} )
