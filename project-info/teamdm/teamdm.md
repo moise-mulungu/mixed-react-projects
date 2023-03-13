@@ -214,5 +214,8 @@ for push
   * DM: I notice I feel like spending the entire week focusing intensely on the portfolio, instead of splitting the time among the 3 ... but this is my feeling, it never happens that way at real work. However, when I get tickets, that is my full-time focus (but about 30% of the day is taken up by standups, reviewing others' code, testing other's work ...), but each day/few days/week, there is one main focus. Boss likes DEVs to do ONE ticket at a time, focus intensely and get it done. 
 * DM: todoMM: list any topics here that you'd like to discuss (and feel free to comment on my bullet points here)
 
-
+I would like to emphasize on splitting any activity with Jira instead. For example for portfolio, and code-wars exercises
+  1. Portfolio: creating weekly, and monthly split tasks.
+  2. Code-wars: planning for weekly challenges, and monthly exercises by difficult levels
+There is also the Internet outages that you mentioned above, any idea or suggestion?
 
