@@ -53,7 +53,7 @@ export default function Example(props) {
                       // console.log('wut', { id, name, anchor })
                       // DM: todoMM: add a key prop
                       return (
-                        <a
+                        <a key={id}
                           href={`#${anchor}`}
                           className={classNames(
                             id === selectedSiteLinkId

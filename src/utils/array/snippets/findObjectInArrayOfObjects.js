@@ -3,7 +3,7 @@
 // exercise:
 // find the object that contains objectProperty1 has value of 3
 // tip: array.find()
-;[
+[
   {
     objectProperty1: 1,
     objectProperty2: 2,
