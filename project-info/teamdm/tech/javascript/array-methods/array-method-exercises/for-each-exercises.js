@@ -25,6 +25,9 @@ const result2 = [1, 2, 3].filter((number) => {
 })
 result2 // [2, 3]
 /* DM: todoMM: write the output of console.log here, what does console.log log? */
+// the current number is:  1 
+// the current number is:  2 
+// the current number is:  3
 
 const students = [
   { name: 'Aisha', grade: 89 },
