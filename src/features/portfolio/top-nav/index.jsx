@@ -8,6 +8,7 @@ DM: todoMM: please do this before memory fades of where you got it
 import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { uuid } from 'uuidv4'
 
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
@@ -53,7 +54,8 @@ export default function Example(props) {
                       // console.log('wut', { id, name, anchor })
                       // DM: todoMM: add a key prop
                       return (
-                        <a key={id}
+                        <a
+                          key={uuid()}
                           href={`#${anchor}`}
                           className={classNames(
                             id === selectedSiteLinkId
