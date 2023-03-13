@@ -16,8 +16,6 @@ an opinionated formatter enforces a consistent style by parsing your code and re
 
 ## plug-in
 plug-in also called add-on or extension is a computer software that adds new functions to a host program without altering the host program itself.
-* DM: great, todoMM: move this to the new tech-vocabulary.md file(done)
-  * btw, if I indent a bullet point after a "DM:" this means that all the indented bullet points are part of the upper-level bullet point where I put "DM:"
 
 ## IDE(integrated development environment)
 
