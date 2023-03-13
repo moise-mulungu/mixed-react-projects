@@ -32,6 +32,10 @@ Type Coercion refers to the process of automatic or implicit conversion of value
 * DM: "expr1 || expr2" evaluates to expr1
 
 // DM: todoDM: what are both operators called as a group? also, what is the exact word for 'result' of the evaluation of a "logical expression"?
+
+## logical expression
+
+A logical expression is a statement that can either be true or false. For example, a < b is a logical expression. It can be true or false depending on what values of a and b are given.
 ## difference between string interpolation and template literal
 
 <!-- MM: ???DM: These two expressions seem to be confusing at first to me, but I think string interpolation is the process to insert or embed, but template literal or string literal is the place to insert the string interpolation.

@@ -61,6 +61,7 @@ e.g: `data-test-id`, and `aria-label`
 * In react, the reuse mechanism is the component. But, a component all the three reuse mechanisms into one.
 
 ## DM: todoMM: render props
+Is a technique for sharing code between React components using a prop whose value is a function
 
 ## fragments
 A fragment is 

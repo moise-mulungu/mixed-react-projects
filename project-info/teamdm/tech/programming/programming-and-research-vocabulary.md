@@ -26,3 +26,7 @@ Screen readers are software programs that allow blind or visually impaired users
 components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Components come in two types, Class components and Function components.
 
 // DM: todoMM: let's put this in programming-vocab, even though there is a small mention of React, it is a general concept
+
+## logical expression
+
+A logical expression is a statement that can either be true or false. For example, a < b is a logical expression. It can be true or false depending on what values of a and b are given.

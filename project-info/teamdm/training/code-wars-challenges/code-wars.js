@@ -26,6 +26,7 @@ function exclusive0r(a, b) {
   }
 
   // DM: todoMM: hey, here's something you can do for me, since I don't really know: google the proper/conventional/best way to write error messages. For example, should the message be stated as a positive? "a should be ..." OR "a is not ...", see if you can find a list of "standards", "best practices"
+  // MM: I searched for "error message best practices" and did not find specific details of list of standards
 
   // describe the steps to solve the problem
   // 1. if a and b are both true, return false
