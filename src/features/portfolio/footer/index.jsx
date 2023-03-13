@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { footerSocialLinks, defaultFooterSocialLinkId } from '../../../constants/portfolio'
 import { classNames } from '@/ui/utils'
+import { uuid } from 'uuidv4'
 
 // step one: define var with all data, use map
 // step two: move this to constants/portfolio
@@ -27,7 +28,7 @@ export default function Footer(props) {
             console.log('footer', { id, name, title, Icon, url })
             // DM: todoMM: check the console warnings: you need a React key property anytime you use array.map to create a list of JSX. Hint, use "id" because it is unique. Check out React's new document site: https://beta.reactjs.org/learn/rendering-lists#keeping-list-items-in-order-with-key
             return (
-              <li key={id} className="ml-2 font-medium">
+              <li key={uuid()} className="ml-2 font-medium">
                 <a
                   // href={`#${url}`}
                   href={url}
