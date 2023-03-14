@@ -1,0 +1,14 @@
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #fff;
+    margin: 0 0.5rem;
+}
+/* I just used a random styling, not the one from the JoR */
+/* Is the naming file convention to be PascalCase or camelCase for styling? */
