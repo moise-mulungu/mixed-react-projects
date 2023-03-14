@@ -10,5 +10,13 @@
     color: #fff;
     margin: 0 0.5rem;
 }
-/* I just used a random styling, not the one from the JoR */
+
+.child-avatar {
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+    border: 5px solid #fff;
+    position: absolute;
+}
+/* I just used a random unverified styling, not the one from the JoR */
 /* Is the naming file convention to be PascalCase or camelCase for styling? */
