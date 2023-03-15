@@ -30,3 +30,10 @@ components are independent and reusable bits of code. They serve the same purpos
 ## logical expression
 
 A logical expression is a statement that can either be true or false. For example, a < b is a logical expression. It can be true or false depending on what values of a and b are given.
+
+## program optimization (code optimization, or software optimization)
+is the process of modifying a software system to make some aspect of it work more efficiently or use fewer resources.[1] In general, a computer program may be optimized so that it executes more rapidly, or to make it capable of operating with less memory storage or other resources, or draw less power
+
+## premature optimization
+is a way of spending a lot of resources (e.g., time and effort) trying to optimize certain functions in a codebase early on, even though these optimizations are likely to be irrelevant later, due to necessary changes in the code.
+<!-- I often heard about this term, but I did not know what it meant. -->
