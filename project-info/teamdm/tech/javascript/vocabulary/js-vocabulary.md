@@ -33,12 +33,9 @@ Type Coercion refers to the process of automatic or implicit conversion of value
 
 // DM: todoDM: what are both operators called as a group? also, what is the exact word for 'result' of the evaluation of a "logical expression"?
 
-## logical expression
-
-A logical expression is a statement that can either be true or false. For example, a < b is a logical expression. It can be true or false depending on what values of a and b are given.
 ## difference between string interpolation and template literal
 
-<!-- MM: ???DM: These two expressions seem to be confusing at first to me, but I think string interpolation is the process to insert or embed, but template literal or string literal is the place to insert the string interpolation.
+<!-- MM: ???DM: These two expressions seem to be confusing at first to me, but I think string interpolation is the *process* to insert or embed, but template literal or string literal is the *place* to insert the string interpolation. DM: exactly!
 For example, a box with pens inside, a box is a template literal and pens are string interpolation 
 DM: yes, in the sense that the template literal is what JS employs to make string interpolation happen. This will help clarify the differenct: string interpolation is an item for tech-vocabluary.md, and template literal belongs in this file.
 DM: but yes the ${} is where the string interpolation happens in `text, text ${} more text`
@@ -46,7 +43,7 @@ DM: and: `text, text ${ 'any expression here will be coerced to a String' } more
 -->
 
 ## short-circuiting evaluation
-is the semantics of some Boolean operators in some programming languages in which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression:
+the semantics of some Boolean operators in some programming languages in which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression
 DM: todoDM: concise examples from my Anki
 
 ## destructuring assignment(object and array destructuring)
@@ -98,8 +95,13 @@ Note We cannot include Math object in those built-in constructors because Math i
 DM: todoDM
 
 ## array literal
-An array literal is a list of zero or more expressions, each of which represents an array element, enclosed in square brackets ( [] )
+An array literal is a *list* of zero or more *expressions*, each of which represents an array *element*, enclosed in *square brackets* ( [] )
 
 ## object literal
+An object literal is a *compound data type* of zero or more pairs of *property name*s and associated 3s of an object, enclosed in *curly brackets* ( {} )
 
-An object literal is a list of zero or more pairs of property names and associated values of an object, enclosed in curly braces ( {} )
+DM: great work!
+
+DM: todoMM: add to programming vocab: compound data type
+
+curly|square|angle|round brackets - DM: I like to pick one word, "brackets", to keep it simple. You can say curly braces and parentheses (instead of round brackets). This is also more internationalized (i18n)

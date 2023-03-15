@@ -9,12 +9,14 @@
 // array.reduce is to transform an array into something else (ex: into a number, or an object)
 // example exercise: create a new array of the same length, adding 5 to each element
 
-// DM: todoMM: be sure to fix all errors on the page, no that we have esLint. prettier won't auto-format until you fix all JS errors on the entire pages. when prettier fails to auto-format, that is how I know that there is an error somewhere on the page. You are doing so much work lately, that I can't review quickly unless the JS syntax is correct, so be sure to ensure that each time you edit a JS file.
+// DM: todoMM: Moise, in case they are piling up, please check all my todoMM and write (done) if you have completed them. That will help me review faster and keep our shared repo clean. thanks!
 
-[1, 2, 3].map((number) => number + 5) // [6, 7, 8]
+// DM: todoMM: be sure to fix all errors on the page, now that we have esLint. prettier won't auto-format until you fix all JS errors on the entire pages. when prettier fails to auto-format, that is how I know that there is an error somewhere on the page. You are doing so much work lately, that I can't review quickly unless the JS syntax is correct, so be sure to ensure that each time you edit a JS file. (done?)
+
+;[1, 2, 3].map((number) => number + 5) // [6, 7, 8]
 
 // write code to get 1 number which is the sum of the elements
-;[1, 2, 5].reduce((sum, number) => sum + number, 0)  
+;[1, 2, 5].reduce((sum, number) => sum + number, 0)
 
 // create a new array of the same length, multiplying each element by 10
 ;[1, 2, 3].map((number) => number * 10) // [10, 20, 30]
@@ -29,16 +31,12 @@ const people = [
 const screamedNames = people.map((person) => {
   return person.name.toUpperCase()
 })
-console
-  .log(screamedNames) // ['AISHA', 'BRUNO', 'CARLOS', 'DACIAN', 'ESTHER']
+console.log(screamedNames) // ['AISHA', 'BRUNO', 'CARLOS', 'DACIAN', 'ESTHER']
 
-  // create a smaller array containing only the values that are less than 3
+// create a smaller array containing only the values that are less than 3
 ;[1, 2, 3].filter((number) => number < 3)
-const numbers = [5, 12, 15, 31, 40]
 
-const evenNumbers = numbers.filter((num) => {
-  return num % 2 === 0
-})
+const evenNumbers = [5, 12, 15, 31, 40].filter((num) => num % 2 === 0)
 
 // great!
 

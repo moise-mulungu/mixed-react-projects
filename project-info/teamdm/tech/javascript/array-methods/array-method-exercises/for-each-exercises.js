@@ -24,9 +24,8 @@ const result2 = [1, 2, 3].filter((number) => {
   return number > 1
 })
 result2 // [2, 3]
-/* DM: todoMM: write the output of console.log here, what does console.log log? */
-// the current number is:  1 
-// the current number is:  2 
+// the current number is:  1
+// the current number is:  2
 // the current number is:  3
 
 const students = [
@@ -47,20 +46,18 @@ const result3 = [1, 2, 3].map((number) => {
   return number ** number
 })
 result3 // [1, 4, 27]
-/* DM: todoMM: write the output of console.log here */
-// the current number is:  1 
-// the current number is:  2 
+// the current number is:  1
+// the current number is:  2
 // the current number is:  3
-const result4 = [1, 2, 3].reduce((acc, cur, idx, arr) => {
+const asObject = [1, 2, 3].reduce((acc, cur, idx, arr) => {
   console.log('argument values are: ', acc, cur, idx, arr)
   return { ...acc, [cur]: cur }
 }, {})
 result4 // { 1: 1, 2: 2, 3: 3 }
-/* DM: todoMM: write the output of console.log here */
-// argument values are:  {} 1 0 [ 1, 2, 3 ] 
-// argument values are:  { 1: 1 } 2 1 [ 1, 2, 3 ] 
+// argument values are:  {} 1 0 [ 1, 2, 3 ]
+// argument values are:  { 1: 1 } 2 1 [ 1, 2, 3 ]
 // argument values are:  { 1: 1, 2: 2 } 3 2 [ 1, 2, 3 ]
-// DM: bonus: can you give better names to the first two arguments (to the reduce callback: acc, cur?
+// DM: todoMM: can you give better names to the first two arguments (to the reduce callback: acc, cur? Just nname them after what they are.
 
 const nums = [1, 2, 3]
 nums.forEach((num) => num)

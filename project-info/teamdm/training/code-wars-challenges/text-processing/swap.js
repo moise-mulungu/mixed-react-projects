@@ -73,5 +73,3 @@ swap('HllWorld!')
 // DM: todoDM: review naming after all the code changes are complete
 
 // DM: todoDM: after Moise makes all the needed changes, copy the solution and omit all the comments, just to see what it would look like in real production code. Moise, it will be succinct and readable.
-
-// DMa; todoDM: review and perhaps a vocabulary item: "premature optimization". Exaggerated, but true: https://stackify.com/premature-optimization-evil/
