@@ -1,5 +1,5 @@
 import Avatar from './avatar'
-import { uuid } from 'uuidv4';
+import { uuid } from 'uuidv4'
 /* 
 
 DM: todoMM: implement the uuid package for your unique keys here, instead of hard-coding 'id' in the data; see the code at the end of the page - you don't have to read the article: https://blog.devgenius.io/the-quicky-lazy-but-effective-way-to-create-unique-keys-for-react-elements-e45d574028a3
@@ -32,6 +32,7 @@ export default function AvatarSet() {
       {data.map(({ id, alt }) => (
         <Avatar
           key={uuid()} // MM: ???DM: I am not sure if this is the right place to add the key. I'm not sure how to do that though. If so what is the use of "id" as a parameter in line 32?
+          // DM: the is parameter is fine, but it is 'hard coded' into the data objects, hardcoding does not scale. - so it's better to 'uatomate' ths key.
           src={`https://sandpack-bundler.vercel.app/img/avatars/${id}.png`}
           alt={alt}
         />

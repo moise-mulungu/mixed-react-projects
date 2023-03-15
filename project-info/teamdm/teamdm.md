@@ -217,5 +217,6 @@ for push
 I would like to emphasize on splitting any activity with Jira instead. For example for portfolio, and code-wars exercises
   1. Portfolio: creating weekly, and monthly split tasks.
   2. Code-wars: planning for weekly challenges, and monthly exercises by difficult levels
+DM: thanks, let me think and we'll discuss. What you describe seems more like project-management, like a visual timeline to view the plan over time. Does that sound like a correct interpretation of what you wrote? Maybe Jira has that capability, or maybe there is another tool. 
 There is also the Internet outages that you mentioned above, any idea or suggestion?
 

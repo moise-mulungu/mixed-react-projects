@@ -14,7 +14,7 @@ DM: Moise, follow all of these when doing any coding exercise problem. It will w
 # rules for debugging
 * always return a variable, for each debugging via console.log 
 
-# steps (in a starter function, which you can copy and paste each time you start a new challenge)
+# steps (in a **starter function**, which you can copy and paste each time you start a new challenge)
 ```js
 function myFunction(parameter1, parameter2) {
   /*   
@@ -37,7 +37,7 @@ function myFunction(parameter1, parameter2) {
   // 4. use the named parts to create a readable solution
 
   // 5. return the solution
-  //    always return a variable, or, use only variables in return statements ()
+  //    always return a variable, or, use only variables in return statements 
   //    this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
   return ''
 
