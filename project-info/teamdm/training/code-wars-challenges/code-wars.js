@@ -1,6 +1,7 @@
 //////////////////////////////////////////////////////////////////////
 // Exclusive "or" (xor) Logical Operator
 //////////////////////////////////////////////////////////////////////
+
 // AKA "exclusive or"
 function exclusive0r(a, b) {
   // describe the inputs and outputs
@@ -376,3 +377,58 @@ removeDuplicateWords('any played music in the any text of the music') // put exp
 removeDuplicateWords(
   'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'
 ) //  'alpha beta gamma delta'
+
+//Changing letters
+// When provided with a String, capitalize all vowels
+// For example:
+// Input : "Hello World!"
+// Output : "HEllO WOrld!"
+// Notes for this kata (in case you didn't read the description) :
+// Vowels are defined as: a, e, i, o, u
+// Y is not a vowel
+
+function swap(string) {
+  //   const vowels = ['a', 'e', 'i', 'o', 'u']
+  //   const stringArray = string.split('')
+  //   const result = stringArray.map((letter) => {
+  //     return vowels.includes(letter.toLowerCase()) ? letter.toUpperCase() : letter;
+  //   })
+  //   return result.join('') this is the same as the below, the naive approach
+  
+  // describe the inputs and outputs in detail: their types and possible values
+  // inputs: a string of words, type: string
+  // outputs: a string of unique words, type: string
+  // validate the input (convert types or transform if needed) (*defensive coding*)
+  const isString = typeof string === 'string'
+  if (!isString) {
+    throw new Error('the parameter passed must be a string')
+  }
+
+  // break down the the 'variable' elements of the solution into the most granular (smallest) parts
+  // get vowels from string
+  const isVowel = (letter) => {
+    const vowels = ['a', 'e', 'i', 'o', 'u']
+    return vowels.includes(letter)
+  }
+  // split string into array of letters
+  const splittedString = string.split('')
+
+  // if string does not contain vowels, throw a message
+  if (!splittedString.some(isVowel)) {
+    // some is a new method that I just learned
+    throw new Error('the string does not contain vowels')
+  }
+
+  // capitalize vowels
+  const capitalizedVowels = splittedString.map((letter) => {
+    if (isVowel(letter)) {
+      return letter.toUpperCase()
+    }
+    return letter
+  })
+
+  // return the solution
+  return capitalizedVowels.join('')
+}
+
+swap('HllWrld!')  
