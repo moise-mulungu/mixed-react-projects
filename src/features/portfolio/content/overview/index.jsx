@@ -3,7 +3,7 @@ import {
   contentOverviewParagraphText,
   footerSocialLinks,
 } from '@/constants/portfolio/index'
-import { uuid } from 'uuidv4'
+import { v4 as uuidv4 } from 'uuid';
 
 const Overview = (props) => {
   // MM: ???DM: I did this to avoid the eslint error: here is the resources I used to fix it: https://eslint.org/docs/latest/rules/no-empty-pattern. super! typically the variable '_' can mean 'not used'
@@ -15,7 +15,7 @@ const Overview = (props) => {
       <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
         {footerSocialLinks.map(({ id, name, title, Icon, url }) => {
           return (
-            <li key={uuid()} className="ml-2 font-medium">
+            <li key={uuidv4()} className="ml-2 font-medium">
               <a href={url}>
                 {name ? name : null}
                 {Icon ? <Icon title={title} /> : null}
