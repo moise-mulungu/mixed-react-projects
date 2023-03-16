@@ -47,7 +47,7 @@ export const AngelListIcon = (props) => {
   return <Icon size={size} className={className} title={title} IconComponent={FaAngellist} />
 }
 
-// DM: todoMM: (bump) adapt the remaining icons below as I've done the AngelListIcon - follow the logic from the footer.jsx to here, make sure you understand how it works, ask me questions.
+// DM: todoMM: (bump) adapt the remaining icons below as I've done the AngelListIcon - follow the logic from the footer.jsx to here, make sure you understand how it works, ask me questions.(done)
 
 export const GithubIcon = (props) => {
   const { size, className, title = 'GitHub' } = props

@@ -54,7 +54,7 @@ prefacing what you need with 'computer programming' lften helps
   } else {
     return true
   }
-  // DM: todoMM: try to do the above IF statement using fewer characters, but still very readable. ex: in JS if the if statement clause is only one line, you can omit the {} and: if (booleanVar) return true.
+  // DM: todoMM: try to do the above IF statement using fewer characters, but still very readable. ex: in JS if the if statement clause is only one line, you can omit the {} and: if (booleanVar) return true. (done)
 
   // MM: ???DM: I am doubting with this approach, can you help?
   // 2. if a and b are both false, return false
@@ -74,7 +74,7 @@ prefacing what you need with 'computer programming' lften helps
   //             break this down into small parts, using wellNamed variables so that I can understand xor by the variable names. write out the concepts of xor in detail first, each small part, it will help you plan your code, and will help come up with variable names. always break hard things down into small parts.
   //             hint: you can `Boolean(a)` or `!!a` (double negation operator) to find out if a and b are truthy or falsy
   //             also, if you attempt a solution but it doesn't work, always leave a note telling me where you got blocked, and what you were thinking so far. This is important practice because you'll do this during an interview when you get blocked, the interviewer will give hints. ALso it helps us collaborate.
-  // return booleanValues ? true : false
+  // return booleanValues ? true : false (done)
 }
 
 console.log(exclusive0r(10, 0))
@@ -112,7 +112,7 @@ const myConsonantCount = (str) => {
   const selectedConsonants = str.split('').filter((char) => !charactersOfVowels.includes(char))
   /* DM: todoMM: good job! Now use array.reduce to count instead of length
                  my mentor also insists on this ... array.length works
-                 but reduce explicitly communicates that your are adding up a total            
+                 but reduce explicitly communicates that your are adding up a total (done)           
   */
   /* your code here */
   const countOfConsonants = selectedConsonants.reduce((acc, cur) => acc + cur)

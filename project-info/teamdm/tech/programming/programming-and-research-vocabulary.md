@@ -16,7 +16,7 @@ Code is run in order from the first line in the file to the last line, unless th
 
 ## Magic string
 magic strings are string values that are specified directly within application code that have an impact on the application's behavior
-DM: todoMM: read some opinion articles, or reddit, etc. - why are magic strings to be avoided?
+DM: todoMM: read some opinion articles, or reddit, etc. - why are magic strings to be avoided? (done)
 
 ## pre-trained model AKA pre-trained code model AKA? "pre-coded models"
 A pre-trained model is a saved network that was previously trained on a large dataset, typically on a large-scale image-classification task. You either use the pre-trained model as is or use transfer learning to customize this model to a given task
