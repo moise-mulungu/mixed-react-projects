@@ -5,42 +5,41 @@
 function vowelOne(s) {
   // ...
   //1. describe the inputs and outputs
-    // inputs : any string values
-    // outputs : strings of 1's and 0's
-    // non alpha characters should be included.
+  // inputs : any string values
+  // outputs : strings of 1's and 0's
+  // non alpha characters should be included.
   //2. validate the input(defensive programming)
-const validateString = typeof s === 'string'
-if(!validateString) {
+  const validateString = typeof s === 'string'
+  if (!validateString) {
     throw new Error('the parameter passed must be a string')
-}
+  }
 
-//3. breakdown the problem into the most granular parts
-// include non alpha characters into the string
+  //3. breakdown the problem into the most granular parts
+  // include non alpha characters into the string
 
-const nonAlphaCharacters = new RegExp(/^[a-z0-9]+$/i).test(s)
+  const nonAlphaCharacters = new RegExp(/^[a-z0-9]+$/i).test(s) // at this step, thing seems be complex for me
 
-if(!nonAlphaCharacters) {
+  if (!nonAlphaCharacters) {
     return 'test with non alpha characters'
-}
-// split string into array of letters
-const splitString = s.split('')
+  }
+  // split string into array of letters
+  const splitString = s.split('')
 
-// extract vowels from string
-const extractedVowels = splitString.filter((letter) => {
+  // extract vowels from string
+  const extractedVowels = splitString.filter((letter) => {
     const vowels = ['a', 'e', 'i', 'o', 'u']
     return vowels.includes(letter)
-})
+  })
 
-// check if the string contains vowels
-const comparedString = extractedVowels.length > 0
-if (!splitString.includes(comparedString)) throw new Error('the string does not contain vowels')
+  // check if the string contains vowels
+  const comparedString = extractedVowels.length > 0
+  if (!splitString.includes(comparedString)) throw new Error('the string does not contain vowels')
 
-//4. return the solution
-const stringOfZerosAndOnes = splitString.map((item) => {
+  //4. return the solution
+  const stringOfZerosAndOnes = splitString.map((item) => {
     return extractedVowels.includes(item) ? 1 : 0
-})
-return stringOfZerosAndOnes
-
+  })
+  return stringOfZerosAndOnes
 }
 
-vowelOne('hello')
+vowelOne('hello') // my test case for the function vowelOne is not working
