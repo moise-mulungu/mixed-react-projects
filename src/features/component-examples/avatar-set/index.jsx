@@ -21,6 +21,7 @@ const data = [
     alt: 'person with short hair wearing a blue hoodie',
   },
   {
+    // DM: todoMM: be sure to remove the 'id' after you implement uuid
     id: '004',
     alt: 'person with a pink mohawk and a raised eyebrow',
   },
@@ -32,7 +33,7 @@ export default function AvatarSet() {
       {data.map(({ id, alt }) => (
         <Avatar
           key={uuid()} // MM: ???DM: I am not sure if this is the right place to add the key. I'm not sure how to do that though. If so what is the use of "id" as a parameter in line 32?
-          // DM: the is parameter is fine, but it is 'hard coded' into the data objects, hardcoding does not scale. - so it's better to 'uatomate' ths key.
+          // DM: the is parameter is fine, but it is 'hard coded' into the data objects, hardcoding does not scale. - so it's better to 'automate' this key.
           src={`https://sandpack-bundler.vercel.app/img/avatars/${id}.png`}
           alt={alt}
         />

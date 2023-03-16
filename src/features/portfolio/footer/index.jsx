@@ -26,7 +26,7 @@ export default function Footer(props) {
         <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
           {footerSocialLinks.map(({ id, name, title, Icon, url }) => {
             console.log('footer', { id, name, title, Icon, url })
-            // DM: todoMM: check the console warnings: you need a React key property anytime you use array.map to create a list of JSX. Hint, use "id" because it is unique. Check out React's new document site: https://beta.reactjs.org/learn/rendering-lists#keeping-list-items-in-order-with-key (done, but will use the uuid package instead)
+
             return (
               <li key={uuid()} className="ml-2 font-medium">
                 <a

@@ -14,6 +14,7 @@ import { IconName } from "react-icons/di";
 
 import { IconContext } from 'react-icons'
 import { DiGithubBadge } from 'react-icons/di'
+// DM: todoMM: import all 4 on one line
 import { FaLinkedin } from 'react-icons/fa'
 import { FaAngellist } from 'react-icons/fa'
 import { FaMediumM } from 'react-icons/fa'
@@ -47,15 +48,13 @@ export const AngelListIcon = (props) => {
   return <Icon size={size} className={className} title={title} IconComponent={FaAngellist} />
 }
 
-// DM: todoMM: (bump) adapt the remaining icons below as I've done the AngelListIcon - follow the logic from the footer.jsx to here, make sure you understand how it works, ask me questions.(done)
-
 export const GithubIcon = (props) => {
   const { size, className, title = 'GitHub' } = props
   return <Icon size={size} className={className} title={title} IconComponent={DiGithubBadge} />
 }
 
 export const LinkedInIcon = (props) => {
- const { size, className, title = 'LinkedIn' } = props
+  const { size, className, title = 'LinkedIn' } = props
   return <Icon size={size} className={className} title={title} IconComponent={FaLinkedin} />
 }
 

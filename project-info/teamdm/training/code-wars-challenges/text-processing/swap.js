@@ -39,14 +39,16 @@ function swap(string) {
   // if string does not contain vowels, throw a message
   // DM: cool! I wouldn't have thought of this. benefit: saves time for users and future programmers who may use/re-use your code
   // DM: in a real app, the requirements would determine if lack of a vowel is an error, or not. If not, it is 100% acceptable to return the same value as the parameter that was passed (if there is no vowel, no change)
-  if (!splitString.some(isVowel)) throw new Error('the string does not contain vowels')
-  // some is a new method that I just learned about, it is a great way to check if any of the elements in an array match a condition
+  // DM: I'm commenting this out, since it is not in the challenge instructions
+  // if (!splitString.some(isVowel)) throw new Error('the string does not contain vowels')
+  // MM: some is a new method that I just learned about, it is a great way to check if any of the elements in an array match a condition DM: cool! You'll be using .some() a lot
 
   // capitalize vowels
-  // DM: great, try making this fewer lines and more readable by omitting the {} when your if clause contains only one line. So the same with the if clause just above
   const capitalizedVowels = splitString.map((letter) => {
     if (isVowel(letter)) return letter.toUpperCase()
     return letter
+    // DM: todoMM: which do you think is more readable, the above, or the below. (they do the same thing)
+    return isVowel(letter) ? letter.toUpperCase() : letter
   })
 
   // return the solution
@@ -60,13 +62,29 @@ function swap(string) {
   // That step would have reminded you: " 5. return the solution, always return a variable, or, use only variables in return statements ()"
 }
 
-swap('HllWrld!')
-swap('HllWorld!')
+swap('HllWrld!') // 'HllWrld!'
+swap('HelloWorld!') // 'HEllOWOrld!'
 
 // DM: this was a great first solution. I will always suggest a lot of changes (until you know everything I know), so don't be discouraged. Take some time to revel in the glory of a good solution! WE will keep perfecting your work, at a fast pace, because I want you to be great soon! As encouragement: employers/peers/tech leads will see that kind of code and assume that you are more senior as a developer than you really are!
 
 // DM: todoDM: just for fun, write it the WRONG way. ppl like it because it seems "succinct" but our motto is: "more lines === faster reading". "succinct" can === "obfuscated code".
 
-// DM: todoDM: review naming after all the code changes are complete
+// DM: I copied the solution and omited all the comments, just to see what it would look like in real production code. Moise, it will be succinct and readable. Note, no comments are needed because the variable names serve as documentation.
 
-// DM: todoDM: after Moise makes all the needed changes, copy the solution and omit all the comments, just to see what it would look like in real production code. Moise, it will be succinct and readable.
+function isVowel(letter) {
+  const vowels = ['a', 'e', 'i', 'o', 'u']
+  return vowels.includes(letter)
+}
+function swapWithoutCodeComments(string) {
+  const isString = typeof string === 'string'
+  if (!isString) throw new Error('the parameter passed must be a string')
+
+  const splitString = string.split('')
+  const capitalizedVowels = splitString.map((letter) => {
+    return isVowel(letter) ? letter.toUpperCase() : letter
+  })
+
+  const withVowelsCapitalized = capitalizedVowels.join('')
+  return withVowelsCapitalized
+}
+swapWithoutCodeComments('HelloWorld!') // 'HEllOWOrld!'
