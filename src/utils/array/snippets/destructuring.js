@@ -26,4 +26,4 @@ function printUser({ name, country }) {
     }
 printUser(user) // ‘Moise theMan Congo’
 
-// DM: todoMM: excellent!, now add "rest parameters" 
+// DM: todoMM: excellent!, now add "rest parameters" (done)

@@ -21,7 +21,7 @@
 // }
 
 // DM: todoMM: super, now add to the statement so that it resolves to the value of objectProperty2 (after you do this, I'll show you how to improve your constants file so that it has fewer "hard-coded" values)
-// DM: todoMM: by this "add to the statement so that it resolves to the value of objectProperty2" I mean, get the value of objectProperty2. whoops, I meant this line to here, referring to the code below. task: the expression should evaluate to the value of objectProperty2
+// DM: todoMM: by this "add to the statement so that it resolves to the value of objectProperty2" I mean, get the value of objectProperty2. whoops, I meant this line to here, referring to the code below. task: the expression should evaluate to the value of objectProperty2 (done)
 console.log(
   [
     {

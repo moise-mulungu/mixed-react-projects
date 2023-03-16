@@ -39,23 +39,20 @@ function swap(string) {
   // if string does not contain vowels, throw a message
   // DM: cool! I wouldn't have thought of this. benefit: saves time for users and future programmers who may use/re-use your code
   // DM: in a real app, the requirements would determine if lack of a vowel is an error, or not. If not, it is 100% acceptable to return the same value as the parameter that was passed (if there is no vowel, no change)
-  if (!splitString.some(isVowel)) {
-    // some is a new method that I just learned
-    throw new Error('the string does not contain vowels')
-  }
+  if (!splitString.some(isVowel)) throw new Error('the string does not contain vowels')
+  // some is a new method that I just learned about, it is a great way to check if any of the elements in an array match a condition
 
   // capitalize vowels
   // DM: great, try making this fewer lines and more readable by omitting the {} when your if clause contains only one line. So the same with the if clause just above
   const capitalizedVowels = splitString.map((letter) => {
-    if (isVowel(letter)) {
-      return letter.toUpperCase()
-    }
+    if (isVowel(letter)) return letter.toUpperCase()
     return letter
   })
 
   // return the solution
   // DM: assign capitalizedVowels.join('') to a well-named variable. "withVowelsCapitalized" is fine
-  return capitalizedVowels.join('')
+  const withVowelsCapitalized = capitalizedVowels.join('')
+  return withVowelsCapitalized
   // DM: also an encouraging note, how to maximize your natural abilities: You are very verbal (many programmers are not), so focusing on choosing good variable names will help you stand out. I'm starting a file of sample variable names in this repo that you can add to and review periodically to keep common useful terms top-of-mind so that you can think up good variable names faster.
 
   // DM: always paste exactly everything from this section of the ./readme.md:
