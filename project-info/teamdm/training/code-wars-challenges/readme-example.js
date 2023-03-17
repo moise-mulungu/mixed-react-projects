@@ -42,7 +42,7 @@ function removeDuplicateWords(stringOfWords) {
   // note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
   //       in this case, the order of the words is not changed
 
-  // 2. validate the input (convert types or transform if needed) (*defensive coding*)
+  // 2. validate the input (convert types or transform if needed) (*offensive coding*)
   const isString = typeof stringOfWords === 'string'
   if (!isString) {
     throw new Error('the parameter passed must be a string')

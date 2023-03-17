@@ -12,7 +12,7 @@ function myFunction(parameter1, parameter2) {
      output: string|number|...; possible values: 
   */
 
-  // 2. validate the input (convert types or transform if needed) (*defensive coding*)
+  // 2. validate the input (convert types or transform if needed) (*offensive coding*)
 
   /* 3. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
         assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.

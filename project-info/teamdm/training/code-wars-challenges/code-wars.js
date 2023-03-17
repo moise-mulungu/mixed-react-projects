@@ -236,7 +236,6 @@ function isAlphanumeric(stringDirty) {
   */
 
   // 2) validate the input or convert if possible
-  // defensive coding
   const string = typeof stringDirty === 'number' ? Number.parseInt(stringDirty) : stringDirty
   if (typeof string !== 'string')
     throw new Error('alphanumeric() requires an argument of type string')

@@ -10,7 +10,7 @@ function vowelOne(string) {
      output: string of 1's and 0's and non-alpha characters (non alpha characters should not be omitted)
   */
 
-  // 2. validate the input (convert types or transform if needed) (*defensive coding*)
+  // 2. validate the input (convert types or transform if needed) (*offensive coding*)
   const isString = typeof s === 'string'
   if (!isString) throw new Error('the parameter passed must be a string')
 

@@ -19,7 +19,7 @@ function swap(string) {
   // inputs: a string of words, type: string
   // DM: I didn't see anything about 'unique' in the instructions above. 2 thoughts: 1) wrong assumptions is at the top of my debugging checklist, so careful with assumptions 2) copy-and-paste is efficient, but also a top origin of bugs - always be careful to check what you copy and paste is aligned with the local context
   // outputs: a string of unique words, type: string
-  // validate the input (convert types or transform if needed) (*defensive coding*)
+  // validate the input (convert types or transform if needed) (*offensive coding*)
   const isString = typeof string === 'string'
   if (!isString) {
     throw new Error('the parameter passed must be a string')
