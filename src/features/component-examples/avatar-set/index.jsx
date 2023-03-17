@@ -22,7 +22,7 @@ export default function AvatarSet () {
         <Avatar
           key={uuid()} // MM: ???DM: I am not sure if this is the right place to add the key. I'm not sure how to do that though. If so what is the use of "id" as a parameter in line 32?
           // DM: the is parameter is fine, but it is 'hard coded' into the data objects, hardcoding does not scale. - so it's better to 'automate' this key.
-          src={`https://sandpack-bundler.vercel.app/img/avatars/${id}.png`}
+          src={`https://sandpack-bundler.vercel.app/img/avatars/${uuid}.png`}
           alt={alt}
         />
       ))}
