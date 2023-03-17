@@ -21,6 +21,7 @@ Defensive programming is a form of defensive design intended to develop programs
 Let’s imagine the following two scenarios where we are required to create two functions;
 
 A function with a password of at least six characters,
+
 ```js
 function myPassword(char) {
 
@@ -56,3 +57,6 @@ The ‘if statement’ plays the role of guardian of the code, that only integer
 Defensive coding/programming is an approach that a developer has to be aware of, to help improve the solving-problem skills, and protect our code from bugs, bad testing, and errors as well.
 
 I hope this article would be helpful, and if you wish to network with me, here is my email address, and my LinkedIn!
+
+<!-- I know this is not among the plans, but I wanted to add it to the repo as a Microverse requirement of writing at least two to three articles per month.
+DM: tell me if this is a good approach! -->
