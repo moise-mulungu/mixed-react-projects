@@ -71,11 +71,12 @@ swap('HelloWorld!') // 'HEllOWOrld!'
 
 // DM: I copied the solution and omited all the comments, just to see what it would look like in real production code. Moise, it will be succinct and readable. Note, no comments are needed because the variable names serve as documentation.
 
-function isVowel (letter) {
+function isVowel(letter) {
   const vowels = ['a', 'e', 'i', 'o', 'u']
   return vowels.includes(letter)
 }
-function swapWithoutCodeComments (string) {
+
+function swapWithoutCodeComments(string) {
   const isString = typeof string === 'string'
   if (!isString) throw new Error('the parameter passed must be a string')
 
@@ -87,4 +88,5 @@ function swapWithoutCodeComments (string) {
   const withVowelsCapitalized = capitalizedVowels.join('')
   return withVowelsCapitalized
 }
+
 swapWithoutCodeComments('HelloWorld!') // 'HEllOWOrld!'

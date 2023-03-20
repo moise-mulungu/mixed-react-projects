@@ -7,22 +7,21 @@ DM: todoMM: implement the uuid package for your unique keys here, instead of har
 DM: todoMM: find another JoR component and implement it
 
 */
-const altText = [
 
-  'person with curly hair and a black T-shirt',
-  'person wearing a hijab and glasses',
-  'person with short hair wearing a blue hoodie',
-  'person with a pink mohawk and a raised eyebrow',
+const data = [
+  { id: '001', alt: 'person with curly hair and a black T-shirt' },
+  { id: '002', alt: 'person wearing a hijab and glasses' },
+  { id: '003', alt: 'person with short hair wearing a blue hoodie' },
+  { id: '004', alt: 'person with a pink mohawk and a raised eyebrow' },
 ]
 
-export default function AvatarSet () {
+export default function AvatarSet() {
   return (
-    <div className='avatar-set'>
-      {altText.map(({ alt }) => (
+    <div className="avatar-set">
+      {data.map(({ id, alt }) => (
         <Avatar
-          key={uuid()} // MM: ???DM: I am not sure if this is the right place to add the key. I'm not sure how to do that though. If so what is the use of "id" as a parameter in line 32?
-          // DM: the is parameter is fine, but it is 'hard coded' into the data objects, hardcoding does not scale. - so it's better to 'automate' this key.
-          src={`https://sandpack-bundler.vercel.app/img/avatars/${uuid}.png`}
+          key={uuid()}
+          src={`https://sandpack-bundler.vercel.app/img/avatars/${id}.png`}
           alt={alt}
         />
       ))}

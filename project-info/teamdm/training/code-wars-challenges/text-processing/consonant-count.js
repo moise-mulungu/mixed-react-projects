@@ -10,6 +10,8 @@ const myConsonantCount = (str) => {
   const splitStr = allCharacters.split('')
   const selectedConsonants = splitStr.filter((char) => !mappedVowels.includes(char))
 
+  // get rid of non-letters
+
   const countConsonants = selectedConsonants.reduce((acc, cur) => acc + cur, 0)
 
   return countConsonants

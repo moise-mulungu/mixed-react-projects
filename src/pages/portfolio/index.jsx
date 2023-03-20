@@ -1,9 +1,8 @@
 // - next/head is a NextJs module that imports <Head> from, a built-in component in ReactJs that allows to modify the metadata of the page(<head>). source: https://nextjs.org/learn/basics/assets-metadata-css/metadata
-// DM: temporary note: in general, put comments on the line above the code the comment refers to
 import Head from 'next/head'
 
-import { appTitle } from '@/constants/portfolio' // DM: let's use this one repo for multiple projects
-import Portfolio from '@/features/portfolio' // DM: let's use this one repo for multiple projects
+import { appTitle } from '@/constants/portfolio'
+import Portfolio from '@/features/portfolio'
 
 // Static Site Generation - pre-render page at build time
 // https://nextjs.org/docs/basic-features/data-fetching/get-static-props
@@ -16,6 +15,7 @@ export async function getStaticProps() {
     },
   }
 }
+
 // DM: always give a descriptive name to a Component - easier to find in React Dev Tools and other IDE tooling
 export default function PortfolioTopLevelComponent(props) {
   const { data } = props

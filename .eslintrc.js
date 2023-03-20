@@ -13,6 +13,18 @@ DM: todoDM: To check code inside Markdown files, use standard-markdown.
 prettier-standard-vscode
 DM: todoDM: https://medium.com/nerd-for-tech/setting-up-eslint-with-standard-and-prettier-be245cb9fc64 https://github.com/sheerun/prettier-standard https://github.com/npetruzzelli/eslint-config-prettier-standard
 DM: Moise, I added the 'standard' esLint rule-set. I'm going to disable the not-useful rules as I see them. Later, we may be able to make 'standard' style formatting happen with the help of Prettier, but there are some Standard rules I dislike. Example: "comma-dangle". I'll also disable rules that Prettier formats automatically, otherwise you see RED everywhere while you're typing.
+
+Dave no prettier.
+Standard only.
+Standard not configable
+option: just pick good stuff from standard, work, 
+standard-x - configurable
+
+
+
+
+
+
 */
 
 module.exports = {

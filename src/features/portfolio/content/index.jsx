@@ -4,7 +4,7 @@ import Overview from './overview'
 export default function Content(props) {
   const { data } = props
 
-  /*3 sections*/
+  /* 4 sections, OR hero and 3 sections */
   return (
     <>
       <section

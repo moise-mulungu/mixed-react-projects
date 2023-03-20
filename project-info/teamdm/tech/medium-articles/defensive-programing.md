@@ -61,7 +61,6 @@ I hope this article would be helpful, and if you wish to network with me, here i
 
 <!-- I know this is not among the plans, but I wanted to add it to the repo as a Microverse requirement of writing at least two to three articles per month.
 DM: tell me if this is a good approach! -->
-
 <!-- 
 
 This is very well written. Few grammar or usage errors. Awesome. Blogging, writing articles, is a sure path to quick advancement.
