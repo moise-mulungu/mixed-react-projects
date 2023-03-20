@@ -58,7 +58,7 @@ prefacing what you need with 'computer programming' lften helps
   // 3. if a and b are not both true or false, return true
   // DM: try: const isATruthy = Boolean(a) // then continue from there
 
-  // DM: todoMM: (in project-info/team-dm/) make the file: tech/javascript/try-catch/try-catch-exercises.js look up try-catch on MDN and put a few examples (each example should be inside a function, I'll tell you why later)
+  // DM: todoMM: (in project-info/team-dm/) make the file: tech/javascript/try-catch/try-catch-exercises.js look up try-catch on MDN and put a few examples (each example should be inside a function, I'll tell you why later)(done)
 
   // break the problem down into small parts
   // declare a variable to hold the boolean values
