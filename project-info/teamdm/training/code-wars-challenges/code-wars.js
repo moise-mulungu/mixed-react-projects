@@ -1,19 +1,16 @@
 /* 
-
 !!!!!!!!!!!
 
 All new code-wars challenges go in an individual file
 
 !!!!!!!!!!!
-
 */
-
 //////////////////////////////////////////////////////////////////////
 // Exclusive "or" (xor) Logical Operator
 //////////////////////////////////////////////////////////////////////
 
 // AKA "exclusive or"
-function exclusive0r(a, b) {
+function exclusive0r (a, b) {
   // describe the inputs and outputs
   // inputs: a, b: integers, values: any number
   // outputs: boolean, values: true, false
