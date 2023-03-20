@@ -106,3 +106,7 @@ curly|square|angle|round brackets - DM: I like to pick one word, "brackets", to 
 
 ## css-in-js
 CSS-in-JS is different from inline styles. We still write all our CSS in JavaScript, but instead of passing it to the style attribute, we take those styles and inject an actual string of CSS in a <style> tag into the DOM
+
+## recursive function
+A recursive function is a function that calls itself until it doesn’t.
+<!-- MM: i need to understand in depth the concept and train a lot on it -->
