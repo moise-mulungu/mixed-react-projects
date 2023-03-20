@@ -33,3 +33,4 @@ function myFunction(parameter1, parameter2) {
 }
 //7. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 myFunction('', '') // expected result
+
