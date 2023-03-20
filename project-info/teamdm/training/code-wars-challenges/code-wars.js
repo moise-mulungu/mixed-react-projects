@@ -76,45 +76,6 @@ prefacing what you need with 'computer programming' lften helps
 console.log(exclusive0r(10, 0))
 
 //////////////////////////////////////////////////////////////////////
-// Count consonants
-//////////////////////////////////////////////////////////////////////
-const myConsonantCount = (str) => {
-  const vowels = ['a', 'e', 'i', 'o', 'u']
-  // DM: todoMM: /^[a-zA-Z0-9]+$/ is a 'regular expression' (regexp); read MDN site on regular expressions, and the methods you can use on them, such as .test()
-
-  // most naive: /[bcdfg...BC...]/
-
-  // input: string: any characters
-  // think of ways to get from input to output
-  // Moie7@
-  // identify the consonants
-  //   write a regex? no, naive
-  //   replace non-consonants with '' , you get Moie.split.reduce
-  //   Moie7@ to Moie, break it down
-  //     tools: /[a-zA-Z]/
-  //     tools: const vowels = ['a', 'e', 'i', 'o', 'u']
-  //     tools: string.toUpperCase()
-  //     tools: string.replace(//, ''); string.replace('', '')
-  //     tools: regex: \w alphanumeric and _
-  //     tools: regex: \W not \w
-  //     tools: MDN String.methods*
-  // output: number, count of consonants
-
-  const containsAllCharacters = /^[a-zA-Z0-9]+$@/
-  const charactersOfVowels = vowels.concat(containsAllCharacters.toString().split(''))
-  console.log(charactersOfVowels)
-
-  // your original solution was good, just get the total number via array.reduce()
-  const selectedConsonants = str.split('').filter((char) => !charactersOfVowels.includes(char))
-
-  const countOfConsonants = selectedConsonants.reduce((acc, cur) => acc + cur)
-
-  return countOfConsonants
-}
-console.log(myConsonantCount('moie@'))
-// the output is 4 after running node, but it should be 2. why?
-
-//////////////////////////////////////////////////////////////////////
 // Square(n) Sum
 //////////////////////////////////////////////////////////////////////
 // description: Complete the square sum function so that it squares each number passed into it and then sums the results together.
