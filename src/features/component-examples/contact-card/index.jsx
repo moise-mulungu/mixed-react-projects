@@ -21,7 +21,7 @@ const data = [
   },
 ]
 
-function App () {
+function App() {
   return (
     <ul>
       {data.map((contact) => (

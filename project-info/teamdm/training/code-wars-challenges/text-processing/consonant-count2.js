@@ -32,7 +32,9 @@ function myFunction(parameter1, parameter2) {
 	mdn string.replace
 	mdn regexp.test
 	*/
-  const alphas = str.replace(/[^a-zA-Z]/, '') // i am getting this error: Uncaught ReferenceError: str is not defined. it's like the function is not getting the parameter. i am not sure how to fix this.
+  // MM: i am getting this error: Uncaught ReferenceError: str is not defined. it's like the function is not getting the parameter. i am not sure how to fix this.
+  // DM: todoMM: to solve this problem ask yourself the following questions: what is str? what should be in it? where do you expect str to be defined? where should it come from? Keep debugging this problem until you figure it out. it is a good learning point. Than continue with the solution we started yesterday.
+  const alphas = str.replace(/[^a-zA-Z]/, '')
   const alphaLowerCase = alphas.map((c) => c.toLowerCase)
   const consonants = alphaLowerCase.filter((c) => !vowels.includes(c))
 
@@ -59,9 +61,12 @@ myFunction('aei@bcd!@{}$()') // 3
 // i proposed this approach to the challenge:
 function consonantCount(str) {
   // i define the consonants as all the letters that are not vowels
+  // DM: this can work, but it is not programming, it is hard-coding what the logic should do. hard-coding is a common temptation... it was OK to list the vowels. why? because 'aeiou' is shorter than 'bcdfghjklmpqrstvwxyz', so you go with the shorter one. Plus, it is impossible to know consonants in JS without knowing vowels. the programming technique is to remove all vowels from the input string
   const consonants = 'bcdfghjklmpqrstvwxyz'
 
   // i want to count the number of consonants in the string
+  // DM: a const cannot be mutated;
+  //     I can tell you're tempted to code imperatively. that's ok, it is a constant temptation, keep trying
   const count = 0
 
   // i split the string into an array of characters

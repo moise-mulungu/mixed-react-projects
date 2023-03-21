@@ -32,7 +32,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'standard', 'standard-jsx'],
+  extends: ['eslint:recommended', 'plugin:react/recommended', 'standard'],
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
@@ -43,9 +43,5 @@ module.exports = {
     'react/react-in-jsx-scope': 'off', // NextJS doesn't require import React in each file
     'react/prop-types': 'off',
     'no-unused-vars': 'warn',
-    // DM: not working ... check https://github.com/standard/eslint-config-standard/blob/master/.eslintrc.json
-    'standard/no-unused-vars': 'warn',
-    'standard/comma-dangle': 'off',
-    'comma-dangle': 'off',
   },
 }
