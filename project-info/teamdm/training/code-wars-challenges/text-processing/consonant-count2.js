@@ -4,13 +4,13 @@ const vowels = ['a', 'e', 'i', 'o', 'u']
 // function removeVowels()
 
 function myFunction(parameter1, parameter2) {
-  /*   
+  /*
   1. describe the inputs and outputs in detail: their types and possible values
      sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
      inputs: 
        string of any character
-       
+
      output: number of consonants
   */
 
@@ -32,7 +32,7 @@ function myFunction(parameter1, parameter2) {
 	mdn string.replace
 	mdn regexp.test
 	*/
-  const alphas = str.replace(/[^a-zA-Z]/, '')
+  const alphas = str.replace(/[^a-zA-Z]/, '') // i am getting this error: Uncaught ReferenceError: str is not defined. it's like the function is not getting the parameter. i am not sure how to fix this.
   const alphaLowerCase = alphas.map((c) => c.toLowerCase)
   const consonants = alphaLowerCase.filter((c) => !vowels.includes(c))
 
@@ -50,6 +50,8 @@ function myFunction(parameter1, parameter2) {
   //    these would be the questions you'd be expected to ask in a interview situation
   //    practice reading the challenge description carefully
 }
-//7. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
-myConsonantCount('moie@') // 1
-myConsonantCount('aei@bcd!@{}$()') // 3
+
+// 7. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
+
+myFunction('moie@') // 1
+myFunction('aei@bcd!@{}$()') // 3
