@@ -55,3 +55,33 @@ function myFunction(parameter1, parameter2) {
 
 myFunction('moie@') // 1
 myFunction('aei@bcd!@{}$()') // 3
+
+// i proposed this approach to the challenge:
+function consonantCount(str) {
+  // i define the consonants as all the letters that are not vowels
+  const consonants = 'bcdfghjklmpqrstvwxyz'
+
+  // i want to count the number of consonants in the string
+  const count = 0
+
+  // i split the string into an array of characters
+  const splitStr = str.split('')
+
+  // i iterate through the array of characters
+  const strLoop = splitStr.forEach((char) => {
+    // i check if the character is a consonant
+    if (consonants.includes(char)) {
+      count = count + 1
+    }
+  })
+  //   const alphaChar = str.replace(/[aeiouAEIOU123456789]/gi, '')
+  //   console.log({alphaChar})
+  //   const alphaLowerCase = str.map((c) => c.toLowerCase())
+  //   const consonants = alphaLowerCase.filter((c) => !vowels.includes(c))
+
+  // const count = consonants.reduce((acc, cur) => acc + cur, 0)
+
+  return strLoop
+}
+
+consonantCount('')
