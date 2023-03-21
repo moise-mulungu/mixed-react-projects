@@ -3,7 +3,7 @@
 const vowels = ['a', 'e', 'i', 'o', 'u']
 // function removeVowels()
 
-function myFunction(parameter1, parameter2) {
+function myFunction(str) {
   /*
   1. describe the inputs and outputs in detail: their types and possible values
      sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
