@@ -8,8 +8,8 @@ export default function Content(props) {
   return (
     <>
       <section
-        aria-labelledby="category-heading"
-        className="pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8"
+        aria-labelledby='category-heading'
+        className='pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8'
       >
         <Overview />
       </section>

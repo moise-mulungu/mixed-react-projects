@@ -17,9 +17,10 @@ const data = [
 
 export default function AvatarSet() {
   return (
-    <div className="avatar-set">
+    <div className='flex -space-x-1 overflow-hidden'>
       {data.map(({ id, alt }) => (
         <Avatar
+          className='inline-block h-6 w-6 rounded-full ring-2 ring-white'
           key={uuid()}
           src={`https://sandpack-bundler.vercel.app/img/avatars/${id}.png`}
           alt={alt}
