@@ -33,3 +33,5 @@ export const defaultFooterSocialLinkId = footerSocialLinks[0].id
 export const contentOverviewHeaderText = 'Hey there, I am Moise. a software developer'
 export const contentOverviewParagraphText =
   'I can help you build a product, feature or website Look through some of my work experience! You like what you see and have a project you need coded, do not hesitate to contact me.'
+
+export const contentAboutHeaderText = 'hello I am a software developer,i ca help you build a product, feature or website. look through soe of my work and experience. if you like what you see and have a project you need coded, don\'t hesitate to contact me.'
