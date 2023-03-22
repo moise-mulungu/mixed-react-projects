@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Overview from './overview'
 import Skills from './skills-section'
 
-export default function Content(props) {
+export default function Content (props) {
   const { data } = props
 
   /* 4 sections, OR hero and 3 sections */
