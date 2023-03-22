@@ -1,6 +1,9 @@
 const Button = () => {
   const handleClick = () => {
-    alert('You clicked me!')
+    // the handleClick has to send me to the resume page
+    const myResume =
+      'https://docs.google.com/document/d/14Jk9jCBOfWHd7OEEpFVq7Jjxd08DBk1JVyXch1i_MqM/edit'
+    window.open(myResume, '_blank')
   }
 
   return (
