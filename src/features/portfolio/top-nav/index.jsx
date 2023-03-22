@@ -13,10 +13,10 @@ import { uuid } from 'uuidv4'
 
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { topNavSiteLinks, defaultTopNavSiteLinkId } from '@/constants/portfolio'
+import { topNavSiteLinks, defaultTopNavSiteLinkId, theMan } from '@/constants/portfolio'
 import { classNames } from '@/ui/utils'
+import MyImage from '../content/image/image'
 // DM: todoDM: add my ES Modules vocabulary to the project-info area
-import { theMan } from '@/constants/portfolio'
 const defaultSiteLinkId = defaultTopNavSiteLinkId
 
 // change in props or state causes the component to "run"
@@ -140,11 +140,7 @@ export default function Example(props) {
                     <div>
                       <Menu.Button className="flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="sr-only">Open user menu</span>
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src="src/features/portfolio/content/image/my_profile.png"
-                          alt=""
-                        />
+                        <img className="h-8 w-8 rounded-full" src={MyImage} alt="" />
                       </Menu.Button>
                     </div>
                     <Transition
