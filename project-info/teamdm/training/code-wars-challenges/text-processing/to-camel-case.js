@@ -53,23 +53,43 @@ function toCamelCase(string) {
   */
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
+  const isString = typeof string === 'string'
+  if (!isString) {
+    throw new Error('parameter must be a string')
+  }
   // note this will also throw an error if parameter is not a string
-  const words = string.trim()
-
+  const delimeters = /[-_]/g
+  
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
-	      WHAT do you want to change in the input to get the output?
-        WHAT do you want to calculate based on the input? */
+  WHAT do you want to change in the input to get the output?
+  WHAT do you want to calculate based on the input? */
   /*
-    Changes to the input string:
-		* remove delimiters: '-', '_'
-		* capitalize first letter of each word (do not change the capitalization of the first word)
+  Changes to the input string:
+  * remove delimiters: '-', '_'
+  * capitalize first letter of each word (do not change the capitalization of the first word)
   */
+
+  const removeDelimiters = string.replace(delimeters, '')
+  console.log(removeDelimiters)
+
+  const noWhiteSpace = removeDelimiters.trim()
+  console.log(noWhiteSpace)
+
+  const splitWords = noWhiteSpace.split('')
+  console.log(splitWords)
+
+  const capitalizedWords = splitWords.map((letter) => {
+    const firstLetter = letter[0].toUpperCase() // here is where i got blocked
+    console.log(firstLetter)
+    return firstLetter
+  })
 
   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
         assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
         * each logical expressions must be assigned to a variable. 
-				* the instructions often contain words that can be used in variable names.*/
+				* the instructions often contain words that can be used in variable names. */
 
+  const words = capitalizedWords.join('')
   // get an array of words. hint: String.split(param) // param can be a RegExp
 
   /* 8. use the named parts to create a readable solution. */
@@ -81,7 +101,7 @@ function toCamelCase(string) {
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
-  return ''
+  return words
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 toCamelCase('abc-dash_underscore') // expected result
