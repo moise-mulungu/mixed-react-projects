@@ -1,7 +1,7 @@
 import {
   contentOverviewHeaderText,
   contentOverviewParagraphText,
-  footerSocialLinks,
+  footerSocialLinks
 } from '@/constants/portfolio/index'
 import { v4 as uuid } from 'uuid'
 
@@ -16,7 +16,7 @@ const Overview = (props) => {
           return (
             <li key={uuid()} className="ml-2 font-medium">
               <a href={url}>
-                {name ? name : null}
+                {name || null}
                 {Icon ? <Icon title={title} /> : null}
               </a>
             </li>
