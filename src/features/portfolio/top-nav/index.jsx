@@ -37,7 +37,7 @@ export default function Example(props) {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   /> */}
-                  {/* note: curly brackets means JS goes inside. since this is a variable containing plain text, use curly brackets so JS can evaluate the variable which resolves to text.*/}
+                  {/* note: curly brackets means JS goes inside. since this is a variable containing plain text, use curly brackets so JS can evaluate the variable which resolves to text. */}
                   {/* DM: todoMM: add some TW utility classes for color and size and any other styling you like */}
                   <span className="">{theMan}</span>
                   {/*    <img
@@ -142,7 +142,7 @@ export default function Example(props) {
                         <span className="sr-only">Open user menu</span>
                         <img
                           className="h-8 w-8 rounded-full"
-                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                          src="src/features/portfolio/content/image/my_profile.png"
                           alt=""
                         />
                       </Menu.Button>
