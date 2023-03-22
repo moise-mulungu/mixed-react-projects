@@ -12,6 +12,8 @@ const Overview = (props) => {
     // DM: todoDM: write example of a 'wrapper' component that serves only to make chosen TW utility classes reusable
     <div className="use tw utility classes here">
       <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+        <h2>{contentOverviewHeaderText}</h2>
+        <p>{contentOverviewParagraphText}</p>
         {footerSocialLinks.map(({ id, name, title, Icon, url }) => {
           return (
             <li key={uuid()} className="ml-2 font-medium">
@@ -23,9 +25,6 @@ const Overview = (props) => {
           )
         })}
       </ul>
-
-      <h2>{contentOverviewHeaderText}</h2>
-      <p>{contentOverviewParagraphText}</p>
     </div>
   )
 }
