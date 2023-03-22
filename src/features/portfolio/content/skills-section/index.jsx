@@ -9,8 +9,9 @@ const Skills = (props) => {
   const { _ = {} } = props
   return (
     <div className="use tw utility classes here">
-      <h2>{contentAboutHeaderText}</h2>
-      <Divider />
+      <h2 className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">
+        {contentAboutHeaderText}
+      </h2>
       <Button />
       <Divider />
       <Languages />
