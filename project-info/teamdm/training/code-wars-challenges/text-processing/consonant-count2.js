@@ -3,7 +3,7 @@
 const vowels = ['a', 'e', 'i', 'o', 'u']
 // function removeVowels()
 
-function myFunction(parameter1, parameter2) {
+function myFunction (str) {
   /*
   1. describe the inputs and outputs in detail: their types and possible values
      sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
@@ -34,14 +34,23 @@ function myFunction(parameter1, parameter2) {
 	*/
   // MM: i am getting this error: Uncaught ReferenceError: str is not defined. it's like the function is not getting the parameter. i am not sure how to fix this.
   // DM: todoMM: to solve this problem ask yourself the following questions: what is str? what should be in it? where do you expect str to be defined? where should it come from? Keep debugging this problem until you figure it out. it is a good learning point. Than continue with the solution we started yesterday.
-  const alphas = str.replace(/[^a-zA-Z]/, '')
-  const alphaLowerCase = alphas.map((c) => c.toLowerCase)
+  const alphas = str.replace(/[^a-zA-Z]/g, '')
+  console.log(typeof alphas) 
+  const convertToArray = alphas.split('')
+  console.log(convertToArray)
+  const alphaLowerCase = convertToArray.map((c) => c.toLowerCase()) 
   const consonants = alphaLowerCase.filter((c) => !vowels.includes(c))
+  console.log(consonants) // 
 
   /* 4. use the named parts to create a readable solution. Tip: think about what you want to change (declarative), not how to change it (imperative)
    */
-
-  const count = consonants.reduce((acc, cur) => acc + cur, 0)
+  // const initialCount = 0
+  // const count = consonants.reduce((acc, cur) => {
+  //   console.log(acc, cur) 
+  //   return acc + cur
+  // }, 0)
+  const count = consonants.length
+  console.log(count) 
 
   // 5. return the solution
   //    always return a variable, or, use only variables in return statements
@@ -55,38 +64,8 @@ function myFunction(parameter1, parameter2) {
 
 // 7. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 
-myFunction('moie@') // 1
-myFunction('aei@bcd!@{}$()') // 3
+myFunction('moie@') 
+console.log(myFunction('aei@bcd!@{}$()')) 
+console.log(myFunction('01234567890_'))
+console.log(myFunction('aeiou AEIOU bcdfghjklmnpqrstvwxyz BCDFGHJKLMNPQRSTVWXYZ 01234567890_ ^&$#'))
 
-// i proposed this approach to the challenge:
-function consonantCount(str) {
-  // i define the consonants as all the letters that are not vowels
-  // DM: this can work, but it is not programming, it is hard-coding what the logic should do. hard-coding is a common temptation... it was OK to list the vowels. why? because 'aeiou' is shorter than 'bcdfghjklmpqrstvwxyz', so you go with the shorter one. Plus, it is impossible to know consonants in JS without knowing vowels. the programming technique is to remove all vowels from the input string
-  const consonants = 'bcdfghjklmpqrstvwxyz'
-
-  // i want to count the number of consonants in the string
-  // DM: a const cannot be mutated;
-  //     I can tell you're tempted to code imperatively. that's ok, it is a constant temptation, keep trying
-  const count = 0
-
-  // i split the string into an array of characters
-  const splitStr = str.split('')
-
-  // i iterate through the array of characters
-  const strLoop = splitStr.forEach((char) => {
-    // i check if the character is a consonant
-    if (consonants.includes(char)) {
-      count = count + 1
-    }
-  })
-  //   const alphaChar = str.replace(/[aeiouAEIOU123456789]/gi, '')
-  //   console.log({alphaChar})
-  //   const alphaLowerCase = str.map((c) => c.toLowerCase())
-  //   const consonants = alphaLowerCase.filter((c) => !vowels.includes(c))
-
-  // const count = consonants.reduce((acc, cur) => acc + cur, 0)
-
-  return strLoop
-}
-
-consonantCount('')
