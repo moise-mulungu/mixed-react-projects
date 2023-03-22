@@ -1,14 +1,15 @@
-import frameworks from '../../../../../../src/constants/portfolio/index'
+import { frameworks, frameworkTitle } from '../../../../../../src/constants/portfolio/index'
 
 const Frameworks = () => {
   return (
-    <ul>
+    <section>
+      <h2>{frameworkTitle}</h2>
+      <ul>
         {frameworks.map((framework) => (
-            <li key={framework.id}>
-                <img src={framework.image} alt={framework.name} />
-            </li>
+          <li key={framework.id}>{framework}</li>
         ))}
-    </ul>
+      </ul>
+    </section>
   )
 }
 
