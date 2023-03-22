@@ -3,7 +3,7 @@
 const vowels = ['a', 'e', 'i', 'o', 'u']
 // function removeVowels()
 
-function myFunction (str) {
+function myFunction(str) {
   /*
   1. describe the inputs and outputs in detail: their types and possible values
      sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
@@ -35,22 +35,24 @@ function myFunction (str) {
   // MM: i am getting this error: Uncaught ReferenceError: str is not defined. it's like the function is not getting the parameter. i am not sure how to fix this.
   // DM: todoMM: to solve this problem ask yourself the following questions: what is str? what should be in it? where do you expect str to be defined? where should it come from? Keep debugging this problem until you figure it out. it is a good learning point. Than continue with the solution we started yesterday.
   const alphas = str.replace(/[^a-zA-Z]/g, '')
-  console.log(typeof alphas) 
+  console.log(typeof alphas)
+  // DM todoMM: rename this variable so that the name expresses what it IS rather than what it DOES. note: you can change the name fo the above variable, if it helps
   const convertToArray = alphas.split('')
   console.log(convertToArray)
-  const alphaLowerCase = convertToArray.map((c) => c.toLowerCase()) 
+  const alphaLowerCase = convertToArray.map((c) => c.toLowerCase())
   const consonants = alphaLowerCase.filter((c) => !vowels.includes(c))
-  console.log(consonants) // 
+  console.log(consonants) //
 
   /* 4. use the named parts to create a readable solution. Tip: think about what you want to change (declarative), not how to change it (imperative)
    */
   // const initialCount = 0
   // const count = consonants.reduce((acc, cur) => {
-  //   console.log(acc, cur) 
+  //   console.log(acc, cur)
   //   return acc + cur
   // }, 0)
+  // DM todoMM: this name could be more specific. name it after teh answer to the question above: "WHAT do you want to calculate?"
   const count = consonants.length
-  console.log(count) 
+  console.log(count)
 
   // 5. return the solution
   //    always return a variable, or, use only variables in return statements
@@ -64,8 +66,7 @@ function myFunction (str) {
 
 // 7. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 
-myFunction('moie@') 
-console.log(myFunction('aei@bcd!@{}$()')) 
+myFunction('moie@')
+console.log(myFunction('aei@bcd!@{}$()'))
 console.log(myFunction('01234567890_'))
 console.log(myFunction('aeiou AEIOU bcdfghjklmnpqrstvwxyz BCDFGHJKLMNPQRSTVWXYZ 01234567890_ ^&$#'))
-
