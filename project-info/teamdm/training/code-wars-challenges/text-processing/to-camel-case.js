@@ -33,7 +33,7 @@ assert.strictEqual(toCamelCase("A-B-C"), "ABC", "toCamelCase('A-B-C') did not re
       these would be the questions you'd be expected to ask in a interview situation
       (practice reading the challenge description carefully) */
 /*
-n/a
+n/a 
 */
 
 //  3. write tests (at the bottom of the file), then continue with step 4.
