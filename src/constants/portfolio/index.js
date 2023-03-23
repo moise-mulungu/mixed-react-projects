@@ -73,7 +73,6 @@ export const contentWorkHeaderText = 'My Recent Work'
 // DM: todoMM: don't hard-code an 'id' field if it is only for react key props. If another of the fields is unique, such as 'title', use that for the key prop. If not, use uuid package.
 export const projectCards = [
   {
-    id: '1',
     title: 'E-pay',
     description:
       'A daily money transaction application, This is a web application that helps you to manage your budget: You have a list of transactions associated with a category, so that you can see how much money you spent and on what',
@@ -82,7 +81,6 @@ export const projectCards = [
     stacks: ['Ruby on Rails', 'Capybara', 'RSpec', 'Selenium', 'PostgreSQL', 'CSS'],
   },
   {
-    id: '2',
     title: 'Meet Doctors',
     description:
       'A double single page app that connects doctors with patients. you can book an appointment with any doctor of your choice of any specialty from around the world with the possibility of paying your bill online',
@@ -100,7 +98,6 @@ export const projectCards = [
     ],
   },
   {
-    id: '3',
     title: 'Relworx money',
     description:
       'This is an app that helps users to do their money transactions by sending, receiving any amount of with a default account of 100$.',
@@ -109,7 +106,6 @@ export const projectCards = [
     stacks: ['JavaScript', 'CSS'],
   },
   {
-    id: '4',
     title: 'Math Magician',
     description:
       'A single Page Application with three pages, a home page , a calculator page for all mathematical operations, and a quote page with a wise quote from William Paul Thurston',
@@ -118,7 +114,6 @@ export const projectCards = [
     stacks: ['React', 'CSS', 'Redux'],
   },
   {
-    id: '5',
     title: 'Make Up App',
     description:
       'This makeup app allows you to get any makeup products online from different online bookstore, you can also get the best makeup artist in your area',
@@ -127,7 +122,6 @@ export const projectCards = [
     stacks: ['React', 'Redux', 'CSS', 'RSpec'],
   },
   {
-    id: '6',
     title: 'Bookstore',
     description:
       'A bookstore app that allows you to get any book online from different online bookstore',

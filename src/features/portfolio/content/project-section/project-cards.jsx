@@ -6,9 +6,9 @@ const ProjectCard = () => {
     <div className="tailwind-class-uploading">
       <CardTexts />
       <ul>
-        {projectCards.map(({ id, title, description, image, url, stacks }) => {
+        {projectCards.map(({ title, description, image, url, stacks }) => {
           return (
-            <li key={id}>
+            <li key={title}>
               <title>{title}</title>
               <p>{description}</p>
               <img src={image} alt="" />

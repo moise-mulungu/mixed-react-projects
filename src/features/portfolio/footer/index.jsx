@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { footerSocialLinks, defaultFooterSocialLinkId } from '../../../constants/portfolio'
 import { classNames } from '@/ui/utils'
-import { uuid } from 'uuid'
+import { v4 as uuid } from 'uuid'
 
 // step one: define var with all data, use map
 // step two: move this to constants/portfolio
@@ -28,7 +28,7 @@ export default function Footer(props) {
             console.log('footer', { id, name, title, Icon, url })
 
             return (
-              <li key={uuid()} className="ml-2 font-medium">
+              <li key={uuid} className="ml-2 font-medium">
                 <a
                   // href={`#${url}`}
                   href={url}
