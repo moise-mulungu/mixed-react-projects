@@ -5,11 +5,13 @@
 <>{myObject}</>
 ```
 * this is one of those errors that doesn't tell you which component/file is causing the problem. So, when you first see it, the last place you edited is the likely suspect. 
-## examples of code that caused this error:
+
+## example:
 ```JS
 <ul>
 	{projectCards.map((id, title, description, image, url, stacks) => {
+		/* is contains the entire object (hence the error), the others are undefined */
+	}
   // projectCards is an array of objects, so in order to destructure an object:
-	{projectCards.map(({ id, title, description, image, url, stacks }) => {
-
+	{projectCards.map(({ id, title, description, image, url, stacks }) => {}
 ```

@@ -58,8 +58,8 @@ function toCamelCase(string) {
     throw new Error('parameter must be a string')
   }
   // note this will also throw an error if parameter is not a string
-  // DM: you don' tneed 'g' flag if you use String.split()
-  // const delimeters = /[-_]/
+  // DM: you don't need 'g' flag if you use String.split()
+  const delimitersRegExp = /[-_]/
 
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
   WHAT do you want to change in the input to get the output?
@@ -76,7 +76,7 @@ function toCamelCase(string) {
   // const noWhiteSpace = removeDelimiters.trim()
   // console.log(noWhiteSpace)
 
-  const splitWords = string.split(/[-_]/)
+  const splitWords = string.split(delimitersRegExp)
   console.log(splitWords)
 
   // filter out strings that start with a capital letter
@@ -127,7 +127,6 @@ toCamelCase('A-B-C') //  "ABC"
 
 /* 11. Review the code for conciseness and readability: clear, descriptive variable names  */
 
-const regExp = /-|_/
-string.split(regExp)
-
-'the_stealth_warrior'.split(/[-_]/)
+// const regExp = /-|_/
+// string.split(regExp)
+// 'the_stealth_warrior'.split(/[-_]/)

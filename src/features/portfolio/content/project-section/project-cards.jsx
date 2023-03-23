@@ -1,5 +1,6 @@
 // DM: todoMM: replace all ../../../.. with @
 import { projectCards } from '../../../../constants/portfolio'
+// DM: todoDM: find out why you can't click on projectCards to go to the file if @ is used
 import CardTexts from './card-texts'
 const ProjectCard = () => {
   return (
