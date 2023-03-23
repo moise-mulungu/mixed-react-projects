@@ -8,7 +8,7 @@ export const topNavSiteLinks = [
 
 export const defaultTopNavSiteLinkId = topNavSiteLinks[0].id
 
-export const theMan = 'Moise M Mulungu'
+export const theMan = 'Moise Mulungu'
 
 export const footerSocialLinks = [
   { id: 'github', title: 'Github', Icon: GithubIcon, url: 'https://github.com/moise-mulungu/' },
