@@ -56,7 +56,7 @@ export default function Example(props) {
                       // console.log('wut', { id, name, anchor })
                       return (
                         <a
-                          key={uuid()}
+                          key={id}
                           href={`#${anchor}`}
                           className={classNames(
                             id === selectedSiteLinkId

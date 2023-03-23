@@ -15,6 +15,7 @@ const ProjectCard = () => {
                             {stacks.map((stack) => {
                                 return <p key={stack}>{stack}</p>;
                             }
+                            // i am getting undefined whe trying to map through stacks
                             )}
                         </li>
                     
