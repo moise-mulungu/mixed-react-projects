@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Overview from './overview'
 import Skills from './skills-section'
+import ProjectCard from './project-section/project-cards'
 import Divider from '../../../ui/divider'
 
 export default function Content (props) {
@@ -14,6 +15,8 @@ export default function Content (props) {
         className="pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8"
       >
         <Overview />
+        <Divider />
+        <ProjectCard />
         <Divider />
         <Skills />
       </section>
