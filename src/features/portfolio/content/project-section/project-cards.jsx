@@ -1,7 +1,9 @@
 import { projectCards } from "../../../../constants/portfolio";
+import CardTexts from "./card-texts";
 const ProjectCard = () => {
     return (
         <div className="tailwind-class-uploading">
+            <CardTexts />
             <ul>
                 {projectCards.map((id, title, description, image, url, stacks) => {
                     return (
