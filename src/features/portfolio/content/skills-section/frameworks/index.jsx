@@ -1,4 +1,5 @@
-import { frameworks, frameworkTitle } from '../../../../../../src/constants/portfolio/index'
+import { frameworks, frameworkTitle } from '@/constants/portfolio'
+// DM: you can use the '@/constants/portfolio/index
 
 const Frameworks = () => {
   return (
@@ -7,6 +8,11 @@ const Frameworks = () => {
         {frameworkTitle}
       </h2>
       <ul>
+        {/* 
+            framework.id will always be undefined, because 'id'' doesn't exist because frameworks is an array of strings
+            since you know that all the frameworks are unique, you can just use 'framework' for the key prop
+            same goes for languages and otherSkills
+           */}
         {frameworks.map((framework) => (
           <li key={framework.id}>{framework}</li>
         ))}

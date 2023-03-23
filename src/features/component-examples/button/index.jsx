@@ -1,4 +1,4 @@
-function Button ({ status, children }) {
+function Button({ status, children }) {
   let themeColor
 
   if (status === 'cancel') {
@@ -18,7 +18,7 @@ function Button ({ status, children }) {
         background: 'white',
         borderRadius: 4,
         padding: 16,
-        margin: 8
+        margin: 8,
       }}
     >
       {children}

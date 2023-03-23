@@ -9,6 +9,7 @@ import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 // DM: todoMM: good, but always read thru the github description. I like to research packages on github more than npm.com because it is easier to read and more info, like number of stars, number of unaddressed issues. This is about how to evaluate NPM packages and pick the best one. THis is sometimes an interview question. ;We can discuss more. anyway, check https://github.com/thenativeweb/uuidv4#please-note uuidv4 will be deprecated in favor of uuid, so pls install uuid instead. I'm sure uuidv4 works fine,b ut always better to future-proof your app by having the latest version. (in progress)
+// uuidv4 package is thorowin deprecated messsages,replace all references from uuidv4 to uuid, then npm uninstall uuidv4
 import { uuid } from 'uuidv4'
 
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file

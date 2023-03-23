@@ -59,7 +59,7 @@ function toCamelCase(string) {
   }
   // note this will also throw an error if parameter is not a string
   const delimeters = /[-_]/g
-  
+
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
   WHAT do you want to change in the input to get the output?
   WHAT do you want to calculate based on the input? */
@@ -118,3 +118,6 @@ toCamelCase('The-Stealth-Warrior') // "TheStealthWarrior"
 toCamelCase('A-B-C') //  "ABC"
 
 /* 11. Review the code for conciseness and readability: clear, descriptive variable names  */
+
+const regExp = /-|_/
+string.split(regExp)

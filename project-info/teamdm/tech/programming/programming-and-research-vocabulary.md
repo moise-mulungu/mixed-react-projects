@@ -1,5 +1,8 @@
 note: prefix Google searches with "computer programming" to get the best results. "programming" alone is not specific enough
 
+DM: todoMM: new vicab term!
+## functional programming
+
 ## guard clause
 
 A guard clause is a piece of conditional logic that is placed at the beginning of a function that will return out of the function early on if certain conditions are not met. Guard clauses are simple to implement in any function that involves conditional logic, and they make functions shorter and cleaner (readable)
