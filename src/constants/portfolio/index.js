@@ -3,7 +3,7 @@ import { GithubIcon, LinkedInIcon, AngelListIcon, MediumIcon, TwitterIcon } from
 export const topNavSiteLinks = [
   { id: 'work', name: 'Portfolio', anchor: 'work' },
   { id: 'about', name: 'About', anchor: 'about' },
-  { id: 'contact', name: 'Contact', anchor: 'contact' }
+  { id: 'contact', name: 'Contact', anchor: 'contact' },
 ]
 
 export const defaultTopNavSiteLinkId = topNavSiteLinks[0].id
@@ -16,16 +16,16 @@ export const footerSocialLinks = [
     id: 'linkedin',
     title: 'LinkedIn',
     Icon: LinkedInIcon,
-    url: 'https://www.linkedin.com/in/moisemulungu/'
+    url: 'https://www.linkedin.com/in/moisemulungu/',
   },
   {
     id: 'wellfound',
     title: 'Wellfound',
     Icon: AngelListIcon,
-    url: 'https://angel.co/u/moise-mulungu'
+    url: 'https://angel.co/u/moise-mulungu',
   },
   { id: 'medium', title: 'Medium', Icon: MediumIcon, url: 'https://medium.com/@moisemlg90' },
-  { id: 'twitter', title: 'Twitter', Icon: TwitterIcon, url: 'https://twitter.com/moise_mulungu' }
+  { id: 'twitter', title: 'Twitter', Icon: TwitterIcon, url: 'https://twitter.com/moise_mulungu' },
 ]
 export const defaultFooterSocialLinkId = footerSocialLinks[0].id
 // DM: yup, see, now you don't have 'githup' hard-coded. no "magic strings"!
@@ -38,15 +38,39 @@ export const contentAboutHeaderText =
   "Hello I am a software developer, I can help you build a product, feature or website. look through some of my work and experience. if you like what you see and have a project you need coded don't hesitate to contact me."
 
 export const frameworkTitle = 'Frameworks'
-export const frameworks = ['React', 'Ruby on Rails', 'NodeJS', 'BooStrap', 'Capybara', 'RSpec', 'Selenium', 'PostgreSQL']
+export const frameworks = [
+  'React',
+  'Ruby on Rails',
+  'NodeJS',
+  'BooStrap',
+  'Capybara',
+  'RSpec',
+  'Selenium',
+  'PostgreSQL',
+]
 
 export const languageTitle = 'Languages'
 export const languages = ['JavaScript', 'Ruby', 'SQL']
 
 export const otherSkillsTitle = 'Other Skills'
-export const otherSkills = ['HTML', 'CSS', 'SASS', 'GraphQL', 'Git', 'GitHub', 'CodeLab', 'CodeLit', 'Terminal', 'VSCode', 'Jira', 'Slack']
+export const otherSkills = [
+  'HTML',
+  'CSS',
+  'SASS',
+  'GraphQL',
+  'Git',
+  'GitHub',
+  'CodeLab',
+  'CodeLit',
+  'Terminal',
+  'VSCode',
+  'Jira',
+  'Slack',
+]
 
 export const contentWorkHeaderText = 'My Recent Work'
+// DM: todoMM: this file is getting big, break it up into multiple files, in a way that makes sense, for example, one file for each section in the content area
+// DM: todoMM: don't hard-code an 'id' field if it is only for react key props. If another of the fields is unique, such as 'title', use that for the key prop. If not, use uuid package.
 export const projectCards = [
   {
     id: '1',

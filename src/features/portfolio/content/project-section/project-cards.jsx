@@ -1,3 +1,4 @@
+// DM: todoMM: replace all ../../../.. with @
 import { projectCards } from '../../../../constants/portfolio'
 import CardTexts from './card-texts'
 const ProjectCard = () => {
@@ -5,7 +6,7 @@ const ProjectCard = () => {
     <div className="tailwind-class-uploading">
       <CardTexts />
       <ul>
-        {projectCards.map((id, title, description, image, url, stacks) => {
+        {projectCards.map(({ id, title, description, image, url, stacks }) => {
           return (
             <li key={id}>
               <title>{title}</title>
@@ -14,7 +15,9 @@ const ProjectCard = () => {
               <p>{url}</p>
               <div>
                 {stacks?.map((stack) => {
-                  ;<li key={stack}>{stack}</li>
+                  // also, this function doesn't have a 'return' statement
+                  // ;<li key={stack}>{stack}</li>
+                  return <li key={stack}>{stack}</li>
                 })}
               </div>
               // i am getting undefined whe trying to map through stacks
