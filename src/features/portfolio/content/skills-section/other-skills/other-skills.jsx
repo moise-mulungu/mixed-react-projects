@@ -8,7 +8,7 @@ const OtherSkills = () => {
       </h2>
       <ul>
         {otherSkills.map((skill) => (
-          <li key={skill.id}>{skill}</li>
+          <li key={skill}>{skill}</li>
         ))}
       </ul>
     </div>

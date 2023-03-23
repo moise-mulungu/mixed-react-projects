@@ -2,6 +2,7 @@ note: prefix Google searches with "computer programming" to get the best results
 
 DM: todoMM: new vicab term!
 ## functional programming
+Functional programming (FP) is an approach to software development that uses pure functions to create maintainable software. In other words, building programs by applying and composing functions
 
 ## guard clause
 

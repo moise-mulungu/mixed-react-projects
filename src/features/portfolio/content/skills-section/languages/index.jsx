@@ -8,7 +8,7 @@ const Languages = () => {
       </h2>
       <ul>
         {languages.map((language) => (
-          <li key={language.id}>{language}</li>
+          <li key={language}>{language}</li>
         ))}
       </ul>
     </section>
