@@ -1,7 +1,7 @@
 import {
   contentOverviewHeaderText,
   contentOverviewParagraphText,
-  footerSocialLinks
+  footerSocialLinks,
 } from '@/constants/portfolio/index'
 import { v4 as uuid } from 'uuid'
 
@@ -11,7 +11,7 @@ const Overview = (props) => {
   return (
     // DM: todoDM: write example of a 'wrapper' component that serves only to make chosen TW utility classes reusable
     <div className="use tw utility classes here">
-      <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
+      <ul className="flex flex-wrap items-center mt-5 text-sm text-gray-900 dark:text-gray-400 sm:mt-0">
         <h2>{contentOverviewHeaderText}</h2>
         <p>{contentOverviewParagraphText}</p>
         {footerSocialLinks.map(({ id, name, title, Icon, url }) => {

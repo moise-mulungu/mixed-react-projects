@@ -1,5 +1,6 @@
 // DM: todoMM: replace all ../../../.. with @
 import { projectCards } from '../../../../constants/portfolio'
+import Divider from '@/ui/divider'
 // DM: todoDM: find out why you can't click on projectCards to go to the file if @ is used
 import CardTexts from './card-texts'
 const ProjectCard = () => {
@@ -9,6 +10,7 @@ const ProjectCard = () => {
       <ul>
         {projectCards.map(({ title, description, image, url, stacks }) => {
           return (
+            <>
             <li key={title}>
               <h2 className="text-2xl font-bold leading-7 text-gray-500 sm:truncate sm:text-1xl sm:tracking-tight">
                 {title}
@@ -34,6 +36,8 @@ const ProjectCard = () => {
                 })}
               </ul>
             </li>
+            <Divider />
+          </>
           )
         })}
       </ul>
