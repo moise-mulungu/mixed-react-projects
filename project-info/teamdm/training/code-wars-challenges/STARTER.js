@@ -56,7 +56,8 @@ function myFunction(parameter1, parameter2) {
   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
         assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
         * each logical expressions must be assigned to a variable. 
-				* the instructions often contain words that can be used in variable names.*/
+	  * the instructions often contain words that can be used in variable names.
+        * functions are named with verbs, everything else with nouns*/
 
   /* 8. use the named parts to create a readable solution. */
 

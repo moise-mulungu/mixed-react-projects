@@ -58,6 +58,7 @@ function toCamelCase(string) {
     throw new Error('parameter must be a string')
   }
   // note this will also throw an error if parameter is not a string
+  // DM: you don' tneed 'g' flag if you use String.split()
   const delimeters = /[-_]/g
 
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
@@ -84,10 +85,11 @@ function toCamelCase(string) {
   //   const isFirstWord = index === 0
   //   return isCapitalized && !isFirstWord
   // })
-// convert the first letter of each word to uppercase
+  // convert the first letter of each word to uppercase
   const capitalizedWords = splitWords.map((word, index) => {
     // I can't figure out how to do this, any hints?
-      })
+    // DM: try this in the node REPL: 'the_stealth_warrior'.split(/[-_]/)
+  })
   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
         assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
         * each logical expressions must be assigned to a variable. 
@@ -109,7 +111,7 @@ function toCamelCase(string) {
   return words
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
-toCamelCase('abc-dash_underscore') 
+toCamelCase('abc-dash_underscore')
 toCamelCase('First-word-is-capitalized') // expected result
 // from the code-wars sample tests
 toCamelCase('') //  ''
@@ -121,3 +123,5 @@ toCamelCase('A-B-C') //  "ABC"
 
 const regExp = /-|_/
 string.split(regExp)
+
+'the_stealth_warrior'.split(/[-_]/)
