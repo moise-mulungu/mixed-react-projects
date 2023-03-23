@@ -59,7 +59,7 @@ function toCamelCase(string) {
   }
   // note this will also throw an error if parameter is not a string
   // DM: you don' tneed 'g' flag if you use String.split()
-  const delimeters = /[-_]/g
+  // const delimeters = /[-_]/
 
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
   WHAT do you want to change in the input to get the output?
@@ -70,13 +70,13 @@ function toCamelCase(string) {
   * capitalize first letter of each word (do not change the capitalization of the first word)
   */
 
-  const removeDelimiters = string.replace(delimeters, '')
-  console.log(removeDelimiters)
+  // const removeDelimiters = string.replace(delimeters, '')
+  // console.log(removeDelimiters)
 
-  const noWhiteSpace = removeDelimiters.trim()
-  console.log(noWhiteSpace)
+  // const noWhiteSpace = removeDelimiters.trim()
+  // console.log(noWhiteSpace)
 
-  const splitWords = noWhiteSpace.split(' ')
+  const splitWords = string.split(/[-_]/)
   console.log(splitWords)
 
   // filter out strings that start with a capital letter
@@ -86,7 +86,13 @@ function toCamelCase(string) {
   //   return isCapitalized && !isFirstWord
   // })
   // convert the first letter of each word to uppercase
-  const capitalizedWords = splitWords.map((word, index) => {
+  const capitalizedWords = splitWords.map((word) => {
+    const firstLetter = word.charAt(0).toUpperCase()
+    if (word.includes(firstLetter)) {
+      return firstLetter + word.slice(1)
+    }
+    return word.charAt(0).toUpperCase() + word.slice(1)
+
     // I can't figure out how to do this, any hints?
     // DM: try this in the node REPL: 'the_stealth_warrior'.split(/[-_]/)
   })
@@ -95,8 +101,8 @@ function toCamelCase(string) {
         * each logical expressions must be assigned to a variable. 
 				* the instructions often contain words that can be used in variable names. */
 
-  // const words = capitalizedWords.join('')
-  // console.log(words)
+  const words = capitalizedWords.join('')
+  console.log(words)
   // get an array of words. hint: String.split(param) // param can be a RegExp
 
   /* 8. use the named parts to create a readable solution. */
