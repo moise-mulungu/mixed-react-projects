@@ -75,21 +75,26 @@ function toCamelCase(string) {
   const noWhiteSpace = removeDelimiters.trim()
   console.log(noWhiteSpace)
 
-  const splitWords = noWhiteSpace.split('')
+  const splitWords = noWhiteSpace.split(' ')
   console.log(splitWords)
 
-  const capitalizedWords = splitWords.map((letter) => {
-    const firstLetter = letter[0].toUpperCase() // here is where i got blocked
-    console.log(firstLetter)
-    return firstLetter
-  })
-
+  // filter out strings that start with a capital letter
+  // const capitalizedWords = splitWords.filter((word, index) => {
+  //   const isCapitalized = word === word.toUpperCase()
+  //   const isFirstWord = index === 0
+  //   return isCapitalized && !isFirstWord
+  // })
+// convert the first letter of each word to uppercase
+  const capitalizedWords = splitWords.map((word, index) => {
+    // I can't figure out how to do this, any hints?
+      })
   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
         assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
         * each logical expressions must be assigned to a variable. 
 				* the instructions often contain words that can be used in variable names. */
 
-  const words = capitalizedWords.join('')
+  // const words = capitalizedWords.join('')
+  // console.log(words)
   // get an array of words. hint: String.split(param) // param can be a RegExp
 
   /* 8. use the named parts to create a readable solution. */
@@ -104,7 +109,7 @@ function toCamelCase(string) {
   return words
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
-toCamelCase('abc-dash_underscore') // expected result
+toCamelCase('abc-dash_underscore') 
 toCamelCase('First-word-is-capitalized') // expected result
 // from the code-wars sample tests
 toCamelCase('') //  ''
