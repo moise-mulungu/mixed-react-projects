@@ -1,9 +1,9 @@
-import { contentAboutHeaderText } from '../../../../../src/constants/portfolio/index'
+import { contentAboutHeaderText } from '@/constants/portfolio/index'
+import Divider from '@/ui/divider'
 import Button from './button'
 import Languages from './languages'
 import Frameworks from './frameworks'
 import OtherSkills from './other-skills/other-skills'
-import Divider from '../../../../ui/divider'
 
 const Skills = (props) => {
   const { _ = {} } = props

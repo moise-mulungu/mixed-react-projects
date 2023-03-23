@@ -6,7 +6,7 @@ const Button = () => {
       'https://docs.google.com/document/d/14Jk9jCBOfWHd7OEEpFVq7Jjxd08DBk1JVyXch1i_MqM/edit'
     window.open(myResume, '_blank')
   }
-
+  // DM: todoDM: integrate Button with next/link?
   return (
     <button
       onClick={handleClick}

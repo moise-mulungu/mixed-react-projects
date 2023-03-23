@@ -1,4 +1,4 @@
-import { languageTitle, languages } from '../../../../../constants/portfolio/index'
+import { languageTitle, languages } from '@/constants/portfolio/index'
 
 const Languages = () => {
   return (

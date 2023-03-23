@@ -1,4 +1,4 @@
-import { otherSkillsTitle, otherSkills } from '../../../../../constants/portfolio/index'
+import { otherSkillsTitle, otherSkills } from '@/constants/portfolio/index'
 
 const OtherSkills = () => {
   return (
