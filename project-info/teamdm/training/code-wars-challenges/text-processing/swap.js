@@ -47,7 +47,7 @@ function swap(string) {
   const capitalizedVowels = splitString.map((letter) => {
     if (isVowel(letter)) return letter.toUpperCase()
     return letter
-    // DM: todoMM: which do you think is more readable, the above, or the below. (they do the same thing)
+    // DM: which do you think is more readable, the above, or the below. (they do the same thing)
     return isVowel(letter) ? letter.toUpperCase() : letter
   })
 
@@ -66,8 +66,6 @@ swap('HllWrld!') // 'HllWrld!'
 swap('HelloWorld!') // 'HEllOWOrld!'
 
 // DM: this was a great first solution. I will always suggest a lot of changes (until you know everything I know), so don't be discouraged. Take some time to revel in the glory of a good solution! WE will keep perfecting your work, at a fast pace, because I want you to be great soon! As encouragement: employers/peers/tech leads will see that kind of code and assume that you are more senior as a developer than you really are!
-
-// DM: todoDM: just for fun, write it the WRONG way. ppl like it because it seems "succinct" but our motto is: "more lines === faster reading". "succinct" can === "obfuscated code".
 
 // DM: I copied the solution and omited all the comments, just to see what it would look like in real production code. Moise, it will be succinct and readable. Note, no comments are needed because the variable names serve as documentation.
 

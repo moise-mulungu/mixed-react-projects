@@ -1,4 +1,4 @@
-// DM: todoMM: step 1: read my comments in vowel-one.js, step 2: start fresh here
+// DM: moise, I cleaned this one up. check out a few changes I made.
 
 function vowelOne(string) {
   /*   
@@ -21,11 +21,6 @@ function vowelOne(string) {
 
   // split string into array of letters
   const splitString = string.split('').map((c) => c.toLowerCase())
-  // extract vowels from string
-  const extractedVowels = splitString.filter((letter) => {
-    const vowels = ['a', 'e', 'i', 'o', 'u']
-    return vowels.includes(letter.toLocaleLowerCase())
-  })
 
   // 4. use the named parts to create a readable solution. Tip: think about WHAT you want to change (declarative), NOT HOW to change it (imperative)
   /* 	
@@ -37,11 +32,11 @@ function vowelOne(string) {
      * non-vowels should become 0s
   */
   // map vowels to 1 and non-vowels to 0
-  const myRegExp = /[a-zA-Z]/
-  const myRegExp.test('!') // false
+  const isAlphaRegExp = /[a-zA-Z]/
+  myRegExp.test('!') // false
+  const vowels = ['a', 'e', 'i', 'o', 'u']
   const vowelOneNonVowelZero = splitString.map((item) => {
-    return vowels.includes(item) ? 1 : /[a-zA-Z]/.test(item) ? 0 : item
-    // instead of 0, try regex to test if item is a non-letter
+    return vowels.includes(item) ? 1 : isAlphaRegExp.test(item) ? 0 : item
   })
   // join array into string
   const joinedVowelOneNonVowelZero = vowelOneNonVowelZero.join('')
@@ -58,4 +53,21 @@ function vowelOne(string) {
 }
 //7. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 vowelOne('Hello!!!') // '01001!!!'
-// MM: toDM: I almost did the same with the first example, then I added 'toLowercase' and 'join' properties to the code flow.
+
+// without comments:
+
+function vowelOneWithoutComments(string) {
+  const isString = typeof string === 'string'
+  if (!isString) throw new Error('the parameter passed must be a string')
+
+  const splitString = string.split('').map((c) => c.toLowerCase())
+
+  const isAlphaRegExp = /[a-zA-Z]/
+  const vowels = ['a', 'e', 'i', 'o', 'u']
+  const vowelOneNonVowelZero = splitString.map((item) => {
+    return vowels.includes(item) ? 1 : isAlphaRegExp.test(item) ? 0 : item
+  })
+
+  const joinedVowelOneNonVowelZero = vowelOneNonVowelZero.join('')
+  return joinedVowelOneNonVowelZero
+}

@@ -1,4 +1,4 @@
-// DM: todoMM: step 1: read my comments here; step2: start fresh in vowel-one-v2.js
+// DM: step 1: read my comments here; step2: start fresh in vowel-one-v2.js
 
 // Write a function that takes a string and outputs a strings of 1's and 0's where vowels become 1's and non-vowels become 0's.
 
@@ -59,7 +59,7 @@ function vowelOne(s) {
   })
   return stringOfZerosAndOnes
 
-  // DM: todoMM: going forward, copy the exact contents of STARTER.js for each new challenge.
+  // DM: going forward, copy the exact contents of STARTER.js for each new challenge.
 }
 
 vowelOne('hello!') // my test case for the function vowelOne is not working DM: you returned an array, not a string

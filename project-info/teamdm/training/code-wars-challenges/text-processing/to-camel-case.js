@@ -54,12 +54,8 @@ function toCamelCase(string) {
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   const isString = typeof string === 'string'
-  if (!isString) {
-    throw new Error('parameter must be a string')
-  }
+  if (!isString) throw new Error('parameter must be a string')
   // note this will also throw an error if parameter is not a string
-  // DM: you don't need 'g' flag if you use String.split()
-  const delimitersRegExp = /[-_]/
 
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
   WHAT do you want to change in the input to get the output?
@@ -70,45 +66,38 @@ function toCamelCase(string) {
   * capitalize first letter of each word (do not change the capitalization of the first word)
   */
 
-  // const removeDelimiters = string.replace(delimeters, '')
-  // console.log(removeDelimiters)
-
-  // const noWhiteSpace = removeDelimiters.trim()
-  // console.log(noWhiteSpace)
-
-  const splitWords = string.split(delimitersRegExp)
-  console.log(splitWords)
-
-  // filter out strings that start with a capital letter
-  // const capitalizedWords = splitWords.filter((word, index) => {
-  //   const isCapitalized = word === word.toUpperCase()
-  //   const isFirstWord = index === 0
-  //   return isCapitalized && !isFirstWord
-  // })
-  // convert the first letter of each word to uppercase
-  const capitalizedWords = splitWords.map((word) => {
-    const firstLetter = word.charAt(0).toUpperCase()
-    if (word.includes(firstLetter)) {
-      return firstLetter + word.slice(1)
-    }
-    return word.charAt(0).toUpperCase() + word.slice(1)
-
-    // I can't figure out how to do this, any hints?
-    // DM: try this in the node REPL: 'the_stealth_warrior'.split(/[-_]/)
-  })
   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
         assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
         * each logical expressions must be assigned to a variable. 
 				* the instructions often contain words that can be used in variable names. */
 
-  const words = capitalizedWords.join('')
+  // DM: you don't need 'g' flag if you use String.split()
+  const delimitersRegExp = /[-_]/
+  // get array of words, omitting the delimiters
+  const words = string.split(delimitersRegExp)
   console.log(words)
-  // get an array of words. hint: String.split(param) // param can be a RegExp
 
   /* 8. use the named parts to create a readable solution. */
 
-  // capitalize each word (don't change the first word)
-  // join the words back into a string
+  // capitalize each word. But, don't change the first word
+
+  // DM: todoMM: remove the first word from the array, saving it to a variable
+
+  // convert the first letter of each word to uppercase
+  const capitalizedWords = words.map((word) => {
+    /* this is not needed:
+    const firstLetter = word.charAt(0).toUpperCase()
+    if (word.includes(firstLetter)) {
+      return firstLetter + word.slice(1)
+    } */
+    // DM: todoMM; after you're done with the challenge, put this into a reusable function in src/utils/string/upperCaseFirst.js
+    return word.charAt(0).toUpperCase() + word.slice(1)
+  })
+
+  // DM: todoMM: restore the first word back to the array
+
+  const words = capitalizedWords.join('')
+  console.log(words)
 
   /* 9. return the solution
       always return a variable, or, use only variables in return statements
@@ -130,3 +119,5 @@ toCamelCase('A-B-C') //  "ABC"
 // const regExp = /-|_/
 // string.split(regExp)
 // 'the_stealth_warrior'.split(/[-_]/)
+
+/* 12. Final step: copy the final solution here, then remove all comments  */
