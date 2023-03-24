@@ -1,0 +1,1 @@
+After adding a form, and call an onSubmit function as parameter, the following error occurs with submit button: "TypeError: onSubmitForm is not a function"

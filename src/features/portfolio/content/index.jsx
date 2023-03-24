@@ -3,8 +3,9 @@ import Overview from './overview'
 import Skills from './skills-section'
 import ProjectCard from './project-section/project-cards'
 import Divider from '../../../ui/divider'
+import ContactForm from './contact-from'
 
-export default function Content (props) {
+export default function Content(props) {
   const { data } = props
 
   /* 4 sections, OR hero and 3 sections */
@@ -19,6 +20,8 @@ export default function Content (props) {
         <ProjectCard />
         <Divider />
         <Skills />
+        <Divider />
+        <ContactForm />
       </section>
     </>
   )
