@@ -1,6 +1,5 @@
 export const contentWorkHeaderText = 'My Recent Work'
-// DM: todoMM: this file is getting big, break it up into multiple files, in a way that makes sense, for example, one file for each section in the content area
-// DM: todoMM: don't hard-code an 'id' field if it is only for react key props. If another of the fields is unique, such as 'title', use that for the key prop. If not, use uuid package.
+
 export const projectCards = [
   {
     title: 'E-pay',

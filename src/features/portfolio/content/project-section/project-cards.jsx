@@ -30,8 +30,6 @@ const ProjectCard = () => {
                   {' '}
                   Built with:
                   {stacks?.map((stack) => {
-                    // also, this function doesn't have a 'return' statement
-                    // ;<li key={stack}>{stack}</li>
                     return <li key={stack}>{stack}</li>
                   })}
                 </ul>
