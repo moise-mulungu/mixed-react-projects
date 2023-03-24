@@ -22,7 +22,10 @@ export default function Content(props) {
         <Skills />
         <Divider />
         <ContactForm />
+        <Divider />
       </section>
     </>
   )
 }
+
+// I have added Divider temporarily for separating sections of the portfolio.
