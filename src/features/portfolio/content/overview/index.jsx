@@ -1,8 +1,8 @@
 import {
   contentOverviewHeaderText,
   contentOverviewParagraphText,
-  footerSocialLinks,
-} from '@/constants/portfolio/index'
+} from '@/constants/portfolio/content-constants/overview-constants'
+import { footerSocialLinks } from '@/constants/portfolio/header-and-footer-constants'
 import { v4 as uuid } from 'uuid'
 
 const Overview = (props) => {

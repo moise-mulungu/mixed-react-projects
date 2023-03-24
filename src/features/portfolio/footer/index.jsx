@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
-import { footerSocialLinks, defaultFooterSocialLinkId } from '../../../constants/portfolio'
+import {
+  footerSocialLinks,
+  defaultFooterSocialLinkId,
+} from '../../../constants/portfolio/header-and-footer-constants'
 import { classNames } from '@/ui/utils'
 import { v4 as uuid } from 'uuid'
 

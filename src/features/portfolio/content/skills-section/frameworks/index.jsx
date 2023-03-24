@@ -1,4 +1,4 @@
-import { frameworks, frameworkTitle } from '@/constants/portfolio'
+import { frameworks, frameworkTitle } from '@/constants/portfolio/content-constants/skill-constants'
 // DM: you can use the '@/constants/portfolio/index
 
 const Frameworks = () => {

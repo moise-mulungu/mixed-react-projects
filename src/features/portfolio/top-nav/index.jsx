@@ -14,7 +14,11 @@ import { uuid } from 'uuid'
 
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import { topNavSiteLinks, defaultTopNavSiteLinkId, theMan } from '@/constants/portfolio'
+import {
+  topNavSiteLinks,
+  defaultTopNavSiteLinkId,
+  theMan,
+} from '@/constants/portfolio/header-and-footer-constants'
 import { classNames } from '@/ui/utils'
 import MyImage from '../content/image/image'
 // DM: todoDM: add my ES Modules vocabulary to the project-info area
