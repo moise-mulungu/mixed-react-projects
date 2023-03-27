@@ -1,5 +1,7 @@
 // DM: todoMM: ok good, here in this file would be any constants that are shared across the portfolio, such as your name. Look for any repeated strings in the files in this directory and consolidate them here
 
+// MM: todoDM: I did not get any constants that is shared across, each component has its own constants
+
 // import { GithubIcon, LinkedInIcon, AngelListIcon, MediumIcon, TwitterIcon } from '@/ui/icons'
 
 // export const topNavSiteLinks = [

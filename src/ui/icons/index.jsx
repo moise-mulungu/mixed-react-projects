@@ -14,11 +14,8 @@ import { IconName } from "react-icons/di";
 
 import { IconContext } from 'react-icons'
 import { DiGithubBadge } from 'react-icons/di'
-// DM: todoMM: import all 4 on one line
-import { FaLinkedin } from 'react-icons/fa'
-import { FaAngellist } from 'react-icons/fa'
-import { FaMediumM } from 'react-icons/fa'
-import { FaTwitter } from 'react-icons/fa'
+// DM: todoMM: import all 4 on one line (done)
+import { FaLinkedin, FaAngellist, FaMediumM, FaTwitter } from 'react-icons/fa'
 
 export const Icon = (props) => {
   const {

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import UiExamples from '@/features/ui-examples'
+import Link from 'next/link'
 
 /*
 
@@ -17,6 +18,10 @@ export default function UiExamplesPage() {
       </Head>
 
       <UiExamples />
+      <Link href="/" />
+      {/* this links to a page on the same site */}
+      <Link href="https://nextjs.org/docs" />
+      {/* this links to a page on another site */}
     </div>
   )
 }

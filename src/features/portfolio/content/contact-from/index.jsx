@@ -1,8 +1,8 @@
 import { contactFormText } from '@/constants/portfolio/contact-form-constants'
 
 const ContactForm = ({ mySubmitForm }) => {
-  // DM: todoMM: this is a function, so name this in terms of what it does: onSubmitHandler
-  const submitButton = (event) => {
+  // DM: todoMM: this is a function, so name this in terms of what it does: onSubmitHandler (done)
+  const onSubmitHandler = (event) => {
     event.preventDefault()
     return mySubmitForm(
       event.currentTarget.elements.name.value,
@@ -18,7 +18,7 @@ const ContactForm = ({ mySubmitForm }) => {
     <div className="use tw utility classes here">
       <h2 className="text-2xl font-bold text-gray-900">{contactFormText}</h2>
       <form
-        onSubmit={submitButton}
+        onSubmit={onSubmitHandler}
         name="submit"
         method="POST"
         data-netlify="true"

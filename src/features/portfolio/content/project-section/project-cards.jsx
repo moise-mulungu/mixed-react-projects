@@ -1,12 +1,12 @@
 // DM: todoMM: replace all ../../../.. with @
-import { projectCards } from '../../../../constants/portfolio/content-constants/project-card-constants'
+import { projectCards } from '@/constants/portfolio/content-constants/project-card-constants'
 import Divider from '@/ui/divider'
 // DM: todoDM: find out why you can't click on projectCards to go to the file if @ is used
-import CardTexts from './card-texts'
+import CardHeadings from './card-texts'
 const ProjectCard = () => {
   return (
     <div className="tailwind-class-uploading">
-      <CardTexts />
+      <CardHeadings />
       <ul>
         {projectCards.map(({ title, description, image, url, stacks }) => {
           return (

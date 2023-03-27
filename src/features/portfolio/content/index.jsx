@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import Overview from './overview'
 import Skills from './skills-section'
 import ProjectCard from './project-section/project-cards'
-import Divider from '../../../ui/divider'
+import Divider from '@/ui/divider'
 import ContactForm from './contact-from'
 
 export default function Content(props) {
