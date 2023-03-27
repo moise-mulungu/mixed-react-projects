@@ -1,4 +1,3 @@
-
 // always copy this template into each new coding challenge file
 // always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 /*
@@ -52,14 +51,17 @@ function disemvowel(str) {
 
         output: string...; possible values: any string but without vowels */
   /*
+     DM: todoMM: Moise you can list your inputs, outputs here
 
   */
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-const isString = typeof str === 'string'
-if (!isString) {
+  const isString = typeof str === 'string'
+  if (!isString) {
     throw new Error('input must be a string')
-}
+  }
+  // DM: since we use this all the time, let's use a shorter syntax going forward:
+  if (typeof str !== 'string') throw new Error('input must be a string')
 
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	      WHAT do you want to change in the input to get the output?
@@ -77,26 +79,25 @@ if (!isString) {
         * booleans are named with (positive) adjectives: (open, seen, isString)
         * everything else with nouns or adjectives: (myThing)*/
 
-        // declare the vowels variable
-        const vowels = ['a', 'e', 'i', 'o', 'u']
+  // declare the vowels variable
+  const vowels = ['a', 'e', 'i', 'o', 'u']
 
-        // split the string into an array of characters
-        const characters = str.split('')
+  // split the string into an array of characters
+  const characters = str.split('')
 
-        // filter the array of characters to remove the vowels
-        const filteredCharacters = characters.filter(character => {
-            // check if the character is a vowel
-            const isVowel = vowels.includes(character.toLowerCase())
-            // return the character if it is not a vowel
-            return !isVowel
-        })
+  // filter the array of characters to remove the vowels
+  const filteredCharacters = characters.filter((character) => {
+    // check if the character is a vowel
+    const isVowel = vowels.includes(character.toLowerCase())
+    // return the character if it is not a vowel
+    return !isVowel
+  })
 
-        
-        /* 8. use the named parts to create a readable solution. */
-        // join the array of characters back into a string
-        const joinedFilteredCharacters = filteredCharacters.join('')
-        
-        /* 9. return the solution
+  /* 8. use the named parts to create a readable solution. */
+  // join the array of characters back into a string
+  const joinedFilteredCharacters = filteredCharacters.join('')
+
+  /* 9. return the solution
         always return a variable, or, use only variables in return statements
         this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
         */
@@ -117,3 +118,21 @@ disemvowel('_/!o@#$%^&*a()_+e') // '_/!@#$%^&*()_+'
              Later, in this step, you can refine variable names to be shorter.  */
 
 /* 12. Final step: copy the solution here, remove all comments  */
+
+// DM: todoMM: your solution is good, copy and remove all comments
+
+// DM: fyi, here is another way to do it
+'This exercise is easy'.replace(/[aeiou]/g, '')
+/* 
+DM: so this may freak you out, because it is so short!
+this solution is just MORE functional/declarative than what I taught you above
+but, your solution above is important to know the reasoning and logic because
+often the problem is a lot harder than simply removing vowels and there won't be
+a convenient method like String.replace() to help you. 
+But, it is good to so compare what you did above to this short solution in order to see the true value of functional/declarative programming. 
+btw
+you know that a "method" is just a "function" that is a member of an object: String.replace()
+replace() is a function, but also a method on the built-in JS String object
+so, when I say 'functional' think, 'using functions instead of imperative code'
+If this is confusing, ask me about it tomorrow on Slack
+*/
