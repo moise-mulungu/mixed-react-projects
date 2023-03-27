@@ -20,7 +20,7 @@ assert.strictEqual(removeDuplicateWords('alpha beta beta gamma gamma gamma delta
 */
 
 // MM: the aim is to remove from a string but I want to overthink of an array which may contains string or integer.
-// DM: todoMM: check out the readme.md and be sure to always use the exact wording of the steps in each of your code solutions. YOu'll see how this helps. I've copied them below.(all the todoMMs in this file are complete)
+
 /* 
   // 1. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.

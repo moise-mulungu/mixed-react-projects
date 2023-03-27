@@ -86,6 +86,6 @@ The 'transform if possible' part is more like "defensive" I think. It tries not 
 Anyway, great job, just some food for thought. The blog posts are yours completely. I'll never insist on anything in particular, just offer suggestions.
 
 
-DM: todoMM: is the other file with the same article a duplicate? please have only one version of something in the repo. That way I know which one to read!(done)
+
 
 -->

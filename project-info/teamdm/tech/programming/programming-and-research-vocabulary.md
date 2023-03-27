@@ -1,6 +1,5 @@
 note: prefix Google searches with "computer programming" to get the best results. "programming" alone is not specific enough
 
-DM: todoMM: new vocab term!(done)
 ## functional programming
 Functional programming (FP) is an approach to software development that uses pure functions to create maintainable software. In other words, building programs by applying and composing functions
 
@@ -16,17 +15,18 @@ A guard clause is a piece of conditional logic that is placed at the beginning o
 
 - Declarative programming is a method to abstract away the _control flow_ for logic required for software to perform an action, and instead involves stating what the task or desired outcome is. Declarative programming is a high-level programming concept, which is the opposite of imperative programming.
 
-## DM: todoMM add "control flow" to this file
+## control flow
 
 The control flow is the order in which the computer executes _statements_ in a script.
-Code is run in order from the first line in the file to the last line, unless the computer runs across the (extremely frequent) structures that change the control flow, such as conditionals and loops.(done)
+Code is run in order from the first line in the file to the last line, unless the computer runs across the (extremely frequent) structures that change the control flow, such as conditionals and loops.
 
 ## Magic string
 
 magic strings are string values that are specified directly within application code that have an impact on the application's behavior
-DM: todoMM: read some opinion articles, or reddit, etc. - why are magic strings to be avoided? (in progress) Hey, the intention, is that you mention a few reasons to avoid here. THe reason I thought of asking you to do that research, is when I read the definition, I felt there should be some good reasons listed as part of the vocabulary definition.
- * why are magic strings to be avoided? 
-    the reason is, such strings will end up being duplicated within the system, and since they cannot automatically be updated using refactoring tools, they become a common source of bugs when changes are made to some strings but not others. For another reason, is when your application grows bigger, it may sound difficult to access all the magic strings.
+* why are magic strings to be avoided? 
+  * magic strings will end up being duplicated within the system, and since they cannot automatically be updated using refactoring tools, they become a common source of bugs when changes are made to some strings but not others. 
+  * when your application grows bigger, it may sound difficult to access all the magic strings.
+  * fewer bugs if you edit magic strings in a constants file, once, instead of in multiple places where they are usually embedded in code.
 
 ## pre-trained model AKA pre-trained code model AKA? "pre-coded models"
 
@@ -74,6 +74,8 @@ is a non-imperative style of programming in which programs describe their desire
 ## imperative programming
 
 is a software development paradigm where functions are implicitly coded in every step required to solve a problem. In imperative programming, every operation is coded and the code itself specifies how the problem is to be solved, which means that pre-coded models are not called on.
+
+DM: super!
 
 ## absolute url
 An absolute URL includes the position within your website in your folder system names within the URL and consists of the full address from the protocol (HTTPS) to the domain name(e.g: https://developer.mozilla.org/en-US/docs/Web/JavaScript)

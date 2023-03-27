@@ -129,18 +129,20 @@ function toCamelCase(str) {
   // output: string...; possible values: string in camel-case by removing delimiters and capitalizing first letter of each word
 
   // validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-const isString = typeof str === 'string'
+  const isString = typeof str === 'string'
   if (!isString) throw new Error('parameter must be a string')
 
-// remove delimiters: '-', '_'
+  // remove delimiters: '-', '_'
+  // DM: use 'g' flag when String.replace() but with split you don't need it
   const removedUnderscoreAndDash = str.split(/[-_]/g)
   // console.log(removedUnderscoreAndDash)
 
   // declare variable to hold the string with the first letter of each word capitalized
   let capitalizedFirstLetterAfterDashAndUnderscore = ''
-  
+
   // loop through the array of words and capitalize the first letter of each word
   for (let i = 0; i < removedUnderscoreAndDash.length; i++) {
+    // DM: you don't need template string here
     const nextWordAfterUnderscoreAndDash = `${removedUnderscoreAndDash[i]}`
     // capitalize first letter of each word (do not change the capitalization of the first word)
     const firstLetter = nextWordAfterUnderscoreAndDash.charAt(0).toUpperCase()
@@ -152,7 +154,8 @@ const isString = typeof str === 'string'
   }
 
   return capitalizedFirstLetterAfterDashAndUnderscore
-  console.log(capitalizedFirstLetterAfterDashAndUnderscore) 
+  // execution will not reach the next line, because the return statement (a "control flow" statement) redirected execution back to the calling statement (i.e., below where you call the function multiple time for the tests)
+  console.log(capitalizedFirstLetterAfterDashAndUnderscore)
 }
 
 toCamelCase('the-stealth_warrior')
@@ -162,3 +165,22 @@ toCamelCase('First-word-is-capitalized')
 toCamelCase('')
 toCamelCase('The-Stealth-Warrior')
 toCamelCase('A-B-C')
+
+// DM: todoDM: think on how much time new programmers need to practice the imperative ('let') approach, to get a firm understanding of that approach. before or simultaneous to learning the declarative approach.
+
+/* 
+DM: Moise, this was a good learning experience, always congratulate yourself for sticking with it until you figured it out. I think you understand more deeply now the concept of looping through an array and applying logic based on the index number (i) 
+   Here is a declarative pattern that is very similar, try copy your code to below and 
+*/
+function toCamelCase2(string) {
+  const delimitersRegExp = /[-_]/
+  string
+    .split(delimitersRegExp) // this comment is so prettier will choose multi-line formatting
+    .map((word, i) => {
+      console.log({ word, i })
+      // try you above solution here
+      return /*  */
+    })
+    .join('')
+}
+toCamelCase2('word1-word2_word3')

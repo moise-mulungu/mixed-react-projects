@@ -10,7 +10,7 @@ All new code-wars challenges go in an individual file
 //////////////////////////////////////////////////////////////////////
 
 // AKA "exclusive or"
-function exclusive0r (a, b) {
+function exclusive0r(a, b) {
   // describe the inputs and outputs
   // inputs: a, b: integers, values: any number
   // outputs: boolean, values: true, false
@@ -163,8 +163,6 @@ describeAge(100) // "You're a(n) elderly"
 describeAge('teen') // Error: age must be a number greater than or equal to 0
 
 // DM: great! it works! Once you have done the suggestions above, try another code-wars challenge, using the steps and rules. BTW, work on code-wars challenges tagged 'string', 'regexp', logic, etc. rather than mathematics. WebDev and even back-end work is more about text processing and logic, rarely hard math.
-
-// DM: todoMM: be sure to finish all the todoMMs in this file before doing any more codewars exercises. Let's get those concepts/approaches completed first (they will serve as patterns for future codewars exercises)(all todoMMs are complete in this file)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Strings Mix https://www.codewars.com/kata/526dbd6c8c0eb53254000110/train/javascript
