@@ -1,6 +1,5 @@
 // imperative solution
 function disemvowel(str) {
-  
   const isString = typeof str === 'string'
   if (!isString) {
     throw new Error('input must be a string')
@@ -13,12 +12,10 @@ function disemvowel(str) {
   const characters = str.split('')
 
   const filteredCharacters = characters.filter((character) => {
-    
     const isVowel = vowels.includes(character.toLowerCase())
 
     return !isVowel
   })
-
 
   const joinedFilteredCharacters = filteredCharacters.join('')
 
@@ -38,3 +35,4 @@ function disemvowel(str) {
   return str.replace(/[aeiou]/gi, '')
 }
 
+// Â: btw, I didn't mean for you to remove all the comments, just the ones in the short example in teh last step. it's ok, just FYI
