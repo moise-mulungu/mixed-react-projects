@@ -1,9 +1,9 @@
 import { contactFormText } from '@/constants/portfolio/contact-form-constants'
 
 const ContactForm = ({ mySubmitForm }) => {
-  // DM: todoMM: this is a function, so name this in terms of what it does: onSubmitHandler (done)
   const onSubmitHandler = (event) => {
     event.preventDefault()
+    // DM: events perform side effects, they do not return values. this is where you'd do whatever is needed to generate the email message. Search "react send email" to find out how.
     return mySubmitForm(
       event.currentTarget.elements.name.value,
       event.currentTarget.elements.email.value,
@@ -12,7 +12,6 @@ const ContactForm = ({ mySubmitForm }) => {
     // MM: ???DM: when trying to submit this form, am getting the following error: "TypeError: mySubmitForm is not a function". How can I fix this?
     // DM: find out what is mySubmitForm. console.log it. questions to ask: where is it defined? It is passed as a prop, so follow it back to where the <ContactForm component is used.
     // DM: question to ask: what do you want to happen when user clicks the submit button?
-    // DM:
   }
   return (
     <div className="use tw utility classes here">

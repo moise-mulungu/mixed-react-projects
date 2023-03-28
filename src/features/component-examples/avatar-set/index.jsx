@@ -4,7 +4,6 @@ import { uuid } from 'uuidv4'
 /*
 DM: todoMM: implement the uuid package for your unique keys here, instead of hard-coding 'id' in the data; see the code at the end of the page - you don't have to read the article: https://blog.devgenius.io/the-quicky-lazy-but-effective-way-to-create-unique-keys-for-react-elements-e45d574028a3 (done, but will use the uuid package instead)
 
-DM: todoMM: find another JoR component and implement it(done)
 
 */
 
@@ -17,10 +16,10 @@ const data = [
 
 export default function AvatarSet() {
   return (
-    <div className='flex -space-x-1 overflow-hidden'>
+    <div className="flex -space-x-1 overflow-hidden">
       {data.map(({ id, alt }) => (
         <Avatar
-          className='inline-block h-6 w-6 rounded-full ring-2 ring-white'
+          className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
           key={uuid()}
           src={`https://sandpack-bundler.vercel.app/img/avatars/${id}.png`}
           alt={alt}

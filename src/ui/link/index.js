@@ -2,6 +2,7 @@
 import { default as NextLink } from 'next/link'
 // DM: todoMM: add to the ui-examples page 3 examples representing each of the link types in the logic below.
 // MM: ???DM: i could only find 2 examples of links in the ui-examples page. 1 for internal and 1 for external. but I did not add a third example for a url object.
+// DM: url object? the other type is an anchor link (to a specific location on the same page)
 export default function Link({ href, className = 'underline', ...rest }) {
   const isInternalLink = href && href.startsWith('/')
   const isAnchorLink = href && href.startsWith('#')
