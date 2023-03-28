@@ -1,4 +1,4 @@
-import styles from './Sidenote.module.css';
+import styles from './side-note.module.css'
 
 function Sidenote({ title, children }) {
   return (
@@ -6,7 +6,7 @@ function Sidenote({ title, children }) {
       <h3 className={styles.title}>{title}</h3>
       <p>{children}</p>
     </aside>
-  );
+  )
 }
 
-export default Sidenote;
+export default Sidenote

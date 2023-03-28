@@ -18,10 +18,7 @@ export default function UiExamplesPage() {
       </Head>
 
       <UiExamples />
-      <Link href="/" />
-      {/* this links to a page on the same site */}
-      <Link href="https://nextjs.org/docs" />
-      {/* this links to a page on another site */}
+    
     </div>
   )
 }
