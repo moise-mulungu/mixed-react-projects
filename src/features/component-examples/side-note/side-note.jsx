@@ -8,7 +8,7 @@ but, if you don't use camelCase, then 'code spell checker' checks 'Sidenote' as 
 I know that probably in the JoR example the 'n' was not capitalized (which is sloppy, btw), but I want to show you an example of how 'code spell checker' helps you adhere to good coding standards
 DM: todoMM: capitalize the 'n' everywhere Sidenote is used. Capitalizing 'Note' also correlates correctly with the '-' in your filename, side-note.jsx
 */
-function Sidenote({ title, children }) {
+function SideNote({ title, children }) {
   return (
     <aside className={styles.wrapper}>
       <h3 className={styles.title}>{title}</h3>
@@ -17,4 +17,4 @@ function Sidenote({ title, children }) {
   )
 }
 
-export default Sidenote
+export default SideNote
