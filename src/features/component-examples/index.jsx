@@ -2,6 +2,7 @@ import Hello from './hello'
 import ContactCards from './contact-cards'
 import AvatarSet from './avatar-set'
 import MyNewJoyOfReactComponent from './my-new-joy-of-react-component'
+import MySidenote from './side-note/app'
 
 // DM: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
@@ -35,6 +36,8 @@ export default function ComponentExamples() {
       <ContactCards />
       <Divider />
       <AvatarSet />
+      <Divider />
+      <MySidenote />
     </div>
   )
 }
