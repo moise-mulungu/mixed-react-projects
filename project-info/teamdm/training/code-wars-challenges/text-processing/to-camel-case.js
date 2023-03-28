@@ -136,6 +136,7 @@ function toCamelCase(str) {
 
   // remove delimiters: '-', '_'
   const removedUnderscoreAndDash = str.split(/[-_]/)
+  console.log(removedUnderscoreAndDash)
 
   // declare variable to hold the string with the first letter of each word capitalized
   let capitalizedFirstLetterAfterDashAndUnderscore = ''
@@ -168,15 +169,26 @@ toCamelCase('A-B-C')
 
 function toCamelCase2(string) {
   const delimitersRegExp = /[-_]/
-
+  let result = ''
+  
   string
-    .split(delimitersRegExp) // this comment is so prettier will choose multi-line formatting
-    .map((word, i) => {
+  .split(delimitersRegExp) // this comment is so prettier will choose multi-line formatting
+  .map((word, i) => {
       console.log({ word, i })
       // try you above solution here
       // DM: todoMM: finish this up before doing more new challenges. let's not leave anything pending.
-      return /*  */
+      const nextLetter = word + ''
+      const capitalize = nextLetter.charAt(0).toLocaleUpperCase()
+      // console.log(capitalize)
+      const nextWord = nextLetter.slice(1)
+      // console.log(nextWord)
+      result += i === 0? nextLetter : capitalize + nextWord 
+      // console.log(result)
     })
     .join('')
+    return result
 }
-toCamelCase2('word1-word2_word3')
+console.log(toCamelCase2('word1-word2_word3'))
+console.log(toCamelCase2('the_stealth-warrior'))
+
+// ???DM: i could not figure it out in the declarative way, my solution is almost imperative, is it possible to shorten it ?
