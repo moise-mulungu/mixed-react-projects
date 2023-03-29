@@ -86,6 +86,23 @@ is a URL that only includes the path. The path is everything that comes after th
 ## url object
 The URL object immediately allows us to access its components, so it's a nice way to parse the url.
 
-## property access: dot notation vs. brackets?
+## property access: dot notation vs. bracket notation
 The difference is in how a property value is interpreted. When using a dot, the part after the dot must be a valid variable name, and it directly names the property. When using square brackets, the expression between the brackets is evaluated to get the property name. Whereas value of property fetches the property of value named “x”, value[x] tries to evaluate the expression x and uses the result as the property name.
-<!-- this explanation is not really clear, need to add more clarity -->
+```js
+const myObject = {
+  myPropertyName: 'my property value',
+  'my property name with spaces': 'my property value with spaces',
+}
+myObject.myPropertyName
+myObject['my property name with spaces']
+myObject.my property name with spaces // SyntaxError: Unexpected token
+myObject.'my property name with spaces' // SyntaxError: Unexpected token
+const myPropertyNameInAVariable = 'myPropertyName'
+myObject[myPropertyNameInAVariable]
+myObject.myPropertyNameInAVariable // error! myPropertyNameInAVariable is undefined (not a property of myObject)
+```
+* operators: member access vs. computed member access
+  * member access operator (using dot notation)
+  * computed member access operator (using bracket notation)
+  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table
+  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors#dot_notation
