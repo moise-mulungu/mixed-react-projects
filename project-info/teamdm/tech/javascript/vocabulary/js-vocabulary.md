@@ -110,3 +110,26 @@ CSS-in-JS is different from inline styles. We still write all our CSS in JavaScr
 ## recursive function
 A recursive function is a function that calls itself until it doesn’t.
 <!-- MM: i need to understand in depth the concept and train a lot on it -->
+
+## property access: dot notation vs. bracket notation
+* operators: member access vs. computed member access
+  * member access operator (using dot notation)
+  * computed member access operator (using bracket notation)
+  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence#table
+  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors#dot_notation
+* The difference is in how a property value is interpreted. 
+  * When using a dot, the part after the dot must be a valid property name of the object, and it directly names the property. 
+  * When using square brackets, the *expression* between the brackets is *evaluated* to get the property name. Ex: myObject[x] tries to evaluate the expression x and uses the result as the property name.
+```js
+const myObject = {
+  myPropertyName: 'my property value',
+  'my property name with spaces': 'my property value with spaces',
+}
+myObject.myPropertyName
+myObject['my property name with spaces'] // 'my property name with spaces' is an expression
+myObject.my property name with spaces // SyntaxError: Unexpected token
+myObject.'my property name with spaces' // SyntaxError: Unexpected token
+const myPropertyNameInAVariable = 'myPropertyName'
+myObject[myPropertyNameInAVariable] // myPropertyNameInAVariable is an expression
+myObject.myPropertyNameInAVariable // error! myPropertyNameInAVariable is undefined (not a property of myObject)
+```
