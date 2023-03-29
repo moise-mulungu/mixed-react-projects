@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './Movie.module.css'
+import styles from './movie-rating-animations.module.css'
 
 // Your mission:
 // Apply the 'glowingReview' CSS class to the
