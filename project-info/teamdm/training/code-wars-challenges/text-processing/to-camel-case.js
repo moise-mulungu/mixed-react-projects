@@ -143,7 +143,7 @@ function toCamelCase(str) {
 
   // loop through the array of words and capitalize the first letter of each word
   for (let i = 0; i < removedUnderscoreAndDash.length; i++) {
-    // DM: what is the purpose of: + ''
+    // DM: ???MM: what is the purpose of: + ''
     const nextWordAfterUnderscoreAndDash = removedUnderscoreAndDash[i] + ''
 
     // capitalize first letter of each word (do not change the capitalization of the first word)
@@ -169,11 +169,10 @@ toCamelCase('A-B-C')
 
 function toCamelCase2(string) {
   const delimitersRegExp = /[-_]/
-  let result = ''
-  
-  string
-  .split(delimitersRegExp) // this comment is so prettier will choose multi-line formatting
-  .map((word, i) => {
+
+  const solution = string
+    .split(delimitersRegExp) // this comment is so prettier will choose multi-line formatting
+    .map((word, i) => {
       console.log({ word, i })
       // try you above solution here
       // DM: todoMM: finish this up before doing more new challenges. let's not leave anything pending.
@@ -182,13 +181,13 @@ function toCamelCase2(string) {
       // console.log(capitalize)
       const nextWord = nextLetter.slice(1)
       // console.log(nextWord)
-      result += i === 0? nextLetter : capitalize + nextWord 
+      return i === 0 ? nextLetter : capitalize + nextWord
       // console.log(result)
     })
     .join('')
-    return result
+  return solution
 }
 console.log(toCamelCase2('word1-word2_word3'))
-console.log(toCamelCase2('the_stealth-warrior'))
+console.log(toCamelCase2('The_stealth-warrior'))
 
 // ???DM: i could not figure it out in the declarative way, my solution is almost imperative, is it possible to shorten it ?
