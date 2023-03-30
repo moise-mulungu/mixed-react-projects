@@ -84,4 +84,5 @@ myFunction('', '') // expected result
              what it is with lots of words. Just write exactly what the variable holds.
              Later, in this step, you can refine variable names to be shorter.  */
 
-/* 12. Final step: copy the solution below this line, remove all comments below this line  */
+/* 12. Final step: copy the solution below this line, remove all comments and console.log below this line  
+       OK to rename variables here if it seems better while looking at the code in concise form*/

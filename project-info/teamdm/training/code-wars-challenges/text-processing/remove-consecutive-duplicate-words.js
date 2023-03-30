@@ -47,7 +47,8 @@ function removeConsecutiveDuplicates(string) {
 
         output: string...; possible values: any string but without a repeated word twice*/
   /*
-    DM: todoMM: always be sure to describe inputs/outputs. it may seem obvious, but it will save you time by being sure you think carefully at the beginning about inputs/outputs(i already did this, then removed the comments.)
+
+  
   */
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
@@ -68,10 +69,53 @@ function removeConsecutiveDuplicates(string) {
         * functions are named with verbs+noun (createMyThing) or adverbs: (onClick, onSubmitHandler)
         * booleans are named with (positive) adjectives: (open, seen, isString)
         * everything else with nouns or adjectives: (myThing)*/
-  // DM: todoMM: name the variable exactly what it is (declarative), not what you are doing (imperative). in this case it is just the words of the string
+
   const words = string.split(' ')
   console.log(words)
-  // DM: todoMM: rename: 'mapped' doesn't describe what it is. you can use something like cleanedWords, adjustedWords ... it's kind of hard to name, but the function is small, so the name doesn't have to be perfect, but it is a list so the name should be a plural noun.
+
+  /* 8. use the named parts to create a readable solution. */
+
+  const noConsecutiveDuplicateWords = words.map((word, index) => {
+    // DM: btw, good job doing this first ("guard clause")
+    if (word === words[index + 1]) {
+      return ''
+    }
+    return word
+  })
+  /* 9. return the solution
+       always return a variable, or, use only variables in return statements
+       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+       */
+  console.log(noConsecutiveDuplicateWords)
+  return noConsecutiveDuplicateWords.join(' ')
+}
+// 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
+
+// DM todoMM: removeConsecutiveDuplicates only takes one argument, see doTest() in the codewars Sample Tests. but you are passing 2 arguments. the 2nd arg is ignored, but you should remove the 2nd argument from here to avoid confusion
+removeConsecutiveDuplicates('alpha alpha alpha alpha')
+removeConsecutiveDuplicates('alpha beta alpha')
+removeConsecutiveDuplicates('alpha alphabeta alphagamma')
+removeConsecutiveDuplicates('alpha alpha beta alpha alpha')
+removeConsecutiveDuplicates('alpha beta beta')
+
+/* 11. Review the code for conciseness and readability: clear, descriptive variable names
+    note: as you are working, try to write good names, so that Duncan and yourself can 
+    understand easily. Don't use misleading or too-unspecific variable names.
+    But, don't spend much time on it. The trick is to describe
+    what it is with lots of words. Just write exactly what the variable holds.
+    Later, in this step, you can refine variable names to be shorter.  */
+
+/* 12. Final step: copy the solution below this line, remove all comments and console.log below this line  
+       OK to rename variables here if it seems better while looking at the code in concise form 
+       No comments in this "production-ready" version, because your variable names should explain everything*/
+
+// DM: todoMM: great job on the new variable names! can you make this more concise, without reducing readability? ex: if an if-statement block contains only one line (the return statement) use the syntax without curly brackets {}
+function removeConsecutiveDuplicates2(string) {
+  const isString = typeof string === 'string'
+  if (!isString) throw new Error('parameter or input must be a string')
+
+  const words = string.split(' ')
+
   const noConsecutiveDuplicateWords = words.map((word, index) => {
     if (word === words[index + 1]) {
       return ''
@@ -79,31 +123,5 @@ function removeConsecutiveDuplicates(string) {
     return word
   })
 
-  console.log(noConsecutiveDuplicateWords)
   return noConsecutiveDuplicateWords.join(' ')
-
-  /* 8. use the named parts to create a readable solution. */
-
-  /* 9. return the solution
-       always return a variable, or, use only variables in return statements
-       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
-       */
-
-  // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
-
-  // DM todoMM: removeConsecutiveDuplicates only takes one argument, see doTest() in the codewars Sample Tests. but you are passing 2 arguments. the 2nd arg is ignored, but you should remove the 2nd argument from here to avoid confusion
-  removeConsecutiveDuplicates('alpha alpha alpha alpha')
-  removeConsecutiveDuplicates('alpha beta alpha')
-  removeConsecutiveDuplicates('alpha alphabeta alphagamma')
-  removeConsecutiveDuplicates('alpha alpha beta alpha alpha')
-  removeConsecutiveDuplicates('alpha beta beta')
-
-  /* 11. Review the code for conciseness and readability: clear, descriptive variable names
-    note: as you are working, try to write good names, so that Duncan and yourself can 
-    understand easily. Don't use misleading or too-unspecific variable names.
-    But, don't spend much time on it. The trick is to describe
-    what it is with lots of words. Just write exactly what the variable holds.
-    Later, in this step, you can refine variable names to be shorter.  */
-
-  /* 12. Final step: copy the solution here, remove all comments  */
 }
