@@ -77,3 +77,10 @@ Or whenever we have “dynamic” values, we need to use React state. State is u
 
 ## useState
 Is a function that allows to create a `state` variable, it takes a single argument as an `initial value` and returns an array containing two values(`valueName` and `setValueName`) by using the `destructuring assignment`.
+
+##  initial render
+An initial render is when react calls the root component
+
+##  subsequent renders or re-rendering
+is when React calls the function component whose state update triggered the render.
+<!--???DM: need more concise explanations here -->
