@@ -8,8 +8,8 @@ import MySideNote from './side-note/index'
 import MovieRatingsAnimations from './movie-ratings-animations'
 // import ClickBallGame from './click-ball'
 import Counter from './counter'
-import CharacterApp from './character'
-import MyCounter from './counter2/counter2'
+import CharacterApp from './character' // DM todoMM: your component name should match the imported filename
+import MyCounter from './counter2/counter2' // DM todoMM: your component name should match the imported filename. see comments in ./counter2/counter2
 
 // DM: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
@@ -19,7 +19,7 @@ import Divider from '@/ui/divider'
 /*
 
 
-DM: follow this same pattern whenever you have new examples from Joy of React. this will ba place to make sure these components work and to adjust/experiment with them.
+DM: follow this same pattern whenever you have new examples from Joy of React. this will be a place to make sure these components work and to adjust/experiment with them.
 
 
 */

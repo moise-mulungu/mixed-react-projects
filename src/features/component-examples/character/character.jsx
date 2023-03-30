@@ -6,15 +6,16 @@ function Character() {
   const [intelligence, setIntelligence] = React.useState(15)
 
   function triggerLevelUp() {
-   const nextStrength = strength + 1
-   const nextDexterity = dexterity + 2
-   const nextIntelligence = intelligence + 3
+    const nextStrength = strength + 1
+    const nextDexterity = dexterity + 2
+    const nextIntelligence = intelligence + 3
 
-   setStrength(nextStrength)
-   setDexterity(nextDexterity)
-   setIntelligence(nextIntelligence)
+    setStrength(nextStrength)
+    setDexterity(nextDexterity)
+    setIntelligence(nextIntelligence)
 
-   window.alert(`
+    // DM: todoMM: excellent! can you show the current state in the browser next to the character image, not just in the alert?
+    window.alert(`
       Congratulations! Your hero now has the following stats:
       Str: ${nextStrength}
       Dex: ${nextDexterity}

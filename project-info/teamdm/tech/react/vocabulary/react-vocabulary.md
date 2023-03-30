@@ -69,18 +69,24 @@ A fragment is
 `<React.Fragment></React.Fragment>` or with an empty tags `<></>`.
 
 ## props
-Props are read-only components. It is an object which stores the value of attributes of a tag and work similar to the HTML attributes. It allows passing data from one component to other components.
-
+Props are read-only variables in a component. Collectively, props is an object which stores the value of attributes of a React Component tag and work similar to the HTML attributes. It allows passing data from a component to its child components.
+```js
+export default function myComponent(props) { const { prop1, prop2 } = props; ... } // props is an object
+// equivalent to:
+export default function myComponent({ prop1, prop2} ) {  ... } // here, the props object is deconstructed and the values assigned to the variables prop1, prop2
+```
 ## state
-The state is an updatable structure that is used to contain data or information about the component and can change over time. The change in state can happen as a response to user action or system event. It is the heart of the react component which determines the behavior of the component and how it will render. 
+The state is an updatable structure that is used to contain data or information about the component and can change over time. The change in state can happen as a response to user action or system event (ex: the parent renders; a prop changes). It is the heart of the react component which determines the behavior of the component and how it will render. 
 Or whenever we have “dynamic” values, we need to use React state. State is used for values that change over time.
 
-## useState
-Is a function that allows to create a `state` variable, it takes a single argument as an `initial value` and returns an array containing two values(`valueName` and `setValueName`) by using the `destructuring assignment`.
+## useState hook
+Is a function for creating a `state` variable and a state updater function. It takes a single argument as an initial `value` and returns an array containing two values(`valueName` and `setValueName`) by using `destructuring assignment`.
 
 ##  initial render
-An initial render is when react calls the root component
+An initial render is when React evaluates a component creating the 'virtual DOM' DM: todoDM: more on the component lifecycle
 
 ##  subsequent renders or re-rendering
 is when React calls the function component whose state update triggered the render.
-<!--???DM: need more concise explanations here -->
+DM: todoDM: more on the component lifecycle
+
+

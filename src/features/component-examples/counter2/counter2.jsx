@@ -1,6 +1,9 @@
 import React from 'react'
 import { ChevronUp, ChevronsUp, ChevronDown, ChevronsDown, RotateCcw, Hash } from 'react-feather'
 
+// DM todoMM: in a directory, there should be an ./index.js(x); rename this file index.jsx
+// DM: all these rules/conventions are important. because if you don't do them, it implies that there is a reason not to, and the reader of your code will wonder why you did it. So, if you don't follow them, leave a comment explaining why not
+
 const clamp = (val, min = 0, max = 1) => {
   if (min > max) {
     ;[min, max] = [max, min]
@@ -9,7 +12,8 @@ const clamp = (val, min = 0, max = 1) => {
   return Math.max(min, Math.min(max, val))
 }
 
-function MyCounter({ initialVal = 0 }) {
+// DM todoMM: the component name should always match the ./file-name.jsx or the ./directory-name/index.jsx
+export default function MyCounter({ initialVal = 0 }) {
   const [count, setCount] = React.useState(initialVal)
 
   return (
@@ -23,7 +27,10 @@ function MyCounter({ initialVal = 0 }) {
           <ChevronUp />
           <span className="visually-hidden">Increase slightly</span>
         </button>
-        <button onClick={() => setCount(count + 10)}>
+        <button
+          onClick={() => setCount(count + 10)}
+          className="ml-2" // this is a quick way to add a little spacing
+        >
           <ChevronsUp />
           <span className="visually-hidden">Increase a lot</span>
         </button>
@@ -52,5 +59,3 @@ function MyCounter({ initialVal = 0 }) {
     </div>
   )
 }
-
-export default MyCounter

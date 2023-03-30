@@ -3,7 +3,7 @@ import React from 'react'
 
 import VisuallyHidden from './VisuallyHidden'
 
-function ClickBallGame() {
+export default function ClickBallGame() {
   function handleClick(type) {
     if (type === 'win') {
       alert('You win!')
@@ -25,5 +25,3 @@ function ClickBallGame() {
     </div>
   )
 }
-
-export default ClickBallGame
