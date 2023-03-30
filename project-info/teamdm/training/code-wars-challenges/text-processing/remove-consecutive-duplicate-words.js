@@ -47,7 +47,7 @@ function removeConsecutiveDuplicates(string) {
 
         output: string...; possible values: any string but without a repeated word twice*/
   /*
-    DM: todoMM: always be sure to describe inputs/outputs. it may seem obvious, but it will save you time by being sure you think carefully at the beginning about inputs/outputs
+    DM: todoMM: always be sure to describe inputs/outputs. it may seem obvious, but it will save you time by being sure you think carefully at the beginning about inputs/outputs(i already did this, then removed the comments.)
   */
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
@@ -72,15 +72,15 @@ function removeConsecutiveDuplicates(string) {
   const removeConsecutiveDuplicateWords = string.split(' ')
   console.log(removeConsecutiveDuplicateWords)
   // DM: todoMM: rename: 'mapped' doesn't describe what it is. you can use something like cleanedWords, adjustedWords ... it's kind of hard to name, but the function is small, so the name doesn't have to be perfect, but it is a list so the name should be a plural noun.
-  const mapped = removeConsecutiveDuplicateWords.map((word, index) => {
+  const noConsecutiveDuplicateWords = removeConsecutiveDuplicateWords.map((word, index) => {
     if (word === removeConsecutiveDuplicateWords[index + 1]) {
       return ''
     }
     return word
   })
 
-  console.log(mapped)
-  return mapped.join(' ')
+  console.log(noConsecutiveDuplicateWords)
+  return noConsecutiveDuplicateWords.join(' ')
 
   /* 8. use the named parts to create a readable solution. */
 
@@ -92,11 +92,11 @@ function removeConsecutiveDuplicates(string) {
   // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 
   // DM todoMM: removeConsecutiveDuplicates only takes one argument, see doTest() in the codewars Sample Tests. but you are passing 2 arguments. the 2nd arg is ignored, but you should remove the 2nd argument from here to avoid confusion
-  removeConsecutiveDuplicates('alpha alpha alpha alpha', 'alpha')
-  removeConsecutiveDuplicates('alpha beta alpha', 'alpha beta alpha')
-  removeConsecutiveDuplicates('alpha alphabeta alphagamma', 'alpha alphabeta alphagamma')
-  removeConsecutiveDuplicates('alpha alpha beta alpha alpha', 'alpha beta alpha')
-  removeConsecutiveDuplicates('alpha beta beta', 'alpha beta')
+  removeConsecutiveDuplicates('alpha alpha alpha alpha')
+  removeConsecutiveDuplicates('alpha beta alpha')
+  removeConsecutiveDuplicates('alpha alphabeta alphagamma')
+  removeConsecutiveDuplicates('alpha alpha beta alpha alpha')
+  removeConsecutiveDuplicates('alpha beta beta')
 
   /* 11. Review the code for conciseness and readability: clear, descriptive variable names
     note: as you are working, try to write good names, so that Duncan and yourself can 
