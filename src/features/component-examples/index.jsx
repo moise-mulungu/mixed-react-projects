@@ -8,6 +8,7 @@ import MovieRatingsAnimations from './movie-ratings-animations'
 // import ClickBallGame from './click-ball'
 import Counter from './counter'
 import CharacterApp from './character'
+import MyCounter from './counter2/counter2'
 
 // DM: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
@@ -51,6 +52,8 @@ export default function ComponentExamples() {
       <Counter />
       <Divider />
       <CharacterApp />
+      <Divider />
+      <MyCounter />
     </div>
   )
 }
