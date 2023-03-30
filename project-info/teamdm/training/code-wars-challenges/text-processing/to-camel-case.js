@@ -191,3 +191,8 @@ console.log(toCamelCase2('word1-word2_word3'))
 console.log(toCamelCase2('The_stealth-warrior'))
 
 // ???DM: i could not figure it out in the declarative way, my solution is almost imperative, is it possible to shorten it ?
+/* 
+you were very close!
+the big point is you use 'let' so you have a variable to hold the solution. BUT, string.split().map().join() returns the value you want. that's the key point. split, map, join are called 'chained' functions because each returns a value to the next.
+cool. and map(), before passing it's value (an array) to join() goes through each element of the array, so you see the return statement at the end of the map() callback. the return statement returns the word after you upperCaseFirst (or not)
+*/
