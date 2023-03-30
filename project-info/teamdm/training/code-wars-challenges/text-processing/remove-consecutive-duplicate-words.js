@@ -91,7 +91,7 @@ function removeConsecutiveDuplicates(string) {
 
   // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 
-  // DM: removeConsecutiveDuplicates only takes one argument, see doTest() in the codewars Sample Tests. but you are passing 2 arguments. the 2nd arg is ignored, but you should remove the 2nd argument from here to avoid confustion
+  // DM todoMM: removeConsecutiveDuplicates only takes one argument, see doTest() in the codewars Sample Tests. but you are passing 2 arguments. the 2nd arg is ignored, but you should remove the 2nd argument from here to avoid confusion
   removeConsecutiveDuplicates('alpha alpha alpha alpha', 'alpha')
   removeConsecutiveDuplicates('alpha beta alpha', 'alpha beta alpha')
   removeConsecutiveDuplicates('alpha alphabeta alphagamma', 'alpha alphabeta alphagamma')
