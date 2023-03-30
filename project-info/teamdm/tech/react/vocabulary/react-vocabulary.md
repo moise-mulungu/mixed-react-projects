@@ -67,3 +67,20 @@ Is a technique for sharing code between React components using a prop whose valu
 A fragment is 
 * a special React component that does not produce a DOM node * lets you group a list of children without adding extra nodes to the DOM
 `<React.Fragment></React.Fragment>` or with an empty tags `<></>`.
+
+## props
+Props are read-only components. It is an object which stores the value of attributes of a tag and work similar to the HTML attributes. It allows passing data from one component to other components.
+
+## state
+The state is an updatable structure that is used to contain data or information about the component and can change over time. The change in state can happen as a response to user action or system event. It is the heart of the react component which determines the behavior of the component and how it will render. 
+Or whenever we have “dynamic” values, we need to use React state. State is used for values that change over time.
+
+## useState
+Is a function that allows to create a `state` variable, it takes a single argument as an `initial value` and returns an array containing two values(`valueName` and `setValueName`) by using the `destructuring assignment`.
+
+##  initial render
+An initial render is when react calls the root component
+
+##  subsequent renders or re-rendering
+is when React calls the function component whose state update triggered the render.
+<!--???DM: need more concise explanations here -->
