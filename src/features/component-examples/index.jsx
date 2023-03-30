@@ -5,6 +5,7 @@ import MyNewJoyOfReactComponent from './my-new-joy-of-react-component'
 // DM: todoMM: rename app.jsx to index.jsx, then import MySideNote from './side-note'
 import MySideNote from './side-note/index'
 import MovieRatingsAnimations from './movie-ratings-animations'
+import  ClickBallGame  from './click-ball'
 
 // DM: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
@@ -42,6 +43,8 @@ export default function ComponentExamples() {
       <MySideNote />
       <Divider />
       <MovieRatingsAnimations />
+      <Divider />
+      <ClickBallGame />
     </div>
   )
 }
