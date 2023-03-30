@@ -69,11 +69,11 @@ function removeConsecutiveDuplicates(string) {
         * booleans are named with (positive) adjectives: (open, seen, isString)
         * everything else with nouns or adjectives: (myThing)*/
   // DM: todoMM: name the variable exactly what it is (declarative), not what you are doing (imperative). in this case it is just the words of the string
-  const removeConsecutiveDuplicateWords = string.split(' ')
-  console.log(removeConsecutiveDuplicateWords)
+  const words = string.split(' ')
+  console.log(words)
   // DM: todoMM: rename: 'mapped' doesn't describe what it is. you can use something like cleanedWords, adjustedWords ... it's kind of hard to name, but the function is small, so the name doesn't have to be perfect, but it is a list so the name should be a plural noun.
-  const noConsecutiveDuplicateWords = removeConsecutiveDuplicateWords.map((word, index) => {
-    if (word === removeConsecutiveDuplicateWords[index + 1]) {
+  const noConsecutiveDuplicateWords = words.map((word, index) => {
+    if (word === words[index + 1]) {
       return ''
     }
     return word
