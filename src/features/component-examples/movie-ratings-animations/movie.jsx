@@ -16,6 +16,7 @@ function Movie({ movie }) {
         <h2>{movie.title}</h2>
         <p className={styles.synopsis}>{movie.synopsis}</p>
         <p className={movie.rating >= 9 ? styles.glowingReview : ''}>
+          {/* it took me more than 1/2 hour to figure out this solution, i did not know how where to put the conditional operator */}
           <strong>Rating:</strong> {movie.rating}
         </p>
       </div>
