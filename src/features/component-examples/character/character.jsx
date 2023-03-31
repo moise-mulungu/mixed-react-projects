@@ -22,6 +22,7 @@ function Character() {
       Int: ${nextIntelligence}
     `)
   }
+  console.log({ setStrength })
 
   return (
     <div className="wrapper">
@@ -29,7 +30,18 @@ function Character() {
         alt="8-bit wizard character"
         src="https://sandpack-bundler.vercel.app/img/mage-sprite.gif"
       />
-      <button onClick={triggerLevelUp}>Level Up</button>
+      Str: {strength}
+      <br />
+      Dex: {dexterity}
+      <br />
+      Int: {intelligence}
+      <br />
+      <button
+        className="px-4 py-2 text-sm font-medium text-white bg-purple-500 border border-transparent rounded-md shadow-sm hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        onClick={triggerLevelUp}
+      >
+        Level Up
+      </button>
     </div>
   )
 }

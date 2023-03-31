@@ -15,7 +15,7 @@ function Movie({ movie }) {
       <div className={styles.textWrapper}>
         <h2>{movie.title}</h2>
         <p className={styles.synopsis}>{movie.synopsis}</p>
-        <p className={styles.glowingReview}>
+        <p className={movie.rating >= 9 ? styles.glowingReview : ''}>
           <strong>Rating:</strong> {movie.rating}
         </p>
       </div>

@@ -13,7 +13,7 @@ const clamp = (val, min = 0, max = 1) => {
 }
 
 // DM todoMM: the component name should always match the ./file-name.jsx or the ./directory-name/index.jsx
-export default function MyCounter({ initialVal = 0 }) {
+export default function Counter2({ initialVal = 0 }) {
   const [count, setCount] = React.useState(initialVal)
 
   return (
@@ -43,6 +43,7 @@ export default function MyCounter({ initialVal = 0 }) {
             const nextCount = clamp(Math.ceil(Math.random() * 100), 1, 100)
             setCount(nextCount)
           }}
+          // ???DM: this way of getting a random number is a bit confusing, i would like some more explanations.
         >
           <Hash />
           <span className="visually-hidden">Set to random value</span>

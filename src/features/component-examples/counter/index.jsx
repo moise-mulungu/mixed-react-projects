@@ -6,19 +6,10 @@ function Counter() {
   return (
     <>
       <p>You've clicked {count} times.</p>
-      <button
-        onClick={() => {
-          const nextCount = count + 1
-          setCount(nextCount)
-
-          console.log({ nextCount })
-        }}
-      >
-        Click me!
-      </button>
       {/* DM: todoMM: give this some styling, so that it looks like a button. It looks like plain
       text in the browser. */}
       <button
+        className="px-4 py-2 text-sm font-medium text-white bg-orange-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         onClick={() => {
           const previousCount = count - 1
           setCount(previousCount)
@@ -27,7 +18,18 @@ function Counter() {
         }}
       >
         {/* DM: todoMM: give this button a different value so that it is clear in the browser the difference between the two buttons, e.e, this button decrements, the other increments */}
-        Click me!
+        Decrease!
+      </button>
+      <button
+        className="px-4 py-2 text-sm font-medium text-white bg-green-500 border border-transparent rounded-md shadow-sm hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        onClick={() => {
+          const nextCount = count + 1
+          setCount(nextCount)
+
+          console.log({ nextCount })
+        }}
+      >
+        Increase!
       </button>
     </>
   )
