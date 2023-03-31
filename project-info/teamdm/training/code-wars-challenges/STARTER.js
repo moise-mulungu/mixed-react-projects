@@ -34,6 +34,7 @@
 //  3. write tests (at the bottom of the file), then continue with step 4.
 
 function myFunction(parameter1, parameter2) {
+  // rename the parameter(s) in the codewars starter function if the parameter names are imprecise
   /* 4. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
