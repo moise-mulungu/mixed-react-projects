@@ -19,11 +19,6 @@
 
 */
 
-// 1.3 some tests from the coding challenge: ex: myFunction('', '') // expected result
-/*
-
-*/
-
 /* 2. list and describe anything that is unclear in the challenge description
       these would be the questions you'd be expected to ask in a interview situation
       (practice reading the challenge description carefully) */
@@ -31,7 +26,7 @@
 
 */
 
-//  3. write tests (at the bottom of the file), then continue with step 4.
+//  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
 function myFunction(parameter1, parameter2) {
   // rename the parameter(s) in the codewars starter function if the parameter names are imprecise

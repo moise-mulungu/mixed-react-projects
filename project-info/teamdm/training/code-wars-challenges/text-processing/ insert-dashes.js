@@ -25,19 +25,14 @@ Note that the number will always be non-negative (>= 0).
 https://www.codewars.com/kata/55960bbb182094bc4800007b/train/javascript
 */
 
-// 1.3 some tests from the coding challenge: ex: myFunction('', '') // expected result
-/*
-
-*/
-
 /* 2. list and describe anything that is unclear in the challenge description
       these would be the questions you'd be expected to ask in a interview situation
       (practice reading the challenge description carefully) */
 /*
-
+n/a
 */
 
-//  3. write tests (at the bottom of the file), then continue with step 4.
+//  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
 function insertDash(num) {
   //code me
@@ -50,7 +45,9 @@ function insertDash(num) {
 
         output: number...; possible values: numbers with dashes between odd numbers */
   /*
-
+    DM: todoMM: always
+    input: number
+    output: string
   */
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
@@ -61,7 +58,8 @@ function insertDash(num) {
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? */
   /*
-i want to add a dash between odd numbers
+    how (imperative): i want to *add* a dash between odd numbers
+    what (declarative - no verbs!!!): string with dashes between the odd numbers
   */
 
   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -75,12 +73,18 @@ i want to add a dash between odd numbers
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  const numbers = num.map((number) => {
-    if (number % 2 === 0) {
-      return number
-    } else {
-      return number + '-'
+  const characters = num.toString().split('')
+
+  const charactersAndDashes = characters.map((character, index) => {
+    // each logical expressions must be assigned to a variable
+    const currentCharacterIsOdd = character % 2 === 1
+    const nextCharacterIsOdd = characters[index + 1] % 2 === 1
+    // console.log({ currentCharacterIsOdd, nextCharacterIsOdd })
+    if (currentCharacterIsOdd && nextCharacterIsOdd) {
+      // console.log('dash')
+      return character + '-'
     }
+    return character
   })
 
   /* 8. use the named parts to create a readable solution. */
@@ -89,7 +93,7 @@ i want to add a dash between odd numbers
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
-  return numbers
+  return charactersAndDashes.join('')
 }
 
 insertDash(454793) // 4547-9-3
@@ -115,18 +119,18 @@ function insertDash(num) {
   const isNumber = typeof num === 'number'
   if (!isNumber) throw new Error('The input must be a number')
 
-  const numbers = num
-    .toString()
-    .split('')
-    .map((item, index) => {
-      // console.log(item, 'index', index);
-      if (item % 2 === 1 && num[index + 1] % 2 === 1) {
-        return item + '-'
-      }
-      return item
-    })
-  console.log(numbers)
-  return numbers
+  const characters = num.toString().split('')
+
+  const charactersAndDashes = characters.map((character, index) => {
+    const currentCharacterIsOdd = character % 2 === 1
+    const nextCharacterIsOdd = characters[index + 1] % 2 === 1
+    if (currentCharacterIsOdd && nextCharacterIsOdd) {
+      return character + '-'
+    }
+    return character
+  })
+
+  return charactersAndDashes.join('')
 }
 
 insertDash(454793)
@@ -134,5 +138,3 @@ insertDash(123456)
 insertDash(1003567)
 insertDash(2468)
 insertDash(13579)
-
-// in progress

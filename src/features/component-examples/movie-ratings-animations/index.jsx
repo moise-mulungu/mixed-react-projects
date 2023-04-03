@@ -10,6 +10,9 @@ function MovieRatingsAnimations() {
   )
 }
 
+// DM: todoMM: JS vocab entry on 'hoisting' (lift up)
+// const myMovies = movieData.filter( /* what I like */) // filter doesn't exist on undefined
+
 const movieData = [
   {
     id: 'shrunk-kids',
