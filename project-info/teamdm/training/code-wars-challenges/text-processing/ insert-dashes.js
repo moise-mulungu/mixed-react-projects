@@ -40,7 +40,7 @@ https://www.codewars.com/kata/55960bbb182094bc4800007b/train/javascript
 //  3. write tests (at the bottom of the file), then continue with step 4.
 
 function insertDash(num) {
-   //code me
+  //code me
 
   /* 4. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
@@ -54,8 +54,8 @@ function insertDash(num) {
   */
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-  const isNumber = typeof num === 'number';
-    if (!isNumber) throw new Error('The input must be a number');
+  const isNumber = typeof num === 'number'
+  if (!isNumber) throw new Error('The input must be a number')
 
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
@@ -75,15 +75,13 @@ i want to add a dash between odd numbers
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-        const numbers = num.map((number) => {
-            if (number % 2 === 0) {
-                return number;
-            } else {
-                return number + '-';
-            }
-
-        });
-
+  const numbers = num.map((number) => {
+    if (number % 2 === 0) {
+      return number
+    } else {
+      return number + '-'
+    }
+  })
 
   /* 8. use the named parts to create a readable solution. */
 
@@ -92,7 +90,7 @@ i want to add a dash between odd numbers
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
   return numbers
-}   
+}
 
 insertDash(454793) // 4547-9-3
 insertDash(123456) // 123456
@@ -101,7 +99,7 @@ insertDash(2468) // 2468
 insertDash(13579) // 1-3-5-7-9
 
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
- // expected result
+// expected result
 
 /* 11. Make it pretty! Review the code for conciseness and readability: clear, descriptive variable names
        note: as you are working, try to write good names, so that Duncan and yourself can 
@@ -113,30 +111,28 @@ insertDash(13579) // 1-3-5-7-9
 /* 12. Final step: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-
 function insertDash(num) {
- 
-  const isNumber = typeof num === 'number';
-    if (!isNumber) throw new Error('The input must be a number');
+  const isNumber = typeof num === 'number'
+  if (!isNumber) throw new Error('The input must be a number')
 
- 
-
-        const numbers = num.map((number) => {
-            if (number % 2 === 0) {
-                return number;
-            } else {
-                return number + '-';
-            }
-
-        });
-
+  const numbers = num
+    .toString()
+    .split('')
+    .map((item, index) => {
+      // console.log(item, 'index', index);
+      if (item % 2 === 1 && num[index + 1] % 2 === 1) {
+        return item + '-'
+      }
+      return item
+    })
+  console.log(numbers)
   return numbers
-}   
+}
 
-insertDash(454793) 
-insertDash(123456) 
+insertDash(454793)
+insertDash(123456)
 insertDash(1003567)
-insertDash(2468) 
+insertDash(2468)
 insertDash(13579)
 
 // in progress
