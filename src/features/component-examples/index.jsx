@@ -20,7 +20,7 @@ import Divider from '@/ui/divider'
 /*
 
 
-DM: follow this same pattern whenever you have new examples from Joy of React. this will be a place to make sure these components work and to adjust/experiment with them.
+DM: follow this same pattern whenever you have new examples from Joy of React. this will be a place to make sure these components work and to adjust/experiment with    them.
 
 
 */
