@@ -6,7 +6,7 @@ const initialToppings = {
   tomatoes: false,
 }
 
-function MultipleCheckBox() {
+function MultipleCheckbox() {
   const [pizzaToppings, setPizzaToppings] = React.useState(initialToppings)
 
   // Get a list of all toppings.
@@ -50,4 +50,4 @@ function MultipleCheckBox() {
   )
 }
 
-export default MultipleCheckBox
+export default MultipleCheckbox
