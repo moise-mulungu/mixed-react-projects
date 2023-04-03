@@ -86,3 +86,5 @@ is a URL that only includes the path. The path is everything that comes after th
 ## url object
 The URL object immediately allows us to access its components, so it's a nice way to parse the url.
 
+## data binding
+Data binding is the process that establishes a connection between the app UI and the data it displays. If the binding has the correct settings and the data provides the proper notifications, when the data changes its value, the elements that are bound to the data reflect changes automatically.

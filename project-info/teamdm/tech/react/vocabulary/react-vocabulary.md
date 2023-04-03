@@ -87,6 +87,10 @@ An initial render is when React evaluates a component creating the 'virtual DOM'
 
 ##  subsequent renders or re-rendering
 is when React calls the function component whose state update triggered the render.
-DM: todoDM: more on the component lifecycle
+DM: todoDM: more on the component lifecycle.
+
+## controlled vs uncontrolled components
+ In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+ Or controlled components refer to components that have their state and behavior controlled by the parent component. These components rely on props passed down from the parent component to update their state and behavior. Uncontrolled components refer to components that manage their own state internally.
 
 
