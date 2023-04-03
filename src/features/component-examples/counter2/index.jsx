@@ -44,8 +44,8 @@ export default function Counter2({ initialVal = 0 }) {
             setCount(nextCount)
           }}
           // ???DM: this way of getting a random number is a bit confusing, i would like some more explanations.
-          // DM: Math.random returns a random number between 0 and .99999.... amath.ciel is how to always round UP. Why UP? because Math.random returns a vlue between 0 and .99999... - if you want 1-100, you need to round up.
-          // DM: Math.floor to always round down. JS doesn't have a Math.round function, so you have to code your own, or use ciel or floor.
+          // DM: Math.random returns a random number between 0 and .99999.... a Math.ceil is how to always round UP. Why UP? because Math.random returns a value between 0 and .99999... - if you want 1-100, you need to round up.
+          // DM: Math.floor to always round down. JS doesn't have a Math.round function, so you have to code your own, or use ceil or floor.
           // DM: todoMM: google "js round off a number" and look at some stackoverflow solutions. Pick one, and put it in a function in src/utils/number/round.js so that you'll have it in the future.
         >
           <Hash />
