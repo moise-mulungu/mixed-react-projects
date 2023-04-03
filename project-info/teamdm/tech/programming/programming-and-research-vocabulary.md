@@ -88,3 +88,6 @@ The URL object immediately allows us to access its components, so it's a nice wa
 
 ## data binding
 Data binding is the process that establishes a connection between the app UI and the data it displays. If the binding has the correct settings and the data provides the proper notifications, when the data changes its value, the elements that are bound to the data reflect changes automatically.
+
+## form validation
+Form validation is a “technical process where a web-form checks if the information provided by a user is correct.” The form will either alert the user that they messed up and need to fix something to proceed, or the form will be validated and the user will be able to continue with their registration process.
