@@ -1,6 +1,8 @@
 import React from 'react'
 
-function SelectLanguages() {
+const VALID_LANGUAGES = ['mandarin', 'spanish', 'english', 'hindi', 'arabic', 'portugese']
+
+export default function SelectLanguages() {
   const [language, setLanguage] = React.useState('english')
 
   return (
@@ -34,7 +36,3 @@ function SelectLanguages() {
     </>
   )
 }
-
-const VALID_LANGUAGES = ['mandarin', 'spanish', 'english', 'hindi', 'arabic', 'portugese']
-
-export default SelectLanguages
