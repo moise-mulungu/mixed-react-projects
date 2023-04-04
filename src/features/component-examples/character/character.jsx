@@ -14,7 +14,7 @@ function Character() {
     setDexterity(nextDexterity)
     setIntelligence(nextIntelligence)
 
-    // DM: todoMM: good job, now you don't need the alert. alert is never used in web apps, (it used to be in the very beginning of JS) (done)
+    // DM: todoMM: good job, now you don't need the alert. alert is never used in web apps, (it used to be in the very beginning of JS) (done) Go ahead and remove the alert. We shoul dnever use it in web apps.
     window.alert(`
       Congratulations! Your hero now has the following stats:
       Str: ${nextStrength}

@@ -1,4 +1,3 @@
-// (done) DM: todoMM: replace all ../../../.. with @
 import { projectCards } from '@/constants/portfolio/content-constants/project-card-constants'
 import Divider from '@/ui/divider'
 // DM: todoDM: find out why you can't click on projectCards to go to the file if @ is used

@@ -1,7 +1,6 @@
 import React from 'react'
 import { ChevronUp, ChevronsUp, ChevronDown, ChevronsDown, RotateCcw, Hash } from 'react-feather'
 
-// (done) DM todoMM: in a directory, there should be an ./index.js(x); rename this file index.jsx
 // DM: all these rules/conventions are important. because if you don't do them, it implies that there is a reason not to, and the reader of your code will wonder why you did it. So, if you don't follow them, leave a comment explaining why not
 
 const clamp = (val, min = 0, max = 1) => {

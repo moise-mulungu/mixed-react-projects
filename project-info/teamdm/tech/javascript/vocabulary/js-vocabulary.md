@@ -1,9 +1,4 @@
-(done)
 
-- DM: todoMM: as you learn via code-wars, joy of react JS review section, build up your JS vocabulary list. This is important for all DEVs, since communicating is a huge part of the job and vital for interviews. Also, as a speaker of English as a second language, it is even more important to have a solid vocabulary because 20-40% of your brain is used up speaking the 2nd language correctly, so you don't have any bandwidth to spare, compared to native speakers. I found that focusing on vocabulary improved my understanding and communication to the next level.
-- DM: todoDM: discuss with MM the potential value of learning to talk about tech in French (because a french-speaking countries may be your best target for job hunt). Maybe some Pramp behavioral interviews in French, if that is possible at pramp.com. Just and idea, think about it.
-
-- DM: good job. I removed our conversational text, and formatted the definitions a bit. I added some to the list. We're building this together. I'm going to merge this into my master vocab list in the future. Note: how is this helpful? You can understand JS error messages like this https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Errors/Reserved_identifier
 
 # identifier
 
@@ -42,7 +37,7 @@ Type Coercion refers to the process of automatic or implicit conversion of value
 
 <!-- MM: ???DM: These two expressions seem to be confusing at first to me, but I think string interpolation is the *process* to insert or embed, but template literal or string literal is the *place* to insert the string interpolation. DM: exactly!
 For example, a box with pens inside, a box is a template literal and pens are string interpolation
-DM: yes, in the sense that the template literal is what JS employs to make string interpolation happen. This will help clarify the differenct: string interpolation is an item for tech-vocabluary.md, and template literal belongs in this file.
+DM: yes, in the sense that the template literal is what JS employs to make string interpolation happen. This will help clarify the difference - string interpolation is an item for tech-vocabulary.md, and template literal belongs in this file.
 DM: but yes the ${} is where the string interpolation happens in `text, text ${} more text`
 DM: and: `text, text ${ 'any expression here will be coerced to a String' } more text`
 -->

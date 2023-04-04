@@ -45,7 +45,6 @@ function insertDash(num) {
 
         output: number...; possible values: numbers with dashes between odd numbers */
   /*
-   (done) DM: todoMM: always
     input: number
     output: string
   */

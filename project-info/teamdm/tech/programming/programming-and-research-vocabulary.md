@@ -44,6 +44,11 @@ components are independent and reusable bits of code. They serve the same purpos
 ## logical expression
 
 A logical expression is a statement that can either be true or false. For example, a < b is a logical expression. It can be true or false depending on what values of a and b are given.
+- variable should express a positive (if you want to use 'not' in a variable name, you got it wrong)
+- don't make me think! I want to read code fast.
+- benefit: self-documenting code
+
+DM: todoDM: I'm not sure of all the types of logical expressions, so make a little list.
 
 ## program optimization (code optimization, or software optimization)
 

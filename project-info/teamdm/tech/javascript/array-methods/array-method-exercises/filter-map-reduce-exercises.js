@@ -1,19 +1,3 @@
-//(done)
-// DM: todoMM: add new JS vocabulary: "array literal", "object literal"
-//             then, do these exercises:
-
-// DM: todoMM: write code for each of the exercises, using array methods only, one-line only for each
-// using this array literal: [1, 2, 3]
-// keeping in mind:
-// array.filter is to make an array into a smaller array
-// array.map is to transform each element of an array into something different
-// array.reduce is to transform an array into something else (ex: into a number, or an object)
-// example exercise: create a new array of the same length, adding 5 to each element
-
-// DM: todoMM: Moise, in case they are piling up, please check all my todoMM and write (done) if you have completed them. That will help me review faster and keep our shared repo clean. thanks!
-
-// DM: todoMM: be sure to fix all errors on the page, now that we have esLint. prettier won't auto-format until you fix all JS errors on the entire pages. when prettier fails to auto-format, that is how I know that there is an error somewhere on the page. You are doing so much work lately, that I can't review quickly unless the JS syntax is correct, so be sure to ensure that each time you edit a JS file. (done?)
-
 ;[1, 2, 3].map((number) => number + 5) // [6, 7, 8]
 
 // write code to get 1 number which is the sum of the elements

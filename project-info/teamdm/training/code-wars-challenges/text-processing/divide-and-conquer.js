@@ -1,5 +1,3 @@
-// DM: Moise, I'm going to stop putting todoMM in codewars files. literally every comment I make in codewars files imply an instruction to do something. i'm getting tired of tyhping it:) (done)
-
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 /*

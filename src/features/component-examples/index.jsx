@@ -3,7 +3,7 @@ import ContactCards from './contact-cards'
 import AvatarSet from './avatar-set'
 import MyNewJoyOfReactComponent from './my-new-joy-of-react-component'
 // DM: todoMM: rename app.jsx to index.jsx, then import MySideNote from './side-note'
-// DM: todoMM: you don't need /index on the next line (done)
+// DM: todoMM: you don't need /index on the next line (done)(are you sure it's done? :)
 import MySideNote from './side-note/index'
 import MovieRatingsAnimations from './movie-ratings-animations'
 // import ClickBallGame from './click-ball'

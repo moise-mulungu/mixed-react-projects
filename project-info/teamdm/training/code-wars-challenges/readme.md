@@ -1,16 +1,11 @@
-(done)
+DM: todoDM: check needs updating?
 DM: Moise, follow all of these when doing any coding exercise problem. It will work out better/faster in the end.
 note: do this for future exercises. Don't worry about it for the previous exercises you are still working on
 
 # rules for readability
 
 - never use 'let'
-- assign all logical expressions to a well-named variable
-  - a logical expression is ... DM: todoMM: add "logical expression" to the JS vocabulary (add it also to programming-vocabulary, the JS definition should be tailored to JS). beyond expressions that employ logical operators (&&, ||, etc.), I'm not sure of all the types of logical expressions, so make a little list.
-    - ex: const isPositiveInteger = Number.isInteger(num) && num > 0
-  - variable should express a positive (if you want to use 'not' in a variable name, you got it wrong)
-  - don't make me think! I want to read code fast.
-  - benefit: self-documenting code
+
 
 # rules for debugging
 

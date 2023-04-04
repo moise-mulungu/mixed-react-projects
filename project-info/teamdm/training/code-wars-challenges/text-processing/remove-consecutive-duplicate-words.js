@@ -1,5 +1,3 @@
-// DM: good it works! and it is declarative. Now, you can do step 11
-// (done)
 // always copy this template into each new coding challenge file
 // always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 /*
@@ -91,7 +89,6 @@ function removeConsecutiveDuplicates(string) {
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 
-// DM todoMM: removeConsecutiveDuplicates only takes one argument, see doTest() in the codewars Sample Tests. but you are passing 2 arguments. the 2nd arg is ignored, but you should remove the 2nd argument from here to avoid confusion
 removeConsecutiveDuplicates('alpha alpha alpha alpha')
 removeConsecutiveDuplicates('alpha beta alpha')
 removeConsecutiveDuplicates('alpha alphabeta alphagamma')
@@ -117,9 +114,7 @@ function removeConsecutiveDuplicates2(string) {
   const words = string.split(' ')
 
   const noConsecutiveDuplicateWords = words.map((word, index) => {
-    if (word === words[index + 1]) {
-      return ''
-    }
+    if (word === words[index + 1]) return ''
     return word
   })
 

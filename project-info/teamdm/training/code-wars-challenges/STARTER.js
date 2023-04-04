@@ -1,8 +1,7 @@
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 /*
-(done)
-*/
+ */
 
 // memorable summary: make it work, test it, make it pretty
 
@@ -28,8 +27,8 @@
 
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
+// It's OK to rename the parameter(s) in the codewars starter function if the parameter names are imprecise
 function myFunction(parameter1, parameter2) {
-  // rename the parameter(s) in the codewars starter function if the parameter names are imprecise
   /* 4. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 

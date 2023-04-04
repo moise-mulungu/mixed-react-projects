@@ -1,5 +1,3 @@
-// DM: I;m putting back the comments because I didn't mean for you to erase all of them.todoMM (done)
-
 // always copy this into each new coding challenge file
 
 // 1. put the following here:
@@ -83,8 +81,6 @@ n/a
 
 //   // capitalize each word. But, don't change the first word
 
-//   // DM: todoMM: remove the first word from the array, saving it to a variable
-
 //   // convert the first letter of each word to uppercase
 //   const capitalizedWords = words.map((word) => {
 //     /* this is not needed:
@@ -92,11 +88,8 @@ n/a
 //     if (word.includes(firstLetter)) {
 //       return firstLetter + word.slice(1)
 //     } */
-//     // DM: todoMM; after you're done with the challenge, put this into a reusable function in src/utils/string/upperCaseFirst.js
 //     return word.charAt(0).toUpperCase() + word.slice(1)
 //   })
-
-//   // DM: todoMM: restore the first word back to the array
 
 //   const words = capitalizedWords.join('')
 //   console.log(words)
@@ -174,9 +167,9 @@ function toCamelCase2(string) {
     .split(delimitersRegExp) // this comment is so prettier will choose multi-line formatting
     .map((word, i) => {
       console.log({ word, i })
-      // try you above solution here
-      // DM: todoMM: finish this up before doing more new challenges. let's not leave anything pending.
+      // DM: todoMM: why the  + ''
       const nextLetter = word + ''
+      // DM: todoMM: try for a better name, capitalize is a verb
       const capitalize = nextLetter.charAt(0).toLocaleUpperCase()
       // console.log(capitalize)
       const nextWord = nextLetter.slice(1)
