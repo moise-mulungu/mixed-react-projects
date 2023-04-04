@@ -1,26 +1,31 @@
-
+(done)
 DM: Moise, follow all of these when doing any coding exercise problem. It will work out better/faster in the end.
-    note: do this for future exercises. Don't worry about it for the previous exercises you are still working on
+note: do this for future exercises. Don't worry about it for the previous exercises you are still working on
 
 # rules for readability
-* never use 'let'
-* assign all logical expressions to a well-named variable
-  * a logical expression is ... DM: todoMM: add "logical expression" to the JS vocabulary (add it also to programming-vocabulary, the JS definition should be tailored to JS). beyond expressions that employ logical operators (&&, ||, etc.), I'm not sure of all the types of logical expressions, so make a little list.
-    * ex: const isPositiveInteger = Number.isInteger(num) && num > 0
-  * variable should express a positive (if you want to use 'not' in a variable name, you got it wrong)
-  * don't make me think! I want to read code fast.
-	* benefit: self-documenting code
+
+- never use 'let'
+- assign all logical expressions to a well-named variable
+  - a logical expression is ... DM: todoMM: add "logical expression" to the JS vocabulary (add it also to programming-vocabulary, the JS definition should be tailored to JS). beyond expressions that employ logical operators (&&, ||, etc.), I'm not sure of all the types of logical expressions, so make a little list.
+    - ex: const isPositiveInteger = Number.isInteger(num) && num > 0
+  - variable should express a positive (if you want to use 'not' in a variable name, you got it wrong)
+  - don't make me think! I want to read code fast.
+  - benefit: self-documenting code
 
 # rules for debugging
-* always return a variable, for each debugging via console.log 
+
+- always return a variable, for each debugging via console.log
 
 # steps (in a **starter function**, which you can copy and paste each time you start a new challenge)
+
 ```js
 // moved to ./STARTER.js
 ```
 
-// DM: todoDM: update the steps 
-* example (somewhat exaggerated to cover all 6 points)
+// DM: todoDM: update the steps
+
+- example (somewhat exaggerated to cover all 6 points)
+
 ```js
 // Determine offspring sex based on genes XX and XY chromosomes
 // Description
@@ -56,16 +61,14 @@ function chromosomeCheck(sperm) {
 
   // 5) return the solution
   // always return a variable, or, use only variables in return statements (all logical expressions must be assigned to a variable)
-  // This makes it easy to debug by logging   
+  // This makes it easy to debug by logging
   // console.log('i am easy to debug by logging', { sperm, spermCleaned, spermSexChromosome, zygoteGender, daughterOrSon, message })
   return message
 
-// 6) list and describe anything that is unclear in the challenge description
-
+  // 6) list and describe anything that is unclear in the challenge description
 }
 // 7) test input variants
 chromosomeCheck('Y') // "Congratulations! You're going to have a son."
 chromosomeCheck('y') // "Congratulations! You're going to have a son."
 chromosomeCheck('X') // "Congratulations! You're going to have a daughter."
-
 ```

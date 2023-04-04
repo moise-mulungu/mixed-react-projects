@@ -1,3 +1,4 @@
+//(done)
 // DM: todoMM: add new JS vocabulary: "array literal", "object literal"
 //             then, do these exercises:
 

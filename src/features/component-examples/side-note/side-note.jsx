@@ -1,6 +1,6 @@
 import styles from './side-note.module.css'
 /* 
-
+(done)
 great job on this component
 'code spell checker' extension is underlining Sidenote because the 'n' is not capitalized
 'code spell checker' understands camelCase, and it will spell check 'side' and 'note' separately

@@ -26,4 +26,4 @@ function printUser({ name, country }) {
 }
 printUser(user) // ‘Moise theMan Congo’
 
-// DM: todoMM: excellent!, now add "rest parameters" (done) Where? I don't see it. I meant to add them here check MDN and put an example here
+// (done) DM: todoMM: excellent!, now add "rest parameters" Where? I don't see it. I meant to add them here check MDN and put an example here
