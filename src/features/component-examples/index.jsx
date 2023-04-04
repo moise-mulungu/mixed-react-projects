@@ -12,6 +12,7 @@ import CharacterApp from './character' // DM todoMM: your component name should 
 import Counter2 from './counter2' // DM todoMM: your component name should match the imported filename. see comments in ./counter2/counter2
 import SelectLanguages from '../../../src/ui/form/select-languages'
 import MultipleCheckbox from '../../../src/ui/form/multiple-checkbox'
+import SelectCountries from '../../../src/ui/form/select-forms/select-countries'
 // DM: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
 // DM: todoDM: get ctrl-click on object to work for @/ imports
@@ -60,6 +61,8 @@ export default function ComponentExamples() {
       <SelectLanguages />
       <Divider />
       <MultipleCheckbox />
+      <Divider />
+      <SelectCountries />
     </div>
   )
 }
