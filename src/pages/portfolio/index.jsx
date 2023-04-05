@@ -2,7 +2,7 @@
 import Head from 'next/head'
 
 // DM: todoMM: this file is empty now
-// As it's empty, can it be removed?
+// As it's empty, can it be removed? No, that points to constants/portfolio/index.js, index.js should not be removed. I was just pointing out that .  appTitle does not exist. Look at the browser tab when you're on this page, you'll see that there is no title that you meant to put in the <title> tag</title>
 import { appTitle } from '@/constants/portfolio'
 import Portfolio from '@/features/portfolio'
 

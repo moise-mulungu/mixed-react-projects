@@ -21,7 +21,7 @@ export default function UiExamplesPage() {
       <Link />
       <Link />
       <Link />
-      {/* I am not sure if that's how i should call this component three times to represent the three link types */}
+      {/* I am not sure if that's how i should call this component three times to represent the three link types. For each one, you will pass different values for the "href" prop. each value should correspond to the logical-expression variables in Link: isInternalLink, isAnchorLink, and the default (external link)  */}
     </div>
   )
 }

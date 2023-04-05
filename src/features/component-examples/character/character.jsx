@@ -13,8 +13,6 @@ function Character() {
     setStrength(nextStrength)
     setDexterity(nextDexterity)
     setIntelligence(nextIntelligence)
-
-    //(done) DM: todoMM: good job, now you don't need the alert. alert is never used in web apps, (it used to be in the very beginning of JS) (done) Go ahead and remove the alert. We should never use it in web apps.
   }
   console.log({ setStrength })
 

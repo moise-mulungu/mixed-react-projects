@@ -1,8 +1,8 @@
 /*
-(done) DM: todoMM: please do each of these individually. 
+DM: todoMM: please do each of these individually. 
 DM: this got erased, we still need it
 (done) DM: todoMM: (bump) please do this before memory fades of where you got it
-   going forward, put the tailwindui.com URL where you got the code in the file, so that we know where to find it later.
+   going forward, put the tailwindui.com URL where you got the code in the file, so that we know where to find it later. (Moise, I meant for you to copy/paste the tailwindui URL you used as a starter for this component)
    if you need @tailwindcss/forms, go ahead, install it and config it. While you do, record your steps to install and config, so that I can read. But, if you don't need it for this code to work, no need to install it. 
 */
 

@@ -48,8 +48,10 @@ components are independent and reusable bits of code. They serve the same purpos
 logical expressions (also called Boolean expressions) are the result of applying logical (Boolean) operators to relational or arithmetic expressions. The result of an operation has two possible states: true or false. Logical expressions are considered false when equal to 0, and are considered true when nonzero
 
 - variable should express a positive (if you want to use 'not' in a variable name, you got it wrong)
-- don't make me think! I want to read code fast.
-<!-- ???DM: is the line above a suggestion or any other idea ? it is sometimes hard for me to understand what you meant there by saying('don't make me think! I want to read code fast'. was my definition not clear or ambiguous ?) -->
+- don't make me think! Programmers need to to read code quickly.
+<!-- ???DM: is the line above a suggestion or any other idea ? it is sometimes hard for me to understand what you meant there by saying('don't make me think! I want to read code fast'. was my definition not clear or ambiguous ?) 
+this was not a message to you. I'll always preface messages to you with "DM: "
+-->
 - benefit: self-documenting code
 
 DM: todoDM: I'm not sure of all the types of logical expressions, so make a little list.

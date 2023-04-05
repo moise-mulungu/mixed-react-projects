@@ -1,6 +1,5 @@
-// (done)
 // DM: todoMM: best to put (done) on each line that has todoMM. you didn't do the first todoMM below or complete the 2nd one. Plus, it's easier for me to know what you did if you put (done) on each todoMM line.
-//(done) DM: todoMM: btw, exclusiveOr is a great exercise in naming variables. Please find this code wars challenge and start it again in a new file. Especially the part where we assign each logical expression to a variable. these variable names will serve as documentation to explain what xor really is. Solving the logic is less that 50% of good programming. So, it is time well-spent learning to write readable code that is self-documenting.
+//(done ??? I don't see a new file where you started this challenge again ) DM: todoMM: btw, exclusiveOr is a great exercise in naming variables. Please find this code wars challenge and start it again in a new file. Especially the part where we assign each logical expression to a variable. these variable names will serve as documentation to explain what xor really is. Solving the logic is less that 50% of good programming. So, it is time well-spent learning to write readable code that is self-documenting.
 
 /* 
 !!!!!!!!!!!
@@ -43,8 +42,10 @@ function exclusive0r(a, b) {
 computer programming error messages naming conventions
 After a search for "computer programming error messages naming conventions", I found this: 
 In computer programming, a naming convention is a set of rules for choosing the character sequence to be used for identifiers which denote variables, types, functions, and other entities in source code and documentation.
+good, make a tech vocabulary entry for "naming conventions"
 But i did not find the exact structure of the error message sentence(positive or negative).
 computer programming error messages standards
+try this https://www.ibm.com/docs/fi/n-series?topic=messages-error-message-coding-conventions for tech-vocabulary "error message naming conventions"
 prefacing what you need with 'computer programming' often helps
  */
   // describe the steps to solve the problem
@@ -64,8 +65,6 @@ prefacing what you need with 'computer programming' often helps
   // 2. if a and b are both false, return false
   // 3. if a and b are not both true or false, return true
   // DM: try: const isATruthy = Boolean(a) // then continue from there
-
-  // DM: todoMM: (in project-info/team-dm/) make the file: tech/javascript/try-catch/try-catch-exercises.js look up try-catch on MDN and put a few examples (each example should be inside a function, I'll tell you why later)(done)
 
   // break the problem down into small parts
   // declare a variable to hold the boolean values

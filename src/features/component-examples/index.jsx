@@ -2,15 +2,15 @@ import Hello from './hello'
 import ContactCards from './contact-cards'
 import AvatarSet from './avatar-set'
 import MyNewJoyOfReactComponent from './my-new-joy-of-react-component'
-// DM: todoMM: rename app.jsx to index.jsx, then import MySideNote from './side-note'
-// DM: todoMM: you don't need /index on the next line (done)(are you sure it's done? :)
 import MySideNote from './side-note'
 import MovieRatingsAnimations from './movie-ratings-animations'
 // import ClickBallGame from './click-ball'
 import Counter from './counter'
-import CharacterApp from './character' // DM todoMM: your component name should match the imported filename
-// there are two files, one is named character.jsx, the other is named index.jsx. the index.jsx file is where i named the component CharacterApp to differ from the first Character component.
-import Counter2 from './counter2' // DM todoMM: your component name should match the imported filename. see comments in ./counter2/counter2
+// DM todoMM: your component name should match the imported filename (or directory name, since './character' (under the car hood) really means './character/index.jsx', )
+// there are two files, one is named character.jsx, the other is named index.jsx. the index.jsx file is where i named the component CharacterApp to differ from the first Character component. just: import Character from './character'.
+// DM: todoMM: "character" is generic, sounds like a text thing ... maybe game-character?
+import CharacterApp from './character'
+import Counter2 from './counter2' // DM todoMM: your component name should match the imported filename. see comments in ./counter2/counter2 (done?)
 import SelectLanguages from '@/ui/form/select-languages'
 import MultipleCheckbox from '@/ui/form/multiple-checkbox'
 import SelectCountries from '@/ui/form/select/select-countries'

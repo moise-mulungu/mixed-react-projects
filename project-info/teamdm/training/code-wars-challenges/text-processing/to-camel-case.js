@@ -63,7 +63,7 @@ n/a
 //   /*
 //   Changes to the input string:
 //   * remove delimiters: '-', '_'
-//   * capitalizedNextLetter first letter of each word (do not change the capitalization of the first word)
+//   * capitalize the first letter of each word (but do not change the capitalization of the first letter of the first  word)
 //   */
 
 //   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -80,7 +80,7 @@ n/a
 //   /* 8. use the named parts to create a readable solution. */
 
 //   // capitalizedNextLetter each word. But, don't change the first word
-
+// DM: todoMM: ;don't use search/replace for changing variable names, use right-click, "rename symbol". ; If you do search/replace, do each one individually - if you do all at once, you'll create bugs or change comments, like above.
 //   // convert the first letter of each word to uppercase
 //   const capitalizedWords = words.map((word) => {
 //     /* this is not needed:
@@ -134,12 +134,12 @@ function toCamelCase(str) {
   // declare variable to hold the string with the first letter of each word capitalized
   let capitalizedFirstLetterAfterDashAndUnderscore = ''
 
-  // loop through the array of words and capitalizedNextLetter the first letter of each word
+  // loop through the array of words and capitalize the first letter of each word
   for (let i = 0; i < removedUnderscoreAndDash.length; i++) {
     // DM: ???MM: what is the purpose of: + ''
     const nextWordAfterUnderscoreAndDash = removedUnderscoreAndDash[i] + ''
 
-    // capitalizedNextLetter first letter of each word (do not change the capitalization of the first word)
+    // capitalize first letter of each word (do not change the capitalization of the first word)
     const firstLetter = nextWordAfterUnderscoreAndDash.charAt(0).toUpperCase()
 
     // get the rest of the word
@@ -168,9 +168,8 @@ function toCamelCase2(string) {
     .map((word, i) => {
       console.log({ word, i })
       // DM: todoMM: why the  + ''
-      // MM: toDM: '' is replaces delimiter with empty string
+      // MM: toDM: '' is replaces delimiter with empty string. + '' only a an empty string to 'word'. split (delimitersRegExp) removed the delimiters for you.
       const nextLetter = word + ''
-      // DM: todoMM: try for a better name, capitalize is a verb
       const capitalizedNextLetter = nextLetter.charAt(0).toLocaleUpperCase()
       // console.log(capitalizedNextLetter)
       const nextWord = nextLetter.slice(1)

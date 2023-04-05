@@ -6,6 +6,7 @@ DM: todoMM: console.log uuid. is it a string or a function. I mention it because
 key={uuid} 
 i removed it because after consoling it, i did not see it in the browser.
 below
+OK. uuid is a function, so if you had wanted to use it in key= then you have to call/invoke the function: key={uuid()} - with round brackets ()
 */
 
 const data = [

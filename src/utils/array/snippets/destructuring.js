@@ -26,20 +26,19 @@ function printUser({ name, country }) {
 }
 printUser(user) // ‘Moise theMan Congo’
 
-// (done) DM: todoMM: excellent!, now add "rest parameters" Where? I don't see it. I meant to add them here check MDN and put an example here. Moise, why did you say (done) ? If I vsCode search this file on "rest parameters" I don't see anything in the search results.
+// DM: great, this is a good example
 
 // rest parameters
 function sum(...numbers) {
-  let total = 0;
+  let total = 0
   for (const num of numbers) {
-    total += num;
+    total += num
   }
-  return total;
+  return total
 }
 
-console.log(sum(1, 2, 3));
+console.log(sum(1, 2, 3))
 // Expected output: 6
 
-console.log(sum(1, 2, 3, 4));
+console.log(sum(1, 2, 3, 4))
 // Expected output: 10
-

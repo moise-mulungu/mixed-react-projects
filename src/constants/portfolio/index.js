@@ -1,6 +1,6 @@
-//(done) DM: todoMM: this file is typically not empty. It is good how you've split up the constants. But, if any constant is shared among the sections or header, footer, they should be here absolutely. If I do a VsCode global search for "@/constants/portfolio" I can see that socialLinks is imported to overview. So, you would change the name to simply 'socialLinks' and put it in this file, because it is shared.
+//DM: if any constant is shared among the sections or header, footer, or etc., then they should be here absolutely.
 
-// MM: todoDM: I did not get any constants that is shared across, each component has its own constants
+// MM: todoDM: I did not get any constants that is shared across, each component has its own constants. I see that you added social links here, so good job! (done)
 
 // import { GithubIcon, LinkedInIcon, AngelListIcon, MediumIcon, TwitterIcon } from '@/ui/icons'
 

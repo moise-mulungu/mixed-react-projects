@@ -8,4 +8,4 @@ try {
   console.log(error)
 }
 
-// MM: toDM: I added this first example from the MDN docs, but I don't know if it's a good example because of use case for try/catch
+// MM: toDM: I added this first example from the MDN docs, but I don't know if it's a good example because of use case for try/catch. a data fetch is best, but this shows the syntax well.
