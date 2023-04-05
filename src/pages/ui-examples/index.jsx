@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import UiExamples from '@/features/ui-examples'
-import Link from 'next/link'
+import Link from '@/ui/link'
 
 /*
 
@@ -18,7 +18,10 @@ export default function UiExamplesPage() {
       </Head>
 
       <UiExamples />
-    
+      <Link />
+      <Link />
+      <Link />
+      {/* I am not sure if that's how i should call this component three times to represent the three link types */}
     </div>
   )
 }

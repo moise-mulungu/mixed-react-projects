@@ -1,4 +1,4 @@
-// DM: todoMM: this file is typically not empty. It is good how you've split up the constants. But, if any constant is shared among the sections or header, footer, they should be here absolutely. If I do a VsCode global search for "@/constants/portfolio" I can see that footerSocialLinks is imported to overview. So, you would change the name to simply 'socialLinks' and put it in this file, because it is shared.
+//(done) DM: todoMM: this file is typically not empty. It is good how you've split up the constants. But, if any constant is shared among the sections or header, footer, they should be here absolutely. If I do a VsCode global search for "@/constants/portfolio" I can see that socialLinks is imported to overview. So, you would change the name to simply 'socialLinks' and put it in this file, because it is shared.
 
 // MM: todoDM: I did not get any constants that is shared across, each component has its own constants
 
@@ -14,25 +14,27 @@
 
 // export const theMan = 'Moise Mulungu'
 
-// export const footerSocialLinks = [
-//   { id: 'github', title: 'Github', Icon: GithubIcon, url: 'https://github.com/moise-mulungu/' },
-//   {
-//     id: 'linkedin',
-//     title: 'LinkedIn',
-//     Icon: LinkedInIcon,
-//     url: 'https://www.linkedin.com/in/moisemulungu/',
-//   },
-//   {
-//     id: 'wellfound',
-//     title: 'Wellfound',
-//     Icon: AngelListIcon,
-//     url: 'https://angel.co/u/moise-mulungu',
-//   },
-//   { id: 'medium', title: 'Medium', Icon: MediumIcon, url: 'https://medium.com/@moisemlg90' },
-//   { id: 'twitter', title: 'Twitter', Icon: TwitterIcon, url: 'https://twitter.com/moise_mulungu' },
-// ]
-// export const defaultFooterSocialLinkId = footerSocialLinks[0].id
-// // DM: yup, see, now you don't have 'githup' hard-coded. no "magic strings"!
+import { GithubIcon, LinkedInIcon, AngelListIcon, MediumIcon, TwitterIcon } from '@/ui/icons'
+
+export const socialLinks = [
+  { id: 'github', title: 'Github', Icon: GithubIcon, url: 'https://github.com/moise-mulungu/' },
+  {
+    id: 'linkedin',
+    title: 'LinkedIn',
+    Icon: LinkedInIcon,
+    url: 'https://www.linkedin.com/in/moisemulungu/',
+  },
+  {
+    id: 'wellfound',
+    title: 'Wellfound',
+    Icon: AngelListIcon,
+    url: 'https://angel.co/u/moise-mulungu',
+  },
+  { id: 'medium', title: 'Medium', Icon: MediumIcon, url: 'https://medium.com/@moisemlg90' },
+  { id: 'twitter', title: 'Twitter', Icon: TwitterIcon, url: 'https://twitter.com/moise_mulungu' },
+]
+export const defaultSocialLinkId = socialLinks[0].id
+// DM: yup, see, now you don't have 'githup' hard-coded. no "magic strings"!
 
 // export const contentOverviewHeaderText = 'Hey there, I am Moise. a software developer'
 // export const contentOverviewParagraphText =

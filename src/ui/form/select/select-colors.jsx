@@ -1,7 +1,7 @@
 import React from 'react'
 
 // DM: todoMM: try passing the colors, the legend, and the initial color as props, so that this is more generic
-
+// DM: i have not read about transitioning from props to state. i will do that tomorrow as there is a lesson called "props vs state" in the joy-of-react course
 function SelectColors() {
   const [selectedOption, setSelectedOption] = React.useState('red')
 

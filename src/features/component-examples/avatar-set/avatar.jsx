@@ -1,4 +1,4 @@
-import styles from './Avatar.module.css'
+import styles from './avatar.module.css'
 
 function Avatar({ src, alt }) {
   return (

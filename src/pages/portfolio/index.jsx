@@ -2,6 +2,7 @@
 import Head from 'next/head'
 
 // DM: todoMM: this file is empty now
+// As it's empty, can it be removed?
 import { appTitle } from '@/constants/portfolio'
 import Portfolio from '@/features/portfolio'
 

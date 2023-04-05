@@ -1,6 +1,7 @@
 note: prefix Google searches with "computer programming" to get the best results. "programming" alone is not specific enough
 
 ## functional programming
+
 Functional programming (FP) is an approach to software development that uses pure functions to create maintainable software. In other words, building programs by applying and composing functions
 
 ## guard clause
@@ -23,10 +24,11 @@ Code is run in order from the first line in the file to the last line, unless th
 ## Magic string
 
 magic strings are string values that are specified directly within application code that have an impact on the application's behavior
-* why are magic strings to be avoided? 
-  * magic strings will end up being duplicated within the system, and since they cannot automatically be updated using refactoring tools, they become a common source of bugs when changes are made to some strings but not others. 
-  * when your application grows bigger, it may sound difficult to access all the magic strings.
-  * fewer bugs if you edit magic strings in a constants file, once, instead of in multiple places where they are usually embedded in code.
+
+- why are magic strings to be avoided?
+  - magic strings will end up being duplicated within the system, and since they cannot automatically be updated using refactoring tools, they become a common source of bugs when changes are made to some strings but not others.
+  - when your application grows bigger, it may sound difficult to access all the magic strings.
+  - fewer bugs if you edit magic strings in a constants file, once, instead of in multiple places where they are usually embedded in code.
 
 ## pre-trained model AKA pre-trained code model AKA? "pre-coded models"
 
@@ -43,9 +45,11 @@ components are independent and reusable bits of code. They serve the same purpos
 
 ## logical expression
 
-A logical expression is a statement that can either be true or false. For example, a < b is a logical expression. It can be true or false depending on what values of a and b are given.
+logical expressions (also called Boolean expressions) are the result of applying logical (Boolean) operators to relational or arithmetic expressions. The result of an operation has two possible states: true or false. Logical expressions are considered false when equal to 0, and are considered true when nonzero
+
 - variable should express a positive (if you want to use 'not' in a variable name, you got it wrong)
 - don't make me think! I want to read code fast.
+<!-- ???DM: is the line above a suggestion or any other idea ? it is sometimes hard for me to understand what you meant there by saying('don't make me think! I want to read code fast'. was my definition not clear or ambiguous ?) -->
 - benefit: self-documenting code
 
 DM: todoDM: I'm not sure of all the types of logical expressions, so make a little list.
@@ -83,16 +87,21 @@ is a software development paradigm where functions are implicitly coded in every
 DM: super!
 
 ## absolute url
+
 An absolute URL includes the position within your website in your folder system names within the URL and consists of the full address from the protocol (HTTPS) to the domain name(e.g: https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ## relative url
+
 is a URL that only includes the path. The path is everything that comes after the domain, including the directory and slug or that does not start with a leading forward slash ( / ) or a protocol (such as http:// ) (e.g : link between pages of the same website)
 
 ## url object
+
 The URL object immediately allows us to access its components, so it's a nice way to parse the url.
 
 ## data binding
+
 Data binding is the process that establishes a connection between the app UI and the data it displays. If the binding has the correct settings and the data provides the proper notifications, when the data changes its value, the elements that are bound to the data reflect changes automatically.
 
 ## form validation
+
 Form validation is a “technical process where a web-form checks if the information provided by a user is correct.” The form will either alert the user that they messed up and need to fix something to proceed, or the form will be validated and the user will be able to continue with their registration process.

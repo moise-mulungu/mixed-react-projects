@@ -15,7 +15,7 @@ function Counter() {
           console.log({ previousCount })
         }}
       >
-        {/* DM: todoMM: give this button a different value so that it is clear in the browser the difference between the two buttons, e.e, this button decrements, the other increments */}
+        {/* (done) DM: todoMM: give this button a different value so that it is clear in the browser the difference between the two buttons, e.e, this button decrements, the other increments */}
         Decrease!
       </button>
       <button

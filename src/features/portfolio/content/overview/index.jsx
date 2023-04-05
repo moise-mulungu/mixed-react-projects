@@ -2,7 +2,7 @@ import {
   contentOverviewHeaderText,
   contentOverviewParagraphText,
 } from '@/constants/portfolio/content-constants/overview-constants'
-import { footerSocialLinks } from '@/constants/portfolio/header-and-footer-constants'
+import { socialLinks } from '@/constants/portfolio'
 import { v4 as uuid } from 'uuid'
 
 const Overview = (props) => {
@@ -14,7 +14,7 @@ const Overview = (props) => {
       <ul className="flex flex-wrap items-center mt-5 text-sm text-gray-900 dark:text-gray-400 sm:mt-0">
         <h2>{contentOverviewHeaderText}</h2>
         <p>{contentOverviewParagraphText}</p>
-        {footerSocialLinks.map(({ id, name, title, Icon, url }) => {
+        {socialLinks.map(({ id, name, title, Icon, url }) => {
           return (
             <li key={uuid()} className="ml-2 font-medium">
               <a href={url}>

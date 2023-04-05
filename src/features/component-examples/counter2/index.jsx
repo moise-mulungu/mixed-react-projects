@@ -11,7 +11,7 @@ const clamp = (val, min = 0, max = 1) => {
   return Math.max(min, Math.min(max, val))
 }
 
-// DM todoMM: the component name should always match the ./file-name.jsx or the ./directory-name/index.jsx
+//(done) DM todoMM: the component name should always match the ./file-name.jsx or the ./directory-name/index.jsx
 export default function Counter2({ initialVal = 0 }) {
   const [count, setCount] = React.useState(initialVal)
 
@@ -45,7 +45,7 @@ export default function Counter2({ initialVal = 0 }) {
           // ???DM: this way of getting a random number is a bit confusing, i would like some more explanations.
           // DM: Math.random returns a random number between 0 and .99999.... a Math.ceil is how to always round UP. Why UP? because Math.random returns a value between 0 and .99999... - if you want 1-100, you need to round up.
           // DM: Math.floor to always round down. JS doesn't have a Math.round function, so you have to code your own, or use ceil or floor.
-          // DM: todoMM: google "js round off a number" and look at some stackoverflow solutions. Pick one, and put it in a function in src/utils/number/round.js so that you'll have it in the future.
+          //(done) DM: todoMM: google "js round off a number" and look at some stackoverflow solutions. Pick one, and put it in a function in src/utils/number/round.js so that you'll have it in the future.
         >
           <Hash />
           <span className="visually-hidden">Set to random value</span>

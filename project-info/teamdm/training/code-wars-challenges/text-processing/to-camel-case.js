@@ -63,7 +63,7 @@ n/a
 //   /*
 //   Changes to the input string:
 //   * remove delimiters: '-', '_'
-//   * capitalize first letter of each word (do not change the capitalization of the first word)
+//   * capitalizedNextLetter first letter of each word (do not change the capitalization of the first word)
 //   */
 
 //   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -79,7 +79,7 @@ n/a
 
 //   /* 8. use the named parts to create a readable solution. */
 
-//   // capitalize each word. But, don't change the first word
+//   // capitalizedNextLetter each word. But, don't change the first word
 
 //   // convert the first letter of each word to uppercase
 //   const capitalizedWords = words.map((word) => {
@@ -134,12 +134,12 @@ function toCamelCase(str) {
   // declare variable to hold the string with the first letter of each word capitalized
   let capitalizedFirstLetterAfterDashAndUnderscore = ''
 
-  // loop through the array of words and capitalize the first letter of each word
+  // loop through the array of words and capitalizedNextLetter the first letter of each word
   for (let i = 0; i < removedUnderscoreAndDash.length; i++) {
     // DM: ???MM: what is the purpose of: + ''
     const nextWordAfterUnderscoreAndDash = removedUnderscoreAndDash[i] + ''
 
-    // capitalize first letter of each word (do not change the capitalization of the first word)
+    // capitalizedNextLetter first letter of each word (do not change the capitalization of the first word)
     const firstLetter = nextWordAfterUnderscoreAndDash.charAt(0).toUpperCase()
 
     // get the rest of the word
@@ -168,13 +168,14 @@ function toCamelCase2(string) {
     .map((word, i) => {
       console.log({ word, i })
       // DM: todoMM: why the  + ''
+      // MM: toDM: '' is replaces delimiter with empty string
       const nextLetter = word + ''
       // DM: todoMM: try for a better name, capitalize is a verb
-      const capitalize = nextLetter.charAt(0).toLocaleUpperCase()
-      // console.log(capitalize)
+      const capitalizedNextLetter = nextLetter.charAt(0).toLocaleUpperCase()
+      // console.log(capitalizedNextLetter)
       const nextWord = nextLetter.slice(1)
       // console.log(nextWord)
-      return i === 0 ? nextLetter : capitalize + nextWord
+      return i === 0 ? nextLetter : capitalizedNextLetter + nextWord
       // console.log(result)
     })
     .join('')
