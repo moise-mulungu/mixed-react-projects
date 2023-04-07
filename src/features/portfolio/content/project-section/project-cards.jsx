@@ -1,4 +1,4 @@
-import { projectCards } from '@/constants/portfolio/content-constants/project-card-constants'
+import { projectCards } from '@/constants/portfolio/content/project-cards'
 import Divider from '@/ui/divider'
 // DM: todoDM: find out why you can't click on projectCards to go to the file if @ is used
 import CardHeading from './card-heading'

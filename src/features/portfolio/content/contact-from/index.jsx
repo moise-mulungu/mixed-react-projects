@@ -1,4 +1,4 @@
-import { contactFormText } from '@/constants/portfolio/contact-form-constants'
+import { contactFormText } from '@/constants/portfolio/contact-forms'
 
 const ContactForm = ({ mySubmitForm }) => {
   const onSubmitHandler = (event) => {

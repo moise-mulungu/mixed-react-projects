@@ -9,7 +9,7 @@ import Counter from './counter'
 // DM todoMM: your component name should match the imported filename (or directory name, since './character' (under the car hood) really means './character/index.jsx', )
 // there are two files, one is named character.jsx, the other is named index.jsx. the index.jsx file is where i named the component CharacterApp to differ from the first Character component. just: import Character from './character'.
 // DM: todoMM: "character" is generic, sounds like a text thing ... maybe game-character?
-import CharacterApp from './character'
+import GameCharacter from './character'
 import Counter2 from './counter2' // DM todoMM: your component name should match the imported filename. see comments in ./counter2/counter2 (done?)
 import SelectLanguages from '@/ui/form/select-languages'
 import MultipleCheckbox from '@/ui/form/multiple-checkbox'
@@ -55,7 +55,7 @@ export default function ComponentExamples() {
       <Divider />
       <Counter />
       <Divider />
-      <CharacterApp />
+      <GameCharacter />
       <Divider />
       <Counter2 />
       <Divider />

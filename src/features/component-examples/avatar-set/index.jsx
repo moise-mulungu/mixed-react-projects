@@ -1,5 +1,5 @@
 import Avatar from './avatar'
-// import { uuid } from 'uuid'
+import { uuid } from 'uuid'
 
 /*
 DM: todoMM: console.log uuid. is it a string or a function. I mention it because you 
@@ -24,6 +24,8 @@ export default function AvatarSet() {
         <Avatar
           className="inline-block h-6 w-6 rounded-full ring-2 ring-white"
           key={id}
+          // key={uuid()}
+          // i am getting the following error in the browser when i add the key={uuid()}: TypeError: (0 , uuid__WEBPACK_IMPORTED_MODULE_2__.uuid) is not a function
           src={`https://sandpack-bundler.vercel.app/img/avatars/${id}.png`}
           alt={alt}
         />

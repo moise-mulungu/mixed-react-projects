@@ -1,4 +1,4 @@
-import { languageTitle, languages } from '@/constants/portfolio/content-constants/skill-constants'
+import { languageTitle, languages } from '@/constants/portfolio/content/skills'
 
 const Languages = () => {
   return (

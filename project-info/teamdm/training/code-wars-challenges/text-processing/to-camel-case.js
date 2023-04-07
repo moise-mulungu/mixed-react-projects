@@ -80,7 +80,7 @@ n/a
 //   /* 8. use the named parts to create a readable solution. */
 
 //   // capitalizedNextLetter each word. But, don't change the first word
-// DM: todoMM: ;don't use search/replace for changing variable names, use right-click, "rename symbol". ; If you do search/replace, do each one individually - if you do all at once, you'll create bugs or change comments, like above.
+// DM: todoMM: ;don't use search/replace for changing variable names, use right-click, "rename symbol". ; If you do search/replace, do each one individually - if you do all at once, you'll create bugs or change comments, like above.(read)
 //   // convert the first letter of each word to uppercase
 //   const capitalizedWords = words.map((word) => {
 //     /* this is not needed:
@@ -168,7 +168,7 @@ function toCamelCase2(string) {
     .map((word, i) => {
       console.log({ word, i })
       // DM: todoMM: why the  + ''
-      // MM: toDM: '' is replaces delimiter with empty string. + '' only a an empty string to 'word'. split (delimitersRegExp) removed the delimiters for you.
+      // MM: toDM: '' is replaces delimiter with empty string. + '' only a an empty string to 'word'. split (delimitersRegExp) removed the delimiters for you.(read)
       const nextLetter = word + ''
       const capitalizedNextLetter = nextLetter.charAt(0).toLocaleUpperCase()
       // console.log(capitalizedNextLetter)

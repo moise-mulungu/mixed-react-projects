@@ -1,5 +1,5 @@
 // DM: todoMM: no need for "/index"; I don't think contentAboutHeaderText exists in this file.
-import { contentAboutHeaderText } from '@/constants/portfolio/content-constants/skill-constants'
+import { contentAboutHeaderText } from '@/constants/portfolio/content/skills'
 import Divider from '@/ui/divider'
 import Button from './button'
 import Languages from './languages'

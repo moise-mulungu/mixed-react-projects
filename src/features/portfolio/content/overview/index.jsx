@@ -1,7 +1,7 @@
 import {
   contentOverviewHeaderText,
   contentOverviewParagraphText,
-} from '@/constants/portfolio/content-constants/overview-constants'
+} from '@/constants/portfolio/content/overview'
 import { socialLinks } from '@/constants/portfolio'
 import { v4 as uuid } from 'uuid'
 

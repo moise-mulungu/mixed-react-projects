@@ -1,7 +1,7 @@
 import {
   otherSkillsTitle,
   otherSkills,
-} from '@/constants/portfolio/content-constants/skill-constants'
+} from '@/constants/portfolio/content/skills'
 
 const OtherSkills = () => {
   return (
