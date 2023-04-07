@@ -36,7 +36,7 @@ function TwoFactor() {
         in JSX anything in {} is JavaScript, not JSX
 
         */}
-        {isCorrect ? 'Correct!' : 'Incorrect'}
+        {/* {isCorrect ? 'Correct!' : 'Incorrect'} */}
       </div>
     </form>
   )

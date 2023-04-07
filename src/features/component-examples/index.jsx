@@ -15,7 +15,7 @@ import SelectLanguages from '@/ui/form/select-languages'
 import MultipleCheckbox from '@/ui/form/multiple-checkbox'
 import SelectCountries from '@/ui/form/select/select-countries'
 // Â: todoMM: the file./two-factor/two-factor.js doesn't exist
-import TwoFactor from './two-factor/two-factor'
+import TwoFactor from './two-factor'
 // DM: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
 // DM: todoDM: get ctrl-click on object to work for @/ imports

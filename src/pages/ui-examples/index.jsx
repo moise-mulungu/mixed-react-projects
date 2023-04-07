@@ -18,9 +18,9 @@ export default function UiExamplesPage() {
       </Head>
 
       <UiExamples />
-      <Link href="/">Home</Link>
-      <Link href="#">same page</Link>
-      <Link href="https://nextjs.org/docs/api-reference/next/link">next-link</Link>
+      <Link href="/">Internal</Link>
+      <Link href="#">Anchor</Link>
+      <Link href="https://nextjs.org/docs/api-reference/next/link">External</Link>
       {/* DM: todoMM: Great. Change the link texts so that they describe what kind of link each is, internal, anchor, external */}
     </div>
   )
