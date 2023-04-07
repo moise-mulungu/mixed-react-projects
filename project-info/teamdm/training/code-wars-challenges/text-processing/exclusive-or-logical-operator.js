@@ -26,7 +26,7 @@ https://www.codewars.com/kata/56fa3c5ce4d45d2a52001b3c/train/javascript
       these would be the questions you'd be expected to ask in a interview situation
       (practice reading the challenge description carefully) */
 /*
-
+n/a
 */
 
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
@@ -48,13 +48,14 @@ output: boolean; possible values: true, false
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   const isBoolean = (value) => typeof value === 'boolean'
-  if (!isBoolean(a) && !isBoolean(b)) throw new Error('both parameters must be booleans')
+  if (!isBoolean(a) && !isBoolean(b)) throw new Error('both parameters must be booleans') // good!
 
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? */
   /*
-get the exclusive or of the two booleans depending on their values
+get (is a verb === how) the exclusive or of the two booleans depending on their values (this is repeating the instructions. what is "exclusive or"? what are the "values")
+example of how to write this section: true if one of the operands is true, otherwise false (this way, it makes it clear that you focus on "one of the operands is true" and anything else, you just return false)
   */
 
   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -67,16 +68,19 @@ get the exclusive or of the two booleans depending on their values
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  const isSame = a === b
-  if (!isSame) return false
-  else return true
 
   /* 8. use the named parts to create a readable solution. */
+
+  const isSame = a === b // DM: cool solution!
 
   /* 9. return the solution
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
+
+  // DM: this doesn't work (but the version below works). be sure to make it work, test, make it pretty BEFORE you do step 12
+  if (!isSame) return false
+  return true
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 
@@ -95,7 +99,7 @@ function xor(a, b) {
   if (!isBoolean(a) && !isBoolean(b)) throw new Error('both parameters must be booleans')
   const isSame = a === b
   if (!isSame) return true
-  else return false
+  return false
 }
 
 xor(false, false) // false
@@ -103,3 +107,15 @@ xor(true, false) // true
 xor(false, true) // true
 xor(true, true) // false
 xor(1, 2) // Error: both parameters must be booleans
+
+/*
+
+DM: todoMM:
+Great job! So, since you did this so well the first time, I'm going to move on to more advanced suggestions.
+write the "if (!isSame) return true" line so that it starts with
+if (isSame)
+this way, the reader doesn't have to negate isSame, reducing cognitive load
+it's just a slight change in the logic, but it reads more easily
+
+DM: todoDM: next: one line; 2 vars names that teach;
+*/
