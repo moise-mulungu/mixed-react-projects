@@ -98,8 +98,8 @@ function xor(a, b) {
   const isBoolean = (value) => typeof value === 'boolean'
   if (!isBoolean(a) && !isBoolean(b)) throw new Error('both parameters must be booleans')
   const isSame = a === b
-  if (!isSame) return true
-  return false
+  if (isSame) return false
+  return true
 }
 
 xor(false, false) // false
