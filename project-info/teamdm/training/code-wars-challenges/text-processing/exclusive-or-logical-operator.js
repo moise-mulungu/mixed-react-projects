@@ -80,7 +80,6 @@ get the exclusive or of the two booleans depending on their values
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 
-
 /* 11. Make it pretty! Review the code for conciseness and readability: clear, descriptive variable names
        note: as you are working, try to write good names, so that Duncan and yourself can 
              understand easily. Don't use misleading or too-unspecific variable names.

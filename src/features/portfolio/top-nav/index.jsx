@@ -2,7 +2,7 @@
 DM: todoMM: please do each of these individually. 
 DM: this got erased, we still need it
 (done) DM: todoMM: (bump) please do this before memory fades of where you got it
-   (done) going forward, put the tailwindui.com URL where you got the code in the file, so that we know where to find it later. (Moise, I meant for you to copy/paste the tailwindui URL you used as a starter for this component)
+
    https://tailwindui.com/components/application-ui/navigation/navbars 
    if you need @tailwindcss/forms, go ahead, install it and config it. While you do, record your steps to install and config, so that I can read. But, if you don't need it for this code to work, no need to install it. 
 */
@@ -17,11 +17,7 @@ import { uuid } from 'uuid'
 
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import {
-  topNavSiteLinks,
-  defaultTopNavSiteLinkId,
-  theMan,
-} from '@/constants/portfolio/header'
+import { topNavSiteLinks, defaultTopNavSiteLinkId, theMan } from '@/constants/portfolio/header'
 import { classNames } from '@/ui/utils'
 import MyImage from '../content/image/image'
 // DM: todoDM: add my ES Modules vocabulary to the project-info area

@@ -80,7 +80,7 @@ n/a
 //   /* 8. use the named parts to create a readable solution. */
 
 //   // capitalizedNextLetter each word. But, don't change the first word
-// DM: todoMM: ;don't use search/replace for changing variable names, use right-click, "rename symbol". ; If you do search/replace, do each one individually - if you do all at once, you'll create bugs or change comments, like above.(read)
+// DM: todoMM: ;don't use search/replace for changing variable names, use right-click, "rename symbol". ; If you do search/replace, do each one individually - if you do all at once, you'll create bugs or change comments, like above.(read) FUnny, yesterday twice I forgot to change the name of a variable in all places. It slowed me down. I'm going to start using rename symbol for ALL edits of variable names, no matter what.
 //   // convert the first letter of each word to uppercase
 //   const capitalizedWords = words.map((word) => {
 //     /* this is not needed:

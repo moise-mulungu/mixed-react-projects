@@ -31,7 +31,12 @@ function TwoFactor() {
         />
         <button>Validate</button>
         <p>Your code is:{code}</p>
-        {/* i want to get the result of isCorrect instead of the one from the code as from window.alert. how can i fix that? */}
+        {/* i want to get the result of isCorrect instead of the one from the code as from window.alert. how can i fix that? 
+        with conditional rendering. you can use the ternary operator just like you did in the alert. just put it into {}
+        in JSX anything in {} is JavaScript, not JSX
+
+        */}
+        {isCorrect ? 'Correct!' : 'Incorrect'}
       </div>
     </form>
   )
