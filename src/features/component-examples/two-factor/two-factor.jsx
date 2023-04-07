@@ -8,12 +8,12 @@ function TwoFactor() {
   function handleSubmit(event) {
     event.preventDefault()
 
-    const isCorrect = code === CORRECT_CODE
     window.alert(isCorrect ? 'Correct!' : 'Incorrect')
     console.log('isCorrect', isCorrect)
 
     setCode(isCorrect)
   }
+  // const isCorrect = code === CORRECT_CODE
 
   return (
     <form onSubmit={handleSubmit}>
@@ -31,7 +31,7 @@ function TwoFactor() {
         />
         <button>Validate</button>
         <p>Your code is:{code}</p>
-        {/* i want to get the result of isCorrect instead of the one from the code. how can i fix that? */}
+        {/* i want to get the result of isCorrect instead of the one from the code as from window.alert. how can i fix that? */}
       </div>
     </form>
   )
