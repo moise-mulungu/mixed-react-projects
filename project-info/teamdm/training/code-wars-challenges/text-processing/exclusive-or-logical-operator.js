@@ -112,10 +112,9 @@ xor(1, 2) // Error: both parameters must be booleans
 
 DM: todoMM:
 Great job! So, since you did this so well the first time, I'm going to move on to more advanced suggestions.
-write the "if (!isSame) return true" line so that it starts with
-if (isSame)
-this way, the reader doesn't have to negate isSame, reducing cognitive load
-it's just a slight change in the logic, but it reads more easily
+next: isSame to areSame ('"are" is for more than one thing)
+next: write the two "return" lines as one line using the conditional (ternary) operator a la:
+return logicalExpression ? false: true
 
-DM: todoDM: next: one line; 2 vars names that teach;
+DM: todoDM: next: vars names that teach;
 */
