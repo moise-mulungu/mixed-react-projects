@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { Countries } from './country-data'
+import countries from './country-data'
 
-const countryNames = Object.entries(Countries)
+const countryNames = Object.entries(countries)
 
 function SelectCountries() {
   const [country, setCountry] = React.useState('')
@@ -34,7 +34,7 @@ function SelectCountries() {
         </select>
       </fieldset>
 
-      <p className="country-display">Selected country: {Countries[country]}</p>
+      <p className="country-display">Selected country: {countries[country]}</p>
 
       <button>Submit</button>
     </form>
