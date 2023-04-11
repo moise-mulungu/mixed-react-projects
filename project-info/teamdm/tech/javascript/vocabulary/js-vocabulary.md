@@ -26,7 +26,7 @@ Type Coercion refers to the process of automatic or implicit conversion of value
   The result of the `&&` operator is true only if both values are true, otherwise, it is false.
 - logical OR operator - uses the double `pipe(||)` to represent the logical OR operator.
   The result of the `||` operator is true if either of the values is true.
-  // DM: todoMM: look up "short-circuiting evaluation" - an important way to describe logical expressions, then refine your definitions of &&, ||
+  // (done) DM: todoMM: look up "short-circuiting evaluation" - an important way to describe logical expressions, then refine your definitions of &&, ||
 - DM: "expr1 || expr2" evaluates to expr1
 
 // DM: todoDM: what are both operators called as a group? also, what is the exact word for 'result' of the evaluation of a "logical expression"?

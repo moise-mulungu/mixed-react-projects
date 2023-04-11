@@ -6,7 +6,7 @@ result1 /* DM: todoDM: write the value of "result1" here - still todo, this part
 // the current number is:  1
 // the current number is:  2
 // the current number is:  3
-// DM: todoMM: it's very important that you write the output of the console.log in all the exercises below, like in the previous 3 lines, this is a key part of ensuring you understand the array looping methods
+//(done) DM: todoMM: it's very important that you write the output of the console.log in all the exercises below, like in the previous 3 lines, this is a key part of ensuring you understand the array looping methods
 
 const pizzaToppings = ['cheese', 'avocado', 'halibut', 'custard']
 

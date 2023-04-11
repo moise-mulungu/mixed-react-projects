@@ -27,7 +27,7 @@
 - TODOs: (done)
   - MM: todoDM: MM tells DM a task to do
   - MM: todoMM: MM tells MM a task to do
-  - DM: todoMM: DM tells MM a task to do
+    -(done) DM: todoMM: DM tells MM a task to do
   - DM: todoDM: DM tells DM a task to do
   - upon completion: add (done) just after the last ":".
     - ex: MM: todoDM: (done) MM tells DM a task to do

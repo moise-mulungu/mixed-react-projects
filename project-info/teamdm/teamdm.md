@@ -242,7 +242,7 @@ for push
           - JoR examples to the /component-examples
     - DM: likely we need to think about which sorts of interactions are better in-person
   - DM: I notice I feel like spending the entire week focusing intensely on the portfolio, instead of splitting the time among the 3 ... but this is my feeling, it never happens that way at real work. However, when I get tickets, that is my full-time focus (but about 30% of the day is taken up by standups, reviewing others' code, testing other's work ...), but each day/few days/week, there is one main focus. Boss likes DEVs to do ONE ticket at a time, focus intensely and get it done.
-- DM: todoMM: list any topics here that you'd like to discuss (and feel free to comment on my bullet points here)
+-(done) DM: todoMM: list any topics here that you'd like to discuss (and feel free to comment on my bullet points here)
 
 I would like to emphasize on splitting any activity with Jira instead. For example for portfolio, and code-wars exercises
 

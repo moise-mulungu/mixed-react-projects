@@ -2,7 +2,7 @@ import Avatar from './avatar'
 import { uuid } from 'uuid'
 
 /*
-DM: todoMM: console.log uuid. is it a string or a function. I mention it because you 
+(done) DM: todoMM: console.log uuid. is it a string or a function. I mention it because you 
 key={uuid} 
 i removed it because after consoling it, i did not see it in the browser.
 below
@@ -26,7 +26,7 @@ export default function AvatarSet() {
           key={id}
           // key={uuid()}
           // i am getting the following error in the browser when i add the key={uuid()}: TypeError: (0 , uuid__WEBPACK_IMPORTED_MODULE_2__.uuid) is not a function -
-          // DM: todoMM: console.log it to find out what it really is
+          //(done) DM: todoMM: console.log it to find out what it really is
           // I made an assumption. it appears that uuid as imported is undefined because it is not imported. So, checkout "API Summary" at this link to see what each exported values of uuid do: https://www.npmjs.com/package/uuid
           // it seems the proper usage is shown in the example just above theAPI Summary
           // D: todoDM: prepare lesson on writing interfaces to NPM packages SOLID

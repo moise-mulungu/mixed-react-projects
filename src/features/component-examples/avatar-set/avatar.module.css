@@ -20,7 +20,7 @@
 }
 /* I just used a random unverified styling, not the one from the JoR. OK, good. */
 /* Is the naming file convention to be PascalCase or camelCase for styling? kebab-case.css always kebab-case, no matter the content */
-/* DM: todoMM: we don't capitalize filenames */
+/*(done) DM: todoMM: we don't capitalize filenames */
 /* 
 snake_case (child_avatar) is ok here, this file is temporary, but a good lesson in how to import a style 
 
