@@ -1,4 +1,7 @@
-// (done) DM: todoMM: if you export only one thing, export default, otherwise it will seem like there are more exports, when there are not; no need to capitalize here, it's not a global constant, but only for specific use by one other file; put the two files for this select component into a directory select-countries so that it is clear that country-data.js has only one importer; this is a multipart todoMM, so give me a (done, status or question) for each (delimited by ";")
+// DM: todoMM: if you export only one thing, "export default", otherwise it will seem like there are more exports, when there are not;
+//             no need to capitalize "Countries" here, it's not a global constant, but only for specific use by one other file;
+//             put the two files for this select component into a directory select-countries so that it is clear that country-data.js has only one importer;
+//             this is a multipart todoMM, so give me a (done, status or question) for each
 export const Countries = {
   AF: 'Afghanistan',
   AL: 'Albania',
