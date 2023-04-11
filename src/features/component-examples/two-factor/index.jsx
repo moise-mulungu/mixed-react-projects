@@ -36,7 +36,7 @@ function TwoFactor() {
             setCode(event.target.value)
           }}
         />
-        <button>Validate</button> {/* The <button type="submit"> specifies a submit button. */}
+        <button onClick={() => setIsCorrect(isCorrect)}>Validate</button> {/* The <button type="submit"> specifies a submit button. */}
         <p>Your code is: {isCorrect ? 'correct' : 'incorrect'}</p>
         {/* i want to get the result of isCorrect instead of the one from the code as from window.alert. how can i fix that? 
         with conditional rendering. you can use the ternary operator just like you did in the alert. just put it into {}

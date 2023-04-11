@@ -10,16 +10,24 @@
 
 // 1.1 the challenge instructions, including the examples:
 /*
-In some scripting languages like PHP, there exists a logical operator (e.g. &&, ||, and, or, etc.) called the "Exclusive Or" (hence the name of this Kata). The exclusive or evaluates two booleans. It then returns true if exactly one of the two expressions are true, false otherwise. For example:
-      false xor false == false // since both are false
-      true xor false == true // exactly one of the two expressions are true
-      false xor true == true // exactly one of the two expressions are true
-      true xor true == false // Both are true.  "xor" only returns true if EXACTLY one of the two expressions evaluate to true.
+To find the volume (centimeters cubed) of a cuboid you use the formula:
+
+volume = Length * Width * Height
+
+But someone forgot to use proper record keeping, so we only have the volume, and the length of a single side!
+
+It's up to you to find out whether the cuboid has equal sides (= is a cube).
+
+Return true if the cuboid could have equal sides, return false otherwise.
+
+Return false for invalid numbers too (e.g volume or side is less than or equal to 0).
+
+Note: side will be an integer
 */
 
 // 1.2 the coding challenge URL:
 /*
-https://www.codewars.com/kata/56fa3c5ce4d45d2a52001b3c/train/javascript
+https://www.codewars.com/kata/58d248c7012397a81800005c/train/javascript
 */
 
 /* 2. list and describe anything that is unclear in the challenge description
@@ -31,8 +39,8 @@ n/a
 
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
-function xor(a, b) {
-  // It's OK to rename the parameter(s) in the codewars starter function if the parameter names are imprecise
+// It's OK to rename the parameter(s) in the codewars starter function if the parameter names are imprecise
+var cubeChecker = function (volume, side) {
   /* 4. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
@@ -42,20 +50,21 @@ function xor(a, b) {
 
         output: string|number|...; possible values: */
   /*
-input: 2 booleans; possible values: true, false
-output: boolean; possible values: true, false
+input: volume: number; possible values: any number
+input: side: number; possible values: any number
+output: boolean; possible values: true or false
   */
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-  const isBoolean = (value) => typeof value === 'boolean'
-  if (!isBoolean(a) && !isBoolean(b)) throw new Error('both parameters must be booleans') // good!
+  const isNumber = (value) => typeof value === 'number' && !isNaN(value)
+  if (!isNumber(volume) && !isNumber(side))
+    throw new Error('invalid input, both parameters must be numbers')
 
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? */
   /*
-get (is a verb === how) the exclusive or of the two booleans depending on their values (this is repeating the instructions. what is "exclusive or"? what are the "values")
-example of how to write this section: true if one of the operands is true, otherwise false (this way, it makes it clear that you focus on "one of the operands is true" and anything else, you just return false)
+i want to get a boolean value that is true if the volume is equal to the positive side cubed and false if it is not
   */
 
   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -69,20 +78,28 @@ example of how to write this section: true if one of the operands is true, other
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
+  const cubed = volume === Math.pow(side, 3)
+  const positiveSide = side > 0
+  const isCube = cubed && positiveSide
+
   /* 8. use the named parts to create a readable solution. */
 
-  const areSame = a === b // DM: cool solution!
-
   /* 9. return the solution
-      always return a variable, or, use only variables in return statements
-      this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
-   */
-
-  // DM: this doesn't work (but the version below works). be sure to make it work, test, make it pretty BEFORE you do step 12
-  if (!areSame) return false
-  return true
+        always return a variable, or, use only variables in return statements
+        this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+        */
+  return isCube ? true : false
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
+cubeChecker(56.3, 1) // false
+cubeChecker(-1, 2) //  false
+cubeChecker(8, 3) // false
+cubeChecker(8, 2) // true
+cubeChecker(-8, -2) // false
+cubeChecker(0, 0) // false
+cubeChecker(1, 5) // false
+cubeChecker(125, 5) // true
+cubeChecker(125, -5) // false
 
 /* 11. Make it pretty! Review the code for conciseness and readability: clear, descriptive variable names
        note: as you are working, try to write good names, so that Duncan and yourself can 
@@ -94,27 +111,21 @@ example of how to write this section: true if one of the operands is true, other
 /* 12. Final step: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-function xor(a, b) {
-  const isBoolean = (value) => typeof value === 'boolean'
-  if (!isBoolean(a) && !isBoolean(b)) throw new Error('both parameters must be booleans')
-  const areSame = a === b
-  return areSame ? false : true
-  // return true
+var cubeChecker = function (volume, side) {
+  const isNumber = (value) => typeof value === 'number' && !isNaN(value)
+  if (!isNumber(volume) && !isNumber(side))
+    throw new Error('invalid input, both parameters must be numbers')
+  const isCube = volume === Math.pow(side, 3) && side > 0
+  return isCube ? true : false
 }
 
-xor(false, false) // false
-xor(true, false) // true
-xor(false, true) // true
-xor(true, true) // false
-xor(1, 2) // Error: both parameters must be booleans
-
-/*
-
-DM: todoMM:
-Great job! So, since you did this so well the first time, I'm going to move on to more advanced suggestions.
-next: isSame to areSame ('"are" is for more than one thing)
-next: write the two "return" lines as one line using the conditional (ternary) operator a la:
-return logicalExpression ? false: true
-
-DM: todoDM: next: vars names that teach;
-*/
+cubeChecker(56.3, 1) // false
+cubeChecker(-1, 2) //  false
+cubeChecker(8, 3) // false
+cubeChecker(8, 2) // true
+cubeChecker(-8, -2) // false
+cubeChecker(0, 0) // false
+cubeChecker(1, 5) // false
+cubeChecker(125, 5) // true
+cubeChecker(125, -5) // false
+cubeChecker('125', '5') // invalid input, both parameters must be numbers

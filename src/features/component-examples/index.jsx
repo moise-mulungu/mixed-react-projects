@@ -6,9 +6,9 @@ import MySideNote from './side-note'
 import MovieRatingsAnimations from './movie-ratings-animations'
 // import ClickBallGame from './click-ball'
 import Counter from './counter'
-// DM todoMM: your component name should match the imported filename (or directory name, since './character' (under the car hood) really means './character/index.jsx', )
+//(done) DM todoMM: your component name should match the imported filename (or directory name, since './character' (under the car hood) really means './character/index.jsx', )
 // there are two files, one is named character.jsx, the other is named index.jsx. the index.jsx file is where i named the component CharacterApp to differ from the first Character component. just: import Character from './character'.
-// DM: todoMM: "character" is generic, sounds like a text thing ... maybe game-character? (where is the done? I really need you to do this, so that I dont' have to spend time on  checking if it is done or not)
+//(done) DM: todoMM: "character" is generic, sounds like a text thing ... maybe game-character? (where is the done? I really need you to do this, so that I dont' have to spend time on  checking if it is done or not). i put (done) before the DM: todoMM as you suggested, but i am wondering if you are seeing them. i changed the component name to GameCharacter as you suggested.(done)
 import GameCharacter from './character'
 import Counter2 from './counter2'
 import SelectLanguages from '@/ui/form/select-languages'

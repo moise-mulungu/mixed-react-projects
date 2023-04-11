@@ -13,7 +13,7 @@ const ContactForm = ({ mySubmitForm }) => {
     // DM: find out what is mySubmitForm. console.log it. questions to ask: where is it defined? It is passed as a prop, so follow it back to where the <ContactForm component is used.
     // DM: question to ask: what do you want to happen when user clicks the submit button?
     // DM: todoMM: wrap up this issue described just above. by "wrap up" I mean let's not leave it hanging. solve the issue, or ask a question, mark it done, etc.
-    // DMa; todoMM: check all "MM: ???DM" to see see if they are resolved.
+    // DMa; todoMM: check all "MM: ???DM" to see see if they are resolved. i left this as i was waiting for your suggestion on how to fix this issue, but since that day you have never told me what to do to fix this issue. the last time you told me we should discuss about it on the last Monday, but it's two weeks now.
   }
   return (
     <div className="use tw utility classes here">
