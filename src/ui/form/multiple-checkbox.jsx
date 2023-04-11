@@ -1,6 +1,10 @@
 import React from 'react'
 // DM: this is great. Below are some comments about
-//(done) DM: todoMM: this is implementation-specific. src/ui components should work with any page, any project - they are generic. So, adjust your Component to accept this data as a prop.(i don't know what the prop name should be, you want me to pass the initialItems as a prop?) Yes
+// DM: todoMM: this is implementation-specific. src/ui components should work with any page, any project - they are generic. So, adjust your Component to accept this data as a prop.(i don't know what the prop name should be, you want me to pass the initialItems as a prop?) Yes, like this:
+// export default function MultipleCheckbox({initialItems}) {
+//   then you can make a howtoreact:
+//   howtoreact:: pass an initial value to a useState as a prop
+// then in the future you can do a global VS Code search: howtoreact.*prop
 const initialItems = {
   anchovies: false,
   chicken: false,
@@ -8,7 +12,6 @@ const initialItems = {
 }
 
 export default function MultipleCheckbox() {
-  //(done) DM: todoMM: these names are implementation-specific. You can call them 'items' please put (done) or a questions for each todo, so I can go faster
   const [items, setItems] = React.useState(initialItems)
 
   // Get a list of all toppings.
@@ -34,7 +37,9 @@ export default function MultipleCheckbox() {
                 value={option}
                 checked={items[option] === true}
                 onChange={(event) => {
-                  //(read, but did not get the idea behind) DM: todoMM: if you need the current value, use a callback function so you can get access to prev (the previous value). In larger components what if something else called setItems and ... better: just add a tech-vocabulary item "race condition" - it is a common interview question
+                  //(read, but did not get the idea behind)(ok) DM: todoMM: if you need the current value, use a callback function so you can get access to prev (the previous value). In larger components what if something else called setItems and ...
+                  // DM: todoMM: check out this https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state and start getting familiar with this reactjs documentation site as you read JoR. You don't have to read it all now, just get familiar with the layout and see how at the top of the page "reference", "usage", "troubleshooting" lists are offered.
+                  // DM: todoMM: add a tech-vocabulary item "race condition" - it is a common interview question
                   setItems((prev) => ({
                     ...prev,
                     [option]: event.target.checked,

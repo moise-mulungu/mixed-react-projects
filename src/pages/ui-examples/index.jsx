@@ -18,7 +18,10 @@ export default function UiExamplesPage() {
       </Head>
 
       <UiExamples />
-      {/*(done, read but i am confused on what you meant here) DM: todoMM: put this in it's own features/ui-examples/two-factor/index.jsx, following the examples already done. It is really important to follow the patterns set up, so that people don't get confused. For example, I wrote in this file a detailed todoMM about not using <Head></Head> outside of the src/pages directory, because, seeing <Link> I assumed this file was in the features directory. We all make assumptions when we're going fast. In this case I assumed this file was in the features directory ... so it uses up time I could be dedicating to more important stuff. Not trying to scold you, just emphasizing why these patterns I've set up are so important to follow. Your questions and issues are getting more and more advanced, so we have to ensure that I can spend all of my time on them and work fast, and that my assumptions based on what I see are always correct. Hope that makes sense. */}
+      {/* 
+      DM: todoMM: put this in it's own features/ui-examples/links/index.jsx, following the examples already done in component-examples. This is still a todo
+      
+      what I deleted here was just an example of how I got confused. Don't worry about it for now */}
       <Link href="/">Internal</Link>
       <Link href="#">Anchor</Link>
       <Link href="https://nextjs.org/docs/api-reference/next/link">External</Link>
