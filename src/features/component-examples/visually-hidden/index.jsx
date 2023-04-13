@@ -12,6 +12,7 @@ const hiddenStyles = {
   border: 0,
 }
 // howtoreact: access the 'children' passed as props to a component. 'children' is everything between <MyComponent> and </MyComponent> in <MyComponent>text <span>text</span></MyComponent>
+// howtoreact: gather all/any un-handled props the user may pass, then pass them on (delegate them) to a component used in the JSX returned by this component
 const VisuallyHidden = ({ children, ...delegated }) => {
   const [forceShow, setForceShow] = React.useState(false)
   React.useEffect(() => {
@@ -42,7 +43,6 @@ const VisuallyHidden = ({ children, ...delegated }) => {
   if (forceShow) {
     return children
   }
-  // DM: todoMM: it is most common to just use ...props when the goal is to catch all/any other props the user may pass, so change 'delegated' to 'props' (right-click Rename Symbol)
   return (
     <span style={hiddenStyles} {...delegated}>
       {children}
