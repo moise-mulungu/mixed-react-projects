@@ -75,9 +75,7 @@ function removeConsecutiveDuplicates(string) {
 
   const noConsecutiveDuplicateWords = words.map((word, index) => {
     // DM: btw, good job doing this first ("guard clause")
-    if (word === words[index + 1]) {
-      return ''
-    }
+    if (word === words[index + 1]) return ''
     return word
   })
   /* 9. return the solution
