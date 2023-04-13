@@ -3,17 +3,15 @@ import { contactFormText } from '@/constants/portfolio/contact-form'
 const ContactForm = ({ mySubmitForm }) => {
   const onSubmitHandler = (event) => {
     event.preventDefault()
-    // DM: events perform side effects, they do not return values. this is where you'd do whatever is needed to generate the email message. Search "react send email" to find out how.
-    return mySubmitForm(
-      event.currentTarget.elements.name.value,
-      event.currentTarget.elements.email.value,
-      event.currentTarget.elements.message.value
-    )
-    // MM: ???DM: when trying to submit this form, am getting the following error: "TypeError: mySubmitForm is not a function". How can I fix this?
-    // DM: find out what is mySubmitForm. console.log it. questions to ask: where is it defined? It is passed as a prop, so follow it back to where the <ContactForm component is used.
-    // DM: question to ask: what do you want to happen when user clicks the submit button?
-    //(done) DM: todoMM: wrap up this issue described just above. by "wrap up" I mean let's not leave it hanging. solve the issue, or ask a question, mark it done, etc.
-    // DMa; todoMM: check all "MM: ???DM" to see see if they are resolved. i left this as i was waiting for your suggestion on how to fix this issue, but since that day you have never told me what to do to fix this issue. the last time you told me we should discuss about it on the last Monday, but it's two weeks now.
+    /* DM: lets start over on this one. I'll leave a few notes, and we'll return to this later when you focus on this section of your portfolio.
+           Sorry that I didn't follow up when I said I would. You can also remind me. At work, I can't tell my boss, "you never followed up" because he'd get mad and say, "well, remind me!" because, in the end, it is my responsibility to get the project done.
+    */
+    // DM: future plan: search "react send email" to find out how to send a gmail from a react component.
+
+    // DM: events perform side effects, they do not return values. this is where you'd do whatever is needed to generate the email message. We'll use the referenced values later, though.
+    //   event.currentTarget.elements.name.value,
+    //   event.currentTarget.elements.email.value,
+    //   event.currentTarget.elements.message.value
   }
   return (
     <div className="use tw utility classes here">
