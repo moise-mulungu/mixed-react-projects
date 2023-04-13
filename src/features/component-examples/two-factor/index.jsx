@@ -6,6 +6,7 @@ function TwoFactor() {
   const [code, setCode] = React.useState('')
   const [isCorrect, setIsCorrect] = React.useState('')
 
+  // DM: todoMM: you don't need handleSubmit, because the setting of state happens via the button onClick handler, so just remove the handleSubmit function
   function handleSubmit(event) {
     // event.value holds the value entered in the text input
     event.preventDefault()
@@ -22,6 +23,13 @@ function TwoFactor() {
     // setIsCorrect(isCorrect)
   }
 
+  // DM: here is the way to perform a 'side effect'. Any time isCorrect changes, the current value will be logged
+  useEffect(() => {
+    console.log({ isCorrect })
+  }, [isCorrect])
+
+  // DM: todoMM: make a react vocab entry for 'side effect' (search: "reactjs side effect" and prefer search result links that are official react docs, if they are shown)
+
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="auth-code">Enter authorization code:</label>
@@ -36,14 +44,9 @@ function TwoFactor() {
             setCode(event.target.value)
           }}
         />
-        <button onClick={() => setIsCorrect(isCorrect)}>Validate</button> {/* The <button type="submit"> specifies a submit button. */}
+        <button onClick={() => setIsCorrect(isCorrect)}>Validate</button>
+        {/* conditional rendering */}
         <p>Your code is: {isCorrect ? 'correct' : 'incorrect'}</p>
-        {/* i want to get the result of isCorrect instead of the one from the code as from window.alert. how can i fix that? 
-        with conditional rendering. you can use the ternary operator just like you did in the alert. just put it into {}
-        in JSX anything in {} is JavaScript, not JSX
-
-        */}
-        {/* {isCorrect ? 'Correct!' : 'Incorrect'} */}
       </div>
     </form>
   )

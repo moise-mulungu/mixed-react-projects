@@ -99,7 +99,6 @@ function xor(a, b) {
   if (!isBoolean(a) && !isBoolean(b)) throw new Error('both parameters must be booleans')
   const areSame = a === b
   return areSame ? false : true
-  // return true
 }
 
 xor(false, false) // false
@@ -110,11 +109,6 @@ xor(1, 2) // Error: both parameters must be booleans
 
 /*
 
-DM: todoMM:
-Great job! So, since you did this so well the first time, I'm going to move on to more advanced suggestions.
-next: isSame to areSame ('"are" is for more than one thing)
-next: write the two "return" lines as one line using the conditional (ternary) operator a la:
-return logicalExpression ? false: true
 
 DM: todoDM: next: vars names that teach;
 */

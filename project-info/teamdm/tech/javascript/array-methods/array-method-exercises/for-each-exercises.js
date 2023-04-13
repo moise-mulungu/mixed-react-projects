@@ -1,4 +1,4 @@
-// DM: todoMM: this page is important, review the way the array methods work and then finish up the todoMMs
+// DM: todoMM: it would be a good tome to review these again, paying attention to what is logged, what is returned by the callbacks, and what is the final value returned by the looping method, (except forEach, which you never care about what it returns)
 
 // run this line and see what is logged
 const result1 = [1, 2, 3].forEach((number) => console.log('the current number is: ', number))
@@ -6,7 +6,6 @@ result1 /* DM: todoDM: write the value of "result1" here - still todo, this part
 // the current number is:  1
 // the current number is:  2
 // the current number is:  3
-//(done) DM: todoMM: it's very important that you write the output of the console.log in all the exercises below, like in the previous 3 lines, this is a key part of ensuring you understand the array looping methods
 
 const pizzaToppings = ['cheese', 'avocado', 'halibut', 'custard']
 
@@ -36,6 +35,7 @@ const students = [
   { name: 'Esther', grade: 40 },
 ]
 const studentsWhoPassed = students.filter((student) => {
+  console.log('the current student is: ', student)
   return student.grade >= 60 && student.name !== 'Dacian'
 })
 console.log(studentsWhoPassed)
@@ -57,7 +57,7 @@ result4 // { 1: 1, 2: 2, 3: 3 }
 // argument values are:  {} 1 0 [ 1, 2, 3 ]
 // argument values are:  { 1: 1 } 2 1 [ 1, 2, 3 ]
 // argument values are:  { 1: 1, 2: 2 } 3 2 [ 1, 2, 3 ]
-// DM: todoMM: can you give better names to the first two arguments (to the reduce callback: acc, cur? Just nname them after what they are.
+// DM: todoMM: can you give better names to the first two arguments (to the reduce callback: acc, cur? Just name them after what they are.
 
 const nums = [1, 2, 3]
 nums.forEach((num) => num)

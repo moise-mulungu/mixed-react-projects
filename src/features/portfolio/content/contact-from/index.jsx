@@ -3,7 +3,7 @@ import { contactFormText } from '@/constants/portfolio/contact-form'
 const ContactForm = ({ mySubmitForm }) => {
   const onSubmitHandler = (event) => {
     event.preventDefault()
-    /* DM: lets start over on this one. I'll leave a few notes, and we'll return to this later when you focus on this section of your portfolio.
+    /* DM: lets start over on this one. I'll leave a few "future plan" notes, and we'll return to this later when you focus on this section of your portfolio.
            Sorry that I didn't follow up when I said I would. You can also remind me. At work, I can't tell my boss, "you never followed up" because he'd get mad and say, "well, remind me!" because, in the end, it is my responsibility to get the project done.
     */
     // DM: future plan: search "react send email" to find out how to send a gmail from a react component.

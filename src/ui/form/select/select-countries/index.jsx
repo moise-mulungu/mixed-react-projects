@@ -1,7 +1,9 @@
 import React from 'react'
 
+// Â: to doMM: "countries" is a good name, change the file/directory name to match it
 import countries from './country-data'
 
+// howtojs: get all property values in an object
 const countryNames = Object.entries(countries)
 
 function SelectCountries() {

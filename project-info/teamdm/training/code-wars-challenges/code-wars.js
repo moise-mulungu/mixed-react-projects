@@ -1,6 +1,3 @@
-//(done)  DM: todoMM: best to put (done) on each line that has todoMM. you didn't do the first todoMM below or complete the 2nd one. Plus, it's easier for me to know what you did if you put (done) on each todoMM line.
-//(done ??? I don't see a new file where you started this challenge again ) DM: todoMM: btw, exclusiveOr is a great exercise in naming variables. Please find this code wars challenge and start it again in a new file. Especially the part where we assign each logical expression to a variable. these variable names will serve as documentation to explain what xor really is. Solving the logic is less that 50% of good programming. So, it is time well-spent learning to write readable code that is self-documenting.
-
 /* 
 
 //////////////////////////////////////////////////////////////////////

@@ -2,6 +2,7 @@
 import Head from 'next/head'
 
 // DM: todoDM: check why not compiler error when item is not exported
+
 import { appTitle } from '@/constants/portfolio'
 import Portfolio from '@/features/portfolio'
 

@@ -4,11 +4,11 @@ import AvatarSet from './avatar-set'
 import MyNewJoyOfReactComponent from './my-new-joy-of-react-component'
 import MySideNote from './side-note'
 import MovieRatingsAnimations from './movie-ratings-animations'
+//DM todoMM: your component name should match the imported filename (or directory name} - ClickBallGame is good name, just make the filename match
 import ClickBallGame from './click-ball'
 import Counter from './counter'
-//(done) DM todoMM: your component name should match the imported filename (or directory name, since './character' (under the car hood) really means './character/index.jsx', )
-// there are two files, one is named character.jsx, the other is named index.jsx. the index.jsx file is where i named the component CharacterApp to differ from the first Character component. just: import Character from './character'.
-//(done) DM: todoMM: "character" is generic, sounds like a text thing ... maybe game-character? (where is the done? I really need you to do this, so that I dont' have to spend time on  checking if it is done or not). i put (done) before the DM: todoMM as you suggested, but i am wondering if you are seeing them. i changed the component name to GameCharacter as you suggested.(done)
+//DM todoMM: your component name should match the imported filename (or directory name}
+
 import GameCharacter from './character'
 import Counter2 from './counter2'
 import SelectLanguages from '@/ui/form/select-languages'
@@ -19,16 +19,8 @@ import SelectColors from '@/ui/form/select/select-colors'
 import TwoFactor from './two-factor'
 // DM: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
-// DM: todoDM: get ctrl-click on object to work for @/ imports (see, If you don't put "(done)" when it's done, I don't know whether I have to go look, this takes up time. is this done?)
+// DM: todoDM: get ctrl-click on object to work for @/ imports
 import Divider from '@/ui/divider'
-
-/*
-
-
-DM: follow this same pattern whenever you have new examples from Joy of React. this will be a place to make sure these components work and to adjust/experiment with them.
-
-
-*/
 
 export default function ComponentExamples() {
   return (

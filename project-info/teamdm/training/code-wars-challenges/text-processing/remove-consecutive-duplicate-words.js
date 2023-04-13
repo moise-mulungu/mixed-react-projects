@@ -106,7 +106,6 @@ removeConsecutiveDuplicates('alpha beta beta')
        OK to rename variables here if it seems better while looking at the code in concise form 
        No comments in this "production-ready" version, because your variable names should explain everything*/
 
-//(done) DM: todoMM: great job on the new variable names! can you make this more concise, without reducing readability? ex: if an if-statement block contains only one line (the return statement) use the syntax without curly brackets {}
 function removeConsecutiveDuplicates2(string) {
   const isString = typeof string === 'string'
   if (!isString) throw new Error('parameter or input must be a string')
