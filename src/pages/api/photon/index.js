@@ -1,5 +1,5 @@
 //(done??) DM: todoMM: do a global VsCode search on "../../.." to find all instances across the repo of this, and replace them with @, and make sure you're running nextjs and the code compiles. It's not done - there is on eright here on the next line.
-import clientPromise from '../../../server/lib/mongodb-client'
+import clientPromise from '@/server/lib/mongodb-client'
 
 export async function getServerSideProps(context) {
   try {

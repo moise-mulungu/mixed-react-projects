@@ -1,7 +1,7 @@
 import React from 'react'
 // import style from './click-ball.module.css'
 
-import VisuallyHidden from './VisuallyHidden'
+import VisuallyHidden from '../visually-hidden'
 
 export default function ClickBallGame() {
   function handleClick(type) {
