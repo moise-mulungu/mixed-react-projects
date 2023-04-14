@@ -45,7 +45,9 @@ function myFunction(parameter1, parameter2) {
 
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
-        WHAT do you want to calculate based on the input? */
+        WHAT do you want to calculate based on the input? 
+        Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables
+        */
   /*
 
   */
@@ -55,7 +57,7 @@ function myFunction(parameter1, parameter2) {
         Naming variables: DM todoMM: review these
         * each logical expressions must be assigned to a variable. 
 	  * the instructions often contain words that can be used in variable names.
-        * function names verbs+noun (createMyThing) or adverbs: (onClick, onSubmitHandler)
+        * function names verb or verb+noun (create, handleClick, handleSubmit)
         * booleans are named with (positive) adjectives: (open, seen, isString)
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
