@@ -23,6 +23,10 @@ const result2 = [1, 2, 3].filter((number) => {
   return number > 1
 })
 result2 // [2, 3]
+// DM: I didn't mean for you to remove these, so putting them back
+// the current number is:  1
+// the current number is:  2
+// the current number is:  3
 
 const students = [
   { name: 'Aisha', grade: 89 },
@@ -43,11 +47,17 @@ const result3 = [1, 2, 3].map((number) => {
   return number ** number
 })
 result3 // [1, 4, 27]
+// the current number is:  1
+// the current number is:  2
+// the current number is:  3
 
 const asObject = [1, 2, 3].reduce((accumulator, currentValue, idx, arr) => {
   console.log('argument values are: ', accumulator, currentValue, idx, arr)
   return { ...accumulator, [currentValue]: currentValue }
 }, {})
 console.log(asObject) // { 1: 1, 2: 2, 3: 3 }
+// argument values are:  {} 1 0 [ 1, 2, 3 ]
+// argument values are:  { 1: 1 } 2 1 [ 1, 2, 3 ]
+// argument values are:  { 1: 1, 2: 2 } 3 2 [ 1, 2, 3 ]
 
-// DM: todoMM: can you give better names to the first two arguments (to the reduce callback: acc, cur? Just name them after what they are.
+// DM: todoMM: can you give better names to the first two arguments (to the reduce callback: acc, cur? Just name them after what they are. (done?)

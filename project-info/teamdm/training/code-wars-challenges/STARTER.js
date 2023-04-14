@@ -54,7 +54,7 @@ function myFunction(parameter1, parameter2) {
 
   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
         assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
-        Naming variables: DM todoMM: review these
+        Naming variables: 
         * each logical expressions must be assigned to a variable. 
 	  * the instructions often contain words that can be used in variable names.
         * function names verb or verb+noun (create, handleClick, handleSubmit)

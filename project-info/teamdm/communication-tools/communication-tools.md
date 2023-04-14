@@ -45,15 +45,13 @@
 ## knowledge base (KB): this repo will serve as a 'repository' our our accumulated knowledge
 
 - leave notes anywhere (in-context notes are best)
-  - all notes start with "lesson: "
   - all programming techniques start with "howto\*: "
-  - examples
-  ```js
-  // howtojs: array.reduce() don't forget to always 'return acc' or you'll get a weird error that includes the number 7
-  // howtotailwind: some lesson you learned specifically about tailwindcss
-  // howtocss: center a div horizontally margin: auto
-  ```
-  - whenever you have a question, before you google, do a vscode global search (regex) (ctrl+shift+F): `howtocss:.*center.*div`
+    ```js
+    // howtojs: array.reduce() don't forget to always 'return acc' or you'll get a weird error that includes the number 7
+    // howtotailwind: some lesson you learned specifically about tailwindcss
+    // howtocss: center a div horizontally margin: auto
+    ```
+    - whenever you have a question, before you google, do a vscode global search (regex) (ctrl+shift+F): `howtocss:.*center.*div`
 - reusable functions and code snippets
   - src/utils/array|object|string|etc - write the function or snippet there
 
