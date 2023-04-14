@@ -3,7 +3,7 @@ import React from 'react'
 //(in progress) DM: todoMM: try passing the colors, the legend, and the initial color as props, so that this is more generic
 // DM: i have not read about transitioning from props to state. i will do that tomorrow as there is a lesson called "props vs state" in the joy-of-react course
 function SelectColors({ colors, legend, initialColor = '' }) {
-  // ???DM: after passing colors, legend, and initialColor as props, where to call the colors , and legend. the initialColor is called in the useState, what about the other two? I did it for 'legent' and put comments about doing it for 'colors' below
+  // ???DM: after passing colors, legend, and initialColor as props, where to call the colors , and legend. the initialColor is called in the useState, what about the other two? I did it for 'legend' and put comments about doing it for 'colors' below
   // DM: sounds good, this is a hint:
   // const { colors, legend, initialColor = 'red' } = props
   const [selectedOption, setSelectedOption] = React.useState(initialColor)
@@ -22,9 +22,13 @@ function SelectColors({ colors, legend, initialColor = '' }) {
         >
           // DM: this is where you would use the colors passed as props
           {/* colors, plural, is an array of colors, so you can colors.map(color => ...) */}
-          <option value="red">Red</option>
-          <option value="green">Green</option>
-          <option value="blue">Blue</option>
+          {colors.map((color) => {
+            return (
+              <option value={color} key={color}>
+                {color}
+              </option>
+            )
+          })}
         </select>
       </fieldset>
 

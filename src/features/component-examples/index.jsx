@@ -5,7 +5,7 @@ import MyNewJoyOfReactComponent from './my-new-joy-of-react-component'
 import MySideNote from './side-note'
 import MovieRatingsAnimations from './movie-ratings-animations'
 //DM todoMM: your component name should match the imported filename (or directory name} - ClickBallGame is good name, just make the filename match
-import ClickBallGame from './click-ball'
+import ClickBallGame from './click-ball-game'
 import Counter from './counter'
 //DM todoMM: your component name should match the imported filename (or directory name}
 
@@ -62,7 +62,18 @@ export default function ComponentExamples() {
       <Divider />
       <TwoFactor />
       <Divider />
-      <SelectColors />
+      <SelectColors
+        colors={
+          <>
+            <option value="">{(colors = 'Select a color')}</option>
+            <option value="red">{(colors = 'Red')}</option>
+            <option value="green">{(colors = 'Green')}</option>
+            <option value="blue">{(colors = 'Yellow')}</option>
+          </>
+        }
+        legend={'Your color value'}
+        initialColor={''}
+      />
     </div>
   )
 }

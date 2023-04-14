@@ -18,6 +18,7 @@ const VisuallyHidden = ({ children, ...delegated }) => {
   React.useEffect(() => {
     // DM: todoMM: this if statement ensures that nothing happens if the condition is not met. Re-write this to use a "guard clause" so that the reader doesn't have to scan down to find that out, and so the reader does not need to see unnecessary indentation. hint: search "guard clause" in the repo to see an example of where you did this in the past
     // howtonextjs: nextjs automatically sets NODE_ENV to 'development' (npm run dev) or 'production' (npm run start, after npm run build)
+    // I got this from the joy-of-react, i need to understand the concept behind this
     if (process.env.NODE_ENV !== 'production') {
       // howtoreact: respond to the use of keystrokes
       const handleKeyDown = (ev) => {

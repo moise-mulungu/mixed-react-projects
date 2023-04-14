@@ -3,6 +3,8 @@
 /*
  */
 
+const { constants } = require("os")
+
 // memorable summary: make it work, test it, make it pretty
 
 // // // // // // // // // // // // // // start of the template
@@ -21,7 +23,7 @@ It's up to you to find out whether the cuboid has equal sides (= is a cube).
 Return true if the cuboid could have equal sides, return false otherwise.
 
 Return false for invalid numbers too (e.g volume or side is less than or equal to 0).
-// DM: todoMM: they don't want you to throw and error, but rather return false. 
+// DM: todoMM: they don't want you to throw and error, but rather return false. (i wanted to throw an error as a defensive coding practice, to make sure input to be integers, then the output boolean)
 
 Note: side will be an integer
 */
@@ -41,8 +43,8 @@ n/a
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
 // It's OK to rename the parameter(s) in the codewars starter function if the parameter names are imprecise
-// DM: todoMM: !!! never use 'var' in modern JS (this is probably an old challenge, if you copied the var from code-wars). always use 'const'
-var cubeChecker = function (volume, side) {
+// DM: todoMM: !!! never use 'var' in modern JS (this is probably an old challenge, if you copied the var from code-wars). always use 'const'(with const i can't reassign the variable, i just modified the function name)
+function cubeChecker (volume, side) {
   /* 4. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
@@ -59,7 +61,11 @@ output: boolean; possible values: true or false
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   // DM: todoMM: nice! can you add a comment explaining why you used isNaN also?
-  const isNumber = (value) => typeof value === 'number' && !isNaN(value)
+  const isNumber = (value) =>
+    typeof value ===
+      // I added isNaN() function to determine whether a value is not NaN when converted to a number
+      'number' && !isNaN(value)
+  // i threw an error in a defensive coding practice.
   if (!isNumber(volume) && !isNumber(side))
     throw new Error('invalid input, both parameters must be numbers')
 
@@ -82,7 +88,7 @@ i want to get a boolean value that is true if the volume is equal to the positiv
         * see naming-conventions.md*/
 
   const cubed = volume === Math.pow(side, 3)
-  // DM: todoMM: check this first, in step 5 and immediately return false if needed
+  // DM: todoMM: check this first, in step 5 and immediately return false if needed(Would you mind providing further explanations, please?)
   const positiveSide = side > 0
   const isCube = cubed && positiveSide
 
@@ -119,7 +125,7 @@ var cubeChecker = function (volume, side) {
   const isNumber = (value) => typeof value === 'number' && !isNaN(value)
   if (!isNumber(volume) && !isNumber(side))
     throw new Error('invalid input, both parameters must be numbers')
-  // DM: todoMM: this code should be exactly the same as the code above,
+  // DM: todoMM: this code should be exactly the same as the code above,(I don't know if they can be the same, because code above is a lengthy code, but this one is a short code. From my understanding, i thought the second code has to be as short as possible, that's why some variables are not declared.)
   const isCube = volume === Math.pow(side, 3) && side > 0
   return isCube ? true : false
 }
