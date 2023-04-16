@@ -52,6 +52,7 @@
     // howtocss: center a div horizontally margin: auto
     ```
     - whenever you have a question, before you google, do a vscode global search (regex) (ctrl+shift+F): `howtocss:.*center.*div`
+    <!-- This explanation is very concise, i liked it!. i had the idea of creating a specific file for how-to-stuff.md, where we can be accessing contents, or to create a specific files for each topic?    -->
 - reusable functions and code snippets
   - src/utils/array|object|string|etc - write the function or snippet there
 

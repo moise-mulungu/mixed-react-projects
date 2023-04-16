@@ -6,7 +6,7 @@ function TwoFactor() {
   const [code, setCode] = React.useState('')
   const [isCorrect, setIsCorrect] = React.useState('')
 
-  // DM: todoMM: you don't need handleSubmit, because the setting of state happens via the button onClick handler, so just remove the handleSubmit function (don't forget to put (done) when you finish something so that I can know for sure, and so I can clean up .) - or you can put (see question below), just put something so I know what to do.
+  // DM: todoMM: you don't need handleSubmit, because the setting of state happens via the button onClick handler, so just remove the handleSubmit function (don't forget to put (done) when you finish something so that I can know for sure, and so I can clean up .) - or you can put (see question below), just put something so I know what to do.(done)
 
   // DM: here is the way to perform a 'side effect'. Any time isCorrect changes, the current value will be logged
   useEffect(() => {

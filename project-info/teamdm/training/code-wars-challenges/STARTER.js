@@ -46,7 +46,7 @@ function myFunction(parameter1, parameter2) {
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
-        Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables
+        Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!)
         */
   /*
 

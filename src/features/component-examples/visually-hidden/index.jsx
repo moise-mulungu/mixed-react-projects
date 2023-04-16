@@ -20,7 +20,8 @@ const VisuallyHidden = ({ children, ...delegated }) => {
     // howtonextjs: nextjs automatically sets NODE_ENV to 'development' (npm run dev) or 'production' (npm run start, after npm run build)
     // I got this from the joy-of-react, i need to understand the concept behind this.
     // DM: THere's not much to it. this "environment variable" lets the code be aware of which "environment" (dev, stage, prod) you are in.
-    if (process.env.NODE_ENV !== 'production') {
+    if (!process.env.NODE_ENV === 'production') {
+      // to make this line of code guard clause, should i change 'production' to 'development'? or just change the not operator to the beginning of the expression as i put above?
       // howtoreact: respond to the use of keystrokes
       const handleKeyDown = (ev) => {
         if (ev.key === 'Alt') {

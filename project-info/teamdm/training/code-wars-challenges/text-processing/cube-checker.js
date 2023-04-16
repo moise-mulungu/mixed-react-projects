@@ -3,9 +3,6 @@
 /*
  */
 
-// DM: todoMM: what is this? Did VSCode do this automatically or something? you can remove it if you don't need it.
-const { constants } = require('os')
-
 // memorable summary: make it work, test it, make it pretty
 
 // // // // // // // // // // // // // // start of the template
@@ -24,7 +21,7 @@ It's up to you to find out whether the cuboid has equal sides (= is a cube).
 Return true if the cuboid could have equal sides, return false otherwise.
 
 Return false for invalid numbers too (e.g volume or side is less than or equal to 0).
-// DM: todoMM: they don't want you to throw and error, but rather return false. (i wanted to throw an error as a defensive coding practice, to make sure input to be integers, then the output boolean) - whoops, never mind, you're correct  - I misread the instructions (you can delete this whole line once you read this)
+
 
 Note: side will be an integer
 */
@@ -45,7 +42,7 @@ n/a
 
 // It's OK to rename the parameter(s) in the codewars starter function if the parameter names are imprecise
 // DM: todoMM: !!! never use 'var' in modern JS (this is probably an old challenge, if you copied the var from code-wars). always use 'const'(with const i can't reassign the variable, i just modified the function name)
-// OK, that is the intention. In modern JS you only use 'let' or 'const', but the best practice is that you do not mutate variables. so, never use 'let' is our rule, a very good rule, because it teaches you to program functionally/declaratively without mutating variables.
+// OK, that is the intention. In modern JS you only use 'let' or 'const', but the best practice is that you do not mutate variables. so, never use 'let' is our rule, a very good rule, because it teaches you to program functionally/declaratively without mutating variables.(read)
 function cubeChecker(volume, side) {
   /* 4. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
@@ -64,7 +61,7 @@ output: boolean; possible values: true or false
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   const isNumber = (value) =>
     // I added isNaN() function to determine whether a value is not NaN when converted to a number
-    // DM: todoMM: ok, awesome that you're trying new JS stuff. isNaN does coerce (convert the type of) non-numbers to a number, but keep in mind that execution does not reach isNaN unless you already know that 'value' is a number "typeof value === 'number'" has to be true in order that "!isNaN(value)" be evaluated (see your vocab entry "short-circuiting evaluation"). So, the only additional value that the isNaN check provides is it checks if NaN (which is a global property in JS that is also a number). This is a valid thing to check! so good. although it would be rare, I think.
+    // DM: todoMM: ok, awesome that you're trying new JS stuff. isNaN does coerce (convert the type of) non-numbers to a number, but keep in mind that execution does not reach isNaN unless you already know that 'value' is a number "typeof value === 'number'" has to be true in order that "!isNaN(value)" be evaluated (see your vocab entry "short-circuiting evaluation"). So, the only additional value that the isNaN check provides is it checks if NaN (which is a global property in JS that is also a number). This is a valid thing to check! so good. although it would be rare, I think.(read)
     typeof value === 'number' && !isNaN(value)
   // i threw an error in a defensive coding practice.
   if (!isNumber(volume) && !isNumber(side))
@@ -89,7 +86,7 @@ i want to get a boolean value that is true if the volume is equal to the positiv
         * see naming-conventions.md*/
 
   const cubed = volume === Math.pow(side, 3)
-  // DM: todoMM: check this first, in step 5 and immediately return false if needed(Would you mind providing further explanations, please?) Sure, put this line in section 5 and after that line: if (!positiveSide) return false // this is a guard clause. It keeps code simpler by not mixing bad input detection logic with the main task: checking if it is a cube
+  // DM: todoMM: check this first, in step 5 and immediately return false if needed(Would you mind providing further explanations, please?) Sure, put this line in section 5 and after that line: if (!positiveSide) return false // this is a guard clause. It keeps code simpler by not mixing bad input detection logic with the main task: checking if it is a cube(read)
   const positiveSide = side > 0
   const isCube = cubed && positiveSide
 
@@ -100,7 +97,8 @@ i want to get a boolean value that is true if the volume is equal to the positiv
         this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
         */
   // DM: todoMM: you can leave out the "? true : false" because isCube is already a boolean
-  return isCube ? true : false
+  // return isCube ? true : false
+  return isCube
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 cubeChecker(56.3, 1) // false
@@ -123,13 +121,14 @@ cubeChecker(125, -5) // false
 /* 12. Final step: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-var cubeChecker = function (volume, side) {
+function cubeChecker (volume, side) {
   const isNumber = (value) => typeof value === 'number' && !isNaN(value)
   if (!isNumber(volume) && !isNumber(side))
     throw new Error('invalid input, both parameters must be numbers')
   // DM: todoMM: this code should be exactly the same as the code above,(I don't know if they can be the same, because code above is a lengthy code, but this one is a short code. From my understanding, i thought the second code has to be as short as possible, that's why some variables are not declared.) It doesn't need to be short as possible, readability is always the goal. Often, more lines = faster reading. I'm going to change our process a bit, so that you don't do step 12 until your code passes all my code review. THat is really the right time to do step 12. See my changes in STARTER.js.
   const isCube = volume === Math.pow(side, 3) && side > 0
-  return isCube ? true : false
+  // return isCube ? true : false
+  return isCube
 }
 
 cubeChecker(56.3, 1) // false

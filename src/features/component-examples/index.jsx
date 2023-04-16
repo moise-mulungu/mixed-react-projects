@@ -4,7 +4,7 @@ import AvatarSet from './avatar-set'
 import MyNewJoyOfReactComponent from './my-new-joy-of-react-component'
 import MySideNote from './side-note'
 import MovieRatingsAnimations from './movie-ratings-animations'
-//DM todoMM: your component name should match the imported filename (or directory name} - ClickBallGame is good name, just make the filename match - very important that I get a (done) if it's complete. Even if it seems obvious, I don't know if it the app compiles - and best to be consistent so I can work faster.
+//DM todoMM: your component name should match the imported filename (or directory name} - ClickBallGame is good name, just make the filename match - very important that I get a (done) if it's complete. Even if it seems obvious, I don't know if it the app compiles - and best to be consistent so I can work faster.(done)
 import ClickBallGame from './click-ball-game'
 import Counter from './counter'
 //DM todoMM: your component name should match the imported filename (or directory name}

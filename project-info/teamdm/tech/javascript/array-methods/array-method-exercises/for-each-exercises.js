@@ -60,4 +60,4 @@ console.log(asObject) // { 1: 1, 2: 2, 3: 3 }
 // argument values are:  { 1: 1 } 2 1 [ 1, 2, 3 ]
 // argument values are:  { 1: 1, 2: 2 } 3 2 [ 1, 2, 3 ]
 
-// DM: todoMM: can you give better names to the first two arguments (to the reduce callback: acc, cur? Just name them after what they are. (done?)
+// DM: todoMM: can you give better names to the first two arguments (to the reduce callback: acc, cur? Just name them after what they are. (done?, not yet. this exercise seems more complex, i don't understand the use of the the last two arguments as i am not familiar wwith reduce of more than 2 arguments.)
