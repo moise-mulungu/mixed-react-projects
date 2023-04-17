@@ -31,7 +31,7 @@ https://www.codewars.com/kata/557b5e0bddf29d861400005d/train/javascript
       these would be the questions you'd be expected to ask in a interview situation
       (practice reading the challenge description carefully) */
 /*
-
+n/a
 */
 
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
@@ -48,24 +48,24 @@ function converter(mpg) {
         output: string|number|...; possible values: */
   /*
 input: any number
-output: any decimal number with 2 decimal places
+output: a number with 2 decimal places
   */
- 
- // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
- 
- const isNumber = typeof mpg === 'number'
- if (!isNumber) throw new Error('Input is not a number')
- 
- /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
+
+  // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
+
+  const isNumber = typeof mpg === 'number'
+  if (!isNumber) throw new Error('Input is not a number')
+
+  /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
  WHAT do you want to change in the input to get the output?
  WHAT do you want to calculate based on the input? 
  Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!)
  */
-/*
+  /*
 i want to convert miles per imperial gallon to kilometers per liter, which means i need to multiply the input by 1.609344 and divide it by 4.54609188
 */
 
-/* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
+  /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
 assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
 Naming variables: 
 * each logical expressions must be assigned to a variable. 
@@ -75,21 +75,22 @@ Naming variables:
 * everything else with nouns or adjectives: (myThing, myCoolThing)
 * variable names should express exactly what the variable contains
 * see naming-conventions.md*/
-const kilometerToMile = 1.609344
-const literToGallon = 4.54609188
-const kilometerPerLiter = mpg * kilometerToMile / literToGallon
+  // DM: todoMM: these seem like they are mileToKilometers and gallonToLiters
+  const kilometerToMile = 1.609344
+  const literToGallon = 4.54609188
 
-/* 8. use the named parts to create a readable solution. */
+  /* 8. use the named parts to create a readable solution. */
+  const kilometerPerLiter = (mpg * kilometerToMile) / literToGallon
 
-/* 9. return the solution
+  /* 9. return the solution
 always return a variable, or, use only variables in return statements
 this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
 */
-return Number(kilometerPerLiter.toFixed(2))
+  return Number(kilometerPerLiter.toFixed(2))
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 converter(10) // 3.54
-converter(20) // 7.08 
+converter(20) // 7.08
 converter(30) // 10.62
 
 /* 11. Make it pretty! Review the code for conciseness and readability: clear, descriptive variable names
@@ -102,6 +103,12 @@ converter(30) // 10.62
 /* 12. Final step: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
+// DM: todoMM: great solution. This should be exactly the same code as above.
+//     Your solution above was perfect. This one below has fewer lines, but is harder/slower to read.
+//     So you get an idea of the perspective of the reader, the numbers 1.609344 and 4.54609188 mean nothing to me, and slow me down, even if it is logical to guess. If you name them with kilometerToMile and literToGallon I don't have to think for a second or care about the number. And if I were to check your math, (which I usually won't as long as the tests pass), it would be a lot faster.
+//     note the change I made to 12, 13 in STARTER.js. this step will be only after code review and approval. (thanks for your patience ... I'm adjusting this as we go along)
+//     sometimes while removing comments and seeing it all together here, you'll think of an improvement. Do it, but remember to change in both places, here and above, so that they are in sync to avoid any future confusion (when you return here to look at a solution)
+//     again, excellent work, and beside the above comments it was really fast to review and you get great practice!
 function converter(mpg) {
   //code to convert miles per imperial gallon to kilometers per liter
   const kilometerPerLiter = (mpg * 1.609344) / 4.54609188
@@ -109,5 +116,5 @@ function converter(mpg) {
 }
 
 converter(10) // 3.54
-converter(20) // 7.08 
+converter(20) // 7.08
 converter(30) // 10.62

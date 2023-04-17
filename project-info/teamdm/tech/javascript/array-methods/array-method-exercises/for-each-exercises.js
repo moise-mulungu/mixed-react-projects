@@ -60,4 +60,4 @@ console.log(asObject) // { 1: 1, 2: 2, 3: 3 }
 // argument values are:  { 1: 1 } 2 1 [ 1, 2, 3 ]
 // argument values are:  { 1: 1, 2: 2 } 3 2 [ 1, 2, 3 ]
 
-// DM: todoMM: can you give better names to the first two arguments (to the reduce callback: acc, cur? Just name them after what they are. (done?, not yet. this exercise seems more complex, i don't understand the use of the the last two arguments as i am not familiar wwith reduce of more than 2 arguments.)
+// DM: todoMM: can you give better names to the first two arguments (to the reduce callback: acc, cur? Just name them after what they are. (done?, not yet. this exercise seems more complex, i don't understand the use of the the last two arguments as i am not familiar with reduce of more than 2 arguments.) DM: check out MDN for what the last 2 args are and how you might use them. accumulator and currentValue you can name them what they are, in this case "object" and "number".

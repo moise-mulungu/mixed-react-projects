@@ -52,7 +52,7 @@
     // howtocss: center a div horizontally margin: auto
     ```
     - whenever you have a question, before you google, do a vscode global search (regex) (ctrl+shift+F): `howtocss:.*center.*div`
-    <!-- This explanation is very concise, i liked it!. i had the idea of creating a specific file for how-to-stuff.md, where we can be accessing contents, or to create a specific files for each topic?    -->
+    <!-- This explanation is very concise, i liked it!. i had the idea of creating a specific file for how-to-stuff.md, where we can be accessing contents, or to create a specific files for each topic? That's fine to create a specific file for a topic if you want to focus on a topic. Putting howtos "inline" in your code is helpful because you see a real-world example. And, it is much faster, just write the howto and your done. DM: todoMM: give me a (ok) on this when you've understood the issue and no more questions, so that I can erase or make a permanent note.   -->
 - reusable functions and code snippets
   - src/utils/array|object|string|etc - write the function or snippet there
 
