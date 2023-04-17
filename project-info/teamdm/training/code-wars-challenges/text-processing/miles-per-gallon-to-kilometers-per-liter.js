@@ -75,8 +75,9 @@ Naming variables:
 * everything else with nouns or adjectives: (myThing, myCoolThing)
 * variable names should express exactly what the variable contains
 * see naming-conventions.md*/
-const kilometerToMile = mpg * 1.609344
-const kilometerPerLiter = kilometerToMile / 4.54609188
+const kilometerToMile = 1.609344
+const literToGallon = 4.54609188
+const kilometerPerLiter = mpg * kilometerToMile / literToGallon
 
 /* 8. use the named parts to create a readable solution. */
 
