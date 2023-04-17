@@ -75,7 +75,7 @@ Naming variables:
 * everything else with nouns or adjectives: (myThing, myCoolThing)
 * variable names should express exactly what the variable contains
 * see naming-conventions.md*/
-  // DM: todoMM: these seem like they are mileToKilometers and gallonToLiters
+  // DM: todoMM: good names, but the word you are looking for is "per" (and the first term is plural) - so you can say kilometersPerMile and litersPerGallon)
   const kilometerToMile = 1.609344
   const literToGallon = 4.54609188
 
