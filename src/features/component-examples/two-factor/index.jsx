@@ -11,8 +11,8 @@ function TwoFactor() {
     console.log({ isCorrect })
   }, [isCorrect])
 
-  // DM: todoMM: please address all the todoMMs in the repo and put an (ok) or a question or something next to my answers to ???DM - then I can know that part is done, understood, and I can either remove it, or leave a permanent comment.
-  // DM: todoMM: make a react vocab entry for 'side effect' (search: "reactjs side effect" and prefer search result links that are official react docs, if they are shown)
+  // DM: todoMM: please address all the todoMMs in the repo and put an (ok) or a question or something next to my answers to ???DM - then I can know that part is done, understood, and I can either remove it, or leave a permanent comment.(ok)
+  // DM: todoMM: make a react vocab entry for 'side effect' (search: "reactjs side effect" and prefer search result links that are official react docs, if they are shown)(in progress)
 
   return (
     <form>

@@ -21,7 +21,7 @@ const VisuallyHidden = ({ children, ...delegated }) => {
     // I got this from the joy-of-react, i need to understand the concept behind this.
     // DM: THere's not much to it. this "environment variable" lets the code be aware of which "environment" (dev, stage, prod) you are in.
     if (!process.env.NODE_ENV === 'production') {
-      // to make this line of code guard clause, should i change 'production' to 'development'? or just change the not operator to the beginning of the expression as i put above? The goal is to reduce indenting and show at the top of the function the conditions that must be met in order to execute the rest of the function. So, you can leave the "operands" as they are, but just change the operator to !== and return immediately if the logical expression evaluates to true.
+      // to make this line of code guard clause, should i change 'production' to 'development'? or just change the not operator to the beginning of the expression as i put above? The goal is to reduce indenting and show at the top of the function the conditions that must be met in order to execute the rest of the function. So, you can leave the "operands" as they are, but just change the operator to !== and return immediately if the logical expression evaluates to true.(read, but the answer is in progress)
       // howtoreact: respond to the use of keystrokes
       const handleKeyDown = (ev) => {
         if (ev.key === 'Alt') {
