@@ -46,7 +46,7 @@ function myFunction(parameter1, parameter2) {
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
-        Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!)
+        Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, DM: yes!)
         */
   /*
 
@@ -81,5 +81,8 @@ myFunction('', '') // expected result
              what it is with lots of words. Just write exactly what the variable holds.
              Later, in this step, you can refine variable names to be shorter.  */
 
-/* 12. Final step: copy the solution below this line, remove all comments and console.log below this line  
+/* 12. code review and approval*/
+/*  */
+
+/* 13. Final step: after code review and final approval (like we do at work), I'll leave a comment here, and you can: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
