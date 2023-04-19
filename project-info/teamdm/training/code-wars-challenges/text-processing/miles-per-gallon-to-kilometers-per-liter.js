@@ -1,3 +1,5 @@
+// DM: todoMM: hey, pls finish this up before doing any more new challenges. I know the need to move on to a new challenge, but in the end it costs more time to return to unfinished code later. Also, it's good to "nail down" lessons learned before moving on to the next challenge. This was well-done, so "put a bow on it"!
+
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 /*

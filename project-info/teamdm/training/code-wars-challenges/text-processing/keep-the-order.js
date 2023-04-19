@@ -47,7 +47,7 @@ function keepOrder(ary, val) {
 
         output: string|number|...; possible values: */
   /*
-input: number in a sorted array
+input: number and a sorted array
 output: index of a number that can be inserted into the array to maintain the sorted order
   */
 
@@ -62,6 +62,7 @@ output: index of a number that can be inserted into the array to maintain the so
         Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, DM: yes!)
         */
   /*
+  // DM: todoMM: you don't have to insert it, just find out what the index is and return that index
 i want to find the index of a given number(val), and insert it into the array in order to maintain the sorted order
   */
 
@@ -75,13 +76,17 @@ i want to find the index of a given number(val), and insert it into the array in
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
+
+  // DM: you already have the elements of the solution. I can't think of any more. So, I moved the code the #8, because you can go directly to the solution.
+
+  /* 8. use the named parts to create a readable solution. */
+
+  // DM: todoMM: in this case you have an array, and you want to get a number (the index). So, whenever you want to change an array to something non-array, you use Array.reduce()! Your logic below is going in the right direction. So, search the repo for ".reduce(" to see an example of reduce as a refresher (you've done it before), then try using it here.
   const mappedArray = ary.map((item, index) => {
     console.log('item', item, 'index', index)
     const itemEqualsVal = item === val
     // the idea is to find the index of the first number that is greater than val
   })
-
-  /* 8. use the named parts to create a readable solution. */
 
   /* 9. return the solution
       always return a variable, or, use only variables in return statements
@@ -105,11 +110,11 @@ keepOrder([1, 2, 3, 4], 3) // 2
 keepOrder([-5, -4, -2, -1, 1, 2], -2) // 2
 
 /* 11. Make it pretty! Review the code for conciseness and readability: clear, descriptive variable names
-       note: as you are working, try to write good names, so that Duncan and yourself can 
+       note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
              understand easily. Don't use misleading or too-unspecific variable names.
-             But, don't spend much time on it. The trick is to describe
+             But, don't spend much time figuring out the perfect variable name. The trick is to describe
              what it is with lots of words. Just write exactly what the variable holds.
-             Later, in this step, you can refine variable names to be shorter.  */
+             Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
 /* 12. code review and approval*/
 /*  */

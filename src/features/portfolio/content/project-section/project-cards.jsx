@@ -1,7 +1,11 @@
+// DM: todoMM: think about each of my instructions below noticing what extra information the requested changes will give me, the reader. These changes may seem small, but they convey a lot of information to the reader.
 import { projectCards } from '@/constants/portfolio/content/project-cards'
 import Divider from '@/ui/divider'
-// DM: todoDM: find out why you can't click on projectCards to go to the file if @ is used
+// DM: todoDM: find out why you can't ctrl-click on projectCards to go to the file if @ is used
+
+// DM: todoMM: variable naming: you have one header for all the cards, so CardsHeading would be the better name. Otherwise, I the reader ask myself: is this a heading for each cart?
 import CardHeading from './card-heading'
+// DM: todoMM: have the component name match the filename (it is correctly plural)
 const ProjectCard = () => {
   return (
     <div className="tailwind-class-uploading">
@@ -44,6 +48,8 @@ const ProjectCard = () => {
 
 export default ProjectCard
 
+// DM: todoMM: is this something you can put in constants? especially because it is shared (I see you exported it)
+// DM: todoMM: can the name of the variable be more specific? The name doesn't tell me what it contains.
 export const files = [
   {
     title: 'E-pay',
