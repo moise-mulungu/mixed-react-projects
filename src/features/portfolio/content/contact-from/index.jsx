@@ -7,6 +7,8 @@ import {
   myAddress,
 } from '@/constants/portfolio/contact-form'
 
+import { Button } from '@react-email/button'
+
 // const ContactForm = ({ mySubmitForm }) => {
 //   const onSubmitHandler = (event) => {
 //     event.preventDefault()
@@ -97,6 +99,16 @@ import {
 import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 export default function ContactForm() {
+  const onSubmitHandler = (event) => {
+    event.preventDefault()
+    const firstName = event.currentTarget.elements.firstName.value
+    const lastName = event.currentTarget.elements.lastName.value
+    const email = event.currentTarget.elements.email.value
+    const phone = event.currentTarget.elements.phone.value
+    const message = event.currentTarget.elements.message.value
+    // in progress
+  }
+
   return (
     <div className="relative isolate bg-gray-900">
       <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
@@ -181,7 +193,12 @@ export default function ContactForm() {
             </dl>
           </div>
         </div>
-        <form action="#" method="POST" className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48">
+        <form
+          action="#"
+          method="POST"
+          className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
+          onSubmit={onSubmitHandler}
+        >
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
               <div>
@@ -268,12 +285,20 @@ export default function ContactForm() {
               </div>
             </div>
             <div className="mt-8 flex justify-end">
-              <button
+              {/* <button
                 type="submit"
                 className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
-                Send message
-              </button>
+                <a href="mailto:`{myEmail}`">Click to Send an Email</a>
+              </button> */}
+              <Button
+                href={myEmail}
+                // style={{ color: '#61dafb' }}
+                type="submit"
+                className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+              >
+                Click me
+              </Button>
             </div>
           </div>
         </form>
@@ -281,3 +306,5 @@ export default function ContactForm() {
     </div>
   )
 }
+
+// still working on this
