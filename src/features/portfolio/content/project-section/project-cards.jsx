@@ -4,12 +4,12 @@ import Divider from '@/ui/divider'
 // DM: todoDM: find out why you can't ctrl-click on projectCards to go to the file if @ is used
 
 // DM: todoMM: variable naming: you have one header for all the cards, so CardsHeading would be the better name. Otherwise, I the reader ask myself: is this a heading for each cart?
-import CardHeading from './card-heading'
+import CardsHeading from './card-heading'
 // DM: todoMM: have the component name match the filename (it is correctly plural)
 const ProjectCard = () => {
   return (
     <div className="tailwind-class-uploading">
-      <CardHeading />
+      <CardsHeading />
       <ul>
         {projectCards.map(({ title, description, image, url, stacks }) => {
           return (

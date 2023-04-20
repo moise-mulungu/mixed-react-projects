@@ -6,8 +6,7 @@ import {
   contactFormHeading,
   myAddress,
 } from '@/constants/portfolio/contact-form'
-
-import { Button } from '@react-email/button'
+import { useForm } from 'react-hook-form'
 
 // const ContactForm = ({ mySubmitForm }) => {
 //   const onSubmitHandler = (event) => {
@@ -99,14 +98,14 @@ import { Button } from '@react-email/button'
 import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 export default function ContactForm() {
-  const onSubmitHandler = (event) => {
-    event.preventDefault()
-    const firstName = event.currentTarget.elements.firstName.value
-    const lastName = event.currentTarget.elements.lastName.value
-    const email = event.currentTarget.elements.email.value
-    const phone = event.currentTarget.elements.phone.value
-    const message = event.currentTarget.elements.message.value
-    // in progress
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm()
+  const onSubmit = (data) => {
+    alert(JSON.stringify(data))
   }
 
   return (
@@ -197,7 +196,7 @@ export default function ContactForm() {
           action="#"
           method="POST"
           className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
-          onSubmit={onSubmitHandler}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -215,7 +214,17 @@ export default function ContactForm() {
                     id="first-name"
                     autoComplete="given-name"
                     className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                    {...register('firstName', { required: true, maxLength: 20 })}
                   />
+                  {errors?.firstName?.type === 'required' && (
+                    <p className="text-white">This field is required</p>
+                  )}
+                  {errors?.firstName?.type === 'maxLength' && (
+                    <p className="text-white">First name cannot exceed 20 characters</p>
+                  )}
+                  {errors?.firstName?.type === 'pattern' && (
+                    <p className="text-white">Alphabetical characters only</p>
+                  )}
                 </div>
               </div>
               <div>
@@ -232,7 +241,24 @@ export default function ContactForm() {
                     id="last-name"
                     autoComplete="family-name"
                     className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                    {...register('lastName', {
+                      required: true,
+                      maxLength: 20,
+                      pattern: /^[A-Za-z]+$/i,
+                    })}
                   />
+                  {errors?.lastName?.type === 'required' && (
+                    <p className="text-white">This field is required</p>
+                  )}
+                  {errors?.lastName?.type === 'maxLength' && (
+                    <p className="text-white">First name cannot exceed 20 characters</p>
+                  )}
+                  {errors?.lastName?.type === 'pattern' && (
+                    <p className="text-white">
+                      {' '}
+                      className='text-white'Alphabetical characters only
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="sm:col-span-2">
@@ -246,7 +272,12 @@ export default function ContactForm() {
                     id="email"
                     autoComplete="email"
                     className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                    {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
                   />
+                  {errors?.email?.type === 'required' && <p>Email must be in a required format</p>}
+                  {errors?.email?.type === 'pattern' && (
+                    <p className="text-white">Email must be in required format</p>
+                  )}
                 </div>
               </div>
               <div className="sm:col-span-2">
@@ -263,7 +294,13 @@ export default function ContactForm() {
                     id="phone-number"
                     autoComplete="tel"
                     className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                    {...register('phoneNumber', {
+                      required: true,
+                      maxLength: 20,
+                      pattern: /^[0-9]+$/i,
+                    })}
                   />
+                  {errors?.phone?.type === 'pattern' && <p>Only numbers are valid</p>}
                 </div>
               </div>
               <div className="sm:col-span-2">
@@ -279,8 +316,10 @@ export default function ContactForm() {
                     id="message"
                     rows={4}
                     className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                    {...register('message', { required: true, maxLength: 1000 })}
                     defaultValue={''}
                   />
+                  {errors?.message?.type === 'required' && <p>This field can't be empty</p>}
                 </div>
               </div>
             </div>
@@ -291,14 +330,14 @@ export default function ContactForm() {
               >
                 <a href="mailto:`{myEmail}`">Click to Send an Email</a>
               </button> */}
-              <Button
+              <button
                 href={myEmail}
                 // style={{ color: '#61dafb' }}
                 type="submit"
                 className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
                 Click me
-              </Button>
+              </button>
             </div>
           </div>
         </form>
@@ -307,4 +346,4 @@ export default function ContactForm() {
   )
 }
 
-// still working on this
+// This component is still in progress ...

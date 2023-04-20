@@ -82,13 +82,13 @@ Naming variables:
   const literToGallon = 4.54609188
 
   /* 8. use the named parts to create a readable solution. */
-  const kilometerPerLiter = (mpg * kilometerToMile) / literToGallon
+  const kilometersPerLiter = (mpg * kilometerToMile) / literToGallon
 
   /* 9. return the solution
 always return a variable, or, use only variables in return statements
 this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
 */
-  return Number(kilometerPerLiter.toFixed(2))
+  return Number(kilometersPerLiter.toFixed(2))
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 converter(10) // 3.54
@@ -113,7 +113,9 @@ converter(30) // 10.62
 //     again, excellent work, and beside the above comments it was really fast to review and you get great practice!
 function converter(mpg) {
   //code to convert miles per imperial gallon to kilometers per liter
-  const kilometerPerLiter = (mpg * 1.609344) / 4.54609188
+  const kilometerToMile = 1.609344
+  const literToGallon = 4.54609188
+  const kilometerPerLiter = (mpg * kilometerToMile) / literToGallon
   return Number(kilometerPerLiter.toFixed(2))
 }
 

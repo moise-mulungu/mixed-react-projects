@@ -1,6 +1,6 @@
 import { contentWorkHeaderText } from '@/constants/portfolio/content/project-cards'
 
-const CardHeading = () => {
+const CardsHeading = () => {
   return (
     <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-2xl sm:tracking-tight">
       {contentWorkHeaderText}
@@ -8,4 +8,4 @@ const CardHeading = () => {
   )
 }
 
-export default CardHeading
+export default CardsHeading
