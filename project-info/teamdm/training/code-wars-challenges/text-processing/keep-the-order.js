@@ -37,6 +37,7 @@ n/a
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
 // It's OK to rename the parameter(s) in the codewars starter function if the parameter names are imprecise
+// DM: todoMM: let's rename these. 'ary' breaks the "no abbreviations" coding standard, as does val, and val doesn't describe what is in the val (you can use your 'input' description in #4)
 function keepOrder(ary, val) {
   /* 4. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
@@ -52,6 +53,8 @@ output: index of a number that can be inserted into the array to maintain the so
   */
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
+  // DM: great validation!, super! Glad you're writing these as a function, that way they are quickly reusable.
+  // DM: todoMM: put this function into src/utils/arrays/isArraySorted. (changing 'ary' to 'array')
   const isSorted = (ary) => ary.every((value, index) => index === 0 || ary[index - 1] <= value)
   console.log('isSorted', isSorted(ary))
   if (!isSorted(ary)) throw new Error('array is not sorted')
@@ -84,6 +87,7 @@ i want to find the index of a given number(val), and return it
   // DM: todoMM: in this case you have an array, and you want to get a number (the index). So, whenever you want to change an array to something non-array, you use Array.reduce()! Your logic below is going in the right direction. So, search the repo for ".reduce(" to see an example of reduce as a refresher (you've done it before), then try using it here.
   // get the index of the val
   const filteredItemsLessThanVal = ary.filter((item) => item < val)
+  // DM: todoMM: this wasn't my first solution, but is is good! hot tip: try: indexOfTheNextItem = filteredItemsLessThanVal.length and test to see if it works.
   const indexOfTheNextItem = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
   console.log('indexOfTheNextItem', indexOfTheNextItem)
 
@@ -107,6 +111,7 @@ keepOrder([1, 2, 3, 4], 1) // 0
 keepOrder([1, 2, 3, 4], 2) // 1
 keepOrder([1, 2, 3, 4], 3) // 2
 keepOrder([-5, -4, -2, -1, 1, 2], -2) // 2
+// DM: todoMM: extra credit: try passing an array of one-word strings, all lower case, and see what happens! (hint, < and > can be used on strings)
 
 /* 11. Make it pretty! Review the code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -120,7 +125,7 @@ keepOrder([-5, -4, -2, -1, 1, 2], -2) // 2
 
 /* 13. Final step: after code review and final approval (like we do at work), I'll leave a comment here, and you can: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
-
+// DM: hey, check out the new instructions in 13 above. Do wait until I give "final approval" here a this gives me a chance to do a "code review" and help you perfect the solution before doing 13.
 function keepOrder(ary, val) {
   const isSorted = (ary) => ary.every((value, index) => index === 0 || ary[index - 1] <= value)
   if (!isSorted(ary)) throw new Error('array is not sorted')

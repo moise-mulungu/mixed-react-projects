@@ -1,5 +1,3 @@
-// DM: todoMM: hey, pls finish this up before doing any more new challenges. I know the need to move on to a new challenge, but in the end it costs more time to return to unfinished code later. Also, it's good to "nail down" lessons learned before moving on to the next challenge. This was well-done, so "put a bow on it"!
-
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 /*
@@ -77,7 +75,6 @@ Naming variables:
 * everything else with nouns or adjectives: (myThing, myCoolThing)
 * variable names should express exactly what the variable contains
 * see naming-conventions.md*/
-  // DM: todoMM: good names, but the word you are looking for is "per" (and the first term is plural) - so you can say kilometersPerMile and litersPerGallon)
   const kilometerToMile = 1.609344
   const literToGallon = 4.54609188
 
@@ -105,12 +102,6 @@ converter(30) // 10.62
 /* 12. Final step: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-// DM: todoMM: great solution. This should be exactly the same code as above.
-//     Your solution above was perfect. This one below has fewer lines, but is harder/slower to read.
-//     So you get an idea of the perspective of the reader, the numbers 1.609344 and 4.54609188 mean nothing to me, and slow me down, even if it is logical to guess. If you name them with kilometerToMile and literToGallon I don't have to think for a second or care about the number. And if I were to check your math, (which I usually won't as long as the tests pass), it would be a lot faster.
-//     note the change I made to 12, 13 in STARTER.js. this step will be only after code review and approval. (thanks for your patience ... I'm adjusting this as we go along)
-//     sometimes while removing comments and seeing it all together here, you'll think of an improvement. Do it, but remember to change in both places, here and above, so that they are in sync to avoid any future confusion (when you return here to look at a solution)
-//     again, excellent work, and beside the above comments it was really fast to review and you get great practice!
 function converter(mpg) {
   //code to convert miles per imperial gallon to kilometers per liter
   const kilometerToMile = 1.609344
