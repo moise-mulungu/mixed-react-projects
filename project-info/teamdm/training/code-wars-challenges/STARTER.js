@@ -21,7 +21,7 @@
 
 /* 2. list and describe anything that is unclear in the challenge description
       these would be the questions you'd be expected to ask in a interview situation
-      (practice reading the challenge description carefully). Really take a minute to review the requirements (challenge description) and see if there are any ambiguities. Say out-loud to yourself what you understand the task to be, pretending that you are saying this to an interviewer. This is very important to practice. */
+      (practice reading the challenge description carefully). Really take a minute to review the requirements (challenge description) and see if there are any ambiguities. Say out-loud to yourself what you understand the task to be, pretending that you are saying this to an interviewer. This is very important to practice.(ok) */
 /*
 
 */
