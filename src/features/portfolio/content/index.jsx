@@ -5,7 +5,6 @@ import ProjectCard from './project-section/project-cards'
 import Divider from '@/ui/divider'
 import ContactForm from './contact-from'
 import { Example } from './project-section/project-cards'
-// import { Example2 } from './overview'
 
 export default function Content(props) {
   const { data } = props
@@ -19,9 +18,9 @@ export default function Content(props) {
       >
         <Overview />
         <Divider />
-        <ProjectCard />
-        <Divider />
         <Example />
+        <Divider />
+        <ProjectCard />
         <Divider />
         <Skills />
         <Divider />

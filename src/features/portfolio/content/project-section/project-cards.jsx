@@ -1,212 +1,247 @@
 // DM: todoMM: think about each of my instructions below noticing what extra information the requested changes will give me, the reader. These changes may seem small, but they convey a lot of information to the reader.
-import { projectCards } from '@/constants/portfolio/content/project-cards'
+import { projectCards, projectCardText } from '@/constants/portfolio/content/project-cards'
 import Divider from '@/ui/divider'
 // DM: todoDM: find out why you can't ctrl-click on projectCards to go to the file if @ is used
 
 // DM: todoMM: variable naming: you have one header for all the cards, so CardsHeading would be the better name. Otherwise, I the reader ask myself: is this a heading for each cart?
 import CardsHeading from './card-heading'
 // DM: todoMM: have the component name match the filename (it is correctly plural)
-const ProjectCard = () => {
-  return (
-    <div className="tailwind-class-uploading">
-      <CardsHeading />
-      <ul>
-        {projectCards.map(({ title, description, image, url, stacks }) => {
-          return (
-            <>
-              <li key={title}>
-                <h2 className="text-2xl font-bold leading-7 text-gray-500 sm:truncate sm:text-1xl sm:tracking-tight">
-                  {title}
-                </h2>
-                <p>{description}</p>
-                <img src={image} alt="" />
-                <a href={url}>
-                  <button
-                    type="button"
-                    className="rounded-md bg-indigo-50 py-2.5 px-3.5 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
-                  >
-                    <span>View Project</span>
-                    {/* <CheckCircleIcon className="-mr-0.5 h-5 w-5" aria-hidden="true" /> */}
-                  </button>
-                </a>
-                <ul>
-                  {' '}
-                  Built with:
-                  {stacks?.map((stack) => {
-                    return <li key={stack}>{stack}</li>
-                  })}
-                </ul>
-              </li>
-              <Divider />
-            </>
-          )
-        })}
-      </ul>
-    </div>
-  )
-}
-
-export default ProjectCard
 
 // DM: todoMM: is this something you can put in constants? especially because it is shared (I see you exported it)
 // DM: todoMM: can the name of the variable be more specific? The name doesn't tell me what it contains.
-export const files = [
-  {
-    title: 'E-pay',
-    description:
-      'A daily money transaction application, This is a web application that helps you to manage your budget: You have a list of transactions associated with a category, so that you can see how much money you spent and on what',
-    image:
-      'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    url: 'https://render-e-pay.onrender.com/',
-    stacks: ['Ruby on Rails', 'Capybara', 'RSpec', 'Selenium', 'PostgreSQL', 'CSS'],
-  },
-  {
-    title: 'Meet Doctors',
-    description:
-      'A double single page app that connects doctors with patients. you can book an appointment with any doctor of your choice of any specialty from around the world with the possibility of paying your bill online',
-    image:
-      'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    url: 'https://meet-a-doctor.netlify.app/login',
-    stacks: [
-      'Ruby on Rails',
-      'React',
-      'Redux',
-      'CSS',
-      'Capybara',
-      'RSpec',
-      'Selenium',
-      'PostgreSQL',
-    ],
-  },
-  {
-    title: 'Relworx money',
-    description:
-      'This is an app that helps users to do their money transactions by sending, receiving any amount of with a default account of 100$.',
-    image:
-      'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    url: 'https://moise-mulungu.github.io/Relworx_Money/',
-    stacks: ['JavaScript', 'CSS'],
-  },
-  {
-    title: 'Math Magician',
-    description:
-      'A single Page Application with three pages, a home page , a calculator page for all mathematical operations, and a quote page with a wise quote from William Paul Thurston',
-    image:
-      'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    url: '',
-    stacks: ['React', 'CSS', 'Redux'],
-  },
-  {
-    title: 'Make Up App',
-    description:
-      'This makeup app allows you to get any makeup products online from different online bookstore, you can also get the best makeup artist in your area',
-    image:
-      'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    url: 'https://comfy-alpaca-a10613.netlify.app/',
-    stacks: ['React', 'Redux', 'CSS', 'RSpec'],
-  },
-  {
-    title: 'Bookstore',
-    description:
-      'A bookstore app that allows you to get any book online from different online bookstore',
-    image:
-      'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-    url: 'https://animated-stroopwafel-ca252e.netlify.app/',
-    stacks: ['React', 'Redux', 'CSS', 'RSpec'],
-  },
-]
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
-*/
-// const files = [
-//   {
-//     title: 'E-Pay',
-//     description:
-//       'This is an app that helps users to do their money transactions by sending, receiving any amount of with a default account of 100$.',
-//     image: 'portfolio.png',
-//     url: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-//   },
-//   {
-//     title: 'Meet Doctors',
-//     description:
-//       'A double single page app that connects doctors with patients. you can book an appointment with any doctor of your choice of any specialty from around the world with the possibility of paying your bill online',
-//     image: 'portfolio.png',
-//     url: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-//   },
-//   {
-//     title: 'Relworx Money',
-//     description:
-//       'This is an app that helps users to do their money transactions by sending, receiving any amount of with a default account of 100$.',
-//     image: 'portfolio.png',
-//     url: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-//   },
-//   {
-//     title: 'Math_Magician',
-//     description: '4.1 MB',
-//     url: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-//   },
-//   {
-//     title: 'Bookstore',
-//     description: '4.1 MB',
-//     url: 'https://images.unsplash.com/photo-1582053433976-25c00369fc93?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80',
-//   },
-// ]
+
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import {
+  ArchiveBoxIcon,
+  ArrowRightCircleIcon,
+  ChevronDownIcon,
+  DocumentDuplicateIcon,
+  HeartIcon,
+  PencilSquareIcon,
+  TrashIcon,
+  UserPlusIcon,
+} from '@heroicons/react/20/solid'
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export function Example() {
   return (
-    <ul
-      role="list"
-      className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8"
-    >
-      {files.map((file) => (
-        <li key={file.title} className="relative">
-          <div className="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
-            <img
-              src={file.image}
-              alt=""
-              className="pointer-events-none object-cover group-hover:opacity-75"
-            />
-            <button type="button" className="absolute inset-0 focus:outline-none">
-              <span className="sr-only">View details for {file.title}</span>
-            </button>
+    <Menu as="div" className="relative inline-block text-left">
+      <div>
+        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+          Built with:
+          <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
+        </Menu.Button>
+      </div>
+
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="py-1">
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'group flex items-center px-4 py-2 text-sm'
+                  )}
+                >
+                  <PencilSquareIcon
+                    className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                  Edit
+                </a>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'group flex items-center px-4 py-2 text-sm'
+                  )}
+                >
+                  <DocumentDuplicateIcon
+                    className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                  Duplicate
+                </a>
+              )}
+            </Menu.Item>
           </div>
-          <p className="pointer-events-none mt-2 block truncate text-sm font-medium text-gray-900">
-            {file.title}
-          </p>
-          <p className="pointer-events-none block text-sm font-medium text-gray-500">
-            {file.description}
-          </p>
-          <ul>
-            {' '}
-            Built with:
-            {files.stacks?.map((stack) => {
-              return <li key={stack}>{stack}</li>
-            })}
-          </ul>
-          <a href={file.url}>
-            <button
-              type="button"
-              className="rounded-md bg-indigo-50 py-2.5 px-3.5 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-100"
-            >
-              <span>View Project</span>
-              {/* <CheckCircleIcon className="-mr-0.5 h-5 w-5" aria-hidden="true" /> */}
-            </button>
-          </a>
-        </li>
-      ))}
-    </ul>
+          <div className="py-1">
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'group flex items-center px-4 py-2 text-sm'
+                  )}
+                >
+                  <ArchiveBoxIcon
+                    className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                  Archive
+                </a>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'group flex items-center px-4 py-2 text-sm'
+                  )}
+                >
+                  <ArrowRightCircleIcon
+                    className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                  Move
+                </a>
+              )}
+            </Menu.Item>
+          </div>
+          <div className="py-1">
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'group flex items-center px-4 py-2 text-sm'
+                  )}
+                >
+                  <UserPlusIcon
+                    className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                  Share
+                </a>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'group flex items-center px-4 py-2 text-sm'
+                  )}
+                >
+                  <HeartIcon
+                    className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                  Add to favorites
+                </a>
+              )}
+            </Menu.Item>
+          </div>
+          <div className="py-1">
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    'group flex items-center px-4 py-2 text-sm'
+                  )}
+                >
+                  <TrashIcon
+                    className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                    aria-hidden="true"
+                  />
+                  Delete
+                </a>
+              )}
+            </Menu.Item>
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
   )
 }
+
+const ProjectCard = () => {
+  return (
+    <div className="bg-white py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:text-center">
+          <h2 className="text-base font-semibold leading-7 text-indigo-600">
+            <CardsHeading />
+          </h2>
+          {/* <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"></p> */}
+          <p className="mt-6 text-lg leading-8 text-gray-600">{projectCardText}</p>
+        </div>
+        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+          <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
+            {projectCards.map(({ title, description, image, url, stacks }) => {
+              return (
+                <div key={title} className="flex flex-col">
+                  <dt className="flex items-center gap-x-3 text-2xl font-semibold leading-7 text-gray-900">
+                    {/* <feature.icon className="h-5 w-5 flex-none text-indigo-600" aria-hidden="true" /> */}
+                    {title}
+                  </dt>
+                  <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
+                    <p className="flex-auto font-semibold">{description}</p>
+                    <img
+                      className="aspect-[3/2] w-full rounded-2xl object-cover"
+                      src={image}
+                      alt=""
+                    />
+                    <p className="mt-6">
+                      {/* <a
+                      href={feature.href}
+                      className="text-sm font-semibold leading-6 text-indigo-600"
+                    >
+                      Learn more <span aria-hidden="true">→</span>
+                    </a> */}
+                      <a href={url}>
+                        <button
+                          type="button"
+                          className="text-sm font-semibold leading-6 text-indigo-600"
+                        >
+                          view project <span aria-hidden="true">→</span>
+                          {/* <CheckCircleIcon className="-mr-0.5 h-5 w-5" aria-hidden="true" /> */}
+                        </button>
+                      </a>
+                      <ul>
+                        {' '}
+                        {stacks?.map((stack) => {
+                          // return <li key={stack}>{stack}</li>
+                        })}
+                        {/* ???DM: I want to use dropdowns for stacks as it is with Example component */}
+                      </ul>
+                      <Example />
+                    </p>
+                  </dd>
+                </div>
+              )
+            })}
+          </dl>
+        </div>
+      </div>
+    </div>
+  )
+}
+export default ProjectCard
 
 // I am still working on this component, trying to find a better design from tailwind.
