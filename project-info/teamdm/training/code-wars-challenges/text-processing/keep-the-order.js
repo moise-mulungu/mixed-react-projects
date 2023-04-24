@@ -37,7 +37,7 @@ n/a
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
 // It's OK to rename the parameter(s) in the codewars starter function if the parameter names are imprecise
-// DM: todoMM: let's rename these. 'ary' breaks the "no abbreviations" coding standard, as does val, and val doesn't describe what is in the val (you can use your 'input' description in #4)
+
 function keepOrder(sortedArray, number) {
   /* 4. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
@@ -49,12 +49,11 @@ function keepOrder(sortedArray, number) {
         output: string|number|...; possible values: */
   /*
 input: number and a sorted array
-output: index of a number that can be inserted into the array to maintain the sorted order
+output: lowest index of the number that can be inserted into the array to maintain the sorted order
   */
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   // DM: great validation!, super! Glad you're writing these as a function, that way they are quickly reusable.
-  // DM: todoMM: put this function into src/utils/arrays/isArraySorted. (changing 'ary' to 'array')(ok!).
   const isSorted = (sortedArray) =>
     sortedArray.every((value, index) => index === 0 || sortedArray[index - 1] <= value)
   console.log('isSorted', isSorted(sortedArray))
@@ -66,8 +65,7 @@ output: index of a number that can be inserted into the array to maintain the so
         Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, DM: yes!)
         */
   /*
-  // DM: todoMM: you don't have to insert it, just find out what the index is and return that index
-i want to find the index of a given number(val), and return it
+i want to find the lowest index of a given number(val), and return it
   */
 
   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -81,15 +79,17 @@ i want to find the index of a given number(val), and return it
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  // DM: you already have the elements of the solution. I can't think of any more. So, I moved the code the #8, because you can go directly to the solution.
-
   /* 8. use the named parts to create a readable solution. */
 
-  // DM: todoMM: in this case you have an array, and you want to get a number (the index). So, whenever you want to change an array to something non-array, you use Array.reduce()! Your logic below is going in the right direction. So, search the repo for ".reduce(" to see an example of reduce as a refresher (you've done it before), then try using it here.
   // get the index of the val
-  const filteredItemsLessThanVal = sortedArray.filter((item) => item < number)
-  // DM: todoMM: this wasn't my first solution, but is is good! hot tip: try: indexOfTheNextItem = filteredItemsLessThanVal.length and test to see if it works.(i first tried to use the length of the array, it worked perfectly.)
-  const indexOfTheNextItem = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
+  const filteredItemsLessThanVal = sortedArray.filter((item) => {
+    console.log(item, number, item < number)
+    return item < number
+  })
+  // DM: I implemented the .length solution here because it is more readable.
+  // DM: todoMM: let's rename this to lowestIndex because indexOfNextItem looks like the index *after* the item (remember that indexes count starting 0, but array.length counts starting 1)
+  const indexOfTheNextItem = filteredItemsLessThanVal.length
+  // const indexOfTheNextItem = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
   console.log('indexOfTheNextItem', indexOfTheNextItem)
 
   /* 9. return the solution
@@ -112,7 +112,10 @@ keepOrder([1, 2, 3, 4], 1) // 0
 keepOrder([1, 2, 3, 4], 2) // 1
 keepOrder([1, 2, 3, 4], 3) // 2
 keepOrder([-5, -4, -2, -1, 1, 2], -2) // 2
-// DM: todoMM: extra credit: try passing an array of one-word strings, all lower case, and see what happens! (hint, < and > can be used on strings; when passing an array of strings, am getting 0 as result, i think it because the string is not sorted or?).
+// DM: todoMM: extra credit: try passing an array of one-word strings, all lower case, and see what happens! (hint, < and > can be used on strings; when passing an array of strings, am getting 0 as result, i think it because the string is not sorted or?). DM: it works correctly. I wanted to show you that < and > work on strings.
+keepOrder(['abcc', 'defff', 'ghi'], 'defff') // 1
+keepOrder(['abc', 'def', 'ghi'], 'ghi') // 2
+keepOrder(['abc', 'ghi', 'def'], 'def') // not sorted
 
 /* 11. Make it pretty! Review the code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
