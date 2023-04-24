@@ -103,7 +103,7 @@ converter(30) // 10.62
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
 function converter(mpg) {
-  //code to convert miles per imperial gallon to kilometers per liter
+  // convert miles per imperial gallon to kilometers per liter
   const kilometerToMile = 1.609344
   const literToGallon = 4.54609188
   const kilometerPerLiter = (mpg * kilometerToMile) / literToGallon

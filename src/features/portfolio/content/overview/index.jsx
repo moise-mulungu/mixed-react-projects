@@ -6,6 +6,7 @@ import { socialLinks } from '@/constants/portfolio'
 import { v4 as uuid } from 'uuid'
 
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
+// DM: todoDM: keep this around to address the todoDM in the commented area below
 // const Overview = (props) => {
 //   // MM: ???DM: I did this to avoid the eslint error: here is the resources I used to fix it: https://eslint.org/docs/latest/rules/no-empty-pattern. super! typically the variable '_' can mean 'not used'
 //   const { _ = {} } = props

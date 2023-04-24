@@ -7,7 +7,7 @@ export const projectCards = [
       'A daily money transaction application, This is a web application that helps you to manage your budget: You have a list of transactions associated with a category, so that you can see how much money you spent and on what',
     image:
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
-    // this url is temporary, I will change it later, i will use the projects screenshot images instead of the unsplash images.
+    // this url is temporary, I will change it later, i will use the projects screenshot images instead of the unsplash images. (ok, good)
     url: 'https://render-e-pay.onrender.com/',
     stacks: ['Ruby on Rails', 'Capybara', 'RSpec', 'Selenium', 'PostgreSQL', 'CSS'],
   },
@@ -18,6 +18,7 @@ export const projectCards = [
     image:
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     url: 'https://meet-a-doctor.netlify.app/login',
+    // DM: todoMM: rename to stack in all cases. why? I know you followed the plural for arrays rule! but, stack is an implied plural/list/array. "stacks" would imply a list of lists (array of arrays).  Each individual element you can call a stackItem".
     stacks: [
       'Ruby on Rails',
       'React',

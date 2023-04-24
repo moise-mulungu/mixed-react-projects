@@ -63,15 +63,16 @@ export default function ComponentExamples() {
       <TwoFactor />
       <Divider />
       <SelectColors
-        colors={
-          // DM: todoMM: have a look at how you are correctly using the 'colors' prop in the select-colors.jsx component. What does the component expect to be passed? What is the data type (string, array, JSX) that select colors expects to receive? Here, you are trying to pass a React component, but your select-colors component just wants colors.
-          <>
-            <option value="">{(colors = 'Select a color')}</option>
-            <option value="red">{(colors = 'Red')}</option>
-            <option value="green">{(colors = 'Green')}</option>
-            <option value="blue">{(colors = 'Yellow')}</option>
-          </>
-        }
+        // DM: commented this out, as the app wasn't compiling
+        // colors={
+        //   // DM: todoMM: have a look at how you are correctly using the 'colors' prop in the select-colors.jsx component. What does the component expect to be passed? What is the data type (string, array, JSX) that select colors expects to receive? Here, you are trying to pass a React component, but your select-colors component just wants colors.
+        //   <>
+        //     <option value="">{(colors = 'Select a color')}</option>
+        //     <option value="red">{(colors = 'Red')}</option>
+        //     <option value="green">{(colors = 'Green')}</option>
+        //     <option value="blue">{(colors = 'Yellow')}</option>
+        //   </>
+        // }
         legend={'Your color value'}
         // if you don't want to pass an initial color, you can delete the next line
         initialColor={''}

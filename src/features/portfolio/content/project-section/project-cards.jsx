@@ -1,4 +1,6 @@
+// DM: todoMM: please put something by each of the todoMMs in the import area, so I know how to proceed.
 // DM: todoMM: think about each of my instructions below noticing what extra information the requested changes will give me, the reader. These changes may seem small, but they convey a lot of information to the reader.
+// DM: todoMM: rename projectCards to projectCardsData, so that we can use "projectCards" as a variable name in this file.
 import { projectCards, projectCardText } from '@/constants/portfolio/content/project-cards'
 import Divider from '@/ui/divider'
 // DM: todoDM: find out why you can't ctrl-click on projectCards to go to the file if @ is used
@@ -27,6 +29,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+// DM: todoMM: first task for this file: move Example to a separate file example.jsx. Also, give it a more specific name, if possible.
 export function Example() {
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -48,6 +51,7 @@ export function Example() {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
+            {/* DM: todoMM: extract <Menu.Item> to a separate component in a separate file, so to avoid all the repetition here. Once you do that, we'll figure out how to use the 'active' boolean */}
             <Menu.Item>
               {({ active }) => (
                 <a
@@ -179,7 +183,7 @@ export function Example() {
     </Menu>
   )
 }
-
+// DM: todoMM: name should sync with the filename
 const ProjectCard = () => {
   return (
     <div className="bg-white py-24 sm:py-32">
@@ -225,10 +229,16 @@ const ProjectCard = () => {
                       </a>
                       <ul>
                         {' '}
+                        {/* DM: todoMM: since this data is under your control, you won't need a "?" in the line below. If you have a project without a stack, then use an empty array "[]" - that way stacks will already exist.  */}
                         {stacks?.map((stack) => {
-                          // return <li key={stack}>{stack}</li>
+                          return <li key={stack}>{stack}</li>
                         })}
-                        {/* ???DM: I want to use dropdowns for stacks as it is with Example component */}
+                        {/* ???DM: I want to use dropdowns for stacks as it is with Example component 
+                        DM: best to not used dropdowns. dropdowns are for selecting one item from a list, not for displaying. I think it is fine to just display them. Later, you might want to do something like:
+                        principal stack item 1
+                        principal stack item 2
+                        more ... // clicking this would activate a popover that lists ALL the stack items (which can get repetitive. is avoiding all the repetition why you wanted to hide some of the stack items in a dropdown?)
+                        */}
                       </ul>
                       <Example />
                     </p>
