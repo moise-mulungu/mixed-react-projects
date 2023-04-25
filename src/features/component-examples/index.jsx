@@ -65,7 +65,7 @@ export default function ComponentExamples() {
       <SelectColors
         // DM: commented this out, as the app wasn't compiling
         // colors={
-        //   // DM: todoMM: have a look at how you are correctly using the 'colors' prop in the select-colors.jsx component. What does the component expect to be passed? What is the data type (string, array, JSX) that select colors expects to receive? Here, you are trying to pass a React component, but your select-colors component just wants colors.
+        //(done)   // DM: todoMM: have a look at how you are correctly using the 'colors' prop in the select-colors.jsx component. What does the component expect to be passed? What is the data type (string, array, JSX) that select colors expects to receive? Here, you are trying to pass a React component, but your select-colors component just wants colors.
         //   <>
         //     <option value="">{(colors = 'Select a color')}</option>
         //     <option value="red">{(colors = 'Red')}</option>
@@ -73,8 +73,9 @@ export default function ComponentExamples() {
         //     <option value="blue">{(colors = 'Yellow')}</option>
         //   </>
         // }
+        colors={['red', 'green', 'blue', 'yellow', 'purple', 'orange']}
         legend={'Your color value'}
-        // if you don't want to pass an initial color, you can delete the next line
+        // if you don't want to pass an initial color, you can delete the next line. I want the initial color to be an empty string, so I am passing it in.
         initialColor={''}
       />
     </div>

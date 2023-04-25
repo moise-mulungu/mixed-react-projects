@@ -87,16 +87,16 @@ i want to find the lowest index of a given number(val), and return it
     return item < number
   })
   // DM: I implemented the .length solution here because it is more readable.
-  // DM: todoMM: let's rename this to lowestIndex because indexOfNextItem looks like the index *after* the item (remember that indexes count starting 0, but array.length counts starting 1)
-  const indexOfTheNextItem = filteredItemsLessThanVal.length
-  // const indexOfTheNextItem = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
-  console.log('indexOfTheNextItem', indexOfTheNextItem)
+  //(done) DM: todoMM: let's rename this to lowestIndex because indexOfNextItem looks like the index *after* the item (remember that indexes count starting 0, but array.length counts starting 1)
+  const lowestIndex = filteredItemsLessThanVal.length
+  // const lowestIndex = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
+  console.log('lowestIndex', lowestIndex)
 
   /* 9. return the solution
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
-  return indexOfTheNextItem
+  return lowestIndex
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
@@ -112,7 +112,7 @@ keepOrder([1, 2, 3, 4], 1) // 0
 keepOrder([1, 2, 3, 4], 2) // 1
 keepOrder([1, 2, 3, 4], 3) // 2
 keepOrder([-5, -4, -2, -1, 1, 2], -2) // 2
-// DM: todoMM: extra credit: try passing an array of one-word strings, all lower case, and see what happens! (hint, < and > can be used on strings; when passing an array of strings, am getting 0 as result, i think it because the string is not sorted or?). DM: it works correctly. I wanted to show you that < and > work on strings.
+//(done) DM: todoMM: extra credit: try passing an array of one-word strings, all lower case, and see what happens! (hint, < and > can be used on strings; when passing an array of strings, am getting 0 as result, i think it because the string is not sorted or?). DM: it works correctly. I wanted to show you that < and > work on strings.
 keepOrder(['abcc', 'defff', 'ghi'], 'defff') // 1
 keepOrder(['abc', 'def', 'ghi'], 'ghi') // 2
 keepOrder(['abc', 'ghi', 'def'], 'def') // not sorted
@@ -135,8 +135,8 @@ function keepOrder(sortedArray, number) {
     sortedArray.every((value, index) => index === 0 || sortedArray[index - 1] <= value)
   if (!isSorted(sortedArray)) throw new Error('array is not sorted')
   const filteredItemsLessThanVal = sortedArray.filter((item) => item < number)
-  const indexOfTheNextItem = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
-  return indexOfTheNextItem
+  const lowestIndex = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
+  return lowestIndex
 }
 
 keepOrder([1, 2, 3, 4, 7], 5) // 4

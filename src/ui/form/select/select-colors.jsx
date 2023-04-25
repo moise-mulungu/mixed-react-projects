@@ -23,7 +23,7 @@ function SelectColors({ colors, legend, initialColor = '' }) {
           // DM: this is where you would use the colors passed as props
           {/* colors, plural, is an array of colors, so you can colors.map(color => ...) 
           DM: oh yeah, that's what I'm talking about!*/}
-          {/* this is correct, but the props passed are not, so this doesn't compoile, commenting out for now:
+          {/* this is correct, but the props passed are not, so this doesn't compile, commenting out for now:
           {colors.map((color) => {
             return (
               <option value={color} key={color}>

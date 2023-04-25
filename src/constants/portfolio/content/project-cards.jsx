@@ -1,6 +1,6 @@
 export const contentWorkHeaderText = 'My Recent Work'
 
-export const projectCards = [
+export const projectCardsData = [
   {
     title: 'E-pay',
     description:
@@ -9,7 +9,7 @@ export const projectCards = [
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     // this url is temporary, I will change it later, i will use the projects screenshot images instead of the unsplash images. (ok, good)
     url: 'https://render-e-pay.onrender.com/',
-    stacks: ['Ruby on Rails', 'Capybara', 'RSpec', 'Selenium', 'PostgreSQL', 'CSS'],
+    stackItem: ['Ruby on Rails', 'Capybara', 'RSpec', 'Selenium', 'PostgreSQL', 'CSS'],
   },
   {
     title: 'Meet Doctors',
@@ -19,7 +19,7 @@ export const projectCards = [
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     url: 'https://meet-a-doctor.netlify.app/login',
     // DM: todoMM: rename to stack in all cases. why? I know you followed the plural for arrays rule! but, stack is an implied plural/list/array. "stacks" would imply a list of lists (array of arrays).  Each individual element you can call a stackItem".
-    stacks: [
+    stackItem: [
       'Ruby on Rails',
       'React',
       'Redux',
@@ -37,7 +37,7 @@ export const projectCards = [
     image:
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     url: 'https://moise-mulungu.github.io/Relworx_Money/',
-    stacks: ['JavaScript', 'CSS'],
+    stackItem: ['JavaScript', 'CSS'],
   },
   {
     title: 'Math Magician',
@@ -47,7 +47,7 @@ export const projectCards = [
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
 
     url: '',
-    stacks: ['React', 'CSS', 'Redux'],
+    stackItem: ['React', 'CSS', 'Redux'],
   },
   {
     title: 'Make Up App',
@@ -56,7 +56,7 @@ export const projectCards = [
     image:
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     url: 'https://comfy-alpaca-a10613.netlify.app/',
-    stacks: ['React', 'Redux', 'CSS', 'RSpec'],
+    stackItem: ['React', 'Redux', 'CSS', 'RSpec'],
   },
   {
     title: 'Bookstore',
@@ -65,7 +65,7 @@ export const projectCards = [
     image:
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     url: 'https://animated-stroopwafel-ca252e.netlify.app/',
-    stacks: ['React', 'Redux', 'CSS', 'RSpec'],
+    stackItem: ['React', 'Redux', 'CSS', 'RSpec'],
   },
 ]
 
