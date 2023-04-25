@@ -15,8 +15,9 @@ import SelectLanguages from '@/ui/form/select-languages'
 import MultipleCheckbox from '@/ui/form/multiple-checkbox'
 import SelectCountries from '@/ui/form/select/select-countries'
 import SelectColors from '@/ui/form/select/select-colors'
+// DM: todoMM: Component function names must always be capitalized first letter
 import iconDropdowns from './icon-dropdowns'
-// Â: todoMM: the file./two-factor/two-factor.js doesn't exist
+// DM: todoMM: the file./two-factor/two-factor.js doesn't exist
 import TwoFactor from './two-factor'
 // DM: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
@@ -78,7 +79,7 @@ export default function ComponentExamples() {
         // }
         colors={['red', 'green', 'blue', 'yellow', 'purple', 'orange']}
         legend={'Your color value'}
-        // if you don't want to pass an initial color, you can delete the next line. I want the initial color to be an empty string, so I am passing it in.
+        // if you don't want to pass an initial color, you can delete the next line. I want the initial color to be an empty string, so I am passing it in. - OK, probably you need to add '' as teh first element in your colors prop above
         initialColor={''}
       />
     </div>

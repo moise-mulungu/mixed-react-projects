@@ -41,7 +41,7 @@ export default function Counter2({ initialVal = 0 }) {
             const nextCount = clamp(Math.ceil(Math.random() * 100), 1, 100)
             setCount(nextCount)
           }}
-          // ???DM: this way of getting a random number is a bit confusing, i would like some more explanations.
+          // MM: this way of getting a random number is a bit confusing, i would like some more explanations.
           // DM: Math.random returns a random number between 0 and .99999.... a Math.ceil is how to always round UP. Why UP? because Math.random returns a value between 0 and .99999... - if you want 1-100, you need to round up.
           // DM: Math.floor to always round down. JS doesn't have a Math.round function, so you have to code your own, or use ceil or floor.
         >

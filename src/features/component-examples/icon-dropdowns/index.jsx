@@ -10,15 +10,15 @@ import {
   TrashIcon,
   UserPlusIcon,
 } from '@heroicons/react/20/solid'
-
-// import MenuItem from './menu-items'
+import MenuItem from './menu-item'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-//(done) DM: todoMM: first task for this file: move Example to a separate file example.jsx. Also, give it a more specific name, if possible.
+//(done - I can't find it) DM: todoMM: first task for this file: move Example to a separate file example.jsx. Also, give it a more specific name, if possible.
 export default function iconDropdowns() {
+  const active = true // temporary
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -39,24 +39,11 @@ export default function iconDropdowns() {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            {/* DM: todoMM: extract <Menu.Item> to a separate component in a separate file, so to avoid all the repetition here. Once you do that, we'll figure out how to use the 'active' boolean */}
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'group flex items-center px-4 py-2 text-sm'
-                  )}
-                >
-                  <PencilSquareIcon
-                    className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
-                  Edit
-                </a>
-              )}
-            </Menu.Item>
+            {/* (working) DM: todoMM: extract <Menu.Item> to a separate component in a separate file, so to avoid all the repetition here. Once you do that, we'll figure out how to use the 'active' boolean 
+            
+            I'm not sure why this is not showing anything. Have a look at the TWUI example you copied this from and see what is needed in order for this component to display something.
+            */}
+            <Menu.Item>{({ active }) => <MenuItem active={active} label={'Edit'} />}</Menu.Item>
             <Menu.Item>
               {({ active }) => (
                 <a

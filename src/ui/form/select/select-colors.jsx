@@ -20,11 +20,10 @@ function SelectColors({ colors, legend, initialColor = '' }) {
             setSelectedOption(event.target.value)
           }}
         >
-          // DM: this is where you would use the colors passed as props
-          {/* colors, plural, is an array of colors, so you can colors.map(color => ...) 
-          DM: oh yeah, that's what I'm talking about!*/}
-          {/* this is correct, but the props passed are not, so this doesn't compile, commenting out for now:
-          {colors.map((color) => {
+          // DM: todoMM: hey, I'm not sure of the current status of this. finish it up, or put a
+          "MM: todoMM:" note to yourself to finish later (but add a short instructions for you
+          future self of what you need to do)
+          {/* {colors.map((color) => {
             return (
               <option value={color} key={color}>
                 {color}

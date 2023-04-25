@@ -28,4 +28,4 @@ export default function Content(props) {
   )
 }
 
-// I have added Divider temporarily for separating sections of the portfolio.
+// MM: I have added Divider temporarily for separating sections of the portfolio.

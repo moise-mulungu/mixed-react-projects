@@ -21,7 +21,7 @@ option: just pick good stuff from standard, work,
 standard-x - configurable
 
 
-
+DM: todoDM: eslint rule to ensure that default export matches module name
 
 
 

@@ -15,7 +15,7 @@ function TwoFactor() {
 
   return (
     <form>
-      {/* ???DM: the onSubmit is not necessary anymore? while the button should submit the entire form! 
+      {/* MM: the onSubmit is not necessary anymore? while the button should submit the entire form! 
       DM: the onClick event handler:
       () => setIsCorrect(isCorrect)
       does what you want, it selects the color

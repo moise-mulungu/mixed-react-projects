@@ -87,7 +87,6 @@ i want to find the lowest index of a given number(val), and return it
     return item < number
   })
   // DM: I implemented the .length solution here because it is more readable.
-  //(done) DM: todoMM: let's rename this to lowestIndex because indexOfNextItem looks like the index *after* the item (remember that indexes count starting 0, but array.length counts starting 1)
   const lowestIndex = filteredItemsLessThanVal.length
   // const lowestIndex = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
   console.log('lowestIndex', lowestIndex)
@@ -112,7 +111,7 @@ keepOrder([1, 2, 3, 4], 1) // 0
 keepOrder([1, 2, 3, 4], 2) // 1
 keepOrder([1, 2, 3, 4], 3) // 2
 keepOrder([-5, -4, -2, -1, 1, 2], -2) // 2
-//(done) DM: todoMM: extra credit: try passing an array of one-word strings, all lower case, and see what happens! (hint, < and > can be used on strings; when passing an array of strings, am getting 0 as result, i think it because the string is not sorted or?). DM: it works correctly. I wanted to show you that < and > work on strings.
+//DM: it works correctly. I wanted to show you that < and > work on strings.
 keepOrder(['abcc', 'defff', 'ghi'], 'defff') // 1
 keepOrder(['abc', 'def', 'ghi'], 'ghi') // 2
 keepOrder(['abc', 'ghi', 'def'], 'def') // not sorted
@@ -129,13 +128,14 @@ keepOrder(['abc', 'ghi', 'def'], 'def') // not sorted
 
 /* 13. Final step: after code review and final approval (like we do at work), I'll leave a comment here, and you can: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
-// DM: hey, check out the new instructions in 13 above. Do wait until I give "final approval" here a this gives me a chance to do a "code review" and help you perfect the solution before doing 13.(ok)
 function keepOrder(sortedArray, number) {
   const isSorted = (sortedArray) =>
     sortedArray.every((value, index) => index === 0 || sortedArray[index - 1] <= value)
   if (!isSorted(sortedArray)) throw new Error('array is not sorted')
+
   const filteredItemsLessThanVal = sortedArray.filter((item) => item < number)
   const lowestIndex = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
+
   return lowestIndex
 }
 
@@ -151,3 +151,23 @@ keepOrder([1, 2, 3, 4], 2) // 1
 keepOrder([1, 2, 3, 4], 3) // 2
 keepOrder([-5, -4, -2, -1, 1, 2], -2) // 2
 keepOrder(['hello', 'world'], 'e')
+
+/*
+DM: todoMM:
+here's a challenge for you. Rework the solution below, combining logic found in the .filter() and .reduce() into one .reduce()
+*/
+function keepOrder(sortedArray, number) {
+  const isSorted = (sortedArray) =>
+    sortedArray.every((value, index) => index === 0 || sortedArray[index - 1] <= value)
+  if (!isSorted(sortedArray)) throw new Error('array is not sorted')
+
+  // const filteredItemsLessThanVal = sortedArray.filter((item) => item < number)
+  // const lowestIndex = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
+  return (lowestIndex = sortedArray.reduce((acc, cur, idx) => {
+    /* your code here */
+    return acc
+  }, 0))
+
+  return lowestIndex
+}
+// DM: todoMM: After the rework, look at all 3 solutions, and tell me which you think is the best in terms of our criteria (readable, succinct, DRY).

@@ -33,11 +33,12 @@ Type Coercion refers to the process of automatic or implicit conversion of value
 
 ## difference between string interpolation and template literal
 
-<!-- MM: ???DM: These two expressions seem to be confusing at first to me, but I think string interpolation is the *process* to insert or embed, but template literal or string literal is the *place* to insert the string interpolation. DM: exactly!
+<!-- MM: These two expressions seem to be confusing at first to me, but I think string interpolation is the *process* to insert or embed, but template literal or string literal is the *place* to insert the string interpolation. DM: exactly!
 For example, a box with pens inside, a box is a template literal and pens are string interpolation
 DM: yes, in the sense that the template literal is what JS employs to make string interpolation happen. This will help clarify the difference - string interpolation is an item for tech-vocabulary.md, and template literal belongs in this file.
 DM: but yes the ${} is where the string interpolation happens in `text, text ${} more text`
 DM: and: `text, text ${ 'any expression here will be coerced to a String' } more text`
+DM: todoMM: summarize my answer into a 'definition' for this vocab entry 
 -->
 
 ## template literal

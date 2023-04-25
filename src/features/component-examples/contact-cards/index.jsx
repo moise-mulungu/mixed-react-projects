@@ -7,6 +7,7 @@ export default function ContactCards() {
       <ul>
         {[
           { name: 'Moïse Mulungu', job: 'The Man', email: 'mm@acme.co' },
+          /* haha! lemme to invent some more right now! */
           { name: 'Duncan McKeever', job: 'Inventer of Torturous Exercises', email: 'dm@acme.co' },
         ].map((item, index) => {
           return <ContactCard key={index} name={item.name} job={item.job} email={item.email} />
