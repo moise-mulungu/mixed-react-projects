@@ -11,7 +11,7 @@ import {
   UserPlusIcon,
 } from '@heroicons/react/20/solid'
 
-import MenuItem from './menu-items'
+// import MenuItem from './menu-items'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
