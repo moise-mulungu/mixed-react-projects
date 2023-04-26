@@ -121,12 +121,16 @@ cubeChecker(125, -5) // false
 /* 12. Final step: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-function cubeChecker (volume, side) {
+function cubeChecker(volume, side) {
   const isNumber = (value) => typeof value === 'number' && !isNaN(value)
   if (!isNumber(volume) && !isNumber(side))
     throw new Error('invalid input, both parameters must be numbers')
-  // DM: todoMM: this code should be exactly the same as the code above,(I don't know if they can be the same, because code above is a lengthy code, but this one is a short code. From my understanding, i thought the second code has to be as short as possible, that's why some variables are not declared.) It doesn't need to be short as possible, readability is always the goal. Often, more lines = faster reading. I'm going to change our process a bit, so that you don't do step 12 until your code passes all my code review. THat is really the right time to do step 12. See my changes in STARTER.js.
-  const isCube = volume === Math.pow(side, 3) && side > 0
+  //(done) DM: todoMM: this code should be exactly the same as the code above,(I don't know if they can be the same, because code above is a lengthy code, but this one is a short code. From my understanding, i thought the second code has to be as short as possible, that's why some variables are not declared.) It doesn't need to be short as possible, readability is always the goal. Often, more lines = faster reading. I'm going to change our process a bit, so that you don't do step 12 until your code passes all my code review. THat is really the right time to do step 12. See my changes in STARTER.js.
+
+  const cubed = volume === Math.pow(side, 3)
+  const positiveSide = side > 0
+  const isCube = cubed && positiveSide
+
   // return isCube ? true : false
   return isCube
 }

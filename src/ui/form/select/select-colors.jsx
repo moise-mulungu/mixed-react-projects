@@ -22,14 +22,14 @@ function SelectColors({ colors, legend, initialColor = '' }) {
         >
           // DM: todoMM: hey, I'm not sure of the current status of this. finish it up, or put a
           "MM: todoMM:" note to yourself to finish later (but add a short instructions for you
-          future self of what you need to do)
-          {/* {colors.map((color) => {
+          future self of what you need to do) I just passed props to colors as an array.
+          {colors.map((color) => {
             return (
               <option value={color} key={color}>
                 {color}
               </option>
             )
-          })} */}
+          })}
         </select>
       </fieldset>
 

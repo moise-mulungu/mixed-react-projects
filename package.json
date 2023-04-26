@@ -7,7 +7,7 @@
     "test": "standard && node my-tests.js"
   },
   "dependencies": {
-    "@headlessui/react": "^1.6.4",
+    "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.14",
     "arquero": "^4.4.0",
     "classnames": "^2.3.1",

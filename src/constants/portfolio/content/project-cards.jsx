@@ -9,7 +9,7 @@ export const projectCardsData = [
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     // this url is temporary, I will change it later, i will use the projects screenshot images instead of the unsplash images. (ok, good)
     url: 'https://render-e-pay.onrender.com/',
-    stackItem: ['Ruby on Rails', 'Capybara', 'RSpec', 'Selenium', 'PostgreSQL', 'CSS'],
+    stack: ['Ruby on Rails', 'Capybara', 'RSpec', 'Selenium', 'PostgreSQL', 'CSS'],
   },
   {
     title: 'Meet Doctors',
@@ -19,8 +19,8 @@ export const projectCardsData = [
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     url: 'https://meet-a-doctor.netlify.app/login',
     // DM: todoMM: rename to 'stack' in all cases. why? I know you followed the plural for arrays rule! but, stack is an implied plural/list/array. "stacks" would imply a list of lists (array of arrays).  Each individual element you can call a stackItem".
-    // DM: todoMM: 'stack' is what I meant as a name. stackItem is for each element in the array (when you use this data in code)
-    stackItem: [
+    //(done) DM: todoMM: 'stack' is what I meant as a name. stackItem is for each element in the array (when you use this data in code)
+    stack: [
       'Ruby on Rails',
       'React',
       'Redux',
@@ -38,7 +38,7 @@ export const projectCardsData = [
     image:
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     url: 'https://moise-mulungu.github.io/Relworx_Money/',
-    stackItem: ['JavaScript', 'CSS'],
+    stack: ['JavaScript', 'CSS'],
   },
   {
     title: 'Math Magician',
@@ -48,7 +48,7 @@ export const projectCardsData = [
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
 
     url: '',
-    stackItem: ['React', 'CSS', 'Redux'],
+    stack: ['React', 'CSS', 'Redux'],
   },
   {
     title: 'Make Up App',
@@ -57,7 +57,7 @@ export const projectCardsData = [
     image:
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     url: 'https://comfy-alpaca-a10613.netlify.app/',
-    stackItem: ['React', 'Redux', 'CSS', 'RSpec'],
+    stack: ['React', 'Redux', 'CSS', 'RSpec'],
   },
   {
     title: 'Bookstore',
@@ -66,7 +66,7 @@ export const projectCardsData = [
     image:
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
     url: 'https://animated-stroopwafel-ca252e.netlify.app/',
-    stackItem: ['React', 'Redux', 'CSS', 'RSpec'],
+    stack: ['React', 'Redux', 'CSS', 'RSpec'],
   },
 ]
 

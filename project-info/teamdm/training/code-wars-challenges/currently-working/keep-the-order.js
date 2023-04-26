@@ -164,10 +164,20 @@ function keepOrder(sortedArray, number) {
   // const filteredItemsLessThanVal = sortedArray.filter((item) => item < number)
   // const lowestIndex = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
   return (lowestIndex = sortedArray.reduce((acc, cur, idx) => {
-    /* your code here */
+    /* your code here; ???DM: i used an if statement instead of the .filter() method. Is this the way you wanted? */
+    if (cur < number) {
+      acc = idx + 1
+    }
     return acc
   }, 0))
 
-  return lowestIndex
+  // return lowestIndex
 }
 // DM: todoMM: After the rework, look at all 3 solutions, and tell me which you think is the best in terms of our criteria (readable, succinct, DRY).
+
+keepOrder([1, 2, 3, 4, 7], 5)
+keepOrder([1, 2, 3, 4, 7], 0)
+keepOrder([1, 1, 2, 2, 2], 2)
+keepOrder([1, 2, 3, 4], 5)
+
+// The more concise solution for me between the three is the first one. because it is the most readable and the most succinct.

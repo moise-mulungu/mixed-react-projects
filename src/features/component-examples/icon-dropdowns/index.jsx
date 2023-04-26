@@ -16,8 +16,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-//(done - I can't find it) DM: todoMM: first task for this file: move Example to a separate file example.jsx. Also, give it a more specific name, if possible.
-export default function iconDropdowns() {
+//(done - I can't find it) DM: todoMM: first task for this file: move Example to a separate file example.jsx. Also, give it a more specific name, if possible. i renamed it to IconDropdowns into a file that has the same name; icon-dropdowns.jsx
+export default function IconDropdowns() {
   const active = true // temporary
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -41,7 +41,7 @@ export default function iconDropdowns() {
           <div className="py-1">
             {/* (working) DM: todoMM: extract <Menu.Item> to a separate component in a separate file, so to avoid all the repetition here. Once you do that, we'll figure out how to use the 'active' boolean 
             
-            I'm not sure why this is not showing anything. Have a look at the TWUI example you copied this from and see what is needed in order for this component to display something.
+            I'm not sure why this is not showing anything. Have a look at the TWUI example you copied this from and see what is needed in order for this component to display something.(i tried to install '@headlessui/react' npm package from this link: https://headlessui.com/react/menu#installation. but it doesn't work. I don't know why.)
             */}
             <Menu.Item>{({ active }) => <MenuItem active={active} label={'Edit'} />}</Menu.Item>
             <Menu.Item>

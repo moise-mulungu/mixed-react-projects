@@ -38,7 +38,9 @@ For example, a box with pens inside, a box is a template literal and pens are st
 DM: yes, in the sense that the template literal is what JS employs to make string interpolation happen. This will help clarify the difference - string interpolation is an item for tech-vocabulary.md, and template literal belongs in this file.
 DM: but yes the ${} is where the string interpolation happens in `text, text ${} more text`
 DM: and: `text, text ${ 'any expression here will be coerced to a String' } more text`
-DM: todoMM: summarize my answer into a 'definition' for this vocab entry 
+DM: todoMM: summarize my answer into a 'definition' for this vocab entry
+
+A template literal is a placeholder used in JavaScript for string interpolation and expressions with a dollar sign and curly braces, while string interpolation is used to concatenate string with the plus sign.
 -->
 
 ## template literal

@@ -169,7 +169,8 @@ function toCamelCase2(string) {
       // DM:: why the  + ''?
       // MM: '' is replaces delimiter with empty string. + '' only a an empty string to 'word'. split (delimitersRegExp) removed the delimiters for you.
       // DM: todoMM: console.log nextLetter, you'll see that + '' doesn't do anything because it just adds an empty string  to 'word'.
-      const nextLetter = word + ''
+      const nextLetter = word
+      console.log(nextLetter) // yeah, the + '' is not needed for sure.
       const capitalizedNextLetter = nextLetter.charAt(0).toLocaleUpperCase()
       // console.log(capitalizedNextLetter)
       const nextWord = nextLetter.slice(1)
