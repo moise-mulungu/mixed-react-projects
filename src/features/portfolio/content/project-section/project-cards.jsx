@@ -1,7 +1,7 @@
 import { projectCardsData, projectCardText } from '@/constants/portfolio/content/project-cards'
 import CardsHeading from './card-heading'
 import Divider from '@/ui/divider'
-//(done) DM: todoDM: find out why you can't ctrl-click on projectCards to go to the file if @ is used
+// DM: todoDM: find out why you can't ctrl-click on projectCards to go to the file if @ is used
 
 const ProjectCards = () => {
   return (
@@ -57,12 +57,3 @@ const ProjectCards = () => {
 export default ProjectCards
 
 //MM:  I am still working on this component, trying to find a better design from tailwind.
-
-/* MM: I want to use dropdowns for stackItem as it is with Example component 
-DM: best to not used dropdowns. dropdowns are for selecting one item from a list, not for displaying. I think it is fine to just display them. Later, you might want to do something like:
-principal stack item 1
-principal stack item 2
-more .. clicking this would activate a popover that lists ALL the stack items (which can get repetitive. is avoiding all the repetition why you wanted to hide some of the stack items in a dropdown?)(read)
-*/
-
-/* DM: todoMM: since this data is under your control, you won't need a "?" in the line below. If you have a project without a stack, then use an empty array "[]" - that way stackItem will already exist.  */

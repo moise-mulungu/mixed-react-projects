@@ -6,16 +6,18 @@ function TwoFactor() {
   const [code, setCode] = React.useState('')
   const [isCorrect, setIsCorrect] = React.useState('')
 
-  // DM: here is the way to perform a 'side effect'. Any time isCorrect changes, the current value will be logged
+  // howtoreact: to perform a 'side effect'. Any time isCorrect changes, the current value will be logged
   useEffect(() => {
     console.log({ isCorrect })
   }, [isCorrect])
 
-  // DM: todoMM: make a react vocab entry for 'side effect' (search: "reactjs side effect" and prefer search result links that are official react docs, if they are shown)(in progress)
+  // DM: todoMM: (in progress) make a react vocab entry for 'side effect' (search: "reactjs side effect" and prefer search result links that are official react docs, if they are shown)
 
   return (
     <form>
-      {/* MM: the onSubmit is not necessary anymore? while the button should submit the entire form! 
+      {/* 
+      DM: todoMM: is the below comments issue complete?
+      MM: the onSubmit is not necessary anymore? while the button should submit the entire form! 
       DM: the onClick event handler:
       () => setIsCorrect(isCorrect)
       does what you want, it selects the color

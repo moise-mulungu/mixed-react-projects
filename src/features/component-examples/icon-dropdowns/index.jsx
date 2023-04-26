@@ -10,13 +10,10 @@ import {
   TrashIcon,
   UserPlusIcon,
 } from '@heroicons/react/20/solid'
+import { classNames } from '@/ui/utils'
+
 import MenuItem from './menu-item'
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-//(done - I can't find it) DM: todoMM: first task for this file: move Example to a separate file example.jsx. Also, give it a more specific name, if possible. i renamed it to IconDropdowns into a file that has the same name; icon-dropdowns.jsx
 export default function IconDropdowns() {
   const active = true // temporary
   return (

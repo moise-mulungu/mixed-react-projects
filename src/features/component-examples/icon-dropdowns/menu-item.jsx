@@ -1,3 +1,5 @@
+import { classNames } from '@/ui/utils'
+
 const MenuItem = ({ active, label }) => (
   <a
     href="#"

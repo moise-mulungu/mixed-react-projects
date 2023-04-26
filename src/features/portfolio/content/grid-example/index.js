@@ -179,6 +179,7 @@ const footerNavigation = {
     { name: 'Pinterest', href: '#' },
   ],
 }
+// DM: todoMM: find all instances of this func definition and replace with import { classNames } from '@/ui/utils'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')

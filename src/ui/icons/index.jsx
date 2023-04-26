@@ -15,6 +15,7 @@ import { IconName } from "react-icons/di";
 import { IconContext } from 'react-icons'
 import { DiGithubBadge } from 'react-icons/di'
 
+// DM: todoMM: npm install react-icons
 import { FaLinkedin, FaAngellist, FaMediumM, FaTwitter } from 'react-icons/fa'
 
 export const Icon = (props) => {
