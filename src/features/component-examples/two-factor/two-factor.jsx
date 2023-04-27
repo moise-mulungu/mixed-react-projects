@@ -11,12 +11,12 @@ function TwoFactor() {
     console.log({ isCorrect })
   }, [isCorrect])
 
-  // DM: todoMM: (in progress) make a react vocab entry for 'side effect' (search: "reactjs side effect" and prefer search result links that are official react docs, if they are shown)
+  //(done) DM: todoMM: (in progress) make a react vocab entry for 'side effect' (search: "reactjs side effect" and prefer search result links that are official react docs, if they are shown)
 
   return (
     <form>
       {/* 
-      DM: todoMM: is the below comments issue complete?
+      (done)DM: todoMM: is the below comments issue complete(yes, it is)?
       MM: the onSubmit is not necessary anymore? while the button should submit the entire form! 
       DM: the onClick event handler:
       () => setIsCorrect(isCorrect)

@@ -26,6 +26,7 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { classNames } from '@/ui/utils'
 
 const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
 const navigation = {
@@ -179,11 +180,11 @@ const footerNavigation = {
     { name: 'Pinterest', href: '#' },
   ],
 }
-// DM: todoMM: find all instances of this func definition and replace with import { classNames } from '@/ui/utils'
+//(done) DM: todoMM: find all instances of this func definition and replace with import { classNames } from '@/ui/utils'
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(' ')
+// }
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

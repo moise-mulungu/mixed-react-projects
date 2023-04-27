@@ -1,5 +1,5 @@
 import { classNames } from '@/ui/utils'
-
+import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 const MenuItem = ({ active, label }) => (
   <a
     href="#"

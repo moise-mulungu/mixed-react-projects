@@ -15,7 +15,7 @@ import { IconName } from "react-icons/di";
 import { IconContext } from 'react-icons'
 import { DiGithubBadge } from 'react-icons/di'
 
-// DM: todoMM: npm install react-icons
+//(done) DM: todoMM: npm install react-icons; after installing the version has been updated from 4.7.1 to 4.8.0
 import { FaLinkedin, FaAngellist, FaMediumM, FaTwitter } from 'react-icons/fa'
 
 export const Icon = (props) => {
