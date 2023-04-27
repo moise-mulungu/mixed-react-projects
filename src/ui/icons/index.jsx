@@ -15,7 +15,6 @@ import { IconName } from "react-icons/di";
 import { IconContext } from 'react-icons'
 import { DiGithubBadge } from 'react-icons/di'
 
-//(done) DM: todoMM: npm install react-icons; after installing the version has been updated from 4.7.1 to 4.8.0
 import { FaLinkedin, FaAngellist, FaMediumM, FaTwitter } from 'react-icons/fa'
 
 export const Icon = (props) => {
@@ -41,7 +40,6 @@ export const Icon = (props) => {
 }
 
 export const AngelListIcon = (props) => {
-  // DM: you don't need defaults that apply to all icons here, only AngerList-specific defaults
   const { size, className, title = 'Angel List' } = props
   return <Icon size={size} className={className} title={title} IconComponent={FaAngellist} />
 }

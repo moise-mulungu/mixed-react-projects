@@ -115,3 +115,4 @@ Or controlled components refer to components that have their state and behavior 
 ## side effect
 
 A React side-effect occurs when we use something that is outside the scope of React.js in our React components e.g. data fetching, setting up a subscription, and manually changing the DOM.
+Hooks: useEffect for all side effects

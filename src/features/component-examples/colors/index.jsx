@@ -1,4 +1,4 @@
-import SelectColors from '@/ui/form/select/colors/select-colors'
+import SelectColors from '@/ui/form/select/select-colors'
 
 export default function Colors() {
   return (

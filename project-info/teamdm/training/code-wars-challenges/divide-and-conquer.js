@@ -1,7 +1,7 @@
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 /*
-
+DM: done
 */
 
 // memorable summary: make it work, test it, make it pretty
@@ -19,8 +19,7 @@ examples?
 
 // 1.2 the coding challenge URL:
 /*
-DM: todoMM: please put the URL here and fill out all the empty comments for all the steps. put "n/a" (not applicable) if there is nothing needed there
-*/
+ */
 
 // 1.3 some tests from the coding challenge: ex: myFunction('', '') // expected result
 /*

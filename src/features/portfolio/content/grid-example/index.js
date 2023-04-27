@@ -180,11 +180,6 @@ const footerNavigation = {
     { name: 'Pinterest', href: '#' },
   ],
 }
-//(done) DM: todoMM: find all instances of this func definition and replace with import { classNames } from '@/ui/utils'
-
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(' ')
-// }
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)

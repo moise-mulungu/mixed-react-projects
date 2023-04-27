@@ -152,28 +152,27 @@ keepOrder([1, 2, 3, 4], 3) // 2
 keepOrder([-5, -4, -2, -1, 1, 2], -2) // 2
 keepOrder(['hello', 'world'], 'e')
 
-/*
-DM: todoMM:
-here's a challenge for you. Rework the solution below, combining logic found in the .filter() and .reduce() into one .reduce()
-*/
 function keepOrder(sortedArray, number) {
   const isSorted = (sortedArray) =>
     sortedArray.every((value, index) => index === 0 || sortedArray[index - 1] <= value)
   if (!isSorted(sortedArray)) throw new Error('array is not sorted')
 
-  // const filteredItemsLessThanVal = sortedArray.filter((item) => item < number)
-  // const lowestIndex = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
-  return (lowestIndex = sortedArray.reduce((acc, cur, idx) => {
-    /* your code here; ???DM: i used an if statement instead of the .filter() method. Is this the way you wanted? */
-    if (cur < number) {
-      acc = idx + 1
-    }
-    return acc
-  }, 0))
+  // shorter, less complicated appearance
+  const filteredItemsLessThanVal = sortedArray.filter((item) => item < number)
+  const lowestIndex = filteredItemsLessThanVal.length // very slight "code smell"
 
-  // return lowestIndex
+  const filteredItemsLessThanVal = sortedArray.filter((item) => item < number)
+  const lowestIndex = filteredItemsLessThanVal.reduce((acc) => acc + 1, 0)
+
+  const lowestIndex = sortedArray.reduce((acc, cur, idx) => {
+    if (cur < number) acc = idx + 1
+    return acc
+  }, 0)
+
+  return lowestIndex
 }
-// DM: todoMM: After the rework, look at all 3 solutions, and tell me which you think is the best in terms of our criteria (readable, succinct, DRY).
+
+// DM: After the rework, look at all 3 solutions, and tell me which you think is the best in terms of our criteria (readable, succinct, DRY). .length solution is better.
 
 keepOrder([1, 2, 3, 4, 7], 5)
 keepOrder([1, 2, 3, 4, 7], 0)

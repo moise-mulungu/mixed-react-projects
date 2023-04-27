@@ -17,10 +17,3 @@ const MenuItem = ({ active, label }) => (
 )
 
 export default MenuItem
-// MM: ???DM: is the children prop fine here?
-/* 
-yes. this is almost right, but best leave the 
-{({ active }) => (
-in the calling component, because that is what headlessui Menu.Item component expects as children
-I'm going to code it, and you can learn from the changes, so please observe carefully what I did and ask questions here in "MM: ???DM:" if you don't understand why
-*/
