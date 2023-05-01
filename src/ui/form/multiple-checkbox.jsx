@@ -12,41 +12,36 @@ export default function MultipleCheckbox({
 }) {
   const [items, setItems] = React.useState(initialItems)
 
-  // Get a list of all toppings.
-  // ['anchovies', 'chicken', 'tomato'];
-  const itemsList = Object.keys(initialItems)
-
   return (
     <>
       <form>
         <fieldset>
           <legend>{legend}</legend>
-          {/* don't understand what should i pass as prop here, please need more explanation*/}
 
           {/*
-            Iterate over those toppings, and
+            Iterate over those items, and
             create a checkbox for each one:
           */}
-          {itemsList.map((option) => (
-            <div key={option}>
-              <input
-                type="checkbox"
-                id={option}
-                value={option}
-                checked={items[option] === true}
-                onChange={(event) => {
-                  //(read, but did not get the idea behind)(ok) DM: todoMM: if you need the current value, use a callback function so you can get access to prev (the previous value). In larger components what if something else called setItems and ...
-                  //(read) DM: todoMM: check out this https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state and start getting familiar with this reactjs documentation site as you read JoR. You don't have to read it all now, just get familiar with the layout and see how at the top of the page "reference", "usage", "troubleshooting" lists are offered.
-                  //(done) DM: todoMM: add a tech-vocabulary item "race condition" - it is a common interview question
-                  setItems((prev) => ({
-                    ...prev,
-                    [option]: event.target.checked,
-                  }))
-                }}
-              />
-              <label htmlFor={option}>{option}</label>
-            </div>
-          ))}
+          {Object.entries(items) // [ ['anchovies', false], ['chicken', false] ]
+            // .map(([ 'chicken', false ]) => (
+            .map(([item, itemChecked]) => (
+              <div key={item}>
+                <input
+                  type="checkbox"
+                  id={item}
+                  value={item}
+                  checked={itemChecked}
+                  onChange={(event) => {
+                    // howtoreact: update state based on previous state https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state use a callback function so you can get access to prev (the previous value). Addresses "race condition" issue that is possible in a large component that may call setItems in multiple places (possible setItems is passed as a prop to children components). Always (mostly) use when the type of the React state variable is an object
+                    setItems((prev) => ({
+                      ...prev,
+                      [item]: event.target.checked,
+                    }))
+                  }}
+                />
+                <label htmlFor={item}>{item}</label>
+              </div>
+            ))}
         </fieldset>
       </form>
       <p>

@@ -12,7 +12,6 @@ import {
 } from '@heroicons/react/20/solid'
 import { classNames } from '@/ui/utils'
 
-//(done) DM: todoMM: original url for example here
 /*
 https://tailwindui.com/components/application-ui/elements/dropdowns
 */
@@ -28,7 +27,7 @@ export default function IconDropdowns() {
           'relative',
           'inline-block',
           'text-left',
-          'ml-48' // note: dropdown was not visible when the Menu was aligned with the right side of the page
+          'ml-48' // note: dropdown was not visible when the Menu component was aligned with the right side of the page
         )}
       >
         <div>

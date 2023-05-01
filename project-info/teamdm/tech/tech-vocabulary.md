@@ -34,8 +34,8 @@ string interpolation in JavaScript is a process in which an expression is insert
 
 ## race condition
 
-A race condition or `race hazard` is the condition of an electronics, software, or other system where the system's substantive behavior is dependent on the sequence or timing of other uncontrollable events. It becomes a bug when one or more of the possible behaviors is undesirable.(src: wikipedia)
+A race condition or **race hazard** is the condition of an electronics, software, or other system where the system's substantive behavior is dependent on the sequence or timing of other uncontrollable events. It becomes a bug when one or more of the possible behaviors is undesirable. (source: wikipedia)
 
-A race condition is an undesirable situation that occurs when a device or system attempts to perform two or more operations at the same time, but because of the nature of the device or system, the operations must be done in the proper sequence to be done correctly.(src: tech-target)
+A race condition is an undesirable situation that occurs when a device or system attempts to perform two or more operations at the same time, but because of the nature of the device or system, the operations must be done in the proper sequence to be done correctly. (source: tech-target)
 
 <!-- This second definition is easy to understand than the one above -->

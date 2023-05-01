@@ -10,7 +10,7 @@ note: let's follow MDN's lead of how to say/spell JS things. ex: "if...else": ht
 */
 
 function func(number) {
-  if (Number.isNaN(number)) throw new Error('you must pass a number to func()') // guard clause
+  if (Number.isNaN(number)) throw new Error('you must pass a number to func()')
   const evenNumber = number % 2 === 0
   if (evenNumber) return 'Even' // guard clause
   return 'Odd'
