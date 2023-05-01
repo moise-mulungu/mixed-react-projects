@@ -93,8 +93,6 @@ i want to get a boolean value that is true if the volume is equal to the positiv
         always return a variable, or, use only variables in return statements
         this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
         */
-  //DM: you can leave out the "? true : false" because isCube is already a boolean
-  // return isCube ? true : false
   return isCube
 }
 // 10. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)

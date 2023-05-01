@@ -34,31 +34,20 @@ https://www.codewars.com/kata/584c7b1e2cb5e1a727000047/train/javascript
       these would be the questions you'd be expected to ask in a interview situation
       (practice reading the challenge description carefully). Really take a minute to review the requirements (challenge description) and see if there are any ambiguities. Say out-loud to yourself what you understand the task to be, pretending that you are saying this to an interviewer. This is very important to practice. */
 /*
-<<<<<<< HEAD
 I have used the .replace() character and set the parameter to "hello world", which is not intended to be used as i could not figure out another solution.
 
-DM: todoMM: good to be resourceful, but changing the "function signature" evades the purpose of the test. So, read the example of arrays I put above, and try again.
-DM: todoMM: make a programming-vocab entry "function signature"
-=======
+DM: good to be resourceful, but changing the "function signature" evades the purpose of the test. So, read the example of arrays I put above, and try again.
 I could not create a string of hello world without quotes with the String constructor. I had to look up the solution on how to fix it. I got this solution on using the String.fromCharCode() method to create a string of hello world without quotes.
->>>>>>> 10f78c0bb589e5dd7ef44f77f79c438bcb09f0cb
+DM: good!
 */
 
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 // no tests are provided here
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise
-<<<<<<< HEAD
-// const helloWorld = (str = 'hello world') => {
 // const helloWorld = () => { // from the challenge
 function helloWorld() {
   // consistency: we use functions, not arrow functions
-=======
-const helloWorld = () => {
-  // feel free to change this into a function :)
-
->>>>>>> 10f78c0bb589e5dd7ef44f77f79c438bcb09f0cb
-  // feel free to change this into a function :)
 
   /* 5. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
@@ -69,33 +58,11 @@ const helloWorld = () => {
 
         output: string|number|...; possible values: */
   /*
-<<<<<<< HEAD
     input: none
     output: a string of hello world
-=======
-  input: a string of hello world
-  output: a string of hello world without the quotes
->>>>>>> 10f78c0bb589e5dd7ef44f77f79c438bcb09f0cb
-
   */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-  const noRawString = String.fromCharCode(
-    72,
-    101,
-    108,
-    108,
-    111,
-    44,
-    32,
-    87,
-    111,
-    114,
-    108,
-    100,
-    33
-  )
-  console.log(noRawString)
 
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
@@ -116,9 +83,27 @@ I want to return a non-string of hello world
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  // const removeStringCharacters = str.replace(/['"]+/g, '')
-  // console.log(removeStringCharacters)
+
   /* 9. use the named parts to create a readable solution. */
+
+  // howtojs: create a character based on an ascii number (character code) (without using raw strings)
+  const noRawString = String.fromCharCode(
+    // DM: you don't have to do it, but it would have been good to put a comment next to each saying what letter it is. Helps debugging, if any, and more readable.
+    72, // H
+    101,
+    108,
+    108,
+    111,
+    44,
+    32,
+    87,
+    111,
+    114,
+    108,
+    100,
+    33
+  )
+  console.log(noRawString)
 
   /* 10. return the solution
       always return a variable, or, use only variables in return statements
@@ -130,14 +115,20 @@ I want to return a non-string of hello world
 helloWorld('hello world') //
 // expected result
 
-/* 11. Make it pretty! Review the code for conciseness and readability: clear, descriptive variable names
+/* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
              understand easily. Don't use misleading or too-unspecific variable names.
              But, don't spend much time figuring out the perfect variable name. The trick is to describe
              what it is with lots of words. Just write exactly what the variable holds.
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
-const helloWorld = () => {
+/* 13. code review and approval*/
+/* approved. but wait for approval before doing step 14 */
+
+/* 14. Final step: after code review and final approval (like we do at work), I'll leave a comment here, and you can: copy the solution below this line, remove all comments and console.log below this line  
+       OK to rename variables here if it seems better while looking at the code in concise form*/
+
+function helloWorld() {
   const noRawString = String.fromCharCode(
     72,
     101,
@@ -155,9 +146,3 @@ const helloWorld = () => {
   )
   return noRawString
 }
-helloWorld('hello world')
-/* 13. code review and approval*/
-/*  */
-
-/* 14. Final step: after code review and final approval (like we do at work), I'll leave a comment here, and you can: copy the solution below this line, remove all comments and console.log below this line  
-       OK to rename variables here if it seems better while looking at the code in concise form*/

@@ -75,7 +75,7 @@ function myFunction(parameter1, parameter2) {
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 myFunction('', '') // expected result
 
-/* 11. Make it pretty! Review and edit the code above for conciseness and readability: clear, descriptive variable names
+/* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
              understand easily. Don't use misleading or too-unspecific variable names.
              But, don't spend much time figuring out the perfect variable name. The trick is to describe

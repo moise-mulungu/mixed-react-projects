@@ -1,3 +1,16 @@
+<!-- 
+Good job. I can't validate CSS terminology for you like I can JS, so I can only advise you to
+* use authoritative web sites
+* revisit each vocab item later, when you know more
+* compare the vocab of 2 authoritative sites (sometimes helps for clarity, completeness)
+
+MDN is authoritative and offers glossaries.
+
+For howto articles:
+CSS Tricks website is good, but usually there are found articles on specific topics.
+Comeau is also good on CSS.
+ -->
+
 ## selector
 
 A CSS selector is the first part of a CSS Rule. It is a pattern of elements and other terms that tell the browser which HTML elements should be selected to have the CSS property values inside the rule applied to them.

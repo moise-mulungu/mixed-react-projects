@@ -27,7 +27,7 @@ export default function IconDropdowns() {
           'relative',
           'inline-block',
           'text-left',
-          'ml-48' // note: dropdown was not visible when the Menu component was aligned with the right side of the page
+          'ml-48' // note: temporary workaround: dropdown was not visible when the Menu component was aligned with the right side of the page
         )}
       >
         <div>

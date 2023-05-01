@@ -1,10 +1,6 @@
 import React from 'react'
-// DM: this is great. Below are some comments about
-//(done) DM: todoMM: this is implementation-specific. src/ui components should work with any page, any project - they are generic. So, adjust your Component to accept this data as a prop.(i don't know what the prop name should be, you want me to pass the initialItems as a prop?) Yes, like this:
-// export default function MultipleCheckbox({initialItems}) {
-//   then you can make a howtoreact:
-//   howtoreact:: pass an initial value to a useState as a prop
-// then in the future you can do a global VS Code search: howtoreact.*prop
+
+// howtoreact:: pass an initial value to a useState as a prop
 
 export default function MultipleCheckbox({
   initialItems = { anchovies: false, chicken: false, tomatoes: false },
