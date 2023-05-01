@@ -28,14 +28,16 @@ https://www.codewars.com/kata/584c7b1e2cb5e1a727000047/train/javascript
       these would be the questions you'd be expected to ask in a interview situation
       (practice reading the challenge description carefully). Really take a minute to review the requirements (challenge description) and see if there are any ambiguities. Say out-loud to yourself what you understand the task to be, pretending that you are saying this to an interviewer. This is very important to practice. */
 /*
-I have used the .replace() character and set the parameter to "hello world", which is not intended to be used as i could not figure out another solution.
+I could not create a string of hello world without quotes with the String constructor. I had to look up the solution on how to fix it. I got this solution on using the String.fromCharCode() method to create a string of hello world without quotes.
 */
 
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 // no tests are provided here
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise
-const helloWorld = (str = 'hello world') => {
+const helloWorld = () => {
+  // feel free to change this into a function :)
+
   // feel free to change this into a function :)
 
   /* 5. describe the inputs and outputs in detail: their types and possible values
@@ -48,13 +50,28 @@ const helloWorld = (str = 'hello world') => {
         output: string|number|...; possible values: */
   /*
   input: a string of hello world
-    output: a non-string of hello world
+  output: a string of hello world without the quotes
 
   */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-  const isString = (value) => typeof value === 'string'
-  if (!isString(str)) throw new Error('str must be a string')
+  const noRawString = String.fromCharCode(
+    72,
+    101,
+    108,
+    108,
+    111,
+    44,
+    32,
+    87,
+    111,
+    114,
+    108,
+    100,
+    33
+  )
+  console.log(noRawString)
+
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
@@ -74,15 +91,15 @@ I want to return a non-string of hello world
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  const removeStringCharacters = str.replace(/['"]+/g, '')
-  console.log(removeStringCharacters)
+  // const removeStringCharacters = str.replace(/['"]+/g, '')
+  // console.log(removeStringCharacters)
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
-  return removeStringCharacters
+  return noRawString
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 helloWorld('hello world') //
@@ -95,18 +112,27 @@ helloWorld('hello world') //
              what it is with lots of words. Just write exactly what the variable holds.
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
+const helloWorld = () => {
+  const noRawString = String.fromCharCode(
+    72,
+    101,
+    108,
+    108,
+    111,
+    44,
+    32,
+    87,
+    111,
+    114,
+    108,
+    100,
+    33
+  )
+  return noRawString
+}
+helloWorld('hello world')
 /* 13. code review and approval*/
 /*  */
 
 /* 14. Final step: after code review and final approval (like we do at work), I'll leave a comment here, and you can: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
-
-function helloWorld(str = 'hello world') {
-  const isString = (value) => typeof value === 'string'
-  if (!isString(str)) throw new Error('str must be a string')
-
-  const removeStringCharacters = str.replace(/['"]+/g, '')
-  console.log(removeStringCharacters)
-  return removeStringCharacters
-}
-helloWorld('hello world')
