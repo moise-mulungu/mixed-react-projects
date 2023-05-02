@@ -17,8 +17,25 @@ The returned array should consist of each of the elements from the first array m
 
 Example:
 
-multiplyAll([1, 2, 3])(2) = [2, 4, 6];
+multiplyAll([1, 2, 3])(2) // [2, 4, 6]
 You must not mutate the original array.
+
+function myHigherOrderFunction (arrayOfIntegers) {
+  return function (integer) {
+    // ...
+    return []
+  }
+}
+// as an arrow function
+const myHigherOrderArrowFunction = (arrayOfIntegers) = (integer) => []
+
+myHigherOrderFunction([1, 2, 3])(2) // [2, 4, 6]
+// - OR -
+const multiplyByFunction = myHigherOrderFunction([1, 2, 3])
+const result = multiplyByFunction(2)
+const result = multiplyByFunction(3)
+const result = multiplyByFunction(4)
+
 */
 
 // 1.2 the coding challenge URL:
@@ -30,7 +47,7 @@ https://www.codewars.com/kata/586909e4c66d18dd1800009b/train/javascript
       these would be the questions you'd be expected to ask in a interview situation
       (practice reading the challenge description carefully). Really take a minute to review the requirements (challenge description) and see if there are any ambiguities. Say out-loud to yourself what you understand the task to be, pretending that you are saying this to an interviewer. This is very important to practice. */
 /*
-After adding code, some tests are failing, i need to fix it.
+
 */
 
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
@@ -38,7 +55,8 @@ After adding code, some tests are failing, i need to fix it.
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise
 // return a function
 
-/* 5. describe the inputs and outputs in detail: their types and possible values
+function multiplyAll(arrayOfIntegers) {
+  /* 5. describe the inputs and outputs in detail: their types and possible values
 note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
 inputs:
@@ -46,26 +64,36 @@ parameter1: string|number|...; possible values:
 parameter2: string|number|...; possible values:
 
 output: string|number|...; possible values: */
-/*
-inputs: no input
+  /*
+inputs: array of integers
 output: function
+  inputs: integer
+  output: array of integers
 */
 
-// 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-const isArray = (value) => Array.isArray(value)
-const isNumber = (value) => typeof value === 'number'
-if (!isArray([])) throw new Error('parameter1 is not an array')
-if (!isNumber(0)) throw new Error('parameter2 is not a number')
-/* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
+  // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
+  // DM: todoMM: make src/ui/array|number entries for both of these
+  const isArray = (value) => Array.isArray(value)
+  const isNumber = (value) => typeof value === 'number'
+  if (!isArray(arrayOfIntegers)) throw new Error('arrayOfIntegers is not an array')
+  // DM: todoMM: write function: const allIntegers = (array) => {} // hint: check MDN array methods for one that tests every value of an array
+  // if (!allIntegers(arrayOfIntegers)) throw new Error('arrayOfIntegers array should all be integers')
+
+  /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 WHAT do you want to change in the input to get the output?
 WHAT do you want to calculate based on the input? 
 Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, DM: yes!)
 */
-/*
-I want to return an array of integers that are the result of multiplying each element of the array by the integer.
+  /*
+  function myHigherOrderFunction (arrayOfIntegers) {
+    return function (integer) {
+      const calculatedIntegers = ...
+      return calculatedIntegers
+    }
+  }
 */
 
-/* 8. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
+  /* 8. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
 assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
 Naming variables: 
 * each logical expressions must be assigned to a variable. 
@@ -76,22 +104,13 @@ Naming variables:
 * variable names should express exactly what the variable contains
 * see naming-conventions.md*/
 
-function multiplyAll() {
-  // array of argument as argument
-  // creating a new array
-  const newArray = Array()
-
-  function subFunction() {
-    // single integer as argument
-    // creating a new integer
-    const newInt = Number()
-    // mapping over the array and multiplying each element by the integer
-    const newArr = newArray.map((item) => item * newInt)
-
-    // returns a new array
-    return newArr
-  }
   /* 9. use the named parts to create a readable solution. */
+
+  // howtojs: interview question: example: closure:: arrayOfIntegers is now 'closed over' by subFunction
+  function subFunction(integer) {
+    const multipliedIntegers = arrayOfIntegers.map((item) => item * integer)
+    return multipliedIntegers
+  }
 
   /* 10. return the solution
        always return a variable, or, use only variables in return statements

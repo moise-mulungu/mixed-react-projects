@@ -12,6 +12,7 @@
     "@szhsin/react-accordion": "^1.2.0",
     "arquero": "^4.4.0",
     "classnames": "^2.3.1",
+    "l": "^0.6.0",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
     "match-sorter": "^4.0.2",

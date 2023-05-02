@@ -88,7 +88,7 @@ I want to return a non-string of hello world
 
   // howtojs: create a character based on an ascii number (character code) (without using raw strings)
   const noRawString = String.fromCharCode(
-    // DM: you don't have to do it, but it would have been good to put a comment next to each saying what letter it is. Helps debugging, if any, and more readable.
+    // DM: you don't have to do it (not a mandatory task right now), but it would have been good to put a comment next to each saying what letter it is. Helps debugging, if any, and more readable.
     72, // H
     101, // e
     108, // l

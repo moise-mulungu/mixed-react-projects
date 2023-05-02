@@ -1,5 +1,6 @@
 import { Accordion, AccordionItem } from '@szhsin/react-accordion'
 
+// DM: todoMM: "do the needful" (before you push)
 export default function Example() {
   return (
     <Accordion>

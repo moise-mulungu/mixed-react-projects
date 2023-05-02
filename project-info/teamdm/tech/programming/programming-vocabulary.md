@@ -1,6 +1,5 @@
 note: prefix Google searches with "computer programming" to get the best results. "programming" alone is not specific enough
 
-(done) DM: todoMM: make a programming vocab entry "function signature"
 
 ## functional programming
 
@@ -50,10 +49,8 @@ components are independent and reusable bits of code. They serve the same purpos
 logical expressions (also called Boolean expressions) are the result of applying logical (Boolean) operators to relational or arithmetic expressions. The result of an operation has two possible states: true or false. Logical expressions are considered false when equal to 0, and are considered true when nonzero
 
 - variable should express a positive (if you want to use 'not' in a variable name, you got it wrong)
-- don't make me think! Programmers need to to read code quickly.
-<!-- ???DM: is the line above a suggestion or any other idea ? it is sometimes hard for me to understand what you meant there by saying('don't make me think! I want to read code fast'. was my definition not clear or ambiguous ?)
-this was not a message to you. I'll always preface messages to you with "DM: "
--->
+- "don't make me think!" (UX book title) Programmers need to to read code quickly.
+
 - benefit: self-documenting code
 
 DM: todoDM: I'm not sure of all the types of logical expressions, so make a little list.
@@ -110,6 +107,10 @@ Data binding is the process that establishes a connection between the app UI and
 
 Form validation is a “technical process where a web-form checks if the information provided by a user is correct.” The form will either alert the user that they messed up and need to fix something to proceed, or the form will be validated and the user will be able to continue with their registration process.
 
-## function signature
+## function signature AKA type signature AKA method signature
 
-A function signature (or type signature, or method signature) defines input and output of functions or methods. A signature can include: parameters and their types. a return value and type. exceptions that might be thrown or passed back
+Defines input and output of functions or methods. A signature can include: 
+* parameters and their types. 
+* a return value and type. 
+* exceptions that might be thrown or passed back
+* information about the availability of the method in an object-oriented program (such as the keywords public, static, or prototype).

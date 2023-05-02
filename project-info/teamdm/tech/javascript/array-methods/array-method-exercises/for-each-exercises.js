@@ -1,9 +1,15 @@
 // run this line and see what is logged
-const result1 = [1, 2, 3].forEach((number) => console.log('the current number is: ', number))
-result1 /* DM: todoDM: write the value of "result1" here - still todo, this part is important check MDN if you're not sure what [].foreach() returns */
+const forEachResult = [1, 2, 3].forEach((number) => console.log('the current number is: ', number))
+result1 
+/* DM: todoMM: write the value of "result1" here - still todo, this part is important check MDN if you're not sure what [].foreach() returns */
 // the current number is:  1
 // the current number is:  2
 // the current number is:  3
+console.log(forEachResult) // undefined - always returns undefined
+// [].map().filter().reduce().forEach()
+// forEach is for side effects
+// forEach is always the last in a chain of array methods
+
 
 const pizzaToppings = ['cheese', 'avocado', 'halibut', 'custard']
 

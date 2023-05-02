@@ -1,5 +1,5 @@
 <!--
-Good job. I can't validate CSS terminology for you like I can JS, so I can only advise you to
+DM: FYI, I can't validate CSS terminology for you like I can JS, so I can only advise you to
 * use authoritative web sites
 * revisit each vocab item later, when you know more
 * compare the vocab of 2 authoritative sites (sometimes helps for clarity, completeness)
@@ -8,7 +8,7 @@ MDN is authoritative and offers glossaries.
 
 For howto articles:
 CSS Tricks website is good, but usually there are found articles on specific topics.
-Comeau is also good on CSS.(ok)
+Comeau is also good on CSS.
  -->
 
 ## selector

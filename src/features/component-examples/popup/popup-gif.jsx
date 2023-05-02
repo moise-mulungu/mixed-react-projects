@@ -2,6 +2,7 @@ import React from 'react'
 import Popup from 'reactjs-popup'
 // import 'reactjs-popup/dist/index.css'
 
+// DM: todoMM: "gif" means an image format. no abbreviations rule
 export default function PopupGif() {
   return (
     <div>

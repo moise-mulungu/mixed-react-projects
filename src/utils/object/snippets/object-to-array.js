@@ -7,4 +7,4 @@ const arrayOfEntries = Object.entries(obj) // [ ['foo', 'bar'], ['baz', 42] ]
 const objWithSameProperties = Object.fromEntries(arrayOfEntries) // { foo: "bar", baz: 42 }
 
 const objWithSamePropertiesOneLine = Object.fromEntries(Object.entries(obj)) // { foo: "bar", baz: 42 }
-// great!, i like this one.
+// MM: great!, i like this one.
