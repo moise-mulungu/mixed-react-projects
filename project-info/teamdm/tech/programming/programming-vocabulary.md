@@ -1,7 +1,6 @@
 note: prefix Google searches with "computer programming" to get the best results. "programming" alone is not specific enough
 
-DM: todoMM: make a programming vocab entry "function signature"
-
+(done) DM: todoMM: make a programming vocab entry "function signature"
 
 ## functional programming
 
@@ -52,7 +51,7 @@ logical expressions (also called Boolean expressions) are the result of applying
 
 - variable should express a positive (if you want to use 'not' in a variable name, you got it wrong)
 - don't make me think! Programmers need to to read code quickly.
-<!-- ???DM: is the line above a suggestion or any other idea ? it is sometimes hard for me to understand what you meant there by saying('don't make me think! I want to read code fast'. was my definition not clear or ambiguous ?) 
+<!-- ???DM: is the line above a suggestion or any other idea ? it is sometimes hard for me to understand what you meant there by saying('don't make me think! I want to read code fast'. was my definition not clear or ambiguous ?)
 this was not a message to you. I'll always preface messages to you with "DM: "
 -->
 - benefit: self-documenting code
@@ -110,3 +109,7 @@ Data binding is the process that establishes a connection between the app UI and
 ## form validation
 
 Form validation is a “technical process where a web-form checks if the information provided by a user is correct.” The form will either alert the user that they messed up and need to fix something to proceed, or the form will be validated and the user will be able to continue with their registration process.
+
+## function signature
+
+A function signature (or type signature, or method signature) defines input and output of functions or methods. A signature can include: parameters and their types. a return value and type. exceptions that might be thrown or passed back

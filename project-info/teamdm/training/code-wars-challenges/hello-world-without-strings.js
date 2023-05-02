@@ -90,18 +90,18 @@ I want to return a non-string of hello world
   const noRawString = String.fromCharCode(
     // DM: you don't have to do it, but it would have been good to put a comment next to each saying what letter it is. Helps debugging, if any, and more readable.
     72, // H
-    101,
-    108,
-    108,
-    111,
-    44,
-    32,
-    87,
-    111,
-    114,
-    108,
-    100,
-    33
+    101, // e
+    108, // l
+    108, // l
+    111, // o
+    44, // ,
+    32, // space
+    87, // W
+    111, // o
+    114, // r
+    108, // l
+    100, // d
+    33 // !
   )
   console.log(noRawString)
 

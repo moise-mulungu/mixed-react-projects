@@ -16,7 +16,7 @@ import SelectCountries from '@/ui/form/select/select-countries'
 import Colors from './colors'
 import IconDropdowns from './icon-dropdowns'
 import TwoFactor from './two-factor/two-factor'
-// DM: todoMM: can you guess what will I say about the next line? :)
+// DM: todoMM: can you guess what will I say about the next line? :Yeah, the name of the file does not match with the component name.)
 import PopupGfg from './popup/popup-gif'
 // howtotailwind: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
