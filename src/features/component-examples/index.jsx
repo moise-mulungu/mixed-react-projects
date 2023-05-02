@@ -16,8 +16,9 @@ import SelectCountries from '@/ui/form/select/select-countries'
 import Colors from './colors'
 import IconDropdowns from './icon-dropdowns'
 import TwoFactor from './two-factor/two-factor'
-// DM: todoMM: can you guess what will I say about the next line? :Yeah, the name of the file does not match with the component name.)
+//(done) DM: todoMM: can you guess what will I say about the next line? :Yeah, the name of the file does not match with the component name.)
 import PopupGif from './popup/popup-gif'
+import Example from './react-accordions/accordions'
 // howtotailwind: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
 // DM: todoDM: get ctrl-click on object to work for @/ imports
@@ -67,7 +68,9 @@ export default function ComponentExamples() {
       <Divider />
       <Colors />
       <Divider />
-      <PopupGfg />
+      <PopupGif />
+      <Divider />
+      <Example />
     </div>
   )
 }
