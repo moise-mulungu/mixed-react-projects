@@ -76,7 +76,7 @@ output: function
   const isArray = (value) => Array.isArray(value)
   const isNumber = (value) => typeof value === 'number'
   if (!isArray(arrayOfIntegers)) throw new Error('arrayOfIntegers is not an array')
-  // DM: todoMM: write function: const allIntegers = (array) => {} // hint: check MDN array methods for one that tests every value of an array
+  //(done) DM: todoMM: write function: const allIntegers = (array) => {} // hint: check MDN array methods for one that tests every value of an array
   // if (!allIntegers(arrayOfIntegers)) throw new Error('arrayOfIntegers array should all be integers')
 
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)

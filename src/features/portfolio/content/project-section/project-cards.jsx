@@ -31,9 +31,9 @@ const ProjectCards = () => {
                       alt=""
                     />
                     <p className="mt-6">
-                      {/*  <ul> */}
-                      {''}
-                      {/* <Popup
+                      <ul>
+                        {''}
+                        <Popup
                           trigger={
                             <button type="button" className="text-sm font-semibold leading-6">
                               Built with:{' '}
@@ -52,28 +52,29 @@ const ProjectCards = () => {
                               )
                             })}
                           </div>
-                        </Popup> */}
-                      <span className="text-sm font-semibold leading-6">Built with: </span>
-                      {/*  <div className="absolute ml-48 right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"> */}
-                      {/* CSS debugging steps:
-                       * check the containing (parent) tag
-                       * make
-                       */}
-                      <Accordion>
-                        {stack?.map((stackItem) => {
-                          console.log('hello world')
-                          return (
-                            <AccordionItem key={stackItem} header={stackItem}>
-                              {/* map goes here */}
-                              <div className="block px-4 py-2  text-gray-800 group-hover:text-gray-500">
-                                {stackItem}
-                              </div>
-                            </AccordionItem>
-                          )
-                        })}
-                        {/*  </div> */}
-                      </Accordion>
-                      {/*  </ul> */}
+                        </Popup>
+
+                        {/*  <div className="absolute ml-48 right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"> */}
+                        {/* CSS debugging steps:
+                         * check the containing (parent) tag
+                         * make
+                         */}
+                        {/* <Accordion>
+                          <AccordionItem header="Built with:">
+                            {stack?.map((stackItem) => {
+                              return (
+                                <li
+                                  className="block px-4 py-2  text-gray-800 group-hover:text-gray-500"
+                                  key={stackItem}
+                                >
+                                  {stackItem}
+                                </li>
+                              )
+                            })}
+                          </AccordionItem>
+                        </Accordion>
+                        MM: I kept the Popup component rather than the Accordion here; I will have to add an direction arrow icon to look clickable */}
+                      </ul>
                       <a href={url}>
                         <button
                           type="button"

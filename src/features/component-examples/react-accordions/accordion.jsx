@@ -1,7 +1,7 @@
 import { Accordion, AccordionItem } from '@szhsin/react-accordion'
 
 // DM: todoMM: "do the needful" (before you push)
-export default function Example() {
+export default function AccordionExample() {
   return (
     <Accordion>
       <AccordionItem header="What is Lorem Ipsum?">
