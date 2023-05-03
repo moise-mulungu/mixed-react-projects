@@ -83,7 +83,7 @@ I want to return a string of text with all text characters replaced with the cha
   const textArray = text.split('')
   // DM: a 'char', a character, implies 1, so you don't have to split it - char.split('') would return an array of one character
   // DM: you could validate that it is a one character string, but that is probably overkill
-  const charArray = char.split('')
+  const charArray = char.split('') // ['z']
   const newArray = textArray.map((letter) => {
     return charArray
   })
