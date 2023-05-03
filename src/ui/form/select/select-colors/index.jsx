@@ -14,7 +14,7 @@ function SelectColors({ colors, legend, initialColor }) {
             setSelectedOption(event.target.value)
           }}
         >
-          {[initialColor === '' ? '' : undefined].concat(colors).map((color) => {
+          {colors.map((color) => {
             return (
               <option value={color} key={color} selected={initialColor === color}>
                 {color}

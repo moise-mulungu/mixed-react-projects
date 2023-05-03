@@ -80,16 +80,14 @@ I want to return a string of text with all text characters replaced with the cha
   if (text === '' || char === '') return '' // DM: guard clause;
   // DM: todoMM: the 'return' is an implicit 'else' so you don't need else
   // DM: todoMM: do you already know that test.length GT 0?
-  else if (text.length > 0) {
-    const textArray = text.split('')
-    // DM: a 'char', a character, implies 1, so you don't have to split it - char.split('') would return an array of one character
-    // DM: you could validate that it is a one character string, but that is probably overkill
-    const charArray = char.split('')
-    const newArray = textArray.map((letter) => {
-      return charArray
-    })
-    return newArray.join('')
-  }
+  const textArray = text.split('')
+  // DM: a 'char', a character, implies 1, so you don't have to split it - char.split('') would return an array of one character
+  // DM: you could validate that it is a one character string, but that is probably overkill
+  const charArray = char.split('')
+  const newArray = textArray.map((letter) => {
+    return charArray
+  })
+  return newArray.join('')
 
   /* 9. use the named parts to create a readable solution. */
   // MM: toDM: i will again work on this later (ok, some of the tips above will help. Hint: before you break a string into an array, see if there are any built-in string methods that will accomplish what you want)
