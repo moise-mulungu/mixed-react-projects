@@ -76,7 +76,7 @@ output: function
   const isArray = (value) => Array.isArray(value)
   const isNumber = (value) => typeof value === 'number'
   if (!isArray(arrayOfIntegers)) throw new Error('arrayOfIntegers is not an array')
-  //(done) DM: todoMM: write function: const allIntegers = (array) => {} // hint: check MDN array methods for one that tests every value of an array
+  //DM: todoMM: cool, you had already done it in another exercise. implement it here.
   // if (!allIntegers(arrayOfIntegers)) throw new Error('arrayOfIntegers array should all be integers')
 
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
@@ -133,7 +133,7 @@ multiplyAll([])(10) // []
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
 /* 13. code review and approval*/
-/*  */
+/* Good. once you validate the array is all integers, you can do step 14 */
 
-/* 14. Final step: after code review and final approval (like we do at work), I'll leave a comment here, and you can: copy the solution below this line, remove all comments and console.log below this line  
+/* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/

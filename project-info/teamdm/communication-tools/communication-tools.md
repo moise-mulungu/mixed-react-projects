@@ -10,6 +10,8 @@
 - ??? aka "fishhooks" means there is a question, concern, "hey look at this"
   - ???DM, ???MM
   - example: MM: ???DM: a question for Duncan
+- MM: toDM: a message for duncan ...
+- MM: a comment by Moise
 - in .js comments or .md files
   - word? - the "?" signifies doubt about the correct word (?? signifies doubt about the concept, approach)
 - !!! means "important" depending on the number of "!"

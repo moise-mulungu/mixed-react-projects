@@ -85,5 +85,7 @@ myFunction('', '') // expected result
 /* 13. code review and approval*/
 /*  */
 
-/* 14. Final step: after code review and final approval (like we do at work), I'll leave a comment here, and you can: copy the solution below this line, remove all comments and console.log below this line  
+/* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
+
+/* 15. Duncan moves the file out of this directory when it is complete */

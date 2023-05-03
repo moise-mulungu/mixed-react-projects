@@ -21,7 +21,6 @@ export default function Footer(props) {
           <a href="https://flowbite.com/" className="hover:underline">
             Moise Mulungu™
           </a>
-          {/* just the © is typical for a portfolio site - the others are for company names and logos: ???DM: should i remove the "All right reserved" text and keep only the © ? DM: yes(done).*/}
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
           {socialLinks.map(({ id, name, title, Icon, url }) => {

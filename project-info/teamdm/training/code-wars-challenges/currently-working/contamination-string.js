@@ -51,12 +51,12 @@ function contamination(text, char) {
 
         output: string|number|...; possible values: */
   /*
-input: string of text and character
-output: string of text with all text characters replaced with the character
+input: a string of text and a character
+output: a string of text with all text characters replaced with the character
   */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-  const areStrings = typeof text === 'string' && typeof char === 'string'
+  const areStrings = typeof text === 'string' && typeof char === 'string' // good!
   if (!areStrings) throw new Error('inputs must be strings')
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
@@ -77,9 +77,13 @@ I want to return a string of text with all text characters replaced with the cha
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  if (text === '' || char === '') return ''
+  if (text === '' || char === '') return '' // DM: guard clause;
+  // DM: todoMM: the 'return' is an implicit 'else' so you don't need else
+  // DM: todoMM: do you already know that test.length GT 0?
   else if (text.length > 0) {
     const textArray = text.split('')
+    // DM: a 'char', a character, implies 1, so you don't have to split it
+    // DM: you could validate that it is a one character string, but that is probably overkill
     const charArray = char.split('')
     const newArray = textArray.map((letter) => {
       return charArray
@@ -88,7 +92,7 @@ I want to return a string of text with all text characters replaced with the cha
   }
 
   /* 9. use the named parts to create a readable solution. */
-  // MM toDM: i will again work on this later
+  // MM: toDM: i will again work on this later (ok, some of the tips above will help. Hint: before you break a string into an array, see if there are any built-in string methods that will accomplish what you want)
   /* 10. return the solution
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
