@@ -82,7 +82,7 @@ I want to return a string of text with all text characters replaced with the cha
   // DM: todoMM: do you already know that test.length GT 0?
   else if (text.length > 0) {
     const textArray = text.split('')
-    // DM: a 'char', a character, implies 1, so you don't have to split it
+    // DM: a 'char', a character, implies 1, so you don't have to split it - char.split('') would return an array of one character
     // DM: you could validate that it is a one character string, but that is probably overkill
     const charArray = char.split('')
     const newArray = textArray.map((letter) => {
