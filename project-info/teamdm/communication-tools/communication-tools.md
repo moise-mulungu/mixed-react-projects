@@ -11,7 +11,7 @@
   - ???DM, ???MM
   - example: MM: ???DM: a question for Duncan
 - MM: toDM: a message for duncan ...
-- MM: a comment by Moise
+- MM: a comment by Moise(ok)
 - in .js comments or .md files
   - word? - the "?" signifies doubt about the correct word (?? signifies doubt about the concept, approach)
 - !!! means "important" depending on the number of "!"

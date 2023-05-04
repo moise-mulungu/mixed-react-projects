@@ -81,16 +81,17 @@ I want to return a string of text with all text characters replaced with the cha
   // DM: todoMM: the 'return' is an implicit 'else' so you don't need else
   // DM: todoMM: do you already know that test.length GT 0?
   const textArray = text.split('')
+  console.log({ textArray })
   // DM: a 'char', a character, implies 1, so you don't have to split it - char.split('') would return an array of one character
   // DM: you could validate that it is a one character string, but that is probably overkill
-  const charArray = char.split('') // ['z']
+  // const charArray = char.split('') // ['z']
   const newArray = textArray.map((letter) => {
-    return charArray
+    return char
   })
   return newArray.join('')
 
   /* 9. use the named parts to create a readable solution. */
-  // MM: toDM: i will again work on this later (ok, some of the tips above will help. Hint: before you break a string into an array, see if there are any built-in string methods that will accomplish what you want)
+  // MM: toDM: i will again work on this later (ok, some of the tips above will help. Hint: before you break a string into an array, see if there are any built-in string methods that will accomplish what you want(ok))
   /* 10. return the solution
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
@@ -117,3 +118,23 @@ contamination('//case', ' ') // '      '
 
 /* 14. Final step: after code review and final approval (like we do at work), I'll leave a comment here, and you can: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
+
+function contamination(text, char) {
+  const areStrings = typeof text === 'string' && typeof char === 'string' // good!
+  if (!areStrings) throw new Error('inputs must be strings')
+
+  if (text === '' || char === '') return '' // DM: guard clause;
+
+  const textArray = text.split('')
+
+  const newArray = textArray.map((letter) => {
+    return char
+  })
+  return newArray.join('')
+}
+
+contamination('abc', 'z')
+contamination('', 'z')
+contamination('abc', '')
+contamination('_3ebzgh4', '&')
+contamination('//case', ' ')

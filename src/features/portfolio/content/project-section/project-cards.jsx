@@ -1,9 +1,7 @@
 // DM: todoDM: find out why you can't ctrl-click on projectCards to go to the file if @ is used
 import { projectCardsData, projectCardText } from '@/constants/portfolio/content/project-cards'
 import CardsHeading from './card-heading'
-// import Divider from '@/ui/divider'
 import Popup from 'reactjs-popup'
-import { Accordion, AccordionItem } from '@szhsin/react-accordion'
 
 const ProjectCards = () => {
   return (
@@ -53,27 +51,6 @@ const ProjectCards = () => {
                             })}
                           </div>
                         </Popup>
-
-                        {/*  <div className="absolute ml-48 right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"> */}
-                        {/* CSS debugging steps:
-                         * check the containing (parent) tag
-                         * make
-                         */}
-                        {/* <Accordion>
-                          <AccordionItem header="Built with:">
-                            {stack?.map((stackItem) => {
-                              return (
-                                <li
-                                  className="block px-4 py-2  text-gray-800 group-hover:text-gray-500"
-                                  key={stackItem}
-                                >
-                                  {stackItem}
-                                </li>
-                              )
-                            })}
-                          </AccordionItem>
-                        </Accordion>
-                        MM: I kept the Popup component rather than the Accordion here; I will have to add an direction arrow icon to look clickable */}
                       </ul>
                       <a href={url}>
                         <button
@@ -97,18 +74,3 @@ const ProjectCards = () => {
 export default ProjectCards
 
 //MM:  I am still working on this component, trying to find a better design from tailwind.
-
-{
-  /* <div className="absolute ml-48 right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                              {stack?.map((stack) => {
-                                return (
-                                  <li
-                                    className="block px-4 py-2  text-gray-800 group-hover:text-gray-500"
-                                    key={stack}
-                                  >
-                                    {stack}
-                                  </li>
-                                )
-                              })}
-                            </div> */
-}

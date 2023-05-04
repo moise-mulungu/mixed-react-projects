@@ -31,40 +31,6 @@ export const otherSkills = [
   'Jira',
   'Slack',
 ]
-
-const skills = {
-  contentAboutHeaderText:
-    "Hello I am a software developer, I can help you build a product, feature or website. look through some of my work and experience. if you like what you see and have a project you need coded don't hesitate to co>ntact me.",
-  frameworkTitle: 'Frameworks',
-  frameworks: [
-    'React',
-    'Ruby on Rails',
-    'NodeJS',
-    'BooStrap',
-    'Capybara',
-    'RSpec',
-    'Selenium',
-    'PostgreSQL',
-  ],
-  languageTitle: 'Languages',
-  languages: ['JavaScript', 'Ruby', 'SQL'],
-  otherSkillsTitle: 'Other Skills',
-  otherSkills: [
-    'HTML',
-    'CSS',
-    'SASS',
-    'GraphQL',
-    'Git',
-    'GitHub',
-    'CodeLab',
-    'CodeLit',
-    'Terminal',
-    'VSCode',
-    'Jira',
-    'Slack',
-  ],
-}
-
-console.log(Object.entries(skills))
+// i was trying to create a skills array of objects for the skills section. I tried it in the src/features/portfolio/content/skills-section/index.jsx.
 
 // ???

@@ -74,10 +74,11 @@ output: function
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   // DM: todoMM: make src/ui/array|number entries for both of these
   const isArray = (value) => Array.isArray(value)
-  const isNumber = (value) => typeof value === 'number'
+  // const isNumber = (value) => typeof value === 'number'
+  const allIntegers = arrayOfIntegers.every((item) => Number.isInteger(Number(item)))
   if (!isArray(arrayOfIntegers)) throw new Error('arrayOfIntegers is not an array')
-  //DM: todoMM: cool, you had already done it in another exercise. implement it here.
-  // if (!allIntegers(arrayOfIntegers)) throw new Error('arrayOfIntegers array should all be integers')
+  //(done)DM: todoMM: cool, you had already done it in another exercise. implement it here.
+  if (!allIntegers(arrayOfIntegers)) throw new Error('arrayOfIntegers array should all be integers')
 
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 WHAT do you want to change in the input to get the output?
