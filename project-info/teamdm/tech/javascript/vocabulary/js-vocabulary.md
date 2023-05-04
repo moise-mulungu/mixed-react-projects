@@ -166,3 +166,7 @@ myObject.myPropertyNameInAVariable // error! myPropertyNameInAVariable is undefi
 ## hoisting
 
 JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code.
+
+## mutation
+
+A value is said to be mutable if it can be changed; a mutation is the act of changing the properties of a value, or the value of a declared variable. All primitive value in JavaScript are immutable: you can't change their properties — ever
