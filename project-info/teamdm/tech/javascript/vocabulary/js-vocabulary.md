@@ -121,6 +121,7 @@ An array literal is a _list_ of zero or more _expressions_, each of which repres
 ## object literal
 
 An object literal is a _compound data type_ of zero or more pairs of *property name*s and associated 3s of an object, enclosed in _curly brackets_ ( {} )
+```const myObj = {}```
 
 DM: great work!
 
@@ -169,4 +170,21 @@ JavaScript Hoisting refers to the process whereby the interpreter appears to mov
 
 ## mutation
 
-A value is said to be mutable if it can be changed; a mutation is the act of changing the properties of a value, or the value of a declared variable. All primitive value in JavaScript are immutable: you can't change their properties — ever
+* A value is said to be mutable if it can be changed, altered
+* a mutation is the act of changing the properties of an object, or the value of a declared variable. 
+* but, all primitive values in JavaScript are immutable: 
+  * you can't change their properties — ever
+  * they cannot be altered
+  * but their value can be reassigned
+* let - you can reassign and mutate (objects)
+* const - cannot reassign, but can mutate
+* often an interview question. memorize a short answer. be careful to not get 'lost in the weeds'
+
+# object
+* { property: value }
+* anything that is not a primitive: array, regExp, date
+  * note: all can be instantiated via the 'new' operator: const date = new Date()
+    * but, so can a string: const myString = new String('hello') // DM: todoDM: is myString an object or primitive
+    * also, number: const myNumber = new Number(1);
+    * 
+

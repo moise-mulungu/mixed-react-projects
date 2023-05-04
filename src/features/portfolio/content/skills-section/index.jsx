@@ -3,6 +3,7 @@ import Divider from '@/ui/divider'
 import Button from './button'
 import Languages from './languages'
 import Frameworks from './frameworks'
+// DM: todoMM: './other-skills' //  index.js
 import OtherSkills from './other-skills/other-skills'
 
 const Skills = (props) => {
@@ -23,6 +24,7 @@ const Skills = (props) => {
   )
 }
 
+// DM: todoMM: func name to match directory name
 export default Skills
 
 const stats = [
@@ -47,6 +49,7 @@ const stats = [
   { otherSkill: [{ title: 'Other Skills' }, { items: ['React', 'Redux', 'CSS', 'RSpec'] }] },
 ]
 
+// DM: todoMM: one function per file
 // This is just a test to see if I can get the data to render from an array of objects
 export function SkillTest() {
   return (
@@ -67,10 +70,16 @@ export function SkillTest() {
                 <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900">
                   {stat.value}
                 </dd> */}
+                {/* 
+                  make the first one look good
+                  extract repeated code to a separate function (Component)
+                  */}
                 {framework?.map(({ title, items }) => {
                   return (
                     <div>
-                      <dt className="text-2xl font-semibold leading-6 text-gray-600">{title}</dt>
+                      <dt className="mb-2 text-2xl font-semibold leading-6 text-gray-600">
+                        {title}
+                      </dt>
                       <dd className="order-first text-1xl font-semibold tracking-tight text-gray-900">
                         {items?.map((item) => {
                           return <div>{item}</div>

@@ -1,6 +1,6 @@
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
-// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todoMM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
+// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 /*
  */
 
@@ -58,6 +58,9 @@ output: a string of text with all text characters replaced with the character
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   const areStrings = typeof text === 'string' && typeof char === 'string' // good!
   if (!areStrings) throw new Error('inputs must be strings')
+
+  if (text === '' || char === '') return '' // DM: guard clause;
+
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
@@ -77,18 +80,8 @@ I want to return a string of text with all text characters replaced with the cha
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  if (text === '' || char === '') return '' // DM: guard clause;
-  // DM: todoMM: the 'return' is an implicit 'else' so you don't need else
-  // DM: todoMM: do you already know that test.length GT 0?
-  const textArray = text.split('')
-  console.log({ textArray })
-  // DM: a 'char', a character, implies 1, so you don't have to split it - char.split('') would return an array of one character
-  // DM: you could validate that it is a one character string, but that is probably overkill
-  // const charArray = char.split('') // ['z']
-  const newArray = textArray.map((letter) => {
-    return char
-  })
-  return newArray.join('')
+
+  return text.replace(/./g, char)
 
   /* 9. use the named parts to create a readable solution. */
   // MM: toDM: i will again work on this later (ok, some of the tips above will help. Hint: before you break a string into an array, see if there are any built-in string methods that will accomplish what you want(ok))
@@ -114,23 +107,18 @@ contamination('//case', ' ') // '      '
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
 /* 13. code review and approval*/
-/*  */
+/* good! */
 
 /* 14. Final step: after code review and final approval (like we do at work), I'll leave a comment here, and you can: copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
 function contamination(text, char) {
-  const areStrings = typeof text === 'string' && typeof char === 'string' // good!
+  const areStrings = typeof text === 'string' && typeof char === 'string'
   if (!areStrings) throw new Error('inputs must be strings')
 
-  if (text === '' || char === '') return '' // DM: guard clause;
+  if (text === '' || char === '') return ''
 
-  const textArray = text.split('')
-
-  const newArray = textArray.map((letter) => {
-    return char
-  })
-  return newArray.join('')
+  return text.replace(/./g, char)
 }
 
 contamination('abc', 'z')

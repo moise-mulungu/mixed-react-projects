@@ -1,6 +1,6 @@
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
-// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todoMM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
+// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 /*
  */
 
@@ -72,12 +72,12 @@ output: function
 */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-  // DM: todoMM: make src/ui/array|number entries for both of these
   const isArray = (value) => Array.isArray(value)
-  // const isNumber = (value) => typeof value === 'number'
-  const allIntegers = arrayOfIntegers.every((item) => Number.isInteger(Number(item)))
+  // isNumber = (value) => typeof value === 'number'
+  // DM: todoMM: make a src/utils/array/all-integers.js
   if (!isArray(arrayOfIntegers)) throw new Error('arrayOfIntegers is not an array')
-  //(done)DM: todoMM: cool, you had already done it in another exercise. implement it here.
+
+  const allIntegers = arrayOfIntegers.every((item) => Number.isInteger(item))
   if (!allIntegers(arrayOfIntegers)) throw new Error('arrayOfIntegers array should all be integers')
 
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
@@ -134,7 +134,7 @@ multiplyAll([])(10) // []
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
 /* 13. code review and approval*/
-/* Good. once you validate the array is all integers, you can do step 14 */
+/* Good. once you do the todo-MM above, you can do step 14 */
 
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/

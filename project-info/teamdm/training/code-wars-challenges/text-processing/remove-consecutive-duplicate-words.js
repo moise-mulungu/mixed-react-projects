@@ -41,14 +41,13 @@
 // function removeConsecutiveDuplicates(string) {
 //   /* 4. describe the inputs and outputs in detail: their types and possible values
 //     note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
-    
+
 //         inputs:
 //           string: string...; possible values:
 
 //         output: string...; possible values: any string but without a repeated word twice*/
 //   /*
 
-  
 //   */
 
 //   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
@@ -64,7 +63,7 @@
 
 //   /* 7. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
 //         assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
-//         * each logical expressions must be assigned to a variable. 
+//         * each logical expressions must be assigned to a variable.
 //         * the instructions often contain words that can be used in variable names.
 //         * functions are named with verbs+noun (createMyThing) or adverbs: (onClick, onSubmitHandler)
 //         * booleans are named with (positive) adjectives: (open, seen, isString)
@@ -110,15 +109,25 @@ function removeConsecutiveDuplicates(string) {
   const isString = typeof string === 'string'
   if (!isString) throw new Error('parameter or input must be a string')
 
-  // I wanted to redo this challenge, and then learned this new method called Set(), and the second one from; https://www.javascripttutorial.net/array/javascript-remove-duplicates-from-array/
-  // const uniqueChar = [...new Set(string.split(' '))]
-  // return uniqueChar.join(' ')
+  // solution
+  const words = string.split(' ')
+  const noConsecutiveDuplicateWords = words.map((word, index) => {
+    if (word === words[index + 1]) return ''
+    return word
+  })
+  return noConsecutiveDuplicateWords.join(' ')
 
-  const splitStr = string.split(' ')
-  
-  const uniqueChar = splitStr.filter((word, index) => {
-    console.log(`${word} - ${index} - ${splitStr.indexOf(word)}`)
-    return splitStr.indexOf(word) === index
+  // below are similar, but they return unique, not remove duplicate consecutive
+  // I wanted to redo this challenge, and then learned this new method called Set(), and the second one from; https://www.javascripttutorial.net/array/javascript-remove-duplicates-from-array/
+  // DM: todoMM: put in src/utils/array/unique.js (changes var names to communicate that it works with any type, not just strings aka characters)
+  const uniqueWords = [...new Set(string.split(' '))]
+  return uniqueWords.join(' ')
+
+  const splitString = string.split(' ')
+  // DM: todoMM: put in src/utils/array/snippets/unique.js (changes var names to communicate that it works with any type, not just strings aka characters)
+  const uniqueChar = splitString.filter((word, index) => {
+    console.log(`${word} - ${index} - ${splitString.indexOf(word)}`)
+    return splitString.indexOf(word) === index
   })
   return uniqueChar.join(' ')
 }
