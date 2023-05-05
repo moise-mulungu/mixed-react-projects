@@ -74,7 +74,7 @@ output: function
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   const isArray = (value) => Array.isArray(value)
   // isNumber = (value) => typeof value === 'number'
-  // DM: todoMM: make a src/utils/array/all-integers.js
+  //(done) DM: todoMM: make a src/utils/array/all-integers.js
   if (!isArray(arrayOfIntegers)) throw new Error('arrayOfIntegers is not an array')
 
   const allIntegers = arrayOfIntegers.every((item) => Number.isInteger(item))
@@ -138,3 +138,24 @@ multiplyAll([])(10) // []
 
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
+
+function multiplyAll(arrayOfIntegers) {
+  const isArray = (value) => Array.isArray(value)
+
+  if (!isArray(arrayOfIntegers)) throw new Error('arrayOfIntegers is not an array')
+
+  const allIntegers = arrayOfIntegers.every((item) => Number.isInteger(item))
+  if (!allIntegers(arrayOfIntegers)) throw new Error('arrayOfIntegers array should all be integers')
+
+  function subFunction(integer) {
+    const multipliedIntegers = arrayOfIntegers.map((item) => item * integer)
+    return multipliedIntegers
+  }
+
+  return subFunction
+}
+
+multiplyAll([1, 2, 3])(2) // [2, 4, 6]
+multiplyAll([1, 2, 3])(1) // [1, 2, 3]
+multiplyAll([1, 2, 3])(0) // [0, 0, 0]
+multiplyAll([])(10) // []

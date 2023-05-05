@@ -241,15 +241,8 @@ export default function ContactForm() {
               </div>
             </div>
             <div className="mt-8 flex justify-end">
-              {/* <button
-                type="submit"
-                className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-              >
-                <a href="mailto:`{myEmail}`">Click to Send an Email</a>
-              </button> */}
               <button
                 href={myEmail}
-                // style={{ color: '#61dafb' }}
                 type="submit"
                 className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
