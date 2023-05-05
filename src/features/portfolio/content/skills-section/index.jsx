@@ -1,19 +1,19 @@
 import { contentAboutHeaderText } from '@/constants/portfolio/content/skills'
 import Divider from '@/ui/divider'
-import Button from './button'
+import ResumeButton from './resume-button'
 import Languages from './languages'
 import Frameworks from './frameworks'
-//(done) DM: todoMM: './other-skills' //  index.js
 import OtherSkills from './other-skills'
 
-const SkillsSection = (props) => {
+export default function SkillsSection(props) {
+  // DM: always using function declarations, for consistency (not arrow functions)
   const { _ = {} } = props
   return (
     <div className="use tw utility classes here">
       <h2 className="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700">
         {contentAboutHeaderText}
       </h2>
-      <Button />
+      <ResumeButton />
       <Divider />
       <Languages />
       <Divider />
@@ -23,6 +23,3 @@ const SkillsSection = (props) => {
     </div>
   )
 }
-
-//(done) DM: todoMM: func name to match directory name
-export default SkillsSection

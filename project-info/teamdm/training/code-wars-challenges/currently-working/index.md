@@ -10,4 +10,4 @@
 
 ## DM: todoDM: think of a way to categorize these challenges in terms of concepts learned in order that they be findable later when the concept is needed. (may be simply adding howtojs comments to them)
 
-<!-- DM: todoMM: check all the todoMMs in this directory and let's get these old challenges wrapped up! -->(read)
+<!-- DM: todoMM: all right! Try a new challenge from new-challenge-urls.md -->

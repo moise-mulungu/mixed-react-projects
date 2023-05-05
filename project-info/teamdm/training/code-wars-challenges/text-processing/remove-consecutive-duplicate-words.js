@@ -118,13 +118,11 @@ function removeConsecutiveDuplicates(string) {
   return noConsecutiveDuplicateWords.join(' ')
 
   // below are similar, but they return unique, not remove duplicate consecutive
-  // I wanted to redo this challenge, and then learned this new method called Set(), and the second one from; https://www.javascripttutorial.net/array/javascript-remove-duplicates-from-array/
-  //(done) DM: todoMM: put in src/utils/array/unique.js (changes var names to communicate that it works with any type, not just strings aka characters)
+  // I wanted to redo this challenge, and then learned this new method called Set(), and the second one from: https://www.javascripttutorial.net/array/javascript-remove-duplicates-from-array/
   const uniqueWords = [...new Set(string.split(' '))]
   return uniqueWords.join(' ')
 
   const splitString = string.split(' ')
-  //(done; repeated twice: ???DM) DM: todoMM: put in src/utils/array/snippets/unique.js (changes var names to communicate that it works with any type, not just strings aka characters)
   const uniqueChar = splitString.filter((word, index) => {
     console.log(`${word} - ${index} - ${splitString.indexOf(word)}`)
     return splitString.indexOf(word) === index

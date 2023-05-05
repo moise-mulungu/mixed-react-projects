@@ -74,7 +74,6 @@ output: function
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   const isArray = (value) => Array.isArray(value)
   // isNumber = (value) => typeof value === 'number'
-  //(done) DM: todoMM: make a src/utils/array/all-integers.js
   if (!isArray(arrayOfIntegers)) throw new Error('arrayOfIntegers is not an array')
 
   const allIntegers = arrayOfIntegers.every((item) => Number.isInteger(item))
@@ -141,7 +140,6 @@ multiplyAll([])(10) // []
 
 function multiplyAll(arrayOfIntegers) {
   const isArray = (value) => Array.isArray(value)
-
   if (!isArray(arrayOfIntegers)) throw new Error('arrayOfIntegers is not an array')
 
   const allIntegers = arrayOfIntegers.every((item) => Number.isInteger(item))
@@ -157,5 +155,6 @@ function multiplyAll(arrayOfIntegers) {
 
 multiplyAll([1, 2, 3])(2) // [2, 4, 6]
 multiplyAll([1, 2, 3])(1) // [1, 2, 3]
+// DM: take notice of the code-wars tests how they test edge cases, like multiplying by 0 or empty array. You'll want to test edge cases when you devise tests for your own code.
 multiplyAll([1, 2, 3])(0) // [0, 0, 0]
 multiplyAll([])(10) // []

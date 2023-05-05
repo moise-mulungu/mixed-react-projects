@@ -1,8 +1,14 @@
 
-# Start each new challenge by copying the contents of STARTER.js into a new file. 
-* (done) https://www.codewars.com/kata/52fba66badcd10859f00097e/train/javascript disemvowel
-* (done) https://www.codewars.com/kata/5b39e91ee7a2c103300018b3/train/javascript
-* (done) https://www.codewars.com/kata/57eaec5608fed543d6000021/train/javascript divide and conquer
+# New Challenge URLs
+## Start each new challenge by copying the contents of STARTER.js into a new file. 
+https://www.codewars.com/kata/570597e258b58f6edc00230d
+https://www.codewars.com/kata/6344701cd748a12b99c0dbc4
 
+# search link for strings, arrays, 6kyu
+https://www.codewars.com/kata/search/my-languages?q=&r%5B%5D=-6&tags=Strings%2CArrays&beta=false&order_by=sort_date%20desc
 
-strings, arrays search: https://www.codewars.com/kata/search/my-languages?q=&tags=Strings%2CArrays&beta=false&order_by=sort_date%20desc
+# search link for strings, arrays, RegExp, 6kyu
+https://www.codewars.com/kata/search/my-languages?q=&r%5B%5D=-6&tags=Arrays%2CStrings%2CRegular%20Expressions&beta=false&order_by=sort_date%20desc
+
+# future challenge, when we learn JS classes
+https://www.codewars.com/kata/5bc7bb444be9774f100000c3
