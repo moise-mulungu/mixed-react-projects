@@ -3,7 +3,7 @@ import Overview from './overview'
 import Skills from './skills-section'
 import ProjectCards from './project-section/project-cards'
 import Divider from '@/ui/divider'
-import ContactForm from './contact-from'
+import ContactForm from './contact-form'
 import { SkillTest } from './skills-section'
 
 export default function Content(props) {

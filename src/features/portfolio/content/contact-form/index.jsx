@@ -75,7 +75,11 @@ export default function ContactForm() {
             <dl className="mt-10 space-y-4 text-base leading-7 text-gray-300">
               <div className="flex gap-x-4">
                 <dt className="flex-none">
-                  <span className="sr-only">Address</span>
+                  <span className="sr-only">
+                    Address (Optional) (Moise, asking for address is not customary, maybe just ask
+                    for Location and let the put whatever they want there, or you could ask for an
+                    optional URL to their web site.
+                  </span>
                   <BuildingOffice2Icon className="h-7 w-6 text-gray-400" aria-hidden="true" />
                 </dt>
                 <dd>
@@ -86,7 +90,7 @@ export default function ContactForm() {
               </div>
               <div className="flex gap-x-4">
                 <dt className="flex-none">
-                  <span className="sr-only">Telephone</span>
+                  <span className="sr-only">Telephone (optional)</span>
                   <PhoneIcon className="h-7 w-6 text-gray-400" aria-hidden="true" />
                 </dt>
                 <dd>
@@ -253,7 +257,7 @@ export default function ContactForm() {
                 type="submit"
                 className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
-                Click me
+                Send
               </button>
             </div>
           </div>
