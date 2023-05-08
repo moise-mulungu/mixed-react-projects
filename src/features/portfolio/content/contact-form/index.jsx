@@ -78,7 +78,7 @@ export default function ContactForm() {
                   <span className="sr-only">
                     Address (Optional) (Moise, asking for address is not customary, maybe just ask
                     for Location and let the put whatever they want there, or you could ask for an
-                    optional URL to their web site.
+                    optional URL to their web site(ok).
                   </span>
                   <BuildingOffice2Icon className="h-7 w-6 text-gray-400" aria-hidden="true" />
                 </dt>
