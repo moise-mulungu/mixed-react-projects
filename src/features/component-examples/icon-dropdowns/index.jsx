@@ -9,7 +9,6 @@ import {
   PencilSquareIcon,
   TrashIcon,
   UserPlusIcon,
-  // DiJavascript1,
 } from '@heroicons/react/20/solid'
 import { classNames } from '@/ui/utils'
 import { DiJavascript1 } from 'react-icons/di'

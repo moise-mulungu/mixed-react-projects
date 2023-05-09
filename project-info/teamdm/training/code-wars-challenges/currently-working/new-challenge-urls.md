@@ -1,8 +1,7 @@
 
 # New Challenge URLs
 ## Start each new challenge by copying the contents of STARTER.js into a new file. 
-https://www.codewars.com/kata/570597e258b58f6edc00230d
-https://www.codewars.com/kata/6344701cd748a12b99c0dbc4
+https://www.codewars.com/kata/6344701cd748a12b99c0dbc4 Millipede of words
 
 # search link for strings, arrays, 6kyu
 https://www.codewars.com/kata/search/my-languages?q=&r%5B%5D=-6&tags=Strings%2CArrays&beta=false&order_by=sort_date%20desc

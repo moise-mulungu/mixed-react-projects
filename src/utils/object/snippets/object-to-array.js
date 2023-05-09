@@ -18,3 +18,4 @@ const arrayToObject = Object.fromEntries(sampleArray)
 
 // but this works
 const entryObject = Object.fromEntries(sampleArray.map((item) => [item, item * 2])) // {1: 2, 2: 4, 3: 6, 4: 8, 5: 10, 6: 12}
+// DM: cool! yes, Object.fromEntries wants an array of 'tuples' (AKA pair)
