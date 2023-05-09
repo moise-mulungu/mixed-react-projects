@@ -9,8 +9,10 @@ import {
   PencilSquareIcon,
   TrashIcon,
   UserPlusIcon,
+  // DiJavascript1,
 } from '@heroicons/react/20/solid'
 import { classNames } from '@/ui/utils'
+import { DiJavascript1 } from 'react-icons/di'
 
 /*
 https://tailwindui.com/components/application-ui/elements/dropdowns
@@ -135,6 +137,23 @@ export default function IconDropdowns() {
                       aria-hidden="true"
                     />
                     Add to favorites
+                  </a>
+                )}
+              </Menu.Item>
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    href="#"
+                    className={classNames(
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'group flex items-center px-4 py-2 text-sm'
+                    )}
+                  >
+                    <DiJavascript1
+                      className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
+                    Your languages
                   </a>
                 )}
               </Menu.Item>

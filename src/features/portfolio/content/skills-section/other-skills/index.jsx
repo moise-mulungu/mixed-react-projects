@@ -1,7 +1,4 @@
-import {
-  otherSkillsTitle,
-  otherSkills,
-} from '@/constants/portfolio/content/skills'
+import { otherSkillsTitle, otherSkills } from '@/constants/portfolio/content/skills'
 
 const OtherSkills = () => {
   return (
@@ -10,8 +7,22 @@ const OtherSkills = () => {
         {otherSkillsTitle}
       </h2>
       <ul>
-        {otherSkills.map((skill) => (
-          <li key={skill}>{skill}</li>
+        {otherSkills.map(({ name, Icon }) => (
+          // MM: I will create a component for this
+          <li key={name}>
+            <a
+              href="#"
+              className="bg-gray-100 text-gray-700 group flex items-center px-4 py-2 text-sm"
+            >
+              {Icon ? (
+                <Icon
+                  className="mr-3 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                  aria-hidden="true"
+                />
+              ) : null}
+              {name ? name : null}
+            </a>
+          </li>
         ))}
       </ul>
     </div>
