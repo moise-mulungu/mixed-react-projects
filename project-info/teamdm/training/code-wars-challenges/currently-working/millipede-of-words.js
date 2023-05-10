@@ -11,86 +11,60 @@
 
 // 1.1 the challenge instructions, including the examples:
 /*
-You are given a string containing a sequence (list) of character sequences separated by commas.
+The set of words is given. Words are joined if the last letter of one word and the first letter of another word are the same. Return true if all words of the set can be combined into one word. Each word can and must be used only once. Otherwise return false.
 
-Write a function which returns a new string containing the same character sequences except the first and the last ones but this time separated by spaces.
+Input
+Array of 3 to 7 words of random length. No capital letters.
 
-If the input string is empty or the removal of the first and last items would cause the resulting string to be empty, return an "empty value" (represented as a generic value NULL in the examples below).
+Example true
+Set: excavate, endure, desire, screen, theater, excess, night.
+Millipede: desirE EndurE ExcavatE ExcesS ScreeN NighT Theater.
 
-Examples
-"1,2,3"      =>  "2"
-"1,2,3,4"    =>  "2 3"
-"1,2,3,4,5"  =>  "2 3 4"
-
-""     =>  NULL
-"1"    =>  NULL
-"1,2"  =>  NULL
-
-DM: todoDM: revisit undefined VS null meaning and usage: basically uninitialized and empty but ...
-
+Example false
+Set: trade, pole, view, grave, ladder, mushroom, president.
+Millipede: presidenT Trade.
 */
 
 // 1.2 the coding challenge URL:
 /*
-https://www.codewars.com/kata/570597e258b58f6edc00230d/javascript
+https://www.codewars.com/kata/6344701cd748a12b99c0dbc4
 */
 
 /* 2. list and describe anything that is unclear in the challenge description
-      these would be the questions you'd be expected to ask in a interview situation
-      (practice reading the challenge description carefully). Really take a minute to review the requirements (challenge description) and see if there are any ambiguities. Say out-loud to yourself what you understand the task to be, pretending that you are saying this to an interviewer. This is very important to practice. */
+these would be the questions you'd be expected to ask in a interview situation
+(practice reading the challenge description carefully). Really take a minute to review the requirements (challenge description) and see if there are any ambiguities. Say out-loud to yourself what you understand the task to be, pretending that you are saying this to an interviewer. This is very important to practice. */
 /*
-n/a
+
 */
 
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
-// 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise
-//(done) DM: todoMM: can you give a better name than 'string' which is very general. pick a name using the words from the challenge description. this is toward making your code self-documenting
-function array(commaSeparatedCharacterSequencesDirty) {
+// 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise. pick a name using the any good words from the challenge description or from your input description in #5
+
+function millipedeOfWords(words) {
   /* 5. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
-
+        
         inputs:
           parameter1: string|number|...; possible values:
           parameter2: string|number|...; possible values:
 
         output: string|number|...; possible values: */
   /*
-inputs: a string of character sequences separated by commas 
-output: a string of the same character sequences separated by spaces after removing the first and last character sequence
+input: array of strings
+output: boolean(true or false) if all words can be combined into one word
   */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-
-  //(done) DM: todoMM: super validator, add it to utils/array
-  // const isArrayOfStrings = (array) => array.every((item) => typeof item === 'string')
-  // DM: todoMM: however string is not an array
-  // DM: todoDM: discuss strings are 'iterable';
-  //(done) DM: todoMM: make a programming vocab entry: iterate. at the end list all the forms of the word: iteration, iterable
-  // DM: todoMM: practice copy selection (shift-alt-downArrow);
-  // if (!isArrayOfStrings(string)) throw new Error('array must be an array of strings')
-  // DM: todoDM: string method, RegExp exercises
-  // defensive
-  function cleanupString(string) {
-    // " 1,2,3,4 ", ""
-    return string.trim() // remove any beginning and ending spaces
-  }
-  const commaSeparatedCharacterSequences = cleanupString(commaSeparatedCharacterSequencesDirty)
-  if (commaSeparatedCharacterSequences === '') return null
-
-  // offensive
-  function validateInput(string) {
-    // "1,2,3,4" 'A1,B2'
-    // check that the first and last characters are not commas using a string method (MDN) substring, slice
-  }
-
+  const isArrayOfStrings = words.every((word) => typeof word === 'string')
+  if (!isArrayOfStrings) throw new Error('parameter words must be an array of strings')
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
         Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, DM: yes!)
         */
   /*
-I want to remove the first and last strings from the array and then join the remaining strings with spaces
+I want to check if all words can be combined into one word by returning true or false
   */
 
   /* 8. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -103,29 +77,40 @@ I want to remove the first and last strings from the array and then join the rem
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  const characterSequences = commaSeparatedCharacterSequences.split(',')
-  const characterSequencesWithoutFirstAndLast = characterSequences.slice(1, -1)
-  console.log({ characterSequencesWithoutFirstAndLast })
-  const empty = characterSequencesWithoutFirstAndLast.length === 0
-  if (empty) return null
+  const getFirstLetterOfEachWord = words.map((word) => word[0])
+  //   console.log('getFirstLetterOfEachWord', getFirstLetterOfEachWord)
+  const getLastLetterOfEachWord = words.map((word) => word[word.length - 1])
+
+  //   console.log('getLastLetterOfEachWord', getLastLetterOfEachWord)
+
+  if (getLastLetterOfEachWord[0] === getFirstLetterOfEachWord[1]) {
+    return true
+  }
+  else if (getFirstLetterOfEachWord[0] === getLastLetterOfEachWord[1]) {
+    return true
+  }
+    else {
+    return false
+    }
+
+
 
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
-always return a variable, or, use only variables in return statements
-this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
-*/
-  return characterSequencesWithoutFirstAndLast.join(' ')
+      always return a variable, or, use only variables in return statements
+      this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+   */
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
-array('') // null
-array('1') // null
-array('A1,B2') // null
-array('1,2,3') // '2'
-array('1,2,3,4') // '2 3'
-array('A1,B2,C3,D4,E5') // 'B2 C3 D4'
-array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
+millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night']) // true
+millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president']) // false
+millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night']) // true
+millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
+millipedeOfWords(['endure', 'elite', 'excess']) // false
+millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time']) // true
+millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -141,3 +126,5 @@ array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
 /* 15. Duncan moves the file out of this directory when it is complete */
+
+// MM: some tests are still not passing

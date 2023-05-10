@@ -114,3 +114,7 @@ Defines input and output of functions or methods. A signature can include:
 * a return value and type. 
 * exceptions that might be thrown or passed back
 * information about the availability of the method in an object-oriented program (such as the keywords public, static, or prototype).
+
+## iteration(noun), iterate(verb), iterable(adjective)
+Iteration is the repetition of a process in order to generate a (possibly unbounded) sequence of outcomes. Each repetition of the process is a single iteration, and the outcome of each iteration is then the starting point of the next iteration.
+In computing, iteration is the technique marking out of a block of statements within a computer program for a defined number of repetitions. That block of statements is said to be iterated; a computer scientist might also refer to that block of statements as an "iteration".
