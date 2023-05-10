@@ -45,7 +45,6 @@ n/a
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise
-//(done) DM: todoMM: can you give a better name than 'string' which is very general. pick a name using the words from the challenge description. this is toward making your code self-documenting
 function array(commaSeparatedCharacterSequencesDirty) {
   /* 5. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
@@ -62,11 +61,7 @@ output: a string of the same character sequences separated by spaces after remov
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
 
-  //(done) DM: todoMM: super validator, add it to utils/array
-  // const isArrayOfStrings = (array) => array.every((item) => typeof item === 'string')
-  // DM: todoMM: however string is not an array
   // DM: todoDM: discuss strings are 'iterable';
-  //(done) DM: todoMM: make a programming vocab entry: iterate. at the end list all the forms of the word: iteration, iterable
   // DM: todoMM: practice copy selection (shift-alt-downArrow);
   // if (!isArrayOfStrings(string)) throw new Error('array must be an array of strings')
   // DM: todoDM: string method, RegExp exercises
@@ -76,13 +71,8 @@ output: a string of the same character sequences separated by spaces after remov
     return string.trim() // remove any beginning and ending spaces
   }
   const commaSeparatedCharacterSequences = cleanupString(commaSeparatedCharacterSequencesDirty)
-  if (commaSeparatedCharacterSequences === '') return null
 
-  // offensive
-  function validateInput(string) {
-    // "1,2,3,4" 'A1,B2'
-    // check that the first and last characters are not commas using a string method (MDN) substring, slice
-  }
+  if (commaSeparatedCharacterSequences === '') return null
 
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?

@@ -11,7 +11,10 @@
 
 // 1.1 the challenge instructions, including the examples:
 /*
-The set of words is given. Words are joined if the last letter of one word and the first letter of another word are the same. Return true if all words of the set can be combined into one word. Each word can and must be used only once. Otherwise return false.
+The set of words is given. 
+Words are joined if the last letter of one word and the first letter of another word are the same. (* OK to re-order the words)
+Return: true if all words of the set can be combined into one word. 
+Guard clause, early return: Each word can and must be used only once. Otherwise return false.
 
 Input
 Array of 3 to 7 words of random length. No capital letters.
@@ -51,13 +54,16 @@ function millipedeOfWords(words) {
 
         output: string|number|...; possible values: */
   /*
-input: array of strings
+input: array of words
 output: boolean(true or false) if all words can be combined into one word
   */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   const isArrayOfStrings = words.every((word) => typeof word === 'string')
   if (!isArrayOfStrings) throw new Error('parameter words must be an array of strings')
+
+  // DM: todoMM: return false if the words are not unique
+
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
@@ -77,23 +83,39 @@ I want to check if all words can be combined into one word by returning true or 
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  const getFirstLetterOfEachWord = words.map((word) => word[0])
+  const firstLettersOfWords = words.map((word) => word[0])
   //   console.log('getFirstLetterOfEachWord', getFirstLetterOfEachWord)
-  const getLastLetterOfEachWord = words.map((word) => word[word.length - 1])
+  const lastLettersOfWords = words.map((word) => word[word.length - 1])
 
-  //   console.log('getLastLetterOfEachWord', getLastLetterOfEachWord)
+  //   console.log('lastLettersOfWords', lastLettersOfWords)
 
-  if (getLastLetterOfEachWord[0] === getFirstLetterOfEachWord[1]) {
+  // ['endure', 'elite', 'excess']
+  // ['engine', 'endure', 'elite', 'excess']
+
+  // words.length
+
+  //  we want: true or false
+  // we have: array
+  // array to something else --> reduce!
+
+  const isMillipede = words.reduce((acc, cur, idx, src) => {
+    // if idx < words.length - 1 OR check if next word exists
+    // get the last letter of the current word
+    // get the last letter of the next word
+    ;(words[9999] === src[9999]) === undefined // undefined if nothing at index 9999
+    return acc
+  }, true)
+
+  if (
+    lastLettersOfWords[0] === firstLettersOfWords[1] &&
+    lastLettersOfWords[1] === firstLettersOfWords[2]
+  ) {
     return true
-  }
-  else if (getFirstLetterOfEachWord[0] === getLastLetterOfEachWord[1]) {
+  } else if (firstLettersOfWords[0] === lastLettersOfWords[1]) {
     return true
-  }
-    else {
+  } else {
     return false
-    }
-
-
+  }
 
   /* 9. use the named parts to create a readable solution. */
 
@@ -103,12 +125,14 @@ I want to check if all words can be combined into one word by returning true or 
    */
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
-// expected result
+// first step: make it work without re-ordering
+millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
+millipedeOfWords(['endure', 'elite', 'excess']) // true
+
+// second step: with word re-ordering
 millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night']) // true
 millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president']) // false
 millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night']) // true
-millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
-millipedeOfWords(['endure', 'elite', 'excess']) // false
 millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time']) // true
 millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 

@@ -1,5 +1,6 @@
-function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '$');
+// cool
+export default function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '$')
 }
 
-console.log(escapeRegExp('hello. how are you?')); 
+// console.log(escapeRegExp('hello. how are you?'));
