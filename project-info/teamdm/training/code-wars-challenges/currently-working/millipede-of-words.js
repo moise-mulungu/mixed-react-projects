@@ -62,7 +62,6 @@ output: boolean(true or false) if all words can be combined into one word
   const isArrayOfStrings = words.every((word) => typeof word === 'string')
   if (!isArrayOfStrings) throw new Error('parameter words must be an array of strings')
 
-  //(done) DM: todoMM: return false if the words are not unique
   const arrayOfUniqueWords = [...new Set(words)]
   if (arrayOfUniqueWords.length !== words.length) return false
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
@@ -84,58 +83,64 @@ I want to check if all words can be combined into one word by returning true or 
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  const firstLettersOfWords = arrayOfUniqueWords.map((word) => word[0])
-  //   console.log('getFirstLetterOfEachWord', getFirstLetterOfEachWord)
-  const lastLettersOfWords = arrayOfUniqueWords.map((word) => word[word.length - 1])
 
-  //   console.log('lastLettersOfWords', lastLettersOfWords)
-
+  // initial, partial solution:
+  // works if the initial order meets the conditions (does not work if the words must be reordered)
+  // hard algo challenge, think about the "naive", "brute force" approach, talk about it
   // ['endure', 'elite', 'excess']
   // ['engine', 'endure', 'elite', 'excess']
+  // const isMillipede = words.reduce((acc, cur, idx, src) => {
+  //   const isNextWord = idx < words.length - 1
+  //   if (!isNextWord) return acc
 
-  // words.length
+  //   const currentWord = src[idx]
+  //   const nextWord = src[idx + 1]
+  //   if (currentWord[currentWord.length - 1] !== nextWord[0]) return false
+  //   return acc
+  // }, true)
 
-  //  we want: true or false
-  // we have: array
-  // array to something else --> reduce!
+  // solution: any order
+  // if the last letter of the current word is the same as the first letter of the next word: desirE EndurE ExcavatE ExcesS ScreeN NighT Theater.
+  /* 
+    pseudocode:
 
-  const isMillipede = words.reduce((acc, cur, idx, src) => {
-    // if idx < words.length - 1 OR check if next word exists
-    // MM: this challenge is still unsolved. I'm not sure how to check if the last letter of the current word is the same as the first letter of the next word.
-    const isNextWord = idx < words.length - 1
-    if (isNextWord) {
+    get first and last letter for each word in an object
+    note: words preserves initial order
+   
+    return true if initial order works
+  
+    ??? try all different orders
+    ??? how to get all the possible combinations of an array
+
+    DM: todoDM: https://www.google.com/search?q=javascript+get+all+possible+combinations+of+array+-+of+the+same+length Duncan will research more. old code?
+
+    # find the best algo
+    1 built-in JS method
+    2 lodash
+    3 google
+    
+  
+  */
+  const firstAndLastLetters = words.reduce(
+    (acc, cur, idx, src) => {
       const currentWord = src[idx]
-      const nextWord = src[idx + 1]
+      acc.push({
+        first: currentWord[0],
+        last: currentWord[currentWord.length - 1],
+      })
+      return acc
+    },
+    [
+      /* { first, last } */
+    ]
+  )
+  console.log('-------', firstAndLastLetters)
 
-      // if the last letter of the current word is the same as the first letter of the next word
-
-      if (currentWord[currentWord.length - 1] === nextWord[0]) {
-        return true
-      }
-      return false
-    }
-
-    // return true
-    // else return false
-
+  const worksInInitialOrder = firstAndLastLetters.reduce((acc, cur, idx, src) => {
+    if (cur.last !== src[idx + 1].first) return false
     return acc
-
-    // get the last letter of the current word
-    // get the last letter of the next word
-    // undefined if nothing at index 9999
-    // return acc
-  }, true)
-
-  // if (
-  //   lastLettersOfWords[0] === firstLettersOfWords[1] &&
-  //   lastLettersOfWords[1] === firstLettersOfWords[2]
-  // ) {
-  //   return true
-  // } else if (firstLettersOfWords[0] === lastLettersOfWords[1]) {
-  //   return true
-  // } else {
-  //   return false
-  // }
+  })
+  if (worksInInitialOrder) return true
 
   /* 9. use the named parts to create a readable solution. */
 
@@ -143,8 +148,6 @@ I want to check if all words can be combined into one word by returning true or 
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
-
-  return isMillipede
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // first step: make it work without re-ordering
