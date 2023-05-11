@@ -102,19 +102,28 @@ I want to check if all words can be combined into one word by returning true or 
   const isMillipede = words.reduce((acc, cur, idx, src) => {
     // if idx < words.length - 1 OR check if next word exists
     // MM: this challenge is still unsolved. I'm not sure how to check if the last letter of the current word is the same as the first letter of the next word.
+    const isNextWord = idx < words.length - 1
+    if (isNextWord) {
+      const currentWord = src[idx]
+      const nextWord = src[idx + 1]
 
-    const nextWord = src[idx + 1]
-    if (nextWord) {
       // if the last letter of the current word is the same as the first letter of the next word
-      // return true
-      // else return false
-      return cur[cur.length - 1] === nextWord[0]
+
+      if (currentWord[currentWord.length - 1] === nextWord[0]) {
+        return true
+      }
+      return false
     }
+
+    // return true
+    // else return false
+
+    return acc
 
     // get the last letter of the current word
     // get the last letter of the next word
-    ;(words[9999] === src[9999]) === undefined // undefined if nothing at index 9999
-    return acc
+    // undefined if nothing at index 9999
+    // return acc
   }, true)
 
   // if (
