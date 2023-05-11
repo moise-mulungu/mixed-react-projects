@@ -1,2 +1,5 @@
-const isArrayOfStrings = (array) => array.every((item) => typeof item === 'string')
-// DM: todoMM: esport default function ...
+export default function isArrayOfStrings(array) {
+  return array.every((item) => typeof item === 'string')
+}
+
+//(done) DM: todoMM: export default function ...
