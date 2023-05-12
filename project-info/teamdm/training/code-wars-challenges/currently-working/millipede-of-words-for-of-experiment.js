@@ -1,5 +1,6 @@
 function millipedeOfWords(words) {
   for (const word of words) {
+    // DM: the current word is 'word'. The issue with for...of is that it doesn't provide an index, so you can't derive the index of the next word. There are workarounds, but they are not pretty. It is better to use a built-in array method. It is great to experiment, though!
     const currentWord = words[0]
     console.log('currentWord', currentWord)
     const nextWord = words[+1]
