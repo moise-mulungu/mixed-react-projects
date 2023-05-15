@@ -64,6 +64,7 @@ output: boolean(true or false) if all words can be combined into one word
 
   const arrayOfUniqueWords = [...new Set(words)]
   if (arrayOfUniqueWords.length !== words.length) return false
+  console.log('arrayOfUniqueWords', arrayOfUniqueWords)
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
@@ -83,7 +84,24 @@ I want to check if all words can be combined into one word by returning true or 
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
+  const firstAndLastLetterOfEachWord = arrayOfUniqueWords.map((word, index) => {
+    const firstLetter = word[0]
+    const lastLetter = word[word.length - 1]
+    return { firstLetter, lastLetter }
+  })
+  console.log('firstAndLastLetterOfEachWord', firstAndLastLetterOfEachWord)
 
+  const areFirstAndLastLettersEqual = firstAndLastLetterOfEachWord.every((word, index, src) => {
+    const isNextWord = index < src.length - 1
+    if (!isNextWord) return true
+
+    const currentWord = src[index]
+    const nextWord = src[index + 1]
+    if (currentWord.lastLetter !== nextWord.firstLetter) return false
+    return true
+  })
+
+  return areFirstAndLastLettersEqual
   // initial, partial solution:
   // works if the initial order meets the conditions (does not work if the words must be reordered)
   // hard algo challenge, think about the "naive", "brute force" approach, talk about it
@@ -120,27 +138,27 @@ I want to check if all words can be combined into one word by returning true or 
     3 google
     
   
-  */
-  const firstAndLastLetters = words.reduce(
-    (acc, cur, idx, src) => {
-      const currentWord = src[idx]
-      acc.push({
-        first: currentWord[0],
-        last: currentWord[currentWord.length - 1],
-      })
-      return acc
-    },
-    [
-      /* { first, last } */
-    ]
-  )
-  console.log('-------', firstAndLastLetters)
+  // */
+  // const firstAndLastLetters = arrayOfUniqueWords.reduce(
+  //   (acc, cur, idx, src) => {
+  //     const currentWord = src[idx]
+  //     acc.push({
+  //       first: currentWord[0],
+  //       last: currentWord[currentWord.length - 1],
+  //     })
+  //     return acc
+  //   },
+  //   [
+  //     /* { first, last } */
+  //   ]
+  // )
+  // console.log('-------', firstAndLastLetters)
 
-  const worksInInitialOrder = firstAndLastLetters.reduce((acc, cur, idx, src) => {
-    if (cur.last !== src[idx + 1].first) return false
-    return acc
-  })
-  if (worksInInitialOrder) return true
+  // const worksInInitialOrder = firstAndLastLetters.reduce((acc, cur, idx, src) => {
+  //   if (cur.last !== src[idx + 1].first) return false
+  //   return acc
+  // })
+  // if (worksInInitialOrder) return true
 
   /* 9. use the named parts to create a readable solution. */
 
@@ -177,3 +195,41 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 /* 15. Duncan moves the file out of this directory when it is complete */
 
 // MM: some tests are still not passing
+
+function millipedeOfWords(words) {
+  const isArrayOfStrings = words.every((word) => typeof word === 'string')
+  if (!isArrayOfStrings) throw new Error('parameter words must be an array of strings')
+
+  const arrayOfUniqueWords = [...new Set(words)]
+  if (arrayOfUniqueWords.length !== words.length) return false
+
+  const firstAndLastLetterOfEachWord = arrayOfUniqueWords.map((word) => {
+    const firstLetter = word[0]
+
+    const lastLetter = word[word.length - 1]
+
+    return { firstLetter, lastLetter }
+  })
+
+  const areFirstAndLastLettersEqual = firstAndLastLetterOfEachWord.every((word, index, src) => {
+    const isNextWord = index < src.length - 1
+    if (!isNextWord) return true
+
+    const currentWord = src[index]
+
+    const nextWord = src[index + 1]
+    console.log(currentWord.find((letter) => letter === nextWord.firstLetter))
+    if (currentWord.lastLetter !== nextWord.firstLetter) return false
+    return true
+  })
+
+  return areFirstAndLastLettersEqual
+}
+
+millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
+millipedeOfWords(['endure', 'elite', 'excess']) // true
+millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night']) // true
+millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president']) // false
+millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night']) // true
+millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time']) // true
+millipedeOfWords(['no', 'dog', 'on', 'good']) // false

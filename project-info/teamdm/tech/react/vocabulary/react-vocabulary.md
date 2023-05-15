@@ -1,4 +1,3 @@
-
 ## why is react a platform agnostic?
 
 React, often called ReactJS, is a platform-agnostic JavaScript library used to build user interfaces (UI). Agnostic means that React, the core technology itself, doesn't care whether your project is a web app or native app
@@ -106,6 +105,6 @@ Or controlled components refer to components that have their state and behavior 
 A React side-effect occurs when we use something that is outside the scope of React.js in our React components e.g. data fetching, setting up a subscription, and manually changing the DOM.
 Hooks: useEffect for all side effects
 
-
 ### note on react.dev site
-Once you get comfortable with a React concept, think of this site is the most authoritative reference: https://react.dev. There is a learning section and a reference section. Be relaxed when you read react.dev site. It is very condensed. You will feel like you don't really know React when you read all the details at react.dev site. Try to see this is a positive thing, that you know enough to look around react.dev and have an idea of what it is about. React is difficult to master, but very powerful, which is why React jobs pay well. 
+
+Once you get comfortable with a React concept, think of this site is the most authoritative reference: https://react.dev. There is a learning section and a reference section. Be relaxed when you read react.dev site. It is very condensed. You will feel like you don't really know React when you read all the details at react.dev site. Try to see this is a positive thing, that you know enough to look around react.dev and have an idea of what it is about. React is difficult to master, but very powerful, which is why React jobs pay well. (read; thanks for this resource).
