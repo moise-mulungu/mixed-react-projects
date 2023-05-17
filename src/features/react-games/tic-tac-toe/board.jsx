@@ -2,24 +2,20 @@ import React, { useState } from 'react'
 import Square from './square'
 import calculateWinner from './calculate-winner'
 
-export default function Board() {
-  const [xIsNext, setXIsNext] = useState(true)
-  const [squares, setSquares] = useState(Array(9).fill(null))
-
+export default function Board({ xIsNext, squares, onPlay }) {
   function handleClick(i) {
-    if (squares[i] || calculateWinner(squares)) {
+    if (calculateWinner(squares) || squares[i]) {
       return
     }
     const nextSquares = squares.slice()
-    nextSquares[i] = 'X'
     if (xIsNext) {
       nextSquares[i] = 'X'
     } else {
       nextSquares[i] = 'O'
     }
-    setXIsNext(!xIsNext)
-    setSquares(nextSquares)
+    onPlay(nextSquares)
   }
+
   const winner = calculateWinner(squares)
   let status
   if (winner) {

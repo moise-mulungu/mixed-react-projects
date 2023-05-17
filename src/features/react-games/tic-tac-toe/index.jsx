@@ -1,4 +1,4 @@
-import Board from './board'
+import Game from './game'
 import styles from './styles.module.css'
 
 export default function TicTacToe() {
@@ -7,7 +7,7 @@ export default function TicTacToe() {
       <h1>Tic Tac Toe Game</h1>
       <div className={styles.game}>
         <div className={styles.boardRow}>
-          <Board />
+          <Game />
         </div>
       </div>
     </div>
