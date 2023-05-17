@@ -118,3 +118,7 @@ Defines input and output of functions or methods. A signature can include:
 ## iteration(noun), iterate(verb), iterable(adjective)
 Iteration is the repetition of a process in order to generate a (possibly unbounded) sequence of outcomes. Each repetition of the process is a single iteration, and the outcome of each iteration is then the starting point of the next iteration.
 In computing, iteration is the technique marking out of a block of statements within a computer program for a defined number of repetitions. That block of statements is said to be iterated; a computer scientist might also refer to that block of statements as an "iteration".
+
+## closure
+In programming languages, a closure, also lexical closure or function closure, is a technique for implementing lexically scoped name binding in a language with first-class functions. Operationally, a closure is a record storing a function together with an environment
+<!-- ???DM: can you have any simpler definition, this one seems hard to understand! -->

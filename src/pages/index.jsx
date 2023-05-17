@@ -18,6 +18,9 @@ export default function Pages() {
         <li>
           <Link href="/pokemon">Pokemon</Link>
         </li>
+        <li>
+          <Link href="/react-games">React Games</Link>
+        </li>
       </ul>
     </div>
   )
