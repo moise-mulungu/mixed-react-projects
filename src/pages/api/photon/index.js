@@ -1,4 +1,6 @@
-import clientPromise from '../../../server/lib/mongodb-client'
+import clientPromise from '@/server/lib/mongodb-client'
+// DM: may not work with @??
+// import clientPromise from '. ./. ... ./../server/lib/mongodb-client'
 
 export async function getServerSideProps(context) {
   try {

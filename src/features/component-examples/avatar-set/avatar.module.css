@@ -1,0 +1,31 @@
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 0.5rem;
+}
+
+.child_avatar {
+  width: 50px;
+  height: 50px;
+  font-size: 1rem;
+  border: 5px solid #fff;
+  position: absolute;
+}
+/* I just used a random unverified styling, not the one from the JoR. OK, good. */
+/* Is the naming file convention to be PascalCase or camelCase for styling? kebab-case.css always kebab-case, no matter the content */
+/* 
+snake_case (child_avatar) is ok here, this file is temporary, but a good lesson in how to import a style 
+
+there are CSS naming conventions, BEM is a good one. For you (and me) don't memorize the details, because css-in-js techniques are the best way to go (styled-components, for example, which we'll do a little bit). With TW you don't even need css-in-js packages most of the time, although sometimes it comes in handy, to add styles to a third-party (e.g., NPM) package that doesn't provide a proper way to style elements that are internal to the package. 
+
+DM: todoDM: styled-components lesson, with and without TW, if using TW-when to use css-in-js.
+
+
+*/

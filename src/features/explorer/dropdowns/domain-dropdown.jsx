@@ -1,4 +1,4 @@
-import { environmentDomainMap } from '@/constants'
+import { environmentDomainMap } from '@/constants/explorer'
 import { useEffect } from 'react'
 import SelectDropdown from './common/select-dropdown'
 

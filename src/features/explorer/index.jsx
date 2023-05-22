@@ -12,7 +12,7 @@ import {
 
 import PhotonLinks from './photon-links'
 
-import * as constants from '@/constants'
+import * as constants from '@/constants/explorer'
 
 const {
   appTitle,

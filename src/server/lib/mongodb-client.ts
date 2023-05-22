@@ -49,6 +49,7 @@ const options = {
   // native_parser: true // the default?
 }
 
+// code copied from mongo-nextjs demo; todoDM: check if these let can be const and justify why let needed, if so
 let client
 let clientPromise: Promise<MongoClient>
 

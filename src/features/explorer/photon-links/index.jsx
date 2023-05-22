@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { pathHierarchy, environmentDomainMap, ephemeralBaseDomain } from '@/constants'
+import { pathHierarchy, environmentDomainMap, ephemeralBaseDomain } from '@/constants/explorer'
 
 /*
 
