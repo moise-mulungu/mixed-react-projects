@@ -4,7 +4,7 @@ import ProjectCards from './project-section/project-cards'
 import Divider from '@/ui/divider'
 import ContactForm from './contact-form'
 import SkillsSection from './skills-section'
-
+import { SkillSection } from './skills-section'
 export default function Content(props) {
   const { data } = props
 
@@ -20,6 +20,8 @@ export default function Content(props) {
         <ProjectCards />
         <Divider />
         <SkillsSection />
+        <Divider />
+        <SkillSection />
         <Divider />
         <ContactForm />
         <Divider />

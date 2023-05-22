@@ -11,11 +11,8 @@ import {
   DiGithubBadge,
   DiTerminal,
   DiJira,
-  // BsSlack,
   DiBootstrap,
   DiRspec,
-  // SiSelenium,
-  // GrGraphQl,
   DiCode,
   DiCodeBadge,
   DiCodepen,
@@ -62,4 +59,57 @@ export const otherSkills = [
   { name: 'VSCode', Icon: DiCodepen },
   { name: 'Jira', Icon: DiJira },
   { name: 'Slack', Icon: BsSlack },
+]
+
+export const skills = [
+  {
+    languages: [
+      { title: 'Languages' },
+      {
+        items: [
+          { name: 'JavaScript', Icon: DiJavascript1 },
+          { name: 'Ruby', Icon: DiRuby },
+          { name: 'SQL', Icon: TbSql },
+        ],
+      },
+    ],
+  },
+  {
+    frameworks: [
+      { title: 'frameworks' },
+      {
+        items: [
+          { name: 'React', Icon: DiReact },
+          { name: 'Ruby on Rails', Icon: SiRubyonrails },
+          { name: 'NodeJS', Icon: DiNodejsSmall },
+          { name: 'BooStrap', Icon: DiBootstrap },
+          { name: 'Capybara', Icon: GiCapybara },
+          { name: 'Selenium', Icon: SiSelenium },
+          { name: 'PostgreSQL', Icon: DiPostgresql },
+        ],
+      },
+    ],
+  },
+
+  {
+    otherSkills: [
+      { title: 'Other Skills' },
+      {
+        items: [
+          { name: 'HTML', Icon: DiHtml5 },
+          { name: 'CSS', Icon: DiCss3 },
+          { name: 'SASS', Icon: DiSass },
+          { name: 'GraphQL', Icon: GrGraphQl },
+          { name: 'Git', Icon: DiGit },
+          { name: 'GitHub', Icon: DiGithubBadge },
+          { name: 'CodeLab', Icon: DiCode },
+          { name: 'CodeLit', Icon: DiCodeBadge },
+          { name: 'Terminal', Icon: DiTerminal },
+          { name: 'VSCode', Icon: DiCodepen },
+          { name: 'Jira', Icon: DiJira },
+          { name: 'Slack', Icon: BsSlack },
+        ],
+      },
+    ],
+  },
 ]
