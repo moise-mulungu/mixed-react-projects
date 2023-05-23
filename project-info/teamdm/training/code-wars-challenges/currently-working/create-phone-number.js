@@ -73,13 +73,13 @@ I want to return a string of numbers in the form of a phone number.
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  const arrayToString = numbers.join('')
+  const asString = numbers.join('')
 
-  // console.log(typeof arrayToString)
-  const firstThreeItems = arrayToString.slice(0, 3)
+  // console.log(typeof asString)
+  const firstThreeItems = asString.slice(0, 3)
   // console.log(firstThreeItems)
-  const secondThreeItems = arrayToString.slice(3, 6)
-  const lastFourItems = arrayToString.slice(6, 10)
+  const secondThreeItems = asString.slice(3, 6)
+  const lastFourItems = asString.slice(6, 10)
   const phoneNumber = `(${firstThreeItems}) ${secondThreeItems}-${lastFourItems}`
   //   console.log(phoneNumber)
   /* 9. use the named parts to create a readable solution. */
@@ -112,5 +112,28 @@ createPhoneNumber([3, 4, 5, 5, 0, 1, 2, 5, 2, 7]) // "(345) 501-2527"
 
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
+
+function createPhoneNumber(numbers) {
+  const isArrayOfNumbers = numbers.every((number) => typeof number === 'number')
+  if (!isArrayOfNumbers) throw new Error('input must be an array of numbers')
+  const hasTenNumbers = isArrayOfNumbers && numbers.length === 10
+  if (!hasTenNumbers) throw new Error('input must be an array of 10 numbers')
+
+  const asString = numbers.join('')
+
+  const firstThreeItems = asString.slice(0, 3)
+  const secondThreeItems = asString.slice(3, 6)
+  const lastFourItems = asString.slice(6, 10)
+  const phoneNumber = `(${firstThreeItems}) ${secondThreeItems}-${lastFourItems}`
+
+  return phoneNumber
+}
+
+createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // "(123) 456-7890"
+createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) // "(111) 111-1111"
+createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // "(123) 456-7890"
+createPhoneNumber([6, 7, 4, 2, 8, 9, 1, 2, 3, 4]) // "(674) 289-1234"
+createPhoneNumber([5, 1, 9, 5, 5, 5, 4, 4, 6, 8]) // "(519) 555-4468"
+createPhoneNumber([3, 4, 5, 5, 0, 1, 2, 5, 2, 7]) // "(345) 501-2527"
 
 /* 15. Duncan moves the file out of this directory when it is complete */
