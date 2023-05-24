@@ -1,4 +1,3 @@
-
 ```bash
 
 # view the contents of a directory, including if each item is a file or a directory
@@ -7,11 +6,11 @@ ls -al
 mkdir new-directory-name
 
 # view the contents of a file
-more filename  
+more filename
 cat filename
 
 # edit a file on any version of linux/unix
-vi filename # 
+vi filename #
 # usually you can edit more easily using VS Code, in any directory:
 code . # to edit a file
 # vi used to be very useful when I was new to development, but I think nowadays not so much. vi requires several keyboard shortcuts that take a lot of practice
@@ -44,3 +43,5 @@ tar -xvf filename.tar # extract
 
 
 ```
+
+<!-- Great, I like this; I have been using Linux for almost one year and half, but was ignorant of these commands -->
