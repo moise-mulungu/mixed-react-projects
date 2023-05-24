@@ -63,7 +63,7 @@ export function SkillSection() {
         <ResumeButton />
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-8">
           {skills?.map(({ languages, frameworks, otherSkills }) => (
-            <div className="flex flex-col bg-gray-400/5 p-8">
+            <div className="relative inline-block  right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               {languages?.map(({ title, items }) => {
                 return (
                   <Item
