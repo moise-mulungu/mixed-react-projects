@@ -18,11 +18,26 @@ createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // => returns "(123) 456-7890"
 The returned format must be correct in order to complete this challenge.
 
 Don't forget the space after the closing parentheses!
+
+Pass a template that allows for multiple formats. Example: 
+"123 456 7890"
+
+
+
+Duncan will implement the first solution in this StackOverflow answer:
+https://stackoverflow.com/a/61634647
+
+
 */
 
 // 1.2 the coding challenge URL:
 /*
-https://www.codewars.com/kata/525f50e3b73515a6db000b83/train/javascript
+https://www.codewars.com/kata/525f50e3b73515a6db000b83/train/javascript + enhancements by Duncan
+
+DM: toMM: check out my solution, we'll do a Q&A when we review it together.
+
+I expect it is a good thing to know how to pass a string formatting template to a function, so I added it to my knowledge base.
+
 */
 
 /* 2. list and describe anything that is unclear in the challenge description
@@ -35,7 +50,10 @@ How do I group the numbers into the required format?
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise. pick a name using the any good words from the challenge description or from your input description in #5
-function createPhoneNumber(numbers) {
+function createPhoneNumber(
+  numbers,
+  template = '{firstThreeNumbers} {secondThreeNumbers} {lastFourNumbers}' // delimiters: '{', '}'
+) {
   /* 5. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
@@ -80,8 +98,24 @@ I want to return a string of numbers in the form of a phone number.
   // console.log(firstThreeNumbers)
   const secondThreeNumbers = asString.slice(3, 6)
   const lastFourNumbers = asString.slice(6, 10)
-  const formattedPhoneNumber = `(${firstThreeNumbers}) ${secondThreeNumbers}-${lastFourNumbers}`
-  //   console.log(formattedPhoneNumber)
+
+  const replacements = { firstThreeNumbers, secondThreeNumbers, lastFourNumbers }
+  console.log({ replacements })
+
+  const formattedPhoneNumber = template.replace(
+    /{(\w+)}/g,
+    // the 2nd argument to String.replace() can be a function of which first parameter is each {replacementString} and which returns the replacement
+    (
+      placeholderWithDelimiters, //  {firstThreeNumbers}
+      placeholderWithoutDelimiters //  firstThreeNumbers // what is matched inside the ()
+    ) => {
+      return replacements.hasOwnProperty(placeholderWithoutDelimiters)
+        ? replacements[placeholderWithoutDelimiters]
+        : placeholderWithDelimiters
+    }
+  )
+
+  console.log(formattedPhoneNumber)
 
   /* 9. use the named parts to create a readable solution. */
 
@@ -94,12 +128,14 @@ I want to return a string of numbers in the form of a phone number.
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
 
-createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // "(123) 456-7890"
-createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) // "(111) 111-1111"
-createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // "(123) 456-7890"
-createPhoneNumber([6, 7, 4, 2, 8, 9, 1, 2, 3, 4]) // "(674) 289-1234"
-createPhoneNumber([5, 1, 9, 5, 5, 5, 4, 4, 6, 8]) // "(519) 555-4468"
-createPhoneNumber([3, 4, 5, 5, 0, 1, 2, 5, 2, 7]) // "(345) 501-2527"
+createPhoneNumber(
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+  '({firstThreeNumbers}) {secondThreeNumbers}-{lastFourNumbers}'
+) // "(123) 456-7890"
+createPhoneNumber(
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+  '{firstThreeNumbers} {secondThreeNumbers} {lastFourNumbers}'
+) // "123 456 7890"
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -113,28 +149,5 @@ createPhoneNumber([3, 4, 5, 5, 0, 1, 2, 5, 2, 7]) // "(345) 501-2527"
 
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
-
-function createPhoneNumber(numbers) {
-  const isArrayOfNumbers = numbers.every((number) => typeof number === 'number')
-  if (!isArrayOfNumbers) throw new Error('input must be an array of numbers')
-  const hasTenNumbers = numbers.length === 10
-  if (!hasTenNumbers) throw new Error('input must be an array of 10 numbers')
-
-  const asString = numbers.join('')
-
-  const firstThreeNumbers = asString.slice(0, 3)
-  const secondThreeNumbers = asString.slice(3, 6)
-  const lastFourNumbers = asString.slice(6, 10)
-  const phoneNumber = `(${firstThreeNumbers}) ${secondThreeNumbers}-${lastFourNumbers}`
-
-  return phoneNumber
-}
-
-createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // "(123) 456-7890"
-createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) // "(111) 111-1111"
-createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // "(123) 456-7890"
-createPhoneNumber([6, 7, 4, 2, 8, 9, 1, 2, 3, 4]) // "(674) 289-1234"
-createPhoneNumber([5, 1, 9, 5, 5, 5, 4, 4, 6, 8]) // "(519) 555-4468"
-createPhoneNumber([3, 4, 5, 5, 0, 1, 2, 5, 2, 7]) // "(345) 501-2527"
 
 /* 15. Duncan moves the file out of this directory when it is complete */

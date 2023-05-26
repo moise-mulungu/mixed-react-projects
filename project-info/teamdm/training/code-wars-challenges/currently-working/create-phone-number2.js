@@ -1,4 +1,6 @@
-// ???DM: this is not my solution, but I got it from outer resources. I don't really understand it, especially with the .replace() part. Can you explain it to me? Thanks!
+// DM: you understand it now, right? 
+// DM: this is fairly readable, but the regExp is hard to read quickly. It will also not provide information if the input array is not as expected.
+
 function createPhoneNumber(numbers) {
   return numbers.join('').replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')
 }
