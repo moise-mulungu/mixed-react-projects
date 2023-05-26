@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-export default function Item ({ title, items }) {
+export default function Item({ title, items }) {
   return (
     <div>
       <dt className="mb-2 text-2xl font-semibold leading-6 text-gray-600">{title}</dt>
