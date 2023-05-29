@@ -59,7 +59,7 @@ function sortSubstringsOfWords(array1, array2) {
         output: string|number|...; possible values: */
   /*
 inputs: two arrays of strings with possible values of any string
-output: an array of strings that are substrings of the strings in the second array
+output: an array of strings in array1 that are substrings of the strings in the second array
   */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
@@ -75,7 +75,8 @@ output: an array of strings that are substrings of the strings in the second arr
   Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, DM: yes!)
   */
   /*
-I want to return an sorted array of string that consists of the strings in the first array that are substrings of the strings in the second array
+return a sorted array of strings that consists of the strings in the first array that are substrings of the strings in the second array
+DM: we can always make little spelling, grammar changes for each other
   */
 
   /* 8. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -89,27 +90,31 @@ I want to return an sorted array of string that consists of the strings in the f
  * variable names should express exactly what the variable contains
  * see naming-conventions.md*/
 
-  const sortedArrayInLexicographicalOrder = []
+  // DM: great names in this solution, except the below name it is not sorted yet, so leave that part out. Also, you don't need to use the word 'array' in the name, just use a plural noun somewhere in the name: (ex: words, fish, people, birds, etc.). Also, the word 'Lexicographical' in the challenge description was superfluously written by the original author, because Lexicographical means the default sort, so you don't have to call it out. Pick a name that describes what it is: substringsOfArray2 (I based this name on your output description: "substrings of the strings in the second array")
+  const substringsOfArray2 = []
 
-  for (let i = 0; i < array1.length; i++) {
+  loop1: for (let i = 0; i < array1.length; i++) {
     const currentWord = array1[i]
     for (let j = 0; j < array2.length; j++) {
       const currentWordInArray2 = array2[j]
       if (currentWordInArray2.includes(currentWord)) {
-        sortedArrayInLexicographicalOrder.push(currentWord)
+        substringsOfArray2.push(currentWord)
+        // DM: since you are using 'for' loops, I assume you are concerned about efficiency, which is a correct concern in this challenge
+        // DM: todoMM: you can 'continue' here, for efficiency, since it is no longer necessary to check the remaining words in array2. This resolves the concern about duplicates, also.
+        continue loop1 // you have to name the loop you want to continue, otherwise it will 'continue' the inner loop
       }
     }
   }
   /* 9. use the named parts to create a readable solution. */
 
-  const uniqueSortedArrayInLexicographicalOrder = [...new Set(sortedArrayInLexicographicalOrder)]
-  
+  const sortedSubstringsOfArray2 = substringsOfArray2.sort()
+
   /* 10. return the solution
 always return a variable, or, use only variables in return statements
 this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
 */
 
-  return uniqueSortedArrayInLexicographicalOrder.sort()
+  return sortedSubstringsOfArray2
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result:
@@ -133,7 +138,14 @@ sortSubstringsOfWords(array1, array2) // []
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
 /* 13. code review and approval*/
-/*  */
+/* 
+
+DM: I made the above changes for you, so that I could demonstrate the "continue loop1" technique for you.
+
+Approved.
+
+
+*/
 
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
