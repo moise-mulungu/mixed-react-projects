@@ -40,3 +40,14 @@ Media queries are a key part of responsive web design, as they allow you to crea
 ## declaration
 
 A declaration is a combination of a property and a value. THere can be as many declarations as possible in a rule; the first declaration is the first property and a value of a rule.
+
+## CSS data types
+
+CSS data types define typical values (including keywords and units) accepted by CSS properties and functions. They are a special kind of component value type. The most commonly-used types are defined in the CSS Values and Units specification.
+
+## color formats
+In CSS color formats, is a way of representing colors. There are four types of color formats
+ * named-colors(`red`, `green`, `blue`) or keyword colors
+ * rgb colors (`255`, `255`, `255`), stands for `red`, `green` , `blue`
+ * hsl colors (`0deg 100% 50% / 0.5`), stands for `hue`, `saturation`, and `lightness`
+ * hex colors  (`#ff0000`) hexadecimal color system
