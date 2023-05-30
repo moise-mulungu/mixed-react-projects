@@ -59,3 +59,4 @@ In CSS color formats, is a way of representing colors. There are four types of c
 inheritance refers to the relationship between HTML tags (think parent and children tags) and how certain CSS styles can apply to a tag even though there aren’t any CSS rules directly applied to it.
 
 - Note : most of the properties that inherit are typography-related, like `color`, `font-size`, `text-shadow`
+

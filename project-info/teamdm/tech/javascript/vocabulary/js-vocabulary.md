@@ -120,8 +120,8 @@ An array literal is a _list_ of zero or more _expressions_, each of which repres
 
 ## object literal
 
-An object literal is a _compound data type_ of zero or more pairs of *property name*s and associated 3s of an object, enclosed in _curly brackets_ ( {} )
-`const myObj = {}`
+An object literal is a _compound data type_ of zero or more pairs of *property name*s and associated values of an object, enclosed in _curly brackets_ ( {} )
+`const myObj = {propertyName: 'value'}`
 
 DM: great work!
 
@@ -191,8 +191,9 @@ JavaScript Hoisting refers to the process whereby the interpreter appears to mov
 
 ## abstract equality comparison operator(==) vs strict equality comparison operator(===)
 
-The abstract equality operator performs a loose equality comparison that performs type coercion if necessary to make the comparison possible. The strict equality operator, on the other hand, performs a strict equality comparison that does not perform type coercion and requires the operands to have the same type (as well as the same value).
+- The abstract equality operator performs a _**loose** equality_ comparison that performs type coercion if necessary to make the comparison possible. 
+- The strict equality operator, on the other hand, performs a _strict equality_ comparison that does not perform type coercion and requires the operands to have the same type (as well as the same value).
 
 ## type coercion
 
-Type coercion is the process of converting a value from one data type to another. In JavaScript, type coercion happens implicitly when operators or functions are applied to values of different types.
+Type coercion is the process of converting a value from one data type to another. Type coercion happens implicitly when operators or functions are applied to values of different types.
