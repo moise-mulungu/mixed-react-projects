@@ -46,8 +46,16 @@ A declaration is a combination of a property and a value. THere can be as many d
 CSS data types define typical values (including keywords and units) accepted by CSS properties and functions. They are a special kind of component value type. The most commonly-used types are defined in the CSS Values and Units specification.
 
 ## color formats
+
 In CSS color formats, is a way of representing colors. There are four types of color formats
- * named-colors(`red`, `green`, `blue`) or keyword colors
- * rgb colors (`255`, `255`, `255`), stands for `red`, `green` , `blue`
- * hsl colors (`0deg 100% 50% / 0.5`), stands for `hue`, `saturation`, and `lightness`
- * hex colors  (`#ff0000`) hexadecimal color system
+
+- named-colors(`red`, `green`, `blue`) or keyword colors
+- rgb colors (`255`, `255`, `255`), stands for `red`, `green` , `blue`
+- hsl colors (`0deg 100% 50% / 0.5`), stands for `hue`, `saturation`, and `lightness`
+- hex colors (`#ff0000`) hexadecimal color system
+
+## inheritance
+
+inheritance refers to the relationship between HTML tags (think parent and children tags) and how certain CSS styles can apply to a tag even though there aren’t any CSS rules directly applied to it.
+
+- Note : most of the properties that inherit are typography-related, like `color`, `font-size`, `text-shadow`

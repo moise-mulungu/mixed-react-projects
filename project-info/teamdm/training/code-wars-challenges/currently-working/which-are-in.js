@@ -76,7 +76,7 @@ output: an array of strings in array1 that are substrings of the strings in the 
   */
   /*
 return a sorted array of strings that consists of the strings in the first array that are substrings of the strings in the second array
-DM: we can always make little spelling, grammar changes for each other
+DM: we can always make little spelling, grammar changes for each other(OK)
   */
 
   /* 8. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -106,8 +106,9 @@ DM: we can always make little spelling, grammar changes for each other
     }
   }
   /* 9. use the named parts to create a readable solution. */
-
-  const sortedSubstringsOfArray2 = substringsOfArray2.sort()
+  // MM toDM: I think the you have forgotten to add the Set method to remove duplicates. I have added it below. Also, you can use the spread operator to make a copy of the array, and then sort it. I have added that below, also.
+  const spreadSubstringsOfArray2 = [...substringsOfArray2]
+  const sortedSubstringsOfArray2 = spreadSubstringsOfArray2.sort()
 
   /* 10. return the solution
 always return a variable, or, use only variables in return statements
@@ -142,12 +143,48 @@ sortSubstringsOfWords(array1, array2) // []
 
 DM: I made the above changes for you, so that I could demonstrate the "continue loop1" technique for you.
 
-Approved.
+Approved(ok).
 
 
 */
 
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
+
+function sortSubstringsOfWords(array1, array2) {
+  const isArrayOfStrings = (array) => {
+    return array.every((element) => typeof element === 'string')
+  }
+  if (!isArrayOfStrings(array1) || !isArrayOfStrings(array2))
+    throw new Error('both arguments must be arrays of strings')
+
+  const substringsOfArray2 = []
+
+  for (let i = 0; i < array1.length; i++) {
+    const currentWord = array1[i]
+    for (let j = 0; j < array2.length; j++) {
+      const currentWordInArray2 = array2[j]
+      if (currentWordInArray2.includes(currentWord)) {
+        substringsOfArray2.push(currentWord)
+      }
+    }
+  }
+
+  const uniqueSubstringsOfArray2 = [...new Set(substringsOfArray2)]
+  const sortedSubstringsOfArray2 = uniqueSubstringsOfArray2.sort()
+
+  return sortedSubstringsOfArray2
+}
+
+array2 = ['lively', 'alive', 'harp', 'sharp', 'armstrong']
+
+array1 = ['xyz', 'live', 'strong']
+sortSubstringsOfWords(array1, array2) // ['live', 'strong']
+
+array1 = ['live', 'strong', 'arp']
+sortSubstringsOfWords(array1, array2) // ['arp', 'live', 'strong']
+
+array1 = ['tarp', 'mice', 'bull']
+sortSubstringsOfWords(array1, array2) // []
 
 /* 15. Duncan moves the file out of this directory when it is complete */
