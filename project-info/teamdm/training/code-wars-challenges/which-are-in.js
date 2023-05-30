@@ -11,7 +11,9 @@
 
 // 1.1 the challenge instructions, including the examples:
 /*
-Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of the strings of a1 which are substrings of strings of a2.
+Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of 
+* the strings of a1 
+* which are substrings of strings of a2.
 
 Example 1:
 a1 = ["arp", "live", "strong"]
@@ -76,7 +78,6 @@ output: an array of strings in array1 that are substrings of the strings in the 
   */
   /*
 return a sorted array of strings that consists of the strings in the first array that are substrings of the strings in the second array
-DM: we can always make little spelling, grammar changes for each other(OK)
   */
 
   /* 8. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -104,17 +105,16 @@ DM: we can always make little spelling, grammar changes for each other(OK)
         continue loop1 // you have to name the loop you want to continue, otherwise it will 'continue' the inner loop
       }
     }
+    // execution goes "here"
   }
   /* 9. use the named parts to create a readable solution. */
-  // MM toDM: I think the you have forgotten to add the Set method to remove duplicates. I have added it below. Also, you can use the spread operator to make a copy of the array, and then sort it. I have added that below, also.
-  const spreadSubstringsOfArray2 = [...substringsOfArray2]
-  const sortedSubstringsOfArray2 = spreadSubstringsOfArray2.sort()
+
+  const sortedSubstringsOfArray2 = substringsOfArray2.sort()
 
   /* 10. return the solution
 always return a variable, or, use only variables in return statements
 this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
 */
-
   return sortedSubstringsOfArray2
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
@@ -143,7 +143,7 @@ sortSubstringsOfWords(array1, array2) // []
 
 DM: I made the above changes for you, so that I could demonstrate the "continue loop1" technique for you.
 
-Approved(ok).
+Approved with my changes.
 
 
 */
@@ -160,18 +160,18 @@ function sortSubstringsOfWords(array1, array2) {
 
   const substringsOfArray2 = []
 
-  for (let i = 0; i < array1.length; i++) {
+  loop1: for (let i = 0; i < array1.length; i++) {
     const currentWord = array1[i]
     for (let j = 0; j < array2.length; j++) {
       const currentWordInArray2 = array2[j]
       if (currentWordInArray2.includes(currentWord)) {
         substringsOfArray2.push(currentWord)
+        continue loop1
       }
     }
   }
 
-  const uniqueSubstringsOfArray2 = [...new Set(substringsOfArray2)]
-  const sortedSubstringsOfArray2 = uniqueSubstringsOfArray2.sort()
+  const sortedSubstringsOfArray2 = substringsOfArray2.sort()
 
   return sortedSubstringsOfArray2
 }

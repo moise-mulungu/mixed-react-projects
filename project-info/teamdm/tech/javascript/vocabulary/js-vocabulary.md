@@ -14,12 +14,6 @@
 - a word that cannot be used as an identifier, such as the name of a variable, function, or labels.
 - ex: `let`, `sort`, `this`, `charAt`, `function`
 
-## Type coercion
-
-Type Coercion refers to the process of automatic or implicit conversion of values from one data type to another. This includes conversion from Number to String, String to Number, Boolean to Number etc. when different types of operators are applied to the values.
-
-// DM: good choice. just say "the logical AND operator" - so many DEVs say junk like "the double ampersand operator" ... sigh...
-
 ## Logical AND(&&) and OR(||) operators
 
 - logical AND operator - uses the double `ampersand(&&)` to represent the logical AND operator.
@@ -91,9 +85,9 @@ Prototypes are the mechanism by which JavaScript objects inherit features from o
 
 ## the number type - truthy/falsy
 
-Every number in JavaScript is `truthy`(a truthy value is a value that is considered true when encountered in a Boolean context), except zero(`0`) which is `falsy` just like how an empty string (`''`) is the only `falsy` string.
+Every number in JavaScript is `truthy`(a truthy value is a value that is considered true when encountered in a Boolean context), except zero(`0`) which is "falsy" just like how an empty string (`''`) is the only "falsy" string.
 
-- other falsy values are : `false`, `null`, `undefined`, `NaN`
+- other falsy values are : `false`, `null`, `undefined`, `NaN`, `0n`
 
 ## boolean constructor
 
@@ -189,11 +183,88 @@ JavaScript Hoisting refers to the process whereby the interpreter appears to mov
     - also, number: const myNumber = new Number(1);
     -
 
+## type coercion
+
+* automatic or implicit conversion of values from one data type to another 
+* happens implicitly when operators or functions are applied to values of different types
+* examples:
+  * 4 + '5' // '45' // 4 was coerced to '4' then concatenated with '5'
+  * 4 + Number(5) // 9 // '5' was converted to 5 then added to 4
+  * [].filter(mySubstring => [].find(myString => myString.includes(mySubstring)))
+    * Array.filter() expects a Boolean 
+    * but Array.find() returns the matching myString || undefined
+    * therefore, Array.filter() code coerces myString || undefined to Boolean
+
+
+  return firstArray
+    .filter((substring) => {
+      return secondArray.find((string) => string.includes(substring))
+      /*
+        'arp' || undefined || '' || '0' || 0
+        Boolean('arp') === true // string to true
+        Boolean(undefined) === false // undefined to false
+        type coercion
+      */
+    })
+    .sort()
+  Boolean('arp') // converts 'arp' to Boolean "explicitly"; "explicit conversion"
+  'arp' === true // false
+  'arp' == true //  true - "==" "implicitly" coerces 'arp' to Boolean; "implicit conversion"
+
 ## abstract equality comparison operator(==) vs strict equality comparison operator(===)
 
 - The abstract equality operator performs a _**loose** equality_ comparison that performs type coercion if necessary to make the comparison possible. 
 - The strict equality operator, on the other hand, performs a _strict equality_ comparison that does not perform type coercion and requires the operands to have the same type (as well as the same value).
 
-## type coercion
+https://www.pluralsight.com/blog/software-development/vs-javascript-abstract-vs-strict-equality
 
-Type coercion is the process of converting a value from one data type to another. Type coercion happens implicitly when operators or functions are applied to values of different types.
+##  truthy/falsy VS Boolean()
+* the 7 falsy values: false, 0, 0n, '', null, undefined, NaN (mnemonic: F00'nun)
+* truthy = NOT falsy
+* truthy/falsy is implemented by 
+  * `if ()` 
+  * `Boolean()` 
+  * (but not `==`, which follow the JS rules of type coercion, which are weird).
+  * exit conditions on constructs like `for` and `while`. 
+  * By extension, _predicate functions_, like those passed to Array.filter and Array.find, also operate based on truthiness.
+  * operators:
+    * `!` negation operator
+    * `&&` and `||` logical operators
+      * called short-circuiting operators because they evaluate their operands from left to right and stop at the first value that guarantees the value of the expression. 
+      * Short-circuiting expressions produce whatever value determined the truthiness of the expression, not necessarily a boolean: 
+        * `0 || 42 // 42`
+        * `const obj = { ...( truthy && { foo: 'bar' } ) }`
+          * note: `{ ...anyFalsyValue } // {}`
+          * also: `{ ...[] } // {}`
+    * ?...: conditional (ternary) operator
+  * Truthiness is inherent in every JavaScript value and is used implicitly by the runtime anytime a boolean evaluation of the value is required. 
+
+// == (JS "abstract equality" is weird, so DON'T USE ==, USE ===)
+false == 0        // true
+0 == 0n           // true
+0n == ''          // true
+'' == null        // false // empty string can't be coerced to null or vice versa
+null == undefined // true
+undefined == NaN  // false // undefined can't be coerced to NaN or vice versa
+
+// if ()
+if (false || 0 || 0n || '' || null || undefined || NaN) console.log('never logged')
+
+// Boolean()
+Boolean(false) === Boolean(0)        // true
+Boolean(0) === Boolean(0n)           // true
+Boolean(0n) === Boolean('')          // true
+Boolean('') === Boolean(null)        // true
+Boolean(null) === Boolean(undefined) // true
+Boolean(undefined) === Boolean(NaN)  // true
+
+// ?? nullish coalescing operator handles both `null` and `undefined` and solves some of the drawbacks of truthiness/falsiness
+const foo = null ?? 'default string'; // 'default string'
+const baz = 0 ?? 42; // 0 // however, 0 is a valid number value that happens to be falsy
+const bar = 0 || 42; // 42
+const boo = '' || 'some string value' // 'some string value' //  however, '' may be a valid value
+const fax = '' ?? 'some string value' // ''
+
+
+
+
