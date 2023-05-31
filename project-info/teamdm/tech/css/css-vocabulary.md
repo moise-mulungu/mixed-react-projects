@@ -60,3 +60,6 @@ inheritance refers to the relationship between HTML tags (think parent and child
 
 - Note : most of the properties that inherit are typography-related, like `color`, `font-size`, `text-shadow`
 
+## box model
+
+In CSS, the term "box model" is used when talking about design and layout. The CSS box model is essentially a box that wraps around every HTML element. It consists of: `margins`, `borders`, `padding`, and the actual `content`.
