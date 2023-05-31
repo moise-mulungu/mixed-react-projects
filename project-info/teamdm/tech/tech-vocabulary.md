@@ -34,8 +34,18 @@ string interpolation in JavaScript is a process in which an expression is insert
 
 ## race condition
 
-A race condition or **race hazard** is the condition of an electronics, software, or other system where the system's substantive behavior is dependent on the sequence or timing of other uncontrollable events. It becomes a bug when one or more of the possible behaviors is undesirable. (source: wikipedia)
-
 A race condition is an undesirable situation that occurs when a device or system attempts to perform two or more operations at the same time, but because of the nature of the device or system, the operations must be done in the proper sequence to be done correctly. (source: tech-target)
 
-<!-- This second definition is easy to understand than the one above -->
+A race condition or **race hazard** is the condition of an electronics, software, or other system where the system's substantive behavior is dependent on the sequence or timing of other uncontrollable events. It becomes a bug when one or more of the possible behaviors is undesirable. (source: wikipedia)
+
+## multiplicity
+
+* when describing data
+* the multiplicity of a _member_ (AKA element) is the number of times the same member appears in the array
+* two arrays have the "same" (unique) elements, but they may not have the same _multiplicities_ 
+
+Given [1 1 3 1 4 5 3]
+unique: [1 3 4 5]
+multiplicity: [3 2 1 1]
+
+

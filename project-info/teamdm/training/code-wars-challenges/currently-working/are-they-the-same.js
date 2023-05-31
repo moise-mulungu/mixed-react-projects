@@ -52,12 +52,28 @@ https://www.codewars.com/kata/550498447451fbbd7600041c/train/javascript
       (practice reading the challenge description carefully). Really take a minute to review the requirements (challenge description) and see if there are any ambiguities. Say out-loud to yourself what you understand the task to be, pretending that you are saying this to an interviewer. This is very important to practice. */
 /*
 
+This challenge has a poorly-written description. Repeating it here with annotations:
+
+Given
+* two arrays: a and b 
+write a function comp(a, b) (or compSame(a, b)) that:
+* checks whether the two arrays have 
+  * the "same" elements, 
+  * with the same multiplicities,
+    * (the multiplicity of a member is the number of times it appears). 
+    * DM: see my new entry in tech-vocabulary.md
+  * "Same" means, here, that the elements in b are the elements ~~in a~~ squared , regardless of the order.
+    * ex: 11 is the "same" as 121 (which is 11 squared, 11 * 11 === 121)
+* from the remarks: a or b might be nil or null or None or nothing, the problem doesn't make sense so return false
+
+Question for interviewer: if both arrays are empty, return false or throw error?
+
 */
 
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise. pick a name using the any good words from the challenge description or from your input description in #5
-function comp(firstArray, secondArray) {
+function comp(numbers, numbersSquared) {
   /* 5. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
@@ -68,29 +84,34 @@ function comp(firstArray, secondArray) {
         output: string|number|...; possible values: */
   /*
 input: two arrays of numbers
-output: boolean true if all the elements in the second array are the square of the elements in the first array, false otherwise
+output: boolean 
   */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
   const areArrays = (firstArray, secondArray) => {
+    // DM: super!
     return Array.isArray(firstArray) && Array.isArray(secondArray)
   }
   const areNumbers = (firstArray, secondArray) => {
+    // DM: super duper!
     return (
       firstArray.every((element) => typeof element === 'number') &&
       secondArray.every((element) => typeof element === 'number')
     )
   }
-  //   const areSameLength = (firstArray, secondArray) => {
-  //     return firstArray.length === secondArray.length
-  //   }
+  // DM: I think areSameLength is valid. It ensures the multiplicity, afaikt.
+  const areSameLength = (firstArray, secondArray) => {
+    return firstArray.length === secondArray.length
+  }
 
-  if (!areArrays(firstArray, secondArray)) return false
-  if (!areNumbers(firstArray, secondArray)) throw new Error('The inputs must be arrays of num')
-  //   if (!areSameLength(firstArray, secondArray))
-  //     throw new Error('The inputs must be arrays of the same length')
+  if (!areArrays(numbers, numbersSquared)) return false
+  if (!areNumbers(numbers, numbersSquared)) throw new Error('The inputs must be arrays of num')
+  // return false (not throw) if the arrays are not of the same multiplicity
+  if (!areSameLength(numbers, numbersSquared)) return false
+  //   throw new Error('The inputs must be arrays of the same length')
 
-  if (firstArray.length === 0 && secondArray.length === 0) return false
+  // DM: based on the expected test results, if both are empty, should return true
+  // if (numbers.length === 0 && numbersSquared.length === 0) return false
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
@@ -110,11 +131,13 @@ I want to check if all the elements in the second array are the square of the el
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  for (let i = 0; i < firstArray.length; i++) {
-    const elementOne = firstArray[i]
-    for (let j = 0; j < secondArray.length; j++) {
-      const elementTwo = secondArray[j]
-
+  for (let i = 0; i < numbers.length; i++) {
+    const elementOne = numbers[i]
+    for (let j = 0; j < numbersSquared.length; j++) {
+      const elementTwo = numbersSquared[j]
+      // returning here means execution leaves the function, so you don't check ALL the numbers, just the first one
+      // DM: todoMM: your overall approach will work for many cases, but not all. I think it is good to make this approach work as well as possible: first step, improve this approach a bit: find a way to not return the answer until you've checked all the numbers (note: you can use 'let' just this one time :) )
+      // DM: for Duncan only: eff: drugoy vid petli; snach vernoot losh; snachala sartirovat? (secret code, notes to myself of next steps after you solve it using this method)
       if (elementTwo === Math.pow(elementOne, 2)) return true
     }
   }
@@ -124,11 +147,12 @@ I want to check if all the elements in the second array are the square of the el
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
-  //   return
+  // DM: if you have no return statement that is executed, a func will return 'undefined' which may not pass the tests bk likely the tests expect false, not undefined (which is falsy but not false)
+  return false
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
-
+// DM: todoMM: what are the expected results?
 const a1 = [121, 144, 19, 161, 19, 144, 19, 11]
 const a2 = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19]
 comp(a1, a2)

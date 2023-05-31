@@ -239,7 +239,7 @@ https://www.pluralsight.com/blog/software-development/vs-javascript-abstract-vs-
     * ?...: conditional (ternary) operator
   * Truthiness is inherent in every JavaScript value and is used implicitly by the runtime anytime a boolean evaluation of the value is required. 
 
-// == (JS "abstract equality" is weird, so DON'T USE ==, USE ===)
+// == (JS "abstract equality" is weird, so DON'T USE ==, DO USE ===)
 false == 0        // true
 0 == 0n           // true
 0n == ''          // true
