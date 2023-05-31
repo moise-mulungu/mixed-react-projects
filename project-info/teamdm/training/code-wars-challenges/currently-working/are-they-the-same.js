@@ -73,7 +73,7 @@ Question for interviewer: if both arrays are empty, return false or throw error?
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise. pick a name using the any good words from the challenge description or from your input description in #5
-function comp(numbers, numbersSquared) {
+function comp(numbers, squaredNumbers) {
   /* 5. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
@@ -104,10 +104,10 @@ output: boolean
     return firstArray.length === secondArray.length
   }
 
-  if (!areArrays(numbers, numbersSquared)) return false
-  if (!areNumbers(numbers, numbersSquared)) throw new Error('The inputs must be arrays of num')
+  if (!areArrays(numbers, squaredNumbers)) return false
+  if (!areNumbers(numbers, squaredNumbers)) throw new Error('The inputs must be arrays of num')
   // return false (not throw) if the arrays are not of the same multiplicity
-  if (!areSameLength(numbers, numbersSquared)) return false
+  if (!areSameLength(numbers, squaredNumbers)) return false
   //   throw new Error('The inputs must be arrays of the same length')
 
   // DM: based on the expected test results, if both are empty, should return true
@@ -133,8 +133,8 @@ I want to check if all the elements in the second array are the square of the el
         * see naming-conventions.md*/
   for (let i = 0; i < numbers.length; i++) {
     const elementOne = numbers[i]
-    for (let j = 0; j < numbersSquared.length; j++) {
-      const elementTwo = numbersSquared[j]
+    for (let j = 0; j < squaredNumbers.length; j++) {
+      const elementTwo = squaredNumbers[j]
       // returning here means execution leaves the function, so you don't check ALL the numbers, just the first one
       // DM: todoMM: your overall approach will work for many cases, but not all. I think it is good to make this approach work as well as possible: first step, improve this approach a bit: find a way to not return the answer until you've checked all the numbers (note: you can use 'let' just this one time :) )
       // DM: for Duncan only: eff: drugoy vid petli; snach vernoot losh; snachala sartirovat? (secret code, notes to myself of next steps after you solve it using this method)
