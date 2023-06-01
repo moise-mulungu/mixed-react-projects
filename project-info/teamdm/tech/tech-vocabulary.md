@@ -40,12 +40,12 @@ A race condition or **race hazard** is the condition of an electronics, software
 
 ## multiplicity
 
-* when describing data
-* the multiplicity of a _member_ (AKA element) is the number of times the same member appears in the array
-* two arrays have the "same" (unique) elements, but they may not have the same _multiplicities_ 
+- when describing data
+- the multiplicity of a _member_ (AKA element) is the number of times the same member appears in the array
+- two arrays have the "same" (unique) elements, but they may not have the same _multiplicities_
 
 Given [1 1 3 1 4 5 3]
 unique: [1 3 4 5]
 multiplicity: [3 2 1 1]
 
-
+- Multiplicity defines how many objects participate in a relationship and it is the number of instances of one class related to one instance of the other class

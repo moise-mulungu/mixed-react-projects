@@ -1,6 +1,5 @@
 note: prefix Google searches with "computer programming" to get the best results. "programming" alone is not specific enough
 
-
 ## functional programming
 
 Functional programming (FP) is an approach to software development that uses pure functions to create maintainable software. In other words, building programs by applying and composing functions
@@ -109,16 +108,48 @@ Form validation is a “technical process where a web-form checks if the informa
 
 ## function signature AKA type signature AKA method signature
 
-Defines input and output of functions or methods. A signature can include: 
-* parameters and their types. 
-* a return value and type. 
-* exceptions that might be thrown or passed back
-* information about the availability of the method in an object-oriented program (such as the keywords public, static, or prototype).
+Defines input and output of functions or methods. A signature can include:
+
+- parameters and their types.
+- a return value and type.
+- exceptions that might be thrown or passed back
+- information about the availability of the method in an object-oriented program (such as the keywords public, static, or prototype).
 
 ## iteration(noun), iterate(verb), iterable(adjective)
+
 Iteration is the repetition of a process in order to generate a (possibly unbounded) sequence of outcomes. Each repetition of the process is a single iteration, and the outcome of each iteration is then the starting point of the next iteration.
 In computing, iteration is the technique marking out of a block of statements within a computer program for a defined number of repetitions. That block of statements is said to be iterated; a computer scientist might also refer to that block of statements as an "iteration".
 
 ## closure
+
 In programming languages, a closure, also lexical closure or function closure, is a technique for implementing lexically scoped name binding in a language with first-class functions. Operationally, a closure is a record storing a function together with an environment
+
 <!-- ???DM: can you have any simpler definition, this one seems hard to understand! -->
+
+## ASCII
+
+Abbreviated from American Standard Code for Information Interchange, is a character encoding standard for electronic communication. ASCII codes represent text in computers, telecommunications equipment, and other devices.
+
+## binary code
+
+In mathematics and in computing systems, a binary digit, or bit, is the smallest unit of data. Each bit has a single value of either 1 or 0, which means it can't take on any other value. Computers can represent numbers using binary code in the form of digital 1s and 0s inside the central processing unit (CPU) and RAM.
+
+## integer
+
+In computer science, an integer is a datum(`a piece of information`) of integral data type, a data type that represents some range of mathematical integers. Integral data types may be of different sizes and may or may not be allowed to contain negative values. Integers are commonly represented in a computer as a group of binary digits.
+
+## how is ASCII represented in binary?
+
+ASCII is an 8-bit code. That is, it uses eight bits to represent a letter or a punctuation mark. Eight bits are called a `byte`. A binary code with eight digits, such as 1101 10112, can be stored in one byte of computer memory.
+
+## how are integers represented in binary?
+
+Binary numbers are usually represented with just two digits — 0 and 1 — cor- responding to the off and on states of the internal hardware. It takes quite a few more digits to represent a number in binary than in decimal, but any number that can be expressed in one can be converted to the other.
+
+## byte
+
+In most computer systems, a byte is a unit of data that is eight binary digits long. A byte is the unit most computers use to represent a character such as a letter, number or typographic symbol. Each byte can hold a string of bits that need to be used in a larger unit for application purposes.
+
+## radix (aka base)
+
+Radix is the number of digits utilized in a positional number system before "rolling over" to the next digit's place. For example, in the base 10 number system, there is a total of 10 digits used (zero through nine), therefore, its radix is 10.

@@ -88,30 +88,30 @@ output: boolean
   */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-  const areArrays = (firstArray, secondArray) => {
+  const areArrays = (numbers, squaredNumbers) => {
     // DM: super!
-    return Array.isArray(firstArray) && Array.isArray(secondArray)
+    return Array.isArray(numbers) && Array.isArray(squaredNumbers)
   }
-  const areNumbers = (firstArray, secondArray) => {
+  const areNumbers = (numbers, squaredNumbers) => {
     // DM: super duper!
     return (
-      firstArray.every((element) => typeof element === 'number') &&
-      secondArray.every((element) => typeof element === 'number')
+      numbers.every((element) => typeof element === 'number') &&
+      squaredNumbers.every((element) => typeof element === 'number')
     )
   }
   // DM: I think areSameLength is valid. It ensures the multiplicity, afaikt.
-  const areSameLength = (firstArray, secondArray) => {
-    return firstArray.length === secondArray.length
+  const areSameLength = (numbers, squaredNumbers) => {
+    return numbers.length === squaredNumbers.length
   }
 
   if (!areArrays(numbers, squaredNumbers)) return false
-  if (!areNumbers(numbers, squaredNumbers)) throw new Error('The inputs must be arrays of num')
+  if (!areNumbers(numbers, squaredNumbers)) return false
   // return false (not throw) if the arrays are not of the same multiplicity
   if (!areSameLength(numbers, squaredNumbers)) return false
   //   throw new Error('The inputs must be arrays of the same length')
 
   // DM: based on the expected test results, if both are empty, should return true
-  // if (numbers.length === 0 && numbersSquared.length === 0) return false
+  if (numbers.length === 0 && numbersSquared.length === 0) return true
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
@@ -131,16 +131,25 @@ I want to check if all the elements in the second array are the square of the el
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  for (let i = 0; i < numbers.length; i++) {
-    const elementOne = numbers[i]
-    for (let j = 0; j < squaredNumbers.length; j++) {
-      const elementTwo = squaredNumbers[j]
-      // returning here means execution leaves the function, so you don't check ALL the numbers, just the first one
-      // DM: todoMM: your overall approach will work for many cases, but not all. I think it is good to make this approach work as well as possible: first step, improve this approach a bit: find a way to not return the answer until you've checked all the numbers (note: you can use 'let' just this one time :) )
-      // DM: for Duncan only: eff: drugoy vid petli; snach vernoot losh; snachala sartirovat? (secret code, notes to myself of next steps after you solve it using this method)
-      if (elementTwo === Math.pow(elementOne, 2)) return true
-    }
-  }
+  // for (let i = 0; i < numbers.length; i++) {
+  //   const elementOne = numbers[i]
+  //   for (let j = 0; j < squaredNumbers.length; j++) {
+  //     const elementTwo = squaredNumbers[j]
+
+  const allNumbersSquared = numbers.map((element) => Math.pow(element, 2))
+
+  const areAllNumbersSquaredInSquaredNumbers = allNumbersSquared.every((element) =>
+    squaredNumbers.includes(element)
+  )
+
+  if (areAllNumbersSquaredInSquaredNumbers) return true
+
+  // returning here means execution leaves the function, so you don't check ALL the numbers, just the first one
+  //(done) DM: todoMM: your overall approach will work for many cases, but not all. I think it is good to make this approach work as well as possible: first step, improve this approach a bit: find a way to not return the answer until you've checked all the numbers (note: you can use 'let' just this one time :), I changed the code by using built-in methods(map and every), when running the tests the numbers of passed cases increased from 132 to 173)
+  // DM: for Duncan only: eff: drugoy vid petli; snach vernoot losh; snachala sartirovat? (secret code, notes to myself of next steps after you solve it using this method)
+  //     if (elementTwo === Math.pow(elementOne, 2)) return true
+  //   }
+  // }
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
@@ -152,25 +161,25 @@ I want to check if all the elements in the second array are the square of the el
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
-// DM: todoMM: what are the expected results?
+//(done) DM: todoMM: what are the expected results?
 const a1 = [121, 144, 19, 161, 19, 144, 19, 11]
 const a2 = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19]
-comp(a1, a2)
+comp(a1, a2) // true
 const b1 = [121, 144, 19, 161, 19, 144, 19, 11, 1008]
 const b2 = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
-comp(b1, b2)
+comp(b1, b2) // false
 const c1 = [121, 144, 19, 161, 19, 144, 19, 11]
 const c2 = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
-comp(c1, c2)
+comp(c1, c2) // false
 const d1 = []
 const d2 = []
-comp(d1, d2)
+comp(d1, d2) // true
 const e1 = []
 const e2 = null
-comp(e1, e2)
+comp(e1, e2) // false
 const f1 = [121, 144, 19, 161, 19, 144, 19, 11, 1008]
 const f2 = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
-comp(f1, f2)
+comp(f1, f2) // false
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
