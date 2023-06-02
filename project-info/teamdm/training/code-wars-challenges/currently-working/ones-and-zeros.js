@@ -54,11 +54,14 @@ function binaryArrayToNumber(binaryNumbers) {
         output: string|number|...; possible values: */
   /*
 input: array of 0s and 1s
-output: number
+output: number (yes, but not a decimal number, which implies decimal places, because the challenge description says "integer" specifically)
   */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
+  if (!Array.isArray(binaryNumbers)) throw new Error('input must be an array')
   const isBinaryArray = (binaryNumbers) => {
+    // DM: good!
+    // DM: binaryNumbers.every will fail if binaryNumbers is not an array (only arrays have a .every property and a .join property). So, I added the isArray test above
     return binaryNumbers.every((num) => num === 0 || num === 1)
   }
   if (!isBinaryArray) throw new Error('input must be an array of 0s and 1s')
@@ -82,19 +85,24 @@ I want to convert the binary array to a number
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  const joinBinaryNumbers = binaryNumbers.join('')
-  const inBaseTwo = 2
-  const binaryToDecimal = parseInt(joinBinaryNumbers, inBaseTwo)
+  // "join" is a verb, so I'm changing it to "joined"
+  const joinedBinaryNumbers = binaryNumbers.join('')
+  const inBaseTwo = 2 // good name
+  // decimal is inaccurate because the challenge description says integer and parseInt returns an integer
+  // "binaryToDecimal" sounds like a function (that converts something "To" something)
+  // always just name a thing most simply for what it is: "integer" is fine
+  const integer = parseInt(joinedBinaryNumbers, inBaseTwo)
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
-  return binaryToDecimal
+  return integer
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
+binaryArrayToNumber('not array') // throw error
 binaryArrayToNumber([0, 0, 0, 1]) // 1
 binaryArrayToNumber([0, 0, 1, 0]) // 2
 binaryArrayToNumber([0, 1, 0, 1]) // 5
@@ -112,9 +120,15 @@ binaryArrayToNumber([1, 0, 1, 1]) // 11
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
 /* 13. code review and approval*/
-/*  */
 
-/* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
+/* Approved, with my changes above */
+
+/* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-/* 15. Duncan moves the file out of this directory when it is complete */
+/* 15. Copy here which of the other coders' solutions do you like the best? (Be sure in codewars.com to sort others' solutions by "Best Practices".)
+       Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
+       Note: the best solution should be readable as the highest priority, but not unnecessarily inefficient.
+*/
+
+/* 16. Duncan moves the file out of this directory when it is complete */

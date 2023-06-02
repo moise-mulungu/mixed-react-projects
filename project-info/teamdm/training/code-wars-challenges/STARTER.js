@@ -85,7 +85,12 @@ myFunction('', '') // expected result
 /* 13. code review and approval*/
 /*  */
 
-/* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
+/* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-/* 15. Duncan moves the file out of this directory when it is complete */
+/* 15. Copy here which of the other coders' solutions do you like the best? (Be sure in codewars.com to sort others' solutions by "Best Practices".)
+       Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
+       Note: the best solution should be readable as the highest priority, but not unnecessarily inefficient.
+*/
+
+/* 16. Duncan moves the file out of this directory when it is complete */

@@ -92,6 +92,9 @@ return a sorted array of strings that consists of the strings in the first array
  * see naming-conventions.md*/
 
   // DM: great names in this solution, except the below name it is not sorted yet, so leave that part out. Also, you don't need to use the word 'array' in the name, just use a plural noun somewhere in the name: (ex: words, fish, people, birds, etc.). Also, the word 'Lexicographical' in the challenge description was superfluously written by the original author, because Lexicographical means the default sort, so you don't have to call it out. Pick a name that describes what it is: substringsOfArray2 (I based this name on your output description: "substrings of the strings in the second array")
+
+  // howtojs: incorrect: not idiomatic JS:: avoid initializing an empty array and pushing to it. There are almost always array methods to do the job better
+  // (as seen in the other file solution to this challenge). I allowed here an empty array with pushing so that you could practice loops and using the continue statement.
   const substringsOfArray2 = []
 
   loop1: for (let i = 0; i < array1.length; i++) {

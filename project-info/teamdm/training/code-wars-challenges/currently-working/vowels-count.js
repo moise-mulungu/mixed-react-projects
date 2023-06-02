@@ -70,21 +70,32 @@ i want to count the number of vowels in the string
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
   const vowels = ['a', 'e', 'i', 'o', 'u']
-  const sumOfAllVowels = []
-  const splitString = stringOfLetters.split('').map((element) => {
-    if (vowels.includes(element)) {
-      sumOfAllVowels.push(element)
-    }
-  })
+  // DM: used the name 'characters' (ASCII characters) because the test data contains spaces and empty string, not just letter
+  const characters = stringOfLetters.split('')
 
   /* 9. use the named parts to create a readable solution. */
+
+  // DM: I'm sure your initial solution works correctly and completely, but declaring an empty array, then array.push inside a .map or .forEach is not using JS properly, so that approach wouldn't pass a code review. After you solve the challenge using the method I suggest, you'll see that the empty-array-push code is less readable.
+  // DM: todoMM: what other array method can you use? Remember to think in terms of what you HAVE: characters - an array of characters (and as a helper: vowels - an array of vowels) and what you WANT (an integer number representing the number of vowels in the string). So, if you need to convert an array into a non-array, which array method do you use?
+  const sumOfAllVowels = characters./* your code goes here */
+
+  // pervious solution:
+  // const sumOfAllVowels = []
+  // const splitString = stringOfLetters.split('').map((element) => {
+  //   if (vowels.includes(element)) { // this logic is good
+  //     sumOfAllVowels.push(element)
+  //   }
+  // })
 
   /* 10. return the solution
       always return a variable, or, use only variables in return statements
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
-  //   return sumOfAllVowels.reduce((acc, curr) => acc + curr, 0); this is weird, the reduce method doesn't work here
-  return sumOfAllVowels.length
+
+  // DM: todoMM: I want you to debug the problem as an exercise (although you won't need the below line using the solution I'm suggesting above). Remember to always use console.log so that you have visibility to what the data is. You can console.log({curr}) to see what is in curr and what you are adding to acc. Then the answer will be obvious. This is the sort of thing that in a work situation, you can't say that you can't solve it, because you should as a first debugging step console.log to see what data is in the variables.
+  //   return sumOfAllVowels.reduce((acc, curr) => acc + curr, 0); // this is weird, the reduce method doesn't work here 
+
+  return sumOfAllVowels
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
@@ -105,7 +116,13 @@ getCount('') // 0
 /* 13. code review and approval*/
 /*  */
 
-/* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
+/* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-/* 15. Duncan moves the file out of this directory when it is complete */
+/* 15. Copy here which of the other coders' solutions do you like the best? (Be sure in codewars.com to sort others' solutions by "Best Practices".)
+       Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
+       Note: the best solution should be readable as the highest priority, but not unnecessarily inefficient.
+*/
+
+
+/* 16. Duncan moves the file out of this directory when it is complete */
