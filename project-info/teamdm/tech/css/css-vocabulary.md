@@ -63,3 +63,9 @@ inheritance refers to the relationship between HTML tags (think parent and child
 ## box model
 
 In CSS, the term "box model" is used when talking about design and layout. The CSS box model is essentially a box that wraps around every HTML element. It consists of: `margins`, `borders`, `padding`, and the actual `content`.
+
+## css layout
+
+A CSS layout mode, sometimes called layout, is an algorithm that determines the position and size of boxes based on the way they interact with their sibling and ancestor boxes.
+
+- there are many css layouts such as: `normal flow`, `flex box`, `grid`, `float`, `positioning`, `multiple-column layout`, `responsive design`.
