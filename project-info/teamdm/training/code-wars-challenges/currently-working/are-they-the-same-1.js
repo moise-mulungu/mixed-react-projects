@@ -1,6 +1,5 @@
 /* 
 DM: I want you to make this approach work separately from the other 2 approaches.
-    It is good that you are getting good at array methods, but also good to practice the logic of plain old loops.
 */
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
@@ -115,7 +114,7 @@ output: boolean
   //   throw new Error('The inputs must be arrays of the same length')
 
   // DM: based on the expected test results, if both are empty, should return true
-  if (numbers.length === 0 && numbersSquared.length === 0) return true
+  if (numbers.length === 0 && squaredNumbers.length === 0) return true
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
@@ -135,26 +134,29 @@ I want to check if all the elements in the second array are the square of the el
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  for (let i = 0; i < numbers.length; i++) {
-    const elementOne = numbers[i]
-    for (let j = 0; j < squaredNumbers.length; j++) {
-      const elementTwo = squaredNumbers[j]
-      // returning here means execution leaves the function, so you are currently not checking ALL the numbers, just the first one
-      // DM: todoMM: your overall approach here will work for many cases, but possibly not all. I think it is good to make this approach work as well as possible. I want you to do this first step only: improve this approach a bit: find a way to not return the answer until you've checked all the squaredNumbers || you have found a squaredNumber that is not correct. Hint: should only make small edits to lines 145 and 155. Your approach is good, but your logic is a bit reversed. Correction: do not use and additional 'let' variable. (but 'let' is OK in for loops)
-      // DM: for Duncan only: eff: drugoy vid petli; snach vernoot losh; snachala sartirovat? (secret code, notes to myself of next steps after you solve it using this method)
-      if (elementTwo === Math.pow(elementOne, 2)) return true
-    }
-  }
+
+  const validNumbersSquared = numbers.map((element) => Math.pow(element, 2))
+
   /* 9. use the named parts to create a readable solution. */
 
+  // DM: todoMM: can you use a different array method, other than 'every', to solve the new test I added below? QQ: is it possible to solve this challenge without sorting?
+  const areAllNumbersSquaredInSquaredNumbers = validNumbersSquared.every((element) =>
+    squaredNumbers.includes(element)
+  )
+
   /* 10. return the solution
-      always return a variable, or, use only variables in return statements
-      this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
-   */
-  // DM: if you have no return statement that is executed, a func will return 'undefined' which may not pass the tests bk likely the tests expect false, not undefined (which is falsy but not false)
-  return false
+always return a variable, or, use only variables in return statements
+this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+*/
+  return areAllNumbersSquaredInSquaredNumbers
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
+// expected result
+//(done) DM: todoMM: what are the expected results?
+// from the 'attempt' button failed test
+
+// sorting the test arrays to better see what is the issue being tested
+// [].sort((a, b) => a - b)
 
 // DM: all of 11 and 19 are found in the 2nd array, but the "multiplicity" is wrong, because the last number in the 2nd array is not the "same" (as defined by the exercise) as the last number of the first array
 comp([11, 19, 19, 19], [121, 361, 361, 14641]) // false
