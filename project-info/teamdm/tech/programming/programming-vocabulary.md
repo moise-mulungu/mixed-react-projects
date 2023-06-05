@@ -153,3 +153,11 @@ In most computer systems, a byte is a unit of data that is eight binary digits l
 ## radix (aka base)
 
 Radix is the number of digits utilized in a positional number system before "rolling over" to the next digit's place. For example, in the base 10 number system, there is a total of 10 digits used (zero through nine), therefore, its radix is 10.
+
+## single responsibility principle
+
+The Single Responsibility Principle (SRP) is the concept that any single object in object-oriented programming (OOP) should be made for one specific function.
+
+## DRY, KISS, and YAGNI
+
+Are the three programming or coding principles that avoid unnecessary repetitive codes, where `DRY`("Don't repeat yourself") is about removing repetitive code. `KISS`("Keep it simple, stupid") is about removing hard code (long methods that are hard to read, etc.), and`YAGNI` ("You Aren't Gonna Need It")is about removing code that the user doesn't need. .

@@ -135,13 +135,14 @@ I want to check if all the elements in the second array are the square of the el
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  const validNumbersSquared = numbers.map((element) => Math.pow(element, 2))
+  const validNumbersSquared = numbers.map((element) => Math.pow(element, 2), console.log('numbers', numbers))
 
   /* 9. use the named parts to create a readable solution. */
 
   // DM: todoMM: can you use a different array method, other than 'every', to solve the new test I added below? QQ: is it possible to solve this challenge without sorting?
-  const areAllNumbersSquaredInSquaredNumbers = validNumbersSquared.every((element) =>
-    squaredNumbers.includes(element)
+  const areAllNumbersSquaredInSquaredNumbers = validNumbersSquared.every(
+    
+    (element) => console.log('element', element) && squaredNumbers.includes(element)
   )
 
   /* 10. return the solution
@@ -159,7 +160,7 @@ this makes it easy to debug by logging  // console.log('i am easy to debug by lo
 // [].sort((a, b) => a - b)
 
 // DM: all of 11 and 19 are found in the 2nd array, but the "multiplicity" is wrong, because the last number in the 2nd array is not the "same" (as defined by the exercise) as the last number of the first array
-comp([11, 19, 19, 19], [121, 361, 361, 14641]) // false
+comp([11, 19, 19, 19], [121, 361, 361, 14_641]) // false
 
 a1 = [121, 144, 19, 161, 19, 144, 19, 11]
 a2 = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19]
@@ -168,7 +169,7 @@ comp(
   [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19]
 ) // true
 b1 = [121, 144, 19, 161, 19, 144, 19, 11, 1008]
-b2 = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+b2 = [121, 14_641, 20_736, 36_100, 25_921, 361, 20_736, 361]
 comp(b1, b2) // false
 c1 = [121, 144, 19, 161, 19, 144, 19, 11]
 c2 = [132, 14641, 20736, 361, 25921, 361, 20736, 361]
@@ -180,7 +181,7 @@ e1 = []
 e2 = null
 comp(e1, e2) // false
 f1 = [121, 144, 19, 161, 19, 144, 19, 11, 1008]
-f2 = [121, 14641, 20736, 36100, 25921, 361, 20736, 361]
+f2 = [121, 14_641, 20_736, 36_100, 25_921, 361, 20_736, 361]
 comp(f1, f2) // false
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
