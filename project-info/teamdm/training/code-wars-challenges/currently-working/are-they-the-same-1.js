@@ -135,14 +135,17 @@ I want to check if all the elements in the second array are the square of the el
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  const validNumbersSquared = numbers.map((element) => Math.pow(element, 2), console.log('numbers', numbers))
+  const validNumbersSquared = numbers.map(
+    (element) => Math.pow(element, 2),
+    console.log('numbers', numbers)
+  )
 
   /* 9. use the named parts to create a readable solution. */
 
   // DM: todoMM: can you use a different array method, other than 'every', to solve the new test I added below? QQ: is it possible to solve this challenge without sorting?
   const areAllNumbersSquaredInSquaredNumbers = validNumbersSquared.every(
-    
-    (element) => console.log('element', element) && squaredNumbers.includes(element)
+    // console.log('abc') returns undefined, so you'll have to use ||
+    (element) => console.log('element', element) || squaredNumbers.includes(element)
   )
 
   /* 10. return the solution
@@ -153,8 +156,6 @@ this makes it easy to debug by logging  // console.log('i am easy to debug by lo
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
-//(done) DM: todoMM: what are the expected results?
-// from the 'attempt' button failed test
 
 // sorting the test arrays to better see what is the issue being tested
 // [].sort((a, b) => a - b)
