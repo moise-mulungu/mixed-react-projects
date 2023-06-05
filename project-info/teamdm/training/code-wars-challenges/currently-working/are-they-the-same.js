@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* 
 DM: I want you to make this approach work separately from the other 2 approaches.
     It is good that you are getting good at array methods, but also good to practice the logic of plain old loops.
@@ -134,7 +135,7 @@ I want to check if all the elements in the second array are the square of the el
         * booleans are named with (positive) adjectives: (open, seen, isString)
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
-        * see naming-conventions.md*/
+        * see naming-conventions.md */
   for (let i = 0; i < numbers.length; i++) {
     const elementOne = numbers[i]
     for (let j = 0; j < squaredNumbers.length; j++) {
@@ -159,6 +160,7 @@ I want to check if all the elements in the second array are the square of the el
 // DM: all of 11 and 19 are found in the 2nd array, but the "multiplicity" is wrong, because the last number in the 2nd array is not the "same" (as defined by the exercise) as the last number of the first array
 comp([11, 19, 19, 19], [121, 361, 361, 14641]) // false
 
+// eslint-disable-next-line no-undef
 a1 = [121, 144, 19, 161, 19, 144, 19, 11]
 a2 = [11 * 11, 121 * 121, 144 * 144, 19 * 19, 161 * 161, 19 * 19, 144 * 144, 19 * 19]
 comp(
@@ -188,11 +190,11 @@ comp(f1, f2) // false
              what it is with lots of words. Just write exactly what the variable holds.
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
-/* 13. code review and approval*/
+/* 13. code review and approval */
 /*  */
 
 /* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
-       OK to rename variables here if it seems better while looking at the code in concise form*/
+       OK to rename variables here if it seems better while looking at the code in concise form */
 
 /* 15. Copy here which of the other coders' solutions do you like the best? (Be sure in codewars.com to sort others' solutions by "Best Practices".)
        Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).

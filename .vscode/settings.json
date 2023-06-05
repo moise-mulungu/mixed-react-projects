@@ -1,6 +1,15 @@
 {
-    "liveServer.settings.port": 5501,
-    "prettier.configPath": ".prettierrc.js"
+  // "liveServer.settings.port": 5501,
+  "prettier.configPath": ".prettierrc.js",
+
+  // per extension "Prettier ESLint"
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.formatOnPaste": false, // required
+  "editor.formatOnType": true, // required
+  "editor.formatOnSave": true, // optional
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "files.autoSave": "onFocusChange", // optional but recommended
+  "vs-code-prettier-eslint.prettierLast": "false" // set as "true" to run 'prettier' last not first
 }
 
 // (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). this wasn't added manually by us, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html
