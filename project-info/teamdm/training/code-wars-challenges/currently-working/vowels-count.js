@@ -77,7 +77,13 @@ i want to count the number of vowels in the string
 
   // DM: I'm sure your initial solution works correctly and completely, but declaring an empty array, then array.push inside a .map or .forEach is not using JS properly, so that approach wouldn't pass a code review. After you solve the challenge using the method I suggest, you'll see that the empty-array-push code is less readable.
   // DM: todoMM: what other array method can you use? Remember to think in terms of what you HAVE: characters - an array of characters (and as a helper: vowels - an array of vowels) and what you WANT (an integer number representing the number of vowels in the string). So, if you need to convert an array into a non-array, which array method do you use?
-  const sumOfAllVowels = characters./* your code goes here */
+  const sumOfAllVowels = characters.reduce((acc, curr) => {
+    /* your code goes here */
+    if (vowels.includes(curr)) {
+      return acc + 1
+    }
+    return acc
+  }, 0)
 
   // pervious solution:
   // const sumOfAllVowels = []
@@ -99,8 +105,8 @@ i want to count the number of vowels in the string
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
-getCount('abracadabra') // 5
-getCount('my pyx') // 0
+console.log(getCount('abracadabra')) // 5
+console.log(getCount('my pyx')) // 0
 getCount('o a kak ushakov lil vo kashu kakao') // 13
 getCount('hello world') // 3
 getCount('h') // 0

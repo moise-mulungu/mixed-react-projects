@@ -11,6 +11,7 @@ function comp(numbers, squaredNumbers) {
     (sortedNumbers.length === 0 && sortedSquaredNumbers === null)
   ) {
     return false
+    // MM: toDM: here is where i want to check if the arrays are empty or null and then return false
   }
   for (let i = 0; i < sortedNumbers.length; i++) {
     if (sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]) {
@@ -32,4 +33,4 @@ comp([1], [1]) // true
 comp([1], [2]) // false
 
 // MM: toDM: The code above works for some almost all test cases(212), except two(2) in the code wars challenge.
-// DM: todoMM: reproduce those 2 failed ('Attempt' button) tests here and try to solve it, so that I can see. What is the error output? Does that error message give you clues?
+// DM: todoMM: reproduce those 2 failed ('Attempt' button) tests here and try to solve it, so that I can see. What is the error output? Does that error message give you clues?; yes, it does. the two only testings are to compare when array is null and array is empty or vice versa. I added the condition above to check for that, but it does not work.
