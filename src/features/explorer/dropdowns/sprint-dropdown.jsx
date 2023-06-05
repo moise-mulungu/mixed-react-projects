@@ -1,4 +1,4 @@
-import { uniq } from 'lodash'
+import { uniq } from 'lodash-es'
 import { ticketDescriptions } from '@/constants/explorer'
 import SelectDropdown from './common/select-dropdown'
 

@@ -1,3 +1,3 @@
-export default function allIntegers (array) {
+export default function allIntegers(array) {
   return array.every((item) => Number.isInteger(item))
 }

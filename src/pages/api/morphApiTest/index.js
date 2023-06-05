@@ -1,4 +1,4 @@
-import { uniq } from 'lodash'
+import { uniq } from 'lodash-es'
 
 // temporary until hit graphQL endpoint from here
 import all from './all.js'
