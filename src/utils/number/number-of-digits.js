@@ -6,7 +6,7 @@ function getNumberOfDigits (number) {
 }
 
 // with math.floor() and while loop
-const getNumberOfDigit = (number) => {
+const numberOfDigits = (number) => {
     let numberOfDigits = 0
     while (number > 0) {
         number = Math.floor(number / 10)
@@ -21,6 +21,6 @@ getNumberOfDigits(4773) // 4
 getNumberOfDigits(0) // infinity
 getNumberOfDigits(1_000_343_490_884_773) // 16
 
-getNumberOfDigit(1234) // 4
-getNumberOfDigit(2_334_444) // 7
-getNumberOfDigit(2_345_000_000) // 10
+numberOfDigits(1234) // 4
+numberOfDigits(2_334_444) // 7
+numberOfDigits(2_345_000_000) // 10
