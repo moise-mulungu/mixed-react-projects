@@ -4,17 +4,17 @@ DM: I want you to make this approach work separately from the other 2 approaches
 function comp(numbers, squaredNumbers) {
   // DM: good! this is what I would have done.
   // howtojs: performance:: sorting avoids having a nested loop (a loop inside a loop), which is exponentially expensive. Sorting has it's costs, but you can assume that the JS Engine is efficient at sorting.
-  const sortedNumbers = numbers.sort((a, b) => a - b)
-  const sortedSquaredNumbers = squaredNumbers.sort((a, b) => a - b)
-
+  
   if (
-    (sortedNumbers === null && sortedSquaredNumbers.length === 0) ||
-    (sortedNumbers.length === 0 && sortedSquaredNumbers === null)
-  ) {
-    return false
-    // MM: toDM: here is where i want to check if the arrays are empty or null and then return false
-    // DM: todoMM: you can do these validation before the sort (more efficient). The new test I added below may give a clue as to how to make it work. Your conditions are very specific
-  }
+    (numbers === null && squaredNumbers.length === 0) ||
+    (numbers.length === 0 && squaredNumbers === null)
+    ) {
+      return false
+      // MM: toDM: here is where i want to check if the arrays are empty or null and then return false
+      // DM: todoMM: you can do these validation before the sort (more efficient). The new test I added below may give a clue as to how to make it work. Your conditions are very specific
+    }
+    const sortedNumbers = numbers.sort((a, b) => a - b)
+    const sortedSquaredNumbers = squaredNumbers.sort((a, b) => a - b)
   for (let i = 0; i < sortedNumbers.length; i++) {
     if (sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]) {
       return false
