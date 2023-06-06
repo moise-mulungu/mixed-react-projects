@@ -1,9 +1,9 @@
-const { get } = require("lodash")
-
 // with math.floor() and math.log(10)
-function getNumberOfDigits (number) {
-    return Math.floor(Math.log10(number)) + 1
+export default function numberOfDigits(number) {
+  return Math.floor(Math.log10(number)) + 1
 }
+
+/*
 
 // with math.floor() and while loop
 const numberOfDigits = (number) => {
@@ -24,3 +24,5 @@ getNumberOfDigits(1_000_343_490_884_773) // 16
 numberOfDigits(1234) // 4
 numberOfDigits(2_334_444) // 7
 numberOfDigits(2_345_000_000) // 10
+
+*/

@@ -129,9 +129,11 @@ CSS-in-JS is different from inline styles. We still write all our CSS in JavaScr
 
 ## recursive function
 
-A recursive function is a function that calls itself until it doesn’t.
+A recursive function is a function that **calls itself** _until it doesn’t_.
 
-<!-- MM: i need to understand in depth the concept and train a lot on it -->
+verb form: to recurse; ex: "the algorithm recurses on the children of the current item"
+
+<!-- MM: i need to understand in depth the concept and train a lot on it. Yup, we'll do a few examples so that you understand the why and how. But, you don't need to be expert at "data structures and algorithms" to get a Junior DEV job. However, since you're trying for your first job to be remote, you'll need to go "above and beyond" what most Junior DEVs have to prepare for the first job. Therefore, let's make sure you understand the basics and have a few reference examples. -->
 
 ## property access: dot notation vs. bracket notation
 

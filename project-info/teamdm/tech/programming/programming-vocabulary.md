@@ -158,6 +158,17 @@ Radix is the number of digits utilized in a positional number system before "rol
 
 The Single Responsibility Principle (SRP) is the concept that any single object in object-oriented programming (OOP) should be made for one specific function.
 
+SRP is the first of the SOLID design principles.
+
+SOLID was originally in reference to OOP, but SRP also applies to non-OOP, so you can restate SRP as follows:
+- Every class, module, or function in a program should have one responsibility/purpose in a program. As a commonly used definition: "every class[, module, or function] should have only one reason to change".
+  - note: "class, module, or function" has replaced "object" in the original definition. 
+    - note: Writing a "class" is how you do OOP, so "class" is synonymous with "object" in the new quote above. 
+- https://www.freecodecamp.org/news/solid-principles-single-responsibility-principle-explained/
+
 ## DRY, KISS, and YAGNI
 
-Are the three programming or coding principles that avoid unnecessary repetitive codes, where `DRY`("Don't repeat yourself") is about removing repetitive code. `KISS`("Keep it simple, stupid") is about removing hard code (long methods that are hard to read, etc.), and`YAGNI` ("You Aren't Gonna Need It")is about removing code that the user doesn't need. .
+principles that imply avoiding unnecessary code:
+- DRY ("Don't repeat yourself") - avoiding repetitive code. 
+- KISS ("Keep it simple, stupid") - avoiding unnecessary complexity. Ex: hard code (long methods that are hard to read, etc.) that slows down future work.
+- YAGNI ("You Aren't Gonna Need It") - avoiding the premature writing of code until you are certain that the user will need it. Avoiding "premature optimization".
