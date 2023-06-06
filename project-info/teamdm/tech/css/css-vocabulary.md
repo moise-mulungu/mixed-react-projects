@@ -69,3 +69,31 @@ In CSS, the term "box model" is used when talking about design and layout. The C
 A CSS layout mode, sometimes called layout, is an algorithm that determines the position and size of boxes based on the way they interact with their sibling and ancestor boxes.
 
 - there are many css layouts such as: `normal flow`, `flex box`, `grid`, `float`, `positioning`, `multiple-column layout`, `responsive design`.
+
+### normal flow (flow layout)
+
+Normal Flow, or Flow Layout, is the way that Block and Inline elements are displayed on a page before any changes are made to their layout.
+
+### flexbox
+
+Flexbox is a one-dimensional layout method for arranging items in rows or columns. Items flex (expand) to fill additional space or shrink to fit into smaller spaces.
+
+### grid (css grid)
+
+A grid can be defined as an intersecting set of vertical and horizontal lines. CSS Grid layout separates a page into major sections. Grid property offers a grid-based layout system having rows and columns. It makes the designing of web pages easy without positioning and floating.
+
+### float
+
+The float CSS property places an element on the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the page, though still remaining a part of the flow (in contrast to absolute positioning).
+
+### positioning
+
+The CSS position property defines the position of an element in a document. This property works with the left, right, top, bottom and z-index properties to determine the final position of an element on a page.
+
+### multiple-column layout (multicol)
+
+Multi-column layout, usually referred to as multicol layout, is a specification for laying out content into a set of column boxes much like columns in a newspaper.
+
+### responsive design (responsive web design)
+
+Responsive design refers to a site or application design that responds to the environment in which it is viewed. It encompasses a number of CSS and HTML features and techniques and is now essentially just how we build websites by default.
