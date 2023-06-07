@@ -300,12 +300,13 @@ function millipedeOfWords(words) {
       // here is where it recurses, i.e., the "recurse" function calls itself
       return (
         wordCombinesWithPreviousWord &&
-        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord)
+        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord) // this where things get tricky, on how to pass these two parameters
       )
     })
   }
   // this is the FIRST time recursiveSolution is called
   return recursiveSolution(words)
+  // MM: the recursive code works, but I need to understand it better.
 }
 
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
