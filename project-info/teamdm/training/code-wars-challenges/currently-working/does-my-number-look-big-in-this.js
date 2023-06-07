@@ -53,10 +53,20 @@ function narcissistic(value) {
 
         output: string|number|...; possible values: */
   /*
-
+input: a number
+output: boolean(true or false)
   */
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
+  const isNumber = typeof value === 'number'
+  if (!isNumber) throw new Error('value must be a number')
+
+  // const isPositive = value > 0
+  // const isInteger = Number.isInteger(value)
+  // const isNarcissistic = isNumber && isPositive && isInteger
+  // if (!isNarcissistic) {
+  //       throw new Error('value must be a positive integer')
+  //       }
 
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
@@ -64,7 +74,7 @@ function narcissistic(value) {
         Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, Yes!)
         */
   /*
-
+i want to check if the number is narcissistic by checking if the sum of the digits raised to the power of the number of digits is equal to the number
   */
 
   /* 8. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -77,14 +87,29 @@ function narcissistic(value) {
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
+  const valueDigits = Math.floor(Math.log10(value)) + 1
+  console.log(valueDigits)
+
+  const lastValueDigit = value % 10
+  console.log(lastValueDigit)
+
+  let sumOfDigits = 0
+  for (let i = 0; i < valueDigits; i++) {
+    sumOfDigits += lastValueDigit ** valueDigits
+    console.log(sumOfDigits)
+  }
+  if (sumOfDigits !== value) {
+    return false
+  }
 
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
-      always return a variable, or, use only variables in return statements
-      this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
-   */
-  return isNarcissistic
+  always return a variable, or, use only variables in return statements
+  this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+  */
+  return true
+  // MM: toDM: some test cases are failing.
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result:

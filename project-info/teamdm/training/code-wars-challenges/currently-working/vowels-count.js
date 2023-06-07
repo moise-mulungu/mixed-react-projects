@@ -131,3 +131,28 @@ getCount('') // 0
 */
 
 /* 16. Duncan moves the file out of this directory when it is complete */
+
+function getCount(stringOfLetters) {
+  const isStringOfLetters = typeof stringOfLetters === 'string'
+  if (!isStringOfLetters) throw new Error('input must be a string of letters')
+
+  const vowels = ['a', 'e', 'i', 'o', 'u']
+
+  const characters = stringOfLetters.split('')
+
+  const sumOfAllVowels = characters.reduce((acc, curr) => {
+    if (vowels.includes(curr)) {
+      return acc + 1
+    }
+    return acc
+  }, 0)
+
+  return sumOfAllVowels
+}
+
+console.log(getCount('abracadabra')) // 5
+console.log(getCount('my pyx')) // 0
+getCount('o a kak ushakov lil vo kashu kakao') // 13
+getCount('hello world') // 3
+getCount('h') // 0
+getCount('') // 0
