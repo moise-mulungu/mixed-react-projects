@@ -156,3 +156,5 @@ getCount('o a kak ushakov lil vo kashu kakao') // 13
 getCount('hello world') // 3
 getCount('h') // 0
 getCount('') // 0
+
+/* 16. Duncan moves the file out of this directory when it is complete */

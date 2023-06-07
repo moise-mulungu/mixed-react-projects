@@ -90,17 +90,17 @@ the remaining numbers can be calculated using the Fibonacci formula above
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  function calculateRecursively(
-    fibonacciSequenceNumber,
-    sequenceToFibonacciNumberCache = { 0: 0, 1: 1 }
-  ) {
-    if (sequenceToFibonacciNumberCache[n] !== undefined) {
+  const sequenceToFibonacciNumberCache = { 1: 0, 2: 1 }
+
+  // howtojs: recursive:: advantages of making a nested function for the recursion, instead of making the main function recursive: cache can be a closure instead of passing it to each recrusive call; don't need to change the signature of the main function.
+  function calculateRecursively(fibonacciSequenceNumber) {
+    if (sequenceToFibonacciNumberCache[fibonacciSequenceNumber] !== undefined) {
       const fibonacciNumber = sequenceToFibonacciNumberCache[fibonacciSequenceNumber]
       return fibonacciNumber
     }
     const newFibonacciNumber =
-      calculateRecursively(n - 1, sequenceToFibonacciNumberCache) +
-      calculateRecursively(n - 2, sequenceToFibonacciNumberCache)
+      calculateRecursively(fibonacciSequenceNumber - 1) +
+      calculateRecursively(fibonacciSequenceNumber - 2)
     sequenceToFibonacciNumberCache[fibonacciSequenceNumber] = newFibonacciNumber
     return newFibonacciNumber
   }
@@ -143,27 +143,34 @@ function nthFiboWithIndentedLogging(n) {
   if (!Number.isInteger(n)) throw new Error(`the input you provided: ${n} must be an integer`)
   if (n < 1) throw new Error(`the input you provided: ${n} must be 1 or higher`)
 
-  function calculateRecursively(
-    fibonacciSequenceNumber,
-    sequenceToFibonacciNumberCache = { 0: 0, 1: 1 }
-  ) {
-    console.log('---------------')
-    console.log(`sequence number: ${fibonacciSequenceNumber}`)
-    if (sequenceToFibonacciNumberCache[n] !== undefined) {
+  const indentSize = 2
+
+  const sequenceToFibonacciNumberCache = { 1: 0, 2: 1 }
+
+  function calculateRecursively(fibonacciSequenceNumber, indent = '') {
+    console.log(`${indent}---------------`)
+    console.log(`${indent}sequence number: ${fibonacciSequenceNumber}`)
+    if (sequenceToFibonacciNumberCache[fibonacciSequenceNumber] !== undefined) {
       const fibonacciNumber = sequenceToFibonacciNumberCache[fibonacciSequenceNumber]
-      console.log(`  returning Fibonacci number from cache: ${fibonacciNumber}`)
+      console.log(`${indent}returning Fibonacci number from cache: ${fibonacciNumber}`)
       return fibonacciNumber
     }
-    console.log(`  calculating new sequence number`)
+    console.log(
+      `${indent}calculating new Fibonacci number for sequence: ${fibonacciSequenceNumber}`
+    )
     const newFibonacciNumber =
-      calculateRecursively(n - 1, sequenceToFibonacciNumberCache) +
-      calculateRecursively(n - 2, sequenceToFibonacciNumberCache)
+      calculateRecursively(fibonacciSequenceNumber - 1, indent + ' '.repeat(indentSize)) +
+      calculateRecursively(fibonacciSequenceNumber - 2, indent + ' '.repeat(indentSize))
+    console.log(`${indent}adding new Fibonacci number: ${newFibonacciNumber} to the cache`)
     sequenceToFibonacciNumberCache[fibonacciSequenceNumber] = newFibonacciNumber
+    console.log(`${indent}returning the new Fibonacci number: ${newFibonacciNumber}`)
     return newFibonacciNumber
   }
 
   return calculateRecursively(n)
 }
+nthFiboWithIndentedLogging(5) // 3
+
 /* 15. Copy here which of the other coders' solutions do you like the best? (Be sure in codewars.com to sort others' solutions by "Best Practices".)
        Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
        Note: the best solution should be readable as the highest priority, but not unnecessarily inefficient.
@@ -191,4 +198,15 @@ function nthFiboDuncansFirstSolution(n) {
   }
   // it's a little confusing, because n is the sequenceNumber not the fibonacciNumber
   return calculateRecursively(n)
+}
+
+// Fibonacci calculation with recursion is often used as an example because is complex: each recursive call spawns 2 more recursive calls. Also the cache is an example of a "closure".
+
+// note: this can be solved efficiently without recursion.
+function nthFibo(n) {
+  var cache = [0, 0, 1, 1]
+  while (cache.length <= n) {
+    cache[cache.length] = cache[cache.length - 1] + cache[cache.length - 2]
+  }
+  return cache[n]
 }

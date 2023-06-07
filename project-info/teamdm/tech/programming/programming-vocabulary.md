@@ -175,4 +175,4 @@ principles that imply avoiding unnecessary code:
 - DRY ("Don't repeat yourself") - avoiding repetitive code.
 - KISS ("Keep it simple, stupid") - avoiding unnecessary complexity. Ex: hard code (long methods that are hard to read, etc.) that slows down future work.
 - YAGNI ("You Aren't Gonna Need It") - avoiding the premature writing of code until you are certain that the user will need it. Avoiding "premature optimization".
-<!-- That's why I used to listen to this quote: "premature optimization is the source of all evil", I did not know its meaning! -->
+<!-- That's why I used to listen to this quote: "premature optimization is the source of all evil", I did not know its meaning! Nice quote.-->
