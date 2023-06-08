@@ -32,7 +32,7 @@ For example, a box with pens inside, a box is a template literal and pens are st
 DM: yes, in the sense that the template literal is what JS employs to make string interpolation happen. This will help clarify the difference - string interpolation is an item for tech-vocabulary.md, and template literal belongs in this file.
 DM: but yes the ${} is where the string interpolation happens in `text, text ${} more text`
 DM: and: `text, text ${ 'any expression here will be coerced to a String' } more text`
-DM: todoMM: summarize my answer into a 'definition' for this vocab entry
+(done)DM: todoMM: summarize my answer into a 'definition' for this vocab entry
 
 A template literal is a placeholder used in JavaScript for string interpolation and expressions with a dollar sign and curly braces, while string interpolation is used to concatenate string with the plus sign.
 -->
@@ -121,6 +121,11 @@ DM: great work!
 
 DM: todoMM: add to programming vocab: compound data type
 
+## data type
+
+There are four 'primitive' or basic data types, from which all others can be created. These are known as integer (whole numbers), real (numbers with a fraction part), Boolean (True/False) and char (characters).
+But in JavaScript there are eight: (`String`, `Number`, `Boolean`, `Undefined`, `Null`) as primitive, and (`Bigint`, `Symbol`, `Object`) as non-primitive.
+
 curly|square|angle|round brackets - DM: I like to pick one word, "brackets", to keep it simple. You can say curly braces and parentheses (instead of round brackets). This is also more internationalized (i18n)
 
 ## css-in-js
@@ -133,8 +138,8 @@ A recursive function is a function that **calls itself** _until it doesn’t_.
 
 verb form: "to recurse"; ex: "the algorithm recurses on the children of the current item"
 
-<!-- 
-MM: i need to understand in depth the concept and train a lot on it. 
+<!--
+MM: i need to understand in depth the concept and train a lot on it.
 DM: Yup, we'll do a few examples so that you understand the why and how. But, you don't need to be expert at "data structures and algorithms" to get a Junior DEV job. However, since you're trying for your first job to be remote, you'll need to go "above and beyond" what most Junior DEVs have to prepare for the first job. Therefore, let's make sure you understand the basics and have a few reference examples. -->
 
 ## property access: dot notation vs. bracket notation
@@ -189,86 +194,83 @@ JavaScript Hoisting refers to the process whereby the interpreter appears to mov
 
 ## type coercion
 
-* automatic or implicit conversion of values from one data type to another 
-* happens implicitly when operators or functions are applied to values of different types
-* examples:
-  * 4 + '5' // '45' // 4 was coerced to '4' then concatenated with '5'
-  * 4 + Number(5) // 9 // '5' was converted to 5 then added to 4
-  * [].filter(mySubstring => [].find(myString => myString.includes(mySubstring)))
-    * Array.filter() expects a Boolean 
-    * but Array.find() returns the matching myString || undefined
-    * therefore, Array.filter() code coerces myString || undefined to Boolean
+- automatic or implicit conversion of values from one data type to another
+- happens implicitly when operators or functions are applied to values of different types
+- examples:
 
+  - 4 + '5' // '45' // 4 was coerced to '4' then concatenated with '5'
+  - 4 + Number(5) // 9 // '5' was converted to 5 then added to 4
+  - [].filter(mySubstring => [].find(myString => myString.includes(mySubstring)))
+    - Array.filter() expects a Boolean
+    - but Array.find() returns the matching myString || undefined
+    - therefore, Array.filter() code coerces myString || undefined to Boolean
 
   return firstArray
-    .filter((substring) => {
-      return secondArray.find((string) => string.includes(substring))
-      /*
-        'arp' || undefined || '' || '0' || 0
-        Boolean('arp') === true // string to true
-        Boolean(undefined) === false // undefined to false
-        type coercion
-      */
-    })
-    .sort()
+  .filter((substring) => {
+  return secondArray.find((string) => string.includes(substring))
+  /_
+  'arp' || undefined || '' || '0' || 0
+  Boolean('arp') === true // string to true
+  Boolean(undefined) === false // undefined to false
+  type coercion
+  _/
+  })
+  .sort()
   Boolean('arp') // converts 'arp' to Boolean "explicitly"; "explicit conversion"
   'arp' === true // false
-  'arp' == true //  true - "==" "implicitly" coerces 'arp' to Boolean; "implicit conversion"
+  'arp' == true // true - "==" "implicitly" coerces 'arp' to Boolean; "implicit conversion"
 
 ## abstract equality comparison operator(==) vs strict equality comparison operator(===)
 
-- The abstract equality operator performs a _**loose** equality_ comparison that performs type coercion if necessary to make the comparison possible. 
+- The abstract equality operator performs a _**loose** equality_ comparison that performs type coercion if necessary to make the comparison possible.
 - The strict equality operator, on the other hand, performs a _strict equality_ comparison that does not perform type coercion and requires the operands to have the same type (as well as the same value).
 
 https://www.pluralsight.com/blog/software-development/vs-javascript-abstract-vs-strict-equality
 
-##  truthy/falsy VS Boolean()
-* the 7 falsy values: false, 0, 0n, '', null, undefined, NaN (mnemonic: F00'nun)
-* truthy = NOT falsy
-* truthy/falsy is implemented by 
-  * `if ()` 
-  * `Boolean()` 
-  * (but not `==`, which follow the JS rules of type coercion, which are weird).
-  * exit conditions on constructs like `for` and `while`. 
-  * By extension, _predicate functions_, like those passed to Array.filter and Array.find, also operate based on truthiness.
-  * operators:
-    * `!` negation operator
-    * `&&` and `||` logical operators
-      * called short-circuiting operators because they evaluate their operands from left to right and stop at the first value that guarantees the value of the expression. 
-      * Short-circuiting expressions produce whatever value determined the truthiness of the expression, not necessarily a boolean: 
-        * `0 || 42 // 42`
-        * `const obj = { ...( truthy && { foo: 'bar' } ) }`
-          * note: `{ ...anyFalsyValue } // {}`
-          * also: `{ ...[] } // {}`
-    * ?...: conditional (ternary) operator
-  * Truthiness is inherent in every JavaScript value and is used implicitly by the runtime anytime a boolean evaluation of the value is required. 
+## truthy/falsy VS Boolean()
+
+- the 7 falsy values: false, 0, 0n, '', null, undefined, NaN (mnemonic: F00'nun)
+- truthy = NOT falsy
+- truthy/falsy is implemented by
+  - `if ()`
+  - `Boolean()`
+  - (but not `==`, which follow the JS rules of type coercion, which are weird).
+  - exit conditions on constructs like `for` and `while`.
+  - By extension, _predicate functions_, like those passed to Array.filter and Array.find, also operate based on truthiness.
+  - operators:
+    - `!` negation operator
+    - `&&` and `||` logical operators
+      - called short-circuiting operators because they evaluate their operands from left to right and stop at the first value that guarantees the value of the expression.
+      - Short-circuiting expressions produce whatever value determined the truthiness of the expression, not necessarily a boolean:
+        - `0 || 42 // 42`
+        - `const obj = { ...( truthy && { foo: 'bar' } ) }`
+          - note: `{ ...anyFalsyValue } // {}`
+          - also: `{ ...[] } // {}`
+    - ?...: conditional (ternary) operator
+  - Truthiness is inherent in every JavaScript value and is used implicitly by the runtime anytime a boolean evaluation of the value is required.
 
 // == (JS "abstract equality" is weird, so DON'T USE ==, DO USE ===)
-false == 0        // true
-0 == 0n           // true
-0n == ''          // true
-'' == null        // false // empty string can't be coerced to null or vice versa
+false == 0 // true
+0 == 0n // true
+0n == '' // true
+'' == null // false // empty string can't be coerced to null or vice versa
 null == undefined // true
-undefined == NaN  // false // undefined can't be coerced to NaN or vice versa
+undefined == NaN // false // undefined can't be coerced to NaN or vice versa
 
 // if ()
 if (false || 0 || 0n || '' || null || undefined || NaN) console.log('never logged')
 
 // Boolean()
-Boolean(false) === Boolean(0)        // true
-Boolean(0) === Boolean(0n)           // true
-Boolean(0n) === Boolean('')          // true
-Boolean('') === Boolean(null)        // true
+Boolean(false) === Boolean(0) // true
+Boolean(0) === Boolean(0n) // true
+Boolean(0n) === Boolean('') // true
+Boolean('') === Boolean(null) // true
 Boolean(null) === Boolean(undefined) // true
-Boolean(undefined) === Boolean(NaN)  // true
+Boolean(undefined) === Boolean(NaN) // true
 
 // ?? nullish coalescing operator handles both `null` and `undefined` and solves some of the drawbacks of truthiness/falsiness
 const foo = null ?? 'default string'; // 'default string'
 const baz = 0 ?? 42; // 0 // however, 0 is a valid number value that happens to be falsy
 const bar = 0 || 42; // 42
-const boo = '' || 'some string value' // 'some string value' //  however, '' may be a valid value
+const boo = '' || 'some string value' // 'some string value' // however, '' may be a valid value
 const fax = '' ?? 'some string value' // ''
-
-
-
-

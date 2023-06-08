@@ -90,13 +90,14 @@ the remaining numbers can be calculated using the Fibonacci formula above
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  const sequenceToFibonacciNumberCache = { 1: 0, 2: 1 }
+  const sequenceToFibonacciNumberCache = { 1: 0, 2: 1 } // MM: toDM: I don't understand this first step of the solution. why putting declaring an object here?
 
-  // howtojs: recursive:: advantages of making a nested function for the recursion, instead of making the main function recursive: cache can be a closure instead of passing it to each recrusive call; don't need to change the signature of the main function.
+  // howtojs: recursive:: advantages of making a nested function for the recursion, instead of making the main function recursive: cache can be a closure instead of passing it to each recursive call; don't need to change the signature of the main function.
   function calculateRecursively(fibonacciSequenceNumber) {
     if (sequenceToFibonacciNumberCache[fibonacciSequenceNumber] !== undefined) {
       const fibonacciNumber = sequenceToFibonacciNumberCache[fibonacciSequenceNumber]
       return fibonacciNumber
+      // MM: toDM: is this a kind of guard clause?
     }
     const newFibonacciNumber =
       calculateRecursively(fibonacciSequenceNumber - 1) +

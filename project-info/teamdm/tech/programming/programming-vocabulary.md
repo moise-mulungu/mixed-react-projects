@@ -176,3 +176,12 @@ principles that imply avoiding unnecessary code:
 - KISS ("Keep it simple, stupid") - avoiding unnecessary complexity. Ex: hard code (long methods that are hard to read, etc.) that slows down future work.
 - YAGNI ("You Aren't Gonna Need It") - avoiding the premature writing of code until you are certain that the user will need it. Avoiding "premature optimization".
 <!-- That's why I used to listen to this quote: "premature optimization is the source of all evil", I did not know its meaning! Nice quote.-->
+
+## data type
+
+In software programming, data type refers to the type of value a variable has and what type of mathematical, relational or logical operations can be applied without causing an error.
+
+### primitive data type
+
+In computer science, primitive data types are a set of basic data types from which all other data types are constructed. Specifically it often refers to the limited set of data representations in use by a particular processor, which all compiled programs must use
+.
