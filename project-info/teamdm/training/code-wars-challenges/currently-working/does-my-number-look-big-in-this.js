@@ -87,28 +87,42 @@ i want to check if the number is narcissistic by checking if the sum of the digi
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  const valueDigits = Math.floor(Math.log10(value)) + 1
-  console.log(valueDigits)
 
-  const lastValueDigit = value % 10
-  console.log(lastValueDigit)
+  // MM: toDM: I did it on the other way as the first approach did not work, but can you figure out how to resolve it with the first approach.
+
+  // const valueDigits = Math.floor(Math.log10(value)) + 1
+  // console.log(valueDigits)
+
+  // const lastValueDigit = value % 10
+  // console.log(lastValueDigit)
+
+  // let sumOfDigits = 0
+  // for (let i = 0; i < valueDigits; i++) {
+  //   sumOfDigits += lastValueDigit ** valueDigits
+  //   console.log(sumOfDigits)
+  // }
+  // if (sumOfDigits === value) {
+  //   return true
+  // }
+
+  const valueToString = value.toString()
+  console.log(typeof valueToString)
+
+  const digitsOfValue = valueToString.length
 
   let sumOfDigits = 0
-  for (let i = 0; i < valueDigits; i++) {
-    sumOfDigits += lastValueDigit ** valueDigits
-    console.log(sumOfDigits)
-  }
-  if (sumOfDigits !== value) {
-    return false
-  }
 
+  for (let i = 0; i < digitsOfValue; i++) {
+    sumOfDigits += valueToString[i] ** digitsOfValue
+  }
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
-  always return a variable, or, use only variables in return statements
-  this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
-  */
-  return true
+   always return a variable, or, use only variables in return statements
+   this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+   */
+  // return false
+  return sumOfDigits === value
   // MM: toDM: some test cases are failing.
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
