@@ -274,3 +274,7 @@ const baz = 0 ?? 42; // 0 // however, 0 is a valid number value that happens to 
 const bar = 0 || 42; // 42
 const boo = '' || 'some string value' // 'some string value' // however, '' may be a valid value
 const fax = '' ?? 'some string value' // ''
+
+## escaping sequences
+
+Escape sequences are typically used to specify actions such as carriage returns and tab movements on terminals and printers. They are also used to provide literal representations of non printing characters and characters that usually have special meanings, such as the double quotation mark (")
