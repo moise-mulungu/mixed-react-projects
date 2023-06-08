@@ -91,13 +91,14 @@ the remaining numbers can be calculated using the Fibonacci formula above
         * see naming-conventions.md*/
 
   const sequenceToFibonacciNumberCache = { 1: 0, 2: 1 } // MM: toDM: I don't understand this first step of the solution. why putting declaring an object here?
+  // DM: from the challenge description: "For reference, the first two numbers in the Fibonacci sequence are 0 and 1" AND you can look at how it is used
 
   // howtojs: recursive:: advantages of making a nested function for the recursion, instead of making the main function recursive: cache can be a closure instead of passing it to each recursive call; don't need to change the signature of the main function.
   function calculateRecursively(fibonacciSequenceNumber) {
     if (sequenceToFibonacciNumberCache[fibonacciSequenceNumber] !== undefined) {
       const fibonacciNumber = sequenceToFibonacciNumberCache[fibonacciSequenceNumber]
       return fibonacciNumber
-      // MM: toDM: is this a kind of guard clause?
+      // MM: toDM: is this a kind of guard clause? Yes
     }
     const newFibonacciNumber =
       calculateRecursively(fibonacciSequenceNumber - 1) +

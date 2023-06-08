@@ -27,15 +27,8 @@
 
 ## difference between string interpolation and template literal
 
-<!-- MM: These two expressions seem to be confusing at first to me, but I think string interpolation is the *process* to insert or embed, but template literal or string literal is the *place* to insert the string interpolation. DM: exactly!
-For example, a box with pens inside, a box is a template literal and pens are string interpolation
-DM: yes, in the sense that the template literal is what JS employs to make string interpolation happen. This will help clarify the difference - string interpolation is an item for tech-vocabulary.md, and template literal belongs in this file.
-DM: but yes the ${} is where the string interpolation happens in `text, text ${} more text`
-DM: and: `text, text ${ 'any expression here will be coerced to a String' } more text`
-(done)DM: todoMM: summarize my answer into a 'definition' for this vocab entry
-
 A template literal is a placeholder used in JavaScript for string interpolation and expressions with a dollar sign and curly braces, while string interpolation is used to concatenate string with the plus sign.
--->
+
 
 ## template literal
 
@@ -123,10 +116,15 @@ DM: todoMM: add to programming vocab: compound data type
 
 ## data type
 
-There are four 'primitive' or basic data types, from which all others can be created. These are known as integer (whole numbers), real (numbers with a fraction part), Boolean (True/False) and char (characters).
+There are four 'primitive' or basic data types, from which all others can be created
+// DM: todoMM: make each into a bullet point, using minimal
+ These are known as integer (whole numbers), real (numbers with a fraction part), Boolean (True/False) and char (characters).
+DM: todoMM: again, bullet points, for faster reading. Use minimal characters, i.e., don't put each in ``, just each gets a bullet point 
+* String
 But in JavaScript there are eight: (`String`, `Number`, `Boolean`, `Undefined`, `Null`) as primitive, and (`Bigint`, `Symbol`, `Object`) as non-primitive.
 
-curly|square|angle|round brackets - DM: I like to pick one word, "brackets", to keep it simple. You can say curly braces and parentheses (instead of round brackets). This is also more internationalized (i18n)
+# curly|square|angle|round brackets
+ - DM: I like to pick one word, "brackets", to keep it simple. This is also more internationalized (i18n) You can say curly braces and parentheses (instead of round brackets).
 
 ## css-in-js
 
@@ -138,9 +136,6 @@ A recursive function is a function that **calls itself** _until it doesn’t_.
 
 verb form: "to recurse"; ex: "the algorithm recurses on the children of the current item"
 
-<!--
-MM: i need to understand in depth the concept and train a lot on it.
-DM: Yup, we'll do a few examples so that you understand the why and how. But, you don't need to be expert at "data structures and algorithms" to get a Junior DEV job. However, since you're trying for your first job to be remote, you'll need to go "above and beyond" what most Junior DEVs have to prepare for the first job. Therefore, let's make sure you understand the basics and have a few reference examples. -->
 
 ## property access: dot notation vs. bracket notation
 
@@ -275,6 +270,6 @@ const bar = 0 || 42; // 42
 const boo = '' || 'some string value' // 'some string value' // however, '' may be a valid value
 const fax = '' ?? 'some string value' // ''
 
-## escaping sequences
+## escape sequences
 
 Escape sequences are typically used to specify actions such as carriage returns and tab movements on terminals and printers. They are also used to provide literal representations of non printing characters and characters that usually have special meanings, such as the double quotation mark (")
