@@ -140,36 +140,51 @@ nthFibo(11) // 55
 
 /* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
-
-function nthFiboWithIndentedLogging(n) {
-  if (!Number.isInteger(n)) throw new Error(`the input you provided: ${n} must be an integer`)
-  if (n < 1) throw new Error(`the input you provided: ${n} must be 1 or higher`)
+// 0, 1, 1, 2, 3, 5, 8, ...
+function nthFiboWithIndentedLogging(sequenceNumber) {
+  if (!Number.isInteger(sequenceNumber))
+    throw new Error(`the input you provided: ${sequenceNumber} must be an integer`)
+  if (sequenceNumber < 1)
+    throw new Error(`the input you provided: ${sequenceNumber} must be 1 or higher`)
 
   const indentSize = 2
+  // DM: todoDM: ??? define cache
+  const sequenceToFibonacciNumberMapCache = {
+    1: 0,
+    2: 1,
+    // 3: 2,
+    // 4: 3,
+    // 5: 3,
+  }
 
-  const sequenceToFibonacciNumberCache = { 1: 0, 2: 1 }
-
-  function calculateRecursively(fibonacciSequenceNumber, indent = '') {
-    console.log(`${indent}---------------`)
-    console.log(`${indent}sequence number: ${fibonacciSequenceNumber}`)
-    if (sequenceToFibonacciNumberCache[fibonacciSequenceNumber] !== undefined) {
-      const fibonacciNumber = sequenceToFibonacciNumberCache[fibonacciSequenceNumber]
-      console.log(`${indent}returning Fibonacci number from cache: ${fibonacciNumber}`)
+  // getFibonacciNumberForSequenceNumberRecursive
+  function getFibonacciNumberForSequenceNumber(fibonacciSequenceNumber, indent = '') {
+    // console.log(`${indent}---------------`)
+    // console.log(`${indent}sequence number: ${fibonacciSequenceNumber}`)
+    if (sequenceToFibonacciNumberMapCache[fibonacciSequenceNumber] !== undefined) {
+      const fibonacciNumber = sequenceToFibonacciNumberMapCache[fibonacciSequenceNumber]
+      // console.log(`${indent}returning Fibonacci number from cache: ${fibonacciNumber}`)
       return fibonacciNumber
     }
-    console.log(
-      `${indent}calculating new Fibonacci number for sequence: ${fibonacciSequenceNumber}`
-    )
+    // console.log(
+    //   `${indent}calculating new Fibonacci number for sequence: ${fibonacciSequenceNumber}`
+    // )
     const newFibonacciNumber =
-      calculateRecursively(fibonacciSequenceNumber - 1, indent + ' '.repeat(indentSize)) +
-      calculateRecursively(fibonacciSequenceNumber - 2, indent + ' '.repeat(indentSize))
-    console.log(`${indent}adding new Fibonacci number: ${newFibonacciNumber} to the cache`)
-    sequenceToFibonacciNumberCache[fibonacciSequenceNumber] = newFibonacciNumber
-    console.log(`${indent}returning the new Fibonacci number: ${newFibonacciNumber}`)
+      getFibonacciNumberForSequenceNumber(
+        fibonacciSequenceNumber - 1,
+        indent + ' '.repeat(indentSize)
+      ) +
+      getFibonacciNumberForSequenceNumber(
+        fibonacciSequenceNumber - 2,
+        indent + ' '.repeat(indentSize)
+      )
+    // console.log(`${indent}adding new Fibonacci number: ${newFibonacciNumber} to the cache`)
+    sequenceToFibonacciNumberMapCache[fibonacciSequenceNumber] = newFibonacciNumber
+    // console.log(`${indent}returning the new Fibonacci number: ${newFibonacciNumber}`)
     return newFibonacciNumber
   }
 
-  return calculateRecursively(n)
+  return getFibonacciNumberForSequenceNumber(sequenceNumber)
 }
 nthFiboWithIndentedLogging(5) // 3
 
