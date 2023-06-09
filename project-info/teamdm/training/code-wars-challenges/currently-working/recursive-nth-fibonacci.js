@@ -98,7 +98,7 @@ the remaining numbers can be calculated using the Fibonacci formula above
     if (sequenceToFibonacciNumberCache[fibonacciSequenceNumber] !== undefined) {
       const fibonacciNumber = sequenceToFibonacciNumberCache[fibonacciSequenceNumber]
       return fibonacciNumber
-      // MM: toDM: is this a kind of guard clause? Yes
+      // MM: toDM: is this a kind of guard clause? Yes; and this is where the recursion ends when the sequence number is undefined! right?
     }
     const newFibonacciNumber =
       calculateRecursively(fibonacciSequenceNumber - 1) +

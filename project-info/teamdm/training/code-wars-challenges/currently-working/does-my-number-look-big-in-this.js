@@ -89,7 +89,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
         * see naming-conventions.md*/
 
   // MM: toDM: I did it on the other way as the first approach did not work, but can you figure out how to resolve it with the first approach.
-  // DM: todoMM: I can. Put this code into a new file, with tests, discussing where/why it doesn't work, and I'll have a look.
+  //(done) DM: todoMM: I can. Put this code into a new file, with tests, discussing where/why it doesn't work, and I'll have a look.
 
   // const valueDigits = Math.floor(Math.log10(value)) + 1
   // console.log(valueDigits)

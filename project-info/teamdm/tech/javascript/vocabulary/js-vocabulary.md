@@ -29,7 +29,6 @@
 
 A template literal is a placeholder used in JavaScript for string interpolation and expressions with a dollar sign and curly braces, while string interpolation is used to concatenate string with the plus sign.
 
-
 ## template literal
 
 Template literals are literals delimited with backtick ( ` ) characters, allowing for multi-line strings, string interpolation with embedded expressions, and special constructs called tagged templates
@@ -118,13 +117,28 @@ DM: todoMM: add to programming vocab: compound data type
 
 There are four 'primitive' or basic data types, from which all others can be created
 // DM: todoMM: make each into a bullet point, using minimal
- These are known as integer (whole numbers), real (numbers with a fraction part), Boolean (True/False) and char (characters).
-DM: todoMM: again, bullet points, for faster reading. Use minimal characters, i.e., don't put each in ``, just each gets a bullet point 
-* String
-But in JavaScript there are eight: (`String`, `Number`, `Boolean`, `Undefined`, `Null`) as primitive, and (`Bigint`, `Symbol`, `Object`) as non-primitive.
+These are known as:
+
+- integer (whole numbers),
+- real (numbers with a fraction part),
+- Boolean (True/False) and
+- char (characters).
+  DM: todoMM: again, bullet points, for faster reading. Use minimal characters, i.e., don't put each in ``, just each gets a bullet point
+- String
+  But in JavaScript there are eight:
+- String
+- Number
+- Boolean
+- Undefined
+- Null as primitive,
+  and:
+- Bigint
+- Symbol
+- Object as non-primitive.
 
 # curly|square|angle|round brackets
- - DM: I like to pick one word, "brackets", to keep it simple. This is also more internationalized (i18n) You can say curly braces and parentheses (instead of round brackets).
+
+- DM: I like to pick one word, "brackets", to keep it simple. This is also more internationalized (i18n) You can say curly braces and parentheses (instead of round brackets).
 
 ## css-in-js
 
@@ -135,7 +149,6 @@ CSS-in-JS is different from inline styles. We still write all our CSS in JavaScr
 A recursive function is a function that **calls itself** _until it doesn’t_.
 
 verb form: "to recurse"; ex: "the algorithm recurses on the children of the current item"
-
 
 ## property access: dot notation vs. bracket notation
 
