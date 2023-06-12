@@ -116,25 +116,23 @@ DM: todoMM: add to programming vocab: compound data type
 ## data type
 
 There are four 'primitive' or basic data types, from which all others can be created
-// DM: todoMM: make each into a bullet point, using minimal
+
 These are known as:
 
-- integer (whole numbers),
-- real (numbers with a fraction part),
-- Boolean (True/False) and
-- char (characters).
-  DM: todoMM: again, bullet points, for faster reading. Use minimal characters, i.e., don't put each in ``, just each gets a bullet point
-- String
-  But in JavaScript there are eight:
+- integer (whole numbers)
+- real (numbers with a fraction part)
+- Boolean (True/False)
+- char (characters)
+
+But in JavaScript there are eight:
 - String
 - Number
 - Boolean
 - Undefined
-- Null as primitive,
-  and:
+- Null as primitive
 - Bigint
 - Symbol
-- Object as non-primitive.
+- Object as non-primitive
 
 # curly|square|angle|round brackets
 

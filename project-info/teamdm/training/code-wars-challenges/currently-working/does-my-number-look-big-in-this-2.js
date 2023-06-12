@@ -1,3 +1,47 @@
+// always copy this template into each new coding challenge file
+// !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
+// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
+/*
+ */
+
+// memorable summary: make it work, test it, make it pretty
+
+// // // // // // // // // // // // // // start of the template
+// 1. put the following here:
+
+// 1.1 the challenge instructions, including the examples:
+/*
+A Narcissistic Number (or Armstrong Number) is a positive number which is the sum of its own digits, each raised to the power of the number of digits in a given base. In this Kata, we will restrict ourselves to decimal (base 10).
+
+For example, take 153 (3 digits), which is narcissistic:
+
+    1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
+and 1652 (4 digits), which isn't:
+
+    1^4 + 6^4 + 5^4 + 2^4 = 1 + 1296 + 625 + 16 = 1938
+The Challenge:
+
+Your code must return true or false (not 'true' and 'false') depending upon whether the given number is a Narcissistic number in base 10.
+
+This may be True and False in your language, e.g. PHP.
+
+Error checking for text strings or other invalid inputs is not required, only valid positive non-zero integers will be passed into the function.
+*/
+
+// 1.2 the coding challenge URL:
+/*
+https://www.codewars.com/kata/5287e858c6b5a9678200083c/train/javascript
+*/
+
+/* 2. list and describe anything that is unclear in the challenge description
+      these would be the questions you'd be expected to ask in a interview situation
+      (practice reading the challenge description carefully). Really take a minute to review the requirements (challenge description) and see if there are any ambiguities. Say out-loud to yourself what you understand the task to be, pretending that you are saying this to an interviewer. This is very important to practice. */
+/*
+ */
+
+//  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
+
+// 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise. pick a name using the any good words from the challenge description or from your input description in #5
 function narcissistic(value) {
   /* 5. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
@@ -36,21 +80,22 @@ i want to check if the number is narcissistic by checking if the sum of the digi
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  // MM: toDM: I did it on the other way as the first approach did not work, but can you figure out how to resolve it with the first approach.
-  // DM: todoMM: I can. Put this code into a new file, with tests, discussing where/why it doesn't work, and I'll have a look.
+  // DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371.
 
   const valueDigits = Math.floor(Math.log10(value)) + 1
-  console.log(valueDigits)
+  console.log({ valueDigits })
 
   const lastValueDigit = value % 10
-  console.log(lastValueDigit)
+  console.log({ lastValueDigit })
 
   let sumOfDigits = 0
   for (let i = 0; i < valueDigits; i++) {
-    console.log(i)
+    console.log({ i })
     sumOfDigits += lastValueDigit ** valueDigits
-    console.log(sumOfDigits)
+    console.log({ sumOfDigits })
   }
+  console.log({ value })
+
   if (sumOfDigits === value) {
     return true
   }
@@ -61,7 +106,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
    this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
   return false
-  // MM: toDM: some test cases are failing.
+  // MM: toDM: some test cases are failing. todoMM: can you give me mor info? why are they failing? at what point in your code does things go wrong?
 }
 
 narcissistic(7) // true

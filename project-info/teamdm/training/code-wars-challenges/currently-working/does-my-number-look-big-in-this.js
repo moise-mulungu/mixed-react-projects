@@ -37,7 +37,7 @@ https://www.codewars.com/kata/5287e858c6b5a9678200083c/train/javascript
       these would be the questions you'd be expected to ask in a interview situation
       (practice reading the challenge description carefully). Really take a minute to review the requirements (challenge description) and see if there are any ambiguities. Say out-loud to yourself what you understand the task to be, pretending that you are saying this to an interviewer. This is very important to practice. */
 /*
-MM: toDM: I have not started this challenge yet. I'm just copying the template into this file. I'll start working on it next.
+
 */
 
 //  3. write tests (at the bottom of the file), then continue with step 4. (use all tests from the coding challenge "Sample Tests" section)
@@ -89,7 +89,6 @@ i want to check if the number is narcissistic by checking if the sum of the digi
         * see naming-conventions.md*/
 
   // MM: toDM: I did it on the other way as the first approach did not work, but can you figure out how to resolve it with the first approach.
-  //(done) DM: todoMM: I can. Put this code into a new file, with tests, discussing where/why it doesn't work, and I'll have a look.
 
   // const valueDigits = Math.floor(Math.log10(value)) + 1
   // console.log(valueDigits)
