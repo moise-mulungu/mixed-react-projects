@@ -334,6 +334,37 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
+function millipedeOfWords(words) {
+  function recursiveSolution(
+    words,
 
+    previousLastLetter = ''
+  ) {
+    if (words.length === 0) return true
+
+    return words.some((word, i) => {
+      const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
+      const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
+      const lastLetterOfCurrentWord = word.slice(-1)
+      return (
+        wordCombinesWithPreviousWord &&
+        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord)
+      )
+    })
+  }
+
+  return recursiveSolution(words)
+}
+
+// without re-ordering
+millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
+millipedeOfWords(['endure', 'elite', 'excess']) // true
+
+// with re-ordering
+millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night']) // true
+millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night']) // true
+millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time']) // true
+millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president']) // false
+millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 
 /* 15. Duncan moves the file out of this directory when it is complete */
