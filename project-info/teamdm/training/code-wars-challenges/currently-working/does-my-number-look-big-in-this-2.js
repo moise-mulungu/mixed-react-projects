@@ -85,14 +85,15 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   const valueDigits = Math.floor(Math.log10(value)) + 1
   console.log({ valueDigits })
 
-  const lastValueDigit = value % 10
-  console.log({ lastValueDigit })
+  // const lastValueDigit = value % 10
+  // console.log({ lastValueDigit })
 
   let sumOfDigits = 0
   for (let i = 0; i < valueDigits; i++) {
     console.log({ i })
+    const lastValueDigit = Number(String(value).slice(0, i)) % 10
     sumOfDigits += lastValueDigit ** valueDigits
-    console.log({ sumOfDigits })
+    console.log({ lastValueDigit, valueDigits, sumOfDigits })
   }
   console.log({ value })
 
