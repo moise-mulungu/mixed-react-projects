@@ -68,6 +68,7 @@ n/a
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise. pick a name using the any good words from the challenge description or from your input description in #5
 function wordMesh(arrayOfStrings) {
+  console.log('---------------------------')
   /* 5. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
@@ -104,13 +105,14 @@ I want to find the longest common substring of the words in the array by compari
         * everything else with nouns or adjectives: (myThing, myCoolThing)
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
-  let meshedWords = []
+
+  // DM: todoMM: let's get back to not using LET and not using: const emptyArray = []. You can do this with array functions. You have an array and you want to return a string. Which array function do you use?
+  let meshedWords = ''
   for (let i = 0; i < arrayOfStrings.length - 1; i++) {
-    const matchCharacters = (`${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`).match(/(.+) \1/)
+    const matchCharacters = `${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`.match(/(.+) \1/)
+    // console.log({ matchCharacters }) // DM: I moved to this line so that it will log even if 'failed to mesh'
     if (!matchCharacters) return 'failed to mesh'
     meshedWords += matchCharacters[1]
-    console.log(matchCharacters)
-
   }
 
   return meshedWords
@@ -129,7 +131,10 @@ wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) //owringter"
 wordMesh(['abandon', 'donation', 'onion', 'ongoing']) // dononon"
 wordMesh(['jamestown', 'ownership', 'hippocampus', 'pushcart', 'cartorapher', 'pheromone']) // "ownhippuscartpher"
 wordMesh(['kingdom', 'dominator', 'notorious', 'usual', 'allegory']) // "failed to mesh"
+
+// DM: todoMM: are all these expected test results correct? I think the following test shoudl return "failed to mesh"
 wordMesh(['blame', 'much', 'return', 'on', 'me']) // "muchonme"
+
 wordMesh(['exalt', 'altimeter', 'metermaid', 'maidenvoyage', 'voyageur']) // "altetermaidenur"
 wordMesh(['job', 'object', 'joust', 'on']) // "objon"
 wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to mesh"

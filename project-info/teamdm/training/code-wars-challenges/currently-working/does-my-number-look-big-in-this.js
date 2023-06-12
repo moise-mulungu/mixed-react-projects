@@ -110,6 +110,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
 
   const digitsOfValue = valueToString.length
 
+  // DM: todoMM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution.
   let sumOfDigits = 0
 
   for (let i = 0; i < digitsOfValue; i++) {
@@ -123,7 +124,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
    */
   // return false
   return sumOfDigits === value
-  // MM: toDM: some test cases are failing.
+  // MM: toDM: some test cases are failing. DM: todoMM: why? which line is where things go wrong?? Put some console.logs and try to see if the consolt.log output shows you what went wrong.
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result:

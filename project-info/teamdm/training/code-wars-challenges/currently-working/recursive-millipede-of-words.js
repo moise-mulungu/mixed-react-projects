@@ -169,7 +169,7 @@ I want to check if all words can be combined into one word by returning true or 
 // }
 
 /*
-DM: todoMM:
+DM:
 
 Moise, I'm going to walk you through my thinking in detail. With experience, you'll think of these, but notice immediately why they don't work. But, I'm showing my thinking in detail here for you.
 
@@ -307,6 +307,7 @@ function millipedeOfWords(words) {
   // this is the FIRST time recursiveSolution is called
   return recursiveSolution(words)
   // MM: the recursive code works, but I need to understand it better.
+  // DM: todoMM: add console logs, with indents, similar to how I did it with recursive-nth-fibionacci, so that I can see the order of the recursion by running the function. Then you can also understand it thoroughly and be able to explain it to me.
 }
 
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
