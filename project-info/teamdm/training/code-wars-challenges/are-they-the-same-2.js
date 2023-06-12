@@ -13,6 +13,7 @@ function comp(numbers, squaredNumbers) {
   }
   const sortedNumbers = numbers.sort((a, b) => a - b)
   const sortedSquaredNumbers = squaredNumbers.sort((a, b) => a - b)
+  // DM: just FYI, this could be dont with sortedNumbers.reduce() because we're converting an array to a boolean
   for (let i = 0; i < sortedNumbers.length; i++) {
     if (sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]) {
       return false
