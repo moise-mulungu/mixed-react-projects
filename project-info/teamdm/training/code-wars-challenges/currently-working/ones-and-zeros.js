@@ -134,3 +134,8 @@ binaryArrayToNumber([1, 0, 1, 1]) // 11
 */
 
 /* 16. Duncan moves the file out of this directory when it is complete */
+
+/* CURRENT STATUS (update this section before each commit of the file)
+
+
+*/

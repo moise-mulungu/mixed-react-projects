@@ -14,7 +14,22 @@ function comp(numbers, squaredNumbers) {
   const sortedNumbers = numbers.sort((a, b) => a - b)
   const sortedSquaredNumbers = squaredNumbers.sort((a, b) => a - b)
   // DM: just FYI, this could be done with sortedNumbers.reduce() because we're converting an array to a boolean
-  // MM: ???toDM: using reduce with both arrays? or just one? and then how to get to a boolean result where both arrays are compared? am curious to find out the solution with reduce
+  // MM: ???toDM: using reduce with both arrays? or just one? and then how to get to a boolean result where both arrays are compared? am curious to find out the solution with reduce.
+  // DM: you only have one loop here
+  // howtojs: array to any non-array value:: Array.prototype.reduce()
+  const resultWithReduce = sortedNumbers.reduce((acc, cur, idx) => {
+    if (!acc) return acc
+    if (sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]) {
+      return false
+    }
+    return acc
+  }, true)
+  // but, you'll have noticed that there are a lot of unnecessary iterations of this loop, because once you have found false, you really don't need to keep going, so, since you have an array and want a boolean, remember that Array.some() returns a boolean,. ARray.some would be more efficient (and more concise). Array.some will stop iterating the first time the callback returns false.
+  // howtojs: array to boolean:: Array.prototype.some()
+  const resultWithSome = sortedNumbers((number, idx) => {
+    return sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]
+  })
+  // DM: todoMM: I'd like you to
   for (let i = 0; i < sortedNumbers.length; i++) {
     if (sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]) {
       return false

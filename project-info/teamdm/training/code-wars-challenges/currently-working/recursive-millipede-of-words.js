@@ -284,7 +284,8 @@ recursive approach:
 
 */
 
-function millipedeOfWords(words, indent = '') {
+// DM: todoMM: let's do the logging just on the 2nd version below
+function millipedeOfWords(words) {
   function recursiveSolution(
     words,
     // keep in mind what happens the FIRST time recurse() runs (2nd parameter is not passed)
@@ -292,7 +293,6 @@ function millipedeOfWords(words, indent = '') {
   ) {
     // recursive functions need a way to know when to no longer "recurse", i.e., there are no more words
     if (words.length === 0) return true
-    console.log(`${indent}words' length: ${words}`)
     // can ANY of the words combine? Array.some  implements a loop that stops when a true result is found
     return words.some((word, i) => {
       const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
@@ -309,7 +309,7 @@ function millipedeOfWords(words, indent = '') {
   return recursiveSolution(words)
 
   // MM: the recursive code works, but I need to understand it better.
-  // DM: todoMM: add console logs, with indents, similar to how I did it with recursive-nth-fibonacci, so that I can see the order of the recursion by running the function. Then you can also understand it thoroughly and be able to explain it to me.
+  // DM: add console logs, with indents, similar to how I did it with recursive-nth-fibonacci, so that I can see the order of the recursion by running the function. Then you can also understand it thoroughly and be able to explain it to me.
 }
 
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
@@ -337,13 +337,16 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-function millipedeOfWords(words, indent = '') {
-  console.log(`${indent}------------------`)
-  console.log(`${indent}words: ${words}`)
+// DM: todoMM: millipedeOfWords is not called recursively, so you don't need indent here
+function millipedeOfWords(words) {
+  console.log(`------------------ millipedeOfWords called`)
+  console.log(`words: ${words}`)
   function recursiveSolution(
     words,
 
-    previousLastLetter = ''
+    previousLastLetter = '',
+    // DM: todoMM: look at how I used logging in nthFiboWithIndentedLogging and use the same pattern here
+    indent = ''
   ) {
     if (words.length === 0) return true
 
@@ -377,3 +380,9 @@ millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'presi
 millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 
 /* 15. Duncan moves the file out of this directory when it is complete */
+
+/* CURRENT STATUS (update this section before each commit of the file)
+
+DM: solution works. when the logging shows the recursion it will be complete
+
+*/

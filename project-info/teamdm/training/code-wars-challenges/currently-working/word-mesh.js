@@ -68,7 +68,8 @@ n/a
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise. pick a name using the any good words from the challenge description or from your input description in #5
 function wordMesh(arrayOfStrings) {
-  console.log({ arrayOfStrings }, '---------------------------')
+  console.log('--------------------------- wordMesh called:')
+  console.log({ arrayOfStrings })
   /* 5. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
@@ -106,7 +107,9 @@ I want to find the longest common substring of the words in the array by compari
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  // DM: todoMM: let's get back to not using LET and not using: const emptyArray = []. You can do this with array functions. You have an array and you want to return a string. Which array function do you use? the method to use is array.toString() method
+  // DM: todoMM: let's get back to not using LET and not using: const emptyArray = []. You can do this with array functions. You have an array and you want to get a string. Which array function do you use?
+  // MM: the method to use is array.toString() method DM: array.reduce(). array.toString() is unpredictable and not meant to be used in production code
+
   let meshedWords = ''
   for (let i = 0; i < arrayOfStrings.length - 1; i++) {
     const matchCharacters = `${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`.match(/(.+) \1/)
@@ -132,13 +135,12 @@ wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // lowringter"
 wordMesh(['abandon', 'donation', 'onion', 'ongoing']) // dononon"
 wordMesh(['jamestown', 'ownership', 'hippocampus', 'pushcart', 'cartorapher', 'pheromone']) // "ownhippuscartpher"
 wordMesh(['kingdom', 'dominator', 'notorious', 'usual', 'allegory']) // "failed to mesh"
-
-//(done) DM: todoMM: are all these expected test results correct? I think the following test should return "failed to mesh"
 wordMesh(['blame', 'much', 'return', 'on', 'me']) // "failed to mesh"
-
 wordMesh(['exalt', 'altimeter', 'metermaid', 'maidenvoyage', 'voyageur']) // "altmetermaid"
 wordMesh(['job', 'object', 'joust', 'on']) // "failed to mesh"
 wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to mesh"
+
+// DM: todoMM: now that you have good tests, make the solution work. (you can convert the loop to a .recuce AFTER you git it working)
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -159,3 +161,11 @@ wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to me
 */
 
 /* 16. Duncan moves the file out of this directory when it is complete */
+
+// DM: I'm adding this new item to the STARTER.js to make it faster for me to know what is the current status of the challenge.
+
+/* CURRENT STATUS (update this section before each commit of the file)
+
+DM: todoMM: what is the current status? Get it to work first, then do the conversion to array.reduce afterwards.
+
+*/

@@ -8,7 +8,7 @@ function wordMesh(arrayOfStrings) {
     const meshedLetters = []
     console.log(arrayOfStrings[i])
     for (let j = 0; j < arrayOfStrings[i].length; j++) {
-      //(done) DM: todoMM: create two well-named variables to hold the values used in the below logical expression
+      //(done) DM: create two well-named variables to hold the values used in the below logical expression
       //             then, assign the value of the logical expression to a well-named variable
       //             then, console.log them all
       const firstWordLetter = arrayOfStrings[i][j]
@@ -24,7 +24,7 @@ function wordMesh(arrayOfStrings) {
     // put a console.log here, so that you can see what is going on for each iteration of the outer loop
   }
 
-  //  MM: toDM: this is my solution, but it doesn't work for the last test case. I struggled with this one all day long.
+  //  MM: this is my solution, but it doesn't work for the last test case. I struggled with this one all day long.
   // todoMM: ok, I don't see any console.log, so it seems like you haven't debugged enough - console.log is your first step to debugging. as long as you have put every small part into a well-named variable, you can log those variables to see where things went wrong.
 }
 
@@ -44,3 +44,9 @@ wordMesh(['age', 'estate', 'esteem', 'teem']) // => 'aged'
 
 // DM: this would be "failed to mesh"
 wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g']) // => 'eternal'
+
+/* CURRENT STATUS (update this section before each commit of the file)
+
+DM: todoMM: what is the current status? I see your console.logs, but without more info from you, I have no idea what I should do in this file. (note:I see that the expected results of the tests are still incorrect.
+
+*/

@@ -228,3 +228,9 @@ function nthFibo(n) {
   }
   return cache[n]
 }
+
+/* CURRENT STATUS (update this section before each commit of the file)
+
+DM: a few todoMMs to complete. Code is working. After the todoMMs are complete, Duncan will remove from this directory
+
+*/

@@ -16,9 +16,11 @@ A Narcissistic Number (or Armstrong Number) is a positive number which is the su
 For example, take 153 (3 digits), which is narcissistic:
 
     1^3 + 5^3 + 3^3 = 1 + 125 + 27 = 153
-and 1652 (4 digits), which isn't:
+
+    and 1652 (4 digits), which isn't:
 
     1^4 + 6^4 + 5^4 + 2^4 = 1 + 1296 + 625 + 16 = 1938
+
 The Challenge:
 
 Your code must return true or false (not 'true' and 'false') depending upon whether the given number is a Narcissistic number in base 10.
@@ -74,7 +76,7 @@ output: boolean(true or false)
         Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, Yes!)
         */
   /*
-i want to check if the number is narcissistic by checking if the sum of the digits raised to the power of the number of digits is equal to the number
+i want to check if the number is narcissistic by checking if the sum of each digits raised to the power of the number of digits is equal to the number
   */
 
   /* 8. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
@@ -112,11 +114,18 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   // const digitsOfValue = valueToString.length
   const digitsOfValue = valueToString.split('')
   console.log({ digitsOfValue })
+  // DM: todoMM: this doesn't work, so put some console.logs inside the reduce callback so you can see where the problem is. Get the for loop solution to work first, then worry about converting it to reduce later.
   const stringToNumber = digitsOfValue.reduce((acc, curr) => acc + curr)
   console.log({ stringToNumber })
 
-  //(done) DM: todoMM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution. I tried with .split().reduce() but it does not work. Do you think this approach can fix the issue?.
+  //(done)DM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution.
+  // MM: toDM: I tried with .split().reduce() but it does not work. Do you think this approach can fix the issue?.
+  // DM: todoMM: I don't see your .split().reduce() code so I can't help you. make it work with the for loop below before converting to reduce.
   let sumOfDigits = 0
+
+  // DM: todoMM: log ALL the values used in the for loop, then you can debug
+
+  // 1^3 + 5^3 + 3^3 = 1 + 125 + 27 === 153
 
   for (let i = 0; i < stringToNumber; i++) {
     sumOfDigits += valueToString[i] ** stringToNumber
@@ -129,7 +138,8 @@ i want to check if the number is narcissistic by checking if the sum of the digi
    */
   // return false
   return sumOfDigits === value
-  // MM: toDM: some test cases are failing. DM: todoMM: why? which line is where things go wrong?? Put some console.logs and try to see if the console.log output shows you what went wrong.
+  // MM: toDM: some test cases are failing.
+  // DM: todoMM: why? which line is where things go wrong?? Put some console.logs and try to see if the console.log output shows you what went wrong.
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result:
@@ -159,3 +169,9 @@ narcissistic(4889) // false
 */
 
 /* 16. Duncan moves the file out of this directory when it is complete */
+
+/* CURRENT STATUS (update this section before each commit of the file)
+
+DM: get the for loop solution working, I'll approve it, then convert the for loop to a reduce
+
+*/
