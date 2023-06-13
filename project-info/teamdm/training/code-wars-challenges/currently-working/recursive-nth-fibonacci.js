@@ -149,7 +149,7 @@ function nthFiboWithIndentedLogging(sequenceNumber) {
     throw new Error(`the input you provided: ${sequenceNumber} must be 1 or higher`)
 
   const indentSize = 2
-  // DM: todoMM: add "cache" to the programming vocab
+  //(done) DM: todoMM: add "cache" to the programming vocab
   const sequenceToFibonacciNumberMapCache = {
     1: 0,
     2: 1,

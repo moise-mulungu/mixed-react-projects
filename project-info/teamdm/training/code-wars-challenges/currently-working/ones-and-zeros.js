@@ -126,7 +126,31 @@ binaryArrayToNumber([1, 0, 1, 1]) // 11
 /* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-// DM: todoMM: you can do step 14 now
+//(done) DM: todoMM: you can do step 14 now
+function binaryArrayToNumber(binaryNumbers) {
+  if (!Array.isArray(binaryNumbers)) throw new Error('input must be an array')
+  const isBinaryArray = (binaryNumbers) => {
+    return binaryNumbers.every((num) => num === 0 || num === 1)
+  }
+  if (!isBinaryArray) throw new Error('input must be an array of 0s and 1s')
+
+  const joinedBinaryNumbers = binaryNumbers.join('')
+  const inBaseTwo = 2
+
+  const integer = parseInt(joinedBinaryNumbers, inBaseTwo)
+
+  return integer
+}
+
+binaryArrayToNumber('not array') // throw error
+binaryArrayToNumber([0, 0, 0, 1]) // 1
+binaryArrayToNumber([0, 0, 1, 0]) // 2
+binaryArrayToNumber([0, 1, 0, 1]) // 5
+binaryArrayToNumber([1, 0, 0, 1]) // 9
+binaryArrayToNumber([0, 0, 1, 0]) // 2
+binaryArrayToNumber([0, 1, 1, 0]) // 6
+binaryArrayToNumber([1, 1, 1, 1]) // 15
+binaryArrayToNumber([1, 0, 1, 1]) // 11
 
 /* 15. Copy here which of the other coders' solutions do you like the best? (Be sure in codewars.com to sort others' solutions by "Best Practices".)
        Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
