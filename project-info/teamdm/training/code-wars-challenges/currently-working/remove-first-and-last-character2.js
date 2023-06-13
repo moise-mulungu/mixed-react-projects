@@ -61,10 +61,9 @@ output: a string of the same character sequences separated by spaces after remov
 
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
 
-  // DM: todoDM: discuss strings are 'iterable';
-  // DM: todoMM: practice copy selection (shift-alt-downArrow);
+  // howtojs: strings are iterable: `[...myString] === ['m','y','S','t','r','i','n','g']`; i.e., all Arrays are iterable (think "loopable"), so you can use the spread syntax `[...myArray]` to clone an array. Really spread syntax will work on any "iterable" value. Since a String is "iterable" https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols Map is also iterable.
+  // DM: todoMM: create a new file moise-shortcuts.md and make the first entry: shift-alt-downArrow - copy current line down;
   // if (!isArrayOfStrings(string)) throw new Error('array must be an array of strings')
-  // DM: todoDM: string method, RegExp exercises
   // defensive
   function cleanupString(string) {
     // " 1,2,3,4 ", ""
@@ -97,7 +96,7 @@ I want to remove the first and last strings from the array and then join the rem
   const characterSequencesWithoutFirstAndLast = characterSequences.slice(1, -1)
   console.log({ characterSequencesWithoutFirstAndLast })
   const empty = characterSequencesWithoutFirstAndLast.length === 0
-  if (empty) return null
+  if (empty) return null;
 
   /* 9. use the named parts to create a readable solution. */
 
@@ -110,7 +109,7 @@ this makes it easy to debug by logging  // console.log('i am easy to debug by lo
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
 array('') // null
-array('1') // null
+array('1')// null
 array('A1,B2') // null
 array('1,2,3') // '2'
 array('1,2,3,4') // '2 3'
