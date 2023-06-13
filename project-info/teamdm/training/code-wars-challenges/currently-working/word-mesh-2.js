@@ -6,11 +6,16 @@ function wordMesh(arrayOfStrings) {
 
   for (let i = 0; i < arrayOfStrings.length - 1; i++) {
     const meshedLetters = []
+    console.log(arrayOfStrings[i])
     for (let j = 0; j < arrayOfStrings[i].length; j++) {
-      // DM: todoMM: create two well-named variables to hold the values used in the below logical expression
+      //(done) DM: todoMM: create two well-named variables to hold the values used in the below logical expression
       //             then, assign the value of the logical expression to a well-named variable
       //             then, console.log them all
-      if (arrayOfStrings[i][j] === arrayOfStrings[i + 1][j]) {
+      const firstWordLetter = arrayOfStrings[i][j]
+      console.log({ firstWordLetter })
+      const secondWordLetter = arrayOfStrings[i + 1][j]
+      console.log({ secondWordLetter })
+      if (firstWordLetter === secondWordLetter) {
         meshedLetters.push(arrayOfStrings[i][j])
       }
     }

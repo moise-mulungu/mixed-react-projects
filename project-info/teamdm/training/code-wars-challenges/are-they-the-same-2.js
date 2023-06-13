@@ -13,7 +13,8 @@ function comp(numbers, squaredNumbers) {
   }
   const sortedNumbers = numbers.sort((a, b) => a - b)
   const sortedSquaredNumbers = squaredNumbers.sort((a, b) => a - b)
-  // DM: just FYI, this could be dont with sortedNumbers.reduce() because we're converting an array to a boolean
+  // DM: just FYI, this could be done with sortedNumbers.reduce() because we're converting an array to a boolean
+  // MM: ???toDM: using reduce with both arrays? or just one? and then how to get to a boolean result where both arrays are compared? am curious to find out the solution with reduce
   for (let i = 0; i < sortedNumbers.length; i++) {
     if (sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]) {
       return false

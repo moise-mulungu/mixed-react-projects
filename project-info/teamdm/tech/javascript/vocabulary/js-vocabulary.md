@@ -111,7 +111,7 @@ An object literal is a _compound data type_ of zero or more pairs of *property n
 
 DM: great work!
 
-DM: todoMM: add to programming vocab: compound data type
+(done) DM: todoMM: add to programming vocab: compound data type; I added it in the programming-vocabulary.md file.
 
 ## data type
 
@@ -125,6 +125,7 @@ These are known as:
 - char (characters)
 
 But in JavaScript there are eight:
+
 - String
 - Number
 - Boolean

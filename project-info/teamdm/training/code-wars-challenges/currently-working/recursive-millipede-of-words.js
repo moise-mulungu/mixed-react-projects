@@ -284,7 +284,7 @@ recursive approach:
 
 */
 
-function millipedeOfWords(words) {
+function millipedeOfWords(words, indent = '') {
   function recursiveSolution(
     words,
     // keep in mind what happens the FIRST time recurse() runs (2nd parameter is not passed)
@@ -292,6 +292,7 @@ function millipedeOfWords(words) {
   ) {
     // recursive functions need a way to know when to no longer "recurse", i.e., there are no more words
     if (words.length === 0) return true
+    console.log(`${indent}words' length: ${words}`)
     // can ANY of the words combine? Array.some  implements a loop that stops when a true result is found
     return words.some((word, i) => {
       const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
@@ -306,8 +307,9 @@ function millipedeOfWords(words) {
   }
   // this is the FIRST time recursiveSolution is called
   return recursiveSolution(words)
+
   // MM: the recursive code works, but I need to understand it better.
-  // DM: todoMM: add console logs, with indents, similar to how I did it with recursive-nth-fibionacci, so that I can see the order of the recursion by running the function. Then you can also understand it thoroughly and be able to explain it to me.
+  // DM: todoMM: add console logs, with indents, similar to how I did it with recursive-nth-fibonacci, so that I can see the order of the recursion by running the function. Then you can also understand it thoroughly and be able to explain it to me.
 }
 
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
@@ -335,7 +337,9 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-function millipedeOfWords(words) {
+function millipedeOfWords(words, indent = '') {
+  console.log(`${indent}------------------`)
+  console.log(`${indent}words: ${words}`)
   function recursiveSolution(
     words,
 
@@ -345,8 +349,12 @@ function millipedeOfWords(words) {
 
     return words.some((word, i) => {
       const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
+      console.log(`${indent}word: ${wordCombinesWithPreviousWord}`)
       const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
-      const lastLetterOfCurrentWord = word.slice(-1)
+      console.log(`${indent}allRemainingWords: ${allRemainingWords}`)
+      const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
+      // here is where it recurses, i.e., the "recurse" function calls itself
+      console.log(`${indent}lastLetterOfCurrentWord: ${lastLetterOfCurrentWord}`)
       return (
         wordCombinesWithPreviousWord &&
         recursiveSolution(allRemainingWords, lastLetterOfCurrentWord)

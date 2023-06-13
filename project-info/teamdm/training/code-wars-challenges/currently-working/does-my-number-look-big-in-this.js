@@ -106,15 +106,20 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   // }
 
   const valueToString = value.toString()
-  console.log(typeof valueToString)
+  // MM: toDM: the value is converted to a string like this '153'
+  console.log({ valueToString })
 
-  const digitsOfValue = valueToString.length
+  // const digitsOfValue = valueToString.length
+  const digitsOfValue = valueToString.split('')
+  console.log({ digitsOfValue })
+  const stringToNumber = digitsOfValue.reduce((acc, curr) => acc + curr)
+  console.log({ stringToNumber })
 
-  // DM: todoMM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution.
+  //(done) DM: todoMM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution. I tried with .split().reduce() but it does not work. Do you think this approach can fix the issue?.
   let sumOfDigits = 0
 
-  for (let i = 0; i < digitsOfValue; i++) {
-    sumOfDigits += valueToString[i] ** digitsOfValue
+  for (let i = 0; i < stringToNumber; i++) {
+    sumOfDigits += valueToString[i] ** stringToNumber
   }
   /* 9. use the named parts to create a readable solution. */
 
@@ -124,7 +129,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
    */
   // return false
   return sumOfDigits === value
-  // MM: toDM: some test cases are failing. DM: todoMM: why? which line is where things go wrong?? Put some console.logs and try to see if the consolt.log output shows you what went wrong.
+  // MM: toDM: some test cases are failing. DM: todoMM: why? which line is where things go wrong?? Put some console.logs and try to see if the console.log output shows you what went wrong.
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result:

@@ -68,7 +68,7 @@ n/a
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise. pick a name using the any good words from the challenge description or from your input description in #5
 function wordMesh(arrayOfStrings) {
-  console.log('---------------------------')
+  console.log({ arrayOfStrings }, '---------------------------')
   /* 5. describe the inputs and outputs in detail: their types and possible values
         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
 
@@ -106,11 +106,12 @@ I want to find the longest common substring of the words in the array by compari
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  // DM: todoMM: let's get back to not using LET and not using: const emptyArray = []. You can do this with array functions. You have an array and you want to return a string. Which array function do you use?
+  // DM: todoMM: let's get back to not using LET and not using: const emptyArray = []. You can do this with array functions. You have an array and you want to return a string. Which array function do you use? the method to use is array.toString() method
   let meshedWords = ''
   for (let i = 0; i < arrayOfStrings.length - 1; i++) {
     const matchCharacters = `${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`.match(/(.+) \1/)
     // console.log({ matchCharacters }) // DM: I moved to this line so that it will log even if 'failed to mesh'
+    console.log({ matchCharacters })
     if (!matchCharacters) return 'failed to mesh'
     meshedWords += matchCharacters[1]
   }
@@ -127,16 +128,16 @@ I want to find the longest common substring of the words in the array by compari
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result:
 wordMesh(['beacon', 'condominium', 'umbilical', 'california']) // "conumcal";
-wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) //owringter"
+wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // lowringter"
 wordMesh(['abandon', 'donation', 'onion', 'ongoing']) // dononon"
 wordMesh(['jamestown', 'ownership', 'hippocampus', 'pushcart', 'cartorapher', 'pheromone']) // "ownhippuscartpher"
 wordMesh(['kingdom', 'dominator', 'notorious', 'usual', 'allegory']) // "failed to mesh"
 
-// DM: todoMM: are all these expected test results correct? I think the following test shoudl return "failed to mesh"
-wordMesh(['blame', 'much', 'return', 'on', 'me']) // "muchonme"
+//(done) DM: todoMM: are all these expected test results correct? I think the following test should return "failed to mesh"
+wordMesh(['blame', 'much', 'return', 'on', 'me']) // "failed to mesh"
 
-wordMesh(['exalt', 'altimeter', 'metermaid', 'maidenvoyage', 'voyageur']) // "altetermaidenur"
-wordMesh(['job', 'object', 'joust', 'on']) // "objon"
+wordMesh(['exalt', 'altimeter', 'metermaid', 'maidenvoyage', 'voyageur']) // "altmetermaid"
+wordMesh(['job', 'object', 'joust', 'on']) // "failed to mesh"
 wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to mesh"
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
