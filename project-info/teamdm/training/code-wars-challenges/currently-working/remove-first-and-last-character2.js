@@ -62,7 +62,7 @@ output: a string of the same character sequences separated by spaces after remov
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
 
   // howtojs: strings are iterable: `[...myString] === ['m','y','S','t','r','i','n','g']`; i.e., all Arrays are iterable (think "loopable"), so you can use the spread syntax `[...myArray]` to clone an array. Really spread syntax will work on any "iterable" value. Since a String is "iterable" https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols Map is also iterable.
-  // DM: todoMM: create a new file moise-shortcuts.md and make the first entry: shift-alt-downArrow - copy current line down;
+  //(done) DM: todoMM: create a new file moise-shortcuts.md and make the first entry: shift-alt-downArrow - copy current line down;
   // if (!isArrayOfStrings(string)) throw new Error('array must be an array of strings')
   // defensive
   function cleanupString(string) {
