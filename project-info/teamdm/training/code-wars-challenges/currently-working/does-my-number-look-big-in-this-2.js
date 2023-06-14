@@ -91,8 +91,10 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   let sumOfDigits = 0
   for (let i = 0; i < valueDigits; i++) {
     const lastValueDigit = Number(String(value).slice(0, i)) % 10
-    // DM: todoMM: make a new variable to hold the value of lastValueDigit ** valueDigits then log it then try to figure out what is not working.
-    sumOfDigits += lastValueDigit ** valueDigits
+    const raisedPower = lastValueDigit ** valueDigits
+    console.log({ raisedPower })
+    //(done) DM: todoMM: make a new variable to hold the value of lastValueDigit ** valueDigits then log it then try to figure out what is not working.
+    sumOfDigits += raisedPower
     console.log({ i, lastValueDigit, valueDigits, sumOfDigits })
   }
   console.log({ value })

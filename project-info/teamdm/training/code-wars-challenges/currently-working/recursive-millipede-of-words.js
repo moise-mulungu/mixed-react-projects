@@ -339,8 +339,7 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 
 // DM: todoMM: millipedeOfWords is not called recursively, so you don't need indent here
 function millipedeOfWords(words) {
-  console.log(`------------------ millipedeOfWords called`)
-  console.log(`words: ${words}`)
+ 
   function recursiveSolution(
     words,
 

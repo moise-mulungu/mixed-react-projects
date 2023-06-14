@@ -140,7 +140,7 @@ wordMesh(['exalt', 'altimeter', 'metermaid', 'maidenvoyage', 'voyageur']) // "al
 wordMesh(['job', 'object', 'joust', 'on']) // "failed to mesh"
 wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to mesh"
 
-// DM: todoMM: now that you have good tests, make the solution work. (you can convert the loop to a .recuce AFTER you git it working)
+// DM: todoMM: now that you have good tests, make the solution work. (you can convert the loop to a .reduce AFTER you git it working); reduce is confusing, TBH I am still unable to figure out all these solutions with reduce.
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 

@@ -29,7 +29,7 @@ function comp(numbers, squaredNumbers) {
   const resultWithSome = sortedNumbers((number, idx) => {
     return sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]
   })
-  // DM: todoMM: I'd like you to
+  // DM: todoMM: I'd like you to; what do you mean here? I'm not sure what you want me to do here. I'm not sure what you mean by todoMM.
   for (let i = 0; i < sortedNumbers.length; i++) {
     if (sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]) {
       return false
