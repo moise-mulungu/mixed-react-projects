@@ -19,17 +19,19 @@ function comp(numbers, squaredNumbers) {
   // howtojs: array to any non-array value:: Array.prototype.reduce()
   const resultWithReduce = sortedNumbers.reduce((acc, cur, idx) => {
     if (!acc) return acc
-    if (sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]) {
+    if (cur * cur !== sortedSquaredNumbers[idx]) {
       return false
     }
     return acc
   }, true)
   // but, you'll have noticed that there are a lot of unnecessary iterations of this loop, because once you have found false, you really don't need to keep going, so, since you have an array and want a boolean, remember that Array.some() returns a boolean,. ARray.some would be more efficient (and more concise). Array.some will stop iterating the first time the callback returns false.
-  // howtojs: array to boolean:: Array.prototype.some()
-  const resultWithSome = sortedNumbers((number, idx) => {
-    return sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]
+  // howtojs: array to boolean:: Array.prototype.some(); more efficient than array.reduce because it stops iterating when the callback returns a falsy value
+  const resultWithSome = !sortedNumbers.some((number, idx) => {
+    return number * number !== sortedSquaredNumbers[idx]
   })
-  // DM: todoMM: I'd like you to; what do you mean here? I'm not sure what you want me to do here. I'm not sure what you mean by todoMM.
+  console.log({ resultWithReduce, resultWithSome })
+  // DM: todoMM: I've demonstrated an example of converting a for loop to reduce. Also, I've demonstrated how using array.some is more efficient. And, I made howtojs entries for both.
+  // DM: todoMM: whenever you get stuck with a hard reduce issue, do a global regexp search on the howtojs lines. Search on "howtojs.*reduce" and look at a few examples to refresh your memory. Try it now. Also, you can global regexp search on ".reduce(" to see all places you have previously used reduce.
   for (let i = 0; i < sortedNumbers.length; i++) {
     if (sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]) {
       return false

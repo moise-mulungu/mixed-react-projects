@@ -115,15 +115,17 @@ i want to check if the number is narcissistic by checking if the sum of each dig
   const digitsOfValue = valueToString.split('')
   console.log({ digitsOfValue })
   //(done) DM: todoMM: this doesn't work, so put some console.logs inside the reduce callback so you can see where the problem is. Get the for loop solution to work first, then worry about converting it to reduce later.
-  const stringToNumber = digitsOfValue.reduce((acc, curr) => {
-    console.log({ acc }, { curr })
-    acc += curr ** digitsOfValue
+  const stringToNumber = digitsOfValue.reduce((acc, cur) => {
+    const curToThePowerOfDigitsOfValue = cur ** digitsOfValue
+    console.log({ acc, cur, curToThePowerOfDigitsOfValue })
+    acc += curToThePowerOfDigitsOfValue
+    // DM: todoMM: what is missing here? look at the logged values, does it give you a clue?
   })
   console.log({ stringToNumber })
 
   //(done)DM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution.
   // MM: toDM: I tried with .split().reduce() but it does not work. Do you think this approach can fix the issue?.
-  // DM: todoMM: I don't see your .split().reduce() code so I can't help you. make it work with the for loop below before converting to reduce; I assign their value to variables so you can see what's going on: valueToString.split(), and digitsOfValue.reduce()
+  // DM: todoMM: I don't see your .split().reduce() code so I can't help you. make it work with the for loop below before converting to reduce; I assign their value to variables so you can see what's going on: valueToString.split(), and digitsOfValue.reduce() DM: ok
   let sumOfDigits = 0
 
   // DM: todoMM: log ALL the values used in the for loop, then you can debug

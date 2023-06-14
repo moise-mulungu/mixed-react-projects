@@ -141,7 +141,6 @@ function binaryArrayToNumber(binaryNumbers) {
 
   return integer
 }
-
 binaryArrayToNumber('not array') // throw error
 binaryArrayToNumber([0, 0, 0, 1]) // 1
 binaryArrayToNumber([0, 0, 1, 0]) // 2
