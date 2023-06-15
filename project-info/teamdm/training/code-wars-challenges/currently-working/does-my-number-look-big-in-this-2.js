@@ -90,15 +90,37 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   // const lastValueDigit = value % 10
   // console.log({ lastValueDigit })
 
-  let sumOfDigits = 0
-  for (let i = 0; i < valueDigits; i++) {
-    const lastValueDigit = Number(String(value).slice(0, i)) % 10
-    const raisedPower = lastValueDigit ** valueDigits
-    //(done) DM: todoMM: make a new variable to hold the value of lastValueDigit ** valueDigits then log it then try to figure out what is not working.
-    sumOfDigits += raisedPower
-    // DM: it is easier to read the logs if you put everything into one console.log
-    console.log('in loop', { i, lastValueDigit, valueDigits, raisedPower, sumOfDigits })
-  }
+  // let sumOfDigits = 0
+  const valueString = String(value)
+  console.log({ valueString })
+  // for (let i = 0; i < valueString.length; i++) {
+  //   const digit = Number(valueString[i])
+  //   console.log({ digit })
+  //   const raisedPower = digit ** valueDigits
+  //   console.log({ raisedPower })
+  //   sumOfDigits += raisedPower
+  //   console.log({ sumOfDigits })
+  // }
+
+  const splitValue = valueString.split('')
+  const valueDigitsNumber = splitValue.reduce((acc) => acc + 1, 0)
+  console.log({ valueDigitsNumber })
+
+  const raisedPower = splitValue.map((digit) => digit ** valueDigitsNumber)
+  console.log({ raisedPower })
+
+  const sumOfDigits = raisedPower.reduce((acc, digit) => acc + digit, 0)
+  console.log({ sumOfDigits })
+
+  // for (let i = 0; i < valueDigits; i++) {
+  // const lastValueDigit = Number(String(value).slice(0, i)) % 10
+  // console.log({ lastValueDigit })
+  // const raisedPower = lastValueDigit ** valueDigits
+  //(done) DM: todoMM: make a new variable to hold the value of lastValueDigit ** valueDigits then log it then try to figure out what is not working.
+  // sumOfDigits += raisedPower
+  // DM: it is easier to read the logs if you put everything into one console.log
+  // console.log('in loop', { i, lastValueDigit, valueDigits, raisedPower, sumOfDigits })
+  // }
 
   console.log({ sumOfDigits })
 
@@ -119,17 +141,14 @@ narcissistic(7) // true
 narcissistic(371) // true
 narcissistic(153) // true
 narcissistic(122) // false
-narcissistic(4887) // false
+narcissistic(487) // false
 
-// DM: where did you get this test? It is incorrect. Be very careful because an incorrect test will eat up a lot of your time. It is best to not create new tests on your own. Just use the tests in the description and in the Sample Tests section in codewars.
-narcissistic(4888) // true
-
-narcissistic(4889) // false
+// DM: where did you get this test? It is incorrect. Be very careful because an incorrect test will eat up a lot of your time. It is best to not create new tests on your own. Just use the tests in the description and in the Sample Tests section in codewars(ok; some of tests i created by myself).
 
 /* CURRENT STATUS (update this section before each commit of the file)
 
 DM: get the for loop solution working, then convert the for loop to a reduce after I approve the for loop version
 DM: todoMM: I improved the console.logs so that the logged output is more readable. Run this code in the node REPL and look at the logged output for clues about the bug. 
-DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time.
+DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read).
 
 */

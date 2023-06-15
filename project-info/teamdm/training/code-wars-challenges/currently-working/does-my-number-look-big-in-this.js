@@ -144,16 +144,15 @@ i want to check if the number is narcissistic by checking if the sum of each dig
   // return false
   return sumOfDigits === value
   // MM: toDM: some test cases are failing.
-  // DM: todoMM: why? which line is where things go wrong?? Put some console.logs and try to see if the console.log output shows you what went wrong.
+  //(done) DM: todoMM: why? which line is where things go wrong?? Put some console.logs and try to see if the console.log output shows you what went wrong.
+  // this solution is not working for all the test cases with reduce, but it works with for loop. I am figuring out how to fix it.
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result:
-narcissistic(7) // true
-narcissistic(371) // true
-narcissistic(122) // false
-narcissistic(4887) // false
-narcissistic(4888) // true
-narcissistic(4889) // false
+console.log(narcissistic(7)) // true
+console.log(narcissistic(371)) // true
+console.log(narcissistic(122)) // false
+console.log(narcissistic(487)) // false
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
