@@ -20,11 +20,14 @@ doSomething(
 )
 // using the same function in a different way
 doSomething(
-  // note: I don't have to "use" all of the parameters. I can use just one.
+  // note: I don't have to "use" all of the parameters. I can use just one. doSomething() will try to pass 2 args, but the 2nd will be undefined since it is not in the data. Even if the 2nd arg were defined in the data, my callback here would ignore it.
   (name) => {
     console.log(`${name} is an imaginary character!`)
   },
-  [['Ronald McDonald'], ['Mickey Mouse']]
+  [
+    ['Ronald McDonald'], // this time, each array has only 1 element
+    ['Mickey Mouse'],
+  ]
 )
 
 // DM: todoMM: read the above then run the above in the node REPL. study how they work together
