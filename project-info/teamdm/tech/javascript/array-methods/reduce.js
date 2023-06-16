@@ -20,15 +20,17 @@ const numbers = [102, 91, 3, -6, 203, 8, 33, 21, 150, 77, 61, 3, 91, 21, 8]
 
 // Exercise 1: Calculate the sum of all numbers of the numbers array by using the reduce-function
 const total = numbers.reduce((acc, cur) => {
+  console.log({ total })
   return acc + cur
 }, 0)
-console.log({ total })
 
 // Exercise 2: Find the lowest number by using the reduce-function
 const lowest = numbers.reduce((acc, cur) => {
+
+  console.log({ lowest })
   return Math.min(acc, cur) // acc < cur ? acc : cur
 })
-console.log({ lowest })
+
 
 // Exercise 3: Generate an array without any duplicates by using the reduce function.
 // example input: [5, 1, 2, 5, 1, 2], output: [5, 1, 2]
@@ -39,13 +41,14 @@ console.log({ lowest })
 // Example: [1,2,3].indexOf(7) => -1
 const numbers2 = [5, 1, 2, 5, 1, 2]
 const uniqNumbers = numbers2.reduce((acc, cur) => {
+  console.log({ uniqNumbers })
   if (acc.indexOf(cur) === -1) {
     acc.push(cur)
   }
   return acc
 }, [])
-console.log({ uniqNumbers })
 
+// Exercise 4: Calculate the number of all completed-todo entries
 const todos = [
   {
     userId: 10,
@@ -111,6 +114,7 @@ const doneCount = todos.reduce((acc, cur) => {
   return acc
   // return cur.completed ? acc++ : acc
 }, 0)
+
 console.log({ doneCount })
 
 // Exercise 5: Create a data structure where the userId is mapped to the number of todos of this user.
@@ -120,7 +124,7 @@ const userAndTodoCountMapping = todos.reduce((userAndTodoCountMapping, todo) => 
   // this solution is complicated.
 }, {})
 
-the instructions are (possibly deliberately) confusing, because this:
+/*the instructions are (possibly deliberately) confusing, because this:
 [{ userId: 123, ...}, { userId: 123, ... }, { userId: 200, ... }] => { 123: 2, 200: 1 }
 is not syntactically correct JS
 the => is not an arrow function, he's using it just to signify "turns into"
@@ -143,4 +147,16 @@ example given: { 123: 2, 200: 1 }
   123: 2, // key-value pair
   200: 1, // key-value pair
 }
+*/
+
+const userAndtodoCountMapping = todos.reduce((userAndTodoCountMapping, todo) => {
+  // this solution is complicated.
+  console.log({ userAndTodoCountMapping, todo })
+  if (userAndTodoCountMapping[todo.userId]) {
+    userAndTodoCountMapping[todo.userId]++
+  } else {
+    userAndTodoCountMapping[todo.userId] = 1
+  }
+  return userAndTodoCountMapping
+}, {})
 
