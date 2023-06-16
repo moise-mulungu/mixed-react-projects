@@ -33,7 +33,46 @@ doSomething(
 // DM: todoMM: read the above then run the above in the node REPL. study how they work together
 
 // DM: todoMM: exercise: write a function doSomething2(). It should be identical to doSomething(), but it should allow 3 parameters passed to the callback
+function doSomething2(callback, items) {
+  for (const item of items) {
+    callback(item[0], item[1], item[2])
+  }
+}
 
+doSomething2(
+  (firstName, lastName, age) => {
+    console.log(`Hello ${firstName} ${lastName}! are you in your ${age}s!`)
+  },
+  [
+    ['Duncan', 'McKeever', 30],
+    ['Moise', 'Mulungu', 25],
+    ['Bill', 'Gates', 65],
+  ]
+)
+
+function doSomething3(callback, ...rest) {
+  for (const item of rest) {
+    callback(item[0], item[1], item[2])
+  }
+}
+
+doSomething3(
+  (id, country, city) => {
+    console.log(`your id ${id}, from ${country}, ${city}s!`)
+  },
+  [
+    1,
+    'USA',
+    'New York',
+    2,
+    'Russia',
+    'Moscow',
+    3,
+    'Ukraine',
+    'Kiev',
+    // ???DM; why ...rest is only taking the first id and country and city? but not the rest?
+  ]
+)
 // now invoke (call) doSomething2 passing a callback and data.
 
 // DM for DM: potom: bezkonechnii params, dobavit text vFunc, drugievarianti?
