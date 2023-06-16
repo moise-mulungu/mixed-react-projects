@@ -37,3 +37,5 @@ doSomething(
 // now invoke (call) doSomething2 passing a callback and data.
 
 // DM for DM: potom: bezkonechnii params, dobavit text vFunc, drugievarianti?
+
+node "./project-info/teamdm/tech/javascript/callback-exercise.js"

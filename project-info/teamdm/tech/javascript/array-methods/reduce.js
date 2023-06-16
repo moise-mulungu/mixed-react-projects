@@ -26,11 +26,9 @@ const total = numbers.reduce((acc, cur) => {
 
 // Exercise 2: Find the lowest number by using the reduce-function
 const lowest = numbers.reduce((acc, cur) => {
-
   console.log({ lowest })
   return Math.min(acc, cur) // acc < cur ? acc : cur
 })
-
 
 // Exercise 3: Generate an array without any duplicates by using the reduce function.
 // example input: [5, 1, 2, 5, 1, 2], output: [5, 1, 2]
@@ -137,9 +135,6 @@ your reduce function should return an object that looks like this
 but really:
 { 123: 2, 200: 1, ... } // ... because there are more than two userIDs in the data
 
-to understand callbacks, student needs to wrote a function that consumes callbacks:
-function createMessage() pass message, adds ! at the end
-
 key is mapped to value (in JS Object structures)
 instructions say: Create a data structure where the userId is mapped to the number of todos of this user
 example given: { 123: 2, 200: 1 }
@@ -149,8 +144,7 @@ example given: { 123: 2, 200: 1 }
 }
 */
 
-const userAndtodoCountMapping = todos.reduce((userAndTodoCountMapping, todo) => {
-  // this solution is complicated.
+const userAndTodoCountMapping = todos.reduce((userAndTodoCountMapping, todo) => {
   console.log({ userAndTodoCountMapping, todo })
   if (userAndTodoCountMapping[todo.userId]) {
     userAndTodoCountMapping[todo.userId]++
@@ -159,4 +153,3 @@ const userAndtodoCountMapping = todos.reduce((userAndTodoCountMapping, todo) => 
   }
   return userAndTodoCountMapping
 }, {})
-
