@@ -26,9 +26,9 @@ const total = numbers.reduce((acc, cur) => {
 
 // Exercise 2: Find the lowest number by using the reduce-function
 const lowest = numbers.reduce((acc, cur) => {
-  console.log({ lowest })
+  console.log({ acc, cur })
   return Math.min(acc, cur) // acc < cur ? acc : cur
-})
+}, 0)
 
 // Exercise 3: Generate an array without any duplicates by using the reduce function.
 // example input: [5, 1, 2, 5, 1, 2], output: [5, 1, 2]
@@ -138,7 +138,7 @@ but really:
 key is mapped to value (in JS Object structures)
 instructions say: Create a data structure where the userId is mapped to the number of todos of this user
 example given: { 123: 2, 200: 1 }
-{ 
+{
   123: 2, // key-value pair
   200: 1, // key-value pair
 }

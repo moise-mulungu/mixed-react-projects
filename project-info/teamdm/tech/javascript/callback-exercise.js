@@ -18,6 +18,8 @@ doSomething(
     ['Bill', 'Gates'],
   ]
 )
+console.log()
+
 // using the same function in a different way
 doSomething(
   // note: I don't have to "use" all of the parameters. I can use just one. doSomething() will try to pass 2 args, but the 2nd will be undefined since it is not in the data. Even if the 2nd arg were defined in the data, my callback here would ignore it.
@@ -29,6 +31,7 @@ doSomething(
     ['Mickey Mouse'],
   ]
 )
+console.log()
 
 // DM: todoMM: read the above then run the above in the node REPL. study how they work together
 
@@ -49,16 +52,17 @@ doSomething2(
     ['Bill', 'Gates', 65],
   ]
 )
+console.log()
 
-function doSomething3(callback, ...rest) {
-  for (const item of rest) {
-    callback(item[0], item[1], item[2])
+function doSomething3(callback, data) {
+  for (const item of data) {
+    callback(...data)
   }
 }
 
 doSomething3(
   (id, country, city) => {
-    console.log(`your id ${id}, from ${country}, ${city}s!`)
+    console.log(`your id ${id}, from ${country}, ${city}!`)
   },
   [
     1,
@@ -75,6 +79,4 @@ doSomething3(
 )
 // now invoke (call) doSomething2 passing a callback and data.
 
-// DM for DM: potom: bezkonechnii params, dobavit text vFunc, drugievarianti?
-
-node "./project-info/teamdm/tech/javascript/callback-exercise.js"
+// node "./project-info/teamdm/tech/javascript/callback-exercise.js"
