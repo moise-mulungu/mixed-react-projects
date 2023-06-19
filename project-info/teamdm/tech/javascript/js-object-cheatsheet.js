@@ -14,9 +14,9 @@
 // create an object:
 const myObj = {key: 'value', number: 1} // {key: 'value', number: 1} is an "object literal" created using "object literal syntax"
 
-// mutate the object:
+// mutate the object while adding a new property
 myObj.key2 = 'value2'
-// increment an object value
+// increment an existing object value
 myObj.number++
 // - or -
 myObj.number = myObj.number + 1
@@ -26,9 +26,14 @@ myObj[' I am a %@#$ string!'] = 'value'
 const myNewPropertyName = 'pretend I am a dynamic value'
 myObj[myNewPropertyName] = 'value'
 // with "computed property access operator", you can put any expression inside the []
+const funcThatReturnsSTring = () => 'from funcThatReturnsSTring'
 myObj[funcThatReturnsSTring() + ' huzzah!'] = 'value'
+// complex object value
+myObj.array = [1, 2]
+myObj.obj = {a: 'b'}
+const myNewPropertyName = 'pretend I am a dynamic value'
 
-// define an object literal with all those examples
+// define an "object literal" with all those examples
 const myObjLiteral = {
 	key: 'value', 
 	number: 1,
