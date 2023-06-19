@@ -20,17 +20,15 @@ const numbers = [102, 91, 3, -6, 203, 8, 33, 21, 150, 77, 61, 3, 91, 21, 8]
 
 // Exercise 1: Calculate the sum of all numbers of the numbers array by using the reduce-function
 const total = numbers.reduce((acc, cur) => {
-  console.log({ total })
   return acc + cur
 }, 0)
+console.log({ total })
 
 // Exercise 2: Find the lowest number by using the reduce-function
 const lowest = numbers.reduce((acc, cur) => {
-
-  console.log({ lowest })
   return Math.min(acc, cur) // acc < cur ? acc : cur
 })
-
+console.log({ lowest })
 
 // Exercise 3: Generate an array without any duplicates by using the reduce function.
 // example input: [5, 1, 2, 5, 1, 2], output: [5, 1, 2]
@@ -41,12 +39,12 @@ const lowest = numbers.reduce((acc, cur) => {
 // Example: [1,2,3].indexOf(7) => -1
 const numbers2 = [5, 1, 2, 5, 1, 2]
 const uniqNumbers = numbers2.reduce((acc, cur) => {
-  console.log({ uniqNumbers })
   if (acc.indexOf(cur) === -1) {
     acc.push(cur)
   }
   return acc
 }, [])
+console.log({ uniqNumbers })
 
 // Exercise 4: Calculate the number of all completed-todo entries
 const todos = [
@@ -120,9 +118,6 @@ console.log({ doneCount })
 // Exercise 5: Create a data structure where the userId is mapped to the number of todos of this user.
 // example:
 // [{ userId: 123, ...}, { userId: 123, ... }, { userId: 200, ... }] => { 123: 2, 200: 1 }
-const userAndTodoCountMapping = todos.reduce((userAndTodoCountMapping, todo) => {
-  // this solution is complicated.
-}, {})
 
 /*the instructions are (possibly deliberately) confusing, because this:
 [{ userId: 123, ...}, { userId: 123, ... }, { userId: 200, ... }] => { 123: 2, 200: 1 }
@@ -160,3 +155,95 @@ const userAndtodoCountMapping = todos.reduce((userAndTodoCountMapping, todo) => 
   return userAndTodoCountMapping
 }, {})
 
+console.log({ userAndtodoCountMapping })
+
+
+// 5) Given an array of arrays, flatten them into a single array without using Array.prototype.flat()
+// Note: Take a look at Array.concat() to help with this one
+{
+  var arrays = [['1', '2', '3'], [true], [4, 5, 6]]
+  function flatten(array) {
+    return array.reduce(
+      (acc, cur, idx) => {
+        /* your code here */
+        return acc.concat(cur)
+      },
+      [] /* initialize the accumulator */
+      )
+    }
+    
+    console.log(flatten(arrays)) // ["1", "2", "3", true, 4, 5, 6]
+  }
+  
+  /* 6. Given an array of potential voters, return an object representing the results of the vote
+  Include how many of the potential voters were in the ages 18-25, how many from 26-35, how many from 36-55, and how many of each of those age ranges actually voted. The resulting object containing this data should have 6 properties. See the example output at the bottom.
+  */
+{
+  var voters = [
+    { name: 'Bob', age: 30, voted: true },
+    { name: 'Jake', age: 32, voted: true },
+    { name: 'Kate', age: 25, voted: false },
+    { name: 'Sam', age: 20, voted: false },
+    { name: 'Phil', age: 21, voted: true },
+    { name: 'Ed', age: 55, voted: true },
+    { name: 'Tami', age: 54, voted: true },
+    { name: 'Mary', age: 31, voted: false },
+    { name: 'Becky', age: 43, voted: false },
+    { name: 'Joey', age: 41, voted: true },
+    { name: 'Jeff', age: 30, voted: true },
+    { name: 'Zack', age: 19, voted: false },
+  ]
+
+  function voterResults(array) {
+    return array.reduce(
+      (acc, cur) => {
+        /* your code here */
+        const youngPeopleAgeRange = cur.age >= 18 && cur.age <= 25
+        const midPeopleAgeRange = cur.age >= 26 && cur.age <= 35
+        const oldPeopleAgeRange = cur.age >= 36 && cur.age <= 55
+        const youngPeopleVoted = youngPeopleAgeRange && cur.voted
+        const midPeopleVoted = midPeopleAgeRange && cur.voted
+        const oldPeopleVoted = oldPeopleAgeRange && cur.voted
+
+        if (youngPeopleAgeRange) {
+          acc.numYoungPeople++
+          if (youngPeopleVoted) {
+            acc.numYoungVotes++
+          }
+        } else if (midPeopleAgeRange) {
+          acc.numMidPeople++
+          if (midPeopleVoted) {
+            acc.numMidVotesPeople++
+          }
+        } else if (oldPeopleAgeRange) {
+          acc.numOldPeople++
+          if (oldPeopleVoted) {
+            acc.numOldVotesPeople++
+          }
+        }
+
+        return acc
+      },
+      {
+        numYoungVotes: 0,
+        numYoungPeople: 0,
+        numMidVotesPeople: 0,
+        numMidPeople: 0,
+        numOldVotesPeople: 0,
+        numOldPeople: 0,
+      } /* initialize the accumulator */
+    )
+  }
+
+  console.log(voterResults(voters)) // Returned value shown below:
+  /*
+    { numYoungVotes: 1,
+      numYoungPeople: 4,
+      numMidVotesPeople: 3,
+      numMidsPeople: 4,
+      numOldVotesPeople: 3,
+      numOldsPeople: 4 
+    }
+  */
+  //MM: It took me a while to figure out how to do this one. I had to google-search for the solution. It was not intuitive to me.
+}
