@@ -15,16 +15,30 @@ The task is to go to any webpage, like the Mozilla Developer Docs for reduce, co
 const allText = getText()
 
 // then convert the text to an array of characters
-const allCharacters = []
+const allCharacters = allText.split('')
+console.log(allCharacters)
 
 // filter the text to grab only letters and numbers and ignore other text content like parenthesis, question marks, white space etc.
-const lettersAndNumbers = allCharacters.filter(/*  */)
+const lettersAndNumbers = allCharacters.filter((char) => {
+  if (char.match(/[a-z0-9]/i)) {
+    return true
+  }
+  return false
+})
+console.log(lettersAndNumbers)
 
+const charToLowerCase = lettersAndNumbers.map((char) => {
+  return char.toLowerCase()
+})
 // whether the letter is uppercase or lowercase, we still only **count**(number) it once. For example a and A would could as two "a"s, not one uppercase A and one lowercase a
-const count = lettersAndNumbers.reduce((acc, cur) => {
-  //
-  return acc // always return acc;
-}, 0 /* always initialize the 2nd value */)
+const count = charToLowerCase.reduce(
+  (acc, cur) => {
+    acc[cur] = acc[cur] ? acc[cur] + 1 : 1
+    console.log({ acc, cur })
+    return acc // always return acc;
+  },
+  {} /* always initialize the 2nd value */
+)
 
 function getText() {
   // functions are "hoisted"
