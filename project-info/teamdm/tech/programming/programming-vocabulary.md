@@ -148,7 +148,7 @@ Binary numbers are usually represented with just two digits — 0 and 1 — cor-
 
 ## byte
 
-In most computer systems, a byte is a unit of data that is eight binary digits long. A byte is the unit most computers use to represent a character such as a letter, number or typographic symbol. Each byte can hold a string of bits that need to be used in a larger unit for application purposes.
+In most computer systems, a byte is a unit of data that is eight binary digits long. A byte is the unit most computers use to represent a character such as a letter, number or typographic symbol. Each byte can hold a sequence of bits that need to be used in a larger unit for application purposes.
 
 ## radix (aka base)
 

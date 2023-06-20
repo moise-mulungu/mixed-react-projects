@@ -1,26 +1,34 @@
-// DM: todoMM: finish these. in the future, when you encounter any data-type issues, record them here; I added the different data types below, but I think you meant to add the data types to the examples above.
+// DM: todoMM: finish these. in the future, when you encounter any data-type issues, record them here; I added the different data types below, but I think you meant to add the data types to the examples above. DM: I like it. You added an complete list of examples of the data types.
 
+// DM: todoMM: going forward, add here any unintuitive or weird examples.
+
+// unintuitive type coercion
 4 + 4 === 8 // number
 4 + '4' === '44' // string
 '4' + 4 === '44' // string
 '' + 1 === '1' // string
+'' + true === 'true' // string
 
-// understand what the typeof operator provides
+// unintuitive types and/or interesting syntaxes
+typeof NaN // 'number'
+typeof Symbol() // 'symbol'
 typeof null // 'object'
-const myFunc = () => {}
-typeof myFunc // 'function'
 typeof {}.p // 'undefined'
+typeof [][0] // 'undefined'
+typeof (() => {}) // 'function'
+typeof function () {} // 'function'
 typeof new Date() // 'object'
-typeof [] // 'object'
-typeof {} // 'object'
+typeof new Date().bogusProperty // 'undefined'
 
-typeof NaN
-;('number')
+// all primitive data types
 
-// primitive data types
 // number
 const myNum = 1
 typeof myNum // 'number'
+
+// big integer
+const myBigInt = 1n
+typeof myBigInt // 'bigint'
 
 // string
 const myStr = 'hello'
@@ -42,7 +50,8 @@ typeof myUndefined // 'undefined'
 const mySymbol = Symbol()
 typeof mySymbol // 'symbol'
 
-// non-primitive data types
+// examples of non-primitive data types AKA 'objects' (the generic meaning of of a JS 'object', in the sense that "all non-primitives are objects")
+
 // object
 const myObj = {}
 typeof myObj // 'object'
@@ -62,4 +71,3 @@ typeof myDate // 'object'
 // regex
 const myRegex = /hello/
 typeof myRegex // 'object'
-
