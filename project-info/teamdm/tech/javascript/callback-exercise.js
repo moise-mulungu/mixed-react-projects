@@ -2,7 +2,9 @@
 
 const sleep = async (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
+// Async IIFE because you can't use await at the top level bodies of modules
 ;(async () => {
+  // sleep to give the debugger time to "attach" (currently doesn't help)
   await sleep(100)
   console.log('slept')
 
