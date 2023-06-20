@@ -4,20 +4,26 @@
 }, undefined /* always initialize the 2nd value */)
 
 /* howtojs: array: reduce: concatenate:: (usually refers to strings, also arrays) the elements in the array */
-;[([1], [2])].reduce((acc, cur) => {
+;[([1], [2])].reduce((acc, cur) => { // MM: this code [([1], [2])] returns [2], but i think it should be an array with nested arrays like this [[1], [2]] to get the desired result.
+  console.log(`acc:`,  acc )
+  console.log(`cur:`,  cur )
   return acc.concat(cur)
 }, []) // [1, 2]
-;[('a', 'b')].reduce((acc, cur) => {
+;['a', 'b'].reduce((acc, cur) => { // the same here - this code [('a', 'b')] returns ['b'], but i think it should be an array of strings without parentheses like this ['a', 'b'] to get the desired result.
   return acc + cur
 }, '') // 'ab'
 
 /* howtojs: array: reduce: sum:: the elements in the array */
 ;[1, 2].reduce((acc, cur) => {
+  console.log(`acc:`,  acc )
+  console.log(`cur:`,  cur )
   return acc + cur
 }, 0) // 3
 
 /* howtojs: array: reduce:: count the number of elements in the array */
 ;[(1, 2)].reduce((acc, cur) => {
+  console.log(`acc:`,  acc )
+  console.log(`cur:`,  cur )
   return acc + 1
 }, 0) // 2
 
@@ -27,9 +33,17 @@
 // DM: todoMM: do this one like the others
 // turn array into: object
 ;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
+  console.log(`acc:`,  acc )
+  console.log(`cur:`,  cur )
+  if (acc[cur]) {
+    acc[cur]++ 
+  } else {
+    acc[cur] = 1
+  }
+console.log({ acc, cur })
   //
   return acc // always return acc;
-}, undefined /* always initialize the 2nd value */)
+}, {} /* always initialize the 2nd value */)
 
 /*
 result:
