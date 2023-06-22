@@ -39,9 +39,14 @@ console.log({ lowest })
 // Example: [1,2,3].indexOf(7) => -1
 const numbers2 = [5, 1, 2, 5, 1, 2]
 const uniqNumbers = numbers2.reduce((acc, cur) => {
+  if (!acc.includes(cur)) {
+    acc.push(cur)
+  }
+  /*
   if (acc.indexOf(cur) === -1) {
     acc.push(cur)
   }
+  */
   return acc
 }, [])
 console.log({ uniqNumbers })
