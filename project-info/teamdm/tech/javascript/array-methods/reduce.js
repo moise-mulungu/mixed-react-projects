@@ -38,16 +38,18 @@ console.log({ lowest })
 // Example: [1,2,3].indexOf(1) => 0
 // Example: [1,2,3].indexOf(7) => -1
 const numbers2 = [5, 1, 2, 5, 1, 2]
-const uniqNumbers = numbers2.reduce((acc, cur) => {
-  if (!acc.includes(cur)) {
-    acc.push(cur)
+const uniqNumbers = numbers2.reduce((uniqNumbers, cur) => {
+  // DM: cool! so much more readable
+  // DM: some DEVs like to name the accumulator with the name of the same variable that will hold the final result. I think it makes the code more readable. Personally, I don't do it much, but if I did, I'd use acc as the variable name while developing and testing, then rename it during the "make it prettier" stage.
+  if (!uniqNumbers.includes(cur)) {
+    uniqNumbers.push(cur)
   }
   /*
-  if (acc.indexOf(cur) === -1) {
-    acc.push(cur)
+  if (uniqNumbers.indexOf(cur) === -1) {
+    uniqNumbers.push(cur)
   }
   */
-  return acc
+  return uniqNumbers
 }, [])
 console.log({ uniqNumbers })
 
