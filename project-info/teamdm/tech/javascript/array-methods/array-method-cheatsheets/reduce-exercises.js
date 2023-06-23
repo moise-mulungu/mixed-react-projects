@@ -10,9 +10,11 @@
     //   return cur
     // } else {
     // }
-    // DM: todoMM; good. would it be more readable if you used Math.max() ?
-    return acc < cur ? cur : acc
+    //(done) DM: todoMM; good. would it be more readable if you used Math.max() ?
+    // return acc < cur ? cur : acc
+    return Math.max(acc, cur)
   }, 0)
+  // expected result: 6
 }
 
 {
@@ -25,11 +27,18 @@
     { score: 85, subject: 'JavaScript', weight: 0.5 },
   ]
   const result = scores.reduce((acc, cur) => {
-    /* your code here */ // 30; I am getting 85 instead of 30
-    // DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated all the weighted scores
+    /* your code here */ // 30;
+    // DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated all the weighted scores.
+    // MM: I think I understand what you mean. I think I need to add up all the weighted scores first, then divide by the number of scores, then round it off to the nearest integer, but the solution is different from the previous code.
     const weightedScore = cur.score * cur.weight
     console.log('weightedScore', weightedScore)
-    return Math.round(acc + weightedScore / scores.length)
+    // return Math.round(acc + weightedScore / scores.length)
+    const sumAllWeightedScores = acc + weightedScore
+
+    const average = sumAllWeightedScores / scores.length
+    console.log(scores.length)
+
+    return Math.round(average)
   }, 0)
   console.log(result) // 30
 }
@@ -41,7 +50,7 @@
     return acc
   },
   { a: 0 } // don't change this initial value of the accumulator
-) // { a: 2, b: 3, m: 1, n: 1 }
+) //expected result: { a: 2, b: 3, m: 1, n: 1 }
 
 {
   ;[
@@ -66,13 +75,13 @@
 {
   // remove duplicates in the array
   ;['a', 'b', 'b', 'a', 'b'].reduce((acc, cur) => {
-    // if (acc.includes(cur)) {
-    //   return acc
-    // } else {
-    //   return acc.concat(cur)
-    // }
+    if (acc.includes(cur)) {
+      return acc
+    } else {
+      return acc.concat(cur)
+    }
     // DM: good, I like this. Try using array.includes to make it more readable
-    return acc.indexOf(cur) === -1 ? acc.concat(cur) : acc
+    // return acc.indexOf(cur) === -1 ? acc.concat(cur) : acc
   }, []) // result: ['a', 'b']
 }
 
@@ -82,6 +91,7 @@
   // use reduce to implement the following (pseudocode) logic
   // MM: toDM: I am not sure how to do this with reduce, I struggled with this one a lot.
   // DM: todoMM: in this exercise the pseudocode is telling you how to do it. I restored the original indenting because the indenting is a key part of showing what the logic is. In pseudocode we don't put opening an closing {} to indicate blocks of code, but rather the indenting tells you where the block closes.
+  // toDM: I could not implement it.
   /* 
     status = 0
     for char in string:
@@ -96,17 +106,18 @@
   string.split('').reduce((acc, cur) => {
     // true if all the "(" have a closing ")"
     // your code here
-    if (cur === cur + acc) {
-      return true
-    } else {
-      return false
-    }
-  }, '')
+    if (cur === '(') {
+      return acc + 1
+    } else if (cur === ')') {
+      return acc - 1
+    } else acc === 0
+    return false
+  }, 0)
 }
 
 {
   // flatten the nested arrays, but only flatten the one level deep
-  // howtojs:: flatten array to the first level only; note: new array.prototype.flat() 2nd parameter let's you specify how many levels deep to flatten.
+  // howtojs:: flatten array to the first level only; note: new array.prototype.flat() 2nd parameter let's you specify how many levels deep to flatten(good).
   ;[
     [1, 2],
     [['a', 'b'], 4],
@@ -117,11 +128,11 @@
 }
 
 {
-  // DM: todoMM: add this to utils/array/reverse.js. Follow the same patter we used in the other utils. Research if lodash has a function for this and not that in the new file if so.
+  //(done) DM: todoMM: add this to utils/array/reverse.js. Follow the same pattern we used in the other utils. Research if lodash has a function for this and not that in the new file if so.
   // howtojs: reverse a string; note also: 'abc'.split('').reverse().join('')
   ;[...'abc'].reduce((acc, cur) => {
     return cur + acc
   }, '') // 'cba'
 }
 
-// DM: todoMM: new exercise: read this page https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/ and study the recursive solution at the bottom. Make an file in the currently-working directory and put the recursive solution there. Add some console.log so that you can see the order the recursive functions are called.
+//(done) DM: todoMM: new exercise: read this page https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/ and study the recursive solution at the bottom. Make a file in the currently-working directory and put the recursive solution there. Add some console.log so that you can see the order the recursive functions are called.

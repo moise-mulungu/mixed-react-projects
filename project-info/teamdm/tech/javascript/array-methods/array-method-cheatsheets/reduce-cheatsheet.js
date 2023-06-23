@@ -32,15 +32,14 @@
 // DM: todoMM: good! now add the howtojs stuff
 // turn array into: object
 ;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
-  console.log({ cur, acc })
   if (acc[cur]) {
     acc[cur]++
   } else {
     acc[cur] = 1
   }
-  console.log({ cur, acc })
   return acc
-}, {}) // { a: 2, b: 2, c: 1 }
+}, {})
+// expected result: { a: 2, b: 2, c: 1 }
 /* 
 DM: todoMM: make a demo video explaining how this works. Vocab:
 property access operator ("." as in array.reduce)
