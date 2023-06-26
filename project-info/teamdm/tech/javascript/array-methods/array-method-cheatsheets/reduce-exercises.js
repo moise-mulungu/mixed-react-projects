@@ -1,5 +1,5 @@
 // DM: it's interesting that JS lets you create a block simply by putting { /* code inside here has its own "scope" */} in the code. It's interesting because if you put each exercise inside it's own block, you'll never have problems with repeated const variable names clashing.
-// DM: todoMM: please put the expected result for each exercise below
+//(done) DM: todoMM: please put the expected result for each exercise below
 {
   // get the largest number in the array
   ;[1, 6, 4].reduce((acc, cur) => {
@@ -28,7 +28,7 @@
   ]
   const result = scores.reduce((acc, cur) => {
     /* your code here */ // 30;
-    // DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated all the weighted scores.
+    //(partial) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated all the weighted scores.
     // MM: I think I understand what you mean. I think I need to add up all the weighted scores first, then divide by the number of scores, then round it off to the nearest integer, but the solution is different from the previous code.
     const weightedScore = cur.score * cur.weight
     console.log('weightedScore', weightedScore)
@@ -90,7 +90,7 @@
   // return true if all the "(" have a closing ")"
   // use reduce to implement the following (pseudocode) logic
   // MM: toDM: I am not sure how to do this with reduce, I struggled with this one a lot.
-  // DM: todoMM: in this exercise the pseudocode is telling you how to do it. I restored the original indenting because the indenting is a key part of showing what the logic is. In pseudocode we don't put opening an closing {} to indicate blocks of code, but rather the indenting tells you where the block closes.
+  //(partial) DM: todoMM: in this exercise the pseudocode is telling you how to do it. I restored the original indenting because the indenting is a key part of showing what the logic is. In pseudocode we don't put opening an closing {} to indicate blocks of code, but rather the indenting tells you where the block closes.
   // toDM: I could not implement it.
   /* 
     status = 0

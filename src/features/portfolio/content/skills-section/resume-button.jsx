@@ -1,4 +1,4 @@
-// DM: todoMM: store in constants and import it from constants
+//(done) DM: todoMM: store in constants and import it from constants
 const myResume =
   'https://docs.google.com/document/d/14Jk9jCBOfWHd7OEEpFVq7Jjxd08DBk1JVyXch1i_MqM/edit'
 
@@ -6,7 +6,7 @@ export default function ResumeButton() {
   /* const handleClick = () => {
     // e.preventDefault() , may i call preventDefault here while i just called window.open ?
     // the handleClick has to send me to the resume page
-    // DM: todoMM: just wrap the button in a link. I'll show you below
+    //(done) DM: todoMM: just wrap the button in a link. I'll show you below
 
     window.open(myResume, '_blank')
   } */

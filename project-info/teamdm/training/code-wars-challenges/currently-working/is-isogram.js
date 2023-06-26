@@ -1,4 +1,4 @@
-// DM: todoMM: interesting, but give me some contextual info so that I can understand what this is. where did you get it? what is an isogram? BTW, we gotta clean up all the exercises in currently-working/. Please put a comment at the top of each file, noting what the current status is, and what needs to happen next?
+//(done) DM: todoMM: interesting, but give me some contextual info so that I can understand what this is. where did you get it? what is an isogram? BTW, we gotta clean up all the exercises in currently-working/. Please put a comment at the top of each file, noting what the current status is, and what needs to happen next?
 
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case

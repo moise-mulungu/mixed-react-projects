@@ -38,7 +38,7 @@ export default function Example(props) {
                     alt="Your Company"
                   /> */}
                   {/* note: curly brackets means JS goes inside. since this is a variable containing plain text, use curly brackets so JS can evaluate the variable which resolves to text. */}
-                  {/* DM: todoMM: add some TW utility classes for color and size and any other styling you like (bump)*/}
+                  {/* (done)DM: todoMM: add some TW utility classes for color and size and any other styling you like (bump)*/}
                   <span className="text-2xl font-bold leading-7 text-gray-500 sm:truncate sm:text-1xl sm:tracking-tight">
                     {theMan}
                   </span>

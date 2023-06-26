@@ -1,6 +1,6 @@
-// DM: todoMM: finish these. in the future, when you encounter any data-type issues, record them here; I added the different data types below, but I think you meant to add the data types to the examples above. DM: I like it. You added an complete list of examples of the data types.
+//(done) DM: todoMM: finish these. in the future, when you encounter any data-type issues, record them here; I added the different data types below, but I think you meant to add the data types to the examples above. DM: I like it. You added an complete list of examples of the data types.
 
-// DM: todoMM: going forward, add here any unintuitive or weird examples.
+//(done) DM: todoMM: going forward, add here any unintuitive or weird examples.
 
 // unintuitive type coercion
 4 + 4 === 8 // number

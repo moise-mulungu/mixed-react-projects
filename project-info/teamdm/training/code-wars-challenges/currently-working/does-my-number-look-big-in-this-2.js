@@ -80,7 +80,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  // DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371.
+  //(done) DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371.
 
   const valueDigits = Math.floor(Math.log10(value)) + 1
 
@@ -148,7 +148,7 @@ narcissistic(487) // false
 /* CURRENT STATUS (update this section before each commit of the file)
 
 DM: get the for loop solution working, then convert the for loop to a reduce after I approve the for loop version
-DM: todoMM: I improved the console.logs so that the logged output is more readable. Run this code in the node REPL and look at the logged output for clues about the bug. 
-DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read).
+(done)DM: todoMM: I improved the console.logs so that the logged output is more readable. Run this code in the node REPL and look at the logged output for clues about the bug. 
+(done)DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read).
 
 */

@@ -76,7 +76,7 @@ i want to count the number of vowels in the string
   /* 9. use the named parts to create a readable solution. */
 
   // DM: I'm sure your initial solution works correctly and completely, but declaring an empty array, then array.push inside a .map or .forEach is not using JS properly, so that approach wouldn't pass a code review. After you solve the challenge using the method I suggest, you'll see that the empty-array-push code is less readable.
-  // DM: todoMM: what other array method can you use? Remember to think in terms of what you HAVE: characters - an array of characters (and as a helper: vowels - an array of vowels) and what you WANT (an integer number representing the number of vowels in the string). So, if you need to convert an array into a non-array, which array method do you use?
+  //(done) DM: todoMM: what other array method can you use? Remember to think in terms of what you HAVE: characters - an array of characters (and as a helper: vowels - an array of vowels) and what you WANT (an integer number representing the number of vowels in the string). So, if you need to convert an array into a non-array, which array method do you use?
   const sumOfAllVowels = characters.reduce((acc, curr) => {
     /* your code goes here */
     if (vowels.includes(curr)) {
@@ -98,7 +98,7 @@ i want to count the number of vowels in the string
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
 
-  // DM: todoMM: I want you to debug the problem as an exercise (although you won't need the below line using the solution I'm suggesting above). Remember to always use console.log so that you have visibility to what the data is. You can console.log({curr}) to see what is in curr and what you are adding to acc. Then the answer will be obvious. This is the sort of thing that in a work situation, you can't say that you can't solve it, because you should as a first debugging step console.log to see what data is in the variables.
+  //(done) DM: todoMM: I want you to debug the problem as an exercise (although you won't need the below line using the solution I'm suggesting above). Remember to always use console.log so that you have visibility to what the data is. You can console.log({curr}) to see what is in curr and what you are adding to acc. Then the answer will be obvious. This is the sort of thing that in a work situation, you can't say that you can't solve it, because you should as a first debugging step console.log to see what data is in the variables.
   //   return sumOfAllVowels.reduce((acc, curr) => acc + curr, 0); // this is weird, the reduce method doesn't work here
 
   return sumOfAllVowels

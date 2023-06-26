@@ -104,7 +104,7 @@ return a sorted array of strings that consists of the strings in the first array
       if (currentWordInArray2.includes(currentWord)) {
         substringsOfArray2.push(currentWord)
         // DM: since you are using 'for' loops, I assume you are concerned about efficiency, which is a correct concern in this challenge
-        // DM: todoMM: you can 'continue' here, for efficiency, since it is no longer necessary to check the remaining words in array2. This resolves the concern about duplicates, also.
+        //(done) DM: todoMM: you can 'continue' here, for efficiency, since it is no longer necessary to check the remaining words in array2. This resolves the concern about duplicates, also.
         continue loop1 // you have to name the loop you want to continue, otherwise it will 'continue' the inner loop
       }
     }

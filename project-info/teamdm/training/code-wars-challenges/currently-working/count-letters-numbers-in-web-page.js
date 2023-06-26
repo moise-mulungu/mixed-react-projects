@@ -24,9 +24,9 @@ console.timeEnd('splitting')
 // filter the text to grab only letters and numbers and ignore other text content like parenthesis, question marks, white space etc.
 console.time('filtering')
 const lettersAndNumbers = allCharacters.filter((char) => {
-  // DM: todoMM: String.match() returns a boolean, so you can just return:
+  //(done) DM: todoMM: String.match() returns a boolean, so you can just return:
   // return char.match(/[a-z0-9]/i)
-  // DM: todoMM: what about capital letters?
+  //(done) DM: todoMM: what about capital letters?
   if (char.match(/[a-z0-9]/i)) {
     return true
   }
@@ -35,7 +35,7 @@ const lettersAndNumbers = allCharacters.filter((char) => {
 console.timeEnd('filtering')
 console.log(lettersAndNumbers)
 
-// DM: todoMM: measure the perf (performance) of the map here and the reduce below
+//(done) DM: todoMM: measure the perf (performance) of the map here and the reduce below
 const charToLowerCase = lettersAndNumbers.map((char) => {
   return char.toLowerCase()
 })

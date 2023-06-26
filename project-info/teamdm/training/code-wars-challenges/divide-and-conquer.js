@@ -49,7 +49,7 @@ function divCon(x) {
   */
 
   // 5. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-  // DM: todoMM: great! add this to multiply-all-elements-in-an-array.js and put it in src/utils/array for future use
+  //(done) DM: todoMM: great! add this to multiply-all-elements-in-an-array.js and put it in src/utils/array for future use
   const allIntegers = x.every((item) => Number.isInteger(Number(item))) // good job with every!
   if (!allIntegers) throw new Error('not all items of the array argument are integers')
   /* 6. state the solution in terms of WHAT (declarative), not HOW (imperative)
