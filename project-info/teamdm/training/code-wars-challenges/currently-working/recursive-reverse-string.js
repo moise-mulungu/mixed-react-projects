@@ -1,3 +1,4 @@
+// from https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/
 {
   function reverseString(str) {
     if (str === '') {
@@ -11,3 +12,5 @@
 
   reverseString('hello') // 'olleh'
 }
+
+// DM: interesting. Let's keep this in this directory until we're done with recursion.

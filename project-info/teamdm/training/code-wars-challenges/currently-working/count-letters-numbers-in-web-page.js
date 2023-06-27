@@ -1,3 +1,6 @@
+// DM: I'm really confused about a lot of the todoMMs you marked with (done) in this directory but which were not done. It took me a lot of time to go through the diffs from your last commit, and no changes to the actual code. I would hope you can be very careful and pay better attention to detail and clear communication, so that I can spend less time in confusion, and more time teaching and working on important things in our repo. In my role as mentor and as "boss" it is really important that you take the time to make it easy for me to figure out what to do next and how to help you. It is what I always try to do for my bosses.
+// DM: todoMM: please add a message in each of the files in this directory giving me the status of the challenge file: does the code work? Where are you stuck? What help do you need from me? What are the next steps for you or me? You don't have to do all of them at once, just pick one challenge per day and figure out what the status is, then try to finish it up, or leave me a question. We need to get these files finalized before you start anymore new challenges.
+
 // node ./project-info/teamdm/training/code-wars-challenges/currently-working/count-letters-numbers-in-web-page.js
 
 // console.log(getText())
@@ -24,9 +27,9 @@ console.timeEnd('splitting')
 // filter the text to grab only letters and numbers and ignore other text content like parenthesis, question marks, white space etc.
 console.time('filtering')
 const lettersAndNumbers = allCharacters.filter((char) => {
-  //(done) DM: todoMM: String.match() returns a boolean, so you can just return:
+  // DM: todoMM: String.match() returns a boolean, so you can just return: DM: this is not done.
   // return char.match(/[a-z0-9]/i)
-  //(done) DM: todoMM: what about capital letters?
+  // DM: todoMM: what about capital letters? Also not done.
   if (char.match(/[a-z0-9]/i)) {
     return true
   }
@@ -35,7 +38,7 @@ const lettersAndNumbers = allCharacters.filter((char) => {
 console.timeEnd('filtering')
 console.log(lettersAndNumbers)
 
-//(done) DM: todoMM: measure the perf (performance) of the map here and the reduce below
+// DM: todoMM: measure the perf (performance) of the map here and the reduce below: DM: not done.
 const charToLowerCase = lettersAndNumbers.map((char) => {
   return char.toLowerCase()
 })

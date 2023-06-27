@@ -30,8 +30,7 @@ function comp(numbers, squaredNumbers) {
     return number * number !== sortedSquaredNumbers[idx]
   })
   console.log({ resultWithReduce, resultWithSome })
-  //(done)DM: todoMM: I've demonstrated an example of converting a for loop to reduce. Also, I've demonstrated how using array.some is more efficient. And, I made howtojs entries for both.
-  //(done) DM: todoMM: whenever you get stuck with a hard reduce issue, do a global regexp search on the howtojs lines. Search on "howtojs.*reduce" and look at a few examples to refresh your memory. Try it now. Also, you can global regexp search on ".reduce(" to see all places you have previously used reduce(ok).
+
   for (let i = 0; i < sortedNumbers.length; i++) {
     if (sortedNumbers[i] * sortedNumbers[i] !== sortedSquaredNumbers[i]) {
       return false

@@ -42,9 +42,6 @@ const sleep = async (ms) => new Promise((resolve) => setTimeout(resolve, ms))
   )
   console.log()
 
-  //(done) DM: todoMM: read the above then run the above in the node REPL. study how they work together
-
-  //(done) DM: todoMM: exercise: write a function doSomething2(). It should be identical to doSomething(), but it should allow 3 parameters passed to the callback
   function doSomething2(callback, items) {
     for (const item of items) {
       callback(item[0], item[1], item[2])

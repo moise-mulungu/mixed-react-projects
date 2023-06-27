@@ -2,8 +2,6 @@ const { uniq } = require('lodash')
 
 // DM: I'm glad you tried this. Good work on both. You will learn a lot from these.
 function sortLexicographicalWords(firstArray, secondArray) {
-  //(done) DM: todoMM: naming: map is a verb, not a noun. In general, often you can add 'ed' to a verb to make it into an adjective. Ex: 'mapped' instead of 'map' because 'mapped' is an adjective describing the noun 'secondArray'. However, 'mapped' doesn't tell me much as a reader, since I can already see from the code that you used array.map(). So, taking substringsOfArray2 from the other file.
-
   // filter, some, includes
   /* 
     Given two arrays of strings a1 and a2 return a sorted array r in lexicographical order of 

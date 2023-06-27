@@ -40,6 +40,9 @@ export default async function handler(req, res) {
       * note in .gitignore that all .env.* files will not be included in the github repository
       * security: these must never be in any repo, because they are secret
       * the "environment variables" in .env.production you'll enter manually in the Vercel website when you create your production site
+
+;gfo GitHub 
+
     
   // SETUP the production EMAIL service: 
   // NEXT set up ... Do a quick search, "how to send email from my contact page" - be sure I understand what this "forwarding" service is about

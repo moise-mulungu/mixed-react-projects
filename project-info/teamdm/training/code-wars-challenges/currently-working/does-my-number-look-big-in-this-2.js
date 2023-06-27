@@ -80,7 +80,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  //(done) DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371.
+  //DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371. DM: todoMM: I can't see any comments in the code here. Please add comments so that I can follow your intentions, and also update the status section at the bottom of this file.
 
   const valueDigits = Math.floor(Math.log10(value)) + 1
 
@@ -116,7 +116,6 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   // const lastValueDigit = Number(String(value).slice(0, i)) % 10
   // console.log({ lastValueDigit })
   // const raisedPower = lastValueDigit ** valueDigits
-  //(done) DM: todoMM: make a new variable to hold the value of lastValueDigit ** valueDigits then log it then try to figure out what is not working.
   // sumOfDigits += raisedPower
   // DM: it is easier to read the logs if you put everything into one console.log
   // console.log('in loop', { i, lastValueDigit, valueDigits, raisedPower, sumOfDigits })
@@ -134,7 +133,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
    this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
   return false
-  // MM: toDM: some test cases are failing. todoMM: can you give me mor info? why are they failing? at what point in your code does things go wrong?
+  // MM: toDM: some test cases are failing. DM: todoMM: can you give me mor info? why are they failing? at what point in your code does things go wrong?
 }
 
 narcissistic(7) // true
@@ -148,7 +147,6 @@ narcissistic(487) // false
 /* CURRENT STATUS (update this section before each commit of the file)
 
 DM: get the for loop solution working, then convert the for loop to a reduce after I approve the for loop version
-(done)DM: todoMM: I improved the console.logs so that the logged output is more readable. Run this code in the node REPL and look at the logged output for clues about the bug. 
-(done)DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read).
+DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read). DM: todoMM: ok, read, but not done, right?
 
 */

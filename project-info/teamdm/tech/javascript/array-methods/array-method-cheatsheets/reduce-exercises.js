@@ -10,7 +10,7 @@
     //   return cur
     // } else {
     // }
-    //(done) DM: todoMM; good. would it be more readable if you used Math.max() ?
+    //(done) DM: good. would it be more readable if you used Math.max() ? DM: good.
     // return acc < cur ? cur : acc
     return Math.max(acc, cur)
   }, 0)
@@ -28,8 +28,9 @@
   ]
   const result = scores.reduce((acc, cur) => {
     /* your code here */ // 30;
-    //(partial) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated all the weighted scores.
+    //(partial) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
     // MM: I think I understand what you mean. I think I need to add up all the weighted scores first, then divide by the number of scores, then round it off to the nearest integer, but the solution is different from the previous code.
+
     const weightedScore = cur.score * cur.weight
     console.log('weightedScore', weightedScore)
     // return Math.round(acc + weightedScore / scores.length)
@@ -86,19 +87,21 @@
 }
 
 {
-  const string = '(())()(()())'
+  const string = '(())()(()())' // true
   // return true if all the "(" have a closing ")"
   // use reduce to implement the following (pseudocode) logic
   // MM: toDM: I am not sure how to do this with reduce, I struggled with this one a lot.
   //(partial) DM: todoMM: in this exercise the pseudocode is telling you how to do it. I restored the original indenting because the indenting is a key part of showing what the logic is. In pseudocode we don't put opening an closing {} to indicate blocks of code, but rather the indenting tells you where the block closes.
-  // toDM: I could not implement it.
+  // toDM: I could not implement it. DM: make sure you understand how the pseudocode works:
   /* 
+  // you're doing the next 6 lines with the reduce()
     status = 0
     for char in string:
       if(char=="("):
         status=status+1
       elif(char==")"): // elif === else if
         status=status-1     
+    // look at the indentation in the pseudo code. The next line has the same indentation as the "for" loop which you implemented with reduce(). This means that the next 2 lines are outside/after the reduce.
     if(status==0):
       return False
   */
@@ -117,7 +120,8 @@
 
 {
   // flatten the nested arrays, but only flatten the one level deep
-  // howtojs:: flatten array to the first level only; note: new array.prototype.flat() 2nd parameter let's you specify how many levels deep to flatten(good).
+  // howtojs:: flatten array to the first level only; note: new array.prototype.flat() 2nd parameter let's you specify how many levels deep to flatten.
+  // DM: thanks. Removing the 'good' to keep the howto instruction clean.
   ;[
     [1, 2],
     [['a', 'b'], 4],
@@ -128,11 +132,9 @@
 }
 
 {
-  //(done) DM: todoMM: add this to utils/array/reverse.js. Follow the same pattern we used in the other utils. Research if lodash has a function for this and not that in the new file if so.
+  //(done) DM: todoMM: add this to utils/array/reverse.js. Follow the same pattern we used in the other utils. Research if lodash has a function for this and not that in the new file if so. DM: haha, JavaScript has a function for this: String.prototype.reverse()! See my note in the new file you created.
   // howtojs: reverse a string; note also: 'abc'.split('').reverse().join('')
   ;[...'abc'].reduce((acc, cur) => {
     return cur + acc
   }, '') // 'cba'
 }
-
-//(done) DM: todoMM: new exercise: read this page https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/ and study the recursive solution at the bottom. Make a file in the currently-working directory and put the recursive solution there. Add some console.log so that you can see the order the recursive functions are called.

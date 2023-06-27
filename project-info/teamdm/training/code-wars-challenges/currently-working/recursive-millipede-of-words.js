@@ -284,7 +284,6 @@ recursive approach:
 
 */
 
-//(done) DM: todoMM: let's do the logging just on the 2nd version below
 function millipedeOfWords(words) {
   function recursiveSolution(
     words,
@@ -337,14 +336,13 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-//(done) DM: todoMM: millipedeOfWords is not called recursively, so you don't need indent here
 function millipedeOfWords(words) {
- 
   function recursiveSolution(
     words,
 
     previousLastLetter = '',
-    //(done) DM: todoMM: look at how I used logging in nthFiboWithIndentedLogging and use the same pattern here
+    //(done) DM: todoMM: look at how I used logging in nthFiboWithIndentedLogging and use the same pattern here.
+    // DM: todoMM: I don't see any indenting in the console.log output when I run this function. Run the function nthFiboWithIndentedLogging() in the other recursive exercise file, and see what the output looks like - it is indented so you can follow the pattern of recursive calls. Look carefully at how the indentation happens in nthFiboWithIndentedLogging() and use that same pattern here.
     indent = ''
   ) {
     if (words.length === 0) return true

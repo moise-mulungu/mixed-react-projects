@@ -149,7 +149,6 @@ function nthFiboWithIndentedLogging(sequenceNumber) {
     throw new Error(`the input you provided: ${sequenceNumber} must be 1 or higher`)
 
   const indentSize = 2
-  //(done) DM: todoMM: add "cache" to the programming vocab
   const sequenceToFibonacciNumberMapCache = {
     1: 0,
     2: 1,
@@ -157,19 +156,18 @@ function nthFiboWithIndentedLogging(sequenceNumber) {
     // 4: 3,
     // 5: 3,
   }
-
-  // getFibonacciNumberForSequenceNumberRecursive
+  // recursive:
   function getFibonacciNumberForSequenceNumber(fibonacciSequenceNumber, indent = '') {
-    // console.log(`${indent}---------------`)
-    // console.log(`${indent}sequence number: ${fibonacciSequenceNumber}`)
+    console.log(`${indent}---------------`)
+    console.log(`${indent}sequence number: ${fibonacciSequenceNumber}`)
     if (sequenceToFibonacciNumberMapCache[fibonacciSequenceNumber] !== undefined) {
       const fibonacciNumber = sequenceToFibonacciNumberMapCache[fibonacciSequenceNumber]
-      // console.log(`${indent}returning Fibonacci number from cache: ${fibonacciNumber}`)
+      console.log(`${indent}returning Fibonacci number from cache: ${fibonacciNumber}`)
       return fibonacciNumber
     }
-    // console.log(
-    //   `${indent}calculating new Fibonacci number for sequence: ${fibonacciSequenceNumber}`
-    // )
+    console.log(
+      `${indent}calculating new Fibonacci number for sequence: ${fibonacciSequenceNumber}`
+    )
     const newFibonacciNumber =
       getFibonacciNumberForSequenceNumber(
         fibonacciSequenceNumber - 1,
@@ -179,9 +177,9 @@ function nthFiboWithIndentedLogging(sequenceNumber) {
         fibonacciSequenceNumber - 2,
         indent + ' '.repeat(indentSize)
       )
-    // console.log(`${indent}adding new Fibonacci number: ${newFibonacciNumber} to the cache`)
+    console.log(`${indent}adding new Fibonacci number: ${newFibonacciNumber} to the cache`)
     sequenceToFibonacciNumberMapCache[fibonacciSequenceNumber] = newFibonacciNumber
-    // console.log(`${indent}returning the new Fibonacci number: ${newFibonacciNumber}`)
+    console.log(`${indent}returning the new Fibonacci number: ${newFibonacciNumber}`)
     return newFibonacciNumber
   }
 

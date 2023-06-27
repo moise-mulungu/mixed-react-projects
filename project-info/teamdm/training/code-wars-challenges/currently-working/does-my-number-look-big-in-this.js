@@ -117,18 +117,18 @@ i want to check if the number is narcissistic by checking if the sum of each dig
   //(done) DM: todoMM: this doesn't work, so put some console.logs inside the reduce callback so you can see where the problem is. Get the for loop solution to work first, then worry about converting it to reduce later.
   const stringToNumber = digitsOfValue.reduce((acc, cur) => {
     const curToThePowerOfDigitsOfValue = cur ** digitsOfValue
-    console.log({ acc, cur, curToThePowerOfDigitsOfValue })
+    // DM: curToThePowerOfDigitsOfValue logged NaN, which means an error in the calculation - so I added digitsOfValue to the console.log because digitsOfValue is used to calculate curToThePowerOfDigitsOfValue
+    console.log({ acc, cur, curToThePowerOfDigitsOfValue, digitsOfValue })
     acc += curToThePowerOfDigitsOfValue
-    //(done) DM: todoMM: what is missing here? look at the logged values, does it give you a clue?
+    //(done) DM: todoMM: what is missing here? look at the logged values, does it give you a clue? DM: todoMM: I don't think you answered the question, "what's missing here?"
   })
   console.log({ stringToNumber })
 
   //(done)DM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution.
   // MM: toDM: I tried with .split().reduce() but it does not work. Do you think this approach can fix the issue?.
-  //(done) DM: todoMM: I don't see your .split().reduce() code so I can't help you. make it work with the for loop below before converting to reduce; I assign their value to variables so you can see what's going on: valueToString.split(), and digitsOfValue.reduce() DM: ok
   let sumOfDigits = 0
 
-  // DM: todoMM: log ALL the values used in the for loop, then you can debug
+  // DM: todoMM: log ALL the values used in the for loop, then you can debug. Try it.
 
   // 1^3 + 5^3 + 3^3 = 1 + 125 + 27 === 153
 

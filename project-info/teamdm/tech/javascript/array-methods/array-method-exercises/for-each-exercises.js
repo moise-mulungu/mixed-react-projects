@@ -1,8 +1,7 @@
 // run this line and see what is logged
 const forEachResult = [1, 2, 3].forEach((number) => console.log('the current number is: ', number))
-console.log(forEachResult)
-/*(done) DM: todoMM: write the value of "result1" here - still todo, this part is important check MDN if you're not sure what [].foreach() returns (result1 is not defined here) DM: ???*/
-// undefined
+console.log(forEachResult) // undefined
+
 console.log(forEachResult) // undefined - always returns undefined
 // [].map().filter().reduce().forEach()
 // forEach is for side effects
