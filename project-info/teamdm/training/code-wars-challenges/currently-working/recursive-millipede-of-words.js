@@ -341,7 +341,7 @@ function millipedeOfWords(words) {
     words,
 
     previousLastLetter = '',
-    //(done) DM: todoMM: look at how I used logging in nthFiboWithIndentedLogging and use the same pattern here.
+    //(in progress) DM: todoMM: look at how I used logging in nthFiboWithIndentedLogging and use the same pattern here.
     // DM: todoMM: I don't see any indenting in the console.log output when I run this function. Run the function nthFiboWithIndentedLogging() in the other recursive exercise file, and see what the output looks like - it is indented so you can follow the pattern of recursive calls. Look carefully at how the indentation happens in nthFiboWithIndentedLogging() and use that same pattern here.: I could not figure out what to do here. I thought I followed the way you did in the other file.
     indent = ''
   ) {

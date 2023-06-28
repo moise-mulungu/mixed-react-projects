@@ -1,4 +1,4 @@
-// DM: todoMM: BTW, we gotta clean up all the exercises in currently-working/. Please put a comment at the top of each file, noting what the current status is, and what needs to happen next.
+//(status: in progress) DM: todoMM: BTW, we gotta clean up all the exercises in currently-working/. Please put a comment at the top of each file, noting what the current status is, and what needs to happen next.
 
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
@@ -77,7 +77,7 @@ Naming variables:
 * variable names should express exactly what the variable contains
 * see naming-conventions.md*/
   const splitString = word.toLowerCase().split('')
-  // DM: todoMM: You don't need to write any more solutions with 'let'. You know how to do all this stuff without 'let'. You're turning an array of letters into a boolean, so you can use Array.prototype.reduce() or Array.prototype.every(). If you want to do a first pass with 'let' then convert it to a non-'let' solution, that's OK, but leave me a comment explaining that you're "in progress" or where you got stuck when converting it to a non-'let' solution.
+  //(in progress) DM: todoMM: You don't need to write any more solutions with 'let'. You know how to do all this stuff without 'let'. You're turning an array of letters into a boolean, so you can use Array.prototype.reduce() or Array.prototype.every(). If you want to do a first pass with 'let' then convert it to a non-'let' solution, that's OK, but leave me a comment explaining that you're "in progress" or where you got stuck when converting it to a non-'let' solution.
   let isogram = true
   splitString.forEach((letter, index) => {
     if (splitString.indexOf(letter) !== index) {

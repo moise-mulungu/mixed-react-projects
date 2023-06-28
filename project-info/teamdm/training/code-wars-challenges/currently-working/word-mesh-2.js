@@ -1,3 +1,4 @@
+// (status: in progress)
 function wordMesh(arrayOfStrings) {
   // your code here
   const isArrayOfStrings =

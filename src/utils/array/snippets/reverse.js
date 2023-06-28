@@ -19,3 +19,11 @@
 
   reverseWithReduce('hello') // 'olleh'
 }
+
+{
+  function reverseWithStringReverse(string) {
+    return string.split('').reverse().join('')
+  }
+
+  reverseWithStringReverse('hello') // 'olleh'
+}

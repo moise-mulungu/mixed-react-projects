@@ -1,4 +1,4 @@
-// always copy this template into each new coding challenge file
+//(status: complete) always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 // note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 /*
@@ -146,6 +146,7 @@ console.log(narcissistic(487)) // false
 // DM: where did you get this test? It is incorrect. Be very careful because an incorrect test will eat up a lot of your time. It is best to not create new tests on your own. Just use the tests in the description and in the Sample Tests section in codewars(ok; some of tests i created by myself).
 
 /* CURRENT STATUS (update this section before each commit of the file); I don't understand what I have to do here! do you mean to say if the challenge is complete, in progress, or incomplete?
+// i can say the status of this code is complete
 
 DM: get the for loop solution working, then convert the for loop to a reduce after I approve the for loop version
 DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read). DM: todoMM: ok, read, but not done, right?
