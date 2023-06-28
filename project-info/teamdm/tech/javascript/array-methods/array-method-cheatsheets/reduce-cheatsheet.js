@@ -41,7 +41,7 @@
 // expected result: { a: 2, b: 2, c: 1 }
 /* 
 (done)DM: make a demo video explaining how this works.
-(progress)DM: todoMM: typically comments refer to the code BELOW the comment. You did well with the demo video for the code above. Do another one for more practice. The below code will require more of the vocabulary in the list below.
+(in progress)DM: todoMM: typically comments refer to the code BELOW the comment. You did well with the demo video for the code above. Do another one for more practice. The below code will require more of the vocabulary in the list below.
 Vocab:
 property access operator - "." as in array.reduce or obj.propertyName
 callback function AKA callback

@@ -1,5 +1,3 @@
-//(done) DM: todoMM: store in constants and import it from constants. DM: todoMM: I think this is not done, because the resumer URL is still here and not imported from constants.
-
 import { myResume } from '@/constants/portfolio/content/skills'
 
 export default function ResumeButton() {

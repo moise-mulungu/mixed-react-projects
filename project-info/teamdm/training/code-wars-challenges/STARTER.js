@@ -95,8 +95,7 @@ myFunction('', '') // expected result
 
 /* 16. Duncan moves the file out of this directory when it is complete */
 
-/* CURRENT STATUS (update this section before each commit of the file)
-
-
-
+/* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
+   Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me? 
 */
+/*  */

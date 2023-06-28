@@ -82,7 +82,9 @@ i want to check if the number is narcissistic by checking if the sum of the digi
 
   //DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371. DM: todoMM: I can't see any comments in the code here. Please add comments so that I can follow your intentions, and also update the status section at the bottom of this file.
 
-  const valueDigits = Math.floor(Math.log10(value)) + 1 // this code gets the number of digits in the value, but this one is not necessary as the value is converted to a string below. I'm leaving it here for reference.
+  // this code gets the number of digits in the value, but this one is not necessary as the value is converted to a string below. I'm leaving it here for reference.
+  // howtojs: get number of digits in an integer
+  const valueDigits = Math.floor(Math.log10(value)) + 1
 
   console.log('------------ calling narcissistic')
   console.log({ valueDigits, value })
@@ -91,7 +93,8 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   // console.log({ lastValueDigit })
 
   // let sumOfDigits = 0
-  const valueString = String(value) // this code converts the value to a string
+  // this code converts the value to a string
+  const valueString = String(value)
   console.log({ valueString })
   // for (let i = 0; i < valueString.length; i++) {
   //   const digit = Number(valueString[i])
@@ -102,14 +105,20 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   //   console.log({ sumOfDigits })
   // }
 
-  const splitValue = valueString.split('') // this code splits the string into an array of digits
+  // this code splits the string into an array of digits
+  const splitValue = valueString.split('')
+  // DM: good job on writing the comments! I'm going to add a few todoMMs regarding variable naming. It may be possible to not need any comments if the variable names provide enough information.
+  // DM: todoMM: please explain this line with a comment, then rename the variable so that it expresses clearly and simply the meaning of the comment.
   const valueDigitsNumber = splitValue.reduce((acc) => acc + 1, 0)
   console.log({ valueDigitsNumber })
 
-  const raisedPower = splitValue.map((digit) => digit ** valueDigitsNumber) // this code raises each digit to the power of the number of digits
+  // this code raises each digit to the power of the number of digits
+  // DM: todoMM: variable names of arrays should be in the plural. Can you use the word 'digit' from your comment above in order to write a more specific and clear variable name?
+  const raisedPower = splitValue.map((digit) => digit ** valueDigitsNumber)
   console.log({ raisedPower })
 
-  const sumOfDigits = raisedPower.reduce((acc, digit) => acc + digit, 0) // this code sums the digits with the reduce method
+  // this code sums the digits with the reduce method
+  const sumOfDigits = raisedPower.reduce((acc, digit) => acc + digit, 0)
   console.log({ sumOfDigits })
 
   // for (let i = 0; i < valueDigits; i++) {
@@ -123,9 +132,11 @@ i want to check if the number is narcissistic by checking if the sum of the digi
 
   console.log({ sumOfDigits })
 
+  // DM: good. Comments always go ABOVE the code that the comments refer to.
+  // finally here we check if the sum of the digits raised to the power of the number of digits is equal to the value
   if (sumOfDigits === value) {
     return true
-  } // finally here we check if the sum of the digits raised to the power of the number of digits is equal to the value
+  }
 
   /* 9. use the named parts to create a readable solution. */
 
@@ -147,6 +158,7 @@ console.log(narcissistic(487)) // false
 
 /* CURRENT STATUS (update this section before each commit of the file); I don't understand what I have to do here! do you mean to say if the challenge is complete, in progress, or incomplete?
 // i can say the status of this code is complete
+// DM: just think of what I need to know as code reviewer. What should I do? That will guide you.. 
 
 DM: get the for loop solution working, then convert the for loop to a reduce after I approve the for loop version
 DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read). DM: todoMM: ok, read, but not done, right?
