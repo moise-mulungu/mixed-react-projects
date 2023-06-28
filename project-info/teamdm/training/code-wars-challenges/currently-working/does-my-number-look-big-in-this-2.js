@@ -82,7 +82,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
 
   //DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371. DM: todoMM: I can't see any comments in the code here. Please add comments so that I can follow your intentions, and also update the status section at the bottom of this file.
 
-  const valueDigits = Math.floor(Math.log10(value)) + 1
+  const valueDigits = Math.floor(Math.log10(value)) + 1 // this code gets the number of digits in the value, but this one is not necessary as the value is converted to a string below. I'm leaving it here for reference.
 
   console.log('------------ calling narcissistic')
   console.log({ valueDigits, value })
@@ -91,7 +91,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   // console.log({ lastValueDigit })
 
   // let sumOfDigits = 0
-  const valueString = String(value)
+  const valueString = String(value) // this code converts the value to a string
   console.log({ valueString })
   // for (let i = 0; i < valueString.length; i++) {
   //   const digit = Number(valueString[i])
@@ -102,14 +102,14 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   //   console.log({ sumOfDigits })
   // }
 
-  const splitValue = valueString.split('')
+  const splitValue = valueString.split('') // this code splits the string into an array of digits
   const valueDigitsNumber = splitValue.reduce((acc) => acc + 1, 0)
   console.log({ valueDigitsNumber })
 
-  const raisedPower = splitValue.map((digit) => digit ** valueDigitsNumber)
+  const raisedPower = splitValue.map((digit) => digit ** valueDigitsNumber) // this code raises each digit to the power of the number of digits
   console.log({ raisedPower })
 
-  const sumOfDigits = raisedPower.reduce((acc, digit) => acc + digit, 0)
+  const sumOfDigits = raisedPower.reduce((acc, digit) => acc + digit, 0) // this code sums the digits with the reduce method
   console.log({ sumOfDigits })
 
   // for (let i = 0; i < valueDigits; i++) {
@@ -125,7 +125,8 @@ i want to check if the number is narcissistic by checking if the sum of the digi
 
   if (sumOfDigits === value) {
     return true
-  }
+  } // finally here we check if the sum of the digits raised to the power of the number of digits is equal to the value
+
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
@@ -137,14 +138,14 @@ i want to check if the number is narcissistic by checking if the sum of the digi
 }
 
 narcissistic(7) // true
-narcissistic(371) // true
+console.log(narcissistic(371)) // true
 narcissistic(153) // true
 narcissistic(122) // false
-narcissistic(487) // false
+console.log(narcissistic(487)) // false
 
 // DM: where did you get this test? It is incorrect. Be very careful because an incorrect test will eat up a lot of your time. It is best to not create new tests on your own. Just use the tests in the description and in the Sample Tests section in codewars(ok; some of tests i created by myself).
 
-/* CURRENT STATUS (update this section before each commit of the file)
+/* CURRENT STATUS (update this section before each commit of the file); I don't understand what I have to do here! do you mean to say if the challenge is complete, in progress, or incomplete?
 
 DM: get the for loop solution working, then convert the for loop to a reduce after I approve the for loop version
 DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read). DM: todoMM: ok, read, but not done, right?

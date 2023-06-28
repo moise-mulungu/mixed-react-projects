@@ -27,13 +27,14 @@ console.timeEnd('splitting')
 // filter the text to grab only letters and numbers and ignore other text content like parenthesis, question marks, white space etc.
 console.time('filtering')
 const lettersAndNumbers = allCharacters.filter((char) => {
-  // DM: todoMM: String.match() returns a boolean, so you can just return: DM: this is not done.
+  // (for review)DM: todoMM: String.match() returns a boolean, so you can just return: DM: this is not done.
   // return char.match(/[a-z0-9]/i)
-  // DM: todoMM: what about capital letters? Also not done.
-  if (char.match(/[a-z0-9]/i)) {
-    return true
-  }
-  return false
+  //(for review) DM: todoMM: what about capital letters? Also not done.
+  // if (char.match(/[a-z0-9]/i)) {
+  //   return true
+  // }
+  return char.match(/[a-Az-Z0-9]/i)
+  // at first, I did not understand what you meant by returning the result of the match, but now I see that you meant to return the
 })
 console.timeEnd('filtering')
 console.log(lettersAndNumbers)

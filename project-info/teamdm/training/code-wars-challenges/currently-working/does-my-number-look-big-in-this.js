@@ -120,7 +120,7 @@ i want to check if the number is narcissistic by checking if the sum of each dig
     // DM: curToThePowerOfDigitsOfValue logged NaN, which means an error in the calculation - so I added digitsOfValue to the console.log because digitsOfValue is used to calculate curToThePowerOfDigitsOfValue
     console.log({ acc, cur, curToThePowerOfDigitsOfValue, digitsOfValue })
     acc += curToThePowerOfDigitsOfValue
-    //(done) DM: todoMM: what is missing here? look at the logged values, does it give you a clue? DM: todoMM: I don't think you answered the question, "what's missing here?"
+    //(done) DM: todoMM: what is missing here? look at the logged values, does it give you a clue? DM: todoMM: I don't think you answered the question, "what's missing here?"; I said done because I think the same challenge was solved in the other file.
   })
   console.log({ stringToNumber })
 

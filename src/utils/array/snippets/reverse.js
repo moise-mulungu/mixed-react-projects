@@ -1,4 +1,4 @@
-// DM: todoMM: put this into ./snippets because you'll copy and paste it if you ever need it.
+//(done) DM: todoMM: put this into ./snippets because you'll copy and paste it if you ever need it.
 
 // howtojs: custom reverse array:: if you need to apply additional logic while you reverse an array. Normally just use Array.prototype.reverse
 

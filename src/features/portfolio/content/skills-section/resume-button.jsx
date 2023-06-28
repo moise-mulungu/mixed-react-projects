@@ -1,6 +1,6 @@
 //(done) DM: todoMM: store in constants and import it from constants. DM: todoMM: I think this is not done, because the resumer URL is still here and not imported from constants.
-const myResume =
-  'https://docs.google.com/document/d/14Jk9jCBOfWHd7OEEpFVq7Jjxd08DBk1JVyXch1i_MqM/edit'
+
+import { myResume } from '@/constants/portfolio/content/skills'
 
 export default function ResumeButton() {
   /* const handleClick = () => {
