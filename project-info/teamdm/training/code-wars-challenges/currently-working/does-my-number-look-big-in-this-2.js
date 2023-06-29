@@ -83,7 +83,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   //DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371. DM: todoMM: I can't see any comments in the code here. Please add comments so that I can follow your intentions, and also update the status section at the bottom of this file.
 
   // this code gets the number of digits in the value, but this one is not necessary as the value is converted to a string below. I'm leaving it here for reference.
-  // howtojs: get number of digits in an integer
+  // howtojs: get number of digits in an integer(cool!)
   const valueDigits = Math.floor(Math.log10(value)) + 1
 
   console.log('------------ calling narcissistic')
@@ -109,16 +109,19 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   const splitValue = valueString.split('')
   // DM: good job on writing the comments! I'm going to add a few todoMMs regarding variable naming. It may be possible to not need any comments if the variable names provide enough information.
   // DM: todoMM: please explain this line with a comment, then rename the variable so that it expresses clearly and simply the meaning of the comment.
+
+  // this code gets the number of digits in the value using reduce
   const valueDigitsNumber = splitValue.reduce((acc) => acc + 1, 0)
   console.log({ valueDigitsNumber })
 
   // this code raises each digit to the power of the number of digits
   // DM: todoMM: variable names of arrays should be in the plural. Can you use the word 'digit' from your comment above in order to write a more specific and clear variable name?
-  const raisedPower = splitValue.map((digit) => digit ** valueDigitsNumber)
-  console.log({ raisedPower })
+  const digits = splitValue.map((digit) => digit ** valueDigitsNumber)
+  // const raisedPower = splitValue.map((digit) => digit ** valueDigitsNumber)
+  console.log({ digits })
 
   // this code sums the digits with the reduce method
-  const sumOfDigits = raisedPower.reduce((acc, digit) => acc + digit, 0)
+  const sumOfDigits = digits.reduce((acc, digit) => acc + digit, 0)
   console.log({ sumOfDigits })
 
   // for (let i = 0; i < valueDigits; i++) {

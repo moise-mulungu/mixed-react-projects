@@ -29,19 +29,21 @@
 // good!
 /* howtojs: array: object:: turn array into: object; initialize with empty object as the initial value */
 // turn array into: object
-;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
-  if (acc[cur]) {
-    acc[cur]++
-  } else {
-    acc[cur] = 1
-  }
-  return acc
-}, {})
+;['a', 'b', 'c', 'a', 'b']
+  .reduce((acc, cur) => {
+    if (acc[cur]) {
+      acc[cur]++
+    } else {
+      acc[cur] = 1
+    }
+    return acc
+  }, {})
 
-// expected result: { a: 2, b: 2, c: 1 }
-/* 
+  [
+    // expected result: { a: 2, b: 2, c: 1 }
+    /* 
 (done)DM: make a demo video explaining how this works.
-(in progress)DM: todoMM: typically comments refer to the code BELOW the comment. You did well with the demo video for the code above. Do another one for more practice. The below code will require more of the vocabulary in the list below.
+(done)DM: todoMM: typically comments refer to the code BELOW the comment. You did well with the demo video for the code above. Do another one for more practice. The below code will require more of the vocabulary in the list below.
 Vocab:
 property access operator - "." as in array.reduce or obj.propertyName
 callback function AKA callback
@@ -56,30 +58,32 @@ current value - cur
 computed property access operator - "[]" as in acc[cur]
 
 */
-// howtojs: array: reduce:: turn array into: complex object; group by property
-;['a', 'b', 'c', 'a', 'b'].reduce(
-  (acc, cur, idx) => {
-    acc[cur].count++
-    acc[cur].indexes.push(idx)
-    // console.log({ acc, cur, idx })
-    console.log({ cur, idx })
-    return acc
-  },
-  {
-    a: {
-      count: 0,
-      indexes: [],
+    // howtojs: array: reduce:: turn array into: complex object; group by property
+    // the link to the demo: https://www.youtube.com/watch?v=2sRHiskWLqo
+    ('a', 'b', 'c', 'a', 'b')
+  ].reduce(
+    (acc, cur, idx) => {
+      acc[cur].count++
+      acc[cur].indexes.push(idx)
+      // console.log({ acc, cur, idx })
+      console.log({ cur, idx })
+      return acc
     },
-    b: {
-      count: 0,
-      indexes: [],
-    },
-    c: {
-      count: 0,
-      indexes: [],
-    },
-  }
-)
+    {
+      a: {
+        count: 0,
+        indexes: [],
+      },
+      b: {
+        count: 0,
+        indexes: [],
+      },
+      c: {
+        count: 0,
+        indexes: [],
+      },
+    }
+  )
 /*
 result:
 {

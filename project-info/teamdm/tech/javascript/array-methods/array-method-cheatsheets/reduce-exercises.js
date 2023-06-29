@@ -45,13 +45,16 @@
 }
 
 // count the occurrences of the letters in the array
-;['a', 'b', 'b', 'a', 'b', 'm', 'n'].reduce(
-  (acc, cur) => {
-    acc[cur] = acc[cur] ? acc[cur] + 1 : 1
+{
+  ;['a', 'b', 'b', 'a', 'b', 'm', 'n'].reduce((acc, cur) => {
+    if (acc[cur]) {
+      acc[cur] = acc[cur] + 1
+    } else {
+      acc[cur] = 1
+    }
     return acc
-  },
-  { a: 0 } // don't change this initial value of the accumulator
-) //expected result: { a: 2, b: 3, m: 1, n: 1 }
+  }, {})
+} //expected result: { a: 2, b: 3, m: 1, n: 1 }
 
 {
   ;[

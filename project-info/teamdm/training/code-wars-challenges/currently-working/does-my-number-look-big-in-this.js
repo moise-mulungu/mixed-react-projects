@@ -1,4 +1,4 @@
-//(status incomplete) always copy this template into each new coding challenge file
+//(status complete, but with no reduce approach) always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 // note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 /*
@@ -111,41 +111,36 @@ i want to check if the number is narcissistic by checking if the sum of each dig
   // MM: toDM: the value is converted to a string like this '153'
   console.log({ valueToString })
 
-  // const digitsOfValue = valueToString.length
-  const digitsOfValue = valueToString.split('')
+  const digitsOfValue = valueToString.length
   console.log({ digitsOfValue })
   //(done) DM: todoMM: this doesn't work, so put some console.logs inside the reduce callback so you can see where the problem is. Get the for loop solution to work first, then worry about converting it to reduce later.
-  const stringToNumber = digitsOfValue.reduce((acc, cur) => {
-    const curToThePowerOfDigitsOfValue = cur ** digitsOfValue
-    // DM: curToThePowerOfDigitsOfValue logged NaN, which means an error in the calculation - so I added digitsOfValue to the console.log because digitsOfValue is used to calculate curToThePowerOfDigitsOfValue
-    console.log({ acc, cur, curToThePowerOfDigitsOfValue, digitsOfValue })
-    acc += curToThePowerOfDigitsOfValue
-    //(done) DM: todoMM: what is missing here? look at the logged values, does it give you a clue? DM: todoMM: I don't think you answered the question, "what's missing here?"; MM: I said done because I think the same challenge was solved in the other file. DM: IC, however be sure to address specifically each todoMM because the overall goal is to learn, not just to solve the challenge. In this file there is different code, different things to learn, and I want the code in each file to work before we move it outside this directory. DM: todoMM: So, get this code working and see if you answer the original question at the beginning of this line.
-  })
-  console.log({ stringToNumber })
 
-  //(done)DM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution.
-  // MM: toDM: I tried with .split().reduce() but it does not work. Do you think this approach can fix the issue?.
+  // DM: curToThePowerOfDigitsOfValue logged NaN, which means an error in the calculation - so I added digitsOfValue to the console.log because digitsOfValue is used to calculate curToThePowerOfDigitsOfValue
+  //(done) DM: todoMM: what is missing here? look at the logged values, does it give you a clue? DM: todoMM: I don't think you answered the question, "what's missing here?"; MM: I said done because I think the same challenge was solved in the other file. DM: IC, however be sure to address specifically each todoMM because the overall goal is to learn, not just to solve the challenge. In this file there is different code, different things to learn, and I want the code in each file to work before we move it outside this directory. DM: todoMM: So, get this code working and see if you answer the original question at the beginning of this line.
   let sumOfDigits = 0
+
+  for (let i = 0; i < digitsOfValue; i++) {
+    sumOfDigits += valueToString[i] ** digitsOfValue
+  }
+
+  //(done)DM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution; I can't resolve this with reduce
+  // MM: toDM: I tried with .split().reduce() but it does not work. Do you think this approach can fix the issue?.
 
   // DM: todoMM: log ALL the values used in the for loop, then you can debug. Try it.
 
   // 1^3 + 5^3 + 3^3 = 1 + 125 + 27 === 153
-
-  for (let i = 0; i < stringToNumber; i++) {
-    sumOfDigits += valueToString[i] ** stringToNumber
-  }
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
-   always return a variable, or, use only variables in return statements
-   this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
-   */
+  always return a variable, or, use only variables in return statements
+  this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+  */
   // return false
-  return sumOfDigits === value
+
   // MM: toDM: some test cases are failing.
   //(done) DM: todoMM: why? which line is where things go wrong?? Put some console.logs and try to see if the console.log output shows you what went wrong.
   // this solution is not working for all the test cases with reduce, but it works with for loop. I am figuring out how to fix it.
+  return sumOfDigits === value
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result:
