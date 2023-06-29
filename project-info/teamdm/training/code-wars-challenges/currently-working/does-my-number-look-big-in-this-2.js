@@ -83,7 +83,8 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   //DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371. DM: todoMM: I can't see any comments in the code here. Please add comments so that I can follow your intentions, and also update the status section at the bottom of this file.
 
   // this code gets the number of digits in the value, but this one is not necessary as the value is converted to a string below. I'm leaving it here for reference.
-  // howtojs: get number of digits in an integer(cool!)
+  // DM: glad you like it. I'm removing your comment  in order to keep the howto clean. 
+  // howtojs: get number of digits in an integer
   const valueDigits = Math.floor(Math.log10(value)) + 1
 
   console.log('------------ calling narcissistic')
@@ -106,16 +107,18 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   // }
 
   // this code splits the string into an array of digits
+  // DM: todoMM: rename this to be plural (array var names are plural) and say more specifically what they elements of the array.
   const splitValue = valueString.split('')
   // DM: good job on writing the comments! I'm going to add a few todoMMs regarding variable naming. It may be possible to not need any comments if the variable names provide enough information.
-  // DM: todoMM: please explain this line with a comment, then rename the variable so that it expresses clearly and simply the meaning of the comment.
+  // DM: todoMM: please explain this line with a comment, then rename the variable so that it expresses clearly and simply the meaning of the comment. DM: good comment, now give the variable a better name (you can use the words in your comment)
 
-  // this code gets the number of digits in the value using reduce
+  // DM: I edited this a bit so you can see how to write more concise comments
+  // get the number of digits in the value
   const valueDigitsNumber = splitValue.reduce((acc) => acc + 1, 0)
   console.log({ valueDigitsNumber })
 
   // this code raises each digit to the power of the number of digits
-  // DM: todoMM: variable names of arrays should be in the plural. Can you use the word 'digit' from your comment above in order to write a more specific and clear variable name?
+  // DM: todoMM: variable names of arrays should be in the plural. Can you use the word 'digit' from your comment above in order to write a more specific and clear variable name? DM: make the variable name more specific. "digits" alone is inaccurate, because "digits" is not what they are because you have done something to the digits, which is raised them to the power, so include that in your var name.
   const digits = splitValue.map((digit) => digit ** valueDigitsNumber)
   // const raisedPower = splitValue.map((digit) => digit ** valueDigitsNumber)
   console.log({ digits })

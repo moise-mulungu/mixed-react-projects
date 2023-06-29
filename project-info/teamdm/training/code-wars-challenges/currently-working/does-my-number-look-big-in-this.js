@@ -123,7 +123,8 @@ i want to check if the number is narcissistic by checking if the sum of each dig
     sumOfDigits += valueToString[i] ** digitsOfValue
   }
 
-  //(done)DM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution; I can't resolve this with reduce
+  //(done) DM: definitely convert this to a reduce, you can write code with reduce just as fast as you can do let/for loop. Hint: String(number).split().reduce(). This hint technique may be new to you, but in the future if you run into a situation where you need to use let or `const emptyArray = []`, stop and figure out how to do it without let or empty array. This is just as important as getting the solution; MM: I can't resolve this with reduce. DM: OK, let's walk through this tomorrow on Zoom.
+
   // MM: toDM: I tried with .split().reduce() but it does not work. Do you think this approach can fix the issue?.
 
   // DM: todoMM: log ALL the values used in the for loop, then you can debug. Try it.

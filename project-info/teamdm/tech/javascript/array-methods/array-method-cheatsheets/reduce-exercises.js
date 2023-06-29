@@ -45,16 +45,24 @@
 }
 
 // count the occurrences of the letters in the array
-{
-  ;['a', 'b', 'b', 'a', 'b', 'm', 'n'].reduce((acc, cur) => {
-    if (acc[cur]) {
-      acc[cur] = acc[cur] + 1
-    } else {
-      acc[cur] = 1
-    }
+// DM: I think prettier removed the {} because they are not needed since there is no top-level variable created.
+;['a', 'b', 'b', 'a', 'b', 'm', 'n'].reduce(
+  (acc, cur) => {
+    acc[cur] = acc[cur] ? acc[cur] + 1 : 1
     return acc
-  }, {})
-} //expected result: { a: 2, b: 3, m: 1, n: 1 }
+  },
+  { a: 0 } // don't change this initial value of the accumulator
+) //expected result: { a: 2, b: 3, m: 1, n: 1 }
+// DM: I reverted that because the initial acc was { a: 0 } intentionally to force you to use a specific logic in the solution. 
+// DM: Your correction is better way to code, so I'll copy it here:
+// ;['a', 'b', 'b', 'a', 'b', 'm', 'n'].reduce((acc, cur) => {
+//   if (acc[cur]) {
+//     acc[cur] = acc[cur] + 1
+//   } else {
+//     acc[cur] = 1
+//   }
+//   return acc
+// }, {})
 
 {
   ;[
