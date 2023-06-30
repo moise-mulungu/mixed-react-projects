@@ -29,18 +29,17 @@
 // good!
 /* howtojs: array: object:: turn array into: object; initialize with empty object as the initial value */
 // turn array into: object
-;['a', 'b', 'c', 'a', 'b']
-  .reduce((acc, cur) => {
-    if (acc[cur]) {
-      acc[cur]++
-    } else {
-      acc[cur] = 1
-    }
-    return acc
-  }, {})
-  [
-    // expected result: { a: 2, b: 2, c: 1 }
-    /* 
+;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
+  if (acc[cur]) {
+    acc[cur]++
+  } else {
+    acc[cur] = 1
+  }
+  return acc
+}, {})
+
+// expected result: { a: 2, b: 2, c: 1 }
+/* 
 (done)DM: make a demo video explaining how this works.
 Vocab:
 * property access operator - "." as in array.reduce or obj.propertyName
@@ -64,9 +63,9 @@ Vocab:
 * computed property access operator - "[]" as in acc[cur]
 
 */
-    // howtojs: array: reduce:: turn array into: complex object; group by property
-    // the link to the demo: https://www.youtube.com/watch?v=2sRHiskWLqo
-    /* 
+// howtojs: array: reduce:: turn array into: complex object; group by property
+// the link to the demo: https://www.youtube.com/watch?v=2sRHiskWLqo
+/* 
 DM: good job. I think making videos is good practice in speaking about code and also let's me know any gaps to fill in your knowledge.
 A few things I noticed while listening:
 * you said "required to use reduce, not an array method" - can you tell me another array method that works better than reduce? :) It was 'let' and a for loop that you were not allowed to use. 
@@ -77,21 +76,21 @@ A few things I noticed while listening:
 DM: todoMM: It will be good to record the video again. But, this time, before you record, write down what you will say here below. Tomorrow I will edit it, which you will learn from seeing the diffs. Then, after I have edited it, record another video. Write what you will say like this, using bullet points.
 
 Introduction
-* make a point
-* another point
+* 
+* 
 The problem
-* point
-* point
+* 
+* 
 The solution
-* point
-  * sub-point (ok to indent as needed)
-* point
+* 
+  * 
+* 
 Wrap up
-* ...
+* 
 
 */
 
-    /*
+/*
 Explanation of the code:
 * the reduce() function is called on the array
 * the reduce() function takes 2 arguments: a callback function and an initial value
@@ -102,31 +101,31 @@ Explanation of the code:
 * the reduce() function returns the accumulator
 * the reduce() function iterates the array, calling the callback function once for each element of the array
 */
-    // here is the link to the demo: https://youtu.be/2V0gJPwmVAI
-    ('a', 'b', 'c', 'a', 'b')
-  ].reduce(
-    (acc, cur, idx) => {
-      acc[cur].count++
-      acc[cur].indexes.push(idx)
-      // console.log({ acc, cur, idx })
-      console.log({ cur, idx })
-      return acc
+// here is the link to the demo: https://youtu.be/2V0gJPwmVAI
+// comment
+;['a', 'b', 'c', 'a', 'b'].reduce(
+  (acc, cur, idx) => {
+    acc[cur].count++
+    acc[cur].indexes.push(idx)
+    // console.log({ acc, cur, idx })
+    console.log({ cur, idx })
+    return acc
+  },
+  {
+    a: {
+      count: 0,
+      indexes: [],
     },
-    {
-      a: {
-        count: 0,
-        indexes: [],
-      },
-      b: {
-        count: 0,
-        indexes: [],
-      },
-      c: {
-        count: 0,
-        indexes: [],
-      },
-    }
-  )
+    b: {
+      count: 0,
+      indexes: [],
+    },
+    c: {
+      count: 0,
+      indexes: [],
+    },
+  }
+)
 /*
 result:
 {
@@ -135,13 +134,22 @@ result:
   c: { count: 1, indexes: [ 2 ] }
 },
 */
+
+// MM: this answers the question what other array method you can use besides reduce DM: this isn't an array method, it's a for loop
+// DM: todoMM: make js vocab entry describing what are the array methods and properties: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array just give a few examples of each
+// another js vocab entry "Method" is a function that is a property of an object
 {
   function checkOccurence(array, element) {
-    let count = 0
+    // never use 'let' because this forces you to use and learn Array methods
+    let count = 0 // efficiency may require let
     for (let i = 0; i < array.length; i++) {
       if (array[i] === element) {
         count++
       }
+      // DM: todoMM: programming vocab entry: "side-effect"
+      // side-effects: Array.forEach() is for side-effects
+      console.log()
+      // change the title of the web page - manip DOM
     }
     return count
   }

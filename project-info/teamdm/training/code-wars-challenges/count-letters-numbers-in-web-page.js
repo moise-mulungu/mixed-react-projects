@@ -33,7 +33,10 @@ const lettersAndNumbers = allCharacters.filter((char) => {
   // if (char.match(/[a-z0-9]/i)) {
   //   return true
   // }
-  return char.match(/[a-zA-Z0-9]/i)
+  const isAlphaNumeric = char.match(/[a-zA-Z0-9]/i)
+  console.log({ isAlphaNumeric })
+
+  return isAlphaNumeric
   // at first, I did not understand what you meant by returning the result of the match, but now I see that you meant to return the
   // DM: yes, glad you figured it out, it was a little unclear.
   //(done) DM: todoMM: best to always run the code in order to test your code edits. This will help you find typos and errors. When I run you code I see:

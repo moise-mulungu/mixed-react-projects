@@ -1,9 +1,9 @@
-// MM: I didn't know that console.table() existed and could be used to display multidimensional arrays.
+// howtojs:: log/display multidimensional arrays
 const activities = [
   ['Work', 9],
   ['Eat', 1],
   ['Commute', 2],
-  ['Play Game', 1],
+  ['Play Game', { a: 'b' }],
   ['Sleep', 7],
 ]
 
@@ -17,7 +17,6 @@ console.table(activities)
 // │    3    │'Play Game'│   1   │
 // │    4    │ 'Sleep'  │   7    │
 // └─────────┴──────────┴────────┘
-
 
 const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 console.table(numbers)

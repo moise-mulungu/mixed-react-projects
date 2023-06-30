@@ -1,16 +1,23 @@
 // from https://www.freecodecamp.org/news/how-to-reverse-a-string-in-javascript-in-3-different-ways-75e4763c68cb/
-{
-  function reverseString(str) {
+
+function reverseString(string) {
+  const indentSize = 3 // 3 spaces
+  // the function 'reverse' is initialized
+  function reverse(str, indent = '') {
     if (str === '') {
-      return ''
+      console.log(indent, { str })
+      return '' // empty string
     } else {
-      console.log(str.substr(1))
-      console.log(str.charAt(0))
-      return reverseString(str.substr(1)) + str.charAt(0)
+      const firstLetter = str.charAt(0)
+      const theRest = str.substr(1)
+      console.log(indent, { str, firstLetter, theRest })
+      const newIndent = indent + '-'.repeat(indentSize) // String.repeat()
+      const valueToReturn = reverse(theRest, newIndent) + firstLetter // concatenates ...
+      console.log(indent, { valueToReturn })
+      return valueToReturn
     }
   }
 
-  reverseString('hello') // 'olleh'
+  return reverse(string)
 }
-
-// DM: interesting. Let's keep this in this directory until we're done with recursion.
+reverseString('hello') // 'olleh'

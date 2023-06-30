@@ -152,9 +152,11 @@ function nthFiboWithIndentedLogging(sequenceNumber) {
   const sequenceToFibonacciNumberMapCache = {
     1: 0,
     2: 1,
+    // what will be calculated:
     // 3: 2,
     // 4: 3,
     // 5: 3,
+    // stop when reach the sequenceNumber provided
   }
   // recursive:
   function getFibonacciNumberForSequenceNumber(fibonacciSequenceNumber, indent = '') {
@@ -186,6 +188,8 @@ function nthFiboWithIndentedLogging(sequenceNumber) {
   return getFibonacciNumberForSequenceNumber(sequenceNumber)
 }
 nthFiboWithIndentedLogging(5) // 3
+
+// 0, 1, 1, 2, 3, 5, 8, ...
 
 /* 15. Copy here which of the other coders' solutions do you like the best? (Be sure in codewars.com to sort others' solutions by "Best Practices".)
        Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
