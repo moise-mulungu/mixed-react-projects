@@ -83,7 +83,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   //DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371. DM: todoMM: I can't see any comments in the code here. Please add comments so that I can follow your intentions, and also update the status section at the bottom of this file.
 
   // this code gets the number of digits in the value, but this one is not necessary as the value is converted to a string below. I'm leaving it here for reference.
-  // DM: glad you like it. I'm removing your comment  in order to keep the howto clean. 
+  // DM: glad you like it. I'm removing your comment  in order to keep the howto clean.
   // howtojs: get number of digits in an integer
   const valueDigits = Math.floor(Math.log10(value)) + 1
 
@@ -107,24 +107,24 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   // }
 
   // this code splits the string into an array of digits
-  // DM: todoMM: rename this to be plural (array var names are plural) and say more specifically what they elements of the array.
-  const splitValue = valueString.split('')
+  //(done) DM: todoMM: rename this to be plural (array var names are plural) and say more specifically what they elements of the array.
+  const splitValues = valueString.split('')
   // DM: good job on writing the comments! I'm going to add a few todoMMs regarding variable naming. It may be possible to not need any comments if the variable names provide enough information.
   // DM: todoMM: please explain this line with a comment, then rename the variable so that it expresses clearly and simply the meaning of the comment. DM: good comment, now give the variable a better name (you can use the words in your comment)
 
   // DM: I edited this a bit so you can see how to write more concise comments
   // get the number of digits in the value
-  const valueDigitsNumber = splitValue.reduce((acc) => acc + 1, 0)
+  const valueDigitsNumber = splitValues.reduce((acc) => acc + 1, 0)
   console.log({ valueDigitsNumber })
 
   // this code raises each digit to the power of the number of digits
   // DM: todoMM: variable names of arrays should be in the plural. Can you use the word 'digit' from your comment above in order to write a more specific and clear variable name? DM: make the variable name more specific. "digits" alone is inaccurate, because "digits" is not what they are because you have done something to the digits, which is raised them to the power, so include that in your var name.
-  const digits = splitValue.map((digit) => digit ** valueDigitsNumber)
-  // const raisedPower = splitValue.map((digit) => digit ** valueDigitsNumber)
-  console.log({ digits })
+  const digitsRaisedToPower = splitValues.map((digit) => digit ** valueDigitsNumber)
+  // const raisedPower = splitValues.map((digit) => digit ** valueDigitsNumber)
+  console.log({ digitsRaisedToPower })
 
-  // this code sums the digits with the reduce method
-  const sumOfDigits = digits.reduce((acc, digit) => acc + digit, 0)
+  // this code sums the digitsRaisedToPower with the reduce method
+  const sumOfDigits = digitsRaisedToPower.reduce((acc, digit) => acc + digit, 0)
   console.log({ sumOfDigits })
 
   // for (let i = 0; i < valueDigits; i++) {
@@ -139,7 +139,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   console.log({ sumOfDigits })
 
   // DM: good. Comments always go ABOVE the code that the comments refer to.
-  // finally here we check if the sum of the digits raised to the power of the number of digits is equal to the value
+  // finally here we check if the sum of the digitsRaisedToPower raised to the power of the number of digits is equal to the value
   if (sumOfDigits === value) {
     return true
   }

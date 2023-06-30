@@ -29,16 +29,18 @@
 // good!
 /* howtojs: array: object:: turn array into: object; initialize with empty object as the initial value */
 // turn array into: object
-;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
-  if (acc[cur]) {
-    acc[cur]++
-  } else {
-    acc[cur] = 1
-  }
-  return acc
-}, {})
-// expected result: { a: 2, b: 2, c: 1 }
-/* 
+;['a', 'b', 'c', 'a', 'b']
+  .reduce((acc, cur) => {
+    if (acc[cur]) {
+      acc[cur]++
+    } else {
+      acc[cur] = 1
+    }
+    return acc
+  }, {})
+  [
+    // expected result: { a: 2, b: 2, c: 1 }
+    /* 
 (done)DM: make a demo video explaining how this works.
 Vocab:
 * property access operator - "." as in array.reduce or obj.propertyName
@@ -62,9 +64,9 @@ Vocab:
 * computed property access operator - "[]" as in acc[cur]
 
 */
-// howtojs: array: reduce:: turn array into: complex object; group by property
-// the link to the demo: https://www.youtube.com/watch?v=2sRHiskWLqo
-/* 
+    // howtojs: array: reduce:: turn array into: complex object; group by property
+    // the link to the demo: https://www.youtube.com/watch?v=2sRHiskWLqo
+    /* 
 DM: good job. I think making videos is good practice in speaking about code and also let's me know any gaps to fill in your knowledge.
 A few things I noticed while listening:
 * you said "required to use reduce, not an array method" - can you tell me another array method that works better than reduce? :) It was 'let' and a for loop that you were not allowed to use. 
@@ -88,29 +90,43 @@ Wrap up
 * ...
 
 */
-;['a', 'b', 'c', 'a', 'b'].reduce(
-  (acc, cur, idx) => {
-    acc[cur].count++
-    acc[cur].indexes.push(idx)
-    // console.log({ acc, cur, idx })
-    console.log({ cur, idx })
-    return acc
-  },
-  {
-    a: {
-      count: 0,
-      indexes: [],
+
+    /*
+Explanation of the code:
+* the reduce() function is called on the array
+* the reduce() function takes 2 arguments: a callback function and an initial value
+* the callback function takes 3 arguments: the accumulator, the current value, and the index
+* the accumulator is an object that is initialized as the 2nd argument to reduce()
+* the current value is the current element of the array
+* the callback function returns the accumulator
+* the reduce() function returns the accumulator
+* the reduce() function iterates the array, calling the callback function once for each element of the array
+*/
+    // here is the link to the demo: https://youtu.be/2V0gJPwmVAI
+    ('a', 'b', 'c', 'a', 'b')
+  ].reduce(
+    (acc, cur, idx) => {
+      acc[cur].count++
+      acc[cur].indexes.push(idx)
+      // console.log({ acc, cur, idx })
+      console.log({ cur, idx })
+      return acc
     },
-    b: {
-      count: 0,
-      indexes: [],
-    },
-    c: {
-      count: 0,
-      indexes: [],
-    },
-  }
-)
+    {
+      a: {
+        count: 0,
+        indexes: [],
+      },
+      b: {
+        count: 0,
+        indexes: [],
+      },
+      c: {
+        count: 0,
+        indexes: [],
+      },
+    }
+  )
 /*
 result:
 {
@@ -119,3 +135,16 @@ result:
   c: { count: 1, indexes: [ 2 ] }
 },
 */
+{
+  function checkOccurence(array, element) {
+    let count = 0
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === element) {
+        count++
+      }
+    }
+    return count
+  }
+
+  checkOccurence(['a', 'b', 'c', 'a', 'b'], 'a') // 2
+}

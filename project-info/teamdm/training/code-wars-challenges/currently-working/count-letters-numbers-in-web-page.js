@@ -39,7 +39,7 @@ const lettersAndNumbers = allCharacters.filter((char) => {
   //(done) DM: todoMM: best to always run the code in order to test your code edits. This will help you find typos and errors. When I run you code I see:
   /*   return char.match(/[a-Az-Z0-9]/i); I see this error: but i don't run this code because it's freezing my computer
                     ^^^^^^^^^^^^^^ 
-// DM: OK, let me know if you run into this freezing issue again. JS errors shouldn't freeze your machine. In the future, if something like freezing happens, you can write something is the "status" section if each challenge file. Always communicate what is going on. This is the biggest lesson I learned in my last job. 
+// DM: OK, let me know if you run into this freezing issue again. JS errors shouldn't freeze your machine. In the future, if something like freezing happens, you can write something is the "status" section if each challenge file. Always communicate what is going on. This is the biggest lesson I learned in my last job; now it's working perfectly with return char.match(/[a-zA-Z0-9]/i)
 
 SyntaxError: Invalid regular expression: /[a-Az-Z0-9]/: Range out of order in character class
  */
