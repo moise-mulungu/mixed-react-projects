@@ -285,3 +285,15 @@ const fax = '' ?? 'some string value' // ''
 ## escape sequences
 
 Escape sequences are typically used to specify actions such as carriage returns and tab movements on terminals and printers. They are also used to provide literal representations of non printing characters and characters that usually have special meanings, such as the double quotation mark (")
+
+## array method
+
+Array methods are functions built-in to JavaScript that we can apply to the arrays — Each method has a unique function that performs a change or calculation to the array and saves us from writing common functions from scratch.
+
+- e.g: `array.map(), array.startsWith()`
+
+## array property
+
+Properties are the values associated with a JavaScript object. A JavaScript object is a collection of unordered properties. Properties can usually be changed, added, and deleted, but some are read only.
+
+- e.g: `array.length`

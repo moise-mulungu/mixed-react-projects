@@ -76,18 +76,27 @@ A few things I noticed while listening:
 DM: todoMM: It will be good to record the video again. But, this time, before you record, write down what you will say here below. Tomorrow I will edit it, which you will learn from seeing the diffs. Then, after I have edited it, record another video. Write what you will say like this, using bullet points.
 
 Introduction
-* 
-* 
+* I have an array of strings, it can also be an array of numbers, objects or arrays as well.
+* I'll have to use the array method reduce to solve this problem.
 The problem
-* 
-* 
+* The problem is to count the number of times each element appears or repeated in the array
+* What approach should I take to solve this problem if my array has as many as over 100 elements?
+
 The solution
-* 
-  * 
-* 
+* the array method reduce will have two parameters; a callback function and an initial value
+  * a callback function will have three parameters; the accumulator, the current value and the index
+  * the accumulator is an object that is initialized as the second argument to reduce
+    * I will initialize the accumulator as an empty object
+  * the current value is the current element of the array
+* I will return the accumulator as the return value of the callback function
+* the logic will be like this:
+  * if the accumulator has the current value as a property, then increment the value of the property by 1
+  * if the accumulator does not have the current value as a property, then add the current value as a property and initialize it to 1
+  * return the accumulator
+ 
 Wrap up
 * 
-
+I am given an array of strings where I have to count the number of times each element appears or repeated in the array. I will have to use the array method reduce to solve this problem. if the accumulator has the current value as a property, then increment the value of the property by 1. If the accumulator does not have the current value as a property, then add the current value as a property and initialize it to 1. Return the accumulator.
 */
 
 /*
@@ -136,22 +145,30 @@ result:
 */
 
 // MM: this answers the question what other array method you can use besides reduce DM: this isn't an array method, it's a for loop
-// DM: todoMM: make js vocab entry describing what are the array methods and properties: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array just give a few examples of each
+//(done) DM: todoMM: make js vocab entry describing what are the array methods and properties: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array just give a few examples of each
 // another js vocab entry "Method" is a function that is a property of an object
 {
-  function checkOccurence(array, element) {
+  function checkOccurence(array) {
     // never use 'let' because this forces you to use and learn Array methods
-    let count = 0 // efficiency may require let
-    for (let i = 0; i < array.length; i++) {
-      if (array[i] === element) {
-        count++
+    //let count = 0 // efficiency may require let
+    const count = {}
+
+    const itemsOccurence = array.map((item) => {
+      if (count[item]) {
+        count[item] += 1
+      } else {
+        count[item] = 1
       }
-      // DM: todoMM: programming vocab entry: "side-effect"
-      // side-effects: Array.forEach() is for side-effects
-      console.log()
-      // change the title of the web page - manip DOM
-    }
+    })
+
+    console.log({ itemsOccurence })
+
     return count
+
+    // DM: todoMM: programming vocab entry: "side-effect"; I already made a react vocab entry for this in react-vocabulary.md
+    // side-effects: Array.forEach() is for side-effects
+    // console.log()
+    // change the title of the web page - manip DOM
   }
 
   checkOccurence(['a', 'b', 'c', 'a', 'b'], 'a') // 2
