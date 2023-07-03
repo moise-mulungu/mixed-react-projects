@@ -78,6 +78,7 @@ A few things I noticed while listening:
 * "initialized to 1" not "equalized to 1"
 DM: todoMM: It will be good to record the video again. But, this time, before you record, write down what you will say here below. Tomorrow I will edit it, which you will learn from seeing the diffs. Then, after I have edited it, record another video. Write what you will say like this, using bullet points.
 
+// DM: todoMM: good job. update the logic to discuss the BELOW solution, not the above one. Afterwards, I'll review one more time, and you can make a new video.
 
 Introduction
 * I have an array of strings
@@ -87,19 +88,19 @@ The task
 * What approach should I take to solve this problem if my array has as many as over 100 elements?
 
 The solution
-* the array method reduce will have two parameters; a callback function and an initial value
-  * a callback function will have three parameters; the accumulator, the current value and the index
+* the array method reduce will have two parameters: a callback function and an initial value
+  * the callback function will have three parameters: the accumulator, the current value and the index
   * the accumulator is an object that is initialized as the second argument to reduce
     * I will initialize the accumulator as an empty object
-  * the current value is the current element of the array
-* I will return the accumulator as the return value of the callback function
+  * the current value is the current element of the array upon each iteration of the array
+* I will return a clone of the accumulator plus new values as the return value of the callback function
 * the logic will be like this:
   * if the accumulator has the current value as a property, then increment the value of the property by 1
   * if the accumulator does not have the current value as a property, then add the current value as a property and initialize it to 1
   * return the accumulator
  
 Wrap up
-* 
+* DM: make this very short, it's not a summary, but rather just a goodbye: something like: thank you for watching, leave any questions in the comments. This is good verbiage, though, so you may be able to put some of this in the logic section.
 I am given an array of strings where I have to count the number of times each element appears or repeated in the array. I will have to use the array method reduce to solve this problem. if the accumulator has the current value as a property, then increment the value of the property by 1. If the accumulator does not have the current value as a property, then add the current value as a property and initialize it to 1. Return the accumulator.
 */
 
