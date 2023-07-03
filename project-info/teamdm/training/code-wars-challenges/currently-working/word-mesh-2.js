@@ -6,6 +6,7 @@ function wordMesh(arrayOfStrings) {
   if (!isArrayOfStrings) throw new TypeError('wordMesh: input must be an array of strings')
 
   for (let i = 0; i < arrayOfStrings.length - 1; i++) {
+    // no longer allowed under the "no mutations" rule
     const meshedLetters = []
     console.log(arrayOfStrings[i])
     for (let j = 0; j < arrayOfStrings[i].length; j++) {

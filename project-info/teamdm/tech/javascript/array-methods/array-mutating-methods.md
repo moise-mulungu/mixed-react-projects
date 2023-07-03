@@ -7,4 +7,13 @@
 * reverse
 * sort
 * splice
-<!-- Great! -->
+
+note: mutating array methods are used:
+```js
+myArray.sort()
+myArray.forEach() 
+```
+whereas non-mutating array methods, the result is assigned to a new variable
+```js
+const myNewArray = myArray.map((elem) => elem**2)
+```

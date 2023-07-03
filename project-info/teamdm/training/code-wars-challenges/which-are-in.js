@@ -95,6 +95,7 @@ return a sorted array of strings that consists of the strings in the first array
 
   // howtojs: incorrect: not idiomatic JS:: avoid initializing an empty array and pushing to it. There are almost always array methods to do the job better
   // (as seen in the other file solution to this challenge). I allowed here an empty array with pushing so that you could practice loops and using the continue statement.
+  // DM: no longer allowed under the "no mutations" rule
   const substringsOfArray2 = []
 
   loop1: for (let i = 0; i < array1.length; i++) {
@@ -161,6 +162,7 @@ function sortSubstringsOfWords(array1, array2) {
   if (!isArrayOfStrings(array1) || !isArrayOfStrings(array2))
     throw new Error('both arguments must be arrays of strings')
 
+    // DM: no longer allowed under the "no mutations" rule
   const substringsOfArray2 = []
 
   loop1: for (let i = 0; i < array1.length; i++) {

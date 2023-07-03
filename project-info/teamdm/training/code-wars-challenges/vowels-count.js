@@ -88,6 +88,7 @@ i want to count the number of vowels in the string
   // const sumOfAllVowels = []
   // const splitString = stringOfLetters.split('').map((element) => {
   //   if (vowels.includes(element)) { // this logic is good
+  //     DM: notice how using reduce means you don't need push (a mutating array method)
   //     sumOfAllVowels.push(element)
   //   }
   // })

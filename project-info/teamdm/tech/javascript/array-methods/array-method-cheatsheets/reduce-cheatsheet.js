@@ -63,9 +63,12 @@ Vocab:
 * computed property access operator - "[]" as in acc[cur]
 
 */
+
 // howtojs: array: reduce:: turn array into: complex object; group by property
 // the link to the demo: https://www.youtube.com/watch?v=2sRHiskWLqo
-/* 
+
+/*
+
 DM: good job. I think making videos is good practice in speaking about code and also let's me know any gaps to fill in your knowledge.
 A few things I noticed while listening:
 * you said "required to use reduce, not an array method" - can you tell me another array method that works better than reduce? :) It was 'let' and a for loop that you were not allowed to use. 
@@ -75,10 +78,11 @@ A few things I noticed while listening:
 * "initialized to 1" not "equalized to 1"
 DM: todoMM: It will be good to record the video again. But, this time, before you record, write down what you will say here below. Tomorrow I will edit it, which you will learn from seeing the diffs. Then, after I have edited it, record another video. Write what you will say like this, using bullet points.
 
+
 Introduction
-* I have an array of strings, it can also be an array of numbers, objects or arrays as well.
-* I'll have to use the array method reduce to solve this problem.
-The problem
+* I have an array of strings
+* I'll have to use the array method reduce to solve this problem. DM: why?
+The task
 * The problem is to count the number of times each element appears or repeated in the array
 * What approach should I take to solve this problem if my array has as many as over 100 elements?
 
@@ -114,11 +118,22 @@ Explanation of the code:
 // comment
 ;['a', 'b', 'c', 'a', 'b'].reduce(
   (acc, cur, idx) => {
-    acc[cur].count++
-    acc[cur].indexes.push(idx)
-    // console.log({ acc, cur, idx })
     console.log({ cur, idx })
-    return acc
+    // acc[cur].count++
+    // acc[cur].indexes.push(idx)
+    // // console.log({ acc, cur, idx })
+    // return acc
+    const newCount = acc[cur].count++
+    const newIndexes = [...acc[cur].indexes, idx]
+    log({ newCount, newIndexes })
+
+    return {
+      ...acc, //
+      [cur]: {
+        count: newCount,
+        indexes: newIndexes,
+      },
+    }
   },
   {
     a: {
@@ -143,33 +158,11 @@ result:
   c: { count: 1, indexes: [ 2 ] }
 },
 */
+// same, without mutating acc:
+// howtojs: array: reduce:: without mutating the accumulator
+;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
+  const value = acc[cur] ? acc[cur] + 1 : 1
+  return { ...acc, [cur]: value }
+}, {})
 
-// MM: this answers the question what other array method you can use besides reduce DM: this isn't an array method, it's a for loop
-//(done) DM: todoMM: make js vocab entry describing what are the array methods and properties: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array just give a few examples of each
-// another js vocab entry "Method" is a function that is a property of an object
-{
-  function checkOccurence(array) {
-    // never use 'let' because this forces you to use and learn Array methods
-    //let count = 0 // efficiency may require let
-    const count = {}
-
-    const itemsOccurence = array.map((item) => {
-      if (count[item]) {
-        count[item] += 1
-      } else {
-        count[item] = 1
-      }
-    })
-
-    console.log({ itemsOccurence })
-
-    return count
-
-    // DM: todoMM: programming vocab entry: "side-effect"; I already made a react vocab entry for this in react-vocabulary.md
-    // side-effects: Array.forEach() is for side-effects
-    // console.log()
-    // change the title of the web page - manip DOM
-  }
-
-  checkOccurence(['a', 'b', 'c', 'a', 'b'], 'a') // 2
-}
+// DM: todoMM: another js vocab entry: "method" is a function that is a property of an object

@@ -291,8 +291,9 @@ Escape sequences are typically used to specify actions such as carriage returns 
 Array methods are functions built-in to JavaScript that we can apply to the arrays — Each method has a unique function that performs a change or calculation to the array and saves us from writing common functions from scratch.
 
 - e.g: `array.map(), array.startsWith()`
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-## array property
+## object property
 
 Properties are the values associated with a JavaScript object. A JavaScript object is a collection of unordered properties. Properties can usually be changed, added, and deleted, but some are read only.
 

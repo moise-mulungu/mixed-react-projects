@@ -17,10 +17,15 @@ export default function range(start, end, step = 1) {
     start = 0
   }
 
-  for (let i = start; i < end; i += step) {
-    output.push(i)
-  }
+  // DM: converted to reduce without push
+  // howtojs: array: create an empty array of a specific length so that you can perform some task that number of times: Array.from({length: 3}) // [undefined,undefined,undefined]
+  return Array.from({ length: end }).reduce((acc, _, idx) => {
+    return [...acc, idx]
+  }, [])
 
-  return output
+  // for (let i = start; i < end; i += step) {
+  //   output.push(i)
+  // }
+  // return output
 }
 // console.log(range(8)) // [0, 1, 2, 3, 4, 5, 6, 7]

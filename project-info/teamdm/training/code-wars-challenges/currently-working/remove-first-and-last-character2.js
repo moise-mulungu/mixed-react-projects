@@ -96,7 +96,7 @@ I want to remove the first and last strings from the array and then join the rem
   const characterSequencesWithoutFirstAndLast = characterSequences.slice(1, -1)
   console.log({ characterSequencesWithoutFirstAndLast })
   const empty = characterSequencesWithoutFirstAndLast.length === 0
-  if (empty) return null;
+  if (empty) return null
 
   /* 9. use the named parts to create a readable solution. */
 
@@ -109,7 +109,7 @@ this makes it easy to debug by logging  // console.log('i am easy to debug by lo
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
 array('') // null
-array('1')// null
+array('1') // null
 array('A1,B2') // null
 array('1,2,3') // '2'
 array('1,2,3,4') // '2 3'
@@ -130,3 +130,7 @@ array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
 /* 15. Duncan moves the file out of this directory when it is complete */
+;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
+  const value = acc[cur] ? acc[cur] + 1 : 1
+  return { ...acc, [cur]: value }
+}, {})
