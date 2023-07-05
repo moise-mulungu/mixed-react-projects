@@ -39,7 +39,7 @@ console.log({ lowest })
 // Example: [1,2,3].indexOf(7) => -1
 const numbers2 = [5, 1, 2, 5, 1, 2]
 // DM: I edited this so that the accumulator is not mutated
-// howtojs: array: reduce:: you have an array and you want an array of a different length
+// howtojs: array: reduce:: you have an array and you want an array of a different length (ok)
 const uniqNumbers = numbers2.reduce((uniqNumbers, cur) => {
   // DM: cool! so much more readable
   // DM: some DEVs like to name the accumulator with the name of the same variable that will hold the final result. I think it makes the code more readable. Personally, I don't do it much, but if I did, I'd use acc as the variable name while developing and testing, then rename it during the "make it prettier" stage.

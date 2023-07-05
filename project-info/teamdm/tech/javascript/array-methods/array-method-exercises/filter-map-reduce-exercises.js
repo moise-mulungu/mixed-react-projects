@@ -13,7 +13,7 @@ const people = [
   { name: 'Dacian', grade: 71 },
   { name: 'Esther', grade: 40 },
 ]
-// howtojs: array: map:: change each item in an array
+// howtojs: array: map:: change each item in an array(ok)
 const screamedNames = people.map((person) => {
   return person.name.toUpperCase()
 })

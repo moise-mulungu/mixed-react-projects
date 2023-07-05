@@ -82,7 +82,7 @@ DM: todoMM: It will be good to record the video again. But, this time, before yo
 
 Introduction
 * I have an array of strings
-* I'll have to use the array method reduce to solve this problem. DM: why?
+* I'll have to use the array method reduce to solve this problem. DM: why? because the array method reduce is the only array method that can turn an array into an object, a string, a number, or another array.
 The task
 * The problem is to count the number of times each element appears or repeated in the array
 * What approach should I take to solve this problem if my array has as many as over 100 elements?
@@ -101,7 +101,7 @@ The solution
  
 Wrap up
 * DM: make this very short, it's not a summary, but rather just a goodbye: something like: thank you for watching, leave any questions in the comments. This is good verbiage, though, so you may be able to put some of this in the logic section.
-I am given an array of strings where I have to count the number of times each element appears or repeated in the array. I will have to use the array method reduce to solve this problem. if the accumulator has the current value as a property, then increment the value of the property by 1. If the accumulator does not have the current value as a property, then add the current value as a property and initialize it to 1. Return the accumulator.
+This is the end of the video. Thank you for watching. Leave any questions in the comments.
 */
 
 /*
@@ -117,39 +117,43 @@ Explanation of the code:
 */
 // here is the link to the demo: https://youtu.be/2V0gJPwmVAI
 // comment
-;['a', 'b', 'c', 'a', 'b'].reduce(
+;[
+  'a',
+  'b',
+  'c',
+  'a',
+  'b' /*'b', 'd'*/ /*if i add the other two items, the result is a bit different than expected = { a: 2, b: 1, c: 1, d: 1 }*/,
+  ,
+].reduce(
   (acc, cur, idx) => {
     console.log({ cur, idx })
     // acc[cur].count++
     // acc[cur].indexes.push(idx)
     // // console.log({ acc, cur, idx })
     // return acc
-    const newCount = acc[cur].count++
-    const newIndexes = [...acc[cur].indexes, idx]
-    log({ newCount, newIndexes })
-
-    return {
-      ...acc, //
-      [cur]: {
-        count: newCount,
-        indexes: newIndexes,
-      },
+    const accumulatorOfCurrentValue = acc[cur] + 1
+    const noAccumulatorOfCurrentValue = acc[cur] === 1
+    if (noAccumulatorOfCurrentValue) {
+      return { ...acc, [cur]: accumulatorOfCurrentValue }
+    } else {
+      return { ...acc, [cur]: 1 }
     }
   },
   {
-    a: {
-      count: 0,
-      indexes: [],
-    },
-    b: {
-      count: 0,
-      indexes: [],
-    },
-    c: {
-      count: 0,
-      indexes: [],
-    },
+    // a: {
+    //   count: 0,
+    //   indexes: [],
+    // },
+    // b: {
+    //   count: 0,
+    //   indexes: [],
+    // },
+    // c: {
+    //   count: 0,
+    //   indexes: [],
+    // },
   }
+  // MM: reduce is not a joke!, it is still hard to understand
 )
 /*
 result:
@@ -166,4 +170,4 @@ result:
   return { ...acc, [cur]: value }
 }, {})
 
-// DM: todoMM: another js vocab entry: "method" is a function that is a property of an object
+// DM: todoMM: another js vocab entry: "method" is a function that is a property of an object; this was already mentioned in the js vocab section, but is it worth adding it again?
