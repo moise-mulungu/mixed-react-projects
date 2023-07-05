@@ -7,7 +7,8 @@
 ;[[1], [2]].reduce((acc, cur) => {
   // MM: this code [([1], [2])] returns [2], but i think it should be an array with nested arrays like this [[1], [2]] to get the desired result. DM: correct. I removed the () from the array - those must have been injected at some point by prettier, because I didn't intend them.
   console.log({ acc, cur })
-  return acc.concat(cur)
+  // howtojs: array:: concat to combine/merge two arrays
+  return acc.concat(cur) // concat returns a new array
 }, []) // [1, 2]
 ;['a', 'b'].reduce((acc, cur) => {
   // the same here - this code [('a', 'b')] returns ['b'], but i think it should be an array of strings without parentheses like this ['a', 'b'] to get the desired result. DM: correct
@@ -15,8 +16,8 @@
 }, '') // 'ab'
 
 /* howtojs: array: reduce: sum:: the elements in the array */
-;[1, 2].reduce((acc, cur) => {
-  console.log({ acc, cur })
+;[1, 2].reduce((acc, cur, idx, src) => {
+  console.log({ acc, cur, idx, src })
   return acc + cur
 }, 0) // 3
 
@@ -26,19 +27,6 @@
   return acc + 1
 }, 0) // 2
 
-// good!
-/* howtojs: array: object:: turn array into: object; initialize with empty object as the initial value */
-// turn array into: object
-;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
-  if (acc[cur]) {
-    acc[cur]++
-  } else {
-    acc[cur] = 1
-  }
-  return acc
-}, {})
-
-// expected result: { a: 2, b: 2, c: 1 }
 /* 
 (done)DM: make a demo video explaining how this works.
 Vocab:
@@ -73,16 +61,16 @@ DM: good job. I think making videos is good practice in speaking about code and 
 A few things I noticed while listening:
 * you said "required to use reduce, not an array method" - can you tell me another array method that works better than reduce? :) It was 'let' and a for loop that you were not allowed to use. 
 * nice typing while talking
-	* recommend you type your code BEFORE explaining the logic. The logic you explained WHILE you were typing was most understandable. Logic you discussed BEFORE was really hard to follow. It is always better to have something you can point at with your mouse cursor - this reduces the number of words you have to say to explain. 
+	* recommend you type your code BEFORE explaining the logic. The logic you explained WHILE you were typing was most understandable. Logic you discussed BEFORE was really hard to follow. It is always better to have something you can point at with your mouse cursor - this reduces the number of words you have to say to explain.
 * don't mention Copilot or turn it off
 * "initialized to 1" not "equalized to 1"
 DM: todoMM: It will be good to record the video again. But, this time, before you record, write down what you will say here below. Tomorrow I will edit it, which you will learn from seeing the diffs. Then, after I have edited it, record another video. Write what you will say like this, using bullet points.
 
-// DM: todoMM: good job. update the logic to discuss the BELOW solution, not the above one. Afterwards, I'll review one more time, and you can make a new video.
+// DM: todoMM: update where you feel necessary. Afterwards, I'll review one more time, and you can make a new video.
 
 Introduction
 * I have an array of strings
-* I'll have to use the array method reduce to solve this problem. DM: why? because the array method reduce is the only array method that can turn an array into an object, a string, a number, or another array.
+* I'll have to use the array method reduce to solve this problem because the array method "reduce" is the only array method that can turn an array into an object, a string, a number, or another array of a different length.
 The task
 * The problem is to count the number of times each element appears or repeated in the array
 * What approach should I take to solve this problem if my array has as many as over 100 elements?
@@ -90,70 +78,103 @@ The task
 The solution
 * the array method reduce will have two parameters: a callback function and an initial value
   * the callback function will have three parameters: the accumulator, the current value and the index
-  * the accumulator is an object that is initialized as the second argument to reduce
-    * I will initialize the accumulator as an empty object
-  * the current value is the current element of the array upon each iteration of the array
-* I will return a clone of the accumulator plus new values as the return value of the callback function
+  * the initial value is the accumulator which is an object that is initialized as an empty object
+* the current value is the current element of the array upon each iteration of the array
+* I will return a clone of the accumulator adding new values as the return value of the callback function
 * the logic will be like this:
   * if the accumulator has the current value as a property, then increment the value of the property by 1
-  * if the accumulator does not have the current value as a property, then add the current value as a property and initialize it to 1
+  * if the accumulator does not have the current value as a property, then set the current value as a property and initialize it to 1
   * return the accumulator
- 
+
 Wrap up
 * DM: make this very short, it's not a summary, but rather just a goodbye: something like: thank you for watching, leave any questions in the comments. This is good verbiage, though, so you may be able to put some of this in the logic section.
 This is the end of the video. Thank you for watching. Leave any questions in the comments.
 */
 
-/*
-Explanation of the code:
-* the reduce() function is called on the array
-* the reduce() function takes 2 arguments: a callback function and an initial value
-* the callback function takes 3 arguments: the accumulator, the current value, and the index
-* the accumulator is an object that is initialized as the 2nd argument to reduce()
-* the current value is the current element of the array
-* the callback function returns the accumulator
-* the reduce() function returns the accumulator
-* the reduce() function iterates the array, calling the callback function once for each element of the array
+/* 
+DM: I liked this summary, so preserving it. Maybe put it in the youtube more info section:
+summary: I am given an array of strings where I have to count the number of times each element appears in the array. I will use the array method "reduce" to solve this problem. For each element in the array, if the accumulator has the current value as a property, then increment the value of the property by 1. If the accumulator does not have the current value as a property, then add the current value as a property and initialize it to 1. Return the accumulator.
+
 */
-// here is the link to the demo: https://youtu.be/2V0gJPwmVAI
-// comment
-;[
-  'a',
-  'b',
-  'c',
-  'a',
-  'b' /*'b', 'd'*/ /*if i add the other two items, the result is a bit different than expected = { a: 2, b: 1, c: 1, d: 1 }*/,
-  ,
-].reduce(
+// old link to the demo: https://youtu.be/2V0gJPwmVAI
+/* howtojs: array: object:: turn array into: object; initialize with empty object as the initial value */
+// turn array into: object
+;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
+  if (acc[cur]) {
+    acc[cur]++
+  } else {
+    acc[cur] = 1
+  }
+  return acc
+}, {})
+// expected result: { a: 2, b: 2, c: 1 }
+
+/* same thing, non-mutating syntax */
+;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
+  console.log({ acc, cur })
+  // if (acc[cur]) acc[cur]++
+  // else acc[cur] = 1
+  return {
+    ...acc,
+    [cur]: acc[cur] ? acc[cur] + 1 : 1,
+  }
+}, {})
+
+// --------------------------------
+
+// simple version of the next example
+;['a', 'b', 'c', 'a', 'b'].reduce(
+  (acc, cur) => {
+    const newCount = acc[cur] + 1
+    console.log({ cur, newCount, acc })
+    return {
+      ...acc,
+      [cur]: newCount,
+    }
+  },
+  { a: 0, b: 0, c: 0 }
+)
+
+// howtojs: reduce with deeply nested objects; no mutations syntax
+;['a', 'b', 'c', 'a', 'b', 'd'].reduce(
   (acc, cur, idx) => {
     console.log({ cur, idx })
     // acc[cur].count++
     // acc[cur].indexes.push(idx)
     // // console.log({ acc, cur, idx })
     // return acc
-    const accumulatorOfCurrentValue = acc[cur] + 1
-    const noAccumulatorOfCurrentValue = acc[cur] === 1
-    if (noAccumulatorOfCurrentValue) {
-      return { ...acc, [cur]: accumulatorOfCurrentValue }
-    } else {
-      return { ...acc, [cur]: 1 }
+    const newCount = acc[cur].count + 1
+    const newIndexes = [...acc[cur].indexes, idx]
+    console.log({ newCount, newIndexes })
+    console.log({ acc })
+    return {
+      // shallow clone: { ...acc }
+      ...acc,
+      [cur]: {
+        // { a: 1, a: 2} // { a: 2 }
+        count: newCount,
+        indexes: newIndexes,
+      },
     }
   },
   {
-    // a: {
-    //   count: 0,
-    //   indexes: [],
-    // },
-    // b: {
-    //   count: 0,
-    //   indexes: [],
-    // },
-    // c: {
-    //   count: 0,
-    //   indexes: [],
-    // },
+    a: {
+      count: 0,
+      indexes: [],
+    },
+    b: {
+      count: 0,
+      indexes: [],
+    },
+    c: {
+      count: 0,
+      indexes: [],
+    },
+    d: {
+      count: 0,
+      indexes: [],
+    },
   }
-  // MM: reduce is not a joke!, it is still hard to understand
 )
 /*
 result:
@@ -163,11 +184,9 @@ result:
   c: { count: 1, indexes: [ 2 ] }
 },
 */
-// same, without mutating acc:
+
 // howtojs: array: reduce:: without mutating the accumulator
 ;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
   const value = acc[cur] ? acc[cur] + 1 : 1
   return { ...acc, [cur]: value }
 }, {})
-
-// DM: todoMM: another js vocab entry: "method" is a function that is a property of an object; this was already mentioned in the js vocab section, but is it worth adding it again?
