@@ -310,6 +310,11 @@ a function that is a property of an object
 - ex: built-in methods: String methods, Number methods
 - ex: custom: we can create an object with properties that are functions:
   ```js
-  const myObj = { myMethod: () => {} }
+  const myObj = { 
+    myMethod: () => {}, 
+    // howtojs: object: method: call another method that is defined in the same object; only works with regular functions (not arrow functions)
+    anotherMethod: function () {}, // arrow methods cannot be called directly in the same object
+    methodThatCallsAMethod: () => this.anotherMethod() 
+  };
   myOby.myMethod()
   ```

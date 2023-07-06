@@ -27,10 +27,12 @@ console.log(fs)
 console.log(fs.readdirSync('./'))
 
 // you can run a file with node in the terminal by typing node and then the file name(e.g. node server.js)
-
+// node project-info/teamdm/tech/nodejs/server.js
 // import a module
 const math = require('./math')
-console.log(add(1, 2))
-console.log(subtract(1, 2))
-console.log(multiply(1, 2))
-console.log(divide(1, 2))
+console.log(math.add(1, 2))
+console.log(math.subtract(1, 2))
+console.log(math.multiply(1, 2))
+console.log(math.divide(1, 2))
+
+// nice!
