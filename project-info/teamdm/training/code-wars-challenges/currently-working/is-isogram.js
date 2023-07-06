@@ -119,8 +119,7 @@ console.log(isIsogram('moOse')) // false
 
 /* 16. Duncan moves the file out of this directory when it is complete */
 
-/* CURRENT STATUS (update this section before each commit of the file)
-
+/* CURRENT STATUS (update this section before each commit of the file); MM: the code works, and all tests pass.
 // DM: todoMM: hey Moise, I spend way too much time figuring out where you are at in these files. It would save time if you update the status each time you commit, so that I can more quickly know what to do and how to help.
 
 */

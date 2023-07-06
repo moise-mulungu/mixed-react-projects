@@ -379,6 +379,7 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 /* 15. Duncan moves the file out of this directory when it is complete */
 
 /* CURRENT STATUS (update this section before each commit of the file)
+MM: the solution works for some test cases but not for others. it's only working for without re-ordering case, but not for with re-ordering case.
 
 DM: solution works. when the logging shows the recursion it will be complete
 

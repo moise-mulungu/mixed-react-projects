@@ -165,7 +165,7 @@ wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to me
 // DM: I'm adding this new item to the STARTER.js to make it faster for me to know what is the current status of the challenge.
 
 /* CURRENT STATUS (update this section before each commit of the file)
-
+MM: the code is not working yet. I am stuck at the part where I need to match the last and the first characters of the words in the array. 
 DM: todoMM: what is the current status? Get it to work first, then do the conversion to array.reduce afterwards.
 
 */

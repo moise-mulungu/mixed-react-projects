@@ -178,6 +178,10 @@ myObject.myPropertyNameInAVariable // error! myPropertyNameInAVariable is undefi
 
 JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code.
 
+## Assignment (=)
+
+The assignment ( = ) operator is used to assign a value to a variable. The assignment operation evaluates to the assigned value. Chaining the assignment operator is possible in order to assign a single value to multiple variables
+
 ## mutation
 
 - A value is said to be mutable if it can be changed, altered
@@ -302,10 +306,10 @@ Properties are the values associated with a JavaScript object. A JavaScript obje
 ## method
 
 a function that is a property of an object
-* ex: built-in methods: String methods, Number methods
-* ex: custom: we can create an object with properties that are functions:
+
+- ex: built-in methods: String methods, Number methods
+- ex: custom: we can create an object with properties that are functions:
   ```js
-  const myObj = { myMethod: () => {} }; myOby.myMethod();
+  const myObj = { myMethod: () => {} }
+  myOby.myMethod()
   ```
-
-

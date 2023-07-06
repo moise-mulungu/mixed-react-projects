@@ -138,3 +138,8 @@ createPhoneNumber([5, 1, 9, 5, 5, 5, 4, 4, 6, 8]) // "(519) 555-4468"
 createPhoneNumber([3, 4, 5, 5, 0, 1, 2, 5, 2, 7]) // "(345) 501-2527"
 
 /* 15. Duncan moves the file out of this directory when it is complete */
+
+/* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
+   Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
+   MM: the code works, all tests pass.
+*/

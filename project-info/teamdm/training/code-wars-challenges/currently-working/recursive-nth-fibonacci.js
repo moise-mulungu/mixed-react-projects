@@ -232,6 +232,7 @@ function nthFibo(n) {
 }
 
 /* CURRENT STATUS (update this section before each commit of the file)
+MM: it works, even though I'll have to pratice recursion more to understand it.
 
 DM: a few todoMMs to complete. Code is working. After the todoMMs are complete, Duncan will remove from this directory
 

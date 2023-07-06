@@ -130,7 +130,13 @@ array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
 /* 15. Duncan moves the file out of this directory when it is complete */
-;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
+
+/* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
+   Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
+   MM: it works and pass all the tests.
+*/
+
+['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
   const value = acc[cur] ? acc[cur] + 1 : 1
   return { ...acc, [cur]: value }
 }, {})

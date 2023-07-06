@@ -47,7 +47,7 @@ wordMesh(['age', 'estate', 'esteem', 'teem']) // => 'aged'
 wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g']) // => 'eternal'
 
 /* CURRENT STATUS (update this section before each commit of the file)
-
+MM: it works and pass all the tests.
 (done)DM: todoMM: what is the current status? I see your console.logs, but without more info from you, I have no idea what I should do in this file. (note:I see that the expected results of the tests are still incorrect. DM: todoMM: this is not done. I was asking what is the status, as in: Does the function work correctly? Next steps? What should I do in this file?
 
 */

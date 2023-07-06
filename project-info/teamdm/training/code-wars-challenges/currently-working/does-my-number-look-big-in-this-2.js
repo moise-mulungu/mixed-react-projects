@@ -157,11 +157,13 @@ console.log(narcissistic(487)) // false
 
 // DM: where did you get this test? It is incorrect. Be very careful because an incorrect test will eat up a lot of your time. It is best to not create new tests on your own. Just use the tests in the description and in the Sample Tests section in codewars(ok; some of tests i created by myself).
 
-/* CURRENT STATUS (update this section before each commit of the file); I don't understand what I have to do here! do you mean to say if the challenge is complete, in progress, or incomplete?
-// i can say the status of this code is complete
-// DM: just think of what I need to know as code reviewer. What should I do? That will guide you.. 
 
-DM: get the for loop solution working, then convert the for loop to a reduce after I approve the for loop version
+/* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
+   Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
+   MM: the code works, and all tests pass.
+*/ 
+
+/*DM: get the for loop solution working, then convert the for loop to a reduce after I approve the for loop version
 DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read). DM: todoMM: ok, read, but not done, right?
 
 */
