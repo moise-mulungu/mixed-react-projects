@@ -380,6 +380,7 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 
 /* CURRENT STATUS (update this section before each commit of the file)
 MM: the solution works for some test cases but not for others. it's only working for without re-ordering case, but not for with re-ordering case.
+DM: todoMM: ok, good. I also need: what are the next steps and who should do the next steps? Check each status section of each file in this directory, making sure you list next steps and who should do them. 
 
 DM: solution works. when the logging shows the recursion it will be complete
 

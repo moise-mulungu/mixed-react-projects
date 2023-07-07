@@ -3,84 +3,60 @@ import nodemailer from 'nodemailer'
 import { myEmail } from '@/constants/portfolio/contact-form'
 import FormattedContactEmail from '@/server/features/portfolio/formatted-contact-email.jsx'
 
+// note on NextJS API routes: any console.logs will be in the terminal where NextJS is running, not in the browser
+
 /* 
-  testing: add values to the query string (instead of the POST body which is used by the contact form)
-  ex: http://localhost:3005/api/portfolio/contact?toEmail=&fromEmail=&firstName=
+  testing: use a URL for testing, with the key info in the query string
+  * add values to the query string (instead of the POST body which is used by the contact form)
+  * ex: http://localhost:3005/api/portfolio/contact?testWithEthereal=1toEmail=&fromEmail=&firstName=
 
 
 */
 
-const toEmail = defaultToEmail || myEmail
 
 export default async function handler(req, res) {
   const toEmail = req.query.toEmail || myEmail
   const {
     email: fromEmail = req.query.fromEmail,
-    firstName = req.query.query.firstName,
+    firstName = req.query.firstName,
     testWithEthereal = req.query.testWithEthereal,
   } = req.body || {}
 
   console.log({ reqBody: req.body, body, toEmail, fromEmail, firstName, testWithEthereal })
 
   // build the email body
-  const emailHtml = defaultHtml || render(<FormattedContactEmail {...body} />)
-
-  /* 
-
-
-  about SMTP: 
-  https://postmarkapp.com/guides/everything-you-need-to-know-about-smtp
-  https://postmarkapp.com/guides/everything-you-need-to-know-about-smtp#understanding-smtp-error-codes
-  
-  // SETUP the production EMAIL service: 
-  
-  Picking a provider: 
-  https://postmarkapp.com/blog/the-best-smtp-email-services-comparison-sheet
-  https://docs.google.com/spreadsheets/d/1x0rEwZfGlzY5EGKfYIC6lqA5rjf8XDqYYO559PLbAL4/edit#gid=0
-  Postmark: free 100 emails/month
-  Twilio SendGrid: free 100 emails/day https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail
-  MailChimp: free 1000 emails/month
-
-  // NEXT set up ... Do a quick search, "how to send email from my contact page" - be sure I understand what this "forwarding" service is about
-  Nodemailer is supported by https://forwardemail.net/en might as well use it, it's free
-  * option: send as if from GMail: https://forwardemail.net/en/guides/send-mail-as-gmail-custom-domain
-  * option: send as if from the site hosting service that provides your custom domain name: namecheap, godaddy, etc. (Vercel is listed ... Hmm, I didn't know Vercel offered domain names)
-  ... Make a server .js file for getting the test smtp stuff or getting the real one
-
-
-
-    SETUP the Ethereal (testing) EMAIL service:
-    * go to the Ethereal URL: ethereal.email
-    * create account
-    * "download as CSV" and view file as text, not via Excel
-    * create in the main repo directory a .env.local and copy to it
-      * the contents of the CSV download
-      * the contents of the "Nodemailer configuration" section in the page shown when you "create account"
-      * all that you copy into .env.local should be as comments, i.e., each line is preceded by "# " 
-    * add two (uncommented) lines
-      ETHEREAL_EMAIL_USERNAME=fill in value from the "Nodemailer configuration" section.
-      ETHEREAL_EMAIL_PASSWORD=fill in value from the "Nodemailer configuration" section.
-    * FUTURE NOTE: when you put your portfolio site into production at Vercel, you'll get a NEW ethereal.email account specially for production, then create the same "environment variables" in .env.production 
-      * note in .gitignore that all .env.* files will not be included in the github repository
-      * security: these must never be in any repo, because they are secret
-      * the "environment variables" in .env.production you'll enter manually in the Vercel website when you create your production site
-    * troubleshooting
-      * login and look at mailbox: https://ethereal.email/login
-
-
-
-    
-
-
-    
-    note on NextJS API routes:
-    * any console.logs will be in the terminal where NextJS is running, not in the browser
-
-  */
+  const emailHtml = testWithEthereal ? `<div>${firstName}</div>` : render(<FormattedContactEmail {...body} />)
 
   // create the email sending mechanism
 
-  // for testing: https://ethereal.email/
+  /* 
+  about SMTP: 
+  https://postmarkapp.com/guides/everything-you-need-to-know-about-smtp
+  https://postmarkapp.com/guides/everything-you-need-to-know-about-smtp#understanding-smtp-error-codes
+  */
+
+  /* 
+    SETUP the Ethereal (testing) EMAIL service:
+      * go to the Ethereal URL: https://ethereal.email
+      * create account
+      * "download as CSV" and view file as text, not via Excel
+      * create in the main repo directory a .env.local and copy to it
+        * the contents of the CSV download
+        * the contents of the "Nodemailer configuration" section in the page shown when you "create account"
+        * all that you copy into .env.local should be as comments, i.e., each line is preceded by "# " 
+      * add two (uncommented) lines
+        ETHEREAL_EMAIL_USERNAME=fill in value from the "Nodemailer configuration" section.
+        ETHEREAL_EMAIL_PASSWORD=fill in value from the "Nodemailer configuration" section.
+      * FUTURE NOTE: when you put your portfolio site into production at Vercel, if you want to test in production, get a NEW ethereal.email account specially for production, then create the same "environment variables" here in .env.production 
+        * note in .gitignore that all .env.* files will not be included in the github repository
+        * security: these must never be in any repo, because they are secret
+        * the "environment variables" in .env.production you'll enter manually in the Vercel website when you create your production site
+      * troubleshooting
+        * login and look at the messages in the mailbox: https://ethereal.email/login
+  */
+
+ // DM: next meeting I'll give you an intro to this file, then show you how to set up Ethereal testing. Then, you can set up the production email service (transporterDataDefault) using the notes in "send as if from GMail" below.
+
   const transporterDataEthereal = {
     host: 'smtp.ethereal.email',
     port: 587,
@@ -89,18 +65,33 @@ export default async function handler(req, res) {
       user: process.env.ETHEREAL_EMAIL_USERNAME, // in .env.*
       pass: process.env.ETHEREAL_EMAIL_PASSWORD, // in .env.*
     },
-  }
-  const DefaultTransporterData = {
-    host: 'smtp.ethereal.email',
+  },
+
+  /* 
+  
+  SETUP the EMAIL service: 
+  
+  Picking a provider: 
+  https://postmarkapp.com/blog/the-best-smtp-email-services-comparison-sheet
+  Nodemailer is supported by https://forwardemail.net/en might as well use it, it's free
+  * option: send as if from GMail: https://forwardemail.net/en/guides/send-mail-as-gmail-custom-domain
+  * option: send as if from the site hosting service that provides your custom domain name: namecheap, godaddy, etc. (Vercel is listed ... Hmm, I didn't know Vercel offered domain names)
+
+  Let's use this option for now:
+  * send as if from GMail: https://forwardemail.net/en/guides/send-mail-as-gmail-custom-domain
+
+  */
+  const transporterDataDefault = {
+    host: 'smtp.xxx.xxx',
     port: 587,
     secure: false,
     auth: {
       // user: 'bogus username to test the error response', // for testing the catch block
-      user: process.env.ETHEREAL_EMAIL_USERNAME, // in .env.*
-      pass: process.env.ETHEREAL_EMAIL_PASSWORD, // in .env.*
+      user: process.env.FORWARDEMAIL_EMAIL_USERNAME, // in .env.*
+      pass: process.env.FORWARDEMAIL_EMAIL_PASSWORD, // in .env.*
     },
   }
-  const transporterData = testWithEthereal ? transporterDataEthereal : DefaultTransporterData
+  const transporterData = testWithEthereal ? transporterDataEthereal : transporterDataDefault
 
   // the next three function calls were copied from: https://react.email/docs/integrations/nodemailer#3-convert-to-html-and-send-email
   // https://nodemailer.com/about/
