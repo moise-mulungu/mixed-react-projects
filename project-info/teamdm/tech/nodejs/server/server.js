@@ -27,9 +27,10 @@ console.log(fs)
 console.log(fs.readdirSync('./'))
 
 // you can run a file with node in the terminal by typing node and then the file name(e.g. node server.js)
-// node project-info/teamdm/tech/nodejs/server.js
+// node project-info/teamdm/tech/nodejs/server/server.js
+// MM: ???DM: I am getting something different when running  node project-info/teamdm/tech/nodejs/server/server.js on m terminal
 // import a module
-const math = require('./math')
+const math = require('../math')
 console.log(math.add(1, 2))
 console.log(math.subtract(1, 2))
 console.log(math.multiply(1, 2))

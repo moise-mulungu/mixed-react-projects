@@ -100,6 +100,7 @@ summary: I am given an array of strings where I have to count the number of time
 /* howtojs: array: object:: turn array into: object; initialize with empty object as the initial value */
 // turn array into: object
 ;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
+  console.log({ acc, cur })
   if (acc[cur]) {
     acc[cur]++
   } else {

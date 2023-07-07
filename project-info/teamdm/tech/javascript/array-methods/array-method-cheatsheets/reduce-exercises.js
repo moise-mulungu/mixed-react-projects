@@ -4,8 +4,8 @@
   // get the largest number in the array
   ;[1, 6, 4].reduce((acc, cur) => {
     // your code here
-    console.log('acc', acc)
-    console.log('cur', cur)
+    console.log('acc:', { acc })
+    console.log('cur', { cur })
     // if (acc < cur) {
     //   return cur
     // } else {
@@ -53,7 +53,7 @@
   },
   { a: 0 } // don't change this initial value of the accumulator
 ) //expected result: { a: 2, b: 3, m: 1, n: 1 }
-// DM: I reverted that because the initial acc was { a: 0 } intentionally to force you to use a specific logic in the solution. 
+// DM: I reverted that because the initial acc was { a: 0 } intentionally to force you to use a specific logic in the solution.
 // DM: Your correction is better way to code, so I'll copy it here:
 // ;['a', 'b', 'b', 'a', 'b', 'm', 'n'].reduce((acc, cur) => {
 //   if (acc[cur]) {
