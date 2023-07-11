@@ -336,51 +336,13 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-function millipedeOfWords(words) {
-  function recursiveSolution(
-    words,
-
-    previousLastLetter = '',
-    //(in progress) DM: todoMM: look at how I used logging in nthFiboWithIndentedLogging and use the same pattern here.
-    // DM: todoMM: I don't see any indenting in the console.log output when I run this function. Run the function nthFiboWithIndentedLogging() in the other recursive exercise file, and see what the output looks like - it is indented so you can follow the pattern of recursive calls. Look carefully at how the indentation happens in nthFiboWithIndentedLogging() and use that same pattern here. MM: I could not figure out what to do here. I thought I followed the way you did in the other file. DM: what's missing is increasing the size of the indent each time a deeper recursion is called. See nthFiboWithIndentedLogging for how to do that; MM: this seems to be time-consuming task, but i'll learn the recursive again.
-    indent = ''
-  ) {
-    if (words.length === 0) return true
-
-    return words.some((word, i) => {
-      const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
-      console.log(`${indent}word: ${wordCombinesWithPreviousWord}`)
-      const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
-      console.log(`${indent}allRemainingWords: ${allRemainingWords}`)
-      const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
-      // here is where it recurses, i.e., the "recurse" function calls itself
-      console.log(`${indent}lastLetterOfCurrentWord: ${lastLetterOfCurrentWord}`)
-      return (
-        wordCombinesWithPreviousWord &&
-        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord)
-      )
-    })
-  }
-
-  return recursiveSolution(words)
-}
-
-// without re-ordering
-millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
-millipedeOfWords(['endure', 'elite', 'excess']) // true
-
-// with re-ordering
-millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night']) // true
-millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night']) // true
-millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time']) // true
-millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president']) // false
-millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 
 /* 15. Duncan moves the file out of this directory when it is complete */
 
 /* CURRENT STATUS (update this section before each commit of the file)
-MM: the solution works for some test cases but not for others. it's only working for without re-ordering case, but not for with re-ordering case.
+MM: the solution works for all test cases, and I think the code is clean and readable. I need to understand the recursive code better.
 DM: todoMM: ok, good. I also need: what are the next steps and who should do the next steps? Check each status section of each file in this directory, making sure you list next steps and who should do them. 
+// MM: DM:  i think this challenge is repeated twice in the directory. i delete this one and kept the two previous ones. i will work on the other one.
 
 DM: solution works. when the logging shows the recursion it will be complete
 
