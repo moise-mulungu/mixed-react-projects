@@ -6,31 +6,41 @@ import FormattedContactEmail from '@/server/features/portfolio/formatted-contact
 // note on NextJS API routes: any console.logs will be in the terminal where NextJS is running, not in the browser
 
 /* 
-  testing: use a URL for testing, with the key info in the query string
+  testing URLs: use a URL for testing, with the key info in the query string
   * add values to the query string (instead of the POST body which is used by the contact form)
-  * ex: http://localhost:3005/api/portfolio/contact?testWithEthereal=1toEmail=&fromEmail=&firstName=
+  * ethereal: http://localhost:3005/api/portfolio/contact?testWithEthereal=true&fromEmail=dmckeeve9@gmail.com&firstName=testFirstName
+  * ex: http://localhost:3005/api/portfolio/contact?fromEmail=dmckeeve9@gmail.com&firstName=testFirstName
 
 
 */
 
-
 export default async function handler(req, res) {
   const toEmail = req.query.toEmail || myEmail
+  /*
+  const obj = undefined
+  const { myProperty } = obj // ReferenceError: obj is not defined
+  // defensive approach (cannot use "object destructuring assignment" on undefined or empty string)
+  const { myProperty } = obj || {} // myProperty is undefined
+  // give a default value to myProperty
+  const { myProperty = 'myDefaultValue' } = obj || {} // myProperty is undefined
+  */
   const {
     email: fromEmail = req.query.fromEmail,
     firstName = req.query.firstName,
     testWithEthereal = req.query.testWithEthereal,
   } = req.body || {}
-
-  console.log({ reqBody: req.body, body, toEmail, fromEmail, firstName, testWithEthereal })
+  console.log({ reqBody: req.body, toEmail, fromEmail, firstName, testWithEthereal })
 
   // build the email body
-  const emailHtml = testWithEthereal ? `<div>${firstName}</div>` : render(<FormattedContactEmail {...body} />)
+  const emailHtml = testWithEthereal
+    ? `<div>${firstName}</div>`
+    : render(<FormattedContactEmail firstName={firstName} email={email} />)
+  console.log({ emailHtml })
 
   // create the email sending mechanism
 
   /* 
-  about SMTP: 
+  about SMTP: email transport protocol
   https://postmarkapp.com/guides/everything-you-need-to-know-about-smtp
   https://postmarkapp.com/guides/everything-you-need-to-know-about-smtp#understanding-smtp-error-codes
   */
@@ -47,6 +57,7 @@ export default async function handler(req, res) {
       * add two (uncommented) lines
         ETHEREAL_EMAIL_USERNAME=fill in value from the "Nodemailer configuration" section.
         ETHEREAL_EMAIL_PASSWORD=fill in value from the "Nodemailer configuration" section.
+        * restart NextJS (npm run dev) to use the new env vars
       * FUTURE NOTE: when you put your portfolio site into production at Vercel, if you want to test in production, get a NEW ethereal.email account specially for production, then create the same "environment variables" here in .env.production 
         * note in .gitignore that all .env.* files will not be included in the github repository
         * security: these must never be in any repo, because they are secret
@@ -55,17 +66,17 @@ export default async function handler(req, res) {
         * login and look at the messages in the mailbox: https://ethereal.email/login
   */
 
- // DM: next meeting I'll give you an intro to this file, then show you how to set up Ethereal testing. Then, you can set up the production email service (transporterDataDefault) using the notes in "send as if from GMail" below.
+  // DM: next meeting I'll give you an intro to this file, then show you how to set up Ethereal testing. Then, you can set up the production email service (transporterDataDefault) using the notes in "send as if from GMail" below.
 
   const transporterDataEthereal = {
     host: 'smtp.ethereal.email',
     port: 587,
-    secure: false,
+    secure: false, // STARTTLS?
     auth: {
       user: process.env.ETHEREAL_EMAIL_USERNAME, // in .env.*
       pass: process.env.ETHEREAL_EMAIL_PASSWORD, // in .env.*
     },
-  },
+  }
 
   /* 
   
@@ -82,9 +93,9 @@ export default async function handler(req, res) {
 
   */
   const transporterDataDefault = {
-    host: 'smtp.xxx.xxx',
+    host: 'smtp.forwardemail.net',
     port: 587,
-    secure: false,
+    secure: false, // ?
     auth: {
       // user: 'bogus username to test the error response', // for testing the catch block
       user: process.env.FORWARDEMAIL_EMAIL_USERNAME, // in .env.*
@@ -92,7 +103,7 @@ export default async function handler(req, res) {
     },
   }
   const transporterData = testWithEthereal ? transporterDataEthereal : transporterDataDefault
-
+  console.log({ transporterData })
   // the next three function calls were copied from: https://react.email/docs/integrations/nodemailer#3-convert-to-html-and-send-email
   // https://nodemailer.com/about/
   const transporter = nodemailer.createTransport(transporterData)
@@ -102,8 +113,9 @@ export default async function handler(req, res) {
     from: fromEmail, // be sure to validate proper email address in the client
     to: toEmail,
     subject: `Contact message from: ${firstName}`,
-    text: 'Hello world! This message is testing using a text version instead of HTML rendered by the @react-email package',
-    // html: testHtml || emailHtml,
+    // temporary using a plain text message for now
+    // text: 'Hello world! This message is testing using a text version instead of HTML rendered by the @react-email package',
+    html: emailHtml,
   }
   console.log('options', options)
 
@@ -131,6 +143,11 @@ export default async function handler(req, res) {
     response.result = error.message
     // note: it is OK to always return a 200 and put the error in the response JSON (Facebook does this)
     res.status(200).json(response)
+    /* 
+      {"result":"queryA ETIMEOUT smtp.ethereal.email"} // maybe VPN
+      from GitHub nodemailer: Check your firewall settings. Timeout usually occurs when you try to open a connection to a firewalled port either on the server or on your machine. Some ISPs also block email ports to prevent spamming. Nodemailer works on one machine but not in another. It's either a firewall issue, or your SMTP server blocks authentication attempts from some servers.
+    
+    */
   }
 }
 
