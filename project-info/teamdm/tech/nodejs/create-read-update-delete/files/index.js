@@ -30,7 +30,7 @@ fs.appendFile(path.join(__dirname, 'files', 'text.txt'), 'Hello World!', (err) =
 })
 
 // MM: ???DM: I am getting something different when running  node project-info/teamdm/tech/nodejs/server/server.js on m terminal from the project-info directory.
-// DM: I ran "node project-info/teamdm/tech/nodejs/server/server.js" it works fine. Did you mean "node project-info/teamdm/tech/nodejs/create-read-update-delete/files/index.js" ?
+// DM: I ran "node project-info/teamdm/tech/nodejs/server/server.js" it works fine. Did you mean "node project-info/teamdm/tech/nodejs/create-read-update-delete/files/index.js" ?(yes, that's what i meant)
 
 // MM: ???DM: I am getting the following error: Error cannot find module '/home/moise/Take-Home-Assignments/myPortfolio/project-info/teamdm/tech/nodejs/create-read-update-delete/files/files/index.js'
 // DM: this error message is giving you information you need to debug the problem. Read it closely and see if you can figure out why node cannot find that file at that path.

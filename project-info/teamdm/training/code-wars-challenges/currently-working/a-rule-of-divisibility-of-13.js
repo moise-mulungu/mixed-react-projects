@@ -1,4 +1,4 @@
-// DM: hey, looks like a fun challenge, but let's hold off on new coding challenges until we have this directory cleaned out. I'll look at this after that. I need to review your status updates for all the other files first.
+// DM: hey, looks like a fun challenge, but let's hold off on new coding challenges until we have this directory cleaned out. I'll look at this after that. I need to review your status updates for all the other files first(ok).
 
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case

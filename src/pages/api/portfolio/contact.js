@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer'
 import { myEmail } from '@/constants/portfolio/contact-form'
 import FormattedContactEmail from '@/server/features/portfolio/formatted-contact-email.jsx'
 
-// note on NextJS API routes: any console.logs will be in the terminal where NextJS is running, not in the browser
+// note on NextJS API routes: any console.logs will be in the terminal where NextJS is running, not in the browser(ok)
 
 /* 
   testing: use a URL for testing, with the key info in the query string
