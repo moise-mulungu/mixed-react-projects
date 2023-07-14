@@ -65,6 +65,7 @@ export default async function handler(req, res) {
       * troubleshooting
         * login and look at the messages in the mailbox: https://ethereal.email/login
   */
+ // MM: ???DM: I noticed after creating the .env.local file, it does appear in the git pending changes, is it a personal file or because it's in the ignore file that it won't be pushed to the repo?
 
   // DM: next meeting I'll give you an intro to this file, then show you how to set up Ethereal testing. Then, you can set up the production email service (transporterDataDefault) using the notes in "send as if from GMail" below.
 
