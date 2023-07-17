@@ -102,6 +102,7 @@ I want to return a string of numbers in the form of a phone number.
   const replacements = { firstThreeNumbers, secondThreeNumbers, lastFourNumbers }
   console.log({ replacements })
 
+  // howtojs: customize String.replace()
   const formattedPhoneNumber = template.replace(
     /{(\w+)}/g,
     // the 2nd argument to String.replace() can be a function of which first parameter is each {replacementString} and which returns the replacement
@@ -144,8 +145,8 @@ createPhoneNumber(
              what it is with lots of words. Just write exactly what the variable holds.
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
-/* 13. code review and approval*/
-/*  */
+/* 13. code review and approval */
+/* great, approved */
 
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
@@ -154,5 +155,8 @@ createPhoneNumber(
 
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
+
    MM: the code works.
+   MM: next step: review working code and approve
+
 */

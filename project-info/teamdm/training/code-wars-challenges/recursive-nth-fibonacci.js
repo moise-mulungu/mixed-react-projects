@@ -232,10 +232,7 @@ function nthFibo(n) {
 }
 
 /* CURRENT STATUS (update this section before each commit of the file)
-MM: it works, even though I'll have to practice recursion more to understand it.
 
-DM: todoMM: if my comment below is out-of-date, or is wrong, put a note saying that. Check all the files in this directory. If I've left any out-of-date or wrong comments in the status section, add your comment saying so.
-MM: DM: for this challenge, I think you are the one who solved it, that's why on the status I said I would have to learn it again for my own understanding!
-DM: a few todoMMs to complete. Code is working. After the todoMMs are complete, Duncan will remove from this directory
+
 
 */

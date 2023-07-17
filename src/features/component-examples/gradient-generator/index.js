@@ -37,7 +37,16 @@ function GradientGenerator() {
   return (
     <div className="wrapper">
       <div className="actions">
-        <button onClick={removeColor}>Remove color</button>
+        <button
+          styles={
+            {
+              /* DM: todoMM: space them out and put a borer so they look like buttons */
+            }
+          }
+          onClick={removeColor}
+        >
+          Remove color
+        </button>
         <button onClick={addColor}>Add color</button>
       </div>
 

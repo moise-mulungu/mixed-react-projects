@@ -63,12 +63,14 @@ function sample(arr) {
 // NOTE: Normally I would do this inside the component,
 // in a “useEffect” hook, but we haven't learned that yet 😅
 // We'll learn more about how to tackle challenges like
-// this in Module 3!
+// this in Module 3!g
 function preloadImages() {
   STICKERS.forEach(({ src }) => {
     // MM: ???DM: this line of code should create a new Image object, but it doesn't work
-    const preloadImage = new Image()
-    preloadImage.src = src
+    // DM: postpone for now, not required for this component to work
+    // howtojs: preload images
+    // const preloadImage = new Image()
+    // preloadImage.src = src
   })
 }
 

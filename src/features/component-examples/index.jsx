@@ -79,7 +79,7 @@ export default function ComponentExamples() {
       <Divider />
       <GradientGenerator />
       <Divider />
-      <StickerPad />
+      {/* <StickerPad /> */}
     </div>
   )
 }

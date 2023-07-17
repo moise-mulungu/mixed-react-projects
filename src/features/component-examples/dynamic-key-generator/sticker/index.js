@@ -1,6 +1,7 @@
 import React from 'react'
 
 import styles from './sticker-pad.module.css'
+// DM: todoMM: make sure the name of the imported function describe what it really gets {I.e., it gets sticker data, not the sticker}
 import { getSticker } from './stickers-data'
 
 function StickerPad() {

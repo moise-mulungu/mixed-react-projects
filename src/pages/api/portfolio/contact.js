@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer'
 import { myEmail } from '@/constants/portfolio/contact-form'
 import FormattedContactEmail from '@/server/features/portfolio/formatted-contact-email.jsx'
 
-// note on NextJS API routes: any console.logs will be in the terminal where NextJS is running, not in the browser(ok)
+// note on NextJS API routes: any console.logs will be in the terminal where NextJS is running, not in the browser
 
 /* 
   testing URLs: use a URL for testing, with the key info in the query string
@@ -65,9 +65,7 @@ export default async function handler(req, res) {
       * troubleshooting
         * login and look at the messages in the mailbox: https://ethereal.email/login
   */
- // MM: ???DM: I noticed after creating the .env.local file, it does appear in the git pending changes, is it a personal file or because it's in the ignore file that it won't be pushed to the repo?
-
-  // DM: next meeting I'll give you an intro to this file, then show you how to set up Ethereal testing. Then, you can set up the production email service (transporterDataDefault) using the notes in "send as if from GMail" below.
+  // MM: ???DM: I noticed after creating the .env.local file, it does appear in the git pending changes, is it a personal file or because it's in the ignore file that it won't be pushed to the repo? DM: yes, it is in .gitignore
 
   const transporterDataEthereal = {
     host: 'smtp.ethereal.email',
@@ -123,8 +121,6 @@ export default async function handler(req, res) {
   // send the email
   const response = { status: '200', result: 'success' }
 
-  // next: write functions for each of nodemailer/ethereal, sendgrid: https://github.com/sendgrid/sendgrid-nodejs/tree/main/packages/mail
-
   /* error handling: return a message so that the client can know if success or error */
   try {
     const sendMailResponse = await transporter.sendMail(options)
@@ -144,7 +140,7 @@ export default async function handler(req, res) {
     response.result = error.message
     // note: it is OK to always return a 200 and put the error in the response JSON (Facebook does this)
     res.status(200).json(response)
-    /* 
+    /*
       {"result":"queryA ETIMEOUT smtp.ethereal.email"} // maybe VPN
       from GitHub nodemailer: Check your firewall settings. Timeout usually occurs when you try to open a connection to a firewalled port either on the server or on your machine. Some ISPs also block email ports to prevent spamming. Nodemailer works on one machine but not in another. It's either a firewall issue, or your SMTP server blocks authentication attempts from some servers.
     
@@ -153,14 +149,5 @@ export default async function handler(req, res) {
 }
 
 /* 
-  DM: when I'm done and ready to hand this off to you, I'll put a todoMM here and then you can do the following tasks
-  tasks for Moise:
-  * understand how it works
-  * make a video explaining each non-trivial line of code
-  * 
-
-
-
-
-
+  DM: todoMM: implment the "send as if from GMail" (see URL above)
 */
