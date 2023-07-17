@@ -20,6 +20,8 @@ import TwoFactor from './two-factor/two-factor'
 import Popup from './popup'
 import ReactAccordion from './react-accordion'
 import ComplexObject from './complex-object'
+import GradientGenerator from './gradient-generator'
+import StickerPad from './dynamic-key-generator/sticker'
 // howtotailwind: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
 import Heading from '@/ui/heading'
 // DM: todoDM: get ctrl-click on object to work for @/ imports
@@ -74,6 +76,10 @@ export default function ComponentExamples() {
       <ReactAccordion />
       <Divider />
       <ComplexObject />
+      <Divider />
+      <GradientGenerator />
+      <Divider />
+      <StickerPad />
     </div>
   )
 }

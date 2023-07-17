@@ -310,11 +310,21 @@ a function that is a property of an object
 - ex: built-in methods: String methods, Number methods
 - ex: custom: we can create an object with properties that are functions:
   ```js
-  const myObj = { 
-    myMethod: () => {}, 
+  const myObj = {
+    myMethod: () => {},
     // howtojs: object: method: call another method that is defined in the same object; only works with regular functions (not arrow functions)
     anotherMethod: function () {}, // arrow methods cannot be called directly in the same object
-    methodThatCallsAMethod: () => this.anotherMethod() 
-  };
+    methodThatCallsAMethod: () => this.anotherMethod(),
+  }
   myOby.myMethod()
+  ```
+
+## reassignment
+
+Reassignment is the process of changing variable assignment or when their value changes to that of the newer value specified, and the previous value is lost by using the `let` key word
+
+- for example:
+  ```js
+  let person = 'Joe'
+  person = 'Doe'
   ```
