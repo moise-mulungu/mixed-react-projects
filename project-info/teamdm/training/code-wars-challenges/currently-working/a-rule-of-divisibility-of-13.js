@@ -116,38 +116,38 @@ I want to get the stationary number of the input number, which is the remainder 
         * see naming-conventions.md*/
   // 1. convert the number to string
   const numberToStrings = number.toString()
-  console.log({ numberToStrings })
+  // console.log({ numberToStrings })
 
   // 2. split the string into an array of numbers
   const arrayOfStringNumbers = numberToStrings.split('')
-  console.log({ arrayOfStringNumbers })
+  // console.log({ arrayOfStringNumbers })
 
   // 3. reverse the array
   const reversedArrayOfStringNumbers = arrayOfStringNumbers.reverse()
-  console.log({ reversedArrayOfStringNumbers })
+  // console.log({ reversedArrayOfStringNumbers })
 
   // 4. create a sequence of numbers
   const sequence = [1, 10, 9, 12, 3, 4]
-  console.log({ sequence })
+  // console.log({ sequence })
 
   // 5. multiply the numbers in the sequence with the numbers in the reversed array
   const productOfSequenceAndNumbers = reversedArrayOfStringNumbers.map((number, index) => {
     return number * sequence[index % sequence.length]
   })
-  console.log({ productOfSequenceAndNumbers })
+  // console.log({ productOfSequenceAndNumbers })
 
   // 6. sum the multiplied numbers
   const sumOfMultipliedNumbers = productOfSequenceAndNumbers.reduce((acc, number) => {
     return acc + number
   }, 0)
-  console.log({ sumOfMultipliedNumbers })
+  // console.log({ sumOfMultipliedNumbers })
 
   // 7. check if the sumOfMultipliedNumbers is equal to the input number
   if (sumOfMultipliedNumbers === number) return sumOfMultipliedNumbers
 
   // 8. if not, repeat the process with the sum
   const repeatedProcess = divisibleBy13(sumOfMultipliedNumbers)
-  console.log({ repeatedProcess })
+  // console.log({ repeatedProcess })
 
   /* 9. use the named parts to create a readable solution. */
 
@@ -187,6 +187,6 @@ divisibleBy13(987_654_321) // 30
 
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
-   MM: the solution works, and all test cases are passing.
+
+   MM: toDM: the current status of this file is that the code works, and all test cases are passing. It remains your code review and approval.
 */
-/*  */

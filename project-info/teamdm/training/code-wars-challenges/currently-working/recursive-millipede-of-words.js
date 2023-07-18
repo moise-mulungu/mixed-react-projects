@@ -284,44 +284,44 @@ recursive approach:
 
 */
 
-function millipedeOfWords(words) {
-  function recursiveSolution(
-    words,
-    // keep in mind what happens the FIRST time recurse() runs (2nd parameter is not passed)
-    previousLastLetter = ''
-  ) {
-    // recursive functions need a way to know when to no longer "recurse", i.e., there are no more words
-    if (words.length === 0) return true
-    // can ANY of the words combine? Array.some  implements a loop that stops when a true result is found
-    return words.some((word, i) => {
-      const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
-      const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
-      const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
-      // here is where it recurses, i.e., the "recurse" function calls itself
-      return (
-        wordCombinesWithPreviousWord &&
-        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord) // this where things get tricky, on how to pass these two parameters
-      )
-    })
-  }
-  // this is the FIRST time recursiveSolution is called
-  return recursiveSolution(words)
+// function millipedeOfWords(words) {
+//   function recursiveSolution(
+//     words,
+//     // keep in mind what happens the FIRST time recurse() runs (2nd parameter is not passed)
+//     previousLastLetter = ''
+//   ) {
+//     // recursive functions need a way to know when to no longer "recurse", i.e., there are no more words
+//     if (words.length === 0) return true
+//     // can ANY of the words combine? Array.some  implements a loop that stops when a true result is found
+//     return words.some((word, i) => {
+//       const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
+//       const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
+//       const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
+//       // here is where it recurses, i.e., the "recurse" function calls itself
+//       return (
+//         wordCombinesWithPreviousWord &&
+//         recursiveSolution(allRemainingWords, lastLetterOfCurrentWord) // this where things get tricky, on how to pass these two parameters
+//       )
+//     })
+//   }
+//   // this is the FIRST time recursiveSolution is called
+//   return recursiveSolution(words)
 
-  // MM: the recursive code works, but I need to understand it better.
-  // DM: add console logs, with indents, similar to how I did it with recursive-nth-fibonacci, so that I can see the order of the recursion by running the function. Then you can also understand it thoroughly and be able to explain it to me.
-}
+//   // MM: the recursive code works, but I need to understand it better.
+//   // DM: add console logs, with indents, similar to how I did it with recursive-nth-fibonacci, so that I can see the order of the recursion by running the function. Then you can also understand it thoroughly and be able to explain it to me.
+// }
 
-// 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
-// without re-ordering
-millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
-millipedeOfWords(['endure', 'elite', 'excess']) // true
+// // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
+// // without re-ordering
+// millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
+// millipedeOfWords(['endure', 'elite', 'excess']) // true
 
-// with re-ordering
-millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night']) // true
-millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night']) // true
-millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time']) // true
-millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president']) // false
-millipedeOfWords(['no', 'dog', 'on', 'good']) // false
+// // with re-ordering
+// millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night']) // true
+// millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night']) // true
+// millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time']) // true
+// millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president']) // false
+// millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -345,37 +345,42 @@ function millipedeOfWords(words) {
     // DM: what's missing is increasing the size of the indent each time a deeper recursion is called. See nthFiboWithIndentedLogging for how to do that; MM: this seems to be time-consuming task, but i'll learn the recursive again. DM: you'll have to trust me if I give you a difficult task. Recursion is important. It will come up in interviews. Also, it is good practice to apply an existing pattern/example to different code. nthFiboWithIndentedLogging() is the existing pattern for how to use indented console.logs to see how recursion works.
     indent = ''
   ) {
-    if (words.length === 0) return true
+    if (words.length === 0) {
+      console.log(`${indent}words.length === 0`)
+      return true
+    }
 
-    return words.some((word, i) => {
-      const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
-      console.log(`${indent}word: ${wordCombinesWithPreviousWord}`)
-      const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
-      console.log(`${indent}allRemainingWords: ${allRemainingWords}`)
-      const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
-      // here is where it recurses, i.e., the "recurse" function calls itself
-      console.log(`${indent}lastLetterOfCurrentWord: ${lastLetterOfCurrentWord}`)
-      return (
-        // DM: todoMM: indent is not passed to the recursive call. Look at the other examples and see how they work, then make this one work.
-        wordCombinesWithPreviousWord &&
-        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord)
-      )
-    })
+    // return words.some((word, i) => {
+    //   const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
+    //   console.log(`${indent}word: ${wordCombinesWithPreviousWord}`)
+    //   const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
+    //   console.log(`${indent}allRemainingWords: ${allRemainingWords}`)
+    //   const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
+    //   // here is where it recurses, i.e., the "recurse" function calls itself
+    //   console.log(`${indent}lastLetterOfCurrentWord: ${lastLetterOfCurrentWord}`)
+    //   return (
+    //     // DM: todoMM: indent is not passed to the recursive call. Look at the other examples and see how they work, then make this one work.
+    //     wordCombinesWithPreviousWord &&
+    //     recursiveSolution(allRemainingWords, lastLetterOfCurrentWord)
+    //   )
+    // })
   }
 
   return recursiveSolution(words)
 }
 
 // without re-ordering
-millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
-millipedeOfWords(['endure', 'elite', 'excess']) // true
+console.log(millipedeOfWords(['engine', 'endure', 'elite', 'excess'])) // true
+console.log(millipedeOfWords(['endure', 'elite', 'excess'])) // true
 
 // with re-ordering
-millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night']) // true
-millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night']) // true
-millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time']) // true
-millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president']) // false
-millipedeOfWords(['no', 'dog', 'on', 'good']) // false
+console.log(
+  millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night'])
+) // true
+console.log(millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night'])) // true
+console.log(millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time'])) // true
+console.log(millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president'])) // false
+console.log(millipedeOfWords(['no', 'dog', 'on', 'good'])) // false
 
 /* 15. Duncan moves the file out of this directory when it is complete */
 
@@ -384,4 +389,26 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 DM: solution works. 
 DM: next step: the logging in section 14 should show the recursion via indenting .
 
+MM: DM: the current status of this file is not complete yet, I am still figuring out how to come up with the solution using indent.
 */
+
+function millipedeOfWords(word, count = 1) {
+  if (count > word.length) {
+    return true
+  }
+  const segment = word.slice(0, count)
+  return millipedeOfWords(word.slice(count), count + 1) && millipedeOfWords(segment)
+}
+
+// without re-ordering
+console.log(millipedeOfWords(['engine', 'endure', 'elite', 'excess'])) // true
+console.log(millipedeOfWords(['endure', 'elite', 'excess'])) // true
+
+// with re-ordering
+console.log(
+  millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night'])
+) // true
+console.log(millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night'])) // true
+console.log(millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time'])) // true
+console.log(millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president'])) // false
+console.log(millipedeOfWords(['no', 'dog', 'on', 'good'])) // false

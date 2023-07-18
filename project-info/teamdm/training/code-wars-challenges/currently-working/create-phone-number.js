@@ -114,32 +114,10 @@ createPhoneNumber([3, 4, 5, 5, 0, 1, 2, 5, 2, 7]) // "(345) 501-2527"
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-function createPhoneNumber(numbers) {
-  const isArrayOfNumbers = numbers.every((number) => typeof number === 'number')
-  if (!isArrayOfNumbers) throw new Error('input must be an array of numbers')
-  const hasTenNumbers = numbers.length === 10
-  if (!hasTenNumbers) throw new Error('input must be an array of 10 numbers')
-
-  const asString = numbers.join('')
-
-  const firstThreeNumbers = asString.slice(0, 3)
-  const secondThreeNumbers = asString.slice(3, 6)
-  const lastFourNumbers = asString.slice(6, 10)
-  const phoneNumber = `(${firstThreeNumbers}) ${secondThreeNumbers}-${lastFourNumbers}`
-
-  return phoneNumber
-}
-
-createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // "(123) 456-7890"
-createPhoneNumber([1, 1, 1, 1, 1, 1, 1, 1, 1, 1]) // "(111) 111-1111"
-createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0]) // "(123) 456-7890"
-createPhoneNumber([6, 7, 4, 2, 8, 9, 1, 2, 3, 4]) // "(674) 289-1234"
-createPhoneNumber([5, 1, 9, 5, 5, 5, 4, 4, 6, 8]) // "(519) 555-4468"
-createPhoneNumber([3, 4, 5, 5, 0, 1, 2, 5, 2, 7]) // "(345) 501-2527"
-
 /* 15. Duncan moves the file out of this directory when it is complete */
 
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
-   MM: the code works, all tests pass.
+   
+   MM: toDM: this code works, and passes all the test cases. the remaining step is your code review and approval. thanks!
 */

@@ -94,10 +94,12 @@ this makes it easy to debug by logging  // console.log('i am easy to debug by lo
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
-console.log(isIsogram('Dermatoglyphics')) // true
-console.log(isIsogram('isogram')) // true
-console.log(isIsogram('aba')) // false
-console.log(isIsogram('moOse')) // false
+isIsogram('Dermatoglyphics') // true
+isIsogram('isogram') // true
+isIsogram('aba') // false
+isIsogram('moOse') // false
+isIsogram('isIsogram') // false
+isIsogram('') // true
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -122,4 +124,5 @@ console.log(isIsogram('moOse')) // false
 /* CURRENT STATUS (update this section before each commit of the file); MM: the code works, and all tests pass.
 // DM: todoMM: hey Moise, I spend way too much time figuring out where you are at in these files. It would save time if you update the status each time you commit, so that I can more quickly know what to do and how to help.
 
+MM: DM: the current status of this file is that the code works and all tests pass. the remaining steps are the review and approval of the code.
 */

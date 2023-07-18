@@ -95,7 +95,8 @@ I want to return a string of numbers in the form of a phone number.
 
   // console.log(typeof asString)
   const firstThreeNumbers = asString.slice(0, 3)
-  // console.log(firstThreeNumbers)
+  console.log(firstThreeNumbers)
+
   const secondThreeNumbers = asString.slice(3, 6)
   const lastFourNumbers = asString.slice(6, 10)
 
@@ -156,7 +157,6 @@ createPhoneNumber(
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
 
-   MM: the code works.
-   MM: next step: review working code and approve
+   MM: toDM: the status of this file is that the code works and all test cases pass. your code review and approval are requested here.
 
 */

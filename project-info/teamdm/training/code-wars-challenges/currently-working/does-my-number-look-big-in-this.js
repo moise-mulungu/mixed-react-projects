@@ -109,7 +109,7 @@ i want to check if the number is narcissistic by checking if the sum of each dig
 
   const valueToString = value.toString()
   // MM: toDM: the value is converted to a string like this '153'
-  console.log({ valueToString })
+  // console.log({ valueToString })
 
   const digitsOfValue = valueToString.length
   console.log({ digitsOfValue })
@@ -174,4 +174,6 @@ console.log(narcissistic(487)) // false
 
 DM: get the for loop solution working, I'll approve it, then convert the for loop to a reduce
 
+MM: DM: the current status of the file is that the code works with for loop instead of reduce as it is in the other file. your code review and approval that are needed to move the file out of this directory.
 */
+

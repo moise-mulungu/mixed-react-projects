@@ -8,15 +8,15 @@ function wordMesh(arrayOfStrings) {
   for (let i = 0; i < arrayOfStrings.length - 1; i++) {
     // no longer allowed under the "no mutations" rule
     const meshedLetters = []
-    console.log(arrayOfStrings[i])
+    // console.log(arrayOfStrings[i])
     for (let j = 0; j < arrayOfStrings[i].length; j++) {
       //(done) DM: create two well-named variables to hold the values used in the below logical expression
       //             then, assign the value of the logical expression to a well-named variable
       //             then, console.log them all
       const firstWordLetter = arrayOfStrings[i][j]
-      console.log({ firstWordLetter })
+      // console.log({ firstWordLetter })
       const secondWordLetter = arrayOfStrings[i + 1][j]
-      console.log({ secondWordLetter })
+      // console.log({ secondWordLetter })
       if (firstWordLetter === secondWordLetter) {
         meshedLetters.push(arrayOfStrings[i][j])
       }
@@ -35,19 +35,19 @@ wordMesh(['kingdom', 'dominator', 'notorious', 'usual', 'allegory']) // => 'fail
 // DM: it's easy to make mistakes, for example, your tests below, the expected result is incorrect. But, remember, no the thing is NOT to never make mistakes, but to discover the inevitable mistakes. I strongly suspect that with proper logging in your code, you would have realized that your expected test results below were wrong.
 
 // DM: this would be "failed to mesh" - elements 0 and 1 don't mesh
-wordMesh(['deforestation', 'citation', 'conviction', 'incarceration']) // => 'con'
+console.log(wordMesh(['deforestation', 'citation', 'conviction', 'incarceration'])) // => 'failed to mesh'
 
 // DM: this would fail to mesh
-wordMesh(['wedding', 'edding', 'ding', 'ing', 'ng', 'g']) // => 'wedding'
+console.log(wordMesh(['wedding', 'edding', 'ding', 'ing', 'ng', 'g'])) // => 'failed to mesh'
 
 // DM: this would be "eeteem"
-wordMesh(['age', 'estate', 'esteem', 'teem']) // => 'aged'
+console.log(wordMesh(['age', 'estate', 'esteem', 'teem'])) // => 'eeteem'
 
 // DM: this would be "failed to mesh"
-wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g']) // => 'eternal'
+console.log(wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g'])) // => 'failed to mesh'
 
 /* CURRENT STATUS (update this section before each commit of the file)
-MM: it works and pass all the tests.
 (done)DM: todoMM: what is the current status? I see your console.logs, but without more info from you, I have no idea what I should do in this file. (note:I see that the expected results of the tests are still incorrect. DM: todoMM: this is not done. I was asking what is the status, as in: Does the function work correctly? Next steps? What should I do in this file?
-
+  
+  MM: it works and pass all the tests.
 */

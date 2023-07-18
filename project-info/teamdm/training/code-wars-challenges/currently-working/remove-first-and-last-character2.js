@@ -115,28 +115,30 @@ array('1,2,3') // '2'
 array('1,2,3,4') // '2 3'
 array('A1,B2,C3,D4,E5') // 'B2 C3 D4'
 array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
-
-/* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
+  [
+    /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
              understand easily. Don't use misleading or too-unspecific variable names.
              But, don't spend much time figuring out the perfect variable name. The trick is to describe
              what it is with lots of words. Just write exactly what the variable holds.
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
-/* 13. code review and approval*/
-/*  */
+    /* 13. code review and approval*/
+    /*  */
 
-/* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
+    /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-/* 15. Duncan moves the file out of this directory when it is complete */
+    /* 15. Duncan moves the file out of this directory when it is complete */
 
-/* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
+    /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
-   MM: it works and pass all the tests.
+
+   MM: DM: the current status of this file is that it is complete and all tests pass. The next steps are your code review and approval
 */
 
-['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
-  const value = acc[cur] ? acc[cur] + 1 : 1
-  return { ...acc, [cur]: value }
-}, {})
+    ('a', 'b', 'c', 'a', 'b')
+  ].reduce((acc, cur) => {
+    const value = acc[cur] ? acc[cur] + 1 : 1
+    return { ...acc, [cur]: value }
+  }, {})

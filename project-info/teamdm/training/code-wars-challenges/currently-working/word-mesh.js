@@ -112,21 +112,27 @@ I want to find the longest common substring of the words in the array by compari
 
   let meshedWords = ''
   for (let i = 0; i < arrayOfStrings.length - 1; i++) {
-    const matchCharacters = `${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`.match(/(.+) \1/)
-    // console.log({ matchCharacters }) // DM: I moved to this line so that it will log even if 'failed to mesh'
-    console.log({ matchCharacters })
-    if (!matchCharacters) return 'failed to mesh'
-    meshedWords += matchCharacters[1]
-  }
+    const matchedCharacters = `${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`.match(/(.+) \1/)
 
-  return meshedWords
+    // const matchCharacters = `${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`.match(/(.+) \1/)
+    // const match = arr[i + 1].match(new RegExp(`^${arr[i].slice(-2)}`))
+    // console.log({ matchCharacters }) // DM: I moved to this line so that it will log even if 'failed to mesh'
+    // console.log({ matchedCharacters })
+
+    if (!matchedCharacters) return 'failed to mesh'
+    meshedWords += matchedCharacters[0]
+  }
+  //   if (!matchCharacters) return 'failed to mesh'
+  //   meshedWords += matchCharacters[1]
+  // }
 
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
-      always return a variable, or, use only variables in return statements
-      this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
-   */
+  always return a variable, or, use only variables in return statements
+  this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+  */
+  return meshedWords
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result:
@@ -168,4 +174,5 @@ wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to me
 MM: the code is not working yet. I am stuck at the part where I need to match the last and the first characters of the words in the array. 
 DM: todoMM: what is the current status? Get it to work first, then do the conversion to array.reduce afterwards.
 
+MM: DM: the current status of this file is that the code is still not working. after checking if the words in the array mesh, I can not join all the meshed characters in one word. the piece of code where I am getting stuck is with the regex: const matchedCharacters = (`${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`).match(/(.+) \1/)
 */

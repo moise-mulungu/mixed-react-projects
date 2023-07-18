@@ -84,10 +84,12 @@ i want to check if the number is narcissistic by checking if the sum of the digi
 
   // this code gets the number of digits in the value, but this one is not necessary as the value is converted to a string below. I'm leaving it here for reference.
   // howtojs: get number of digits in an integer
-  // const valueDigits = Math.floor(Math.log10(number)) + 1
-
+  /*
+  const valueDigits = Math.floor(Math.log10(number)) + 1
+  
   console.log('------------ calling narcissistic')
   console.log({ valueDigits, value: number })
+  */
 
   // const lastValueDigit = value % 10
   // console.log({ lastValueDigit })
@@ -150,20 +152,20 @@ i want to check if the number is narcissistic by checking if the sum of the digi
 }
 
 narcissistic(7) // true
-console.log(narcissistic(371)) // true
+narcissistic(371) // true
 narcissistic(153) // true
 narcissistic(122) // false
-console.log(narcissistic(487)) // false
+narcissistic(487) // false
 
 // DM: where did you get this test? It is incorrect. Be very careful because an incorrect test will eat up a lot of your time. It is best to not create new tests on your own. Just use the tests in the description and in the Sample Tests section in codewars(ok; some of tests i created by myself).
-
 
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
    MM: the code works, and all tests pass.
-*/ 
+*/
 
 /*DM: get the for loop solution working, then convert the for loop to a reduce after I approve the for loop version
 DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read). DM: todoMM: ok, read, but not done, right?
 
+MM: toDM: the current status of this file is that the code works, and all tests pass. what remains here is your code review and approval.
 */
