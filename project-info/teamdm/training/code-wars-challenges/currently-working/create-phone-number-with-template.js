@@ -152,13 +152,66 @@ createPhoneNumber(
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-/* 15. Duncan moves the file out of this directory when it is complete */
+function createPhoneNumber(
+  numbers,
+  template = '{firstThreeNumbers} {secondThreeNumbers} {lastFourNumbers}'
+) {
+  const isArrayOfNumbers = numbers.every((number) => typeof number === 'number')
+  if (!isArrayOfNumbers) throw new Error('input must be an array of numbers')
+  const hasTenNumbers = numbers.length === 10
+  if (!hasTenNumbers) throw new Error('input must be an array of 10 numbers')
+
+  const asString = numbers.join('')
+
+  const firstThreeNumbers = asString.slice(0, 3)
+
+  const secondThreeNumbers = asString.slice(3, 6)
+  const lastFourNumbers = asString.slice(6, 10)
+
+  const replacements = { firstThreeNumbers, secondThreeNumbers, lastFourNumbers }
+
+  // howtojs: customize String.replace()
+  const formattedPhoneNumber = template.replace(
+    /{(\w+)}/g,
+
+    (placeholderWithDelimiters, placeholderWithoutDelimiters) => {
+      return replacements.hasOwnProperty(placeholderWithoutDelimiters)
+        ? replacements[placeholderWithoutDelimiters]
+        : placeholderWithDelimiters
+    }
+  )
+  return formattedPhoneNumber
+}
+
+createPhoneNumber(
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+  '({firstThreeNumbers}) {secondThreeNumbers}-{lastFourNumbers}'
+) // "(123) 456-7890"
+createPhoneNumber(
+  [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+  '{firstThreeNumbers} {secondThreeNumbers} {lastFourNumbers}'
+) // "123 456 7890
+
+/* 15. Copy here which of the other coders' solutions do you like the best? (Be sure in codewars.com to sort others' solutions by "Best Practices".)
+       Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
+       Note: the best solution should be readable as the highest priority, but not unnecessarily inefficient.
+MM: I like this code because it looks clean and easy to read.
+*/
+function createPhoneNumber(numbers) {
+  var format = '(xxx) xxx-xxxx'
+
+  for (var i = 0; i < numbers.length; i++) {
+    format = format.replace('x', numbers[i])
+  }
+
+  return format
+}
 
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
 
    MM: toDM: the status of this file is that the code works and all test cases pass. your code review and approval are requested here. 
-   DM: it looks like I had already approved. 
+   DM: it looks like I had already approved. (cool!)
    
    next step: section 14
    

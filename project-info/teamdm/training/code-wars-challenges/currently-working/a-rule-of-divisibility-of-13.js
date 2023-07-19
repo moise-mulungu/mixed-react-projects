@@ -178,11 +178,54 @@ divisibleBy13(987_654_321) // 30
 /* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
+function divisibleBy13(number) {
+  if (typeof number !== 'number') throw new Error('input must be a number')
+
+  const numberToStrings = number.toString()
+  const arrayOfStringNumbers = numberToStrings.split('')
+  const reversedArrayOfStringNumbers = arrayOfStringNumbers.reverse()
+
+  const sequence = [1, 10, 9, 12, 3, 4]
+  const productOfSequenceAndNumbers = reversedArrayOfStringNumbers.map((number, index) => {
+    return number * sequence[index % sequence.length]
+  })
+
+  const sumOfMultipliedNumbers = productOfSequenceAndNumbers.reduce((acc, number) => {
+    return acc + number
+  }, 0)
+
+  if (sumOfMultipliedNumbers === number) return sumOfMultipliedNumbers
+
+  const repeatedProcess = divisibleBy13(sumOfMultipliedNumbers)
+
+  return repeatedProcess
+}
+
+divisibleBy13(8529) // 79
+divisibleBy13(85_299_258) // 31
+divisibleBy13(5634) // 57
+divisibleBy13(1_111_111_111) // 71
+divisibleBy13(987_654_321) // 30
+
 /* 15. Copy here which of the other coders' solutions do you like the best? (Be sure in codewars.com to sort others' solutions by "Best Practices".)
        Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
        Note: the best solution should be readable as the highest priority, but not unnecessarily inefficient.
 */
+// MM: this code does not look better than mine, but I am curious about the while loop, and how it works.
+function thirt(numbers) {
+    const pattern = [1, 10, 9, 12, 3, 4, 1]
+    let last = null
 
+    while(last !== numbers)
+    {
+        last = numbers
+        const numberToStrings = numbers.toString()
+        numbers = 0
+        for(let i = numberToStrings.length-1, j = 0; i >= 0; i--, j++)
+          numbers += +numberToStrings[i] * pattern[j % 6]
+    }
+    return numbers
+}
 /* 16. Duncan moves the file out of this directory when it is complete */
 
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)

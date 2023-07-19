@@ -2,7 +2,7 @@
 
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
-// note: You can be working multiple challenges, but always address all todoM-Ms in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
+// note: You can be working multiple challenges, but always address all todoM-Ms in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.(good)
 /*
  */
 
@@ -77,29 +77,33 @@ Naming variables:
 * variable names should express exactly what the variable contains
 * see naming-conventions.md*/
   const splitString = word.toLowerCase().split('')
-  //(in progress) DM: todoMM: You don't need to write any more solutions with 'let'. You know how to do all this stuff without 'let'. You're turning an array of letters into a boolean, so you can use Array.prototype.reduce() or Array.prototype.every(). If you want to do a first pass with 'let' then convert it to a non-'let' solution, that's OK, but leave me a comment explaining that you're "in progress" or where you got stuck when converting it to a non-'let' solution.
-  let isogram = true
-  splitString.forEach((letter, index) => {
-    if (splitString.indexOf(letter) !== index) {
-      isogram = false
-    }
-  })
-  /* 9. use the named parts to create a readable solution. */
+  //(done) DM: todoMM: You don't need to write any more solutions with 'let'. You know how to do all this stuff without 'let'. You're turning an array of letters into a boolean, so you can use Array.prototype.reduce() or Array.prototype.every(). If you want to do a first pass with 'let' then convert it to a non-'let' solution, that's OK, but leave me a comment explaining that you're "in progress" or where you got stuck when converting it to a non-'let' solution.
 
+  // let isogram = true
+  // splitString.forEach((letter, index) => {
+  //   if (splitString.indexOf(letter) !== index) {
+  //     isogram = false
+  //   }
+  // })
+
+  const AreIsograms = splitString.every((letter, index) => splitString.indexOf(letter) === index)
+  /* 9. use the named parts to create a readable solution. */
+  
   /* 10. return the solution
-always return a variable, or, use only variables in return statements
-this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
-*/
-  return isogram
+  always return a variable, or, use only variables in return statements
+  this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+  */
+  return AreIsograms
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
-isIsogram('Dermatoglyphics') // true
-isIsogram('isogram') // true
-isIsogram('aba') // false
-isIsogram('moOse') // false
-isIsogram('isIsogram') // false
-isIsogram('') 
+console.log(isIsogram('Dermatoglyphics')) // true
+console.log(isIsogram('isogram')) // true
+console.log(isIsogram('aba')) // false
+console.log(isIsogram('moOse')) // false
+console.log(isIsogram('isIsogram')) // false
+console.log(isIsogram('')) // true
+
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -122,7 +126,7 @@ isIsogram('')
 /* 16. Duncan moves the file out of this directory when it is complete */
 
 /* CURRENT STATUS (update this section before each commit of the file); MM: the code works, and all tests pass.
-// DM: todoMM: hey Moise, I spend way too much time figuring out where you are at in these files. It would save time if you update the status each time you commit, so that I can more quickly know what to do and how to help.
+//(done) DM: todoMM: hey Moise, I spend way too much time figuring out where you are at in these files. It would save time if you update the status each time you commit, so that I can more quickly know what to do and how to help.
 
 MM: DM: the current status of this file is that the code works and all tests pass. the remaining steps are the review and approval of the code.
 DM: the first thing AI do in a review is to search the file for todoMMs. If they are marked "(done)", then I can delete them. 

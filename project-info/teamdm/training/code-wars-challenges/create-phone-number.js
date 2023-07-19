@@ -143,6 +143,6 @@ createPhoneNumber([3, 4, 5, 5, 0, 1, 2, 5, 2, 7]) // "(345) 501-2527"
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
    
    MM: toDM: this code works, and passes all the test cases. the remaining step is your code review and approval. thanks!
-   DM: I approved it, resotred the code in #14 and moved it out of the 'currently working 'directory.
+   DM: I approved it, resorted the code in #14 and moved it out of the 'currently working 'directory.(ok)
    DM: done!
 */

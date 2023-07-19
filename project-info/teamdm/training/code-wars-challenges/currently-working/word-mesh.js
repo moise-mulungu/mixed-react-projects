@@ -110,18 +110,31 @@ I want to find the longest common substring of the words in the array by compari
   // DM: todoMM: let's get back to not using LET and not using: const emptyArray = []. You can do this with array functions. You have an array and you want to get a string. Which array function do you use?
   // MM: the method to use is array.toString() method DM: array.reduce(). array.toString() is unpredictable and not meant to be used in production code
 
-  let meshedWords = ''
-  for (let i = 0; i < arrayOfStrings.length - 1; i++) {
-    const matchedCharacters = `${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`.match(/(.+) \1/)
-
-    // const matchCharacters = `${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`.match(/(.+) \1/)
-    // const match = arr[i + 1].match(new RegExp(`^${arr[i].slice(-2)}`))
-    // console.log({ matchCharacters }) // DM: I moved to this line so that it will log even if 'failed to mesh'
-    // console.log({ matchedCharacters })
-
+  const meshedWords = arrayOfStrings.reduce((acc, word, index) => {
+    console.log({ acc, word, index })
+    const nextWord = arrayOfStrings[index + 1]
+    console.log({ nextWord })
+    if (!nextWord) return acc
+    const matchedCharacters = `${word} ${nextWord}`.match(/(.+) \1/)
+    console.log({ matchedCharacters })
     if (!matchedCharacters) return 'failed to mesh'
-    meshedWords += matchedCharacters[0]
-  }
+    return matchedCharacters[1]
+  }, '')
+  console.log({ meshedWords })
+  return meshedWords
+
+  // let meshedWords = ''
+  // for (let i = 0; i < arrayOfStrings.length - 1; i++) {
+  //   const matchedCharacters = `${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`.match(/(.+) \1/)
+
+  // const matchCharacters = `${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`.match(/(.+) \1/)
+  // const match = arr[i + 1].match(new RegExp(`^${arr[i].slice(-2)}`))
+  // console.log({ matchCharacters }) // DM: I moved to this line so that it will log even if 'failed to mesh'
+  // console.log({ matchedCharacters })
+
+  //   if (!matchedCharacters) return 'failed to mesh'
+  //   meshedWords += matchedCharacters[0]
+  // }
   //   if (!matchCharacters) return 'failed to mesh'
   //   meshedWords += matchCharacters[1]
   // }
@@ -132,12 +145,12 @@ I want to find the longest common substring of the words in the array by compari
   always return a variable, or, use only variables in return statements
   this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
   */
-  return meshedWords
+  // return meshedWords
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result:
-wordMesh(['beacon', 'condominium', 'umbilical', 'california']) // "conumcal";
-wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // lowringter"
+console.log(wordMesh(['beacon', 'condominium', 'umbilical', 'california'])) // "conumcal";
+console.log(wordMesh(['allow', 'lowering', 'ringmaster', 'terror'])) // lowringter"
 wordMesh(['abandon', 'donation', 'onion', 'ongoing']) // dononon"
 wordMesh(['jamestown', 'ownership', 'hippocampus', 'pushcart', 'cartorapher', 'pheromone']) // "ownhippuscartpher"
 wordMesh(['kingdom', 'dominator', 'notorious', 'usual', 'allegory']) // "failed to mesh"
@@ -171,11 +184,12 @@ wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to me
 // DM: I'm adding this new item to the STARTER.js to make it faster for me to know what is the current status of the challenge.
 
 /* CURRENT STATUS (update this section before each commit of the file)
-MM: the code is not working yet. I am stuck at the part where I need to match the last and the first characters of the words in the array. 
+
 DM: todoMM: what is the current status? Get it to work first, then do the conversion to array.reduce afterwards.
 
 MM: DM: the current status of this file is that the code is still not working. after checking if the words in the array mesh, I can not join all the meshed characters in one word. the piece of code where I am getting stuck is with the regex: const matchedCharacters = (`${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`).match
 
-next step: DM: get the other file to work first, then work on this one
+next step: DM: get the other file to work first, then work on this one;
+MM: DM: the solution is in progress, I have used another approach instead of using let and for loop to avoid mutating the array. 
 
 */

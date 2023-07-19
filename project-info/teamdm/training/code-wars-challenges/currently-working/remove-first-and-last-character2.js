@@ -113,21 +113,45 @@ array('A1,B2') // null
 array('1,2,3') // '2'
 array('1,2,3,4') // '2 3'
 array('A1,B2,C3,D4,E5') // 'B2 C3 D4'
-array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
-  [
-    /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
+array('A,1,23,456,78,9,Z')[ // '1 23 456 78 9'
+  /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
              understand easily. Don't use misleading or too-unspecific variable names.
              But, don't spend much time figuring out the perfect variable name. The trick is to describe
              what it is with lots of words. Just write exactly what the variable holds.
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
-    /* 13. code review and approval*/
-    /* approved */
+  /* 13. code review and approval*/
+  /* approved */
 
-    /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
+  /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
+  function array(commaSeparatedCharacterSequencesDirty) {
+    function cleanupString(string) {
+      return string.trim()
+    }
+    const commaSeparatedCharacterSequences = cleanupString(commaSeparatedCharacterSequencesDirty)
+
+    if (commaSeparatedCharacterSequences === '') return null
+
+    const characterSequences = commaSeparatedCharacterSequences.split(',')
+    const characterSequencesWithoutFirstAndLast = characterSequences.slice(1, -1)
+    console.log({ characterSequencesWithoutFirstAndLast })
+    const empty = characterSequencesWithoutFirstAndLast.length === 0
+    if (empty) return null
+
+    return characterSequencesWithoutFirstAndLast.join(' ')
+  }
+]
+array('') // null
+array('1') // null
+array('A1,B2') // null
+array('1,2,3') // '2'
+array('1,2,3,4') // '2 3'
+array('A1,B2,C3,D4,E5') // 'B2 C3 D4'
+array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
+  [
     /* 15. Duncan moves the file out of this directory when it is complete */
 
     /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
