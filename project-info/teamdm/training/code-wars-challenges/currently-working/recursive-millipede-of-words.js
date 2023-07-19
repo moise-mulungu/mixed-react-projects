@@ -44,73 +44,76 @@ these would be the questions you'd be expected to ask in a interview situation
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise. pick a name using the any good words from the challenge description or from your input description in #5
 
-function millipedeOfWords_First(words) {
-  /* 5. describe the inputs and outputs in detail: their types and possible values
-        note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
-        
-        inputs:
-          parameter1: string|number|...; possible values:
-          parameter2: string|number|...; possible values:
-
-        output: string|number|...; possible values: */
-  /*
-input: array of words
-output: boolean(true or false) if all words can be combined into one word
-  */
-
-  // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
-  const isArrayOfStrings = words.every((word) => typeof word === 'string')
-  if (!isArrayOfStrings) throw new Error('parameter words must be an array of strings')
-
-  const arrayOfUniqueWords = [...new Set(words)]
-  if (arrayOfUniqueWords.length !== words.length) return false
-  // console.log('arrayOfUniqueWords', arrayOfUniqueWords)
-  /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
-	  WHAT do you want to change in the input to get the output?
-        WHAT do you want to calculate based on the input? 
-        Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables.)
-        */
-  /*
-I want to check if all words can be combined into one word by returning true or false
-  */
-
-  /* 8. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
-        assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
-        Naming variables: 
-        * each logical expressions must be assigned to a variable. 
-	  * the instructions often contain words that can be used in variable names.
-        * function names verb or verb+noun (create, handleClick, handleSubmit)
-        * booleans are named with (positive) adjectives: (open, seen, isString)
-        * everything else with nouns or adjectives: (myThing, myCoolThing)
-        * variable names should express exactly what the variable contains
-        * see naming-conventions.md*/
-  const firstAndLastLetterOfEachWord = arrayOfUniqueWords.map((word, index) => {
-    const firstLetter = word[0]
-    const lastLetter = word[word.length - 1]
-    return { firstLetter, lastLetter }
-  })
-  console.log('firstAndLastLetterOfEachWord', firstAndLastLetterOfEachWord)
-
-  /* 9. use the named parts to create a readable solution. */
-
-  const areFirstAndLastLettersEqual = firstAndLastLetterOfEachWord.every((word, index, src) => {
-    const isNextWord = index < src.length - 1
-    if (!isNextWord) return true
-
-    const currentWord = src[index]
-    const nextWord = src[index + 1]
-    if (currentWord.lastLetter !== nextWord.firstLetter) return false
-    return true
-  })
-
-  /* 10. return the solution
-      always return a variable, or, use only variables in return statements
-      this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
-   */
-  return areFirstAndLastLettersEqual
-}
 // initial, partial solution:
-// works if the initial order meets the conditions (does not work if the words must be reordered)
+// works ONLY if the initial order meets the conditions (does not work if the words must be reordered)
+// DM: commenting out this solution because it doesn't work. see the working recursive solution below.
+// function millipedeOfWords(words) {
+//   /* 5. describe the inputs and outputs in detail: their types and possible values
+//         note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
+
+//         inputs:
+//           parameter1: string|number|...; possible values:
+//           parameter2: string|number|...; possible values:
+
+//         output: string|number|...; possible values: */
+//   /*
+// input: array of words
+// output: boolean(true or false) if all words can be combined into one word
+//   */
+
+//   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
+//   const isArrayOfStrings = words.every((word) => typeof word === 'string')
+//   if (!isArrayOfStrings) throw new Error('parameter words must be an array of strings')
+
+//   const arrayOfUniqueWords = [...new Set(words)]
+//   if (arrayOfUniqueWords.length !== words.length) return false
+//   // console.log('arrayOfUniqueWords', arrayOfUniqueWords)
+//   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
+// 	  WHAT do you want to change in the input to get the output?
+//         WHAT do you want to calculate based on the input?
+//         Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables.)
+//         */
+//   /*
+// I want to check if all words can be combined into one word by returning true or false
+//   */
+
+//   /* 8. break down the the 'variable' elements of the solution into the most granular (smallest) parts by
+//         assigning each part (string, boolean expression, etc.) to a well-named, descriptive variable.
+//         Naming variables:
+//         * each logical expressions must be assigned to a variable.
+// 	  * the instructions often contain words that can be used in variable names.
+//         * function names verb or verb+noun (create, handleClick, handleSubmit)
+//         * booleans are named with (positive) adjectives: (open, seen, isString)
+//         * everything else with nouns or adjectives: (myThing, myCoolThing)
+//         * variable names should express exactly what the variable contains
+//         * see naming-conventions.md*/
+//   const firstAndLastLetterOfEachWord = arrayOfUniqueWords.map((word, index) => {
+//     const firstLetter = word[0]
+//     const lastLetter = word[word.length - 1]
+//     return { firstLetter, lastLetter }
+//   })
+//   console.log('firstAndLastLetterOfEachWord', firstAndLastLetterOfEachWord)
+
+//   /* 9. use the named parts to create a readable solution. */
+
+//   // howtojs: Array.every example
+//   const areFirstAndLastLettersEqual = firstAndLastLetterOfEachWord.every((word, index, src) => {
+//     const isNextWord = index < src.length - 1
+//     if (!isNextWord) return true
+
+//     const currentWord = src[index]
+//     const nextWord = src[index + 1]
+//     if (currentWord.lastLetter !== nextWord.firstLetter) return false
+//     return true
+//   })
+
+//   /* 10. return the solution
+//       always return a variable, or, use only variables in return statements
+//       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
+//    */
+//   return areFirstAndLastLettersEqual
+// }
+
 // hard algo challenge, think about the "naive", "brute force" approach, talk about it
 // ['endure', 'elite', 'excess']
 // ['engine', 'endure', 'elite', 'excess']
@@ -169,7 +172,7 @@ I want to check if all words can be combined into one word by returning true or 
 // }
 
 /*
-DM:
+DM: Moise, be sure to walk through this again, to refresh your memory on the key details and questions of recursion.
 
 Moise, I'm going to walk you through my thinking in detail. With experience, you'll think of these, but notice immediately why they don't work. But, I'm showing my thinking in detail here for you.
 
@@ -269,7 +272,6 @@ So, now I'm going to just DO the recursive solution. You can learn by example. I
 
 /*
 
-Final, recursive, solution:
 
 challenge: return true if all the words can be combined into one word. May require re-ordering the words
 assumption: the only way to solve this is by "brute force", i.e., there is no mathematical formula or clever solution
@@ -283,45 +285,48 @@ recursive approach:
 * try first word: check if subsequent words
 
 */
+// DM: moise, try not to comment out working code because it might never get uncommented, causing confusion in the future. if the console logs are bothering you, comment out just the console.log lines.
+// Final, recursive, solution: (this solution works)
+function millipedeOfWords(words) {
+  function recursiveSolution(
+    words,
+    // keep in mind what happens the FIRST time recurse() runs (2nd parameter is not passed)
+    previousLastLetter = ''
+  ) {
+    // recursive functions need a way to know when to no longer "recurse", i.e., there are no more words
+    if (words.length === 0) return true
+    // can ANY of the words combine? Array.some  implements a loop that stops when a true result is found
+    return words.some((word, i) => {
+      const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
+      const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
+      const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
+      // here is where it recurses, i.e., the "recurse" function calls itself
+      return (
+        wordCombinesWithPreviousWord &&
+        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord) // this where things get tricky, on how to pass these two parameters
+      )
+    })
+  }
+  // this is the FIRST time recursiveSolution is called
+  const result = recursiveSolution(words)
+  console.log({ result })
+  return result
 
-// function millipedeOfWords(words) {
-//   function recursiveSolution(
-//     words,
-//     // keep in mind what happens the FIRST time recurse() runs (2nd parameter is not passed)
-//     previousLastLetter = ''
-//   ) {
-//     // recursive functions need a way to know when to no longer "recurse", i.e., there are no more words
-//     if (words.length === 0) return true
-//     // can ANY of the words combine? Array.some  implements a loop that stops when a true result is found
-//     return words.some((word, i) => {
-//       const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
-//       const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
-//       const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
-//       // here is where it recurses, i.e., the "recurse" function calls itself
-//       return (
-//         wordCombinesWithPreviousWord &&
-//         recursiveSolution(allRemainingWords, lastLetterOfCurrentWord) // this where things get tricky, on how to pass these two parameters
-//       )
-//     })
-//   }
-//   // this is the FIRST time recursiveSolution is called
-//   return recursiveSolution(words)
+  // MM: the recursive code works, but I need to understand it better.
+  // DM: add console logs, with indents, similar to how I did it with recursive-nth-fibonacci, so that I can see the order of the recursion by running the function. Then you can also understand it thoroughly and be able to explain it to me.
+}
 
-//   // MM: the recursive code works, but I need to understand it better.
-//   // DM: add console logs, with indents, similar to how I did it with recursive-nth-fibonacci, so that I can see the order of the recursion by running the function. Then you can also understand it thoroughly and be able to explain it to me.
-// }
+// 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
+// without re-ordering
+millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
+millipedeOfWords(['endure', 'elite', 'excess']) // true
 
-// // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
-// // without re-ordering
-// millipedeOfWords(['engine', 'endure', 'elite', 'excess']) // true
-// millipedeOfWords(['endure', 'elite', 'excess']) // true
-
-// // with re-ordering
-// millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night']) // true
-// millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night']) // true
-// millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time']) // true
-// millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president']) // false
-// millipedeOfWords(['no', 'dog', 'on', 'good']) // false
+// with re-ordering
+millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night']) // true
+millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night']) // true
+millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time']) // true
+millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president']) // false
+millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -336,79 +341,111 @@ recursive approach:
 /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-function millipedeOfWords(words) {
+// NOTE: we are breaking the rules of section #14 by leaving comments because indented comments are crucial to understanding how recursion works.
+
+function millipedeOfWordsWithIndenting(words) {
+  console.log(`\n\n----------------------------------------------------------------`)
+  console.log('millipedeOfWordsWithIndenting() called with:', { words })
+  // howtonode: exit a node process - process.exit(0)
+  // process.exit(0)
   function recursiveSolution(
     words,
     previousLastLetter = '',
+
+    // DM: this code works, just fix the indenting. It's a bug, on one line, no need to rewrite the function.
+    // DM: the main thing I'd like you to do is to fix the indenting of the console.logs in this code. There are 3 other examples of indenting console.logs that I did in the repo that you can study and apply here. Look at those examples and see how I made indenting work. You only have to edit one line in order for indenting to work in the code below.
+    // DM: Sometimes we DEVs can overthink something. Watch out for that. Or, time passes, and we don't re-read the original instructions (see them just below). In this case, focus very specifically on the "indent" variable. In the other recursive examples, look carefully at what I do with the indent variable, including how it is passed to the recursive function. This is practice at fixing one single thing that happens to be among code that you don't understand. You have to focus very specifically on the thing that you are asked to fix: in thi case, the "indent".
+    // DM: I changed the existing logging a bit to hopefully make things clearer, but you still need to fix the indenting.
+
     // (in progress) DM: todoMM: look at how I used logging in nthFiboWithIndentedLogging and use the same pattern here.
-    // DM: todoMM: I don't see any indenting in the console.log output when I run this function. Run the function nthFiboWithIndentedLogging() in the other recursive e file, and see what the output looks like - it is indented so you can follow the pattern of recursive calls. Look carefully at how the indentation happens in nthFiboWithIndentedLogging() and use that same pattern here. MM: I could not figure out what to do here. I thought I followed the way you did in the other file.
-    // DM: what's missing is increasing the size of the indent each time a deeper recursion is called. See nthFiboWithIndentedLogging for how to do that; MM: this seems to be time-consuming task, but i'll learn the recursive again. DM: you'll have to trust me if I give you a difficult task. Recursion is important. It will come up in interviews. Also, it is good practice to apply an existing pattern/example to different code. nthFiboWithIndentedLogging() is the existing pattern for how to use indented console.logs to see how recursion works.
+    // MM: I don't see any indenting in the console.log output when I run this function. DM: Run the function nthFiboWithIndentedLogging() in the other recursive file, and see what the output looks like - it is indented so you can follow the pattern of recursive calls. Look carefully at how the indentation happens in nthFiboWithIndentedLogging() and use that same pattern here. MM: I could not figure out what to do here. I thought I followed the way you did in the other file.
+    // DM: !!! what's missing is increasing the size of the indent each time a deeper recursion is called. See nthFiboWithIndentedLogging for how to do that; MM: this seems to be time-consuming task, but i'll learn the recursive again. DM: you'll have to trust me if I give you a difficult task. Recursion is important. It will come up in interviews. Also, it is good practice to apply an existing pattern/example to different code. nthFiboWithIndentedLogging() is the existing pattern for how to use indented console.logs to see how recursion works.
     indent = ''
   ) {
+    console.log(`${indent}recursiveSolution() called, words: ${words}`)
+    console.log(`${indent}recursiveSolution() called, previousLastLetter: ${previousLastLetter}`)
+    console.log(`${indent}recursiveSolution() called, indent: ${indent}`)
+    // howtojs: log the true arguments passed to a function (i.e., before default values are applied); log the special variable "arguments"
+    // console.log(`${indent} recursiveSolution() called with:`, { arguments })
     if (words.length === 0) {
       console.log(`${indent}words.length === 0`)
       return true
     }
 
-    // return words.some((word, i) => {
-    //   const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
-    //   console.log(`${indent}word: ${wordCombinesWithPreviousWord}`)
-    //   const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
-    //   console.log(`${indent}allRemainingWords: ${allRemainingWords}`)
-    //   const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
-    //   // here is where it recurses, i.e., the "recurse" function calls itself
-    //   console.log(`${indent}lastLetterOfCurrentWord: ${lastLetterOfCurrentWord}`)
-    //   return (
-    //     // DM: todoMM: indent is not passed to the recursive call. Look at the other examples and see how they work, then make this one work.
-    //     wordCombinesWithPreviousWord &&
-    //     recursiveSolution(allRemainingWords, lastLetterOfCurrentWord)
-    //   )
-    // })
+    return words.some((word, i) => {
+      const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
+      console.log(`${indent}word: ${word}`)
+      console.log(`${indent}previousLastLetter: ${previousLastLetter}`)
+      console.log(`${indent}wordCombinesWithPreviousWord: ${wordCombinesWithPreviousWord}`)
+      const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
+      console.log(`${indent}allRemainingWords: ${allRemainingWords}`)
+      const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
+      console.log(`${indent}lastLetterOfCurrentWord: ${lastLetterOfCurrentWord}`)
+      return (
+        wordCombinesWithPreviousWord &&
+        // here is where it recurses, i.e., the "recurse" function calls itself
+        // DM: todoMM: indent is not passed to the recursive call. Look at the other examples and see how they work, then make this one work. DM: Look at this todoMM again (I was telling you exactly where the problem is!)
+        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord)
+      )
+    })
   }
 
-  return recursiveSolution(words)
-}
+  const result = recursiveSolution(words)
+  console.log({ result })
+  return result
+} // node ./e-info/teamdm/training/code-wars-challenges/currently-working/recursive-millipede-of-words.js
 
-// without re-ordering
-console.log(millipedeOfWords(['engine', 'endure', 'elite', 'excess'])) // true
-console.log(millipedeOfWords(['endure', 'elite', 'excess'])) // true
-
-// with re-ordering
-console.log(
-  millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night'])
-) // true
-console.log(millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night'])) // true
-console.log(millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time'])) // true
-console.log(millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president'])) // false
-console.log(millipedeOfWords(['no', 'dog', 'on', 'good'])) // false
+// DM: console.logs are not necessary when calling millipedeOfWords()
+// a shorter one with only 2 elements
+millipedeOfWordsWithIndenting(['engine', 'endure']) // true
+// DM: todoMM: uncomment the remaining tests once you get the first one working with indents
+// // without re-ordering
+// console.log(millipedeOfWords(['engine', 'endure', 'elite', 'excess'])) // true
+// console.log(millipedeOfWords(['endure', 'elite', 'excess'])) // true
+// // with re-ordering
+// console.log(
+//   millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night'])
+// ) // true
+// console.log(millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night'])) // true
+// console.log(millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time'])) // true
+// console.log(millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president'])) // false
+// console.log(millipedeOfWords(['no', 'dog', 'on', 'good'])) // false
 
 /* 15. Duncan moves the file out of this directory when it is complete */
 
 /* CURRENT STATUS (update this section before each commit of the file)
 
 DM: solution works. 
-DM: next step: the logging in section 14 should show the recursion via indenting .
+DM: next step: the logging in section 14 should show the recursion via indenting.
 
 MM: DM: the current status of this file is not complete yet, I am still figuring out how to come up with the solution using indent.
+
+next steps:
+* DM: see my comments above in section 14, then fix the indenting in that code
+
 */
 
-function millipedeOfWords(word, count = 1) {
-  if (count > word.length) {
-    return true
-  }
-  const segment = word.slice(0, count)
-  return millipedeOfWords(word.slice(count), count + 1) && millipedeOfWords(segment)
-}
+/* 
+Moise, I'm going to comment this out because it not necessary to completely redo the solution. The solution works. You just need to add some indented logging.
+If you like to later experiment with recursive approaches here, that's great. For now, it's best to learn recursion by studying carefully all 4 examples in the repo, paying close attention to what the logging shows you. 
+*/
+// function millipedeOfWords2(word, count = 1) {
+//   if (count > word.length) {
+//     return true
+//   }
+//   const segment = word.slice(0, count)
+//   return millipedeOfWords2(word.slice(count), count + 1) && millipedeOfWords2(segment)
+// }
 
-// without re-ordering
-console.log(millipedeOfWords(['engine', 'endure', 'elite', 'excess'])) // true
-console.log(millipedeOfWords(['endure', 'elite', 'excess'])) // true
+// // without re-ordering
+// console.log(millipedeOfWords2(['engine', 'endure', 'elite', 'excess'])) // true
+// console.log(millipedeOfWords2(['endure', 'elite', 'excess'])) // true
 
-// with re-ordering
-console.log(
-  millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night'])
-) // true
-console.log(millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night'])) // true
-console.log(millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time'])) // true
-console.log(millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president'])) // false
-console.log(millipedeOfWords(['no', 'dog', 'on', 'good'])) // false
+// // with re-ordering
+// console.log(
+//   millipedeOfWords2(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night'])
+// ) // true
+// console.log(millipedeOfWords2(['screen', 'desire', 'theater', 'excess', 'night'])) // true
+// console.log(millipedeOfWords2(['east', 'e', 'e', 't', 't', 'e', 'time'])) // true
+// console.log(millipedeOfWords2(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president'])) // false
+// console.log(millipedeOfWords2(['no', 'dog', 'on', 'good'])) // false

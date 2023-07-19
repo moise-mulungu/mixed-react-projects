@@ -157,6 +157,9 @@ createPhoneNumber(
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
 
-   MM: toDM: the status of this file is that the code works and all test cases pass. your code review and approval are requested here.
-
+   MM: toDM: the status of this file is that the code works and all test cases pass. your code review and approval are requested here. 
+   DM: it looks like I had already approved. 
+   
+   next step: section 14
+   
 */

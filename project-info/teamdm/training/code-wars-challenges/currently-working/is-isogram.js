@@ -2,7 +2,7 @@
 
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
-// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
+// note: You can be working multiple challenges, but always address all todoM-Ms in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 /*
  */
 
@@ -99,7 +99,7 @@ isIsogram('isogram') // true
 isIsogram('aba') // false
 isIsogram('moOse') // false
 isIsogram('isIsogram') // false
-isIsogram('') // true
+isIsogram('') 
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -125,4 +125,8 @@ isIsogram('') // true
 // DM: todoMM: hey Moise, I spend way too much time figuring out where you are at in these files. It would save time if you update the status each time you commit, so that I can more quickly know what to do and how to help.
 
 MM: DM: the current status of this file is that the code works and all tests pass. the remaining steps are the review and approval of the code.
+DM: the first thing AI do in a review is to search the file for todoMMs. If they are marked "(done)", then I can delete them. 
+
+next step: DM: address at all the todoMMs in this file.
+
 */

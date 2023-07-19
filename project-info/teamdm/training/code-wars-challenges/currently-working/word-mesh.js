@@ -146,7 +146,7 @@ wordMesh(['exalt', 'altimeter', 'metermaid', 'maidenvoyage', 'voyageur']) // "al
 wordMesh(['job', 'object', 'joust', 'on']) // "failed to mesh"
 wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to mesh"
 
-// DM: todoMM: now that you have good tests, make the solution work. (you can convert the loop to a .reduce AFTER you git it working); reduce is confusing, TBH I am still unable to figure out all these solutions with reduce. DM: give reduce another try after you work through all the reduce exercises I gave you, and AFTER you get this code to work using whatever other loop you've used(ok).
+// DM: todoMM: now that you have good tests, make the solution work. (you can convert the loop to a .reduce AFTER you git it working); MM: reduce is confusing, TBH I am still unable to figure out all these solutions with reduce. DM: give reduce another try after you work through all the reduce exercises I gave you, and AFTER you get this code to work using whatever other loop you've used(ok).
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -174,5 +174,8 @@ wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to me
 MM: the code is not working yet. I am stuck at the part where I need to match the last and the first characters of the words in the array. 
 DM: todoMM: what is the current status? Get it to work first, then do the conversion to array.reduce afterwards.
 
-MM: DM: the current status of this file is that the code is still not working. after checking if the words in the array mesh, I can not join all the meshed characters in one word. the piece of code where I am getting stuck is with the regex: const matchedCharacters = (`${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`).match(/(.+) \1/)
+MM: DM: the current status of this file is that the code is still not working. after checking if the words in the array mesh, I can not join all the meshed characters in one word. the piece of code where I am getting stuck is with the regex: const matchedCharacters = (`${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`).match
+
+next step: DM: get the other file to work first, then work on this one
+
 */

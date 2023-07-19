@@ -173,7 +173,7 @@ divisibleBy13(987_654_321) // 30
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
 /* 13. code review and approval*/
-/*  */
+/* approval */
 
 /* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
@@ -188,5 +188,6 @@ divisibleBy13(987_654_321) // 30
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
 
-   MM: toDM: the current status of this file is that the code works, and all test cases are passing. It remains your code review and approval.
+   MM: toDM: the current status of this file is that the code works, and all test cases are passing. 
+   next step: section 14
 */

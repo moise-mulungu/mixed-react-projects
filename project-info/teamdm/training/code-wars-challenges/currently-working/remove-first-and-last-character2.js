@@ -1,6 +1,6 @@
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
-// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
+// note: You can be working multiple challenges, but always address all todoM-Ms in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 /*
  */
 
@@ -62,7 +62,6 @@ output: a string of the same character sequences separated by spaces after remov
   // 6. Validate/adjust the input. Throw errors (*offensive coding*). Convert types or transform (defensive coding)
 
   // howtojs: strings are iterable: `[...myString] === ['m','y','S','t','r','i','n','g']`; i.e., all Arrays are iterable (think "loopable"), so you can use the spread syntax `[...myArray]` to clone an array. Really spread syntax will work on any "iterable" value. Since a String is "iterable" https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols Map is also iterable.
-  //(done) DM: todoMM: create a new file moise-shortcuts.md and make the first entry: shift-alt-downArrow - copy current line down;
   // if (!isArrayOfStrings(string)) throw new Error('array must be an array of strings')
   // defensive
   function cleanupString(string) {
@@ -76,7 +75,7 @@ output: a string of the same character sequences separated by spaces after remov
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
         WHAT do you want to calculate based on the input? 
-        Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, DM: yes!)
+        Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!)
         */
   /*
 I want to remove the first and last strings from the array and then join the remaining strings with spaces
@@ -124,7 +123,7 @@ array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
     /* 13. code review and approval*/
-    /*  */
+    /* approved */
 
     /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
@@ -135,6 +134,8 @@ array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
 
    MM: DM: the current status of this file is that it is complete and all tests pass. The next steps are your code review and approval
+   
+   next step: DM: approved, step 14 is next
 */
 
     ('a', 'b', 'c', 'a', 'b')
