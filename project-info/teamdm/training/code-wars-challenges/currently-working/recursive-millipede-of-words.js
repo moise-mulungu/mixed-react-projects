@@ -393,7 +393,7 @@ function millipedeOfWordsWithIndenting(words) {
   const result = recursiveSolution(words)
   console.log({ result })
   return result
-} // node ./e-info/teamdm/training/code-wars-challenges/currently-working/recursive-millipede-of-words.js
+} // node ./project-info/teamdm/training/code-wars-challenges/currently-working/recursive-millipede-of-words.js
 
 // DM: console.logs are not necessary when calling millipedeOfWords()
 // a shorter one with only 2 elements
