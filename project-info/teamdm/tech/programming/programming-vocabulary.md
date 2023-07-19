@@ -1,5 +1,14 @@
 note: prefix Google searches with "computer programming" to get the best results. "programming" alone is not specific enough
 
+## Agile methodology
+
+DM: todoMM: use bing chat ai to get a very short definition for this vocab entry
+
+## JSON
+DM: todoMM: Moise, ask bing chat ai for "give me a very, very, very brief explanation of JSON" and use that to create this JSON vocab entry here
+
+howtojs: json parse error:: The error “SyntaxError Unexpected Token in JSON” appears when you try to parse content (for example - data from a database, api, etc), but the content itself is not JSON (could be XML, HTML, CSV) or invalid JSON containing unescaped characters, missing commas and brackets.
+
 ## functional programming
 
 Functional programming (FP) is an approach to software development that uses pure functions to create maintainable software. In other words, building programs by applying and composing functions

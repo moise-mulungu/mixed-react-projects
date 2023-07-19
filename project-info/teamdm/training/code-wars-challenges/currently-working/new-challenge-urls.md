@@ -1,5 +1,8 @@
 
 # New Challenge URLs
+
+DM: for now, no new challenge files until we get all the old files in this directory resolved and moved out of this dir
+
 ## Start each new challenge by copying the contents of STARTER.js into a new file. 
 https://www.codewars.com/kata/6344701cd748a12b99c0dbc4 Millipede of words
 

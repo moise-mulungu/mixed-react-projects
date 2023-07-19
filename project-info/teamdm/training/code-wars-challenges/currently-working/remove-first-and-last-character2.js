@@ -127,6 +127,7 @@ array('A,1,23,456,78,9,Z')[ // '1 23 456 78 9'
   /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
+  // DM: todoMM: what's going on here? your function is inside square brackets. does it even run?
   function array(commaSeparatedCharacterSequencesDirty) {
     function cleanupString(string) {
       return string.trim()
@@ -154,8 +155,10 @@ array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
   [
     /* 15. Duncan moves the file out of this directory when it is complete */
 
-    /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
+    /* CURRENT STATUS and NEXT STEPS (update this section before EACH commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
+
+   DM: current status? next step?
 
    MM: DM: the current status of this file is that it is complete and all tests pass. The next steps are your code review and approval
    

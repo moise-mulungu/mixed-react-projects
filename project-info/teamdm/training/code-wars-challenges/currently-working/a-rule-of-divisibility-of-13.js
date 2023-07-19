@@ -173,7 +173,9 @@ divisibleBy13(987_654_321) // 30
              Later, in this step, you can refine variable names to be shorter/better if appropriate.  */
 
 /* 13. code review and approval*/
-/* approval */
+/* 
+DM: I didn't realize that I wrote "approval" here, not sure what happened ... I usually write "approved". Anyway, I haven't reviewed this file at all, so let's pause work on it until we finish getting all the other files in this dir completed and moved out of the dir.
+*/
 
 /* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
@@ -213,18 +215,17 @@ divisibleBy13(987_654_321) // 30
 */
 // MM: this code does not look better than mine, but I am curious about the while loop, and how it works.
 function thirt(numbers) {
-    const pattern = [1, 10, 9, 12, 3, 4, 1]
-    let last = null
+  const pattern = [1, 10, 9, 12, 3, 4, 1]
+  let last = null
 
-    while(last !== numbers)
-    {
-        last = numbers
-        const numberToStrings = numbers.toString()
-        numbers = 0
-        for(let i = numberToStrings.length-1, j = 0; i >= 0; i--, j++)
-          numbers += +numberToStrings[i] * pattern[j % 6]
-    }
-    return numbers
+  while (last !== numbers) {
+    last = numbers
+    const numberToStrings = numbers.toString()
+    numbers = 0
+    for (let i = numberToStrings.length - 1, j = 0; i >= 0; i--, j++)
+      numbers += +numberToStrings[i] * pattern[j % 6]
+  }
+  return numbers
 }
 /* 16. Duncan moves the file out of this directory when it is complete */
 
@@ -233,4 +234,11 @@ function thirt(numbers) {
 
    MM: toDM: the current status of this file is that the code works, and all test cases are passing. 
    next step: section 14
+*/
+/* 
+
+STATUS: has not been reviewed at all
+
+NEXT STEP: moise to pause work here until all the other files in this dir are complete
+
 */

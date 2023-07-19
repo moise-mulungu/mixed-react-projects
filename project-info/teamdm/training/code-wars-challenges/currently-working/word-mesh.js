@@ -189,7 +189,11 @@ DM: todoMM: what is the current status? Get it to work first, then do the conver
 
 MM: DM: the current status of this file is that the code is still not working. after checking if the words in the array mesh, I can not join all the meshed characters in one word. the piece of code where I am getting stuck is with the regex: const matchedCharacters = (`${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`).match
 
-next step: DM: get the other file to work first, then work on this one;
-MM: DM: the solution is in progress, I have used another approach instead of using let and for loop to avoid mutating the array. 
+
+MM: DM: the solution is in progress, I have used another approach instead of using let and for loop to avoid mutating the array.
+
+STATUS: in progress
+
+NEXT STEP: get all tests to work
 
 */

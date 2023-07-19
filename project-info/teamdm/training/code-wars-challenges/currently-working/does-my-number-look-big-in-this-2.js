@@ -1,6 +1,6 @@
 //(status: complete) always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
-// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
+// note: You can be working multiple challenges, but always address all todoMaMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 /*
  */
 
@@ -80,7 +80,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  //(done)DM: todoMM: I don't understand your logic here. Please put comments to explain how your code is calculating the "sum of the digits raised to the power of the number of digits". It helps to communicate to me and also to guide your thinking. You can use one of the examples. Try explaining how you calculate the "sum of the digits raised to the power of the number of digits" for the number 371.(done) DM: todoMM: I can't see any comments in the code here. Please add comments so that I can follow your intentions, and also update the status section at the bottom of this file.
+  // DM: ok, those todoM-Ms were old. good, now I can delete them.
 
   // this code gets the number of digits in the value, but this one is not necessary as the value is converted to a string below. I'm leaving it here for reference.
   // howtojs: get number of digits in an integer
@@ -96,8 +96,9 @@ i want to check if the number is narcissistic by checking if the sum of the digi
 
   // let sumOfDigits = 0
   // howtojs: convert a number to a string
-  const numberAsStrings = String(number) // also: number.toString()
-  console.log({ valueString: numberAsStrings })
+  // DM: this was fine as a singular noun, because it is one discrete thing, a string
+  const numberAsString = String(number) // also: number.toString()
+  console.log({ numberAsString })
   // for (let i = 0; i < valueString.length; i++) {
   //   const digit = Number(valueString[i])
   //   console.log({ digit })
@@ -107,22 +108,20 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   //   console.log({ sumOfDigits })
   // }
 
-  const digits = numberAsStrings.split('') //
+  const digits = numberAsString.split('') //
   // DM: good job on writing the comments! I'm going to add a few todoM-Ms regarding variable naming. It may be possible to not need any comments if the variable names provide enough information.(cool!)
-  // DM: todoMM: please explain this line with a comment, then rename the variable so that it expresses clearly and simply the meaning of the comment. DM: good comment, now give the variable a better name (you can use the words in your comment)
 
   // DM: I edited this a bit so you can see how to write more concise comments
   const numberOfDigits = digits.reduce((acc) => acc + 1, 0) //  also: digits.length
   console.log({ numberOfDigits })
 
-  //(done) DM: todoMM: variable names of arrays should be in the plural. Can you use the word 'digit' from your comment above in order to write a more specific and clear variable name? DM: make the variable name more specific. "digits" alone is inaccurate, because "digits" is not what they are because you have done something to the digits, which is raised them to the power, so include that in your var name.
   const digitsRaisedToPowers = digits.map((digit) => digit ** numberOfDigits)
   // const raisedPower = splitValues.map((digit) => digit ** valueDigitsNumber)
   console.log({ digitsRaisedToPowers })
 
   // sums the digitsRaisedToPowers
   const sumOfDigitsRaisedToPowers = digitsRaisedToPowers.reduce((acc, digit) => acc + digit, 0)
-  console.log({ sumOfDigits: sumOfDigitsRaisedToPowers })
+  console.log({ sumOfDigitsRaisedToPowers })
 
   // for (let i = 0; i < valueDigits; i++) {
   // const lastValueDigit = Number(String(value).slice(0, i)) % 10
@@ -133,7 +132,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
   // console.log('in loop', { i, lastValueDigit, valueDigits, raisedPower, sumOfDigits })
   // }
 
-  console.log({ sumOfDigits: sumOfDigitsRaisedToPowers })
+  console.log({ sumOfDigitsRaisedToPowers })
 
   // DM: good. Comments  go ABOVE the code that the comments refer to.
   if (sumOfDigitsRaisedToPowers === number) {
@@ -147,7 +146,7 @@ i want to check if the number is narcissistic by checking if the sum of the digi
    this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
   return false
-  // MM: toDM: some test cases are failing. (done)DM: todoMM: can you give me mor info? why are they failing? at what point in your code does things go wrong? I think I fixed the issue.
+  // MM: toDM: some test cases are failing. DM: can you give me mor info? why are they failing? at what point in your code does things go wrong? MM: I think I fixed the issue. DM: ok, but never say "I think I did it" - it sounds like maybe, then I start to have doubts. say something definitive so that I know what to do. I think it's 'yes' because you said all the tests pass
 }
 
 narcissistic(7) // true
@@ -156,16 +155,17 @@ narcissistic(153) // true
 narcissistic(122) // false
 narcissistic(487) // false
 
+/* 13. code review and approval*/
+/* approved */
+
+/* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
+       OK to rename variables here if it seems better while looking at the code in concise form*/
+
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
-   MM: the current status of this file is that the code works, and all tests pass. what remains here is your code review and approval.
-*/
+/*
 
-/*DM: get the for loop solution working, then convert the for loop to a reduce after I approve the for loop version
-(done)DM: todoMM: give me a status update in the CURRENT STATUS section each time you update any challenge file, so that I know what is going on. With a status update from you, it will save me a lot of time(read). (ok)DM: todoMM: ok, read, but not done, right?
-
-MM: toDM: the current status of this file is that the code works, and all tests pass. what remains here is your code review and approval.
+STATUS: the current status of this file is that the code works, and all tests pass. what remains here is your code review and approval.
  
-next step: DM: there are a lot of todoMMs in this file. Next, please check each one, do the task, and/or put (done) in the todoMM line.
-MM: DM: I did not add comments anymore on each logic of code as I think it is already clear. You can just review it
+NEXT STEP: section 14
 */
