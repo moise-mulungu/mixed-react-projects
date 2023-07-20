@@ -10,7 +10,7 @@ export default function Content(props) {
 
   /* 4 sections, OR hero and 3 sections */
   return (
-    <>
+    <main>
       <section
         aria-labelledby="category-heading"
         className="pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8"
@@ -24,7 +24,7 @@ export default function Content(props) {
         <ContactForm />
         <Divider />
       </section>
-    </>
+    </main>
   )
 }
 

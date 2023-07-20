@@ -9,9 +9,8 @@ import FormattedContactEmail from '@/server/features/portfolio/formatted-contact
   testing URLs: use a URL for testing, with the key info in the query string
   * add values to the query string (instead of the POST body which is used by the contact form)
   * ethereal: http://localhost:3005/api/portfolio/contact?testWithEthereal=true&fromEmail=dmckeeve9@gmail.com&firstName=testFirstName
-  * ex: http://localhost:3005/api/portfolio/contact?fromEmail=dmckeeve9@gmail.com&firstName=testFirstName
-
-
+  * production: http://localhost:3005/api/portfolio/contact?fromEmail=dmckeeve9@gmail.com&firstName=testFirstName
+    * result: test email is seen in MM's gmail account
 */
 
 export default async function handler(req, res) {
@@ -88,9 +87,12 @@ export default async function handler(req, res) {
   * option: send as if from the site hosting service that provides your custom domain name: namecheap, godaddy, etc. (Vercel is listed ... Hmm, I didn't know Vercel offered domain names)
 
   Let's use this option for now:
-  * send as if from GMail: https://forwardemail.net/en/guides/send-mail-as-gmail-custom-domain
-
+  * 1) send as if from GMail: https://forwardemail.net/en/guides/send-mail-as-gmail-custom-domain
+    * assumption: you may also send emails to others "as if from" your gmail account, for example: a thankYou/confirmation to the person who contacts you.
+    * it's OK to send emails to yourself in gmail, so I think this will work.
   */
+
+  // 2) based on #1, fill out
   const transporterDataDefault = {
     host: 'smtp.forwardemail.net',
     port: 587,
@@ -101,6 +103,8 @@ export default async function handler(req, res) {
       pass: process.env.FORWARDEMAIL_EMAIL_PASSWORD, // in .env.*
     },
   }
+  // 3) use the production testing URL at the top
+
   const transporterData = testWithEthereal ? transporterDataEthereal : transporterDataDefault
   console.log({ transporterData })
   // the next three function calls were copied from: https://react.email/docs/integrations/nodemailer#3-convert-to-html-and-send-email
@@ -110,7 +114,7 @@ export default async function handler(req, res) {
   // create the email
   const options = {
     from: fromEmail, // be sure to validate proper email address in the client
-    to: toEmail,
+    to: toEmail, // might  `${process.env.FORWARDEMAIL_EMAIL_USERNAME}@forwardemail.net`
     subject: `Contact message from: ${firstName}`,
     // temporary using a plain text message for now
     // text: 'Hello world! This message is testing using a text version instead of HTML rendered by the @react-email package',

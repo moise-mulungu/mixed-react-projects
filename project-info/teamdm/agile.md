@@ -9,7 +9,7 @@
 - Savings
 - Teamwork
 
-1. Planning: is the first and the most crucial process of an P that is aimed to split tasks into the smallest one
+1. Planning: is the first and the most crucial process of an agile methodology that is aimed to split tasks into the smallest one
 
 2. Frequent testing: is the process that aims to add testing to the smallest task of the bigger task. This process prevent unexpected bugs in a large scale task.
 

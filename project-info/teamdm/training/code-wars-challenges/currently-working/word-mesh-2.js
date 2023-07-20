@@ -16,7 +16,7 @@ Maybe we're having a power struggle? I assure you, I'm not making up time-consum
 
 I spent a LOT of time Tuesday trying to get this to where you can learn from it. Look at all the stuff I wrote. Look at how I added new variables and changed the variable names to make things clearer. Don't just comment out all my work and say, "maybe later." Sometimes, you have to just do what you're told. I'm a Sr Dev with 20+ years experience, and I have to do what I'm told at work. So, no more commenting out my instructions and doing something different. This makes me feel poorly and, more important, you don't get to learn the lesson I'm trying to teach. You're also wasting a lot of time I could better spend teaching you more stuff.
 
-DM: todoMM: Debug the code. Finish the job. (Moise, if you want to walk through this together on Zoom, we can, but do the below todoMM first to be sure you're really clear on the desired logic.)
+DM: todoMM: Debug the code. Finish the job. (Moise, if you want to walk through this together on Zoom, we can, but do the below todoM-M first to be sure you're really clear on the desired logic.)
 
 What I changed below is a few things that make it easier to debug the logic
 * I extracted some values to variables so that logging shows the logic more clearly.
@@ -30,13 +30,26 @@ example:
 array: ['allow', 'lowering', 'ringmaster', 'terror']
 expected result // 'lowringter'
 PSEUDOCODE:
-loop through each word in the 
+loop through each word in the array
 * FIRST WORD
   * get the current word: allow
   * get the next word: lowering
+  * <-- DM: todoMM: Tuesday: what letters do you need to get from currentWord and nextWord? Write it out here exactly; what do you do to each letter; write it out here exactly -->
+  * what is the unknown? the number of letters that match
+  * goal: last X letters match first X letters of next word
   * loop through each letter of the current word
-    * <-- DM: todoMM: what letters do you need to get from currentWord and nextWord? Write it out here exactly; what do you do to each letter; write it out here exactly -->
-    * ...
+    * j === 0
+      * currently doing
+        * currentWordLetter === 'w'
+        * nextWordLetter === 'l'
+        * if (...) meshedLetters.push(currentWordLetter)
+      * maybe use substring?
+        * currentWordSubstring === ''
+        * nextWordSubstring === ''
+      * maybe use startsWith?
+        * if () meshedLetters.push( substring? )
+    * j === 1
+    * j === 2
 * SECOND WORD
   ...
 (read!)
@@ -58,10 +71,9 @@ function wordMesh(arrayOfStrings) {
     const meshedLetters = []
     for (let j = 0; j < currentWord.length; j++) {
       const currentWordLetter = currentWord[j]
-      console.log({ currentWordLetter })
       //MM: DM: I am not getting the next word letters, I am thinking of looping through the next word letters and compare them with the current word letters. I am not sure if I am doing it right.
       const nextWordLetter = nextWord[j]
-      console.log(nextWordLetter)
+      console.log({ currentWordLetter, nextWordLetter })
 
       if (currentWordLetter === nextWordLetter) {
         // MM: ???DM: I am trying to compare each letter of the current word with the next word. If they are the same, I want to push it to the meshedLetters array. I am not sure if I am doing it right.
@@ -71,8 +83,8 @@ function wordMesh(arrayOfStrings) {
       // DM: I added a '--' to indent the log so that you can tell when you are inside this inner loop
       console.log('-----', {
         j,
-        firstWordLetter: currentWordLetter,
-        secondWordLetter: nextWordLetter,
+        currentWordLetter,
+        nextWordLetter,
         meshedLetters,
       })
     }
@@ -82,9 +94,8 @@ function wordMesh(arrayOfStrings) {
     // put a console.log here!!, so that you can see what is going on for each iteration of the outer loop
     // DM: remember, each comment in code refers to the line BELOW the comment, so in the comment above I was literally telling you to put a console.log on a new line below this comment line. This is a major hint to debug the problem! :)
   }
-
   //  MM: this is my solution, but it doesn't work for the last test case. I struggled with this one all day long.
-}
+} // node project-info/teamdm/training/code-wars-challenges/currently-working/word-mesh-2.js
 
 wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // 'lowringter'
 // DM: uncomment the below when you get the first test to pass

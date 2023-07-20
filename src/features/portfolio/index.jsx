@@ -10,9 +10,7 @@ export default function Portfolio(props) {
   return (
     <div className="bg-white">
       <TopNav />
-      <main>
-        <Content />
-      </main>
+      <Content />
       <Footer />
     </div>
   )

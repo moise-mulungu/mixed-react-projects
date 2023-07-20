@@ -27,7 +27,7 @@ export default function Example(props) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
-        <>
+        <> {/* DM: todoMM: use the 'semantic html' tag here, like you used 'footer' in the footer component */}
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
