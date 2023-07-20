@@ -210,10 +210,10 @@ function createPhoneNumber(numbers) {
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
 
-   MM: toDM: the status of this file is that the code works and all test cases pass. your code review and approval are requested here. 
+   STATUS: the status of this file is that the code works and all test cases pass. your code review and approval are requested here. 
    DM: it looks like I had already approved. (cool!)
    
-   // DM: todoMM: what is my next step? Every time you edit a challenge file, update he status section. (even if the next step seems obvious to you.) I want to come in to a file, read next step, then just do it, no guessing. This will save me time I can instead devote to teaching you.
+   // DM: todoMM: what is my next step? Every time you edit a challenge file, update he status section. (even if the next step seems obvious to you.) I want to come in to a file, read next step, then just do it, no guessing. This will save me time I can instead devote to teaching you.(I am a bit confused when you are asking about the next step. on line 213 i gave the current status of this file and provide clarity on the next step which is your review and approval, I don't know if I gave enough or less information on that point as you suggested me to do so! would you mind helping me with how to write current status of a file, please?.)
    next step: section 14
    
 */

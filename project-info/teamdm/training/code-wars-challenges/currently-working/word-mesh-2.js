@@ -2,11 +2,11 @@
 
 Moise, I didn't fix the issue, you can figure out for yourself where the logic breaks. (note: don't do any major changes to your code. The existing code below is an excellent approach. You just need to debug it and make small changes. Only two lines need to be changed/moved for the code to work; MM: I could not get a straight solution apart from doing in another way. I commented out the previous approach for later days )
 
-Moise, you're not following instructions. It's a problem. You can't do that on a job. Yesterday I wrote above, "note: don't do any major changes to your code ... You just need to debug it and make small change ...". Yet, you commented it out, saying you could not solve it, maybe you'll do it later, then you did exactly what I said not to do: "major changes", a new approach. A new approach doesn't complete the task, which was to debug your existing code. 
+Moise, you're not following instructions. It's a problem. You can't do that on a job. Yesterday I wrote above, "note: don't do any major changes to your code ... You just need to debug it and make small change ...". Yet, you commented it out, saying you could not solve it, maybe you'll do it later, then you did exactly what I said not to do: "major changes", a new approach. A new approach doesn't complete the task, which was to debug your existing code. (I am sorry, I did not mean to do that. I was just trying to find a solution to the problem. I will not do that again.)
 
-The purpose of the code challenges is to learn, not to get solutions. So, I'm asking you to do specific things because I can tell what you need to learn by doing them. Commenting out dubuggable code and finding some other solution doesn't help you at all. 
+The purpose of the code challenges is to learn, not to get solutions. So, I'm asking you to do specific things because I can tell what you need to learn by doing them. Commenting out debuggable code and finding some other solution doesn't help you at all. (cool!)
 
-You can't just give up. In a coding interview, you can't just give up. The interviewers won't let you. You can ask questions, you can ask for hints, you can explain where you're stuck, and maybe they'll give you a hint or clear up a miscommunication.
+You can't just give up. In a coding interview, you can't just give up. The interviewers won't let you. You can ask questions, you can ask for hints, you can explain where you're stuck, and maybe they'll give you a hint or clear up a miscommunication.(the reason I intended to look for another approach is because I was stuck and I did not know how to solve it. it's been a month for this challenge and I was trying to find a solution. I am trying again.)
 
 I know you can do it. If you're stuck, ask me a good question. Put the console.logs where I suggest. Take the hints like the one I gave you below. If you're still stuck, then spend some time figuring out exactly on which line, which iteration of the loops things go wrong. Add more console.logs until you know EXACTLY what is happening each line, each iteration of the loop. You might also review the challenge and walk through one of the tests to know exactly what should happen, so you can tell where it goes wrong. If none of that works, you can tell me, "I think I need help with this in person on Zoom". That's fine, but the first thing I'll ask is what you tried so far. I'll ask, "where does the code fail. What was it supposed to do that it didn't do". I should see a lot of console.logs and it should be really clear that you really tried to figure it out by doing all the things in this paragraph. You should be able to explain the steps and logic the program SHOULD do.
 
@@ -39,7 +39,7 @@ loop through each word in the
     * ...
 * SECOND WORD
   ...
-
+(read!)
 */
 
 function wordMesh(arrayOfStrings) {
@@ -58,10 +58,16 @@ function wordMesh(arrayOfStrings) {
     const meshedLetters = []
     for (let j = 0; j < currentWord.length; j++) {
       const currentWordLetter = currentWord[j]
+      console.log({ currentWordLetter })
+      //MM: DM: I am not getting the next word letters, I am thinking of looping through the next word letters and compare them with the current word letters. I am not sure if I am doing it right.
       const nextWordLetter = nextWord[j]
+      console.log(nextWordLetter)
+
       if (currentWordLetter === nextWordLetter) {
-        meshedLetters.push(currentWord[j])
+        // MM: ???DM: I am trying to compare each letter of the current word with the next word. If they are the same, I want to push it to the meshedLetters array. I am not sure if I am doing it right.
+        meshedLetters.push(currentWordLetter)
       }
+
       // DM: I added a '--' to indent the log so that you can tell when you are inside this inner loop
       console.log('-----', {
         j,

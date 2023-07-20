@@ -107,7 +107,7 @@ I want to find the longest common substring of the words in the array by compari
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  // DM: todoMM: let's get back to not using LET and not using: const emptyArray = []. You can do this with array functions. You have an array and you want to get a string. Which array function do you use?
+  //(done) DM: todoMM: let's get back to not using LET and not using: const emptyArray = []. You can do this with array functions. You have an array and you want to get a string. Which array function do you use?
   // MM: the method to use is array.toString() method DM: array.reduce(). array.toString() is unpredictable and not meant to be used in production code
 
   const meshedWords = arrayOfStrings.reduce((acc, word, index) => {
@@ -159,7 +159,7 @@ wordMesh(['exalt', 'altimeter', 'metermaid', 'maidenvoyage', 'voyageur']) // "al
 wordMesh(['job', 'object', 'joust', 'on']) // "failed to mesh"
 wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to mesh"
 
-// DM: todoMM: now that you have good tests, make the solution work. (you can convert the loop to a .reduce AFTER you git it working); MM: reduce is confusing, TBH I am still unable to figure out all these solutions with reduce. DM: give reduce another try after you work through all the reduce exercises I gave you, and AFTER you get this code to work using whatever other loop you've used(ok).
+// DM: todoMM: now that you have good tests, make the solution work. (you can convert the loop to a .reduce AFTER you get it working); MM: reduce is confusing, TBH I am still unable to figure out all these solutions with reduce. DM: give reduce another try after you work through all the reduce exercises I gave you, and AFTER you get this code to work using whatever other loop you've used(ok).
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -187,10 +187,10 @@ wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to me
 
 DM: todoMM: what is the current status? Get it to work first, then do the conversion to array.reduce afterwards.
 
-MM: DM: the current status of this file is that the code is still not working. after checking if the words in the array mesh, I can not join all the meshed characters in one word. the piece of code where I am getting stuck is with the regex: const matchedCharacters = (`${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`).match
+CURRENT STATUS: the current status of this file is that the code is still not working. after checking if the words in the array mesh, I can not join all the meshed characters in one word. the piece of code where I am getting stuck is with the regex: const matchedCharacters = (`${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`).match
 
 
-MM: DM: the solution is in progress, I have used another approach instead of using let and for loop to avoid mutating the array.
+CURRENT STATUS: the solution is in progress, I have used another approach instead of using let and for loop to avoid mutating the array.
 
 STATUS: in progress
 

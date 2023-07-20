@@ -1,4 +1,4 @@
-//(status: in progress) DM: todoMaM: BTW, we gotta clean up all the exercises in currently-working/. Please put a comment at the top of each file, noting what the current status is, and what needs to happen next.
+//(status: in progress) DM: todoMM: BTW, we gotta clean up all the exercises in currently-working/. Please put a comment at the top of each file, noting what the current status is, and what needs to happen next.
 
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
@@ -86,15 +86,15 @@ Naming variables:
   // })
 
   // DM: super; readable; uses === instead of !== which is easier to understand; concise;
-  // DM: todoMM: all variable names should be camel case (i.e., the first letter is lower case)
-  const AreIsograms = splitString.every((letter, index) => splitString.indexOf(letter) === index)
+  // DM: todoMM: all variable names should be camel case (i.e., the first letter is lower case(oh, I forgot about that. I just fix it.))
+  const areIsograms = splitString.every((letter, index) => splitString.indexOf(letter) === index)
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
   always return a variable, or, use only variables in return statements
   this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
   */
-  return AreIsograms
+  return areIsograms
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
@@ -128,11 +128,10 @@ console.log(isIsogram('')) // true
 /* CURRENT STATUS (update this section before each commit of the file); MM: the code works, and all tests pass.
 //(not done) DM: todoMM: hey Moise, I spend way too much time figuring out where you are at in these files. It would save time if you update the status each time you commit, so that I can more quickly know what to do and how to help. you didn't update the status before you commit. do all the tests pass? what is my next step?
 
-MM: DM: the current status of this file is that the code works and all tests pass. the remaining steps are the review and approval of the code.
+STATUS: the current status of this file is that the code works and all tests pass. 
 DM: the first thing AI do in a review is to search the file for todoMMs. If they are marked "(done)", then I can delete them. 
 
-STATUS: 
 
-NEXT STEP: todoMM and update status
+NEXT STEP:code review and approval
 
 */

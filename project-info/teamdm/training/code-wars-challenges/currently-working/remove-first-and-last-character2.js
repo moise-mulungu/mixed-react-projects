@@ -127,7 +127,7 @@ array('A,1,23,456,78,9,Z')[ // '1 23 456 78 9'
   /* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-  // DM: todoMM: what's going on here? your function is inside square brackets. does it even run?
+  // DM: todoMM: what's going on here? your function is inside square brackets. does it even run?; the function runs fine; the square brackets could be an array lit, i don't understand why it's there; if i remove it an error occurs.
   function array(commaSeparatedCharacterSequencesDirty) {
     function cleanupString(string) {
       return string.trim()
@@ -160,9 +160,9 @@ array('A,1,23,456,78,9,Z') // '1 23 456 78 9'
 
    DM: current status? next step?
 
-   MM: DM: the current status of this file is that it is complete and all tests pass. The next steps are your code review and approval
+   CURRENT STATUS: the current status of this file is that it is complete and all tests pass. The next steps are your code review and approval
    
-   next step: DM: approved, step 14 is next
+   next step: DM: approved, step 14 is next(done)
 */
 
     ('a', 'b', 'c', 'a', 'b')

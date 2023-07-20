@@ -2,10 +2,15 @@ note: prefix Google searches with "computer programming" to get the best results
 
 ## Agile methodology
 
-DM: todoMM: use bing chat ai to get a very short definition for this vocab entry
+(done) DM: todoMM: use bing chat ai to get a very short definition for this vocab entry; the definition is found in the project-info/teamdm/agile.md file
+
+Agile methodology is a project management framework that breaks projects down into several dynamic phases, commonly known as sprints. It emphasizes continuous collaboration and improvement, and is an iterative methodology.
 
 ## JSON
-DM: todoMM: Moise, ask bing chat ai for "give me a very, very, very brief explanation of JSON" and use that to create this JSON vocab entry here
+
+(done) DM: todoMM: Moise, ask bing chat ai for "give me a very, very, very brief explanation of JSON" and use that to create this JSON vocab entry here
+
+JSON stands for **JavaScript Object Notation**. It is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays (or other serializable values)¹. JSON is a lightweight data-interchange format that is easy for humans to read and write. It is also easy for machines to parse and generate³.
 
 howtojs: json parse error:: The error “SyntaxError Unexpected Token in JSON” appears when you try to parse content (for example - data from a database, api, etc), but the content itself is not JSON (could be XML, HTML, CSV) or invalid JSON containing unescaped characters, missing commas and brackets.
 

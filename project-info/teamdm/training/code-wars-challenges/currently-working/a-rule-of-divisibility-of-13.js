@@ -239,6 +239,6 @@ function thirt(numbers) {
 
 STATUS: has not been reviewed at all
 
-NEXT STEP: moise to pause work here until all the other files in this dir are complete
+NEXT STEP: moise to pause work here until all the other files in this dir are complete(good!)
 
 */
