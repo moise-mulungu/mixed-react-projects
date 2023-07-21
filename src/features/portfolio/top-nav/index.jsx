@@ -27,9 +27,8 @@ export default function Example(props) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
+          {/* DM: todoMM: this would be "header" right?  */}
         <section>
-          {' '}
-          {/* (done) DM: todoMM: use the 'semantic html' tag here, like you used 'footer' in the footer component */}
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
@@ -40,6 +39,7 @@ export default function Example(props) {
                   </span>
                 </div>
 
+                {/* this div would be 'nav' semantic tag, no? Google "semantic HTML" and click the 'images' tab, you'll see visuals of the structure. */}
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
                     {topNavSiteLinks.map(({ id, name, anchor }) => {

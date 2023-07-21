@@ -25,4 +25,5 @@ export default function SkillsSection(props) {
 
 /* MM: ???toDM: what can be the better approach between these two components(SkillsSection, and SkillSection)? 
   In the first one, I used the data from each sub-skill component, and in the second one, I used the data from the skills complex object in which all the data is present.
+  DM: todoMM: moise is this question current?
 */

@@ -11,6 +11,7 @@ export default function Content(props) {
   /* 4 sections, OR hero and 3 sections */
   return (
     <main>
+      {/* DM: todoMM: seems to me that you have 4 sections below, not 1 section */}
       <section
         aria-labelledby="category-heading"
         className="pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8"
@@ -22,6 +23,7 @@ export default function Content(props) {
         <SkillsSection />
         <Divider />
         <ContactForm />
+        {/* is this last divider needed? */}
         <Divider />
       </section>
     </main>

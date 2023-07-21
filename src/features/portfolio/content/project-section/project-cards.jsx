@@ -1,5 +1,5 @@
 /* DM: todoDM: find out why you can't ctrl-click on projectCards to go to the file if @ is used
-MM: todoMM: I don't know if you have already found the answer to this, because it would be helpful to me as well.
+MM: todoMM: I don't know if you have already found the answer to this, because it would be helpful to me as well. I'm working on a new starter repo, that I'll use for our repo. It will take care of this.
 */
 import { projectCardsData, projectCardText } from '@/constants/portfolio/content/project-cards'
 import CardsHeading from './card-heading'
