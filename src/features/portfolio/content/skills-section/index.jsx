@@ -5,7 +5,6 @@ import Frameworks from './frameworks'
 import OtherSkills from './other-skills'
 
 export default function SkillsSection(props) {
-  // DM: always using function declarations, for consistency (not arrow functions)
   const { _ = {} } = props
   return (
     <div className="">

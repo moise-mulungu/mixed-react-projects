@@ -90,6 +90,7 @@ export default async function handler(req, res) {
   * 1) send as if from GMail: https://forwardemail.net/en/guides/send-mail-as-gmail-custom-domain
     * assumption: you may also send emails to others "as if from" your gmail account, for example: a thankYou/confirmation to the person who contacts you.
     * it's OK to send emails to yourself in gmail, so I think this will work.
+    MM: DM: I am still at the first step with sending from Gmail. I was asked to create a domain name, then was directed to AWS to create an account. I am not sure if I should continue with this option. I am not sure what to do next.
   */
 
   // 2) based on #1, fill out
@@ -153,5 +154,5 @@ export default async function handler(req, res) {
 }
 
 /* 
-  DM: todoMM: implment the "send as if from GMail" (see URL above)
+  DM: todoMM: implement the "send as if from GMail" (see URL above)
 */

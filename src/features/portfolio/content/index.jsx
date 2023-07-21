@@ -27,5 +27,3 @@ export default function Content(props) {
     </main>
   )
 }
-
-// MM: I have added Divider temporarily for separating sections of the portfolio.

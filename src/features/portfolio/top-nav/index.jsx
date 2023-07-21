@@ -27,33 +27,22 @@ export default function Example(props) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
-        <> {/* DM: todoMM: use the 'semantic html' tag here, like you used 'footer' in the footer component */}
+        <section>
+          {' '}
+          {/* (done) DM: todoMM: use the 'semantic html' tag here, like you used 'footer' in the footer component */}
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
                 <div className="flex-shrink-0">
-                  {/*    <img
-                    className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  /> */}
                   {/* note: curly brackets means JS goes inside. since this is a variable containing plain text, use curly brackets so JS can evaluate the variable which resolves to text. */}
                   <span className="text-2xl font-bold leading-7 text-gray-500 sm:truncate sm:text-1xl sm:tracking-tight">
                     {theMan}
                   </span>
-                  {/*    <img
-                    className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  /> */}
                 </div>
 
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
-                    {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-
                     {topNavSiteLinks.map(({ id, name, anchor }) => {
-                      // console.log('wut', { id, name, anchor })
                       return (
                         <a
                           key={id}
@@ -69,30 +58,6 @@ export default function Example(props) {
                         </a>
                       )
                     })}
-                    {/*                     <a
-                      href="#"
-                      className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                    >
-                      Dashboard
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                    >
-                      Team
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                    >
-                      Projects
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                    >
-                      Calendar
-                    </a> */}
                   </div>
                 </div>
               </div>
@@ -200,10 +165,8 @@ export default function Example(props) {
               </div>
             </div>
           </div>
-
           <Disclosure.Panel className="lg:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
-              {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
               <Disclosure.Button
                 as="a"
                 href="#"
@@ -279,7 +242,7 @@ export default function Example(props) {
               </div>
             </div>
           </Disclosure.Panel>
-        </>
+        </section>
       )}
     </Disclosure>
   )
