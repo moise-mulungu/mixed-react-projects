@@ -209,7 +209,7 @@ In computing, a cache is a hardware or software component that stores data so th
 
 ## runtime system or runtime environment
 
-In computer programming, a runtime system or runtime environment is a sub-system that exists both in the computer where a program is created, as well as in the computers where the program is intended to be run. The name comes from the compile time and runtime division from compiled languages, which similarly distinguishes the computer processes involved in the creation of a program (compilation) and its execution in the target machine (the run time)
+In computer programming, a runtime system or runtime environment is a sub-system that exists both in the computer where a program is created, as well as in the computers where the program is intended to be run. The name comes from the *compile time* and runtime division from compiled languages, which similarly distinguishes the computer processes involved in the creation of a program (compilation) and its execution in the target machine (the run time)
 
 ## open source
 
@@ -217,6 +217,6 @@ Open-source software (OSS) is computer software that is released under a license
 Open-source software may be developed in a collaborative, public manner.
 Open-source software is a prominent example of open collaboration, meaning any capable user is able to participate online in development, making the number of possible contributors indefinite. The ability to examine the code facilitates public trust in the software.
 
-## regex search(regular expression search)
+## regex search (regular expression search)
 
 A regular expression is a form of advanced searching that looks for specific patterns, as opposed to certain terms and phrases. With regular expressions, you can use pattern matching to search for particular strings of characters rather than constructing multiple, literal search queries.

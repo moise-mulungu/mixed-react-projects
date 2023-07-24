@@ -33,7 +33,6 @@ Semantic HTML is the use of HTML markup to reinforce the _semantics, or meaning_
 
   The semantic HTML tags help the search engines and other user devices to determine the importance and context of web pages. The pages made with semantic elements are much easier to read. It has greater accessibility. It offers a better user experience
 
-(done) DM: todoMM: good! add some info on why is it important to use semantic elements.
 
 reference links
 

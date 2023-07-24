@@ -27,7 +27,6 @@ export default function Example(props) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
-       
         <header>
           {' '}
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
@@ -40,7 +39,7 @@ export default function Example(props) {
                   </span>
                 </div>
 
-                {/* this div would be 'nav' semantic tag, no? Google "semantic HTML" and click the 'images' tab, you'll see visuals of the structure. */}
+                {/* DM: todoMM: this div would be 'nav' semantic tag, no? Google "semantic HTML" and click the 'images' tab, you'll see visuals of the structure. Hey, if I forget to put todoMM, you can still address my comments. So, I mentioned you might use 'nav' for the next section.  */}
                 <div className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
                     {topNavSiteLinks.map(({ id, name, anchor }) => {

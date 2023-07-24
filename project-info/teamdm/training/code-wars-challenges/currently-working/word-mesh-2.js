@@ -32,8 +32,8 @@ expected result // 'lowringter'
 PSEUDOCODE:
 loop through each word in the array
 * FIRST WORD
-  * get the current word: allow(done)
-  * get the next word: lowering(done)
+  * get the current word: allow
+  * get the next word: lowering
   * <-- DM: todoMM: Tuesday: what letters do you need to get from currentWord and nextWord? Write it out here exactly; what do you do to each letter; write it out here exactly:
     * From current word = I want to get the last letters
     * From the next word = I want to get the first letters
@@ -51,7 +51,9 @@ loop through each word in the array
         * nextWordSubstring === 'lowering'
       * maybe use startsWith?
         * if () meshedLetters.push( substring? )
+      * DM: todoMM: good,b ut keep going, what do you do next? How do you compare them? What do yo do if they match/don't match?
     * j === 1
+      * DM: todoMM: keep going, for each value of j, write here what you will do
     * j === 2
 * SECOND WORD
   ...
