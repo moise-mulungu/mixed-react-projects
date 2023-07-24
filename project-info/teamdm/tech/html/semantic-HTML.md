@@ -1,6 +1,6 @@
 ## Semantic
 
-Semantic HTML is the use of HTML markup to reinforce the *semantics, or meaning*, of the information in web pages and web applications rather than merely to define its *presentation or look*. Semantic HTML is processed by traditional web browsers as well as by many other user agents
+Semantic HTML is the use of HTML markup to reinforce the _semantics, or meaning_, of the information in web pages and web applications rather than merely to define its _presentation or look_. Semantic HTML is processed by traditional web browsers as well as by many other user agents
 
 - article
   The <article> HTML element represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable (e.g., in syndication). Examples include: a forum post, a magazine or newspaper article, or a blog entry, a product card, a user-submitted comment, an interactive widget or gadget, or any other independent item of content.
@@ -29,11 +29,14 @@ Semantic HTML is the use of HTML markup to reinforce the *semantics, or meaning*
 - details
   The <details> HTML element creates a disclosure widget in which information is visible only when the widget is toggled into an "open" state. A summary or label must be provided using the <summary> element.
 
-DM: todoMM: good! add some info on why is it important to use semantic elements.
+  ## importance of semantic elements
+
+  The semantic HTML tags help the search engines and other user devices to determine the importance and context of web pages. The pages made with semantic elements are much easier to read. It has greater accessibility. It offers a better user experience
+
+(done) DM: todoMM: good! add some info on why is it important to use semantic elements.
 
 reference links
-* https://developer.mozilla.org/en-US/docs/Web/HTML/Element 
-* https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantic_elements
-* https://www.google.com/search?q=semantic+HTML click the "images" tab to see visuals of the structure
 
-
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element
+- https://developer.mozilla.org/en-US/docs/Glossary/Semantics#semantic_elements
+- https://www.google.com/search?q=semantic+HTML click the "images" tab to see visuals of the structure (good)

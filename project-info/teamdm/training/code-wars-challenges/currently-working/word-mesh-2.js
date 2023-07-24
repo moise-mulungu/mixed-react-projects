@@ -32,9 +32,12 @@ expected result // 'lowringter'
 PSEUDOCODE:
 loop through each word in the array
 * FIRST WORD
-  * get the current word: allow
-  * get the next word: lowering
-  * <-- DM: todoMM: Tuesday: what letters do you need to get from currentWord and nextWord? Write it out here exactly; what do you do to each letter; write it out here exactly -->
+  * get the current word: allow(done)
+  * get the next word: lowering(done)
+  * <-- DM: todoMM: Tuesday: what letters do you need to get from currentWord and nextWord? Write it out here exactly; what do you do to each letter; write it out here exactly:
+    * From current word = I want to get the last letters
+    * From the next word = I want to get the first letters
+    * I want to compare each last letters of the current word to the first letters of the next word  -->
   * what is the unknown? the number of letters that match
   * goal: last X letters match first X letters of next word
   * loop through each letter of the current word
@@ -44,8 +47,8 @@ loop through each word in the array
         * nextWordLetter === 'l'
         * if (...) meshedLetters.push(currentWordLetter)
       * maybe use substring?
-        * currentWordSubstring === ''
-        * nextWordSubstring === ''
+        * currentWordSubstring === 'allow'
+        * nextWordSubstring === 'lowering'
       * maybe use startsWith?
         * if () meshedLetters.push( substring? )
     * j === 1

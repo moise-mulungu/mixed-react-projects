@@ -206,3 +206,17 @@ In computer science, a composite data type or compound data type is any data typ
 ## cache
 
 In computing, a cache is a hardware or software component that stores data so that future requests for that data can be served faster; the data stored in a cache might be the result of an earlier computation or a copy of data stored elsewhere.
+
+## runtime system or runtime environment
+
+In computer programming, a runtime system or runtime environment is a sub-system that exists both in the computer where a program is created, as well as in the computers where the program is intended to be run. The name comes from the compile time and runtime division from compiled languages, which similarly distinguishes the computer processes involved in the creation of a program (compilation) and its execution in the target machine (the run time)
+
+## open source
+
+Open-source software (OSS) is computer software that is released under a license in which the copyright holder grants users the rights to use, study, change, and distribute the software and its source code to anyone and for any purpose.
+Open-source software may be developed in a collaborative, public manner.
+Open-source software is a prominent example of open collaboration, meaning any capable user is able to participate online in development, making the number of possible contributors indefinite. The ability to examine the code facilitates public trust in the software.
+
+## regex search(regular expression search)
+
+A regular expression is a form of advanced searching that looks for specific patterns, as opposed to certain terms and phrases. With regular expressions, you can use pattern matching to search for particular strings of characters rather than constructing multiple, literal search queries.

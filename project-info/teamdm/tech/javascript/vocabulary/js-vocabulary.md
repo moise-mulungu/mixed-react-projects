@@ -1,5 +1,4 @@
-
- DM: todoMM: make an entry for NodeJS. Write the entry using material from our conversation Friday on Slack, denoting the concepts and include the interview question. 
+(done) DM: todoMM: make an entry for NodeJS. Write the entry using material from our conversation Friday on Slack, denoting the concepts and include the interview question.
 
 # identifier
 
@@ -331,3 +330,41 @@ Reassignment is the process of changing variable assignment or when their value 
   let person = 'Joe'
   person = 'Doe'
   ```
+
+## nodejs
+
+Node.js is a back-end JavaScript runtime environment, runs on the V8 JavaScript Engine, and executes JavaScript code outside a web browser.
+
+## NodeJS vs JavaScript
+
+- NodeJS is a javascript runtime environment that runs on the server, but
+- JavaScript is program language that runs on the browser.
+
+## when edit an api, are you writing NodeJS or JavaScript?
+
+As A web API is an application programming interface (API) for either a web server or a web browser. It means, you are writing both NodeJS and JavaScript.
+
+## argument object
+
+In JavaScript, inside a function, the arguments object has the values of arguments passed to that function. Using the arguments object, we can point to all of the functions passed to a function. The arguments object has properties similar to an array, so we can pick individual values by using the array indexing notation
+
+- e.g:
+
+```js
+function argumentsObject(a, b, c) {
+  console.log(arguments[0]) // 1
+  console.log(arguments[1]) // 2
+  console.log(arguments[2]) // 3
+}
+
+argumentsObject(1, 2, 3)
+```
+
+- Note: The object arguments is not an Array. It is similar to an Array, but does not have any Array properties except `length`. However, it can be converted to a real array using the `Array.prototype.slice`.
+
+```js
+function argumentsObject() {
+  return Array.prototype.slice.call(arguments)
+}
+argumentsObject()
+```

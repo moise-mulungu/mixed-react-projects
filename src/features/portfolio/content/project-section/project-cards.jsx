@@ -1,5 +1,5 @@
 /* DM: todoDM: find out why you can't ctrl-click on projectCards to go to the file if @ is used
-MM: todoMM: I don't know if you have already found the answer to this, because it would be helpful to me as well. I'm working on a new starter repo, that I'll use for our repo. It will take care of this.
+MM: todoMM: I don't know if you have already found the answer to this, because it would be helpful to me as well. I'm working on a new starter repo, that I'll use for our repo. It will take care of this.(ok)
 */
 import { projectCardsData, projectCardText } from '@/constants/portfolio/content/project-cards'
 import CardsHeading from './card-heading'
@@ -7,7 +7,7 @@ import Popup from 'reactjs-popup'
 
 const ProjectCards = () => {
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <section className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
           <h2 className="text-base font-semibold leading-7 text-indigo-600">
@@ -70,7 +70,7 @@ const ProjectCards = () => {
           </dl>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 export default ProjectCards

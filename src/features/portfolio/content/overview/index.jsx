@@ -10,7 +10,7 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid'
 
 function Overview() {
   return (
-    <div className="relative isolate overflow-hidden bg-gray-900">
+    <section className="relative isolate overflow-hidden bg-gray-900">
       <svg
         className="absolute inset-0 -z-10 h-full w-full stroke-white/10 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
         aria-hidden="true"
@@ -79,7 +79,7 @@ function Overview() {
         </div>
         <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32"></div>
       </div>
-    </div>
+    </section>
   )
 }
 
