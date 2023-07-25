@@ -39,8 +39,8 @@ export default function Example(props) {
                   </span>
                 </div>
 
-                {/* DM: todoMM: this div would be 'nav' semantic tag, no? Google "semantic HTML" and click the 'images' tab, you'll see visuals of the structure. Hey, if I forget to put todoMM, you can still address my comments. So, I mentioned you might use 'nav' for the next section.  */}
-                <div className="hidden lg:ml-6 lg:block">
+                {/*(done) DM: todoMM: this div would be 'nav' semantic tag, no? Google "semantic HTML" and click the 'images' tab, you'll see visuals of the structure. Hey, if I forget to put todoMM, you can still address my comments. So, I mentioned you might use 'nav' for the next section(ok).  */}
+                <nav className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
                     {topNavSiteLinks.map(({ id, name, anchor }) => {
                       return (
@@ -59,7 +59,7 @@ export default function Example(props) {
                       )
                     })}
                   </div>
-                </div>
+                </nav>
               </div>
               <div className="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
                 <div className="w-full max-w-lg lg:max-w-xs">

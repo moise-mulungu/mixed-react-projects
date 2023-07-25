@@ -49,3 +49,11 @@ unique: [1 3 4 5]
 multiplicity: [3 2 1 1]
 
 - Multiplicity defines how many objects participate in a relationship and it is the number of instances of one class related to one instance of the other class
+
+## API
+
+An application programming interface is a way for two or more computer programs to communicate with each other. It is a type of software interface, offering a service to other pieces of software.
+
+## API specification
+
+An API specification details the functional and expected behavior of an API, as well as the fundamental design philosophy and supported data types. It contains both documentation and API definitions to create a contract that people and software can read.
