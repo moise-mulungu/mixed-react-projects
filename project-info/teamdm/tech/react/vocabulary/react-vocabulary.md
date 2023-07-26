@@ -113,6 +113,10 @@ Once you get comfortable with a React concept, think of this site is the most au
 
 State Setter Callback Function is a function that accepts the previous value as an argument and returns an updated value. If the previous state is not used to compute the next state, it passes the next state value as the argument for the state setter.
 
-## component instance
+see: "howtoreact: update state based on previous state"
+
+## component instance (RE class components)
 
 A React component instance is a component that uses classes to instantiate a react component. You can either use multiple instances or just a single instance in your React application. Each instance can perform individually, making them a requirement when creating an application. Instances are duplicates of the original class
+
+note: functional components (modern React) are not instantiated, but rather just called/invoked just like any function

@@ -14,7 +14,6 @@ function wordMesh(arrayOfStrings) {
   }
   return 'failed to mesh'
 
-  // DM: execution never reaches this point (moved it up)
 }
 
 wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // 'lowringter'

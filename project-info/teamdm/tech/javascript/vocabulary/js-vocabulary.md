@@ -329,8 +329,6 @@ Reassignment is the process of changing variable assignment or when their value 
   person = 'Doe'
   ```
 
-//(done) DM: todoMM: make a tech vocab entry for API
-//(done) DM: todoMM: make a JS vocab entry for "Web API"
 
 ## nodejs
 

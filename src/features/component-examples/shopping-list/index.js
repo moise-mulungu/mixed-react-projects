@@ -16,6 +16,7 @@ function ShoppingList() {
   }
 
   return (
+    /* DM: these classNames don't exist, so remove them */
     <div className="wrapper">
       <div className="list-wrapper">
         <ol className="shopping-list">

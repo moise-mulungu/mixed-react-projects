@@ -31,7 +31,7 @@ array: ['allow', 'lowering', 'ringmaster', 'terror']
 expected result // 'lowringter'
 PSEUDOCODE:
 loop through the array
-* FIRST COMPARISON (allow, lowering )
+* FIRST COMPARISON ("allow", "lowering")
   * get the current word: allow
   * get the next word: lowering
   * <-- DM: todoMM: Tuesday: what letters do you need to get from currentWord and nextWord? Write it out here exactly; what do you do to each letter; write it out here exactly:
@@ -39,7 +39,7 @@ loop through the array
     * From current word = I want to get the last letters that are the same as the first letters of the next word
     * From the next word = I want to get the first letters that are the same as the last letters of the current word
     * I want to compare each last letters of the current word to the first letters of the next word  -->
-    * what is the unknown? the number of letters that match
+    * what is the unknown? the number of letters that match DM: good
   * goal: last X letters match first X letters of next word
   * loop through each letter of the current word
     * j === 0
@@ -52,7 +52,7 @@ loop through the array
         * nextWordSubstring === 'lowering'
       * maybe use startsWith?
         * if () meshedLetters.push( substring? )
-      * DM: todoMM: good,b ut keep going, what do you do next? How do you compare them? What do yo do if they match/don't match?
+      * DM: todoMM: good, but keep going, what do you do next? How do you compare them? What do yo do if they match/don't match? DM: address these questions. Say which characters in allow, lowering mesh. Show how you get to that. Show how you stop once you find a mesh.
     * j === 1
       * DM: todoMM: keep going, for each value of j, write here what you will do
         * currently doing
@@ -103,15 +103,16 @@ function wordMesh(arrayOfStrings) {
 
       const nextWordLetters = nextWord.substring(0, currentWordLetters.length)
 
-      console.log({ currentWordLetters, nextWordLetters })
+      console.log('-----', { currentWordLetters, nextWordLetters })
       //MM: DM: I am not getting the next word letters, I am thinking of looping through the next word letters and compare them with the current word letters. I am not sure if I am doing it right.
+      // DM: you are correctly comparing substrings of the same length until they match.
 
       if (currentWordLetters === nextWordLetters) {
         meshedLetters.push(currentWordLetters)
       }
     }
   }
-  // MM: ???DM: I am trying to compare each letter of the current word with the next word. If they are the same, I want to push it to the meshedLetters array. I am not sure if I am doing it right.
+  // MM: ???DM: I am trying to compare each letter of the current word with the next word. If they are the same, I want to push it to the meshedLetters array. I am not sure if I am doing it right. DM:  is this message to still current, or old?
 
   // DM: I added a '--' to indent the log so that you can tell when you are inside this inner loop
   // console.log('-----', {
@@ -120,6 +121,7 @@ function wordMesh(arrayOfStrings) {
   //   nextWordLetters,
   //   meshedLetters,
   // })
+  // DM: create two new variables to contain the values in the next line. console.log those  variables.
   if (meshedLetters.length !== arrayOfStrings.length - 1) return 'failed to mesh'
   const joinedMeshedLetters = meshedLetters.join('')
   console.log({ joinedMeshedLetters })
@@ -130,6 +132,7 @@ function wordMesh(arrayOfStrings) {
 // DM: remember, each comment in code refers to the line BELOW the comment, so in the comment above I was literally telling you to put a console.log on a new line below this comment line. This is a major hint to debug the problem! :)
 
 //  MM: this is my solution, but it doesn't work for the last test case. I struggled with this one all day long.
+
 // node project-info/teamdm/training/code-wars-challenges/currently-working/word-mesh-2.js
 
 console.log(wordMesh(['allow', 'lowering', 'ringmaster', 'terror'])) // 'lowringter'
@@ -146,8 +149,10 @@ console.log(wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g'])) // 'fa
 
 /* CURRENT STATUS (update this section before each commit of the file)
 
-  STATUS: all the meshed words test cases pass, but not for some of the "failed to mesh" test cases , the reason is difficult for me to figure it out. I am not sure how to solve it.
+  STATUS: MM debugging 
+  MM: all the meshed words test cases pass, but not for some of the "failed to mesh" test cases , the reason is difficult for me to figure it out. I am not sure how to solve it. DM: specifically which tests don't pass? Make it fast for me by pointing out exactly which ones are failing. based on the logs, where do things go wrong?
   
-  NEXT STEPS: debugs the code to insure that all the tests work: MM: toDM: I would need your assistance to debug the rest of the non-passing test cases. 
+  NEXT STEPS: debugs the code to insure that all the tests work
+  MM: toDM: I would need your assistance to debug the rest of the non-passing test cases. DM: Keep trying. You can do it!
 
 */
