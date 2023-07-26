@@ -108,3 +108,11 @@ Hooks: useEffect for all side effects
 ### note on react.dev site
 
 Once you get comfortable with a React concept, think of this site is the most authoritative reference: https://react.dev. There is a learning section and a reference section. Be relaxed when you read react.dev site. It is very condensed. You will feel like you don't really know React when you read all the details at react.dev site. Try to see this is a positive thing, that you know enough to look around react.dev and have an idea of what it is about. React is difficult to master, but very powerful, which is why React jobs pay well. (read; thanks for this resource).
+
+## setter function (State Setter Callback Function)
+
+State Setter Callback Function is a function that accepts the previous value as an argument and returns an updated value. If the previous state is not used to compute the next state, it passes the next state value as the argument for the state setter.
+
+## component instance
+
+A React component instance is a component that uses classes to instantiate a react component. You can either use multiple instances or just a single instance in your React application. Each instance can perform individually, making them a requirement when creating an application. Instances are duplicates of the original class

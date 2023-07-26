@@ -9,12 +9,12 @@ function wordMesh(arrayOfStrings) {
 
   if (meshedLetters.length === arrayOfStrings.length - 1) {
     // DM: use the standard .join(string); .join`` looks like a hack
+    console.log({ meshedLetters })
     return meshedLetters.join('')
   }
   return 'failed to mesh'
 
-  // DM: execution never reaches this point
-  console.log({ meshedLetters })
+  // DM: execution never reaches this point (moved it up)
 }
 
 wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // 'lowringter'

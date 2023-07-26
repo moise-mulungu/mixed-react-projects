@@ -30,15 +30,16 @@ example:
 array: ['allow', 'lowering', 'ringmaster', 'terror']
 expected result // 'lowringter'
 PSEUDOCODE:
-loop through each word in the array
-* FIRST WORD
+loop through the array
+* FIRST COMPARISON (allow, lowering )
   * get the current word: allow
   * get the next word: lowering
   * <-- DM: todoMM: Tuesday: what letters do you need to get from currentWord and nextWord? Write it out here exactly; what do you do to each letter; write it out here exactly:
-    * From current word = I want to get the last letters
-    * From the next word = I want to get the first letters
+  * loop through each word in the array
+    * From current word = I want to get the last letters that are the same as the first letters of the next word
+    * From the next word = I want to get the first letters that are the same as the last letters of the current word
     * I want to compare each last letters of the current word to the first letters of the next word  -->
-  * what is the unknown? the number of letters that match
+    * what is the unknown? the number of letters that match
   * goal: last X letters match first X letters of next word
   * loop through each letter of the current word
     * j === 0
@@ -54,8 +55,30 @@ loop through each word in the array
       * DM: todoMM: good,b ut keep going, what do you do next? How do you compare them? What do yo do if they match/don't match?
     * j === 1
       * DM: todoMM: keep going, for each value of j, write here what you will do
+        * currently doing
+        * currentWordLetter === 'o'
+        * nextWordLetter === 'o'
+        * if (...) meshedLetters.push(currentWordLetter)
     * j === 2
-* SECOND WORD
+      * currently doing
+      * currentWordLetter === 'l'
+      * nextWordLetter === 'w'
+    * 
+* SECOND COMPARISON
+  * get the current word: lowering
+  * get the next word: ringmaster
+  * loop through each letter of the current word
+    * J === 0
+      * currently doing
+      * currentWordLetter === 'l'
+      * nextWordLetter === 'r'  
+      * if (...) meshedLetters.push(currentWordLetter)
+    * J === 1
+      * currently doing
+        * currentWordLetter === 'o'
+        * nextWordLetter === 'i'
+  * loop through each letter of the next word
+  * the process repeats for each current and next words in the array
   ...
 (read!)
 */
@@ -66,6 +89,7 @@ function wordMesh(arrayOfStrings) {
     Array.isArray(arrayOfStrings) && arrayOfStrings.every((element) => typeof element === 'string')
   if (!isArrayOfStrings) throw new TypeError('wordMesh: input must be an array of strings')
 
+  const meshedLetters = []
   for (let i = 0; i < arrayOfStrings.length - 1; i++) {
     // DM: I renamed this to "current" word because it is not the "first" word when i >= 2
     const currentWord = arrayOfStrings[i]
@@ -73,51 +97,57 @@ function wordMesh(arrayOfStrings) {
     console.log({ i, word: currentWord, nextWord })
 
     // note: ok for now, but empty array is no longer allowed under the "no mutations" rule
-    const meshedLetters = []
+
     for (let j = 0; j < currentWord.length; j++) {
-      const currentWordLetter = currentWord[j]
+      const currentWordLetters = currentWord.substring(j)
+
+      const nextWordLetters = nextWord.substring(0, currentWordLetters.length)
+
+      console.log({ currentWordLetters, nextWordLetters })
       //MM: DM: I am not getting the next word letters, I am thinking of looping through the next word letters and compare them with the current word letters. I am not sure if I am doing it right.
-      const nextWordLetter = nextWord[j]
-      console.log({ currentWordLetter, nextWordLetter })
 
-      if (currentWordLetter === nextWordLetter) {
-        // MM: ???DM: I am trying to compare each letter of the current word with the next word. If they are the same, I want to push it to the meshedLetters array. I am not sure if I am doing it right.
-        meshedLetters.push(currentWordLetter)
+      if (currentWordLetters === nextWordLetters) {
+        meshedLetters.push(currentWordLetters)
       }
-
-      // DM: I added a '--' to indent the log so that you can tell when you are inside this inner loop
-      console.log('-----', {
-        j,
-        currentWordLetter,
-        nextWordLetter,
-        meshedLetters,
-      })
     }
-    console.log({ meshedLetters })
-    if (meshedLetters.length === 0) return 'failed to mesh'
-    return meshedLetters.join('')
-    // put a console.log here!!, so that you can see what is going on for each iteration of the outer loop
-    // DM: remember, each comment in code refers to the line BELOW the comment, so in the comment above I was literally telling you to put a console.log on a new line below this comment line. This is a major hint to debug the problem! :)
   }
-  //  MM: this is my solution, but it doesn't work for the last test case. I struggled with this one all day long.
-} // node project-info/teamdm/training/code-wars-challenges/currently-working/word-mesh-2.js
+  // MM: ???DM: I am trying to compare each letter of the current word with the next word. If they are the same, I want to push it to the meshedLetters array. I am not sure if I am doing it right.
 
-wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // 'lowringter'
+  // DM: I added a '--' to indent the log so that you can tell when you are inside this inner loop
+  // console.log('-----', {
+  //   j,
+  //   currentWordLetters,
+  //   nextWordLetters,
+  //   meshedLetters,
+  // })
+  if (meshedLetters.length !== arrayOfStrings.length - 1) return 'failed to mesh'
+  const joinedMeshedLetters = meshedLetters.join('')
+  console.log({ joinedMeshedLetters })
+  // if (joinedMeshedLetters.length === 0) return 'failed to mesh'
+  return joinedMeshedLetters
+}
+// put a console.log here!!, so that you can see what is going on for each iteration of the outer loop
+// DM: remember, each comment in code refers to the line BELOW the comment, so in the comment above I was literally telling you to put a console.log on a new line below this comment line. This is a major hint to debug the problem! :)
+
+//  MM: this is my solution, but it doesn't work for the last test case. I struggled with this one all day long.
+// node project-info/teamdm/training/code-wars-challenges/currently-working/word-mesh-2.js
+
+console.log(wordMesh(['allow', 'lowering', 'ringmaster', 'terror'])) // 'lowringter'
 // DM: uncomment the below when you get the first test to pass
-// wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // 'lowringter'
-// wordMesh(['age', 'estate', 'esteem', 'teem']) // 'eeteem'
-// wordMesh(['beacon', 'condominium', 'umbilical', 'california']) // "conumcal";
+console.log(wordMesh(['allow', 'lowering', 'ringmaster', 'terror'])) // 'lowringter'
+console.log(wordMesh(['age', 'estate', 'esteem', 'teem'])) // 'eeteem'
+console.log(wordMesh(['beacon', 'condominium', 'umbilical', 'california'])) // "conumcal";
 // wordMesh(['abandon', 'donation', 'onion', 'ongoing']) // dononon"
 // wordMesh(['jamestown', 'ownership', 'hippocampus', 'pushcart', 'cartorapher', 'pheromone']) // "ownhippuscartpher"
 // wordMesh(['kingdom', 'dominator', 'notorious', 'usual', 'allegory']) // 'failed to mesh'
-// wordMesh(['deforestation', 'citation', 'conviction', 'incarceration']) // 'failed to mesh'
-// wordMesh(['wedding', 'edding', 'ding', 'ing', 'ng', 'g']) // 'failed to mesh'
-// wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g']) // 'failed to mesh'
+console.log(wordMesh(['deforestation', 'citation', 'conviction', 'incarceration'])) // 'failed to mesh'
+console.log(wordMesh(['wedding', 'edding', 'ding', 'ing', 'ng', 'g'])) // 'failed to mesh'
+console.log(wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g'])) // 'failed to mesh'
 
 /* CURRENT STATUS (update this section before each commit of the file)
 
-  STATUS: not all the tests pass
+  STATUS: all the meshed words test cases pass, but not for some of the "failed to mesh" test cases , the reason is difficult for me to figure it out. I am not sure how to solve it.
   
-  NEXT STEPS: debugs the code to insure that all the tests work
+  NEXT STEPS: debugs the code to insure that all the tests work: MM: toDM: I would need your assistance to debug the rest of the non-passing test cases. 
 
 */
