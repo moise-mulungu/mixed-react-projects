@@ -16,7 +16,6 @@ function ShoppingList() {
   }
 
   return (
-    /*(done) DM: these classNames don't exist, so remove them */
     <div>
       <div>
         <ol>

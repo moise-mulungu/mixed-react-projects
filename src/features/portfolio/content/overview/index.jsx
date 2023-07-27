@@ -5,8 +5,6 @@ import {
 import { socialLinks } from '@/constants/portfolio'
 import { v4 as uuid } from 'uuid'
 
-// DM: todoDM: keep this around to address the todoDM in the commented area below
-
 function Overview() {
   return (
     <section className="relative isolate overflow-hidden bg-gray-900">

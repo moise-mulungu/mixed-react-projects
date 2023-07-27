@@ -101,10 +101,10 @@ function wordMesh(arrayOfStrings) {
     for (
       let j = 0;
       j < currentWord.length - 1;
-      j++ // MM: DM: I finally fixed the problem by looping starting from the last letter of the current word.
+      j++ // MM: DM: I finally fixed the problem by looping starting from the last letter of the current word. DM: you fixed the above line so that you're not processing a non-existent index (currentWord.length, length counts starting 1, not 0, so the number currentWord.length is not an index)
     ) {
       const currentWordLetters = currentWord.substring(j)
-      console.log({ currentWordLetters })
+      console.log('-----', { currentWordLetters, j })
 
       const nextWordLetters = nextWord.substring(0, currentWordLetters.length)
 
@@ -114,11 +114,10 @@ function wordMesh(arrayOfStrings) {
 
       if (currentWordLetters === nextWordLetters) {
         meshedLetters.push(currentWordLetters)
-        console.log({ meshedLetters })
+        console.log('----- currentWordLetters === nextWordLetters', { meshedLetters })
       }
     }
   }
-  // MM: ???DM: I am trying to compare each letter of the current word with the next word. If they are the same, I want to push it to the meshedLetters array. I am not sure if I am doing it right. DM:  is this message to still current, or old? (no, it's outdated)
 
   // DM: I added a '--' to indent the log so that you can tell when you are inside this inner loop
   // console.log('-----', {
@@ -139,21 +138,22 @@ function wordMesh(arrayOfStrings) {
   console.log({ joinedMeshedLetters })
   return joinedMeshedLetters
 }
+
 // put a console.log here!!, so that you can see what is going on for each iteration of the outer loop
 // DM: remember, each comment in code refers to the line BELOW the comment, so in the comment above I was literally telling you to put a console.log on a new line below this comment line. This is a major hint to debug the problem! :)
 
 // node project-info/teamdm/training/code-wars-challenges/currently-working/word-mesh-2.js
 
-console.log(wordMesh(['allow', 'lowering', 'ringmaster', 'terror'])) // 'lowringter'
-// DM: uncomment the below when you get the first test to pass
-console.log(wordMesh(['allow', 'lowering', 'ringmaster', 'terror'])) // 'lowringter'
-console.log(wordMesh(['age', 'estate', 'esteem', 'teem'])) // 'eeteem'
-console.log(wordMesh(['beacon', 'condominium', 'umbilical', 'california'])) // "conumcal";
-// wordMesh(['abandon', 'donation', 'onion', 'ongoing']) // dononon"
-// wordMesh(['jamestown', 'ownership', 'hippocampus', 'pushcart', 'cartorapher', 'pheromone']) // "ownhippuscartpher"
-// wordMesh(['kingdom', 'dominator', 'notorious', 'usual', 'allegory']) // 'failed to mesh'
-console.log(wordMesh(['deforestation', 'citation', 'conviction', 'incarceration'])) // 'failed to mesh'
-console.log(wordMesh(['wedding', 'edding', 'ding', 'ing', 'ng', 'g'])) // 'failed to mesh'
+console.log(wordMesh(['allow', 'lowering', 'ringmaster', 'terror']), `answer: lowringter`) // 'lowringter'
+// // DM: uncomment the below when you get the first test to pass
+// console.log(wordMesh(['allow', 'lowering', 'ringmaster', 'terror'])) // 'lowringter'
+// console.log(wordMesh(['age', 'estate', 'esteem', 'teem'])) // 'eeteem'
+// console.log(wordMesh(['beacon', 'condominium', 'umbilical', 'california'])) // "conumcal";
+// // wordMesh(['abandon', 'donation', 'onion', 'ongoing']) // dononon"
+// // wordMesh(['jamestown', 'ownership', 'hippocampus', 'pushcart', 'cartorapher', 'pheromone']) // "ownhippuscartpher"
+// // wordMesh(['kingdom', 'dominator', 'notorious', 'usual', 'allegory']) // 'failed to mesh'
+// console.log(wordMesh(['deforestation', 'citation', 'conviction', 'incarceration'])) // 'failed to mesh'
+// console.log(wordMesh(['wedding', 'edding', 'ding', 'ing', 'ng', 'g'])) // 'failed to mesh'
 console.log(wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g'])) // 'failed to mesh'
 
 /*
@@ -172,7 +172,7 @@ function meshedSubstrings(currentWord, nextWord) {
 */
 /* CURRENT STATUS (update this section before each commit of the file)
 
-  STATUS: the current status of the code is that finally all the test cases pass, including the "failed to mesh".
+  STATUS: the current status of the code is that finally all the test cases pass, including the "failed to mesh". great! Approved!
   
-  NEXT STEPS: Your code review and approval are required for this challenge. 
+  NEXT STEPS: I'll just move it out of the directory 
 */

@@ -5,7 +5,6 @@ function AddNewItemForm({ handleAddItem }) {
   const [label, setLabel] = React.useState('')
 
   return (
-    /*(done) DM: remove the className if it is not used. There are a lot of unused classNames. It is distracting and makes this code difficult to read (slows down my review). */
     <div className="space-y-12">
       <form
         className="border-b border-white/10 pb-12"
@@ -24,7 +23,7 @@ function AddNewItemForm({ handleAddItem }) {
           New item:
         </label>
 
-        {/*(done) DM: style these "inline" with tailwind or plain CSS. This form is not usable, because I can't tell where the input element is and "Add" doesn't look like a button! Be sure to always make your components "usable" otherwise you are not done and it uses up my time! If these were properly styled, I would have said: Great job! */}
+        {/* DM: Great job! */}
         <div className="mt-2">
           <input
             id="new-list-form-input"
