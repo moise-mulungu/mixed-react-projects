@@ -3,7 +3,7 @@ import SkillData from '@/ui/empty-starter-component'
 
 const OtherSkills = () => {
   return (
-    <div className="other-skills">
+    <div>
       <h2 className="text-gray-700 group flex items-center px-4 py-2 text-3xl">
         {otherSkillsTitle}
       </h2>

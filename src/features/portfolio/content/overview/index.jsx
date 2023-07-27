@@ -5,7 +5,6 @@ import {
 import { socialLinks } from '@/constants/portfolio'
 import { v4 as uuid } from 'uuid'
 
-import { ChevronRightIcon } from '@heroicons/react/20/solid'
 // DM: todoDM: keep this around to address the todoDM in the commented area below
 
 function Overview() {

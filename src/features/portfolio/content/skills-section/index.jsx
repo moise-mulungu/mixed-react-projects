@@ -7,7 +7,7 @@ import OtherSkills from './other-skills'
 export default function SkillsSection(props) {
   const { _ = {} } = props
   return (
-    <section className="">
+    <section>
       <div>
         <h2 className="mt-3 text-center sm:mt-5 ml-4 text-2xl font-medium text-gray-500 hover:text-gray-700">
           {contentAboutHeaderText}
@@ -22,8 +22,3 @@ export default function SkillsSection(props) {
     </section>
   )
 }
-
-/* MM: ???toDM: what can be the better approach between these two components(SkillsSection, and SkillSection)? 
-  In the first one, I used the data from each sub-skill component, and in the second one, I used the data from the skills complex object in which all the data is present.
-  DM: todoMM: moise is this question current?(no, it's outdated, it can be removed)
-*/

@@ -98,8 +98,13 @@ function wordMesh(arrayOfStrings) {
 
     // note: ok for now, but empty array is no longer allowed under the "no mutations" rule
 
-    for (let j = 0; j < currentWord.length; j++) {
+    for (
+      let j = 0;
+      j < currentWord.length - 1;
+      j++ // MM: DM: I finally fixed the problem by looping starting from the last letter of the current word.
+    ) {
       const currentWordLetters = currentWord.substring(j)
+      console.log({ currentWordLetters })
 
       const nextWordLetters = nextWord.substring(0, currentWordLetters.length)
 
@@ -109,10 +114,11 @@ function wordMesh(arrayOfStrings) {
 
       if (currentWordLetters === nextWordLetters) {
         meshedLetters.push(currentWordLetters)
+        console.log({ meshedLetters })
       }
     }
   }
-  // MM: ???DM: I am trying to compare each letter of the current word with the next word. If they are the same, I want to push it to the meshedLetters array. I am not sure if I am doing it right. DM:  is this message to still current, or old?
+  // MM: ???DM: I am trying to compare each letter of the current word with the next word. If they are the same, I want to push it to the meshedLetters array. I am not sure if I am doing it right. DM:  is this message to still current, or old? (no, it's outdated)
 
   // DM: I added a '--' to indent the log so that you can tell when you are inside this inner loop
   // console.log('-----', {
@@ -122,16 +128,19 @@ function wordMesh(arrayOfStrings) {
   //   meshedLetters,
   // })
   // DM: create two new variables to contain the values in the next line. console.log those  variables.
-  if (meshedLetters.length !== arrayOfStrings.length - 1) return 'failed to mesh'
+  const meshedLettersLength = meshedLetters.length
+  console.log({ meshedLettersLength })
+
+  const arrayOfStringsLength = arrayOfStrings.length - 1
+  console.log({ arrayOfStringsLength })
+
+  if (meshedLettersLength !== arrayOfStringsLength) return 'failed to mesh'
   const joinedMeshedLetters = meshedLetters.join('')
   console.log({ joinedMeshedLetters })
-  // if (joinedMeshedLetters.length === 0) return 'failed to mesh'
   return joinedMeshedLetters
 }
 // put a console.log here!!, so that you can see what is going on for each iteration of the outer loop
 // DM: remember, each comment in code refers to the line BELOW the comment, so in the comment above I was literally telling you to put a console.log on a new line below this comment line. This is a major hint to debug the problem! :)
-
-//  MM: this is my solution, but it doesn't work for the last test case. I struggled with this one all day long.
 
 // node project-info/teamdm/training/code-wars-challenges/currently-working/word-mesh-2.js
 
@@ -147,12 +156,23 @@ console.log(wordMesh(['deforestation', 'citation', 'conviction', 'incarceration'
 console.log(wordMesh(['wedding', 'edding', 'ding', 'ing', 'ng', 'g'])) // 'failed to mesh'
 console.log(wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g'])) // 'failed to mesh'
 
+/*
+howtojs:: mesh words in an array::
+function meshedSubstrings(currentWord, nextWord) {
+  const sameSubstrings = [] // todo: reduce?
+  for (let i = 0; i < currentWord.length; i++) {
+    const currentWordSubstring = currentWord.substring(i)
+    const nextWordSubstring = nextWord.substring(0, currentWordSubstring.length)
+    if (currentWordSubstring === nextWordSubstring) {
+      sameSubstrings.push(currentWordSubstring)
+    }
+  }
+  return sameSubstrings
+}
+*/
 /* CURRENT STATUS (update this section before each commit of the file)
 
-  STATUS: MM debugging 
-  MM: all the meshed words test cases pass, but not for some of the "failed to mesh" test cases , the reason is difficult for me to figure it out. I am not sure how to solve it. DM: specifically which tests don't pass? Make it fast for me by pointing out exactly which ones are failing. based on the logs, where do things go wrong?
+  STATUS: the current status of the code is that finally all the test cases pass, including the "failed to mesh".
   
-  NEXT STEPS: debugs the code to insure that all the tests work
-  MM: toDM: I would need your assistance to debug the rest of the non-passing test cases. DM: Keep trying. You can do it!
-
+  NEXT STEPS: Your code review and approval are required for this challenge. 
 */

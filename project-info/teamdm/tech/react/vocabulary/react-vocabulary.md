@@ -113,7 +113,7 @@ Once you get comfortable with a React concept, think of this site is the most au
 
 State Setter Callback Function is a function that accepts the previous value as an argument and returns an updated value. If the previous state is not used to compute the next state, it passes the next state value as the argument for the state setter.
 
-see: "howtoreact: update state based on previous state"
+see: "howtoreact: update state based on previous state"(cool)
 
 ## component instance (RE class components)
 
