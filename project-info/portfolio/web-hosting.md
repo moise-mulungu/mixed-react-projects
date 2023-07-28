@@ -30,8 +30,11 @@ https://vercel.com/docs/concepts/deployments/git/vercel-for-gitlab
       - select any project you want to deploy by clicking the`import` button.
       - once you select a project,you'll be directed to popup which would give you option to select, but yu can just click the `deploy` button at the bottom.
 
-    howtonextjs: Once connected to your vercel account, go to the link `Deploying a Git repository` and select a GitHub 
+    howtonextjs: Once connected to your vercel account, go to the link `Deploying a Git repository` and select a GitHub
 
-    - here is the deploy site link: https://vercel.com/moise-mulungu/vercel-api-routes-829z/rFWW9Mg6dPxpnvVjawM2GuiAguUU DM: this is asking me to login. Please put a public link here DM: bump
+    - here is the deploy site link: https://vercel-api-routes-829z-git-setup-moise-mulungu.vercel.app/
+      (done)DM: this is asking me to login. Please put a public link here DM: bump
 
 - then, learn about nextjs API routes by looking at the code in the repo, keeping in mind the info here: https://nextjs.org/docs/pages/building-your-application/routing/api-routes
+
+https://vercel-api-routes-829z-git-setup-moise-mulungu.vercel.app/

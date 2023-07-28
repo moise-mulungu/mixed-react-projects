@@ -38,16 +38,24 @@ function GradientGenerator() {
     <div className="wrapper">
       <div className="actions">
         <button
+          onClick={addColor}
+          type="button"
+          className="rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-green-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 mb-3"
+        >
+          Add color
+        </button>
+        <button
           styles={
             {
-              /* DM: todoMM: space them out and put a borer so they look like buttons */
+              /* DM: todoMM: space them out and put a border so they look like buttons */
             }
           }
+          type="button"
+          className="rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-red-700 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50  ml-3"
           onClick={removeColor}
         >
           Remove color
         </button>
-        <button onClick={addColor}>Add color</button>
       </div>
 
       <div

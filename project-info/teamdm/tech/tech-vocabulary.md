@@ -57,3 +57,8 @@ An application programming interface is a way for two or more computer programs 
 ## API specification
 
 An API specification details the functional and expected behavior of an API, as well as the fundamental design philosophy and supported data types. It contains both documentation and API definitions to create a contract that people and software can read.
+
+## portfolio
+
+A developer portfolio is a website that showcases your best work, personality and talents. It is your best chance to prove your skills, share your enthusiasm about the profession and give your potential employers and clients a glimpse of how awesome it would be to work with you.
+
