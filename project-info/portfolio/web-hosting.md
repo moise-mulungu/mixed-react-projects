@@ -38,3 +38,16 @@ https://vercel.com/docs/concepts/deployments/git/vercel-for-gitlab
 - then, learn about nextjs API routes by looking at the code in the repo, keeping in mind the info here: https://nextjs.org/docs/pages/building-your-application/routing/api-routes
 
 https://vercel-api-routes-829z-git-setup-moise-mulungu.vercel.app/
+
+
+# more Github/Vercel practice
+1. tech vocab: Google image search on "anatomy of a URL". Pick a good image that shows all the parts of a URL and put that into the repo.
+2. Vercel: find out how to change the sub-domain of vercel-api-routes-829z-git-setup-moise-mulungu.vercel.app to be shorter and more readable. For example: moise-practice.vercel.app
+* document the steps to do this here
+  * step 1
+  * step 2
+  * ...
+1. Github/Vercel: create a 'development' branch in your practice repo. Connect it to Vercel to get a subdomain/URL for the development branch. See how Vercel will re-build each time you push.
+2. Github/Vercel: using the Github Web UI (not git on command line), merge development branch to main/master branch - this will trigger a Vercel rebuild of your production URL (based on main/master branch) 
+## RE documenting setups/configurations
+Search the repo for "SETUP the Ethereal (testing) EMAIL service" and have a look at the detailed list of steps I made. That is an example of how I'd like you to document the things you setup. So, for #2 above, document a list of steps to do it. Document the steps WHILE you are doing them. If you wait until afterward, it will be not good/complete. 

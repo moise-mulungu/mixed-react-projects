@@ -125,4 +125,5 @@ A local state is data we manage in one or another component. Local state is most
 
 ## global state
 
-A global state is a JavaScript object that stores data used by React to render components with dynamic content based on user action. Applications can include this global state for both functional and class components.
+DM: that was not quite right. Update these two vocab entries based on this article: https://dev.to/fkrasnowski/global-vs-local-state-in-react-lp5
+

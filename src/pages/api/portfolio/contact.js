@@ -80,17 +80,8 @@ export default async function handler(req, res) {
   
   SETUP the EMAIL service: 
   
-  Picking a provider: 
-  https://postmarkapp.com/blog/the-best-smtp-email-services-comparison-sheet
-  Nodemailer is supported by https://forwardemail.net/en might as well use it, it's free
-  * option: send as if from GMail: https://forwardemail.net/en/guides/send-mail-as-gmail-custom-domain
-  * option: send as if from the site hosting service that provides your custom domain name: namecheap, godaddy, etc. (Vercel is listed ... Hmm, I didn't know Vercel offered domain names)
+https://www.geeksforgeeks.org/how-to-send-email-with-nodemailer-using-gmail-account-in-node-js/
 
-  Let's use this option for now:
-  * 1) send as if from GMail: https://forwardemail.net/en/guides/send-mail-as-gmail-custom-domain
-    * assumption: you may also send emails to others "as if from" your gmail account, for example: a thankYou/confirmation to the person who contacts you.
-    * it's OK to send emails to yourself in gmail, so I think this will work.
-    MM: DM: I am still at the first step with sending from Gmail. I was asked to create a domain name, then was directed to AWS to create an account. I am not sure if I should continue with this option. I am not sure what to do next.
   */
 
   // 2) based on #1, fill out
@@ -106,6 +97,7 @@ export default async function handler(req, res) {
   }
   // 3) use the production testing URL at the top
 
+  // DM: read the code at the beginning of the function and be sure you understand how the test URL parameters control the value of testWithEthereal which determines which transporterData object is used in the line below.
   const transporterData = testWithEthereal ? transporterDataEthereal : transporterDataDefault
   console.log({ transporterData })
   // the next three function calls were copied from: https://react.email/docs/integrations/nodemailer#3-convert-to-html-and-send-email
@@ -114,8 +106,8 @@ export default async function handler(req, res) {
 
   // create the email
   const options = {
-    from: fromEmail, // be sure to validate proper email address in the client
-    to: toEmail, // might  `${process.env.FORWARDEMAIL_EMAIL_USERNAME}@forwardemail.net`
+    from: fromEmail,
+    to: toEmail,
     subject: `Contact message from: ${firstName}`,
     // temporary using a plain text message for now
     // text: 'Hello world! This message is testing using a text version instead of HTML rendered by the @react-email package',
@@ -152,7 +144,3 @@ export default async function handler(req, res) {
     */
   }
 }
-
-/* 
-  DM: todoMM: implement the "send as if from GMail" (see URL above)
-*/
