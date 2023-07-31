@@ -209,7 +209,7 @@ In computing, a cache is a hardware or software component that stores data so th
 
 ## runtime system or runtime environment
 
-In computer programming, a runtime system or runtime environment is a sub-system that exists both in the computer where a program is created, as well as in the computers where the program is intended to be run. The name comes from the *compile time* and runtime division from compiled languages, which similarly distinguishes the computer processes involved in the creation of a program (compilation) and its execution in the target machine (the run time)
+In computer programming, a runtime system or runtime environment is a sub-system that exists both in the computer where a program is created, as well as in the computers where the program is intended to be run. The name comes from the _compile time_ and runtime division from compiled languages, which similarly distinguishes the computer processes involved in the creation of a program (compilation) and its execution in the target machine (the run time)
 
 ## open source
 
@@ -220,3 +220,7 @@ Open-source software is a prominent example of open collaboration, meaning any c
 ## regex search (regular expression search)
 
 A regular expression is a form of advanced searching that looks for specific patterns, as opposed to certain terms and phrases. With regular expressions, you can use pattern matching to search for particular strings of characters rather than constructing multiple, literal search queries.
+
+## toolchain
+
+In software, a toolchain is a set of programming tools that is used to perform a complex software development task or to create a software product, which is typically another computer program or a set of related programs.

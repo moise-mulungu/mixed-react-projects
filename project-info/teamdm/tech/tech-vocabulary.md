@@ -62,3 +62,10 @@ An API specification details the functional and expected behavior of an API, as 
 
 A developer portfolio is a website that showcases your best work, personality and talents. It is your best chance to prove your skills, share your enthusiasm about the profession and give your potential employers and clients a glimpse of how awesome it would be to work with you.
 
+## UI (user interface)
+
+Is the process designers use to build interfaces in software or computerized devices, focusing on looks or style. Designers aim to create interfaces which users find easy to use and pleasurable. UI design refers to graphical user interfaces and other forms—e.g., voice-controlled interfaces.
+
+## UX (user experience)
+
+The user experience is how a user interacts with and experiences a product, system or service. It includes a person's perceptions of utility, ease of use, and efficiency.

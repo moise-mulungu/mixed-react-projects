@@ -329,7 +329,6 @@ Reassignment is the process of changing variable assignment or when their value 
   person = 'Doe'
   ```
 
-
 ## nodejs
 
 Node.js is a back-end JavaScript runtime environment, runs on the V8 JavaScript Engine, and executes JavaScript code outside a web browser.
@@ -374,3 +373,7 @@ note: not available in array functions
 ## web API
 
 A web API is an application programming interface for either a web server or a web browser. As a web development concept, it can be related to a web application's client side.
+
+## ECMAScript
+
+Is a standard for scripting languages, including JavaScript, JScript, and ActionScript. It is also best known as a JavaScript standard intended to ensure the interoperability of web pages across different web browsers.

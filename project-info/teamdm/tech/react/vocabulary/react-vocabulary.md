@@ -121,9 +121,10 @@ note: functional components (modern React) are not instantiated, but rather just
 
 ## local state
 
-A local state is data we manage in one or another component. Local state is most often managed in React using the useState hook.
+A local state is not the state we define locally, but has the goal to encapsulate the dataflow within the component. the local state seems to be much less manageable and debuggable
 
 ## global state
 
-DM: that was not quite right. Update these two vocab entries based on this article: https://dev.to/fkrasnowski/global-vs-local-state-in-react-lp5
+Global state is when the state is accessible by every element/component of the app. But the important fact is that it pollutes the whole app since it echoes in every component that accesses it.
 
+(done) DM: that was not quite right. Update these two vocab entries based on this article: https://dev.to/fkrasnowski/global-vs-local-state-in-react-lp5
