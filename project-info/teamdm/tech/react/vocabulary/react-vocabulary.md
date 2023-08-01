@@ -128,3 +128,7 @@ A local state is not the state we define locally, but has the goal to encapsulat
 Global state is when the state is accessible by every element/component of the app. But the important fact is that it pollutes the whole app since it echoes in every component that accesses it.
 
 (done) DM: that was not quite right. Update these two vocab entries based on this article: https://dev.to/fkrasnowski/global-vs-local-state-in-react-lp5
+
+## atomic component
+
+Atomic components are the smallest and most basic building blocks of a design system. They are the simplest and most self-contained components that can't be broken down any further, e.g : `buttons, inputs, labels, and other similar UI elements`

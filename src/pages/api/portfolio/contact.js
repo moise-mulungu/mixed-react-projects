@@ -82,7 +82,49 @@ export default async function handler(req, res) {
   
 https://www.geeksforgeeks.org/how-to-send-email-with-nodemailer-using-gmail-account-in-node-js/
 
+* Steps to get the nodemailer working from the site above:
+  1. open the link https://myaccount.google.com/lesssecureapps to Allow less secure apps: 'ON'. Then use node server.js command to run the above code. It will send the email using gmail account.
+  2. To use this code in any file we just have to import this file and call send() function.
+    var mail = require('./config/mailer')();
+    mail.send();
+  3. To send HTML formatted text in your email, use the “html” property instead of the “text” property in sendMail function.
+    { from:'"admin" ',
+      to: "user@gmail.com",
+      subject:'GeeksforGeeks Promotion',
+      html:' <p> html code </p>'
+    }
+  4. To send an email to more than one receiver, add them to the “to” property in sendMail function, separated by commas.
+    { from:'”admin” ‘, 
+      to: ” user1@gmail.com, user2@gmail.com, user3@yahoo.in “, 
+      subject:’GeeksforGeeks Promotion’, 
+      text:’Check out GeeksforGeeks’+’best site to prepare for interviews and competitive exams.’
+    }
+MM: ???DM: I listed all the required steps for sending gmail with the code below, but I am not able to understand where to add content to the appropriate field from your code.
+
+
   */
+  const mailTransporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'xyz@gmail.com',
+      pass: '*************',
+    },
+  })
+
+  const mailDetails = {
+    from: 'xyz@gmail.com',
+    to: 'moisemlg90@gmail.com',
+    subject: 'Test mail',
+    text: 'Hello World!',
+  }
+
+  mailTransporter.sendMail(mailDetails, (err, data) => {
+    if (err) {
+      console.log('Error Occurs')
+    } else {
+      console.log('Email sent successfully')
+    }
+  })
 
   // 2) based on #1, fill out
   const transporterDataDefault = {

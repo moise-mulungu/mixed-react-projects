@@ -48,10 +48,14 @@ https://moise-practice.vercel.app/
 1. tech vocab: Google image search on "anatomy of a URL". Pick a good image that shows all the parts of a URL and put that into the repo.
 2. Vercel: find out how to change the sub-domain of vercel-api-routes-829z-git-setup-moise-mulungu.vercel.app to be shorter and more readable. For example: moise-practice.vercel.app
 
-- document the steps to do this here
-  - step 1
-  - step 2
-  - ...
+document the steps to do this here:
+- step 1: create a new branch `development` from main on VSCode (`git checkout -b development`)
+- step 2: make some changes and push to GitHub
+- step 3: go to your vercel dashboard(login)
+  - step 24: select one of your deployed projects
+    - step 5: click on `Domains` button
+      - step 6: click on `Edit` button (there is a domain field to fill in)
+        - step 7: click on `Save` button to save your changes.
 
 1. Github/Vercel: create a 'development' branch in your practice repo. Connect it to Vercel to get a subdomain/URL for the development branch. See how Vercel will re-build each time you push.
 2. Github/Vercel: using the Github Web UI (not git on command line), merge development branch to main/master branch - this will trigger a Vercel rebuild of your production URL (based on main/master branch)
