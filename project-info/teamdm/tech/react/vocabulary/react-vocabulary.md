@@ -121,13 +121,15 @@ note: functional components (modern React) are not instantiated, but rather just
 
 ## local state
 
-A local state is not the state we define locally, but has the goal to encapsulate the dataflow within the component. the local state seems to be much less manageable and debuggable
+encapsulates the dataflow within the component. Using local state only in apps is much less manageable and debuggable
 
 ## global state
 
-Global state is when the state is accessible by every element/component of the app. But the important fact is that it pollutes the whole app since it echoes in every component that accesses it.
+Global state is when the state is accessible by every element/component of the app. 
 
-(done) DM: that was not quite right. Update these two vocab entries based on this article: https://dev.to/fkrasnowski/global-vs-local-state-in-react-lp5
+But an important opinion is that it can possibly pollute the whole app since it echoes in every component that accesses it.
+
+Global state must be handled properly. State management tools such as redux, zustand, xstate, mobx, recoil, jotai make this possible.
 
 ## atomic component
 

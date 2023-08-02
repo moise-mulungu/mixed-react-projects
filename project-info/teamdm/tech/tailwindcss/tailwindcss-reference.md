@@ -2,8 +2,6 @@
 
 https://tailwindcss.com/docs/display
 
-# TailwindUI
-
 https://tailwindui.com/components/application-ui/navigation/navbars
 login userId: duncan's email, password: sent separately
 (partially done)
@@ -33,3 +31,5 @@ The `w-auto` utility can be useful if you need to remove an element’s assigned
 
 Tailwind lets you conditionally apply utility classes in different states using variant modifiers. For example, use `hover:w-full` to only apply the `w-full` utility on hover.
 e.g: <div class="w-1/2 hover:w-full"><!-- ... --></div>
+
+

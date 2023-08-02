@@ -64,7 +64,9 @@ A developer portfolio is a website that showcases your best work, personality an
 
 ## UI (user interface)
 
-Is the process designers use to build interfaces in software or computerized devices, focusing on looks or style. Designers aim to create interfaces which users find easy to use and pleasurable. UI design refers to graphical user interfaces and other forms—e.g., voice-controlled interfaces.
+Is the process designers use to build interfaces in software or computerized devices, focusing on "look-and-feel" or style. Designers aim to create interfaces which users find easy to use and pleasurable. 
+
+- "UI desig"n" refers to graphical user interfaces and other forms—e.g., voice-controlled interfaces.
 
 ## UX (user experience)
 

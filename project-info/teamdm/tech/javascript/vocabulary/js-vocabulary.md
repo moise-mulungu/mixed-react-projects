@@ -376,4 +376,11 @@ A web API is an application programming interface for either a web server or a w
 
 ## ECMAScript
 
-Is a standard for scripting languages, including JavaScript, JScript, and ActionScript. It is also best known as a JavaScript standard intended to ensure the interoperability of web pages across different web browsers.
+- Is a standard for scripting languages including JavaScript (and technically also JScript, and ActionScript). It is also best known as a JavaScript standard intended to ensure the interoperability of web pages across different web browsers.
+- basically it is THE JS specification
+- the origin of the ES in the "ES6" version of JS
+
+### ECMAScript vs JavaScript
+- JavaScript is the programming language that is implemented by various platforms (browsers, Node.js, Deno, etc.)
+- ECMAScript is its standard, as described in the ECMAScript language specification.
+- FAQ: https://2ality.com/2022/06/ecmascript-2022.html#faq

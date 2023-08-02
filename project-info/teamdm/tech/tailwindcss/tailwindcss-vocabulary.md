@@ -26,4 +26,3 @@ Five breakpoints by default:
 3. `lg` 1024px `@media (min-width: 1024px) { ... }`
 4. `xl` 1280px `@media (min-width: 1280px) { ... }`
 5. `2xl` 1536px `@media (min-width: 1536px) { ... }`
-

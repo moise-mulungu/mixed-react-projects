@@ -82,34 +82,32 @@ export default async function handler(req, res) {
   
 https://www.geeksforgeeks.org/how-to-send-email-with-nodemailer-using-gmail-account-in-node-js/
 
-* Steps to get the nodemailer working from the site above:
-  1. open the link https://myaccount.google.com/lesssecureapps to Allow less secure apps: 'ON'. Then use node server.js command to run the above code. It will send the email using gmail account.
-  2. To use this code in any file we just have to import this file and call send() function.
-    var mail = require('./config/mailer')();
-    mail.send();
-  3. To send HTML formatted text in your email, use the “html” property instead of the “text” property in sendMail function.
-    { from:'"admin" ',
-      to: "user@gmail.com",
-      subject:'GeeksforGeeks Promotion',
-      html:' <p> html code </p>'
-    }
-  4. To send an email to more than one receiver, add them to the “to” property in sendMail function, separated by commas.
-    { from:'”admin” ‘, 
-      to: ” user1@gmail.com, user2@gmail.com, user3@yahoo.in “, 
-      subject:’GeeksforGeeks Promotion’, 
-      text:’Check out GeeksforGeeks’+’best site to prepare for interviews and competitive exams.’
-    }
-MM: ???DM: I listed all the required steps for sending gmail with the code below, but I am not able to understand where to add content to the appropriate field from your code.
+DM: the idea is to use the code example in the link above as an example of how to send the email using your gmail account instead of forwardemail.net. The code in the link is not something you can copy and it will work, but rather it is a working example of a standalone node script. You'll have to use the information in the link to make this code work. Remember, this code (using the nodemailer npm package) already works with the Ethereal test. You are just implementing the "real" (production) part of the email. Take time to read and understand this entire script. I'm going to ask you to explain to me how this script works with Ethereal on Friday.
 
+DM: I'm going to remove these steps that you copied and pasted from the link because you will need to list just the the steps that you will do here to make this existing code work with your gmail account. 
+
+STEPS to send email using gmail account
+* 
+* 
+
+MM: ???DM: I listed all the required steps for sending gmail with the code below, but I am not able to understand where to add content to the appropriate field from your code. DM: see my notes below. If it helps, you could use the exact code from the geeksforgeeks link in a separate testSendMail.js file in this directory and run it as a node script. Sometimes it helps to first get something working in a clean/simple situation first.
 
   */
+
+  /* 
+
+  DM: this shows what should be in the variable transporterDataDefault below. I assume it will work as-is, but I'm not positive. Maybe you'll have to look at the documentation of the nodemailer package.
   const mailTransporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: 'xyz@gmail.com',
       pass: '*************',
     },
-  })
+  }) */
+
+  /* 
+
+  DM: this is already implemented. 
 
   const mailDetails = {
     from: 'xyz@gmail.com',
@@ -125,6 +123,8 @@ MM: ???DM: I listed all the required steps for sending gmail with the code below
       console.log('Email sent successfully')
     }
   })
+
+ */
 
   // 2) based on #1, fill out
   const transporterDataDefault = {

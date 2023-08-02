@@ -49,17 +49,15 @@ https://moise-practice.vercel.app/
 2. Vercel: find out how to change the sub-domain of vercel-api-routes-829z-git-setup-moise-mulungu.vercel.app to be shorter and more readable. For example: moise-practice.vercel.app
 
 document the steps to do this here:
-- step 1: create a new branch `development` from main on VSCode (`git checkout -b development`)
-- step 2: make some changes and push to GitHub
-- step 3: go to your vercel dashboard(login)
-  - step 24: select one of your deployed projects
-    - step 5: click on `Domains` button
-      - step 6: click on `Edit` button (there is a domain field to fill in)
-        - step 7: click on `Save` button to save your changes.
+1. create a new branch `development` from main on VSCode (`git checkout -b development`)
+2. make some changes and push to GitHub
+3. go to your vercel dashboard(login)
+4. select one of your deployed projects
+5. click on `Domains` button
+6. click on `Edit` button (there is a domain field to fill in)
+7. click on `Save` button to save your changes.
 
 1. Github/Vercel: create a 'development' branch in your practice repo. Connect it to Vercel to get a subdomain/URL for the development branch. See how Vercel will re-build each time you push.
 2. Github/Vercel: using the Github Web UI (not git on command line), merge development branch to main/master branch - this will trigger a Vercel rebuild of your production URL (based on main/master branch)
 
-## RE documenting setups/configurations
 
-Search the repo for "SETUP the Ethereal (testing) EMAIL service" and have a look at the detailed list of steps I made. That is an example of how I'd like you to document the things you setup. So, for #2 above, document a list of steps to do it. Document the steps WHILE you are doing them. If you wait until afterward, it will be not good/complete.
