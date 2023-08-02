@@ -125,7 +125,7 @@ encapsulates the dataflow within the component. Using local state only in apps i
 
 ## global state
 
-Global state is when the state is accessible by every element/component of the app. 
+Global state is when the state is accessible by every element/component of the app.
 
 But an important opinion is that it can possibly pollute the whole app since it echoes in every component that accesses it.
 
@@ -134,3 +134,7 @@ Global state must be handled properly. State management tools such as redux, zus
 ## atomic component
 
 Atomic components are the smallest and most basic building blocks of a design system. They are the simplest and most self-contained components that can't be broken down any further, e.g : `buttons, inputs, labels, and other similar UI elements`
+
+## reconciliation
+
+The reconciliation algorithm is the process React uses to update the DOM in response to changes in the component state. When a component’s state changes, React will re-render the component and its children. The reconciliation algorithm is responsible for determining what has changed in the component tree and updating the DOM accordingly.
