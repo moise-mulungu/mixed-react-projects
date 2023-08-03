@@ -398,7 +398,7 @@ function millipedeOfWordsWithIndenting(words) {
 // DM: console.logs are not necessary when calling millipedeOfWords()
 // a shorter one with only 2 elements
 millipedeOfWordsWithIndenting(['engine', 'endure']) // true
-// DM: todoMM: uncomment the remaining tests once you get the first one working with indents
+//(done) DM: todoMM: uncomment the remaining tests once you get the first one working with indents
 // // without re-ordering
 // console.log(millipedeOfWords(['engine', 'endure', 'elite', 'excess'])) // true
 // console.log(millipedeOfWords(['endure', 'elite', 'excess'])) // true

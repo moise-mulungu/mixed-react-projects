@@ -1,8 +1,8 @@
 import React from 'react'
 
 import styles from './sticker-pad.module.css'
-// DM: todoMM: make sure the name of the imported function describe what it really gets {I.e., it gets sticker data, not the sticker}
-import { getSticker } from './stickers-data'
+//(done) DM: todoMM: make sure the name of the imported function describe what it really gets {I.e., it gets sticker data, not the sticker}
+import { getStickerData } from './stickers-data'
 
 function StickerPad() {
   const [stickers, setStickers] = React.useState([])
@@ -11,7 +11,7 @@ function StickerPad() {
     <button
       className={styles.wrapper}
       onClick={(event) => {
-        const stickerData = getSticker()
+        const stickerData = getStickerData()
         const newSticker = {
           ...stickerData,
           x: event.clientX,

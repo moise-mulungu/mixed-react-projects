@@ -28,7 +28,7 @@
   ]
   const result = scores.reduce((acc, cur) => {
     /* your code here */ // 30;
-    //(partial) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
+    //(done) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
     // MM: I think I understand what you mean. I think I need to add up all the weighted scores first, then divide by the number of scores, then round it off to the nearest integer, but the solution is different from the previous code.
 
     const weightedScore = cur.score * cur.weight
@@ -102,7 +102,7 @@
   // return true if all the "(" have a closing ")"
   // use reduce to implement the following (pseudocode) logic
   // MM: toDM: I am not sure how to do this with reduce, I struggled with this one a lot.
-  //(partial) DM: todoMM: in this exercise the pseudocode is telling you how to do it. I restored the original indenting because the indenting is a key part of showing what the logic is. In pseudocode we don't put opening an closing {} to indicate blocks of code, but rather the indenting tells you where the block closes.
+  //(done) DM: todoMM: in this exercise the pseudocode is telling you how to do it. I restored the original indenting because the indenting is a key part of showing what the logic is. In pseudocode we don't put opening an closing {} to indicate blocks of code, but rather the indenting tells you where the block closes.
   // toDM: I could not implement it. DM: make sure you understand how the pseudocode works:
   /* 
   // you're doing the next 6 lines with the reduce()

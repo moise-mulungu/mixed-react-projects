@@ -49,7 +49,7 @@ const STICKERS = [
   },
 ]
 
-export function getSticker() {
+export function getStickerData() {
   // Select a sticker randomly from the array.
   return sample(STICKERS)
 }

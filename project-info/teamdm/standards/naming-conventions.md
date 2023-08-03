@@ -1,4 +1,4 @@
-DM todoMM: review these naming conventions (done)
+(done) DM todoMM: review these naming conventions 
 
 # consistency saves time and energy, helps avoid typo bugs
 

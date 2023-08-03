@@ -84,6 +84,8 @@ https://www.geeksforgeeks.org/how-to-send-email-with-nodemailer-using-gmail-acco
 
 (ok, in progress!)DM: the idea is to use the code example in the link above as an example of how to send the email using your gmail account instead of forwardemail.net. The code in the link is not something you can copy and it will work, but rather it is a working example of a standalone node script. You'll have to use the information in the link to make this code work. Remember, this code (using the nodemailer npm package) already works with the Ethereal test. You are just implementing the "real" (production) part of the email. Take time to read and understand this entire script. I'm going to ask you to explain to me how this script works with Ethereal on Friday.
 
+MM: DM: I got this file to read about sending email: https://dev.to/jlong4223/how-to-implement-email-functionality-with-node-js-react-js-nodemailer-and-oauth2-2h7m
+
 DM: I'm going to remove these steps that you copied and pasted from the link because you will need to list just the the steps that you will do here to make this existing code work with your gmail account. 
 
 STEPS to send email using gmail account

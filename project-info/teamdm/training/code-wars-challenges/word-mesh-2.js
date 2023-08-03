@@ -16,7 +16,7 @@ Maybe we're having a power struggle? I assure you, I'm not making up time-consum
 
 I spent a LOT of time Tuesday trying to get this to where you can learn from it. Look at all the stuff I wrote. Look at how I added new variables and changed the variable names to make things clearer. Don't just comment out all my work and say, "maybe later." Sometimes, you have to just do what you're told. I'm a Sr Dev with 20+ years experience, and I have to do what I'm told at work. So, no more commenting out my instructions and doing something different. This makes me feel poorly and, more important, you don't get to learn the lesson I'm trying to teach. You're also wasting a lot of time I could better spend teaching you more stuff.
 
-DM: todoMM: Debug the code. Finish the job. (Moise, if you want to walk through this together on Zoom, we can, but do the below todoM-M first to be sure you're really clear on the desired logic.)
+(done)DM: todoMM: Debug the code. Finish the job. (Moise, if you want to walk through this together on Zoom, we can, but do the below todoM-M first to be sure you're really clear on the desired logic.)
 
 What I changed below is a few things that make it easier to debug the logic
 * I extracted some values to variables so that logging shows the logic more clearly.

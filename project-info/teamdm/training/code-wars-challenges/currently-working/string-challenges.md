@@ -2,7 +2,7 @@
 # RegExp
 ```js
 
-// DM: todoMM: try these
+//(done) DM: todoMM: try these
 
 // check that the string is only (all) alpha-numeric characters using RegExp (hint look at the \d \ \w \t \s)
 "abc de!".test(/^your regexp$/) // boolean

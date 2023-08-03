@@ -64,9 +64,9 @@ A few things I noticed while listening:
 	* recommend you type your code BEFORE explaining the logic. The logic you explained WHILE you were typing was most understandable. Logic you discussed BEFORE was really hard to follow. It is always better to have something you can point at with your mouse cursor - this reduces the number of words you have to say to explain.
 * don't mention Copilot or turn it off
 * "initialized to 1" not "equalized to 1"
-DM: todoMM: It will be good to record the video again. But, this time, before you record, write down what you will say here below. Tomorrow I will edit it, which you will learn from seeing the diffs. Then, after I have edited it, record another video. Write what you will say like this, using bullet points.
+(done) DM: todoMM: It will be good to record the video again. But, this time, before you record, write down what you will say here below. Tomorrow I will edit it, which you will learn from seeing the diffs. Then, after I have edited it, record another video. Write what you will say like this, using bullet points.
 
-// DM: todoMM: update where you feel necessary. Afterwards, I'll review one more time, and you can make a new video.
+//(done) DM: todoMM: update where you feel necessary. Afterwards, I'll review one more time, and you can make a new video.
 
 Introduction
 * I have an array of strings
@@ -98,8 +98,8 @@ summary: I am given an array of strings where I have to count the number of time
 */
 // old link to the demo: https://youtu.be/2V0gJPwmVAI
 /* howtojs: array: object:: turn array into: object; initialize with empty object as the initial value */
-// turn array into: object
-;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
+// turn array into:
+object[('a', 'b', 'c', 'a', 'b')].reduce((acc, cur) => {
   console.log({ acc, cur })
   if (acc[cur]) {
     acc[cur]++

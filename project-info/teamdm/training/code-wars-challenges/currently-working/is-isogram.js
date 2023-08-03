@@ -86,7 +86,7 @@ Naming variables:
   // })
 
   // DM: super; readable; uses === instead of !== which is easier to understand; concise;
-  // DM: todoMM: all variable names should be camel case (i.e., the first letter is lower case(oh, I forgot about that. I just fix it.))
+  //(done) DM: todoMM: all variable names should be camel case (i.e., the first letter is lower case(oh, I forgot about that. I just fix it.))
   const areIsograms = splitString.every((letter, index) => splitString.indexOf(letter) === index)
   /* 9. use the named parts to create a readable solution. */
 
@@ -126,7 +126,7 @@ console.log(isIsogram('')) // true
 /* 16. Duncan moves the file out of this directory when it is complete */
 
 /* CURRENT STATUS (update this section before each commit of the file); MM: the code works, and all tests pass.
-//(not done) DM: todoMM: hey Moise, I spend way too much time figuring out where you are at in these files. It would save time if you update the status each time you commit, so that I can more quickly know what to do and how to help. you didn't update the status before you commit. do all the tests pass? what is my next step?
+//(done) DM: todoMM: hey Moise, I spend way too much time figuring out where you are at in these files. It would save time if you update the status each time you commit, so that I can more quickly know what to do and how to help. you didn't update the status before you commit. do all the tests pass? what is my next step?
 
 STATUS: the current status of this file is that the code works and all tests pass. 
 DM: the first thing AI do in a review is to search the file for todoMMs. If they are marked "(done)", then I can delete them. 
