@@ -1,3 +1,5 @@
+// 1. import useState
+import { useState } from 'react'
 import { contactFormText } from '@/constants/portfolio/contact-form'
 import {
   myEmail,
@@ -6,7 +8,6 @@ import {
   contactFormHeading,
   myAddress,
 } from '@/constants/portfolio/contact-form'
-import { useForm } from 'react-hook-form'
 
 // DM: future plan: search "react send email" to find out how to send a gmail from a react component.
 
@@ -15,14 +16,49 @@ import { useForm } from 'react-hook-form'
 import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 export default function ContactForm() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
-  const onSubmit = (data) => {
-    alert(JSON.stringify(data))
+  // 2. set up our useState to reflect a name, email, and message when sending an email.
+  const [mailerState, setMailerState] = useState({
+    name: '',
+    email: '',
+    message: '',
+  })
+
+  // 3. set up a function to handle the changes when we type into our future input boxes.
+  function handleStateChange(e) {
+    setMailerState((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
+  }
+
+  // 4.  create a function that actually posts to the route and attach it to the form
+  const submitEmail = async (e) => {
+    e.preventDefault()
+    console.log({ mailerState })
+    const response = await fetch('http://localhost:3001/send', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({ mailerState }),
+    })
+      .then((res) => res.json())
+      .then(async (res) => {
+        const resData = await res
+        console.log(resData)
+        if (resData.status === 'success') {
+          alert('Message Sent')
+        } else if (resData.status === 'fail') {
+          alert('Message failed to send')
+        }
+      })
+      .then(() => {
+        setMailerState({
+          email: '',
+          name: '',
+          message: '',
+        })
+      })
   }
 
   return (
@@ -78,7 +114,7 @@ export default function ContactForm() {
                   <span className="sr-only">
                     Address (Optional) (Moise, asking for address is not customary, maybe just ask
                     for Location and let the put whatever they want there, or you could ask for an
-                    optional URL to their web site(ok).
+                    optional URL to their web site(ok)).
                   </span>
                   <BuildingOffice2Icon className="h-7 w-6 text-gray-400" aria-hidden="true" />
                 </dt>
@@ -117,7 +153,7 @@ export default function ContactForm() {
           action="#"
           method="POST"
           className="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-48"
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={submitEmail}
         >
           <div className="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
             <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
@@ -126,62 +162,22 @@ export default function ContactForm() {
                   htmlFor="first-name"
                   className="block text-sm font-semibold leading-6 text-white"
                 >
-                  First name
+                  Name
                 </label>
                 <div className="mt-2.5">
                   <input
                     type="text"
-                    name="first-name"
-                    id="first-name"
+                    name="name"
+                    id="name"
                     autoComplete="given-name"
+                    placeholder="Name"
+                    onChange={handleStateChange}
+                    value={mailerState.name}
                     className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                    {...register('firstName', { required: true, maxLength: 20 })}
                   />
-                  {errors?.firstName?.type === 'required' && (
-                    <p className="text-white">This field is required</p>
-                  )}
-                  {errors?.firstName?.type === 'maxLength' && (
-                    <p className="text-white">First name cannot exceed 20 characters</p>
-                  )}
-                  {errors?.firstName?.type === 'pattern' && (
-                    <p className="text-white">Alphabetical characters only</p>
-                  )}
                 </div>
               </div>
-              <div>
-                <label
-                  htmlFor="last-name"
-                  className="block text-sm font-semibold leading-6 text-white"
-                >
-                  Last name
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    type="text"
-                    name="last-name"
-                    id="last-name"
-                    autoComplete="family-name"
-                    className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                    {...register('lastName', {
-                      required: true,
-                      maxLength: 20,
-                      pattern: /^[A-Za-z]+$/i,
-                    })}
-                  />
-                  {errors?.lastName?.type === 'required' && (
-                    <p className="text-white">This field is required</p>
-                  )}
-                  {errors?.lastName?.type === 'maxLength' && (
-                    <p className="text-white">First name cannot exceed 20 characters</p>
-                  )}
-                  {errors?.lastName?.type === 'pattern' && (
-                    <p className="text-white">
-                      {' '}
-                      className='text-white'Alphabetical characters only
-                    </p>
-                  )}
-                </div>
-              </div>
+
               <div className="sm:col-span-2">
                 <label htmlFor="email" className="block text-sm font-semibold leading-6 text-white">
                   Email
@@ -191,39 +187,15 @@ export default function ContactForm() {
                     type="email"
                     name="email"
                     id="email"
-                    autoComplete="email"
+                    autoComplete="given-email"
+                    placeholder="Email"
+                    onChange={handleStateChange}
+                    value={mailerState.email}
                     className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                    {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
                   />
-                  {errors?.email?.type === 'required' && <p>Email must be in a required format</p>}
-                  {errors?.email?.type === 'pattern' && (
-                    <p className="text-white">Email must be in required format</p>
-                  )}
                 </div>
               </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="phone-number"
-                  className="block text-sm font-semibold leading-6 text-white"
-                >
-                  Phone number
-                </label>
-                <div className="mt-2.5">
-                  <input
-                    type="tel"
-                    name="phone-number"
-                    id="phone-number"
-                    autoComplete="tel"
-                    className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                    {...register('phoneNumber', {
-                      required: true,
-                      maxLength: 20,
-                      pattern: /^[0-9]+$/i,
-                    })}
-                  />
-                  {errors?.phone?.type === 'pattern' && <p>Only numbers are valid</p>}
-                </div>
-              </div>
+
               <div className="sm:col-span-2">
                 <label
                   htmlFor="message"
@@ -236,17 +208,16 @@ export default function ContactForm() {
                     name="message"
                     id="message"
                     rows={4}
+                    placeholder="Message"
+                    onChange={handleStateChange}
+                    value={mailerState.message}
                     className="block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                    {...register('message', { required: true, maxLength: 1000 })}
-                    defaultValue={''}
                   />
-                  {errors?.message?.type === 'required' && <p>This field can't be empty</p>}
                 </div>
               </div>
             </div>
             <div className="mt-8 flex justify-end">
               <button
-                href={myEmail}
                 type="submit"
                 className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
@@ -260,4 +231,4 @@ export default function ContactForm() {
   )
 }
 
-// This component is still in progress ...
+// MM: DM: after implementing the required steps for the email functionality with Node.js, React.js, Nodemailer, and OAuth2, am blocked when submitting the form by getting the following error: failed to fetch from const response = await fetch('http://localhost:3001/send'. but am at 85% of the code success.
