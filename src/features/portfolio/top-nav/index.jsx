@@ -1,22 +1,13 @@
-/*
-
-
-   https://tailwindui.com/components/application-ui/navigation/navbars 
-   if you need @tailwindcss/forms, go ahead, install it and config it. While you do, record your steps to install and config, so that I can read. But, if you don't need it for this code to work, no need to install it. 
-*/
-
+import Image from 'next/image'
 import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-
-import { uuid } from 'uuid'
 
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { topNavSiteLinks, defaultTopNavSiteLinkId, theMan } from '@/constants/portfolio/header'
 import { classNames } from '@/ui/utils'
-import MyImage from '../content/image/image'
-// DM: todoDM: add my ES Modules vocabulary to the project-info area
+import profilePic from '../../../../public/my_profile.jpg'
 const defaultSiteLinkId = defaultTopNavSiteLinkId
 
 // change in props or state causes the component to "run"
@@ -33,7 +24,6 @@ export default function Example(props) {
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
                 <div className="flex-shrink-0">
-                  {/* note: curly brackets means JS goes inside. since this is a variable containing plain text, use curly brackets so JS can evaluate the variable which resolves to text. */}
                   <span className="text-2xl font-bold leading-7 text-gray-500 sm:truncate sm:text-1xl sm:tracking-tight">
                     {theMan}
                   </span>
@@ -105,7 +95,13 @@ export default function Example(props) {
                     <div>
                       <Menu.Button className="flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src={MyImage} alt="" />
+                        <Image
+                          className="h-8 w-8 rounded-full"
+                          src={profilePic}
+                          alt="My profile picture"
+                          width={50}
+                          height={50}
+                        />
                       </Menu.Button>
                     </div>
                     <Transition

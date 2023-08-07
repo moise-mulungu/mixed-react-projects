@@ -1,3 +1,6 @@
+// import Image from 'next/image'
+// import calculator from './../../../../public/calculator.png'
+
 export const contentWorkHeaderText = 'My Recent Work'
 
 export const projectCardsData = [

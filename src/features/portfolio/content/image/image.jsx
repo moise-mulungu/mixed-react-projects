@@ -1,7 +1,9 @@
 import Image from 'next/image'
+import profilePic from '../../../../../public/my_profile.jpg'
 
+// it's not working this component, i just imported it in the main file
 const MyImage = () => {
-  return <Image src="/my_profile.jpeg" alt="Picture of the author" width={100} height={100} />
+  return <Image src={profilePic} alt="Picture of the author" />
 }
 // DM: put my_profile:
 // MM: I was trying to use the image from the public folder, but it didn't work

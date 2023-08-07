@@ -64,10 +64,26 @@ A developer portfolio is a website that showcases your best work, personality an
 
 ## UI (user interface)
 
-Is the process designers use to build interfaces in software or computerized devices, focusing on "look-and-feel" or style. Designers aim to create interfaces which users find easy to use and pleasurable. 
+Is the process designers use to build interfaces in software or computerized devices, focusing on "look-and-feel" or style. Designers aim to create interfaces which users find easy to use and pleasurable.
 
 - "UI desig"n" refers to graphical user interfaces and other forms—e.g., voice-controlled interfaces.
 
 ## UX (user experience)
 
 The user experience is how a user interacts with and experiences a product, system or service. It includes a person's perceptions of utility, ease of use, and efficiency.
+
+## transaction in computing
+
+In computing, a transaction is a set of related tasks treated as a single action. Together the tasks form a logical unit of work in which all of them must succeed or none of them can succeed. If some tasks succeed but at least one fails, then all successful tasks are reversed, returning the system to its original state before the transaction.
+
+## data storage
+
+Data storage refers to magnetic, optical or mechanical media that records and preserves digital information for ongoing or future operations. There are two types of digital information: input and output data. Users provide the input data. Computers provide output data.
+
+## bandwidth
+
+The maximum amount of data transmitted over an internet connection in a given amount of time. Bandwidth is often mistaken for internet speed when it's actually the volume of information that can be sent over a connection in a measured amount of time – calculated in megabits per second (Mbps).
+
+## throughput
+
+Network throughput refers to the rate of message delivery over a communication channel, such as Ethernet or packet radio, in a communication network. The data that these messages contain may be delivered over physical or logical links, or through network nodes.
