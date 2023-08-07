@@ -1,4 +1,6 @@
 /* 
+
+try out contact-plan.md
     
 (in progress)MM: DM: I am trying to follow the steps from this link: https://dev.to/jlong4223/how-to-implement-email-functionality-with-node-js-react-js-nodemailer-and-oauth2-2h7m 
 
@@ -16,11 +18,14 @@ Steps:
 /* 1. Set up the Node.js Server
    1.1. Create a new directory and initialize it with npm init -y (this one was already done)
    1.2. Install the following dependencies: npm install express dontev (I need to install express and dontev only as nodemailer is already installed)
+   DM: you don't need dotenv because nextjs has that functionality built-in. See contact.js how you can just use process.env.MY_ENVIRONMENT_VARIABLE which is in the .env.local
 To run the server: node src/pages/api/portfolio/contact2.js
 */
+// DM: you don't need express because nextjs is a server. Anything in src/pages/api is a server route, just like express provides
 const express = require('express')
 const nodemailer = require('nodemailer')
 const app = express()
+// DM: if you need cors, look in the nextjs docs for how to do cors. Or in the examples directory: https://github.com/vercel/next.js/tree/canary/examples
 const cors = require('cors')
 require('dotenv').config()
 
