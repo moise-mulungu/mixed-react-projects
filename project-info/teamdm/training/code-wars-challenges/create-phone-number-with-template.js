@@ -1,6 +1,6 @@
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
-// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
+// note: You can be working multiple challenges, but always address all todo-MMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 /*
  */
 
@@ -196,16 +196,28 @@ createPhoneNumber(
        Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
        Note: the best solution should be readable as the highest priority, but not unnecessarily inefficient.
 MM: I like this code because it looks clean and easy to read.
+DM: I like it, too. But, we never use 'var'. This is probably very old JS.
 */
 function createPhoneNumber(numbers) {
-  var format = '(xxx) xxx-xxxx'
+  let format = '(xxx) xxx-xxxx'
 
-  for (var i = 0; i < numbers.length; i++) {
+  for (let i = 0; i < numbers.length; i++) {
     format = format.replace('x', numbers[i])
   }
 
   return format
 }
+// check this out:
+function createPhoneNumber(numbers) {
+  return '(xxx) xxx-xxxx'
+    .split('')
+    .map((char) => {
+      if (char === 'x') return numbers.shift()
+      return char
+    })
+    .join('')
+}
+createPhoneNumber([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
 
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. What help do you need from me? What are the next steps for you or me?
@@ -214,6 +226,7 @@ function createPhoneNumber(numbers) {
    DM: it looks like I had already approved. (cool!)
    
    //(done) DM: todoMM: what is my next step? Every time you edit a challenge file, update he status section. (even if the next step seems obvious to you.) I want to come in to a file, read next step, then just do it, no guessing. This will save me time I can instead devote to teaching you.(I am a bit confused when you are asking about the next step. on line 213 i gave the current status of this file and provide clarity on the next step which is your review and approval, I don't know if I gave enough or less information on that point as you suggested me to do so! would you mind helping me with how to write current status of a file, please?.)
-   next step: section 14
+   
+   next step: move out of directory
    
 */

@@ -86,7 +86,6 @@ Naming variables:
   // })
 
   // DM: super; readable; uses === instead of !== which is easier to understand; concise;
-  //(done) DM: todoMM: all variable names should be camel case (i.e., the first letter is lower case(oh, I forgot about that. I just fix it.))
   const areIsograms = splitString.every((letter, index) => splitString.indexOf(letter) === index)
   /* 9. use the named parts to create a readable solution. */
 

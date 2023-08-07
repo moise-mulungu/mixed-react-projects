@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import profilePic from '../../../../../public/my_profile.jpg'
+import profilePic from '../../../../../public/my_profile.jpg' // DM: there shouldn't be a need for all the ../../.. Check https://nextjs.org/docs/pages/api-reference/components/image (remember we're on next version 12, I think, check in package.json to be sure) Can't the image file be in the local directory? If you are importing it, it shouldn't matter where the image file is, and it will be better organization overall to have the image file in the same directory where it is used.
 
-// it's not working this component, i just imported it in the main file
+// it's not working this component, i just imported it in the main file DM: add some console.logs. What is in profilePic? I didn't know you could src={profilePic}
 const MyImage = () => {
   return <Image src={profilePic} alt="Picture of the author" />
 }

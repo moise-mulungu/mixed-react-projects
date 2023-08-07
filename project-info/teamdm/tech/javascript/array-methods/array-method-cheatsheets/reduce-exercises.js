@@ -1,3 +1,5 @@
+// DM: go through all the exercises below, noting which ones work, and which ones don't, which are really done. You absolutely CANNOT put "(done)"" if something is not done. Son, it is important that you slow down. Take time to read the todoMM and be sure it is really done. This is all about accurate communication. "Maybe" and "close enough" doesn't work in programming. 1s and 0s - it is binary, it either works or it doesn't. So you have to be EXACT. Very important that I can depend on you to be accurate because this is wasting a lot of our valuable time and slowing down your progress!!
+
 // DM: it's interesting that JS lets you create a block simply by putting { /* code inside here has its own "scope" */} in the code. It's interesting because if you put each exercise inside it's own block, you'll never have problems with repeated const variable names clashing.
 //(done) DM: todoMM: please put the expected result for each exercise below
 {
@@ -28,7 +30,7 @@
   ]
   const result = scores.reduce((acc, cur) => {
     /* your code here */ // 30;
-    //(done) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
+    //(NOT done) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
     // MM: I think I understand what you mean. I think I need to add up all the weighted scores first, then divide by the number of scores, then round it off to the nearest integer, but the solution is different from the previous code.
 
     const weightedScore = cur.score * cur.weight
@@ -36,7 +38,7 @@
     // return Math.round(acc + weightedScore / scores.length)
     const sumAllWeightedScores = acc + weightedScore
 
-    const average = sumAllWeightedScores / scores.length
+    const average = sumAllWeightedScores / scores.length // you're taking the average too soon
     console.log(scores.length)
 
     return Math.round(average)

@@ -398,7 +398,7 @@ function millipedeOfWordsWithIndenting(words) {
 // DM: console.logs are not necessary when calling millipedeOfWords()
 // a shorter one with only 2 elements
 millipedeOfWordsWithIndenting(['engine', 'endure']) // true
-//(done) DM: todoMM: uncomment the remaining tests once you get the first one working with indents
+//(NOT done) DM: todoMM: uncomment the remaining tests once you get the first one working with indents. DM: Moise, what are you doing writing "(done)" everywhere? I really don't understand. This todoMM is obviously not done, because all the below tests are still commented out. This todoMM is a note for the future, after you get the first test working with indents."
 // // without re-ordering
 // console.log(millipedeOfWords(['engine', 'endure', 'elite', 'excess'])) // true
 // console.log(millipedeOfWords(['endure', 'elite', 'excess'])) // true

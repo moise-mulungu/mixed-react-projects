@@ -66,7 +66,7 @@ A developer portfolio is a website that showcases your best work, personality an
 
 Is the process designers use to build interfaces in software or computerized devices, focusing on "look-and-feel" or style. Designers aim to create interfaces which users find easy to use and pleasurable.
 
-- "UI desig"n" refers to graphical user interfaces and other forms—e.g., voice-controlled interfaces.
+- "UI design" refers to graphical user interfaces and other forms, e.g., voice-controlled interfaces.
 
 ## UX (user experience)
 
@@ -82,8 +82,10 @@ Data storage refers to magnetic, optical or mechanical media that records and pr
 
 ## bandwidth
 
-The maximum amount of data transmitted over an internet connection in a given amount of time. Bandwidth is often mistaken for internet speed when it's actually the volume of information that can be sent over a connection in a measured amount of time – calculated in megabits per second (Mbps).
+The __maximum__ amount of data transmitted over an internet connection in a given amount of time. Bandwidth is often mistaken for internet speed when it's actually the volume of information that can be sent over a connection in a measured amount of time – calculated in megabits per second (Mbps).
+
+VS speed: Internet **bandwidth** determines **how much** data can be uploaded or downloaded from our device (in a given amount of time), and our internet **speed** determines **how fast** data can be uploaded or downloaded on our device
 
 ## throughput
 
-Network throughput refers to the rate of message delivery over a communication channel, such as Ethernet or packet radio, in a communication network. The data that these messages contain may be delivered over physical or logical links, or through network nodes.
+Network throughput refers to the "__rate__ of message delivery" over a communication channel, such as Ethernet or packet radio, in a communication network. The data that these messages contain may be delivered over physical or logical links, or through network nodes.

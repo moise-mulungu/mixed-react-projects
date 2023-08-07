@@ -3,7 +3,7 @@ the contact.js and contact2.js have gotten long and confusing at this point
 let's take a step back 
 
 first, be sure to read this on how to handle environment variables in NextJS
-https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables
+https://nextjs.org/docs/pages/building-your-application/configuring/environment-variables - be sure to have read this. It helps solve your issue in the new repo.
 
 Now search for EXACTLY what you are trying to do
 (often it helps to search for a tutorial that is more specific, by adding "nextjs" to the Google search, so that you get a more exact solution)
