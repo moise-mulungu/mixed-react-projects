@@ -398,18 +398,23 @@ function millipedeOfWordsWithIndenting(words) {
 // DM: console.logs are not necessary when calling millipedeOfWords()
 // a shorter one with only 2 elements
 millipedeOfWordsWithIndenting(['engine', 'endure']) // true
-//(done after uncommenting the lines below) DM: todoMM: uncomment the remaining tests once you get the first one working with indents. DM: Moise, what are you doing writing "(done)" everywhere? I really don't understand. This todoMM is obviously not done, because all the below tests are still commented out. This todoMM is a note for the future, after you get the first test working with indents."(sorry for the confusion.)
+// DM: you can uncomment after you get the indenting to work above.
+
+// DM: let's agree that we always run these challenge files using node (not the REPL). That way we'll be on the same page about what to comment out or not.
+
+// DM: after you get the portfolio publishes, return to recursion. It is a must-have skill.
+
 // // without re-ordering
-console.log(millipedeOfWords(['engine', 'endure', 'elite', 'excess'])) // true
-console.log(millipedeOfWords(['endure', 'elite', 'excess'])) // true
+// console.log(millipedeOfWords(['engine', 'endure', 'elite', 'excess'])) // true
+// console.log(millipedeOfWords(['endure', 'elite', 'excess'])) // true
 // // with re-ordering
-console.log(
-  millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night'])
-) // true
-console.log(millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night'])) // true
-console.log(millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time'])) // true
-console.log(millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president'])) // false
-console.log(millipedeOfWords(['no', 'dog', 'on', 'good'])) // false
+// console.log(
+//   millipedeOfWords(['excavate', 'endure', 'desire', 'screen', 'theater', 'excess', 'night'])
+// ) // true
+// console.log(millipedeOfWords(['screen', 'desire', 'theater', 'excess', 'night'])) // true
+// console.log(millipedeOfWords(['east', 'e', 'e', 't', 't', 'e', 'time'])) // true
+// console.log(millipedeOfWords(['trade', 'pole', 'view', 'grave', 'ladder', 'mushroom', 'president'])) // false
+// console.log(millipedeOfWords(['no', 'dog', 'on', 'good'])) // false
 
 /* 15. Duncan moves the file out of this directory when it is complete */
 

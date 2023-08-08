@@ -37,7 +37,7 @@ https://vercel.com/docs/concepts/deployments/git/vercel-for-gitlab
 
 - then, learn about nextjs API routes by looking at the code in the repo, keeping in mind the info here: https://nextjs.org/docs/pages/building-your-application/routing/api-routes
 
-<!-- After changing the domain name, the first link still works, why? -->
+<!-- MM: After changing the domain name, the first link still works, why? DM: I don't know. -->
 
 https://vercel-api-routes-829z-git-setup-moise-mulungu.vercel.app/
 

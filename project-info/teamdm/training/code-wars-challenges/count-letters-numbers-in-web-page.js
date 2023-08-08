@@ -49,7 +49,7 @@ SyntaxError: Invalid regular expression: /[a-Az-Z0-9]/: Range out of order in ch
 console.timeEnd('filtering')
 console.log(lettersAndNumbers)
 
-// DM: todoMM: measure the perf (performance) of the map here and the reduce below: DM: not done.(the performance of the map and reduce is done below, i don't know if it's what you want!)
+// DM: todoMM: measure the perf (performance) of the map here and the reduce below: DM: not done.(the performance of the map and reduce is done below, i don't know if it's what you want!) DM: see the howtojs above, measure perf by using console.time/timeEnd
 const charToLowerCase = lettersAndNumbers.map((char) => {
   return char.toLowerCase()
 })

@@ -388,4 +388,4 @@ A web API is an application programming interface for either a web server or a w
 
 ## CommonJS
 
-CommonJS is a project to standardize the module ecosystem for JavaScript outside of web browsers. CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node.js.
+CommonJS is a project to standardize the module ecosystem for JavaScript outside of web browsers. CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node.js. Increasingly ES Modules is used in NodeJS, and always in nextjs API routes.

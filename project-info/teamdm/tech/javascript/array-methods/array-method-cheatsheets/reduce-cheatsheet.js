@@ -99,7 +99,7 @@ DM: I liked this summary, so preserving it. Maybe put it in the youtube more inf
 summary: I am given an array of strings where I have to count the number of times each element appears in the array. I will use the array method "reduce" to solve this problem. For each element in the array, if the accumulator has the current value as a property, then increment the value of the property by 1. If the accumulator does not have the current value as a property, then add the current value as a property and initialize it to 1. Return the accumulator.
 
 */
-// New link to the demo: https://youtu.be/tWRqMy_a660
+// New link to the demo: https://youtu.be/tWRqMy_a660 DM: OK, good, lets revisit in the future.
 /* howtojs: array: object:: turn array into: object; initialize with empty object as the initial value */
 // turn array into:
 {
