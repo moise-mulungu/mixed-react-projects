@@ -1,7 +1,7 @@
-// DM: go through all the exercises below, noting which ones work, and which ones don't, which are really done. You absolutely CANNOT put "(done)"" if something is not done. Son, it is important that you slow down. Take time to read the todoMM and be sure it is really done. This is all about accurate communication. "Maybe" and "close enough" doesn't work in programming. 1s and 0s - it is binary, it either works or it doesn't. So you have to be EXACT. Very important that I can depend on you to be accurate because this is wasting a lot of our valuable time and slowing down your progress!!
+// DM: go through all the exercises below, noting which ones work, and which ones don't, which are really done. You absolutely CANNOT put "(done)"" if something is not done. Son, it is important that you slow down. Take time to read the todoMM and be sure it is really done. This is all about accurate communication. "Maybe" and "close enough" doesn't work in programming. 1s and 0s - it is binary, it either works or it doesn't. So you have to be EXACT. Very important that I can depend on you to be accurate because this is wasting a lot of our valuable time and slowing down your progress!!(thank you for your feedback. I will be more careful.)
 
 // DM: it's interesting that JS lets you create a block simply by putting { /* code inside here has its own "scope" */} in the code. It's interesting because if you put each exercise inside it's own block, you'll never have problems with repeated const variable names clashing.
-//(done) DM: todoMM: please put the expected result for each exercise below
+//(done!) DM: todoMM: please put the expected result for each exercise below
 {
   // get the largest number in the array
   ;[1, 6, 4].reduce((acc, cur) => {
@@ -14,9 +14,11 @@
     // }
     //(done) DM: good. would it be more readable if you used Math.max() ? DM: good.
     // return acc < cur ? cur : acc
-    return Math.max(acc, cur)
+    const largestNumber = Math.max(acc, cur)
+    console.log('largestNumber', largestNumber)
+    return largestNumber
   }, 0)
-  // expected result: 6
+  // DM: expected result: 6
 }
 
 {
@@ -30,18 +32,23 @@
   ]
   const result = scores.reduce((acc, cur) => {
     /* your code here */ // 30;
-    //(NOT done) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
+    //(in progress!) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
     // MM: I think I understand what you mean. I think I need to add up all the weighted scores first, then divide by the number of scores, then round it off to the nearest integer, but the solution is different from the previous code.
 
     const weightedScore = cur.score * cur.weight
     console.log('weightedScore', weightedScore)
     // return Math.round(acc + weightedScore / scores.length)
     const sumAllWeightedScores = acc + weightedScore
+const roundedValue = Math.round(sumAllWeightedScores)
+console.log('roundedValue', roundedValue)
+    // const average = sumAllWeightedScores / scores.length // you're taking the average too soon
+    const average = roundedValue / scores.length
+    console.log('average', average)
 
-    const average = sumAllWeightedScores / scores.length // you're taking the average too soon
-    console.log(scores.length)
+    return average
+  
 
-    return Math.round(average)
+    // return Math.round(average)
   }, 0)
   console.log(result) // 30
 }
@@ -55,7 +62,7 @@
   },
   { a: 0 } // don't change this initial value of the accumulator
 ) //expected result: { a: 2, b: 3, m: 1, n: 1 }
-// DM: I reverted that because the initial acc was { a: 0 } intentionally to force you to use a specific logic in the solution.
+//(done above!) DM: I reverted that because the initial acc was { a: 0 } intentionally to force you to use a specific logic in the solution.
 // DM: Your correction is better way to code, so I'll copy it here:
 // ;['a', 'b', 'b', 'a', 'b', 'm', 'n'].reduce((acc, cur) => {
 //   if (acc[cur]) {
@@ -94,7 +101,7 @@
     } else {
       return acc.concat(cur)
     }
-    // DM: good, I like this. Try using array.includes to make it more readable
+    //(done) DM: good, I like this. Try using array.includes to make it more readable
     // return acc.indexOf(cur) === -1 ? acc.concat(cur) : acc
   }, []) // result: ['a', 'b']
 }

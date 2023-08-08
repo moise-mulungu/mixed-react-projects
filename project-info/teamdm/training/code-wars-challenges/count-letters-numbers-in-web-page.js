@@ -1,4 +1,4 @@
-// DM: I'm really confused about a lot of the todo-MMs you marked with (done) in this directory but which were not done. It took me a lot of time to go through the diffs from your last commit, and no changes to the actual code. I would hope you can be very careful and pay better attention to detail and clear communication, so that I can spend less time in confusion, and more time teaching and working on important things in our repo. In my role as mentor and as "boss" it is really important that you take the time to make it easy for me to figure out what to do next and how to help you. It is what I always try to do for my bosses.
+// DM: I'm really confused about a lot of the todo-MMs you marked with (done) in this directory but which were not done. It took me a lot of time to go through the diffs from your last commit, and no changes to the actual code. I would hope you can be very careful and pay better attention to detail and clear communication, so that I can spend less time in confusion, and more time teaching and working on important things in our repo. In my role as mentor and as "boss" it is really important that you take the time to make it easy for me to figure out what to do next and how to help you. It is what I always try to do for my bosses.(I was not professional, I am sorry.)
 
 // node ./project-info/teamdm/training/code-wars-challenges/currently-working/count-letters-numbers-in-web-page.js
 
@@ -49,7 +49,7 @@ SyntaxError: Invalid regular expression: /[a-Az-Z0-9]/: Range out of order in ch
 console.timeEnd('filtering')
 console.log(lettersAndNumbers)
 
-// DM: todoMM: measure the perf (performance) of the map here and the reduce below: DM: not done.
+// DM: todoMM: measure the perf (performance) of the map here and the reduce below: DM: not done.(the performance of the map and reduce is done below, i don't know if it's what you want!)
 const charToLowerCase = lettersAndNumbers.map((char) => {
   return char.toLowerCase()
 })

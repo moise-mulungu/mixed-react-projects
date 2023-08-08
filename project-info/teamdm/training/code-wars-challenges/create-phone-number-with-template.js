@@ -196,7 +196,7 @@ createPhoneNumber(
        Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
        Note: the best solution should be readable as the highest priority, but not unnecessarily inefficient.
 MM: I like this code because it looks clean and easy to read.
-DM: I like it, too. But, we never use 'var'. This is probably very old JS.
+DM: I like it, too. But, we never use 'var'. This is probably very old JS.(got it)
 */
 function createPhoneNumber(numbers) {
   let format = '(xxx) xxx-xxxx'

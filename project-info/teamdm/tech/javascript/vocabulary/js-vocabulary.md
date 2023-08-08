@@ -385,3 +385,7 @@ A web API is an application programming interface for either a web server or a w
 - JavaScript is the programming language that is implemented by various platforms (browsers, Node.js, Deno, etc.)
 - ECMAScript is its standard, as described in the ECMAScript language specification.
 - FAQ: https://2ality.com/2022/06/ecmascript-2022.html#faq (cool!)
+
+## CommonJS
+
+CommonJS is a project to standardize the module ecosystem for JavaScript outside of web browsers. CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node.js.

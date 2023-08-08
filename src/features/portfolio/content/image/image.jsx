@@ -1,12 +1,12 @@
-import Image from 'next/image'
-import profilePic from '../../../../../public/my_profile.jpg' // DM: there shouldn't be a need for all the ../../.. Check https://nextjs.org/docs/pages/api-reference/components/image (remember we're on next version 12, I think, check in package.json to be sure) Can't the image file be in the local directory? If you are importing it, it shouldn't matter where the image file is, and it will be better organization overall to have the image file in the same directory where it is used.
+import 'my_profile.jpg'
+// DM: there shouldn't be a need for all the ../../.. Check https://nextjs.org/docs/pages/api-reference/components/image (remember we're on next version 12, I think, check in package.json to be sure) Can't the image file be in the local directory? If you are importing it, it shouldn't matter where the image file is, and it will be better organization overall to have the image file in the same directory where it is used.
 
-// it's not working this component, i just imported it in the main file DM: add some console.logs. What is in profilePic? I didn't know you could src={profilePic}
+// it's not working this component, i just imported it in the main file DM: add some console.logs. What is in profilePic? I didn't know you could src={profilePic}; I should not import them here because in the index file i just did it directly. Now the reason is i read somewhere that any picture(image) should be imported in the component where it is used. I tried to import here then import the MyImage component in the index file but it did not work! that's why i straightly imported it to the index file.
 const MyImage = () => {
-  return <Image src={profilePic} alt="Picture of the author" />
+  return <Image src="my_profile.jpg" alt="Picture of the author" />
 }
 // DM: put my_profile:
-// MM: I was trying to use the image from the public folder, but it didn't work
+// MM: DM: I would like more hint on how to import this component in the index file because it doesn't work!
 // MM: ???DM: is this the correct way to use next/image?
 
 export default MyImage

@@ -82,10 +82,10 @@ Data storage refers to magnetic, optical or mechanical media that records and pr
 
 ## bandwidth
 
-The __maximum__ amount of data transmitted over an internet connection in a given amount of time. Bandwidth is often mistaken for internet speed when it's actually the volume of information that can be sent over a connection in a measured amount of time – calculated in megabits per second (Mbps).
+The **maximum** amount of data transmitted over an internet connection in a given amount of time. Bandwidth is often mistaken for internet speed when it's actually the volume of information that can be sent over a connection in a measured amount of time – calculated in megabits per second (Mbps).
 
-VS speed: Internet **bandwidth** determines **how much** data can be uploaded or downloaded from our device (in a given amount of time), and our internet **speed** determines **how fast** data can be uploaded or downloaded on our device
+VS speed: Internet **bandwidth** determines **how much** data can be uploaded or downloaded from our device (in a given amount of time), and our internet **speed** determines **how fast** data can be uploaded or downloaded on our device(good!)
 
 ## throughput
 
-Network throughput refers to the "__rate__ of message delivery" over a communication channel, such as Ethernet or packet radio, in a communication network. The data that these messages contain may be delivered over physical or logical links, or through network nodes.
+Network throughput refers to the "**rate** of message delivery" over a communication channel, such as Ethernet or packet radio, in a communication network. The data that these messages contain may be delivered over physical or logical links, or through network nodes.

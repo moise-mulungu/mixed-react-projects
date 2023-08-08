@@ -70,6 +70,7 @@ DM: It will be good to record the video again. But, this time, before you record
 DM: I don't' think we finished this. Be careful putting (done) on old stuff that is not finished. We may need to decide if it is worthwhile to continue making this particular video. In that case put a comment to me saying if you think it is worth it, and I will respond. Don't put "(done)" on tasks that are not done. - todoDM: In my opinion, we should save this for later, after the portfolio is launched, and at that time consider whether to make this video to support your portfolio for your YouTube channel, showing your good communication skills. 
 DM: update where you feel necessary. Afterwards, I'll review one more time, and you can make a new video.
 
+MM: DM: here are steps to follow to make a video, i already described them before:
 Introduction
 * I have an array of strings
 * I'll have to use the array method reduce to solve this problem because the array method "reduce" is the only array method that can turn an array into an object, a string, a number, or another array of a different length.
@@ -98,18 +99,20 @@ DM: I liked this summary, so preserving it. Maybe put it in the youtube more inf
 summary: I am given an array of strings where I have to count the number of times each element appears in the array. I will use the array method "reduce" to solve this problem. For each element in the array, if the accumulator has the current value as a property, then increment the value of the property by 1. If the accumulator does not have the current value as a property, then add the current value as a property and initialize it to 1. Return the accumulator.
 
 */
-// old link to the demo: https://youtu.be/2V0gJPwmVAI
+// New link to the demo: https://youtu.be/tWRqMy_a660
 /* howtojs: array: object:: turn array into: object; initialize with empty object as the initial value */
 // turn array into:
-object[('a', 'b', 'c', 'a', 'b')].reduce((acc, cur) => {
-  console.log({ acc, cur })
-  if (acc[cur]) {
-    acc[cur]++
-  } else {
-    acc[cur] = 1
-  }
-  return acc
-}, {})
+{
+  ;['a', 'b', 'c', 'a', 'b'].reduce((acc, cur) => {
+    console.log({ acc, cur })
+    if (acc[cur]) {
+      acc[cur]++
+    } else {
+      acc[cur] = 1
+    }
+    return acc
+  }, {})
+}
 // expected result: { a: 2, b: 2, c: 1 }
 
 /* same thing, non-mutating syntax */
