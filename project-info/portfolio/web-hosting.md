@@ -37,11 +37,18 @@ https://vercel.com/docs/concepts/deployments/git/vercel-for-gitlab
 
 - then, learn about nextjs API routes by looking at the code in the repo, keeping in mind the info here: https://nextjs.org/docs/pages/building-your-application/routing/api-routes
 
-<!-- MM: After changing the domain name, the first link still works, why? DM: I don't know. -->
-
+MAIN branch URLS:
+<!-- MM: After changing the domain name, the first link still works, why? DM: I don't know. This is probably the URL that was assigned automatically before you specifiec the specific domain below -->
 https://vercel-api-routes-829z-git-setup-moise-mulungu.vercel.app/
-
 https://moise-practice.vercel.app/
+
+DEVELOPMENT branch URL:
+https://moise-new-practice.vercel.app/
+DM: rename the subdomain to contain the word development, so that it is clear which is which, using the 
+moise-practice-development.vercel.app
+
+DM: go to Slack.com and connect the 2 new GitHub repos to Slack. Maybe you can do it directly in the Slack app, but maybe you'll have to go do slack.com.
+
 
 # more Github/Vercel practice
 

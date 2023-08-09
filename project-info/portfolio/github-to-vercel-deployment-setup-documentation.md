@@ -8,5 +8,4 @@ But here are the steps required to create a deploy URL for the development branc
 4. type the branch to specify the Git branch you want to deploy
 5. save the changes
 
-Here is the link to the new domain under the development branch: https://moise-new-practice.vercel.app/
-  -->
+-->

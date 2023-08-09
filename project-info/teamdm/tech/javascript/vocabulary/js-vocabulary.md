@@ -390,24 +390,7 @@ A web API is an application programming interface for either a web server or a w
 
 CommonJS is a project to standardize the module ecosystem for JavaScript outside of web browsers. CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node.js. Increasingly ES Modules is used in NodeJS, and always in nextjs API routes.
 
-## recursion
-
-Recursion is a technique used to solve computer problems by creating a function that calls itself until your program achieves the desired result.
-
 ## why are functions called first class objects in js?
 
 In JavaScript, functions are first-class objects, because they can be passed to other functions, returned from functions, and assigned to variables and properties.
 
-## What is the disadvantage of recursive?
-
-Disadvantages of recursion are:
-
-- Recursive functions are generally slower than non-recursive function.
-- It may require a lot of memory space to hold intermediate results on the system stacks.
-- Hard to analyze or understand the code.
-- It is not more efficient in terms of space and time complexity
-- If a sort of condition is not provided to stop the function, it's going to lead to an infinite loop.
-
-## base case
-
-The base case is the condition to stop the recursion. The recursive case is the part where the function calls on itself.

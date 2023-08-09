@@ -343,57 +343,7 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 
 // NOTE: we are breaking the rules of section #14 by leaving comments because indented comments are crucial to understanding how recursion works.
 
-function millipedeOfWordsWithIndenting(words) {
-  console.log(`\n\n----------------------------------------------------------------`)
-  console.log('millipedeOfWordsWithIndenting() called with:', { words })
-  // howtonode: exit a node process - process.exit(0)
-  // process.exit(0)
-  function recursiveSolution(
-    words,
-    previousLastLetter = '',
-
-    // DM: this code works, just fix the indenting. It's a bug, on one line, no need to rewrite the function.
-    // DM: the main thing I'd like you to do is to fix the indenting of the console.logs in this code. There are 3 other examples of indenting console.logs that I did in the repo that you can study and apply here. Look at those examples and see how I made indenting work. You only have to edit one line in order for indenting to work in the code below.
-    // DM: Sometimes we DEVs can overthink something. Watch out for that. Or, time passes, and we don't re-read the original instructions (see them just below). In this case, focus very specifically on the "indent" variable. In the other recursive examples, look carefully at what I do with the indent variable, including how it is passed to the recursive function. This is practice at fixing one single thing that happens to be among code that you don't understand. You have to focus very specifically on the thing that you are asked to fix: in thi case, the "indent".
-    // DM: I changed the existing logging a bit to hopefully make things clearer, but you still need to fix the indenting.
-
-    // (in progress) DM: todoMM: look at how I used logging in nthFiboWithIndentedLogging and use the same pattern here.
-    // MM: I don't see any indenting in the console.log output when I run this function. DM: Run the function nthFiboWithIndentedLogging() in the other recursive file, and see what the output looks like - it is indented so you can follow the pattern of recursive calls. Look carefully at how the indentation happens in nthFiboWithIndentedLogging() and use that same pattern here. MM: I could not figure out what to do here. I thought I followed the way you did in the other file.
-    // DM: !!! what's missing is increasing the size of the indent each time a deeper recursion is called. See nthFiboWithIndentedLogging for how to do that; MM: this seems to be time-consuming task, but i'll learn the recursive again. DM: you'll have to trust me if I give you a difficult task. Recursion is important. It will come up in interviews. Also, it is good practice to apply an existing pattern/example to different code. nthFiboWithIndentedLogging() is the existing pattern for how to use indented console.logs to see how recursion works.
-    indent = ''
-  ) {
-    console.log(`${indent}recursiveSolution() called, words: ${words}`)
-    console.log(`${indent}recursiveSolution() called, previousLastLetter: ${previousLastLetter}`)
-    console.log(`${indent}recursiveSolution() called, indent: ${indent}`)
-    // howtojs: log the true arguments passed to a function (i.e., before default values are applied); log the special variable "arguments"
-    // console.log(`${indent} recursiveSolution() called with:`, { arguments })
-    if (words.length === 0) {
-      console.log(`${indent}words.length === 0`)
-      return true
-    }
-
-    return words.some((word, i) => {
-      const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
-      console.log(`${indent}word: ${word}`)
-      console.log(`${indent}previousLastLetter: ${previousLastLetter}`)
-      console.log(`${indent}wordCombinesWithPreviousWord: ${wordCombinesWithPreviousWord}`)
-      const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
-      console.log(`${indent}allRemainingWords: ${allRemainingWords}`)
-      const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
-      console.log(`${indent}lastLetterOfCurrentWord: ${lastLetterOfCurrentWord}`)
-      return (
-        wordCombinesWithPreviousWord &&
-        // here is where it recurses, i.e., the "recurse" function calls itself
-        // DM: todoMM: indent is not passed to the recursive call. Look at the other examples and see how they work, then make this one work. DM: Look at this todoMM again (I was telling you exactly where the problem is!)
-        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord)
-      )
-    })
-  }
-
-  const result = recursiveSolution(words)
-  console.log({ result })
-  return result
-} // node ./project-info/teamdm/training/code-wars-challenges/currently-working/recursive-millipede-of-words.js
+// !!! MOVED to the programming/recursive directory
 
 // DM: console.logs are not necessary when calling millipedeOfWords()
 // a shorter one with only 2 elements
