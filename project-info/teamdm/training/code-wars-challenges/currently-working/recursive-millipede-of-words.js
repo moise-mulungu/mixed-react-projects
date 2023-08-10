@@ -343,7 +343,7 @@ millipedeOfWords(['no', 'dog', 'on', 'good']) // false
 
 // NOTE: we are breaking the rules of section #14 by leaving comments because indented comments are crucial to understanding how recursion works.
 
-// !!! MOVED to the programming/recursive directory
+// !!! MOVED to the programming/recursive directory(cool)
 
 // DM: console.logs are not necessary when calling millipedeOfWords()
 // a shorter one with only 2 elements

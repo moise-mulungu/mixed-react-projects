@@ -1,11 +1,11 @@
 
 # for Thursday
 
-* keep working on the same 4 tasks - timebox so you spend time on each. 
+* keep working on the same 4 tasks - timebox so you spend time on each. (done)
 * address every "DM:" in my Wednesday commit with (ok), (done), or (in progress) so that I can check or remove them. Don't let tasks pile up.
 
-1. Debug next-email
-2. Create a vercel URL for the development branch of vercel-api-routes. Complete already?
+1. Debug next-email(almost done)
+2. Create a vercel URL for the development branch of vercel-api-routes. Complete already?(done)
 3. Publish next-email on vercel, creating URLs for dev and main branches. Document the process in a new file I'll put in the myPortfolio repo. 
    * you don't have to have email working in order to do this. As long as "npm run dev" compiles, you can publish it.
    * document the steps in detail. What you put in github-to-vercel-deployment-setup-documentation is not enough.

@@ -89,3 +89,7 @@ VS speed: Internet **bandwidth** determines **how much** data can be uploaded or
 ## throughput
 
 Network throughput refers to the "**rate** of message delivery" over a communication channel, such as Ethernet or packet radio, in a communication network. The data that these messages contain may be delivered over physical or logical links, or through network nodes.
+
+## credentials
+
+Credentials refer to the verification of identity or tools for authentication. They may be part of a certificate or other authentication process that helps confirm a user's identity in relation to a network address or other system ID.
