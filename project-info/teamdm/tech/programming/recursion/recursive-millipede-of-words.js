@@ -36,3 +36,38 @@ function millipedeOfWordsWithIndenting(words) {
 }
 millipedeOfWordsWithIndenting(['engine', 'endure']) // true
 // node project-info/teamdm/tech/programming/recursion/recursive-millipede-of-words.js
+
+// MM: DM: i am figuring out how to use the indenting technique from your code logics(in progress)
+{
+  function millipedeOfWordsWithIndenting(words) {
+    function recursiveSolution(words, previousLastLetter = '', indent = '') {
+      if (words.length === 0) {
+        console.log(`${indent}words.length === 0`)
+        return true
+      }
+      return words.filter((word, i) => {
+        const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
+        console.log({ wordCombinesWithPreviousWord })
+
+        const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
+        console.log({ allRemainingWords })
+
+        const lastLetterOfCurrentWord = word.slice(-1)
+        console.log({ lastLetterOfCurrentWord })
+
+        const indentation = indent + '-'.repeat(2)
+        console.log({ indentation })
+
+        return (
+          wordCombinesWithPreviousWord &&
+          recursiveSolution(allRemainingWords, lastLetterOfCurrentWord, indentation)
+        )
+      })
+    }
+    const result = recursiveSolution(words)
+    console.log({ result })
+    return result
+  }
+
+  millipedeOfWordsWithIndenting(['engine', 'endure']) // true
+}
