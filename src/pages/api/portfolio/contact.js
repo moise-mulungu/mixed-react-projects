@@ -9,7 +9,7 @@ import FormattedContactEmail from '@/server/features/portfolio/formatted-contact
   testing URLs: use a URL for testing, with the key info in the query string
   * add values to the query string (instead of the POST body which is used by the contact form)
   * ethereal: http://localhost:3005/api/portfolio/contact?testWithEthereal=true&fromEmail=dmckeeve9@gmail.com&firstName=testFirstName
-  * production: http://localhost:3005/api/portfolio/contact?fromEmail=dmckeeve9@gmail.com&firstName=testFirstName
+  * !!!production: http://localhost:3005/api/portfolio/contact?fromEmail=dmckeeve9@gmail.com&firstName=testFirstName
     * result: test email is seen in MM's gmail account
 */
 
@@ -149,22 +149,22 @@ MM: ???DM: I listed all the required steps for sending gmail with the code below
   const transporter = nodemailer.createTransport(transporterData)
 
   // create the email
-  const options = {
+  const email = {
     from: fromEmail,
     to: toEmail,
     subject: `Contact message from: ${firstName}`,
     // temporary using a plain text message for now
-    // text: 'Hello world! This message is testing using a text version instead of HTML rendered by the @react-email package',
-    html: emailHtml,
+    text: 'Hello world! This message is testing using a text version instead of HTML rendered by the @react-email package',
+    // html: emailHtml,
   }
-  console.log('options', options)
+  console.log({ email })
 
   // send the email
   const response = { status: '200', result: 'success' }
 
   /* error handling: return a message so that the client can know if success or error */
   try {
-    const sendMailResponse = await transporter.sendMail(options)
+    const sendMailResponse = await transporter.sendMail(email)
     console.log()
     console.log('result', sendMailResponse)
     // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#server_error_responses

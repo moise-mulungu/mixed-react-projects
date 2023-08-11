@@ -21,6 +21,7 @@
 * next step: review today's work; - OR - need help with bug
 * detail: 
   * what was completed today
+    * 
   * what is the next step
   * blockers
 * review into: 

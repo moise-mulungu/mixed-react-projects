@@ -19,9 +19,6 @@ const countDown2 = (num, indent = '') => {
 }
 countDown2(10) // 10 9 8 7 6 5 4 3 2 1 All done!
 
-// DM: implement the indent here, just like I did above.(done)
-// DM: After you do that, have a look at recursive-reverse-strings.js (now in this directory). See how indented console.logs makes it clear what level of recursion you are at and how the recursion "unwinds" after you react the base case. Study this and be ready to explain to me how it works.(done)
-// DM: After you do that, fix the indenting in recursive-millipede-of-words.js. Follow the examples in this directory, to get an idea of what needs to change. What is found in recursive-reverse-strings.js that is missing in recursive-millipede-of-words.js? You need only edit one line in recursive-millipede-of-words.js. If you need to edit more, then look at recursive-reverse-strings.js again.(in progress)
 const countUp = (num, ind = '') => {
   // the base case
   if (num >= 10) {
@@ -32,7 +29,7 @@ const countUp = (num, ind = '') => {
   num++
   countUp(num, ind + '-'.repeat(3))
 }
-countUp(1) // 1 2 3 4 5 6 7 8 9 You nailed it!
+const res = countUp(1) // 1 2 3 4 5 6 7 8 9 You nailed it!
 
 /* 
 DM: good job on the recursion

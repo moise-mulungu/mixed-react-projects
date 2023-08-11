@@ -1,6 +1,8 @@
+// DM: After you do that, fix the indenting in recursive-millipede-of-words.js. Follow the examples in this directory, to get an idea of what needs to change. What is found in recursive-reverse-strings.js that is missing in recursive-millipede-of-words.js? You need only edit one line in recursive-millipede-of-words.js. If you need to edit more, then look at recursive-reverse-strings.js again. DM: look also at the indenting you did in count-down.js
 function millipedeOfWordsWithIndenting(words) {
   console.log(`\n\n----------------------------------------------------------------`)
-  console.log('millipedeOfWordsWithIndenting() called with:', { words })
+
+  console.log('millipedeOfWordsWithIndenting() - called with:', { words })
   // howtonode: exit a node process - process.exit(0)
   // process.exit(0)
   function recursiveSolution(words, previousLastLetter = '', indent = '') {
@@ -23,9 +25,10 @@ function millipedeOfWordsWithIndenting(words) {
       console.log(`${indent}allRemainingWords: ${allRemainingWords}`)
       const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
       console.log(`${indent}lastLetterOfCurrentWord: ${lastLetterOfCurrentWord}`)
+      const newIndent = indent + '-'.repeat(2) // String.repeat()
       return (
         wordCombinesWithPreviousWord &&
-        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord)
+        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord, newIndent) // DM: only edit this line
       )
     })
   }
@@ -34,40 +37,5 @@ function millipedeOfWordsWithIndenting(words) {
   console.log({ result })
   return result
 }
-millipedeOfWordsWithIndenting(['engine', 'endure']) // true
+millipedeOfWordsWithIndenting(['engine', 'endure']) // true ('e')
 // node project-info/teamdm/tech/programming/recursion/recursive-millipede-of-words.js
-
-// MM: DM: i am figuring out how to use the indenting technique from your code logics(in progress)
-{
-  function millipedeOfWordsWithIndenting(words) {
-    function recursiveSolution(words, previousLastLetter = '', indent = '') {
-      if (words.length === 0) {
-        console.log(`${indent}words.length === 0`)
-        return true
-      }
-      return words.filter((word, i) => {
-        const wordCombinesWithPreviousWord = word.startsWith(previousLastLetter)
-        console.log({ wordCombinesWithPreviousWord })
-
-        const allRemainingWords = words.slice(0, i).concat(words.slice(i + 1))
-        console.log({ allRemainingWords })
-
-        const lastLetterOfCurrentWord = word.slice(-1)
-        console.log({ lastLetterOfCurrentWord })
-
-        const indentation = indent + '-'.repeat(2)
-        console.log({ indentation })
-
-        return (
-          wordCombinesWithPreviousWord &&
-          recursiveSolution(allRemainingWords, lastLetterOfCurrentWord, indentation)
-        )
-      })
-    }
-    const result = recursiveSolution(words)
-    console.log({ result })
-    return result
-  }
-
-  millipedeOfWordsWithIndenting(['engine', 'endure']) // true
-}
