@@ -44,7 +44,7 @@ export default async function handler(req, res) {
   https://postmarkapp.com/guides/everything-you-need-to-know-about-smtp#understanding-smtp-error-codes
   */
 
-  /* 
+  /*
     SETUP the Ethereal (testing) EMAIL service:
       * go to the Ethereal URL: https://ethereal.email
       * create account

@@ -49,7 +49,7 @@ git init # this will reset the .git directory
 git add --all
 git commit -m "first commit"
 git branch -M main # rename default branch to 'main'
-git remote add origin https://GitHub.com/userid/next-email.git
+git remote add origin https://GitHub.com/moise-mulungu/next-email.git
 git push -u origin main
 
 ```
