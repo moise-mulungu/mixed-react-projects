@@ -1,4 +1,4 @@
-// DM: After you do that, fix the indenting in recursive-millipede-of-words.js. Follow the examples in this directory, to get an idea of what needs to change. What is found in recursive-reverse-strings.js that is missing in recursive-millipede-of-words.js? You need only edit one line in recursive-millipede-of-words.js. If you need to edit more, then look at recursive-reverse-strings.js again. DM: look also at the indenting you did in count-down.js
+// DM: After you do that, fix the indenting in recursive-millipede-of-words.js. Follow the examples in this directory, to get an idea of what needs to change. What is found in recursive-reverse-strings.js that is missing in recursive-millipede-of-words.js? You need only edit one line in recursive-millipede-of-words.js. If you need to edit more, then look at recursive-reverse-strings.js again. DM: look also at the indenting you did in count-down.js(good!)
 function millipedeOfWordsWithIndenting(words) {
   console.log(`\n\n----------------------------------------------------------------`)
 
