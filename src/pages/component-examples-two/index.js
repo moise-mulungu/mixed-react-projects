@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import ComponentsExamplesTwo from './../../features/components-examples-two'
+import ComponentsExamplesTwo from '../../features/components-examples-two'
 
 export default function ComponentExamplePagesTwo() {
   return (

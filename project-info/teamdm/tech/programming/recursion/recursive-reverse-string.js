@@ -9,6 +9,7 @@ function reverseString(string) {
       return '' // empty string
     } else {
       const firstLetter = str.charAt(0)
+      console.log({ firstLetter })
       const theRest = str.substr(1)
       console.log(indent, { str, firstLetter, theRest })
       const newIndent = indent + '-'.repeat(indentSize) // String.repeat()

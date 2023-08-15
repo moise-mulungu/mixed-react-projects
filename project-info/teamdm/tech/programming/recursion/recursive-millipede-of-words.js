@@ -26,9 +26,11 @@ function millipedeOfWordsWithIndenting(words) {
       const lastLetterOfCurrentWord = word.slice(-1) // also: word.at(-1)
       console.log(`${indent}lastLetterOfCurrentWord: ${lastLetterOfCurrentWord}`)
       const newIndent = indent + '-'.repeat(2) // String.repeat()
+
+      // add indent to each step of the recursion
       return (
         wordCombinesWithPreviousWord &&
-        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord, newIndent) // DM: only edit this line
+        recursiveSolution(allRemainingWords, lastLetterOfCurrentWord, newIndent) // DM: only edit this line; MM: I am still unable to add indentation here after trying many times, any hints, please?
       )
     })
   }
