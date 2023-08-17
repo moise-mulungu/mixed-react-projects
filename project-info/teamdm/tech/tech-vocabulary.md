@@ -93,3 +93,4 @@ Network throughput refers to the "**rate** of message delivery" over a communica
 ## credentials
 
 Credentials refer to the verification of identity or tools for authentication. They may be part of a certificate or other authentication process that helps confirm a user's identity in relation to a network address or other system ID.
+
