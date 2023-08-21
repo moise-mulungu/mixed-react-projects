@@ -13,9 +13,6 @@ export default function Pages() {
           <Link href="/component-examples">Component Examples</Link>
         </li>
         <li>
-          <Link href="/component-examples-two">Component Examples 2</Link>
-        </li>
-        <li>
           <Link href="/ui-examples">UI Examples</Link>
         </li>
         <li>

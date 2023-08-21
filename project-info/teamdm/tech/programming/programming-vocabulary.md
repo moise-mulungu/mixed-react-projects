@@ -241,8 +241,10 @@ The Model component corresponds to all the **data-related logic** that the user 
 
 ## view
 
-The View component is used for all the UI logic of the application. It generates a user interface for the user. Views are created by the data which is collected by the model component but these data aren’t taken directly but through the controller. It only interacts with the controller.
+The View component is used for all the **UI logic** of the application. It generates a user interface for the user. Views are created using the data which is collected by the model component but these data aren’t taken directly but through the controller. *It only interacts with the controller.*
 
 ## controller
 
-The controller is the component that enables the interconnection between the views and the model so it acts as an intermediary. The controller doesn’t have to worry about handling data logic, it just tells the model what to do. It process all the business logic and incoming requests, manipulate data using the Model component and interact with the View to render the final output.
+The controller is the component that **enables the interconnection between the view and the model** so it acts as an intermediary. The controller doesn’t have to worry about handling data logic, it just tells the model what to do. It process all the business logic and incoming requests, manipulate data using the Model component and interact with the View to render the final output.
+
+DM: todoDM: see if I have a short example in ANKI.
