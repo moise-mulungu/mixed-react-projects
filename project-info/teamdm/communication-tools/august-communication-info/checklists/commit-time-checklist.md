@@ -20,6 +20,6 @@
 -
 -
 - remove unnecessary console.logs (use judgement)
-  (ok)
 
-##
+
+## DM: todoDM: review the above

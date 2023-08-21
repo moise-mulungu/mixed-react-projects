@@ -227,11 +227,17 @@ In software, a toolchain is a set of programming tools that is used to perform a
 
 ## mvc(model-view-controller)
 
-Model–view–controller (MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements. This is done to separate internal representations of information from the ways information is presented to and accepted from the user.
+Model–view–controller (MVC) is a software design pattern commonly used for developing user interfaces that divides the related program logic into three interconnected elements. This is done to **separate** internal **representation** of information **from** the information **presentation** to and accepted from the user.
 
 ## model
 
-The Model component corresponds to all the data-related logic that the user works with. This can represent either the data that is being transferred between the View and Controller components or any other business logic-related data. It can add or retrieve data from the database. It responds to the controller’s request because the controller can’t interact with the database by itself. The model interacts with the database and gives the required data back to the controller.
+The Model component corresponds to all the **data-related logic** that the user works with. 
+- can represent either the data that 
+  - is being transferred between the View and Controller components or 
+  - any other business logic-related data. It 
+- can add or retrieve data from the database. 
+- responds to the controller’s request because the controller can’t interact with the database by itself. 
+- interacts with the database and gives the required data back to the controller.
 
 ## view
 

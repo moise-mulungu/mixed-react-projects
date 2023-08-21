@@ -30,13 +30,12 @@
   * imagine the 'boss' reviewing; what does he need?
 
 ## checklists
-### blocker: "when you're stuck and want to ask for help" what to communicate
+### blocker/debugging: "when you're stuck and want to ask for help" what to communicate
 * the error message
 * what you tried
 * what part of the error message you didn't understand (after Googling)
 * communicating about write what steps you tried
- * 404 - file not found
-* stopping point: pick the right stopping point: when there are no further clues
- * 
+ * ex: 404 - file not found
+* stopping point: pick the right stopping point: when there are no further clues or you can't figure out intended meaning of the error message by googling/console.logging.
 * 
 * 

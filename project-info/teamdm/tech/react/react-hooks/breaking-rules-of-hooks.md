@@ -1,30 +1,10 @@
-# Hooks
 
-Hooks are the new feature introduced in the React 16.8 version. It allows you to use state and other React features without writing a class. Hooks are the functions which "hook into" React state and lifecycle features from function components. It does not work inside classes. Their names start with use (useState, useEffect, useContext, ...).
-
-## Built-in Hooks
-
-Here, we describe the APIs for the built-in Hooks in React. The built-in Hooks can be divided into two parts, which are given below.
-
-### Basic Hooks
-
-- useState
-- useEffect
-- useContext
-
-### Additional Hooks
-
-- useReducer
-- useCallback
-- useMemo
-- useRef
-- useImperativeHandle
-- useLayoutEffect
-- useDebugValue
+# rules of hooks
 
 Don’t call Hooks inside `loops`, `conditions`, or `nested functions`. Instead, always use Hooks at the top level of your React function, before any early returns.
 
-## todo
+## todo (DM: todo for whom?)
+https://react.dev/warnings/invalid-hook-call-warning (DM: always add a source URL if you copy code into the repo)
 
 ```js
 function Counter() {
