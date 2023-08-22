@@ -2,7 +2,8 @@
 
 Don’t call Hooks inside `loops`, `conditions`, or `nested functions`. Instead, always use Hooks at the top level of your React function, before any early returns.
 
-## todo (DM: todo for whom?; MM: this todo is intended for the hook rules!)
+## MM: todoMM: 
+DM: Moise, put a specific info about what todo here, if it is still applicable
 
 https://react.dev/warnings/invalid-hook-call-warning (DM: always add a source URL if you copy code into the repo)
 

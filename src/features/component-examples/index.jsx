@@ -55,9 +55,3 @@ export default function ComponentExamples() {
     </>
   )
 }
-/*
-
-(done)DM: todoMM: it's time to refactor this page because there are so many items here. You could make sub pages, but that is a lot of work making new pages in src/pages/component-examples. So, have a look at tailwindui and check out a few examples that look good. Something that is a big show/hide basically, to demo lots of things on one page.
-(read, but not started yet)
-
-*/

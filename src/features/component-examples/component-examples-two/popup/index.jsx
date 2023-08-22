@@ -1,9 +1,9 @@
 import React from 'react'
-// (ok)DM: you can use any name for a default import (default import is not inside {}, "named imports" are inside {}: import MyDefaultImport, { myNamedImport1, myNamedImport2 } from 'my-module
+// you can use any name for a default import (default import is not inside {}, "named imports" are inside {}: import MyDefaultImport, { myNamedImport1, myNamedImport2 } from 'my-module
 import ReactJSPopup from 'reactjs-popup'
 // import 'reactjs-popup/dist/index.css'
 
-//(ok) DM: by changing the name of the default import, I was able to use here 'Popup' which matches your directory name
+// by changing the name of the default import, I was able to use here 'Popup' which matches your directory name
 export default function Popup() {
   return (
     <div>
