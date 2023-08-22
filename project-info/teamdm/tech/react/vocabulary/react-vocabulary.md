@@ -138,3 +138,28 @@ Atomic components are the smallest and most basic building blocks of a design sy
 ## reconciliation
 
 The reconciliation algorithm is the process React uses to update the DOM in response to changes in the component state. When a component’s state changes, React will re-render the component and its children. The reconciliation algorithm is responsible for determining what has changed in the component tree and updating the DOM accordingly.
+
+## react hooks
+
+React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side-effects. React provides a bunch of standard in-built hooks: useState : To manage states. Returns a stateful value and an updater function to update it.
+
+### react hook rules
+
+1. Only Call Hooks at the Top Level:
+
+   Don’t call Hooks inside loops, conditions, or nested functions. Instead, always use Hooks at the top level of your React function, before any early returns. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That’s what allows React to correctly preserve the state of Hooks between multiple useState and useEffect calls.
+
+2. Only Call Hooks from React Functions:
+   Don’t call Hooks from regular JavaScript functions. Instead, you can:
+
+✅ Call Hooks from React function components.
+✅ Call Hooks from custom Hooks (we’ll learn about them on the next page).
+By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.
+
+### Eslint plugin
+
+React team released an ESLint plugin called `eslint-plugin-react-hooks` that enforces these two rules. You can add this plugin to your project. This plugin is included by default in `Create React App`.
+
+## when it is appropriate to not list in the "dependency array" all the useEffect dependencies
+
+The empty array indicates that the useEffect doesn't have any dependencies on any state variables. Therefore, the callback function is only called once the page renders in this case.(MM: DM: i am not sure if this explanation is accurate)

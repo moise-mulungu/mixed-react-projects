@@ -2,7 +2,7 @@ import Head from 'next/head'
 import ComponentExamplesTwo from '@/features/component-examples/component-examples-two'
 import ComponentExamples from '@/features/component-examples'
 
-// DM: default function name should match the file|directory name
+//(ok) DM: default function name should match the file|directory name
 export default function ComponentExamplePagesTwo() {
   return (
     <div>

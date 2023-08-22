@@ -47,7 +47,7 @@ function GradientGenerator() {
         <button
           styles={
             {
-              /* DM: todoMM: space them out and put a border so they look like buttons */
+              /*(done) DM: todoMM: space them out and put a border so they look like buttons */
             }
           }
           type="button"

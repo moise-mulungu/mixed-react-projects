@@ -11,9 +11,9 @@ import GradientGenerator from './gradient-generator'
 // import StickerPad from './dynamic-key-generator/sticker'
 import ShoppingList from './shopping-list'
 
-// DM: good job on splitting up the pages. I move things around a bit to keep all examples links/code in a hierarchy
-// DM: fix the warnings that are seen in the console and in the terminal
-// DM: improve the UI for the first few examples in this page; I can't see the outlines of dropdowns, fields, etc.
+//(cool) DM: good job on splitting up the pages. I move things around a bit to keep all examples links/code in a hierarchy
+//(in progress) DM: fix the warnings that are seen in the console and in the terminal
+//(in progress) DM: improve the UI for the first few examples in this page; I can't see the outlines of dropdowns, fields, etc.
 export default function ComponentsExamplesTwo() {
   return (
     <div className={`m-4`}>
