@@ -55,7 +55,13 @@ Screen readers are software programs that allow blind or visually impaired users
 ## react component
 
 react as a "component-based framework". what is a component?
-components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Components come in two types, Class components and Function components.
+components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. 
+Components come in two types, Class components and Function components.
+
+### Function components
+DM: add some info
+### Class components
+DM: add some info
 
 ## logical expression
 

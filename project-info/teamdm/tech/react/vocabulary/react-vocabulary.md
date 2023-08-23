@@ -141,7 +141,7 @@ The reconciliation algorithm is the process React uses to update the DOM in resp
 
 ## react hooks
 
-**React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side-effects.** (DM: super!)
+**React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side-effects.** 
 React provides a bunch of standard in-built hooks, such as useState, to manage states. useState returns a stateful value and an updater function to update it.
 
 ```js
@@ -169,12 +169,12 @@ By following this rule, you ensure that all stateful logic in a component is cle
 ### Eslint plugin
 
 React team released an ESLint plugin called `eslint-plugin-react-hooks` that enforces these two rules. You can add this plugin to your project. This plugin is included by default in `Create React App`.
-DM: is it included in NextJS? MM: I don't think so! but i think you'll have to add next lint as a script to package.json. src: https://nextjs.org/docs/app/building-your-application/configuring/eslint
+DM: is it included in NextJS? MM: I don't think so! but i think you'll have to add next lint as a script to package.json. src: https://nextjs.org/docs/app/building-your-application/configuring/eslint DM: ok, I'll look more into it when I migrate this repo to nextjs 13
 
 ## when it is appropriate to not list in the "dependency array" all the useEffect dependencies
 
 The empty array indicates that the useEffect doesn't have any dependencies on any state variables.
-(ok)DM: the first sentence above is good. Examples explain more:
+Examples:
 
 ```js
 // howtoreact: empty dependency array examples

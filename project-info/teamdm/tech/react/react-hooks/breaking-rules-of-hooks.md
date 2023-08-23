@@ -2,13 +2,10 @@
 
 Don’t call Hooks inside `loops`, `conditions`, or `nested functions`. Instead, always use Hooks at the top level of your React function, before any early returns.
 
-## MM: todoMM:
 
-DM: Moise, put a specific info about what todo here, if it is still applicable
-MM: this **todo** was not a task for me nor for you, it was a hint given by the link below regarding the hook rules, i also mentioned the **not to do** below.
+https://react.dev/warnings/invalid-hook-call-warning (DM: always add a source URL if you copy code into the repo. Ok?)
 
-https://react.dev/warnings/invalid-hook-call-warning (DM: always add a source URL if you copy code into the repo)
-
+# DO this
 ```js
 function Counter() {
   // ✅ Good: top-level in a function component
@@ -23,7 +20,7 @@ function useWindowWidth() {
 }
 ```
 
-## not to do
+## do NOT do this
 
 ```js
 function Bad({ cond }) {
