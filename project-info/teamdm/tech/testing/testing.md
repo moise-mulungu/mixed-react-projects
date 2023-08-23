@@ -1,14 +1,17 @@
 ## software testing
 
-the process of evaluating and verifying that a software product or application does what it is supposed to do. 
-benefits: 
-- preventing bugs, 
+the process of evaluating and verifying that a software product or application does what it is supposed to do.
+benefits:
+
+- preventing bugs,
 - reducing development costs,
 - improving performance.
 
-# Test management plan. 
+# Test management plan.
+
 # Types of software testing.
-DM: great! List the other types of software testing 
+
+DM: great! List the other types of software testing
 
 ## unit testing
 
@@ -29,3 +32,10 @@ an object that defines when two objects match.
 ### unit test: test runner
 
 a component that orchestrates the execution of tests and provides the outcome to the user. The runner may use a graphical interface, a textual interface, or return a special value to indicate the results of executing the tests.
+
+## what to test
+
+1. an output
+2. a state
+3. an event
+4. an edge case

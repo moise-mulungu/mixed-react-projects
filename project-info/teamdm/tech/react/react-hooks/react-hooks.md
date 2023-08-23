@@ -12,7 +12,8 @@ Here, we describe the APIs for the built-in Hooks in React. The built-in Hooks c
 
 - useEffect: perform side effects in your components. examples: fetching data, directly updating the DOM, and timers.
 
-- useContext: provides function components access to the context value for a context object. DM: add some more detail here about what data is in the context object
+- useContext: provides function components access to the context value for a context object. To use the useContext hook, you must define a context object in your React component. This context object can be a plain JavaScript object or a custom class that provides data to your component tree. Once you have defined your context object, you can wrap your component tree in a context provider component that provides the data to all its children.
+  (done) DM: add some more detail here about what data is in the context object
 
 ### Additional Hooks
 
@@ -20,19 +21,22 @@ Here, we describe the APIs for the built-in Hooks in React. The built-in Hooks c
 
 - useCallback: returns a memoized version of the callback function that only changes if one of the dependencies has changed.
 
-- useMemo: returns a memoized value. Think of memoization as caching a value so that it does not get recalculated each time the hook runs. 
+- useMemo: returns a memoized value. Think of memoization as caching a value so that it does not get recalculated each time the hook runs.
 
 - useRef: persist values between renders. Store a mutable value that does not cause a re-render when the value changes.
 
-DM: somewhere below, add the vocab item "render" - hint: look up the "react component lifecycle" WRT the term "render".
+(done)DM: somewhere below, add the vocab item "render" - hint: look up the "react component lifecycle" WRT the term "render".
 
-- useImperativeHandle: expose a value, state, or function inside a child component to the parent component. 
-- DM: find a simple example and put it in a new file in a new directory. I myself need to better understand this built-in hook.
+- useImperativeHandle: expose a value, state, or function inside a child component to the parent component.
+  -(done) DM: find a simple example and put it in a new file in a new directory. I myself need to better understand this built-in hook.
 
 - useLayoutEffect: is a React hook that can be passed through in a component's render method to cause the react library to consider the page's layout and change its calculations for things like spacing and overflow.
 
   - (in progress)DM: check nextjs docs for when to use this (if it is still necessary to use with nextjs; it used to be necessary in some situations;)
 
 - useDebugValue: add a label to a custom Hook in React DevTools.
-DM: good, pls put an example in a new file in a this directory, as I'm not familiar with this hook.
+  (done)DM: good, pls put an example in a new file in a this directory, as I'm not familiar with this hook.
 
+## render() lifecycle method
+
+It is called every time the component needs to be re-rendered, either because its props or state have changed, or because a parent component has been re-rendered.

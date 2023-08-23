@@ -3,6 +3,7 @@ import Head from 'next/head'
 import ComponentExamples from '@/features/component-examples'
 import Heading from '@/ui/heading'
 import Link from '@/ui//link'
+import ComponentExamplesTwo from '../../features/component-examples/component-examples-two'
 
 export default function ComponentExamplesPage() {
   return (
@@ -19,7 +20,7 @@ export default function ComponentExamplesPage() {
         </li>
       </ul>
 
-      <ComponentExamples />
+      <ComponentExamplesTwo />
     </div>
   )
 }

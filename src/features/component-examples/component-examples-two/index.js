@@ -13,7 +13,7 @@ import ShoppingList from './shopping-list'
 
 //(in progress) DM: fix the warnings that are seen in the console and in the terminal
 //(in progress) DM: improve the UI for the first few examples in this page; I can't see the outlines of dropdowns, fields, etc.
-export default function ComponentsExamplesTwo() {
+export default function ComponentExamplesTwo() {
   return (
     <div className={`m-4`}>
       <Heading level="2">Components Examples Two</Heading>
