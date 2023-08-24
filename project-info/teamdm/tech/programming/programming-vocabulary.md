@@ -55,13 +55,19 @@ Screen readers are software programs that allow blind or visually impaired users
 ## react component
 
 react as a "component-based framework". what is a component?
-components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. 
+components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML.
 Components come in two types, Class components and Function components.
 
 ### Function components
-DM: add some info
+
+(done)DM: add some info
+Functional component is just a simple javascript function; it accepts the data in the form of props and returns the react element.
+
 ### Class components
-DM: add some info
+
+(done)DM: add some info
+
+Class components make use of ES6 class and extend the Component class in React. Sometimes called “smart” or “stateful” components as they tend to implement logic and state.
 
 ## logical expression
 
@@ -237,17 +243,18 @@ Model–view–controller (MVC) is a software design pattern commonly used for d
 
 ## model
 
-The Model component corresponds to all the **data-related logic** that the user works with. 
-- can represent either the data that 
-  - is being transferred between the View and Controller components or 
-  - any other business logic-related data. It 
-- can add or retrieve data from the database. 
-- responds to the controller’s request because the controller can’t interact with the database by itself. 
+The Model component corresponds to all the **data-related logic** that the user works with.
+
+- can represent either the data that
+  - is being transferred between the View and Controller components or
+  - any other business logic-related data. It
+- can add or retrieve data from the database.
+- responds to the controller’s request because the controller can’t interact with the database by itself.
 - interacts with the database and gives the required data back to the controller.
 
 ## view
 
-The View component is used for all the **UI logic** of the application. It generates a user interface for the user. Views are created using the data which is collected by the model component but these data aren’t taken directly but through the controller. *It only interacts with the controller.*
+The View component is used for all the **UI logic** of the application. It generates a user interface for the user. Views are created using the data which is collected by the model component but these data aren’t taken directly but through the controller. _It only interacts with the controller._
 
 ## controller
 
