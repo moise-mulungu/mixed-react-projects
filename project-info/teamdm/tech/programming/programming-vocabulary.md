@@ -52,6 +52,7 @@ A pre-trained model is a saved network that was previously trained on a large da
 
 Screen readers are software programs that allow blind or visually impaired users to read the text that is displayed on the computer screen with a speech synthesizer or braille display. A screen reader is the interface between the computer's operating system, its applications, and the user.
 
+DM: put the next 3 items into the React vocabulary file
 ## react component
 
 react as a "component-based framework". what is a component?
@@ -60,14 +61,13 @@ Components come in two types, Class components and Function components.
 
 ### Function components
 
-(done)DM: add some info
 Functional component is just a simple javascript function; it accepts the data in the form of props and returns the react element.
 
 ### Class components
 
-(done)DM: add some info
+Class components make use of ES6 classes and extend the Component class in React.
+* note: React Hooks replaced "class components" as the preferred way to implement React.
 
-Class components make use of ES6 class and extend the Component class in React. Sometimes called “smart” or “stateful” components as they tend to implement logic and state.
 
 ## logical expression
 

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 
-// DM: does this work? There is no ./content in this directory. Probably need to import Content from './index'
+// DM: does this work? There is no ./content in this directory. Probably need to import Content from './index' DM: bump
 import Content from './content'
 
 describe('Content component', () => {

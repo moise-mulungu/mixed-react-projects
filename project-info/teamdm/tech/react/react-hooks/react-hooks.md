@@ -2,6 +2,13 @@
 
 Hooks are the new feature introduced in the React 16.8 version. It allows you to use state and other React features without writing a class. Hooks are the functions which "hook into" React state and lifecycle features from function components. It does not work inside classes. Their names start with use (useState, useEffect, useContext, ...).
 
+## Why did ReactJS release Hooks to replace "class components"? What advantagest do Hooks provide over "class components"?
+
+DM: do some google research and make an entry here 
+google search tip: how to restrict your search to one website. Example:
+"why React Hooks better site:react.dev"
+I would restrict the search to react.dev first for an authoritative opinion. Then remove site:react.dev to search all of the internet to see what other sites say.
+
 ## Built-in Hooks
 
 Here, we describe the APIs for the built-in Hooks in React. The built-in Hooks can be divided into two parts, which are given below.
@@ -35,6 +42,9 @@ Here, we describe the APIs for the built-in Hooks in React. The built-in Hooks c
 
 - useDebugValue: add a label to a custom Hook in React DevTools.
 
+## custom hooks
+DM: what are they for? In a custom hook function, what is required in order that it be a "custom hook"? (function name starts with 'use', what are the inputs and output, etc.)
+
 ## render() lifecycle method
 
 It is called every time the component needs to be re-rendered, either because its props or state have changed, or because a parent component has been re-rendered.
@@ -47,15 +57,14 @@ Rendering is React's process of describing a user interface based on the applica
 https://github.com/Wavez/react-hooks-lifecycle
 https://bhanuteja.dev/the-lifecycle-of-react-hooks-component
 study them, make sure you get an understanding
+DM: the image you put in this directory is WRT the old 'class components', so remove that image and take some images from the two above links.
 
 ## commit
 
-look it up
-The git commit command captures a snapshot of the project's currently staged changes. Committed snapshots can be thought of as “safe” versions of a project—Git will never change them unless you explicitly ask it to.
+DM: this file is about react hooks, so search the term 'commit' in the context of React. You can also look in JoR to see how he explains commit, virtual dom, lifecycle.
 
 ## virtual dom
 
-look it
 A virtual DOM is a lightweight JavaScript representation of the Document Object Model used in declarative web frameworks such as React, Vue.js, and Elm. Updating the virtual DOM is comparatively faster than updating the actual DOM.
 
 (ok)DM: more info/links:
@@ -69,3 +78,5 @@ You could also search: "interview question react render commit virtual dom" to f
 ## react hook lifecycle
 
 A React component undergoes three different phases in its lifecycle, including mounting, updating, and unmounting. Each phase has specific methods responsible for a particular stage in a component's lifecycle.
+
+DM: good. When you get the React lifecycle images mentioned above, mention the images here, including the source URL for the images.

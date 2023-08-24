@@ -1,7 +1,5 @@
 import { useSyncExternalStore, useDebugValue } from 'react'
-// source URL?: https://react.dev/reference/react/useDebugValue
-
-//(done) DM: good, but add some comments to explain what is happening in all 4 files for useDebug and useImperativeHandle
+// https://react.dev/reference/react/useDebugValue
 
 /*
   - useDebugValue is a React hook that allows you to display a label for custom hooks in React DevTools.
@@ -9,6 +7,7 @@ import { useSyncExternalStore, useDebugValue } from 'react'
   - the formatter function is called only when React DevTools are open.
   - the formatter function is called with the value as an argument.
   - it does not return anything.
+  - DM: good. Soon I'll have a closer look at useDebugValue and useImperativeHandle
 
 */
 export function useOnlineStatus() {

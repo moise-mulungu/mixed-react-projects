@@ -6,7 +6,10 @@
   - // MM: moise's comments
 - are all "DM: " comments addressed?
   - info only: (ok)
-  - todo: (in progress, status), (done), (blocked)
+  - others: 
+    - (in progress: state what is the status)
+    - (done) - make sure the task is complete
+    - (blocked: how blocked? Error messages? What you tried so far?)
 - best practices
   - default export function name matches filename, or directory name
   - if file is in a directory, the main file or only file, file is named index.js
