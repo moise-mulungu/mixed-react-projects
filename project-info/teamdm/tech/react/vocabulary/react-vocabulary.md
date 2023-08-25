@@ -141,7 +141,7 @@ The reconciliation algorithm is the process React uses to update the DOM in resp
 
 ## react hooks
 
-**React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side-effects.** 
+**React Hooks are simple JavaScript functions that we can use to isolate the reusable part from a functional component. Hooks can be stateful and can manage side-effects.**
 React provides a bunch of standard in-built hooks, such as useState, to manage states. useState returns a stateful value and an updater function to update it.
 
 ```js
@@ -205,3 +205,19 @@ const UnMounter = () => {
   return <div>Check the console!</div>
 }
 ```
+
+## react component
+
+react as a "component-based framework". what is a component?
+components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML.
+Components come in two types, Class components and Function components.
+
+### Function components
+
+Functional component is just a simple javascript function; it accepts the data in the form of props and returns the react element.
+
+### Class components
+
+Class components make use of ES6 classes and extend the Component class in React.
+
+- note: React Hooks replaced "class components" as the preferred way to implement React.

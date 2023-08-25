@@ -2,12 +2,32 @@
 
 Hooks are the new feature introduced in the React 16.8 version. It allows you to use state and other React features without writing a class. Hooks are the functions which "hook into" React state and lifecycle features from function components. It does not work inside classes. Their names start with use (useState, useEffect, useContext, ...).
 
-## Why did ReactJS release Hooks to replace "class components"? What advantagest do Hooks provide over "class components"?
+## Why did ReactJS release Hooks to replace "class components"? What advantages do Hooks provide over "class components"?
 
-DM: do some google research and make an entry here 
+### why did ReactJS release Hooks to replace class components?
+
+Hooks offer more flexibility and they can be reused, especially custom ones in multiple components. With Hooks, you do not need to use lifecycle methods. Side effects can be handled by a single function.
+
+<!-- source: https://circleci.com/blog/class-components-to-react-hooks/#:~:text=Hooks%20offer%20more%20flexibility%20and,handled%20by%20a%20single%20function. -->
+
+### Advantages of Using Hooks over Classes:
+
+- Readability and simplicity In comparison to class-based components, hooks offer a simpler and shorter syntax. The use of hooks enables the creation of functional components without the requirement for classes, making the code simpler to read and comprehend. Hooks produce better code by removing the hassle of handling the `this` keyword, constructor, and lifecycle functions.
+
+- Code Reusability By allowing you to extract and reuse logic across several components, hooks improve code reuse. Without using higher-order components or render properties, you may isolate and interact with stateful behavior with custom hooks.
+- More Effective Management With the use of hooks, you may more precisely group and manage related code. To handle distinct concerns individually, such as state management, side effects, and context, you can use various hooks inside of a single component.
+
+- Preventing issues associated with classes The use of classes in React components might result in unclear circumstances regarding the binding of functions, the use of lifecycle methods, and performance improvements. These problems are resolved with hooks, which offer a simpler method of handling state and effects.
+
+- Enhancing Performance Hooks make it easier to improve performance. Utilizing hooks like `useCallback` and `useMemo` allows you to cache functions and values, reducing the need for extra rendering iterations and enhancing component performance.
+
+- Flexibility in the Future React has been promoting hooks as the primary method of writing components in the past few years. The hooks technique is the one that the React team recommends for creating components in React since they are investing in enhancing and increasing their capabilities. Using hooks guarantees compatibility with upcoming React releases.
+<!-- source: https://www.geeksforgeeks.org/why-to-use-react-hooks-instead-of-classes-in-reactjs/ -->
+
+(done)DM: do some google research and make an entry here
 google search tip: how to restrict your search to one website. Example:
 "why React Hooks better site:react.dev"
-I would restrict the search to react.dev first for an authoritative opinion. Then remove site:react.dev to search all of the internet to see what other sites say.
+I would restrict the search to react.dev first for an authoritative opinion. Then remove site:react.dev to search all of the internet to see what other sites say. MM: react.dev does not provide clear details on these two questions, i searched for other resources instead.
 
 ## Built-in Hooks
 
@@ -43,7 +63,14 @@ Here, we describe the APIs for the built-in Hooks in React. The built-in Hooks c
 - useDebugValue: add a label to a custom Hook in React DevTools.
 
 ## custom hooks
+
+Custom hooks are helpful utilities that help you reuse code logic. The main difference between custom hooks and regular utility functions is that custom hooks usually involve the use of other in-built hooks and follow the rules of hooks, while the latter is a regular function that can be used anywhere.
+
+<!-- source: https://www.memberstack.com/blog/react-custom-hooks#:~:text=Custom%20hooks%20are%20helpful%20utilities,that%20can%20be%20used%20anywhere. -->
+
 DM: what are they for? In a custom hook function, what is required in order that it be a "custom hook"? (function name starts with 'use', what are the inputs and output, etc.)
+
+<!-- source: https://react.dev/learn/reusing-logic-with-custom-hooks -->
 
 ## render() lifecycle method
 
@@ -57,11 +84,14 @@ Rendering is React's process of describing a user interface based on the applica
 https://github.com/Wavez/react-hooks-lifecycle
 https://bhanuteja.dev/the-lifecycle-of-react-hooks-component
 study them, make sure you get an understanding
-DM: the image you put in this directory is WRT the old 'class components', so remove that image and take some images from the two above links.
+(done)DM: the image you put in this directory is WRT the old 'class components', so remove that image and take some images from the two above links.
 
 ## commit
 
-DM: this file is about react hooks, so search the term 'commit' in the context of React. You can also look in JoR to see how he explains commit, virtual dom, lifecycle.
+After a React Shadow Tree is fully created, the renderer triggers a commit. This promotes both the React Element Tree and the newly created React Shadow Tree as the “next tree” to be mounted. This also schedules calculation of its layout information.
+source: https://reactnative.dev/architecture/render-pipeline#:~:text=Commit%3A%20After%20a%20React%20Shadow,calculation%20of%20its%20layout%20information.
+
+(done)DM: this file is about react hooks, so search the term 'commit' in the context of React. You can also look in JoR to see how he explains commit, virtual dom, lifecycle.
 
 ## virtual dom
 
@@ -77,6 +107,7 @@ You could also search: "interview question react render commit virtual dom" to f
 
 ## react hook lifecycle
 
-A React component undergoes three different phases in its lifecycle, including mounting, updating, and unmounting. Each phase has specific methods responsible for a particular stage in a component's lifecycle.
+A React component undergoes three different phases in its lifecycle, including `mounting`, `updating`, and `unmounting`. Each phase has specific methods responsible for a particular stage in a component's lifecycle.
+react-hook-lifecycle image source: https://github.com/Wavez/react-hooks-lifecycle
 
-DM: good. When you get the React lifecycle images mentioned above, mention the images here, including the source URL for the images.
+(done)DM: good. When you get the React lifecycle images mentioned above, mention the images here, including the source URL for the images.

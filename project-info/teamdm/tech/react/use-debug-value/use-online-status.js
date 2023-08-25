@@ -7,7 +7,8 @@ import { useSyncExternalStore, useDebugValue } from 'react'
   - the formatter function is called only when React DevTools are open.
   - the formatter function is called with the value as an argument.
   - it does not return anything.
-  - DM: good. Soon I'll have a closer look at useDebugValue and useImperativeHandle
+  - DM: good. Soon I'll have a closer look at useDebugValue and useImperativeHandle(ok)
+  
 
 */
 export function useOnlineStatus() {

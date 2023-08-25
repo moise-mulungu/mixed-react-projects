@@ -21,6 +21,9 @@ export default function Pages() {
         <li>
           <Link href="/react-games">React Games</Link>
         </li>
+        <li>
+          <Link href="/react-custom-hooks">React Custom Hooks</Link>
+        </li>
       </ul>
     </div>
   )

@@ -6,10 +6,10 @@
   - // MM: moise's comments
 - are all "DM: " comments addressed?
   - info only: (ok)
-  - others: 
+  - others:
     - (in progress: state what is the status)
     - (done) - make sure the task is complete
-    - (blocked: how blocked? Error messages? What you tried so far?)
+    - (blocked: how blocked? Error messages? What you tried so far?)(ok)
 - best practices
   - default export function name matches filename, or directory name
   - if file is in a directory, the main file or only file, file is named index.js
@@ -23,6 +23,5 @@
 -
 -
 - remove unnecessary console.logs (use judgement)
-
 
 ## DM: todoDM: review the above
