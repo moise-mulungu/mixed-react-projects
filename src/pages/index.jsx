@@ -22,6 +22,7 @@ export default function Pages() {
           <Link href="/react-games">React Games</Link>
         </li>
         <li>
+          {/* good organization */}
           <Link href="/react-custom-hooks">React Custom Hooks</Link>
         </li>
       </ul>

@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react'
 
-//(No, still failing!) DM: does this work? There is no ./content in this directory. Probably need to import Content from './index' DM: bump
+// DM: perhaps each test file can import this file:
+import 'testing/setup.js' // DM: is the import found in this file needed to run Jest?
+
 import Content from './index'
 
 describe('Content component', () => {
@@ -13,5 +15,6 @@ describe('Content component', () => {
 })
 
 // MM: the test does not pass because the component is not rendering the name, am still figuring out why
+// DM: what is this path for. How do I run the test?
 // Path: src/features/portfolio/content/content.test.js
 // DM: good work focusing on this! Testing is important!
