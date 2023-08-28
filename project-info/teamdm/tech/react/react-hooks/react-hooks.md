@@ -14,7 +14,7 @@ Hooks offer more flexibility and they can be reused, especially custom ones in m
 
 - Readability and simplicity In comparison to class-based components, hooks offer a simpler and shorter syntax. The use of hooks enables the creation of functional components without the requirement for classes, making the code simpler to read and comprehend. Hooks produce better code by removing the hassle of handling the `this` keyword, constructor, and lifecycle functions.
 
-- Code Reusability By allowing you to extract and reuse logic across several components, hooks improve code reuse. *Without using higher-order components or render properties, you may isolate and interact with stateful behavior with custom hooks.*
+- Code Reusability By allowing you to extract and reuse logic across several components, hooks improve code reuse. _Without using higher-order components or render properties, you may isolate and interact with stateful behavior with custom hooks._
 - More Effective Management With the use of hooks, you may **more precisely group and manage related code**. To handle distinct concerns individually, such as state management, side effects, and context, you can use various hooks inside of a single component.
 
 - Preventing issues associated with classes. The use of classes in React components might result in unclear circumstances regarding the binding of functions, the use of lifecycle methods, and performance improvements. These problems are resolved with hooks, which offer a simpler method of handling state and effects.
@@ -68,7 +68,7 @@ https://www.memberstack.com/blog/react-custom-hooks#:~:text=Custom%20hooks%20are
 
 DM: what are the inputs and output, etc.
 
-source: https://react.dev/learn/reusing-logic-with-custom-hooks DM: which info did this link a source for?
+source: https://react.dev/learn/reusing-logic-with-custom-hooks DM: which info did this link a source for? MM: it's for the custom hook code that i use for the use-online-status directory.
 
 ## render() lifecycle method
 
@@ -82,11 +82,13 @@ Rendering is React's process of describing a user interface based on the applica
 https://github.com/Wavez/react-hooks-lifecycle
 https://bhanuteja.dev/the-lifecycle-of-react-hooks-component
 study them, make sure you get an understanding
-DM: the image you put in this directory is WRT the old 'class components', so remove that image and take some images from the two above links. DM: add also another image, maybe from the 2nd link?
+(done)DM: the image you put in this directory is WRT the old 'class components', so remove that image and take some images from the two above links. (done)DM: add also another image, maybe from the 2nd link?
 
 ## commit
 
-DM: find a more higher-level explanation of what the "commit" is.
+(done)DM: find a more higher-level explanation of what the "commit" is.
+The commit phase is where React actually manipulates the DOM and makes changes. Once React has done the comparison between its new and previous Virtual DOM (in case of initial render there is just one Virtual DOM) using the diffing algorithm It will then apply the changes to real DOM using the React DOM library.
+https://blog.bitsrc.io/how-react-renders-a-component-on-screen-da97c56caf71#:~:text=The%20commit%20phase%20is%20where,using%20the%20React%20DOM%20library.
 
 After a **React Shadow Tree** is fully created, the renderer triggers a commit. This promotes both the React Element Tree and the newly created React Shadow Tree as the “next tree” to be mounted. This also schedules calculation of its layout information.
 source: https://reactnative.dev/architecture/render-pipeline#:~:text=Commit%3A%20After%20a%20React%20Shadow,calculation%20of%20its%20layout%20information.
@@ -108,5 +110,4 @@ You could also search: "interview question react render commit virtual dom" to f
 ## react hook lifecycle
 
 A React component undergoes three different phases in its lifecycle, including `mounting`, `updating`, and `unmounting`. Each phase has specific methods responsible for a particular stage in a component's lifecycle.
-react-hook-lifecycle image source: https://github.com/Wavez/react-hooks-lifecycle DM: where is the image? State here where I can find the image.
-
+react-hook-lifecycle image source: https://github.com/Wavez/react-hooks-lifecycle (done)DM: where is the image? State here where I can find the image.(the image is foud in teamdm/react-hooks folder).
