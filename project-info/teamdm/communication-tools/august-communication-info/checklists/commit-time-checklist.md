@@ -9,7 +9,7 @@
   - others:
     - (in progress: state what is the status)
     - (done) - make sure the task is complete
-    - (blocked: how blocked? Error messages? What you tried so far?)(ok)
+    - (blocked: how blocked? Error messages? What you tried so far?)
 - best practices
   - default export function name matches filename, or directory name
   - if file is in a directory, the main file or only file, file is named index.js
@@ -20,8 +20,10 @@
   - while debugging
     - leave previous code unchanged, but commented out (so you can revert back if needed)
 - JS scripts always have "node relative/path/to/file.js" so that I can copy and paste in order to run the script
--
--
-- remove unnecessary console.logs (use judgement)
+- record tasks completed and hours worked in ../daily/yyyy-mm-dd.md
+  - add enough detail so I can get a feel for what you're doing during the hours you report. This is important because of the following reasons I've personally observed at work;
+    1. The boss always needs to have good sense of what you're doing because: he can know where you are fast and where you are slow (indicating you need some work on the areas you are slow). 
+    2. boss needs to be able to know for himself, and tell his boss that yes, you are indispensable to the team. I literally lost a job once because I stopped making sure my boss was really clear about what I did and my value.
+- remove unnecessary console.logs (use judgement about which are temporary and which can be left commented out because they are useful in the future)
 
 ## DM: todoDM: review the above
