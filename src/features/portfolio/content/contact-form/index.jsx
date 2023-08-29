@@ -1,13 +1,13 @@
 // 1. import useState
 import { useState } from 'react'
-import { contactFormText } from '@/constants/portfolio/contact-form'
+import { contactFormText } from '../../../../constants/portfolio/contact-form'
 import {
   myEmail,
   myPhone,
   myLocation,
   contactFormHeading,
   myAddress,
-} from '@/constants/portfolio/contact-form'
+} from '../../../../constants/portfolio/contact-form'
 
 // DM: future plan: search "react send email" to find out how to send a gmail from a react component.
 

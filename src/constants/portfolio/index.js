@@ -1,6 +1,6 @@
 //DM: if any constant is shared among the sections or header, footer, or etc., then they should be here absolutely.
 
-import { GithubIcon, LinkedInIcon, AngelListIcon, MediumIcon, TwitterIcon } from '@/ui/icons'
+import { GithubIcon, LinkedInIcon, AngelListIcon, MediumIcon, TwitterIcon } from '../../ui/icons'
 
 export const appTitle = 'My Portfolio'
 

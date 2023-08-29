@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react'
-import 'testing/setup.js'
+import '@testing-library/jest-dom'
 
 import Overview from './index'
 
 describe('Overview component', () => {
   it('should render Overview component properly', () => {
     render(<Overview />)
-    expect(screen.getByText('Overview')).toBeInTheDocument()
+    expect(screen.findByTitle('Hey there, I am Moise. a software developer')).toBeTruthy()
   })
 })
 

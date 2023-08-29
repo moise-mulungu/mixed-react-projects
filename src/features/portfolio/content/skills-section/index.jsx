@@ -1,4 +1,4 @@
-import { contentAboutHeaderText } from '@/constants/portfolio/content/skills'
+import { contentAboutHeaderText } from '../../../../constants/portfolio/content/skills'
 import ResumeButton from './resume-button'
 import Languages from './languages'
 import Frameworks from './frameworks'

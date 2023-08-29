@@ -210,7 +210,6 @@ const UnMounter = () => {
 
 react as a "component-based framework"
 
-
 what is a component? components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML.
 Components come in two types, Class components and Function components.
 
@@ -223,3 +222,8 @@ Functional component is just a simple javascript function; it accepts the data i
 Class components make use of ES6 classes and extend the Component class in React.
 
 - note: React Hooks replaced "class components" as the preferred way to implement React.
+
+## built-in hooks VS custom hooks
+
+React comes with several built-in Hooks like useState, useContext, and useEffect. Sometimes, you’ll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. You might not find these Hooks in React, but you can create your own Hooks for your application’s needs.
+src: https://react.dev/learn/reusing-logic-with-custom-hooks

@@ -1,14 +1,11 @@
-import { useState, useEffect } from 'react'
+import React from 'react'
 import Overview from './overview'
 import ProjectCards from './project-section/project-cards'
-import Divider from '@/ui/divider'
+import Divider from '../../../ui/divider'
 import ContactForm from './contact-form'
 import SkillsSection from './skills-section'
 
-export default function Content(props) {
-  const { data } = props
-
-  /* 4 sections, OR hero and 3 sections */
+export default function Content() {
   return (
     <main
       aria-labelledby="category-heading"

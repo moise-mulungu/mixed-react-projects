@@ -1,4 +1,7 @@
-import { projectCardsData, projectCardText } from '@/constants/portfolio/content/project-cards'
+import {
+  projectCardsData,
+  projectCardText,
+} from '../../../../constants/portfolio/content/project-cards'
 import CardsHeading from './card-heading'
 import Popup from 'reactjs-popup'
 
@@ -7,9 +10,9 @@ const ProjectCards = () => {
     <section className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-base font-semibold leading-7 text-indigo-600">
+          <div className="text-base font-semibold leading-7 text-indigo-600">
             <CardsHeading />
-          </h2>
+          </div>
           <p className="mt-6 text-lg leading-8 text-gray-600">{projectCardText}</p>
         </div>
         <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -27,7 +30,7 @@ const ProjectCards = () => {
                       src={image}
                       alt=""
                     />
-                    <p className="mt-6">
+                    <div className="mt-6">
                       <ul>
                         {''}
                         <Popup
@@ -59,7 +62,7 @@ const ProjectCards = () => {
                           view project <span aria-hidden="true">→</span>
                         </button>
                       </a>
-                    </p>
+                    </div>
                   </dd>
                 </div>
               )

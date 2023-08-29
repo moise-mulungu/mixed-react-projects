@@ -1,4 +1,4 @@
-import { myResume } from '@/constants/portfolio/content/skills'
+import { myResume } from '../../../../constants/portfolio/content/skills'
 
 export default function ResumeButton() {
   /* const handleClick = () => {
