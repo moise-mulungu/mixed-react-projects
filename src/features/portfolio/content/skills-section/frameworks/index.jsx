@@ -1,5 +1,5 @@
-import { frameworks, frameworkTitle } from '../../../../../constants/portfolio/content/skills'
-import SkillData from '../../../../../ui/empty-starter-component'
+import { frameworks, frameworkTitle } from '@/constants/portfolio/content/skills'
+import SkillData from '@/ui/empty-starter-component'
 
 const Frameworks = () => {
   return (

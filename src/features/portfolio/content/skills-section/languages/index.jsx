@@ -1,5 +1,5 @@
-import { languageTitle, languages } from '../../../../../constants/portfolio/content/skills'
-import SkillData from '../../../../../ui/empty-starter-component'
+import { languageTitle, languages } from '@/constants/portfolio/content/skills'
+import SkillData from '@/ui/empty-starter-component'
 
 function Languages() {
   return (

@@ -1,5 +1,4 @@
 # debugging
-
 - !!! Console.log all the things!
 - pursue the clues in the error message
 - time-box debugging; 
@@ -24,3 +23,5 @@
       - getting help from DM
       - knowing what to do next, when you come back to work on a bug 
         - if a few days or weeks have passed, you might forget what you tried already.
+- preserve original code and attempted changes (within reason) because it may be useful again 
+  - leave code unchanged, but commented out (so you can revert back if needed)

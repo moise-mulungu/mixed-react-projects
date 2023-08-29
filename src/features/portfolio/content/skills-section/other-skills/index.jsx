@@ -1,5 +1,5 @@
-import { otherSkillsTitle, otherSkills } from '../../../../../constants/portfolio/content/skills'
-import SkillData from '../../../../../ui/empty-starter-component'
+import { otherSkillsTitle, otherSkills } from '@/constants/portfolio/content/skills'
+import SkillData from '@/ui/empty-starter-component'
 
 const OtherSkills = () => {
   return (

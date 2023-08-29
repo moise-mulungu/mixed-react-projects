@@ -4,7 +4,8 @@ DM: what's this? Should it be in react vocab? "built-in hooks VS custom hooks"
 MM: this note is to illustrate the difference between built-in hooks and custom hooks. I put it here to help me remember the difference. I'll move it to the react vocab page as well.
 */
 import React from 'react'
-//(?) DM: great. You should import only from the /src folder, so move these files to src/features/react-custom-hooks/ folder. (done)DM: you're still importing from outside of the src folder in the 2 below lines.
+
+// DM: why don't you use the "@" imports work here? You should always use @ imports. ex: import abc from '@/features/path/to/file
 import SaveButton from '../../../src/features/react-custom-hooks/use-online-status/save-button'
 import StatusBar from '../../../src/features/react-custom-hooks/use-online-status/status-bar'
 

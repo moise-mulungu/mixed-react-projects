@@ -1,8 +1,8 @@
 import {
   contentOverviewHeaderText,
   contentOverviewParagraphText,
-} from '../../../../../src/constants/portfolio/content/overview'
-import { socialLinks } from '../../../../../src/constants/portfolio'
+} from '@/constants/portfolio/content/overview'
+import { socialLinks } from '@/constants/portfolio'
 import { v4 as uuid } from 'uuid'
 
 function Overview() {

@@ -1,4 +1,4 @@
-import { contentWorkHeaderText } from '../../../../constants/portfolio/content/project-cards'
+import { contentWorkHeaderText } from '@/constants/portfolio/content/project-cards'
 
 const CardsHeading = () => {
   return (

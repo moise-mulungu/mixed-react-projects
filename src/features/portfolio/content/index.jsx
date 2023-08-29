@@ -1,7 +1,6 @@
-import React from 'react'
 import Overview from './overview'
 import ProjectCards from './project-section/project-cards'
-import Divider from '../../../ui/divider'
+import Divider from '@/ui/divider'
 import ContactForm from './contact-form'
 import SkillsSection from './skills-section'
 

@@ -1,7 +1,4 @@
-import {
-  projectCardsData,
-  projectCardText,
-} from '../../../../constants/portfolio/content/project-cards'
+import { projectCardsData, projectCardText } from '@/constants/portfolio/content/project-cards'
 import CardsHeading from './card-heading'
 import Popup from 'reactjs-popup'
 
