@@ -16,14 +16,14 @@ const ProjectCards = () => {
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
             {projectCardsData.map(({ title, description, image, url, stack }) => {
               return (
-                <div key={title} className="flex flex-col">
+                <div key={title} className="flex flex-col hover:b-sky-900">
                   <dt className="flex items-center gap-x-3 text-2xl font-semibold leading-7 text-gray-900">
                     {title}
                   </dt>
                   <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
                     <p className="flex-auto font-semibold">{description}</p>
                     <img
-                      className="aspect-[3/2] w-full rounded-2xl object-cover"
+                      className="aspect-[3/2] w-full rounded-2xl object-cover border-2"
                       src={image}
                       alt=""
                     />
