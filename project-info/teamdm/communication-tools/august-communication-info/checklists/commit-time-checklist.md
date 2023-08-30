@@ -17,7 +17,7 @@
   - UI: usability (ex: easy to see what is a button or input field)
   - clear, readable, exact variable names
   - add comments if new code is not intuitive
-- npm run dev must work. Don't commit a broken app. Also, don't leave any major/large parts of the site broken. It's ok to have small parts broken, if you are currently working on them.(ok)
+- npm run dev must work. Don't commit a broken app. Also, don't leave any major/large parts of the site broken. It's ok to have small parts broken, if you are currently working on them and you've left documentation about the bug in the affected file.
 - JS scripts always have "node relative/path/to/file.js" so that I can copy and paste in order to run the script
 - record tasks completed and hours worked in ../daily/yyyy-mm-dd.md
   - add enough detail so I can get a feel for what you're doing during the hours you report. This is important because of the following reasons I've personally observed at work;
