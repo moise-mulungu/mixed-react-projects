@@ -6,9 +6,9 @@ MM: this note is to illustrate the difference between built-in hooks and custom 
 import React from 'react'
 
 //(in progress) DM: why don't you use the "@" imports work here? You should always use @ imports. ex: import abc from '@/features/path/to/file
-// MM: DM: once i add '@' to the import, i am getting the following error: Module not found: Can't resolve. is it configured globally or just for some specific files? DM: it is configured globally in /tsconfig.json compilerOptions.paths. Note, I tried @ here yesterday for the first line below and it worked fine. Is it still not working? MM: no, it doesn't work!
+// MM: DM: once i add '@' to the import, i am getting the following error: Module not found: Can't resolve. is it configured globally or just for some specific files? DM: it is configured globally in /tsconfig.json compilerOptions.paths. Note, I tried @ here yesterday for the first line below and it worked fine. Is it still not working? MM: no, it doesn't work! DM: I changed the first one and it works fine. Try to 'npm run dev' and see if you can go to http://localhost:3005/react-custom-hooks
 
-import SaveButton from '../../../src/features/react-custom-hooks/use-online-status/save-button'
+import SaveButton from '@/features/react-custom-hooks/use-online-status/save-button'
 import StatusBar from '../../../src/features/react-custom-hooks/use-online-status/status-bar'
 
 export default function App() {
