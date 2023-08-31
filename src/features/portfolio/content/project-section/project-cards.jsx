@@ -12,11 +12,11 @@ const ProjectCards = () => {
           </div>
           <p className="mt-6 text-lg leading-8 text-gray-600">{projectCardText}</p>
         </div>
-        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+        <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none ">
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
             {projectCardsData.map(({ title, description, image, url, stack }) => {
               return (
-                <div key={title} className="flex flex-col hover:b-sky-900">
+                <div key={title} className="flex flex-col hover:bg-green-600">
                   <dt className="flex items-center gap-x-3 text-2xl font-semibold leading-7 text-gray-900">
                     {title}
                   </dt>
