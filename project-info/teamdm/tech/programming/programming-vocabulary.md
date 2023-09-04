@@ -246,3 +246,17 @@ The View component is used for all the **UI logic** of the application. It gener
 The controller is the component that **enables the interconnection between the view and the model** so it acts as an intermediary. The controller doesn’t have to worry about handling data logic, it just tells the model what to do. It process all the business logic and incoming requests, manipulate data using the Model component and interact with the View to render the final output.
 
 DM: todoDM: see if I have a short example in ANKI.
+
+## software dependency
+
+A software dependency is a relationship between software components where one component relies on the other to work properly. For example, if a software application uses a library to query a database, the application depends on that library.
+
+### production dependency
+
+consists of all the packages that are used in the project with its version number. So, whenever you install any library that is required in your project that library you can find it in the dependencies object.
+
+### development dependency
+
+it consists of all the packages that are used in the project in its development phase and not in the production or testing environment with its version number. So, whenever you want to install any library that is required only in your development phase then you can find it in the dev Dependencies object.
+
+src = https://www.geeksforgeeks.org/difference-between-dependencies-devdependencies-and-peerdependencies/
