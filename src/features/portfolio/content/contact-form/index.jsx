@@ -32,33 +32,13 @@ export default function ContactForm() {
   }
 
   // 4.  create a function that actually posts to the route and attach it to the form
-  const submitEmail = async (e) => {
+  const submitEmail = (e) => {
     e.preventDefault()
-    console.log({ mailerState })
-    const response = await fetch('http://localhost:3001/send', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify({ mailerState }),
-    })
-      .then((res) => res.json())
-      .then(async (res) => {
-        const resData = await res
-        console.log(resData)
-        if (resData.status === 'success') {
-          alert('Message Sent')
-        } else if (resData.status === 'fail') {
-          alert('Message failed to send')
-        }
-      })
-      .then(() => {
-        setMailerState({
-          email: '',
-          name: '',
-          message: '',
-        })
-      })
+    alert(
+      `${mailerState.name}
+    ${mailerState.email} 
+    ${mailerState.message}`
+    )
   }
 
   return (
