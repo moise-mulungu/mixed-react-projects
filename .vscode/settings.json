@@ -1,7 +1,19 @@
 {
   "liveServer.settings.port": 5501,
-  "prettier.configPath": ".prettierrc.js"
+  "prettier.configPath": ".prettierrc.js",
 
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "markdown.extension.italic.indicator": "_",
+  "markdown.extension.bold.indicator": "__",
+  "markdown.extension.list.toggle.candidate-markers": [
+    // "-",
+    "*",
+    // "+",
+    "1."
+    // "1)"
+  ]
   // antfu:
   // "prettier.enable": false,
   // "editor.formatOnSave": false,

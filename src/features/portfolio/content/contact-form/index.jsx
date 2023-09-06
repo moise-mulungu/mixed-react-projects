@@ -32,13 +32,38 @@ export default function ContactForm() {
   }
 
   // 4.  create a function that actually posts to the route and attach it to the form
-  const submitEmail = (e) => {
+  const submitEmail = async (e) => {
     e.preventDefault()
-    alert(
-      `${mailerState.name}
+    alert(`${mailerState.name}
     ${mailerState.email} 
-    ${mailerState.message}`
-    )
+    ${mailerState.message}`)
+    return
+    /* DM: let's keep this code as you'll need it when you implement the contact API. Usually, it is better to comment out code unless you are sure you are not going to use it.  */
+    console.log({ mailerState })
+    const response = await fetch('http://localhost:3001/api/portfolio/contact', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({ mailerState }),
+    })
+      .then((res) => res.json())
+      .then(async (res) => {
+        const resData = await res
+        console.log(resData)
+        if (resData.status === 'success') {
+          alert('Message Sent')
+        } else if (resData.status === 'fail') {
+          alert('Message failed to send')
+        }
+      })
+      .then(() => {
+        setMailerState({
+          email: '',
+          name: '',
+          message: '',
+        })
+      })
   }
 
   return (
