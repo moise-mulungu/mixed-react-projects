@@ -38,7 +38,7 @@ export default function ContactForm() {
     ${mailerState.email} 
     ${mailerState.message}`)
     return
-    /* DM: let's keep this code as you'll need it when you implement the contact API. Usually, it is better to comment out code unless you are sure you are not going to use it.  */
+    /* DM: let's keep this code as you'll need it when you implement the contact API. Usually, it is better to comment out code unless you are sure you are not going to use it.(ok)  */
     console.log({ mailerState })
     const response = await fetch('http://localhost:3001/api/portfolio/contact', {
       method: 'POST',

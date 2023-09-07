@@ -26,9 +26,9 @@ console.timeEnd('splitting')
 // filter the text to grab only letters and numbers and ignore other text content like parenthesis, question marks, white space etc.
 console.time('filtering')
 const lettersAndNumbers = allCharacters.filter((char) => {
-  // (for review)DM: todoMM: String.match() returns a boolean, so you can just return: DM: this is not done.
+  // (i declared a variable that hold the char.match function)DM: todoMM: String.match() returns a boolean, so you can just return: DM: this is not done.
   // return char.match(/[a-z0-9]/i)
-  //(for review) DM: todoMM: what about capital letters? Also not done.
+  //(done) DM: todoMM: what about capital letters? Also not done.
   // if (char.match(/[a-z0-9]/i)) {
   //   return true
   // }
@@ -49,17 +49,21 @@ SyntaxError: Invalid regular expression: /[a-Az-Z0-9]/: Range out of order in ch
 console.timeEnd('filtering')
 console.log(lettersAndNumbers)
 
-// DM: todoMM: measure the perf (performance) of the map here and the reduce below: DM: not done.(the performance of the map and reduce is done below, i don't know if it's what you want!) DM: see the howtojs above, measure perf by using console.time/timeEnd
+//(i found mapping is faster than reducing after measuring the performance by trying with small number of letters) DM: todoMM: measure the perf (performance) of the map here and the reduce below: DM: not done.(the performance of the map and reduce is done below, i don't know if it's what you want!) DM: see the howtojs above, measure perf by using console.time/timeEnd
+console.time('mapping')
 const charToLowerCase = lettersAndNumbers.map((char) => {
   return char.toLowerCase()
 })
+console.timeEnd('mapping')
 // whether the letter is uppercase or lowercase, we still only **count**(number) it once. For example a and A would could as two "a"s, not one uppercase A and one lowercase a
+console.time('reducing')
 const count = charToLowerCase.reduce((acc, cur) => {
   // DM: good
   acc[cur] = acc[cur] ? acc[cur] + 1 : 1
   // console.log({ acc, cur })
   return acc
 }, {})
+console.timeEnd('reducing')
 
 console.log(count)
 
@@ -67,7 +71,7 @@ function getText() {
   // functions are "hoisted"
   // howtojs: escape:: quote characters (backticks, single|double quote) in quoted text
   return `
-Wes Bos
+Wes Bos 
 free + premium
 Courses
 The Syntax

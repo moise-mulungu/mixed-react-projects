@@ -46,12 +46,13 @@
     { score: 90, subject: 'HTML', weight: 0.2 },
     { score: 95, subject: 'CSS', weight: 0.3 },
     { score: 85, subject: 'JavaScript', weight: 0.5 },
-  ],
+  ]
   // DM: lets give this variable a specific name. What is 
   const result = scores.reduce((acc, cur) => {
     /* your code here */ // 30;
     //(in progress!) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
     // MM: I think I understand what you mean. I think I need to add up all the weighted scores first, then divide by the number of scores, then round it off to the nearest integer, but the solution is different from the previous code.
+    // MM: DM: I would like you can check my approach if it is correct from the previous one, because this one gives 18 instead of 30 as required.
 
     const weightedScore = cur.score * cur.weight
     console.log('weightedScore', weightedScore)
