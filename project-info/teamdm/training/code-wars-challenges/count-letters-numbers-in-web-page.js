@@ -49,7 +49,7 @@ SyntaxError: Invalid regular expression: /[a-Az-Z0-9]/: Range out of order in ch
 console.timeEnd('filtering')
 console.log(lettersAndNumbers)
 
-//(i found mapping is faster than reducing after measuring the performance by trying with small number of letters) DM: todoMM: measure the perf (performance) of the map here and the reduce below: DM: not done.(the performance of the map and reduce is done below, i don't know if it's what you want!) DM: see the howtojs above, measure perf by using console.time/timeEnd
+//(done) DM: measure the perf (performance) of the map here and the reduce below: DM: not done.(the performance of the map and reduce is done below, i don't know if it's what you want!) DM: see the howtojs above, measure perf by using console.time/timeEnd MM: i found mapping is faster than reducing after measuring the performance by trying with small number of letters DM: super!
 console.time('mapping')
 const charToLowerCase = lettersAndNumbers.map((char) => {
   return char.toLowerCase()
@@ -57,7 +57,7 @@ const charToLowerCase = lettersAndNumbers.map((char) => {
 console.timeEnd('mapping')
 // whether the letter is uppercase or lowercase, we still only **count**(number) it once. For example a and A would could as two "a"s, not one uppercase A and one lowercase a
 console.time('reducing')
-const count = charToLowerCase.reduce((acc, cur) => {
+const lettersAndNumbersLowercaseToCount = charToLowerCase.reduce((acc, cur) => {
   // DM: good
   acc[cur] = acc[cur] ? acc[cur] + 1 : 1
   // console.log({ acc, cur })
@@ -65,7 +65,7 @@ const count = charToLowerCase.reduce((acc, cur) => {
 }, {})
 console.timeEnd('reducing')
 
-console.log(count)
+console.log(lettersAndNumbersLowercaseToCount)
 
 function getText() {
   // functions are "hoisted"

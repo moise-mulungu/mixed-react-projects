@@ -22,7 +22,11 @@
 
 {
   // DM: Look at this next line very carefully:
-  // calculate the average of the weighted scores rounded off to the nearest integer.
+  // calculate the average (of the weighted scores) (rounded off to the nearest integer).
+  // 1. Get 3 weighted scores
+  // 2. Take the average
+  // 3. Round off the average
+  // DM: todoMM: algebra tutorial to refresh your memory. Also, ask Bing AI to write code to do "calculate the average (of the weighted scores) (rounded off to the nearest integer". 
   /*  DM: it is saying to 
     calculate 
     the average of
@@ -47,29 +51,32 @@
     { score: 95, subject: 'CSS', weight: 0.3 },
     { score: 85, subject: 'JavaScript', weight: 0.5 },
   ]
-  // DM: lets give this variable a specific name. What is 
-  const result = scores.reduce((acc, cur) => {
+  // 1. Get 3 weighted scores added up (sum) to a total
+  const totalOfWeightedScores = scores.reduce((acc, cur) => {
     /* your code here */ // 30;
     //(in progress!) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
     // MM: I think I understand what you mean. I think I need to add up all the weighted scores first, then divide by the number of scores, then round it off to the nearest integer, but the solution is different from the previous code.
-    // MM: DM: I would like you can check my approach if it is correct from the previous one, because this one gives 18 instead of 30 as required.
+    // MM: DM: I would like you to check my approach if it is correct from the previous one, because this one gives 18 instead of 30 as required.
 
     const weightedScore = cur.score * cur.weight
     console.log('weightedScore', weightedScore)
     // return Math.round(acc + weightedScore / scores.length)
     const sumAllWeightedScores = acc + weightedScore
-const roundedValue = Math.round(sumAllWeightedScores)
-console.log('roundedValue', roundedValue)
+    const roundedValue = Math.round(sumAllWeightedScores)
+    console.log('roundedValue', roundedValue)
     // const average = sumAllWeightedScores / scores.length // you're taking the average too soon
     const average = roundedValue / scores.length
     console.log('average', average)
 
     return average
-  
 
     // return Math.round(average)
   }, 0)
-  console.log(result) // 30
+  // 2. Take the average of the total of the weighted scores
+  const average = 
+  // 3. Round off the average
+  const averageRounded = 
+  console.log({totalOfWeightedScores, average, averageRounded}) // 30
 }
 
 // count the occurrences of the letters in the array
