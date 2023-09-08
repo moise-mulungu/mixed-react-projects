@@ -13,10 +13,9 @@ function wordMesh(arrayOfStrings) {
     return meshedLetters.join('')
   }
   return 'failed to mesh'
-
 }
-
-wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // 'lowringter'
+// DM: todoMM: try running this script and look at the error message. Write a guard clause to handle the case when meshedLetters .match fails
+// node project-info/teamdm/training/code-wars-challenges/currently-working/word-mesh-3.js
 wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // 'lowringter'
 wordMesh(['age', 'estate', 'esteem', 'teem']) // 'eeteem'
 wordMesh(['beacon', 'condominium', 'umbilical', 'california']) // "conumcal";

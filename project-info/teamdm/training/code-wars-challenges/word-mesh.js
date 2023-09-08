@@ -1,6 +1,6 @@
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
-// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
+// note: You can be working multiple challenges, but always address all todo-MMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 /*
  */
 
@@ -107,18 +107,19 @@ I want to find the longest common substring of the words in the array by compari
         * variable names should express exactly what the variable contains
         * see naming-conventions.md*/
 
-  //(done) DM: todoMM: let's get back to not using LET and not using: const emptyArray = []. You can do this with array functions. You have an array and you want to get a string. Which array function do you use?
   // MM: the method to use is array.toString() method DM: array.reduce(). array.toString() is unpredictable and not meant to be used in production code
 
   const meshedWords = arrayOfStrings.reduce((acc, word, index) => {
-    console.log({ acc, word, index })
+    if (acc === 'failed to mesh') return acc
     const nextWord = arrayOfStrings[index + 1]
-    console.log({ nextWord })
+    console.log({ acc /* , word, index, nextWord */ })
     if (!nextWord) return acc
+    // 'beacon condominium'
     const matchedCharacters = `${word} ${nextWord}`.match(/(.+) \1/)
-    console.log({ matchedCharacters })
     if (!matchedCharacters) return 'failed to mesh'
-    return matchedCharacters[1]
+
+    console.log({ matchedCharacters: matchedCharacters[1] })
+    return acc + matchedCharacters[1]
   }, '')
   console.log({ meshedWords })
   return meshedWords
@@ -148,18 +149,16 @@ I want to find the longest common substring of the words in the array by compari
   // return meshedWords
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
-// expected result:
-console.log(wordMesh(['beacon', 'condominium', 'umbilical', 'california'])) // "conumcal";
-console.log(wordMesh(['allow', 'lowering', 'ringmaster', 'terror'])) // lowringter"
+// node project-info/teamdm/training/code-wars-challenges/currently-working/word-mesh.js
+wordMesh(['beacon', 'condominium', 'umbilical', 'california']) // "conumcal";
+wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // lowringter"
 wordMesh(['abandon', 'donation', 'onion', 'ongoing']) // dononon"
 wordMesh(['jamestown', 'ownership', 'hippocampus', 'pushcart', 'cartorapher', 'pheromone']) // "ownhippuscartpher"
 wordMesh(['kingdom', 'dominator', 'notorious', 'usual', 'allegory']) // "failed to mesh"
 wordMesh(['blame', 'much', 'return', 'on', 'me']) // "failed to mesh"
-wordMesh(['exalt', 'altimeter', 'metermaid', 'maidenvoyage', 'voyageur']) // "altmetermaid"
+wordMesh(['exalt', 'altimeter', 'metermaid', 'maidenvoyage', 'voyageur']) // "altmetermaidvoyage"
 wordMesh(['job', 'object', 'joust', 'on']) // "failed to mesh"
 wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to mesh"
-
-//(done) DM: todoMM: now that you have good tests, make the solution work. (you can convert the loop to a .reduce AFTER you get it working); MM: reduce is confusing, TBH I am still unable to figure out all these solutions with reduce. DM: give reduce another try after you work through all the reduce exercises I gave you, and AFTER you get this code to work using whatever other loop you've used(ok).
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
        note: the entire time you are working on the solution, try to write good names, so that Duncan and yourself can 
@@ -185,7 +184,6 @@ wordMesh(['apple', 'each', 'embark', 'cheese', 'stew', 'warp']) // "failed to me
 
 /* CURRENT STATUS (update this section before each commit of the file)
 
-DM: todoMM: what is the current status? Get it to work first, then do the conversion to array.reduce afterwards.
 
 CURRENT STATUS: the current status of this file is that the code is still not working. after checking if the words in the array mesh, I can not join all the meshed characters in one word. the piece of code where I am getting stuck is with the regex: const matchedCharacters = (`${arrayOfStrings[i]} ${arrayOfStrings[i + 1]}`).match
 

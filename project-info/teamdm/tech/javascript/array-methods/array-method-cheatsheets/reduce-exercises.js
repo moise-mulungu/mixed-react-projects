@@ -26,7 +26,7 @@
   // 1. Get 3 weighted scores
   // 2. Take the average
   // 3. Round off the average
-  //(done) DM: todoMM: algebra tutorial to refresh your memory. Also, ask Bing AI to write code to do "calculate the average (of the weighted scores) (rounded off to the nearest integer". 
+
   /*  DM: it is saying to 
     calculate 
     the average of
@@ -75,12 +75,12 @@
     // return Math.round(average)
   }, 0)
   // 2. Take the average of the total of the weighted scores
-  const average = 
-  // 3. Round off the average
-  // const averageRounded = 
-  console.log({totalOfWeightedScores, average, averageRounded}) // 30
+  const average =
+    // 3. Round off the average
+    // const averageRounded =
+    console.log({ totalOfWeightedScores, average, averageRounded }) // 30
 }
-// MM: DM: I am still working on it
+// MM: DM: I am still working on it. DM: remember all [].reduce callbacks must return a value
 
 // count the occurrences of the letters in the array
 // DM: I think prettier removed the {} because they are not needed since there is no top-level variable created.

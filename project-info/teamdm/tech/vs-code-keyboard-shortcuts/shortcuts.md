@@ -17,7 +17,7 @@
 
 !!! `Ctrl+X` Cut line (empty selection)
 !!! `Ctrl+C` Copy line (empty selection)
-`Alt+ ↓ / ↑` Move line down/up (DM: important but hard to type? No, i use it a lot...)
+!!! `Alt+ ↓ / ↑` Move line down/up
 !!! `Ctrl+Shift+K` Delete line
 !!! `Ctrl+Enter /` Add a new line below and go there
 !!! `Ctrl+Shift+Enter` Insert line below/above and go there
@@ -49,7 +49,7 @@
 `Ctrl+K P` Copy path of active file (DMLikes)
 `Ctrl+K R` Reveal active file in Explorer (DMLikes)
 `Ctrl+K O` Show active file in new window/instance
-`F2` click a variable and press `f2` key to rename it(src=https://code.visualstudio.com/docs/editor/refactoring#:~:text=Renaming%20is%20a%20common%20operation,desired%20name%20and%20press%20Enter.)
+`F2` click a variable and press `f2` key to rename it(src=https://code.visualstudio.com/docs/editor/refactoring#:~:text=Renaming%20is%20a%20common%20operation,desired%20name%20and%20press%20Enter.) (DMLikes)
 
 ## Search and replace
 `Ctrl+F` Find (Enter to go to the next match found)
@@ -59,8 +59,6 @@
 `Ctrl+D` Add selection to next Find match
 `Ctrl+K Ctrl+D` Move last selection to next Find match
 
-(done)DM: todoMM: add: Renaming a variable: right-click on variable, select "Rename Symbol"
-(done)DM: todoMM: great! Put a "!!!" or some symbol to indicate which you find most useful, and which you intend to learn first. I'm putting DMLikes next to the ones I like (that I don't already know and use. I already have learned to use a lot of these). 
 
 ## explorer
 !!! `ctrl-E` show the current file in the explorer
