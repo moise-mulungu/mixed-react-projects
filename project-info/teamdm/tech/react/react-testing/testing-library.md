@@ -1,16 +1,3 @@
-# daily - 6.5
-2023-09-06 11:05:39
-## bank account - 4h
-
-- i went to register for a debit card to the bank, i was told to wait by the next two weeks to get one because they come from Kinshasa. it took longer for waiting and to get registered due to a bad connection
-
-## portfolio contact form - 1h
-
-- enhanced the contact-form form by adding two event handlers
-- source: https://react.dev/reference/react-dom/components/input#reading-the-input-values-when-submitting-a-form
-
-## react testing - 1h
-
 ### React testing frameworks, test runners, assertion libraries
 
 - summarize the content from the source: https://www.browserstack.com/guide/top-react-testing-libraries
@@ -50,8 +37,6 @@
   ```js
   npm install karma –save-dev
   ```
-  MM: I just created folders in project-info/teamdm/tech/testing folder where i will add example for each testing libraries tomorrow because as i did not have much time today because i took longer to the bank. 
-  (done)DM: todoMM: Great, move the above info over to that folder when you do. For now, focus on Jest. Jest incorporates Mocha, Chai, so I wouldn't do those separately. MM: i don't understand what you meant by 'moving the info over that directory' DM: you said you were going to create a folder, so I want the info in this file to be in that directory, not in a daily report file.
 
   ### BDD
   Behavioral-Driven Development is an Agile software development methodology in which an application is documented and designed around the behavior a user expects to experience when interacting with it.
@@ -59,7 +44,3 @@
 
   ### TDD
   Test-Driven Development is a software development practice that focuses on creating `unit test cases` before developing the actual code. It is an iterative approach combining `programming`, `unit test creation`, and `refactoring`.
-
-## todoMMs - .5h
-
-- read your reviews
