@@ -58,27 +58,22 @@
     //(in progress!) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
     // MM: I think I understand what you mean. I think I need to add up all the weighted scores first, then divide by the number of scores, then round it off to the nearest integer, but the solution is different from the previous code.
     // MM: DM: I would like you to check my approach if it is correct from the previous one, because this one gives 18 instead of 30 as required.
-
-    const sumOfAllWeightedScores = acc + cur.score
-    console.log('sumOfAllWeightedScores', sumOfAllWeightedScores)
-    // console.log('weightedScore', weightedScore)
-    // return Math.round(acc + weightedScore / scores.length)
-    // const sumAllWeightedScores = acc + weightedScore
-    // const roundedValue = Math.round(sumAllWeightedScores)
-    // console.log('roundedValue', roundedValue)
-    // const average = sumAllWeightedScores / scores.length // you're taking the average too soon
-    // const average = roundedValue / scores.length
-    // console.log('average', average)
-
-    // return average
-
+    return acc + cur.score
     // return Math.round(average)
-  }, 0)
-  // 2. Take the average of the total of the weighted scores
-  const average =
+    // 2. Take the average of the total of the weighted scores
+
     // 3. Round off the average
     // const averageRounded =
-    console.log({ totalOfWeightedScores, average, averageRounded }) // 30
+    // 30
+  }, 0)
+
+  console.log('totalOfWeightedScores', totalOfWeightedScores)
+
+  const averageRounded = Math.round(totalOfWeightedScores / scores.length)
+  console.log('averageRounded', averageRounded)
+  // expected result: 30
+
+  // MM: DM: look at the approach above, the result is not as expected.
 }
 // MM: DM: I am still working on it. DM: remember all [].reduce callbacks must return a value
 

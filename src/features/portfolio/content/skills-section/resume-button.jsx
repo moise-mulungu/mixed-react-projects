@@ -1,6 +1,6 @@
 import { myResume } from '@/constants/portfolio/content/skills'
 
-export default function ResumeButton() {
+export default function ResumeButton({buttonText}) {
   /* const handleClick = () => {
     // e.preventDefault() , may i call preventDefault here while i just called window.open ?
     // the handleClick has to send me to the resume page
@@ -14,7 +14,7 @@ export default function ResumeButton() {
       rel="noreferrer" // noreferrer is a security measure needed when you use target _blank
     >
       <button className="rounded-md bg-indigo-600 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-        Get my Resume
+      {buttonText}
       </button>
     </a>
   )

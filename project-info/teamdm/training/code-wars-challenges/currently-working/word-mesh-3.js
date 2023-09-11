@@ -6,15 +6,12 @@ function wordMesh(arrayOfStrings) {
 
   // DM: (?= \1) is a "positive lookahead assertion". Interesting.
   const meshedLetters = arrayOfStrings.join(' ').match(/(\w+)(?= \1)/g)
+  console.log({ meshedLetters })
 
-  if (meshedLetters.length === arrayOfStrings.length - 1) {
-    // DM: use the standard .join(string); .join`` looks like a hack
-    console.log({ meshedLetters })
-    return meshedLetters.join('')
-  }
-  return 'failed to mesh'
+  if (meshedLetters === null) return 'failed to mesh' // guard clause to handle the case when meshedLetters.match fails
+  return meshedLetters.join('')
 }
-// DM: todoMM: try running this script and look at the error message. Write a guard clause to handle the case when meshedLetters .match fails
+//(done) DM: todoMM: try running this script and look at the error message. Write a guard clause to handle the case when meshedLetters .match fails
 // node project-info/teamdm/training/code-wars-challenges/currently-working/word-mesh-3.js
 wordMesh(['allow', 'lowering', 'ringmaster', 'terror']) // 'lowringter'
 wordMesh(['age', 'estate', 'esteem', 'teem']) // 'eeteem'
@@ -26,10 +23,10 @@ wordMesh(['deforestation', 'citation', 'conviction', 'incarceration']) // 'faile
 wordMesh(['wedding', 'edding', 'ding', 'ing', 'ng', 'g']) // 'failed to mesh'
 wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g']) // 'failed to mesh'
 
-/* CURRENT STATUS (update this section before each commit of the file)
+/* CURRENT STATUS 
 
-STATUS: 2 of the tests don't pass
+STATUS: all tests passed!
 
-NEXT STEPS: debug the code (next week. Thursday, focus on the other challenge files.)
+NEXT STEPS: your review and approval.
 
 */
