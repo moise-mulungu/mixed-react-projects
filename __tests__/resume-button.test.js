@@ -11,6 +11,7 @@ afterEach(() => {
 describe('Button Component', () => {
   // const setToggle = jest.fn();
   render(<ResumeButton buttonText=" Get my Resume" />)
+  // DM: todoMM: what if you change the TW classNames? The test will break. You can use the data* attribute in order to get a unique permanent identification for the component. I added the data-testid="resume-button" "attribute" to ResumeButton. Find which screen.*
   const button = screen.getByTestClassName('rounded-md' || 'rounded-lg')
 
   // Test 1

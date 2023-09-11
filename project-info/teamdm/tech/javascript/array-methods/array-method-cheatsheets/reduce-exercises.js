@@ -1,4 +1,4 @@
-// DM: go through all the exercises below, noting which ones work, and which ones don't, which are really done. You absolutely CANNOT put "(done)"" if something is not done. Son, it is important that you slow down. Take time to read the todoMM and be sure it is really done. This is all about accurate communication. "Maybe" and "close enough" doesn't work in programming. 1s and 0s - it is binary, it either works or it doesn't. So you have to be EXACT. Very important that I can depend on you to be accurate because this is wasting a lot of our valuable time and slowing down your progress!!(thank you for your feedback. I will be more careful.)
+// DM: go through all the exercises below, noting which ones work, and which ones don't, which are really done. You absolutely CANNOT put "(done)"" if something is not done. Son, it is important that you slow down. Take time to read the todo--MM and be sure it is really done. This is all about accurate communication. "Maybe" and "close enough" doesn't work in programming. 1s and 0s - it is binary, it either works or it doesn't. So you have to be EXACT. Very important that I can depend on you to be accurate because this is wasting a lot of our valuable time and slowing down your progress!!(thank you for your feedback. I will be more careful.)
 
 // DM: it's interesting that JS lets you create a block simply by putting { /* code inside here has its own "scope" */} in the code. It's interesting because if you put each exercise inside it's own block, you'll never have problems with repeated const variable names clashing.
 {
@@ -54,11 +54,10 @@
   // 1. Get 3 weighted scores added up (sum) to a total
   const totalOfWeightedScores = scores.reduce((acc, cur) => {
     console.log('acc:', { acc }, 'cur', { cur })
-    /* your code here */ // 30;
-    //(in progress!) DM: todoMM: have a look at WHEN you take the average. You're doing it too soon. You want to take the average at the very end AFTER you have calculated and after you have summed up all the weighted scores. DM: think of it in a real simple example. You have 3 numbers and you need their average. You take the average only once, at the very end, after you have calculated the total of all the 3 numbers.
-    // MM: I think I understand what you mean. I think I need to add up all the weighted scores first, then divide by the number of scores, then round it off to the nearest integer, but the solution is different from the previous code.
-    // MM: DM: I would like you to check my approach if it is correct from the previous one, because this one gives 18 instead of 30 as required.
-    return acc + cur.score
+
+    const weightedScore = cur.score * cur.weight
+
+    return acc + weightedScore
     // return Math.round(average)
     // 2. Take the average of the total of the weighted scores
 
@@ -133,7 +132,7 @@
   // return true if all the "(" have a closing ")"
   // use reduce to implement the following (pseudocode) logic
   // MM: toDM: I am not sure how to do this with reduce, I struggled with this one a lot.
-  //(done) DM: todoMM: in this exercise the pseudocode is telling you how to do it. I restored the original indenting because the indenting is a key part of showing what the logic is. In pseudocode we don't put opening an closing {} to indicate blocks of code, but rather the indenting tells you where the block closes.
+  // DM: in this exercise the pseudocode is telling you how to do it. I restored the original indenting because the indenting is a key part of showing what the logic is. In pseudocode we don't put opening an closing {} to indicate blocks of code, but rather the indenting tells you where the block closes.
   // toDM: I could not implement it. DM: make sure you understand how the pseudocode works:
   /* 
   // you're doing the next 6 lines with the reduce()
@@ -174,7 +173,7 @@
 }
 
 {
-  //(done) DM: todoMM: add this to utils/array/reverse.js. Follow the same pattern we used in the other utils. Research if lodash has a function for this and not that in the new file if so. DM: haha, JavaScript has a function for this: String.prototype.reverse()! See my note in the new file you created.
+  //DM: add this to utils/array/reverse.js. Follow the same pattern we used in the other utils. Research if lodash has a function for this and not that in the new file if so. DM: haha, JavaScript has a function for this: String.prototype.reverse()! See my note in the new file you created.
   // howtojs: reverse a string; note also: 'abc'.split('').reverse().join('')
   ;[...'abc'].reduce((acc, cur) => {
     return cur + acc
