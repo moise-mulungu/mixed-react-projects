@@ -7,17 +7,31 @@ function wordMesh(arrayOfStrings) {
   // separate expressions; see the wrong number of matches
 
   // DM: (?= \1) is a "positive lookahead assertion". Interesting.
-  const meshedLetters = arrayOfStrings.join(' ').match(/(\w+)(?= \1)/g)
+  const concatAllItems = arrayOfStrings.join(' ')
+  console.log({ concatAllItems })
 
-  const failed = arrayOfStrings.length === meshedLetters. // DM: todoMM: you can finish this line by checking the length of  meshedLetters against the expected length
+  const matchItemCharacters = concatAllItems.match(/(\w+)(?= \1)/g)
+  console.log({ matchItemCharacters })
+  // .match(/(\w+)(?= \1)/g)
 
-  const result = meshedLetters === null || failed ? 'failed to mesh' : meshedLetters.join('')
+  const meshedItemsCharactersToNull = matchItemCharacters === null
 
-  console.log({ arrayOfStrings })
-  console.log({ meshedLetters })
-  console.log({ result })
+  const failedToMesh =
+    meshedItemsCharactersToNull || arrayOfStrings.length - matchItemCharacters.length !== 1
 
-  return result
+  console.log({ failedToMesh })
+  //(done) DM: todoMM: you can finish this line by checking the length of  meshedLetters against the expected length
+
+  const isArrayOfStringsMesh = failedToMesh ? 'failed to mesh' : matchItemCharacters.join('')
+
+  console.log({ isArrayOfStringsMesh })
+  // const result = meshedLetters === null || failed ? 'failed to mesh' : meshedLetters.join('')
+
+  // console.log({ arrayOfStrings })
+  // console.log({ meshedLetters })
+  // console.log({ result })
+  return isArrayOfStringsMesh
+  // return result
 }
 
 // node project-info/teamdm/training/code-wars-challenges/currently-working/word-mesh-3.js
@@ -35,8 +49,8 @@ wordMesh(['eternal', 'tantalize', 'zing', 'ing', 'ng', 'g']) // 'failed to mesh'
 
 /* CURRENT STATUS 
 
-STATUS: all tests passed!
+STATUS: after enhancing the code,all tests passed!
 
-NEXT STEPS: your review and approval.
+NEXT STEPS: your review and approval. 
 
 */

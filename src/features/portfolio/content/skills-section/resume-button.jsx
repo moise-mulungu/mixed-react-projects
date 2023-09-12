@@ -12,9 +12,11 @@ export default function ResumeButton({ buttonText }) {
       href={myResume}
       target="_blank" // open in a new tab
       rel="noreferrer" // noreferrer is a security measure needed when you use target _blank
-      data-testid="resume-button"
     >
-      <button className="rounded-md bg-indigo-600 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+      <button
+        className="rounded-md bg-indigo-600 py-2.5 px-3.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+        data-testId="resume-button"
+      >
         {buttonText}
       </button>
     </a>

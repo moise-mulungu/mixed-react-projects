@@ -145,18 +145,23 @@
     // look at the indentation in the pseudo code. The next line has the same indentation as the "for" loop which you implemented with reduce(). This means that the next 2 lines are outside/after the reduce.
     if(status==0):
       return False
-  */
+    */
 
   string.split('').reduce((acc, cur) => {
     // true if all the "(" have a closing ")"
     // your code here
-    if (cur === '(') {
-      return acc + 1
-    } else if (cur === ')') {
-      return acc - 1
-    } else acc === 0
-    return false
+    for (cur of string) {
+      if (cur === '(') {
+        acc++
+      } else if (cur === ')') {
+        acc--
+      }
+    }
+    if (acc == 0) {
+      return false // MM: DM: is this a guard clause, right?
+    }
   }, 0)
+  // MM: DM: I followed the steps above, but the result is not as expected.(false instead of true)
 }
 
 {
@@ -173,7 +178,7 @@
 }
 
 {
-  //DM: add this to utils/array/reverse.js. Follow the same pattern we used in the other utils. Research if lodash has a function for this and not that in the new file if so. DM: haha, JavaScript has a function for this: String.prototype.reverse()! See my note in the new file you created.
+  //DM: add this to utils/array/reverse.js. Follow the same pattern we used in the other utils. Research if lodash has a function for this and not that in the new file if so. DM: haha, JavaScript has a function for this: String.prototype.reverse()! See my note in the new file you created. MM: DM: this exercise is already solved, and i already moved it to util/array/reverse.js.
   // howtojs: reverse a string; note also: 'abc'.split('').reverse().join('')
   ;[...'abc'].reduce((acc, cur) => {
     return cur + acc
