@@ -1,3 +1,4 @@
+// you're importing, while the nextjs examples repo is requiring. Are you sure it is exactly the same?
 import nextJest from 'next/jest.js'
 
 const createJestConfig = nextJest({

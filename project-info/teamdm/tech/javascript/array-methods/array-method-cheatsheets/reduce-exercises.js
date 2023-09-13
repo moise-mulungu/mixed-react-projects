@@ -150,6 +150,8 @@
   string.split('').reduce((acc, cur) => {
     // true if all the "(" have a closing ")"
     // your code here
+
+    // DM: todoMM: use console.log to know what is happening here. If I don't see console.logs then I know you're just guessing. I can't debug without console.logs. So - you'll see that inside the reduce loop, you're looping through the characters again, which is not necessary. I don't think you intended to loop inside a loop, but since you didn't console.log, you didn't notice it!
     for (cur of string) {
       if (cur === '(') {
         acc++
