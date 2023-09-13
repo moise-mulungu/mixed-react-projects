@@ -394,3 +394,27 @@ CommonJS is a project to standardize the module ecosystem for JavaScript outside
 
 In JavaScript, functions are first-class objects, because they can be passed to other functions, returned from functions, and assigned to variables and properties.
 
+## scope
+
+Scope in JavaScript refers to the current context of code, which determines the accessibility of variables to JavaScript. The two types of scope are ***local and global***: 
+  **Global variables** are those declared outside of a block. 
+  ***Local variables*** are those declared inside of a block.
+
+## global scope
+The global scope is JavaScript’s outermost scope. It has two kinds of variables: `object variables` (managed via the global object) and normal `declarative variables`. Each ECMAScript module has its own scope which is contained in the global scope.
+## global object 
+The global object in JavaScript is an always defined object that provides variables and functions, and is available anywhere. In a web browser, the global object is the window object, while it is named global in Node.js. The global object can be accessed using the this operator in the global scope. ***They are created in the top level of a script, via var and function declarations***
+
+## global variable
+
+Global Variables are the variables that can be accessed from anywhere in the program. These are the variables that are declared in the main body of the source code and outside all the functions. ***They can only be created while at the top level of a script, via const, ‘let, and class declarations***
+
+## temporal dead zone
+A temporal dead zone (TDZ) is the block where a variable is inaccessible until the moment the computer initializes it with a value. A block can be defined as a pair of braces ({...}) used to accumulate multiple statements. Initialization occurs when one assigns an initial value to a variable.
+
+## A closure
+A closure is a feature of JavaScript that allows inner functions to access the outer scope of a function. Closure helps in binding a function to its outer boundary and is created automatically whenever a function is created. A block is also treated as a scope since ES6. ***Static scoping is supported via closures in JavaScript. Therefore, every function is
+a closure***
+
+
+
