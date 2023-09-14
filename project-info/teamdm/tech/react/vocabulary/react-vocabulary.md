@@ -227,3 +227,8 @@ Class components make use of ES6 classes and extend the Component class in React
 
 React comes with several built-in Hooks like useState, useContext, and useEffect. Sometimes, you’ll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. You might not find these Hooks in React, but you can create your own Hooks for your application’s needs.
 src: https://react.dev/learn/reusing-logic-with-custom-hooks
+
+
+## A React component instance
+
+It uses classes to instantiate a react component. You can either use multiple instances or just a single instance in your React application. Each instance can perform individually, making them a requirement when creating an application. Instances are duplicates of the original class.
