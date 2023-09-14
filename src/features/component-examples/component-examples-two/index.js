@@ -10,6 +10,7 @@ import ComplexObject from './complex-object'
 import GradientGenerator from './gradient-generator'
 // import StickerPad from './dynamic-key-generator/sticker'
 import ShoppingList from './shopping-list'
+import TogglableFooter from './togglable-footer'
 
 //(in progress) DM: fix the warnings that are seen in the console and in the terminal
 //(in progress) DM: improve the UI for the first few examples in this page; I can't see the outlines of dropdowns, fields, etc.
@@ -33,6 +34,8 @@ export default function ComponentExamplesTwo() {
       <GradientGenerator />
       <Divider />
       <ShoppingList />
+      <Divider />
+      <TogglableFooter />
     </div>
   )
 }
