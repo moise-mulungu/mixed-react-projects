@@ -1,3 +1,7 @@
+DM: todoMM: great! rename this flow-layout.md and put some searchable 
+howtocss: keyword: keyword:: more info
+above each useful solution, just like we've done elsewhere with howtojs
+
 # flow layout
 
 ## width algorithms
