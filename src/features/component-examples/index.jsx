@@ -19,7 +19,9 @@ import IconDropdowns from './icon-dropdowns'
 import Divider from '@/ui/divider'
 
 export default function ComponentExamples() {
-  const activeStyle = { color: 'blue' } // want to add the styling when you hover over each link, but i am unable to do it.
+  const activeStyle = { color: 'blue' } // want to add the styling when you hover over each link, but i am unable to do it. // DM: todoMM: google: "site:tailwindcss.com on hover"
+  // DM: todoMM: read this: https://nextjs.org/docs/pages/building-your-application/configuring/debugging#client-side-code (just the "client side code") to see how you can debug in Chrome. ;after you open Dev Tools and go to the Sources tab, you may need to to a hard-reload.
+  debugger // stops execution here and you can see the value of activeStyle in the browser
   return (
     <>
       {/*
