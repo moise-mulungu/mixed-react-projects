@@ -19,11 +19,33 @@ import IconDropdowns from './icon-dropdowns'
 import Divider from '@/ui/divider'
 
 export default function ComponentExamples() {
+  const activeStyle = { color: 'blue' } // want to add the styling when you hover over each link, but i am unable to do it.
   return (
     <>
+      {/*
+      activeStyle.hover && (
+
+        <a href="#hello">Hello</a> | <a href="#icon-dropdowns">Icon Dropdowns</a> |{' '}
+        <a href="#contact-cards">Contact Cards</a> | <a href="#avatar-set">Avatar Set</a> |{' '}
+        <a href="#side-note">Side Note</a> |{' '}
+        <a href="#movie-ratings-animations">Movie Ratings Animations</a> |{' '}
+        <a href="#click-ball-game">Click Ball Game</a> | <a href="#counter">Counter</a> |{' '}
+        <a href="#game-character">Game Character</a> 
+        )
+        */}
+
+      <>
+        <a href="#hello">Hello</a> | <a href="#icon-dropdowns">Icon Dropdowns</a> |{' '}
+        <a href="#contact-cards">Contact Cards</a> | <a href="#avatar-set">Avatar Set</a> |{' '}
+        <a href="#side-note">Side Note</a> |{' '}
+        <a href="#movie-ratings-animations">Movie Ratings Animations</a> |{' '}
+        <a href="#click-ball-game">Click Ball Game</a> | <a href="#counter">Counter</a> |{' '}
+        <a href="#game-character">Game Character</a>
+      </>
+
       {/* DM: try this sometime: instead of a separate page, put a searchable dropdown here so it is easy to find an example by searching on the name of the example in the dropdown. You can use src/ui/form/dropdown to build the searchable dropdown. 
       this is a better place to do it
-      DM: todoMM: don't do the dropdown for now, but rather do this step first: make a list of links to each example below that looks like this:
+      (done)DM: todoMM: don't do the dropdown for now, but rather do this step first: make a list of links to each example below that looks like this:
       ComponentName | ComponentName | ComponentName | ComponentName | ComponentName | ...
       Each (ComponentName) item should be an anchor link to the corresponding part of the page below
       ex: <a href="#hello">Hello</a>IconDropdowns
@@ -44,37 +66,55 @@ export default function ComponentExamples() {
         }
         MM: DM: when adding a Dropdown to the page, it does not render the link page, as the there is no option to add a link to the page. i am not sure what is the issue.
       /> */}
-
       <MyNewJoyOfReactComponent />
-
       <Divider />
-
       <div id="hello" className=" bg-slate-100">
         <Hello />
         <Hello name="Moïse" />
       </div>
       <Divider />
-      <IconDropdowns />
+      <div id="icon-dropdowns" className=" bg-slate-100">
+        <IconDropdowns />
+      </div>
+      <div id="contact-cards" className=" bg-slate-100">
+        <ContactCards />
+      </div>
       <Divider />
-      <ContactCards />
+      <div id="avatar-set" className=" bg-slate-100">
+        <AvatarSet />
+      </div>
       <Divider />
-      <AvatarSet />
+      <div id="side-note" className=" bg-slate-100">
+        <SideNote />
+      </div>
       <Divider />
-      <SideNote />
+      <div id="movie-ratings-animations" className=" bg-slate-100">
+        <MovieRatingsAnimations />
+      </div>
       <Divider />
-      <MovieRatingsAnimations />
+      <div id="click-ball-game" className=" bg-slate-100">
+        <ClickBallGame />
+      </div>
       <Divider />
-      <ClickBallGame />
+      <div id="counter" className=" bg-slate-100">
+        <Counter />
+      </div>
       <Divider />
-      <Counter />
+      <div id="counter2" className=" bg-slate-100">
+        <Counter2 />
+      </div>
       <Divider />
-      <GameCharacter />
+      <div id="select-languages" className=" bg-slate-100">
+        <SelectLanguages />
+      </div>
       <Divider />
-      <Counter2 />
+      <div id="multiple-checkbox" className=" bg-slate-100">
+        <MultipleCheckbox />
+      </div>
       <Divider />
-      <SelectLanguages />
-      <Divider />
-      <MultipleCheckbox />
+      <div id="game-character" className=" bg-slate-100">
+        <GameCharacter />
+      </div>
       <Divider />
     </>
   )

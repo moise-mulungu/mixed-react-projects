@@ -147,23 +147,35 @@
       return False
     */
 
-  string.split('').reduce((acc, cur) => {
-    // true if all the "(" have a closing ")"
-    // your code here
+  string.split('').reduce(
+    (acc, cur) => {
+      // true if all the "(" have a closing ")"
+      // your code here
 
-    // DM: todoMM: use console.log to know what is happening here. If I don't see console.logs then I know you're just guessing. I can't debug without console.logs. So - you'll see that inside the reduce loop, you're looping through the characters again, which is not necessary. I don't think you intended to loop inside a loop, but since you didn't console.log, you didn't notice it!
-    for (cur of string) {
-      if (cur === '(') {
-        acc++
-      } else if (cur === ')') {
-        acc--
+      //(in progress) DM: todoMM: use console.log to know what is happening here. If I don't see console.logs then I know you're just guessing. I can't debug without console.logs. So - you'll see that inside the reduce loop, you're looping through the characters again, which is not necessary. I don't think you intended to loop inside a loop, but since you didn't console.log, you didn't notice it!
+
+      //MM: DM: i learned from this source: https://forum.freecodecamp.org/t/using-reduce-to-return-a-boolean/333951/2
+
+      const openingParentheses = cur === '('
+      console.log({ openingParentheses })
+
+      const closingParentheses = cur === ')'
+      console.log('closingParentheses', { closingParentheses })
+
+      const parentheses = openingParentheses + closingParentheses
+      console.log('parentheses', { parentheses })
+
+      if (acc === true) {
+        return acc
       }
-    }
-    if (acc == 0) {
-      return false // MM: DM: is this a guard clause, right?
-    }
-  }, 0)
-  // MM: DM: I followed the steps above, but the result is not as expected.(false instead of true)
+      if (acc === parentheses || acc === openingParentheses || acc === closingParentheses) {
+        return true
+      } else {
+        return false
+      }
+    } //MM: DM: i did not set the initial value of the accumulator here as the expected result has to be a boolean.
+  )
+  // MM: DM: I am still getting "true" even if i remove one curly brace.
 }
 
 {

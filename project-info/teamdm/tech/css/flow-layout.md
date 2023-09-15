@@ -1,4 +1,4 @@
-DM: todoMM: great! rename this flow-layout.md and put some searchable 
+(done)DM: todoMM: great! rename this flow-layout.md and put some searchable(ok) 
 howtocss: keyword: keyword:: more info
 above each useful solution, just like we've done elsewhere with howtojs
 
@@ -8,6 +8,7 @@ above each useful solution, just like we've done elsewhere with howtojs
 
 * Block elements have a default width value of `auto`, not `100%`. `width: auto` works very similar to `margin: auto`
   
+  ***howtocss: width: measurement-based values(100%)***:: 
     ```js
     <style>
     h1 {
@@ -33,6 +34,7 @@ above each useful solution, just like we've done elsewhere with howtojs
 
 When we set `width: min-content`, ***we're specifying that we want our element to become as narrow as it can***, based on the child contents. This is a totally different perspective: we aren't sizing based on the space made available by the parent, we're sizing based on the element's children!
 
+***howtocss: width: min-content :: based on the child contents***:
   ```js
   style>
     h1 {
@@ -49,6 +51,7 @@ When we set `width: min-content`, ***we're specifying that we want our element t
 
 This value is similar in principle, but it takes an opposite strategy: it never adds any line-breaks. The element's width will be the smallest value that contains the content, without breaking it up:
 
+***howtocss: width: max-content :: element's width will be the smallest value that contains the content***:
   ```js
   <style>
     h1 {
@@ -69,6 +72,7 @@ The way `fit-content` works is as follow: like `min-content` and `max-content`, 
 
 If the content is too wide to fit in the parent, however, it adds line-breaks as-needed to ensure it never exceeds the available space. It behaves just like `width: auto`.
 
+***howtocss: width: fit-content :: based adding line-breaks as-needed***:
   ```js
   <style>
     h2 {
@@ -88,6 +92,7 @@ If the content is too wide to fit in the parent, however, it adds line-breaks as
 
 We can add constraints to an element's size using min-width and max-width.
 
+***howtocss: min/max-width :: adding constraints to an element's size***:
 ```js
   <style>
     .box {
@@ -107,8 +112,9 @@ We can add constraints to an element's size using min-width and max-width.
 
 ### figures and captions
 
-The <figcaption> HTML element represents a caption or legend describing the rest of the contents of its parent <figure> element.
+The <figcaption> HTML element represents a caption or legend describing the rest of the contents of its parent <figure> element. The HTML <figcaption> tag is used to define the caption for a figure. It is placed as a child element of the <figure> tag along with the content.
 
+***howtocss: <figcaption> caption for a figure element:: child element of the <figure> tag along with the content***:
   ```js
   <figure>
     <img
@@ -133,7 +139,7 @@ Margin collapsing is when the top and bottom margins of blocks are sometimes com
 
 ### margin collapse rules
   1.  **only vertical margins collapse**.
-
+***howtocss: margin collapse:: combine two margins in a single one***:
       ```js
       <style>
         p {
@@ -149,6 +155,8 @@ Margin collapsing is when the top and bottom margins of blocks are sometimes com
   2. **Margins only collapse in Flow layout**: margin collapse is unique to `Flow layout`. If you have children inside a `display: flex` parent, those children's margins will never collapse.
    
   3. **Only adjacent elements collapse**
+
+***howtocss: margin collapse:: only adjacent margins collapse***:
       ```js
     <style>
      p {
@@ -162,10 +170,11 @@ Margin collapsing is when the top and bottom margins of blocks are sometimes com
    <p>Paragraph Two</p>
       ```
 
-  4. The bigger margin wins: this happens when margins are asymmetrical which means, the top element has 72px of space below, while the bottom element only has 24px for example.
+ 4. The bigger margin wins: this happens when margins are asymmetrical which means, the top element has 72px of space below, while the bottom element only has 24px for example.
    
   5. Margins can collapse in the same direction:  all the examples we've seen involve adjacent opposite margins: the bottom of one element overlaps with the top of the next element. Surprisingly, margins can collapse even in the same direction.
-
+   
+***howtocss: margin collapse:: collapsing in the same direction***:
   ```js
   <style>
     .parent {

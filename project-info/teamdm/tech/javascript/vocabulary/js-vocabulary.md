@@ -417,5 +417,8 @@ A temporal dead zone (TDZ) is the lines where a variable is inaccessible until t
 A closure is a feature of JavaScript that allows inner functions to access the outer scope of a function. Closure helps in binding a function to its outer boundary and is created automatically whenever a function is created. A block is also treated as a scope since ES6. ***Static scoping is supported via closures in JavaScript. Therefore, every function is
 a closure***
 
-DM: todoMM: great. Add vocab "static scoping" to this file.
+(done)DM: todoMM: great. Add vocab "static scoping" to this file.
 
+## static scoping
+
+It refers to setting the scope, or range of functionality, of a variable so that it may be called (referenced) from within the block of code in which it is defined.
