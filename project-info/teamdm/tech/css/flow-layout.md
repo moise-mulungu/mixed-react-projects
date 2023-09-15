@@ -34,7 +34,7 @@ above each useful solution, just like we've done elsewhere with howtojs
 
 When we set `width: min-content`, ***we're specifying that we want our element to become as narrow as it can***, based on the child contents. This is a totally different perspective: we aren't sizing based on the space made available by the parent, we're sizing based on the element's children!
 
-***howtocss: width: min-content :: based on the child contents***:
+***howtocss: width:: to make an element as narrow as possible, use width: min-content; - the width will be based on the child contents***:
   ```js
   style>
     h1 {

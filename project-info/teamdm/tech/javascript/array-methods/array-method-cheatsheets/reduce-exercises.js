@@ -147,7 +147,17 @@
       return False
     */
 
-  string.split('').reduce(
+  // best approach, I think. Based on the numUnclosedParentheses, you can return true or false
+  const numUnclosedParentheses = '(())()(()()'.split('').reduce((acc, cur) => {
+    if (cur === '(') {
+      acc++
+    } else if (cur === ')') {
+      acc--
+    }
+    return acc
+  }, 0)
+  // DM: I don't think you can return a boolean from the reduce, because you can't know if all the parentheses are closed until the very end
+  const allParenthesesAreClosed = string.split('').reduce(
     (acc, cur) => {
       // true if all the "(" have a closing ")"
       // your code here
@@ -162,6 +172,7 @@
       const closingParentheses = cur === ')'
       console.log('closingParentheses', { closingParentheses })
 
+      // DM: you are adding two boolean variables.
       const parentheses = openingParentheses + closingParentheses
       console.log('parentheses', { parentheses })
 
@@ -173,7 +184,8 @@
       } else {
         return false
       }
-    } //MM: DM: i did not set the initial value of the accumulator here as the expected result has to be a boolean.
+    },
+    false //MM: i did not set the initial value of the accumulator here as the expected result has to be a boolean. DM: always set the initial value so that it is self-documenting, even if it works without it.
   )
   // MM: DM: I am still getting "true" even if i remove one curly brace.
 }

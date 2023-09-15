@@ -419,6 +419,17 @@ a closure***
 
 (done)DM: todoMM: great. Add vocab "static scoping" to this file.
 
-## static scoping
+## lexical scoping AKA static scoping
+DM: I will redo this as it's a really difficult topic
 
-It refers to setting the scope, or range of functionality, of a variable so that it may be called (referenced) from within the block of code in which it is defined.
+Variables in JavaScript are lexically scoped
+so the static structure of a program determines the scope of a variable. Variable scope is not influenced by, say, where a function is called.
+
+```js
+const myVar = 1
+export default function myFunction() { // closure
+  return myVar
+}
+// it doesn't matter where this is called
+// the "scope" is always the same and the value always is 1.
+```

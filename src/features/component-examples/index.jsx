@@ -35,11 +35,12 @@ export default function ComponentExamples() {
         */}
 
       <>
-        <a href="#hello">Hello</a> | <a href="#icon-dropdowns">Icon Dropdowns</a> |{' '}
-        <a href="#contact-cards">Contact Cards</a> | <a href="#avatar-set">Avatar Set</a> |{' '}
-        <a href="#side-note">Side Note</a> |{' '}
-        <a href="#movie-ratings-animations">Movie Ratings Animations</a> |{' '}
-        <a href="#click-ball-game">Click Ball Game</a> | <a href="#counter">Counter</a> |{' '}
+        {/* DM: good, I like your use of kebab case here! Now, put the names into an array['Hello','Icon Dropdowns', ...] and use [].map to create each anchor link. write code to create the anchor link text from the name, i.e., use "Contact Cards" to create "#contact-cards".   */}
+        <a href="#hello">Hello</a> |<a href="#icon-dropdowns">Icon Dropdowns</a> |
+        <a href="#contact-cards">Contact Cards</a> |<a href="#avatar-set">Avatar Set</a> |
+        <a href="#side-note">Side Note</a> |
+        <a href="#movie-ratings-animations">Movie Ratings Animations</a> |
+        <a href="#click-ball-game">Click Ball Game</a> |<a href="#counter">Counter</a> |
         <a href="#game-character">Game Character</a>
       </>
 
