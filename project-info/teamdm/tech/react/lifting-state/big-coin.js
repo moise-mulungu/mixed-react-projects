@@ -1,10 +1,15 @@
 import React from 'react'
 // import './BigCoin.css';
 
-function BigCoin({ numOfCoins, setNumOfCoins }) {
+function BigCoin({
+  numOfCoins,
+  setNumOfCoins,
+  // good. Tip: avoid "magic numbers" and "magic strings" by putting them in a variable or prop
+  incrementBy = 2, // I set a default value so that it is an optional prop
+}) {
   return (
     <div className="coin-wrapper">
-      <button className="coin" onClick={() => setNumOfCoins(numOfCoins + 2)}>
+      <button className="coin" onClick={() => setNumOfCoins(numOfCoins + incrementBy)}>
         <span className="visually-hidden">Add 2 coins</span>
         <img
           className="coin-image"

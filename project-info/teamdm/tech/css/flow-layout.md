@@ -1,6 +1,4 @@
-(done)DM: todoMM: great! rename this flow-layout.md and put some searchable(ok) 
-howtocss: keyword: keyword:: more info
-above each useful solution, just like we've done elsewhere with howtojs
+DM: todoMM: put the JoR source URL here for future reference. The howtos are very helpful, btw.
 
 # flow layout
 
@@ -114,7 +112,7 @@ We can add constraints to an element's size using min-width and max-width.
 
 The <figcaption> HTML element represents a caption or legend describing the rest of the contents of its parent <figure> element. The HTML <figcaption> tag is used to define the caption for a figure. It is placed as a child element of the <figure> tag along with the content.
 
-***howtocss: <figcaption>:: to get the child of <figure> element, use <figcaption> along with the content***:
+***howtocss: figcaption element:: to get the child of <figure> element, use <figcaption> along with the content***:
   ```js
   <figure>
     <img
@@ -175,7 +173,7 @@ Margin collapsing is when the top and bottom margins of blocks are sometimes com
    
   5. Margins can collapse in the same direction:  all the examples we've seen involve adjacent opposite margins: the bottom of one element overlaps with the top of the next element. Surprisingly, margins can collapse even in the same direction.
    
-***howtocss: margin:: the collapsing occurs the elemenst that share the same direction***:
+***howtocss: margin:: the collapsing occurs the elements that share the same direction***:
   ```js
   <style>
     .parent {

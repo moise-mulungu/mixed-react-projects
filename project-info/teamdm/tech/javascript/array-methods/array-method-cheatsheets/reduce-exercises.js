@@ -148,6 +148,7 @@
     */
 
   // best approach, I think. Based on the numUnclosedParentheses, you can return true or false
+  // DM: todoMM: this example I gave you is the way to go, make it work below.
   const numUnclosedParentheses = '(())()(()()'.split('').reduce((acc, cur) => {
     if (cur === '(') {
       acc++
@@ -156,13 +157,11 @@
     }
     return acc
   }, 0)
-  // DM: I don't think you can return a boolean from the reduce, because you can't know if all the parentheses are closed until the very end; MM: this is returning "undefined"
+  // DM: I don't think you should return a boolean from the reduce, because you can't know if all the parentheses are closed until the very end; MM: this is returning "undefined"
   const allParenthesesAreClosed = string.split('').reduce(
     (acc, cur) => {
       // true if all the "(" have a closing ")"
       // your code here
-
-      //(in progress) DM: todoMM: use console.log to know what is happening here. If I don't see console.logs then I know you're just guessing. I can't debug without console.logs. So - you'll see that inside the reduce loop, you're looping through the characters again, which is not necessary. I don't think you intended to loop inside a loop, but since you didn't console.log, you didn't notice it!
 
       //MM: DM: i learned from this source: https://forum.freecodecamp.org/t/using-reduce-to-return-a-boolean/333951/2
 
@@ -172,7 +171,6 @@
       const closingParentheses = ')'
       console.log('closingParentheses', { closingParentheses })
 
-      // DM: you are adding two boolean variables(ok).
       const parentheses = openingParentheses + closingParentheses
       console.log('parentheses', { parentheses })
 
