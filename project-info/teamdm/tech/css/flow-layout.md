@@ -8,7 +8,7 @@ above each useful solution, just like we've done elsewhere with howtojs
 
 * Block elements have a default width value of `auto`, not `100%`. `width: auto` works very similar to `margin: auto`
   
-  ***howtocss: width: measurement-based values(100%)***:: 
+  ***howtocss: width:: to set the initial width of a block-level elements, that makes them take the full horizontal space of their containing block, use width: auto; - measurement-based values(100%)***:: 
     ```js
     <style>
     h1 {
@@ -51,7 +51,7 @@ When we set `width: min-content`, ***we're specifying that we want our element t
 
 This value is similar in principle, but it takes an opposite strategy: it never adds any line-breaks. The element's width will be the smallest value that contains the content, without breaking it up:
 
-***howtocss: width: max-content :: element's width will be the smallest value that contains the content***:
+***howtocss: width:: to set the maximum width or height of the content. like for text content this means that the content will not wrap at all even if it causes overflows, use max-content; element's width will be the smallest value that contains the content***:
   ```js
   <style>
     h1 {
@@ -72,7 +72,7 @@ The way `fit-content` works is as follow: like `min-content` and `max-content`, 
 
 If the content is too wide to fit in the parent, however, it adds line-breaks as-needed to ensure it never exceeds the available space. It behaves just like `width: auto`.
 
-***howtocss: width: fit-content :: based adding line-breaks as-needed***:
+***howtocss: width::  to use he available space, but never more than max-content When used as laid out box size for width , height , min-width , min-height , max-width and max-height the maximum and minimum sizes refer to the content size; use fit-content; based adding line-breaks as-needed***:
   ```js
   <style>
     h2 {
@@ -92,7 +92,7 @@ If the content is too wide to fit in the parent, however, it adds line-breaks as
 
 We can add constraints to an element's size using min-width and max-width.
 
-***howtocss: min/max-width :: adding constraints to an element's size***:
+***howtocss: width :: to target a specific range of sizes with known widths use min/max-width; adding constraints to an element's size***:
 ```js
   <style>
     .box {
@@ -114,7 +114,7 @@ We can add constraints to an element's size using min-width and max-width.
 
 The <figcaption> HTML element represents a caption or legend describing the rest of the contents of its parent <figure> element. The HTML <figcaption> tag is used to define the caption for a figure. It is placed as a child element of the <figure> tag along with the content.
 
-***howtocss: <figcaption> caption for a figure element:: child element of the <figure> tag along with the content***:
+***howtocss: <figcaption>:: to get the child of <figure> element, use <figcaption> along with the content***:
   ```js
   <figure>
     <img
@@ -139,7 +139,8 @@ Margin collapsing is when the top and bottom margins of blocks are sometimes com
 
 ### margin collapse rules
   1.  **only vertical margins collapse**.
-***howtocss: margin collapse:: combine two margins in a single one***:
+   
+***howtocss: margin:: margin collapse happens when two vertically margins of block-level elements collide to share a general margin space. The size of this shared space is dictated by the larger number margin. or combine the two margins in a single one if they are equal***:
       ```js
       <style>
         p {
@@ -152,11 +153,11 @@ Margin collapsing is when the top and bottom margins of blocks are sometimes com
       <p>Paragraph Two</p>
      ```
 
-  2. **Margins only collapse in Flow layout**: margin collapse is unique to `Flow layout`. If you have children inside a `display: flex` parent, those children's margins will never collapse.
+  1. **Margins only collapse in Flow layout**: margin collapse is unique to `Flow layout`. If you have children inside a `display: flex` parent, those children's margins will never collapse.
    
-  3. **Only adjacent elements collapse**
+  2. **Only adjacent elements collapse**
 
-***howtocss: margin collapse:: only adjacent margins collapse***:
+***howtocss: margin:: the collide happens only for adjacent margins***:
       ```js
     <style>
      p {
@@ -174,7 +175,7 @@ Margin collapsing is when the top and bottom margins of blocks are sometimes com
    
   5. Margins can collapse in the same direction:  all the examples we've seen involve adjacent opposite margins: the bottom of one element overlaps with the top of the next element. Surprisingly, margins can collapse even in the same direction.
    
-***howtocss: margin collapse:: collapsing in the same direction***:
+***howtocss: margin:: the collapsing occurs the elemenst that share the same direction***:
   ```js
   <style>
     .parent {

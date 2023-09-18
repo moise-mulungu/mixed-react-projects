@@ -19,9 +19,23 @@ import IconDropdowns from './icon-dropdowns'
 import Divider from '@/ui/divider'
 
 export default function ComponentExamples() {
-  const activeStyle = { color: 'blue' } // want to add the styling when you hover over each link, but i am unable to do it. // DM: todoMM: google: "site:tailwindcss.com on hover"
+  const activeStyle = { color: 'bg-sky-400' } // want to add the styling when you hover over each link, but i am unable to do it. // DM: todoMM: google: "site:tailwindcss.com on hover"
   // DM: todoMM: read this: https://nextjs.org/docs/pages/building-your-application/configuring/debugging#client-side-code (just the "client side code") to see how you can debug in Chrome. ;after you open Dev Tools and go to the Sources tab, you may need to to a hard-reload.
-  debugger // stops execution here and you can see the value of activeStyle in the browser
+  // // stops execution here and you can see the value of activeStyle in the browser
+  const anchorLinks = [
+    'hello',
+    'icon-dropdowns',
+    'contact-cards',
+    'avatar-set',
+    'side-note',
+    'counter',
+    'counter2',
+    'click-ball-game',
+    'select-languages',
+    'multiple-checkbox',
+    'game-character',
+    'movie-ratings-animations',
+  ]
   return (
     <>
       {/*
@@ -37,13 +51,18 @@ export default function ComponentExamples() {
         */}
 
       <>
-        {/* DM: good, I like your use of kebab case here! Now, put the names into an array['Hello','Icon Dropdowns', ...] and use [].map to create each anchor link. write code to create the anchor link text from the name, i.e., use "Contact Cards" to create "#contact-cards".   */}
-        <a href="#hello">Hello</a> |<a href="#icon-dropdowns">Icon Dropdowns</a> |
+        {/*(done) DM: good, I like your use of kebab case here! Now, put the names into an array['Hello','Icon Dropdowns', ...] and use [].map to create each anchor link. write code to create the anchor link text from the name, i.e., use "Contact Cards" to create "#contact-cards".   */}
+        {anchorLinks.map((link) => (
+          <a className={`hover:${activeStyle.color}`} key={link} href={`#${link}`}>
+            {link} |
+          </a>
+        ))}
+        {/* <a href="#hello">Hello</a> |<a href="#icon-dropdowns">Icon Dropdowns</a> |
         <a href="#contact-cards">Contact Cards</a> |<a href="#avatar-set">Avatar Set</a> |
         <a href="#side-note">Side Note</a> |
         <a href="#movie-ratings-animations">Movie Ratings Animations</a> |
         <a href="#click-ball-game">Click Ball Game</a> |<a href="#counter">Counter</a> |
-        <a href="#game-character">Game Character</a>
+        <a href="#game-character">Game Character</a> */}
       </>
 
       {/* DM: try this sometime: instead of a separate page, put a searchable dropdown here so it is easy to find an example by searching on the name of the example in the dropdown. You can use src/ui/form/dropdown to build the searchable dropdown. 

@@ -156,7 +156,7 @@
     }
     return acc
   }, 0)
-  // DM: I don't think you can return a boolean from the reduce, because you can't know if all the parentheses are closed until the very end
+  // DM: I don't think you can return a boolean from the reduce, because you can't know if all the parentheses are closed until the very end; MM: this is returning "undefined"
   const allParenthesesAreClosed = string.split('').reduce(
     (acc, cur) => {
       // true if all the "(" have a closing ")"
@@ -166,24 +166,21 @@
 
       //MM: DM: i learned from this source: https://forum.freecodecamp.org/t/using-reduce-to-return-a-boolean/333951/2
 
-      const openingParentheses = cur === '('
+      const openingParentheses = '('
       console.log({ openingParentheses })
 
-      const closingParentheses = cur === ')'
+      const closingParentheses = ')'
       console.log('closingParentheses', { closingParentheses })
 
-      // DM: you are adding two boolean variables.
+      // DM: you are adding two boolean variables(ok).
       const parentheses = openingParentheses + closingParentheses
       console.log('parentheses', { parentheses })
 
-      if (acc === true) {
-        return acc
+      if (cur === parentheses) {
+        return acc + 1
       }
-      if (acc === parentheses || acc === openingParentheses || acc === closingParentheses) {
-        return true
-      } else {
-        return false
-      }
+
+      return acc
     },
     false //MM: i did not set the initial value of the accumulator here as the expected result has to be a boolean. DM: always set the initial value so that it is self-documenting, even if it works without it.
   )
