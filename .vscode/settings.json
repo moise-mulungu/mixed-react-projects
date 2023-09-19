@@ -13,7 +13,9 @@
     // "+",
     "1."
     // "1)"
-  ]
+  ],
+  // My VSCods is forcing the acceptSuggestionOnEnter setting, you can delete it if you don't need it. DM: let's leave this comment here until I get this fixed.
+  "editor.acceptSuggestionOnEnter": "on"
 
   // antfu:
   // "prettier.enable": false,

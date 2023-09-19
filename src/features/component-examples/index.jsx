@@ -51,7 +51,7 @@ export default function ComponentExamples() {
         */}
 
       <>
-        {/*(done???; MM: yes it's done. on top i created an array called 'anchorLinks', then below i mapped over it. is it what you meant here???) DM: good, I like your use of kebab case here! Now, put the names into an array['Hello','Icon Dropdowns', ...] and use [].map to create each anchor link. write code to create the anchor link text from the name, i.e., use "Contact Cards" to create "#contact-cards".   */}
+        {/* DM: todoMM: make readable link text; the same as you did in the other component examples file */}
         {anchorLinks.map((link) => (
           <a className={`hover:${activeStyle.color}`} key={link} href={`#${link}`}>
             {link} | {''}

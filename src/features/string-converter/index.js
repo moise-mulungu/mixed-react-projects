@@ -1,20 +1,32 @@
 import React, { useState } from 'react'
 /*
+DM: good
 tailwind design src= https://tailwindui.com/components/application-ui/forms/sign-in-forms
 react dev src= https://react.dev/reference/react-dom/components/input
 */
 
-export default function PascalToCamelCase() {
-  const [converter, setConverter] = useState('')
+/* 
 
+DM: todoMM: After you get version 1 working, commit, then see the image in this directory to start working on version 2.
+
+*/
+
+export default function PascalToCamelCase() {
+  // DM: todoMM: give this a better name that reflects what it IS, not what it does.
+  const [converter, setConverter] = useState('')
+  // DM: todoMM: create a second state variable to hold the converted value. You'll see that the everything will work better that way.
+
+  // DM: this was good. and I'm glad you created a function for it. You are almost there.
   function convertPascalToCamelCase(string) {
     // const stringArray = string.split(' ')
     return string
-      .split(' ') // MM: I am getting an error "of can not read property of undefined" when i click the convert button 
+      .split(' ') // MM: I am getting an error "of can not read property of undefined" when i click the convert button
       .map((word) => word.charAt(0).toLowerCase() + word.slice(1))
       .join(' ')
   }
   function converterHandler() {
+    // DM: you aren't passing anything to convertPascalToCamelCase, but I think you figured that out.
+    // DM: todoMM: I want you to make your own debugging checklist in a new file in this repo, and keep it updated with what you learn. I have told you very many times to console.log, but you keep neglecting to do it. I can tell you didn't console.log, because you didn't know that the parameter 'string' was undefined in convertPascalToCamelCase. How can you debug the error if you don't even know what the value of 'string' is? I suppose one gets absorbed in the debugging and one forgets.  That's why you need a debugging checklist. The top item should be: console.log. BTW, I have a checklist myself, and if I don't use my debugging checklist I waste time and make easy-to-fix mistakes. Even airplane pilots and doctors have checklists. Make on now and use it! You won't regret it!
     setConverter(convertPascalToCamelCase())
   }
   return (
@@ -71,7 +83,7 @@ export default function PascalToCamelCase() {
                 <span className="bg-white px-6 text-gray-900 mt-4"></span>
               </div>
             </div>
-           
+
             <div className="mt-4">
               <h3 className="text-start text-l font-medium leading-7 tracking-tight text-gray-600">
                 Converted:

@@ -10,7 +10,7 @@ function BigCoin({
   return (
     <div className="coin-wrapper">
       <button className="coin" onClick={() => setNumOfCoins(numOfCoins + incrementBy)}>
-        <span className="visually-hidden">Add 2 coins</span>
+        <span className="visually-hidden">Add ${incrementBy} coins</span>
         <img
           className="coin-image"
           alt=""

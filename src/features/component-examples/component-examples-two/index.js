@@ -36,7 +36,7 @@ export default function ComponentExamplesTwo() {
       <Heading level="2">Components Examples Two</Heading>
       <>
         {anchorLinksSnakeCase.map((link) => {
-          // DM: todoMM: good, now write a String.replace function that creates more UI-friendly link text, i.e., "two-factor" to "Two Factor"
+          // DM: todoMM: good, now write a String.replace function that creates more UI-friendly link text, i.e., "two-factor" to "Two Factor". DM: good but "Two Factor" is capitalized, do that also. BTW, I don't have any problem with you using BingAI to get code, as long as it is correct. I think you can learn from that. for example, you might ask using the prompt: "convert a string to title case". Add "using lodash" to the prmopt and see if that looks good.
           const linkText = link.replace(/[-]/g, ' ')
           // .replace...
           return (
