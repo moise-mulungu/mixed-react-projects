@@ -13,9 +13,8 @@
     // "+",
     "1."
     // "1)"
-  ],
-  // My VSCods is forcing this setting, you can delete it.
-  "editor.acceptSuggestionOnEnter": "on"
+  ]
+
   // antfu:
   // "prettier.enable": false,
   // "editor.formatOnSave": false,

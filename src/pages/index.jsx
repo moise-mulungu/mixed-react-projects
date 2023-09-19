@@ -25,6 +25,9 @@ export default function Pages() {
           {/* good organization */}
           <Link href="/react-custom-hooks">React Custom Hooks</Link>
         </li>
+        <li>
+          <Link href="/string-converter">String Converter</Link>
+        </li>
       </ul>
     </div>
   )

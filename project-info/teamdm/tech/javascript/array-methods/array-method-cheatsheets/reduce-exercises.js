@@ -148,7 +148,7 @@
     */
 
   // best approach, I think. Based on the numUnclosedParentheses, you can return true or false
-  // DM: todoMM: this example I gave you is the way to go, make it work below.
+  // DM: todoMM: this example I gave you is the way to go, make it work below.(ok)
   const numUnclosedParentheses = '(())()(()()'.split('').reduce((acc, cur) => {
     if (cur === '(') {
       acc++

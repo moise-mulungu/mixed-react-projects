@@ -51,10 +51,10 @@ export default function ComponentExamples() {
         */}
 
       <>
-        {/*(done???) DM: good, I like your use of kebab case here! Now, put the names into an array['Hello','Icon Dropdowns', ...] and use [].map to create each anchor link. write code to create the anchor link text from the name, i.e., use "Contact Cards" to create "#contact-cards".   */}
+        {/*(done???; MM: yes it's done. on top i created an array called 'anchorLinks', then below i mapped over it. is it what you meant here???) DM: good, I like your use of kebab case here! Now, put the names into an array['Hello','Icon Dropdowns', ...] and use [].map to create each anchor link. write code to create the anchor link text from the name, i.e., use "Contact Cards" to create "#contact-cards".   */}
         {anchorLinks.map((link) => (
           <a className={`hover:${activeStyle.color}`} key={link} href={`#${link}`}>
-            {link} |
+            {link} | {''}
           </a>
         ))}
         {/* <a href="#hello">Hello</a> |<a href="#icon-dropdowns">Icon Dropdowns</a> |

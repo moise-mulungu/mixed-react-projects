@@ -1,4 +1,5 @@
-DM: todoMM: put the JoR source URL here for future reference. The howtos are very helpful, btw.
+(done)DM: todoMM: put the JoR source URL here for future reference. The howtos are very helpful, btw.
+src= https://courses.joshwcomeau.com/css-for-js/01-rendering-logic-1/10-widths
 
 # flow layout
 

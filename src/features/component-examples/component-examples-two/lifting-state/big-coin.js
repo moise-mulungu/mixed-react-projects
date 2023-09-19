@@ -4,7 +4,7 @@ import React from 'react'
 function BigCoin({
   numOfCoins,
   setNumOfCoins,
-  // good. Tip: avoid "magic numbers" and "magic strings" by putting them in a variable or prop
+  // good. Tip: avoid "magic numbers" and "magic strings" by putting them in a variable or prop(ok)
   incrementBy = 2, // I set a default value so that it is an optional prop
 }) {
   return (

@@ -420,7 +420,7 @@ a closure***
 (done)DM: todoMM: great. Add vocab "static scoping" to this file.
 
 ## lexical scoping AKA static scoping
-DM: I will redo this as it's a really difficult topic; DM: I did it already, but forgot to remove this comment.
+DM: I will redo this as it's a really difficult topic; DM: I did it already, but forgot to remove this comment.(ok)
 
 Variables in JavaScript are lexically scoped
 so the static structure of a program determines the scope of a variable. Variable scope is not influenced by, say, where a function is called.
