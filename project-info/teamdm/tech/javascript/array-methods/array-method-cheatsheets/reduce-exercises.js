@@ -153,6 +153,9 @@
     const openingParentheses = '('
     const closingParentheses = ')'
 
+    // DM: todoMM: add to your debugging checklist, that DM wants to see console.logs for any code that is unfinished, i.e., that is in the process of debugging..
+
+    // DM: openingParentheses will always be truthy
     if (openingParentheses) {
       acc++
     } else if (closingParentheses) {

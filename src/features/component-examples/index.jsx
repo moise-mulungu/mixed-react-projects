@@ -39,19 +39,11 @@ export default function ComponentExamples() {
   return (
     <>
       {/*
-      activeStyle.hover && (
-
-        <a href="#hello">Hello</a> | <a href="#icon-dropdowns">Icon Dropdowns</a> |{' '}
-        <a href="#contact-cards">Contact Cards</a> | <a href="#avatar-set">Avatar Set</a> |{' '}
-        <a href="#side-note">Side Note</a> |{' '}
-        <a href="#movie-ratings-animations">Movie Ratings Animations</a> |{' '}
-        <a href="#click-ball-game">Click Ball Game</a> | <a href="#counter">Counter</a> |{' '}
-        <a href="#game-character">Game Character</a> 
-        )
+        DM: todoMM: we see repeated code, so make a separate component that will work in both locations. See the starter component I put in the ./components directory. Then, use it like this in both places:
+        <AnchorLinks anchorLinks={anchorLinks} />
         */}
 
       <>
-        {/*(done) DM: todoMM: make readable link text; the same as you did in the other component examples file */}
         {anchorLinks.map((link) => {
           const linkText = link
             .replace(/[-]/g, ' ')
@@ -66,12 +58,6 @@ export default function ComponentExamples() {
             </a>
           )
         })}
-        {/* <a href="#hello">Hello</a> |<a href="#icon-dropdowns">Icon Dropdowns</a> |
-        <a href="#contact-cards">Contact Cards</a> |<a href="#avatar-set">Avatar Set</a> |
-        <a href="#side-note">Side Note</a> |
-        <a href="#movie-ratings-animations">Movie Ratings Animations</a> |
-        <a href="#click-ball-game">Click Ball Game</a> |<a href="#counter">Counter</a> |
-        <a href="#game-character">Game Character</a> */}
       </>
 
       {/* DM: try this sometime: instead of a separate page, put a searchable dropdown here so it is easy to find an example by searching on the name of the example in the dropdown. You can use src/ui/form/dropdown to build the searchable dropdown. 

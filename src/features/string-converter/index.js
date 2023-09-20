@@ -12,14 +12,14 @@ DM: todoMM: After you get version 1 working, commit, then see the image in this 
 */
 
 export default function PascalToCamelCase() {
-  //(done) DM: todoMM: give this a better name that reflects what it IS, not what it does.
-  const [stringConverter, setStringConverter] = useState('')
+  // DM: it's a string, not a converter
+  const [string, setString] = useState('')
+  // DM: this is a good name
   const [convertedString, setConvertedString] = useState('')
-  //(done) DM: todoMM: create a second state variable to hold the converted value. You'll see that the everything will work better that way.
 
-  // DM: this was good. and I'm glad you created a function for it. You are almost there.(cool!)
+  // DM: this was good. and I'm glad you created a function for it. You are almost there.(cool!) DM: the function names are good.
   function convertPascalToCamelCase() {
-    const camelCase = stringConverter
+    const camelCase = string
       .split(' ')
       .map((word) => {
         return word.charAt(0).toLowerCase() + word.substr(1)
@@ -29,7 +29,7 @@ export default function PascalToCamelCase() {
   }
 
   function convertCamelToPascalCase() {
-    const pascalCase = stringConverter
+    const pascalCase = string
       .split(' ')
       .map((word) => {
         return word.charAt(0).toUpperCase() + word.substr(1)
@@ -37,12 +37,6 @@ export default function PascalToCamelCase() {
       .join(' ')
     setConvertedString(pascalCase)
   }
-  // function converterHandler() {
-  // DM: you aren't passing anything to convertPascalToCamelCase, but I think you figured that out.
-  // DM: todoMM: I want you to make your own debugging checklist in a new file in this repo, and keep it updated with what you learn. I have told you very many times to console.log, but you keep neglecting to do it. I can tell you didn't console.log, because you didn't know that the parameter 'string' was undefined in convertPascalToCamelCase. How can you debug the error if you don't even know what the value of 'string' is? I suppose one gets absorbed in the debugging and one forgets.  That's why you need a debugging checklist. The top item should be: console.log. BTW, I have a checklist myself, and if I don't use my debugging checklist I waste time and make easy-to-fix mistakes. Even airplane pilots and doctors have checklists. Make on now and use it! You won't regret it!(thank you, i'll do it)
-  //   console.log(convertPascalToCamelCase(stringConverter))
-  //   setConvertedString(convertPascalToCamelCase(stringConverter))
-  // }
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -72,8 +66,8 @@ export default function PascalToCamelCase() {
                   autoComplete="string-converter"
                   required
                   placeholder="... Enter text here"
-                  value={stringConverter}
-                  onChange={(e) => setStringConverter(e.target.value)}
+                  value={string}
+                  onChange={(e) => setString(e.target.value)}
                   className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
                 />
               </div>
@@ -110,6 +104,12 @@ export default function PascalToCamelCase() {
               </h3>
               <div className="mt-4">
                 <ul>
+                  {/* 
+                  DM: good work today, that was the way to do it 
+                  DM: todoMM: put the result back into a text input field as per the design. I have a future purpose for the text input.
+                  DM: todoMM: add and adapt code for checkboxes. Make the entire app look like the design image (the correct title for example.) It's important on the job to follow the design spec closely.
+                  DM: todoMM: write a new function getCase() that will automatically detect if the string the user inputs is in camel or pascal case. 
+                 */}
                   <li className="text-gray-900">{convertedString}</li>
                 </ul>
               </div>
@@ -120,5 +120,3 @@ export default function PascalToCamelCase() {
     </div>
   )
 }
-
-// MM: DM: I am still working on it.
