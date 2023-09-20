@@ -142,17 +142,20 @@
         status=status+1
       elif(char==")"): // elif === else if
         status=status-1     
-    // look at the indentation in the pseudo code. The next line has the same indentation as the "for" loop which you implemented with reduce(). This means that the next 2 lines are outside/after the reduce.
-    if(status==0):
+        // look at the indentation in the pseudo code. The next line has the same indentation as the "for" loop which you implemented with reduce(). This means that the next 2 lines are outside/after the reduce.
+        if(status==0):
       return False
     */
 
   // best approach, I think. Based on the numUnclosedParentheses, you can return true or false
   // DM: todoMM: this example I gave you is the way to go, "make it work below".(ok) DM: In case it's not clear, I want you to edit your solution below so that it does the same as this one, keeping the console.logs and the variables openingParentheses and closingParenthese, which are good.
   const numUnclosedParentheses = '(())()(()()'.split('').reduce((acc, cur) => {
-    if (cur === '(') {
+    const openingParentheses = '('
+    const closingParentheses = ')'
+
+    if (openingParentheses) {
       acc++
-    } else if (cur === ')') {
+    } else if (closingParentheses) {
       acc--
     }
     return acc
@@ -164,19 +167,6 @@
       // your code here
 
       //MM: DM: i learned from this source: https://forum.freecodecamp.org/t/using-reduce-to-return-a-boolean/333951/2
-
-      const openingParentheses = '('
-      console.log({ openingParentheses })
-
-      const closingParentheses = ')'
-      console.log('closingParentheses', { closingParentheses })
-
-      const parentheses = openingParentheses + closingParentheses
-      console.log('parentheses', { parentheses })
-
-      if (cur === parentheses) {
-        return acc + 1
-      }
 
       return acc
     },

@@ -36,9 +36,18 @@ export default function ComponentExamplesTwo() {
       <Heading level="2">Components Examples Two</Heading>
       <>
         {anchorLinksSnakeCase.map((link) => {
-          // DM: todoMM: good, now write a String.replace function that creates more UI-friendly link text, i.e., "two-factor" to "Two Factor". DM: good but "Two Factor" is capitalized, do that also. BTW, I don't have any problem with you using BingAI to get code, as long as it is correct. I think you can learn from that. for example, you might ask using the prompt: "convert a string to title case". Add "using lodash" to the prmopt and see if that looks good.
-          const linkText = link.replace(/[-]/g, ' ')
+          //(done) DM: todoMM: good, now write a String.replace function that creates more UI-friendly link text, i.e., "two-factor" to "Two Factor". DM: good but "Two Factor" is capitalized, do that also. BTW, I don't have any problem with you using BingAI to get code, as long as it is correct. I think you can learn from that. for example, you might ask using the prompt: "convert a string to title case". Add "using lodash" to the prompt and see if that looks good.
+          // MM: DM: I fixed this without using BingAI to get the solution. i read mdn src=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
+
+          const linkText = link
+            .replace(/[-]/g, ' ')
+            .split(' ')
+            .map((word) => {
+              return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
+            })
+            .join(' ')
           // .replace...
+          console.log({ linkText })
           return (
             <a className={`hover:${styleColor.color}`} key={link} href={`#${link}`}>
               {linkText} | {''}

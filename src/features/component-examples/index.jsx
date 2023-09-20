@@ -51,12 +51,21 @@ export default function ComponentExamples() {
         */}
 
       <>
-        {/* DM: todoMM: make readable link text; the same as you did in the other component examples file */}
-        {anchorLinks.map((link) => (
-          <a className={`hover:${activeStyle.color}`} key={link} href={`#${link}`}>
-            {link} | {''}
-          </a>
-        ))}
+        {/*(done) DM: todoMM: make readable link text; the same as you did in the other component examples file */}
+        {anchorLinks.map((link) => {
+          const linkText = link
+            .replace(/[-]/g, ' ')
+            .split(' ')
+            .map((word) => {
+              return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
+            })
+            .join(' ')
+          return (
+            <a className={`hover:${activeStyle.color}`} key={link} href={`#${link}`}>
+              {linkText} | {''}
+            </a>
+          )
+        })}
         {/* <a href="#hello">Hello</a> |<a href="#icon-dropdowns">Icon Dropdowns</a> |
         <a href="#contact-cards">Contact Cards</a> |<a href="#avatar-set">Avatar Set</a> |
         <a href="#side-note">Side Note</a> |
