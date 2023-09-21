@@ -13,13 +13,15 @@ import ShoppingList from './shopping-list'
 import TogglableFooter from './togglable-footer'
 //(done) DM: todoMM: put this file in the right place in the ./src/ directory - no imports should come from outside the ./src directory
 import LiftingState from './lifting-state'
+// DM: todoMM: with default imports, always use the name that corresponds to the filename: AnchorLinks in this case. Same for the other file.
+// DM: fyi, You can rename more self-documenting like this:
+// import {default as AnchorLinksSnakeCase} but that is not necessary here.
 import AnchorLinksSnakeCase from '../components/anchor-links'
 
 //(in progress) DM: fix the warnings that are seen in the console and in the terminal
 //(in progress) DM: improve the UI for the first few examples in this page; I can't see the outlines of dropdowns, fields, etc.
 export default function ComponentExamplesTwo() {
- 
-  //(done: i think the were i the same order already) DM: todoMM: put these in the same order as each item is shown in the page
+  //DM: todoMM: rename this for what it really is: exampleAnchorLinks
   const snakeCase = [
     'select-countries',
     'two-factor',

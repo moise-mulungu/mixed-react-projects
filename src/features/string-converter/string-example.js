@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
-function Converse() {
+// DM: todoMM: rename the filename to match the default function name
+export default function Convert() {
   const [input, setInput] = useState('')
   const [isPascalToCamel, setIsPascalToCamel] = useState(true)
 
@@ -41,4 +42,4 @@ function Converse() {
   )
 }
 
-export default Converse
+

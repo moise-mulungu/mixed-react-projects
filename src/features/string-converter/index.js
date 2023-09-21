@@ -5,21 +5,17 @@ tailwind design src= https://tailwindui.com/components/application-ui/forms/sign
 react dev src= https://react.dev/reference/react-dom/components/input
 */
 
-/* 
-
-DM: todoMM: After you get version 1 working, commit, then see the image in this directory to start working on version 2.
-
-*/
+// DM: todoMM: make sure all the fonts are consistent, and the text in the page matches the design.
+// DM: I've made suggestions below. I coded some of the suggested changes, but not all, just enough for you to get the general idea. So, look at the changes I made and finish the coding.
 
 export default function PascalToCamelCase() {
-  // DM: it's a string, not a converter
   const [string, setString] = useState('')
-  // DM: this is a good name
   const [convertedString, setConvertedString] = useState('')
-  // const [isConverting, setIsConverting] = useState(false)
+  // DM: todoMM: rename this a specific name that describes what it really is. It is hard to understand the logic with this name. Name it targetCase and it will hold either 'pascal' or 'camel'. The default value should be the case type of the first radio button.
   const [isConverting, setIsConverting] = useState(false)
-
-  // DM: this was good. and I'm glad you created a function for it. You are almost there.(cool!) DM: the function names are good.
+  const [inputTextCase, setInputTextCase] = useState('unknown')
+  // DM: good, I'm glad you wrote separate functions for each
+  // DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead, but use them inside the two below functions.
 
   function convertPascalToCamelCase() {
     const camelCase = string
@@ -41,30 +37,41 @@ export default function PascalToCamelCase() {
     setConvertedString(pascalCase)
   }
   function getCase(str) {
-    // if (/^[a-z]+(?:[A-Z][a-z]+)*$/.test(str)) {
-    //   return 'camelCase';
-    // } else if (/^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/.test(str)) {
-    //   return 'PascalCase';
-    // } else {
-    //   return 'unknown';
-    // }
-    if (PascalToCamelCase(str)) {
-      return 'PascalCase'
-    } else if (PascalToCamelCase(str)) {
-      return 'camelCase'
+    // DM: this is what I was looking for, so I uncommented it
+    // DM: todoMM: get this working. If you get stuck, I put in an image file in this dir what ChatGPT  suggested, in case it helps.
+    if (/^[a-z]+(?:[A-Z][a-z]+)*$/.test(str)) {
+      return 'camel'
+    } else if (/^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/.test(str)) {
+      return 'pascal'
     } else {
       return 'unknown'
     }
+    // DM: PascalToCamelCase is the name of this React component, so you can't use it that way.
+    // if (PascalToCamelCase(str)) {
+    //   return 'PascalCase'
+    // } else if (PascalToCamelCase(str)) {
+    //   return 'camelCase'
+    // } else {
+    //   return 'unknown'
+    // }
   }
 
-  // DM: this was good. and I'm glad you created a function for it. You are almost there.(cool!) DM: the function names are good.
-  function handleCheckboxChange() {
+  function handleCheckboxChange(caseType) {
+    // DM: todoMM: use the setter of the new targetCase state variable
+    // setTargetCase(caseType)
     setIsConverting(!isConverting)
     if (isConverting) {
       convertCamelToPascalCase()
     } else {
       convertPascalToCamelCase()
     }
+  }
+
+  function handleInputChange(value) {
+    setString(value)
+    const detectedCase = getCase(value)
+    console.log({ detectedCase })
+    setInputTextCase(detectedCase)
   }
 
   return (
@@ -94,11 +101,12 @@ export default function PascalToCamelCase() {
                   type="string-converter"
                   autoComplete="string-converter"
                   required
-                  placeholder="... Enter text here"
+                  placeholder="... enter text here"
                   value={string}
-                  onChange={(e) => setString(e.target.value)}
+                  onChange={(e) => handleInputChange(e.target.value)}
                   className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
                 />
+                {/*  Detected Case: {inputTextCase} */}
               </div>
               <div className="mt-4">
                 To
@@ -106,11 +114,35 @@ export default function PascalToCamelCase() {
                   htmlFor="is-converting"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  <input type="checkbox" name="is-converting" onChange={handleCheckboxChange} />
+                  {/* 
+                  DM: todoMM: change these to radio buttons so that you can only select one at a time 
+                  DM: todoMM: the input should be outside the label. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/radio#try_it
+                  DM: note: by adding 
+                  () => 
+                  to the onChange like this:
+                  onChange={() => handleCheckboxChange('camel')}
+                  you can now pass a parameter. Otherwise, as
+                   onChange={handleCheckboxChange}
+                  you cannot pass a parameter.
+
+                  DM: todoMM: when getCase() is working and you can detect the case of the input text, pre-select the OTHER case below as a convenience for the user. ex: if input text is pascal, pre-select camel here. You'll need a new state variable inputTextCase that will contain the case detected by getCase(). 
+                    
+                  */}
+                  <input
+                    type="checkbox"
+                    name="pascal"
+                    onChange={() => handleCheckboxChange('pascal')}
+                    selected={inputTextCase === 'camel'}
+                  />
                   PascalCase
                 </label>
                 <label>
-                  <input type="checkbox" name="is-converting" onChange={handleCheckboxChange} />
+                  <input
+                    type="checkbox"
+                    name="camel"
+                    onChange={() => handleCheckboxChange('camel')}
+                    selected={inputTextCase === 'pascal'}
+                  />
                   CamelCase
                 </label>
               </div>
@@ -149,10 +181,9 @@ export default function PascalToCamelCase() {
                 <input
                   id="string-converter"
                   name="string-converter"
-                  type="string-converter"
-                  autoComplete="string-converter"
-                  required
+                  type="text"
                   placeholder="... converted"
+                  disabled={true} // so the user cannot edit it, user can still select/highlight it with a double click
                   value={convertedString}
                   onChange={(e) => {
                     setConvertedString(e.target.value)
@@ -160,10 +191,21 @@ export default function PascalToCamelCase() {
                   className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
                 />
                 {/* 
-                  (cool!)DM: good work today, that was the way to do it 
-                  (done)DM: todoMM: put the result back into a text input field as per the design. I have a future purpose for the text input.
-                  DM: todoMM: add and adapt code for checkboxes. Make the entire app look like the design image (the correct title for example.) It's important on the job to follow the design spec closely.
-                  DM: todoMM: write a new function getCase() that will automatically detect if the string the user inputs is in camel or pascal case. 
+                  DM: todoMM: add an icon (inside a button) to the right of the text input that lets the user copy the text to the clipboard. Do not show the icon if convertedString===''. use the heroicons document-duplicate icon. On mouseover it should say "copy to clipboard" (hint: use the title attribute on the button tag). Make the button onClick call a function that saves convertedString to the clipboard. Here is the code suggested by ChatGPT::
+
+                  async function copyToClipboard(text) {
+                    try {
+                      await navigator.clipboard.writeText(text);
+                      console.log('Text copied to clipboard');
+                    } catch (err) {
+                      console.error('Unable to copy text', err);
+                    }
+                  }
+                  // Usage
+                  copyToClipboard('Hello, World!');
+
+                 DM: good job working on this app. I think we can make the app very versatile and it can be a portfolio example. In the long run, I see it being able to handle all of the case types. Maybe it could be more of an educational app to teach new DEVs the difference between the cases. Who knows?, but let's keep working on it. Let me know if you have ideas of how to enhance the functionality. 
+
                  */}
               </div>
             </div>
