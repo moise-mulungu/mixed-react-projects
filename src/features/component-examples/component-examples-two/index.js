@@ -13,13 +13,14 @@ import ShoppingList from './shopping-list'
 import TogglableFooter from './togglable-footer'
 //(done) DM: todoMM: put this file in the right place in the ./src/ directory - no imports should come from outside the ./src directory
 import LiftingState from './lifting-state'
+import AnchorLinksSnakeCase from '../components/anchor-links'
 
 //(in progress) DM: fix the warnings that are seen in the console and in the terminal
 //(in progress) DM: improve the UI for the first few examples in this page; I can't see the outlines of dropdowns, fields, etc.
 export default function ComponentExamplesTwo() {
-  const styleColor = { color: 'bg-sky-500' }
+ 
   //(done: i think the were i the same order already) DM: todoMM: put these in the same order as each item is shown in the page
-  const anchorLinksSnakeCase = [
+  const snakeCase = [
     'select-countries',
     'two-factor',
     'colors',
@@ -28,14 +29,15 @@ export default function ComponentExamplesTwo() {
     'complex-object',
     'gradient-generator',
     'shopping-list',
-    'toggleable-footer',
+    'togglable-footer',
     'lifting-state',
   ]
   return (
     <div className={`m-4`}>
       <Heading level="2">Components Examples Two</Heading>
       <>
-        {anchorLinksSnakeCase.map((link) => {
+        <AnchorLinksSnakeCase anchorLinks={snakeCase} />
+        {/* {anchorLinksSnakeCase.map((link) => {
           //DM: todoMM: good, now finish it up using the V2 design in the image in this directory
 
           // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String
@@ -55,7 +57,7 @@ export default function ComponentExamplesTwo() {
             </a>
           )
           //(done) DM: todoMM: also, format this in the UI a little better, putting some space about the line, and a space after each "|"
-        })}
+        })} */}
       </>
       <Divider />
       <div id="select-countries" className=" bg-slate-100">

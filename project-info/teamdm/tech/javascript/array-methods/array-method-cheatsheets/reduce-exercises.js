@@ -157,7 +157,7 @@
 
     // DM: openingParentheses will always be truthy
     if (openingParentheses) {
-      acc++
+      acc ++
     } else if (closingParentheses) {
       acc--
     }

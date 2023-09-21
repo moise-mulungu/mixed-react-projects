@@ -15,6 +15,7 @@ import Counter2 from './counter2'
 import SelectLanguages from '@/ui/form/select-languages'
 import MultipleCheckbox from '@/ui/form/multiple-checkbox'
 import IconDropdowns from './icon-dropdowns'
+import AnchorLinksSnakeCase from '../component-examples/components/anchor-links'
 
 import Divider from '@/ui/divider'
 
@@ -44,7 +45,8 @@ export default function ComponentExamples() {
         */}
 
       <>
-        {anchorLinks.map((link) => {
+        <AnchorLinksSnakeCase anchorLinks={anchorLinks} />
+        {/* {anchorLinks.map((link) => {
           const linkText = link
             .replace(/[-]/g, ' ')
             .split(' ')
@@ -57,7 +59,7 @@ export default function ComponentExamples() {
               {linkText} | {''}
             </a>
           )
-        })}
+        })} */}
       </>
 
       {/* DM: try this sometime: instead of a separate page, put a searchable dropdown here so it is easy to find an example by searching on the name of the example in the dropdown. You can use src/ui/form/dropdown to build the searchable dropdown. 

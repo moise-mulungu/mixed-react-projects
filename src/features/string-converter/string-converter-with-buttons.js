@@ -1,25 +1,8 @@
 import React, { useState } from 'react'
-/*
-DM: good
-tailwind design src= https://tailwindui.com/components/application-ui/forms/sign-in-forms
-react dev src= https://react.dev/reference/react-dom/components/input
-*/
-
-/* 
-
-DM: todoMM: After you get version 1 working, commit, then see the image in this directory to start working on version 2.
-
-*/
 
 export default function PascalToCamelCase() {
-  // DM: it's a string, not a converter
   const [string, setString] = useState('')
-  // DM: this is a good name
   const [convertedString, setConvertedString] = useState('')
-  // const [isConverting, setIsConverting] = useState(false)
-  const [isConverting, setIsConverting] = useState(false)
-
-  // DM: this was good. and I'm glad you created a function for it. You are almost there.(cool!) DM: the function names are good.
 
   function convertPascalToCamelCase() {
     const camelCase = string
@@ -39,32 +22,6 @@ export default function PascalToCamelCase() {
       })
       .join(' ')
     setConvertedString(pascalCase)
-  }
-  function getCase(str) {
-    // if (/^[a-z]+(?:[A-Z][a-z]+)*$/.test(str)) {
-    //   return 'camelCase';
-    // } else if (/^[A-Z][a-z]+(?:[A-Z][a-z]+)*$/.test(str)) {
-    //   return 'PascalCase';
-    // } else {
-    //   return 'unknown';
-    // }
-    if (PascalToCamelCase(str)) {
-      return 'PascalCase'
-    } else if (PascalToCamelCase(str)) {
-      return 'camelCase'
-    } else {
-      return 'unknown'
-    }
-  }
-
-  // DM: this was good. and I'm glad you created a function for it. You are almost there.(cool!) DM: the function names are good.
-  function handleCheckboxChange() {
-    setIsConverting(!isConverting)
-    if (isConverting) {
-      convertCamelToPascalCase()
-    } else {
-      convertPascalToCamelCase()
-    }
   }
 
   return (
@@ -100,35 +57,21 @@ export default function PascalToCamelCase() {
                   className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
                 />
               </div>
-              <div className="mt-4">
-                To
-                <label
-                  htmlFor="is-converting"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  <input type="checkbox" name="is-converting" onChange={handleCheckboxChange} />
-                  PascalCase
-                </label>
-                <label>
-                  <input type="checkbox" name="is-converting" onChange={handleCheckboxChange} />
-                  CamelCase
-                </label>
-              </div>
             </div>
             <div>
               <button
-                onClick={handleCheckboxChange}
+                onClick={convertPascalToCamelCase}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Convert
+                camelCase
               </button>
 
-              {/* <button
+              <button
                 onClick={convertCamelToPascalCase}
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 mt-2"
               >
                 PascalCase
-              </button> */}
+              </button>
             </div>
           </div>
           <div>
@@ -159,12 +102,6 @@ export default function PascalToCamelCase() {
                   }}
                   className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
                 />
-                {/* 
-                  (cool!)DM: good work today, that was the way to do it 
-                  (done)DM: todoMM: put the result back into a text input field as per the design. I have a future purpose for the text input.
-                  DM: todoMM: add and adapt code for checkboxes. Make the entire app look like the design image (the correct title for example.) It's important on the job to follow the design spec closely.
-                  DM: todoMM: write a new function getCase() that will automatically detect if the string the user inputs is in camel or pascal case. 
-                 */}
               </div>
             </div>
           </div>
