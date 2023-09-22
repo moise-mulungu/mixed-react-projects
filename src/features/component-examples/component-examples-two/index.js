@@ -13,16 +13,16 @@ import ShoppingList from './shopping-list'
 import TogglableFooter from './togglable-footer'
 //(done) DM: todoMM: put this file in the right place in the ./src/ directory - no imports should come from outside the ./src directory
 import LiftingState from './lifting-state'
-// DM: todoMM: with default imports, always use the name that corresponds to the filename: AnchorLinks in this case. Same for the other file.
-// DM: fyi, You can rename more self-documenting like this:
+//(done) DM: todoMM: with default imports, always use the name that corresponds to the filename: AnchorLinks in this case. Same for the other file.
+// (ok)DM: fyi, You can rename more self-documenting like this:
 // import {default as AnchorLinksSnakeCase} but that is not necessary here.
-import AnchorLinksSnakeCase from '../components/anchor-links'
+import AnchorLinks from '../components/anchor-links'
 
-//(in progress) DM: fix the warnings that are seen in the console and in the terminal
-//(in progress) DM: improve the UI for the first few examples in this page; I can't see the outlines of dropdowns, fields, etc.
+//(done) DM: fix the warnings that are seen in the console and in the terminal
+//(is this still necessary?) DM: improve the UI for the first few examples in this page; I can't see the outlines of dropdowns, fields, etc.
 export default function ComponentExamplesTwo() {
-  //DM: todoMM: rename this for what it really is: exampleAnchorLinks
-  const snakeCase = [
+  //(done)DM: todoMM: rename this for what it really is: exampleAnchorLinks
+  const anchorLinksExample = [
     'select-countries',
     'two-factor',
     'colors',
@@ -34,11 +34,12 @@ export default function ComponentExamplesTwo() {
     'togglable-footer',
     'lifting-state',
   ]
+  const color = 'bg-sky-400'
   return (
     <div className={`m-4`}>
       <Heading level="2">Components Examples Two</Heading>
       <>
-        <AnchorLinksSnakeCase anchorLinks={snakeCase} />
+        <AnchorLinks anchorLinks={anchorLinksExample} styleColor={color} />
         {/* {anchorLinksSnakeCase.map((link) => {
           //DM: todoMM: good, now finish it up using the V2 design in the image in this directory
 

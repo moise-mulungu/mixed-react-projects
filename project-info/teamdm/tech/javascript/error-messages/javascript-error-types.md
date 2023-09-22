@@ -25,11 +25,4 @@ The URIError object represents an error when a global URI handling function was 
 
 The InternalError object indicates an error that occurred internally in the JavaScript engine.
 
-DM: todoMM: great! Put this in a new file react-errors.md in the appropriate folder
-### Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
-* The React error `Too many re-renders. React limits the number of renders to prevent an infinite loop` happens due to the state update in the main body of the component or invoking an event handler, instead of passing as a function
-* ***howtojs: error: react:: too many re-renders; use useEffect hook and put state changes inside it***
-
-### TypeError: cannot read properties of undefined (reading 'string')
-* The `cannot read property of undefined` error happens when you try to access a property or method of a variable that is undefined.
-* ***howtojs: error: react:: cannot read properties of undefined; add an undefined check on the variable before you access a property on it***
+(done)DM: todoMM: great! Put this in a new file react-errors.md in the appropriate folder

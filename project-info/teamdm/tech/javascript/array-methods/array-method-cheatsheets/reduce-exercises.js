@@ -128,7 +128,7 @@
 }
 
 {
-  const string = '(())()(()())' // true
+  const stringValue = '(())()(()())' // true
   // return true if all the "(" have a closing ")"
   // use reduce to implement the following (pseudocode) logic
   // MM: toDM: I am not sure how to do this with reduce, I struggled with this one a lot.
@@ -137,7 +137,7 @@
   /* 
   // you're doing the next 6 lines with the reduce()
     status = 0
-    for char in string:
+    for char in Value:
       if(char=="("):
         status=status+1
       elif(char==")"): // elif === else if
@@ -147,35 +147,52 @@
       return False
     */
 
+  // function checkParentheses(str) {
+  //   return [...str].reduce((count, char) => {
+  //     if (char === '(') {
+  //       return count + 1;
+  //     } else if (char === ')') {
+  //       return count - 1;
+  //     }
+  //     return count;
+  //   }, 0) === 0;
+  // }
+
   // best approach, I think. Based on the numUnclosedParentheses, you can return true or false
   // DM: todoMM: this example I gave you is the way to go, "make it work below".(ok) DM: In case it's not clear, I want you to edit your solution below so that it does the same as this one, keeping the console.logs and the variables openingParentheses and closingParenthese, which are good.
-  const numUnclosedParentheses = '(())()(()()'.split('').reduce((acc, cur) => {
-    const openingParentheses = '('
-    const closingParentheses = ')'
+  const numUnclosedParentheses =
+    stringValue.split('').reduce((acc, cur) => {
+      console.log('acc', { acc }, 'cur', { cur })
+      const openingParentheses = '('
+      console.log({ openingParentheses })
+      const closingParentheses = ')'
 
-    // DM: todoMM: add to your debugging checklist, that DM wants to see console.logs for any code that is unfinished, i.e., that is in the process of debugging..
+      // DM: todoMM: add to your debugging checklist, that DM wants to see console.logs for any code that is unfinished, i.e., that is in the process of debugging..
 
-    // DM: openingParentheses will always be truthy
-    if (openingParentheses) {
-      acc++
-    } else if (closingParentheses) {
-      acc--
-    }
-    return acc
-  }, 0)
-  // DM: I don't think you should return a boolean from the reduce, because you can't know if all the parentheses are closed until the very end; MM: this is returning "undefined"
-  const allParenthesesAreClosed = string.split('').reduce(
-    (acc, cur) => {
-      // true if all the "(" have a closing ")"
-      // your code here
-
-      //MM: DM: i learned from this source: https://forum.freecodecamp.org/t/using-reduce-to-return-a-boolean/333951/2
+      // DM: openingParentheses will always be truthy
+      if (cur === openingParentheses) {
+        acc++
+      } else if (cur === closingParentheses) {
+        acc--
+      }
 
       return acc
-    },
-    false //MM: i did not set the initial value of the accumulator here as the expected result has to be a boolean. DM: always set the initial value so that it is self-documenting, even if it works without it.
-  )
-  // MM: DM: I am still getting "true" even if i remove one curly brace.
+    }, 0) === 0
+    console.log({ numUnclosedParentheses })
+  return numUnclosedParentheses
+  // DM: I don't think you should return a boolean from the reduce, because you can't know if all the parentheses are closed until the very end; MM: this is returning "undefined"
+  // const allParenthesesAreClosed = string.split('').reduce(
+  //   (acc, cur) => {
+  //     // true if all the "(" have a closing ")"
+  //     // your code here
+
+  //     //MM: DM: i learned from this source: https://forum.freecodecamp.org/t/using-reduce-to-return-a-boolean/333951/2
+
+  //     return acc
+  //   },
+  //   false //MM: i did not set the initial value of the accumulator here as the expected result has to be a boolean. DM: always set the initial value so that it is self-documenting, even if it works without it.
+  // )
+  // MM: DM: I removed uncommented the last lines as i found they are not necessary. I finally reach the solution.
 }
 
 {

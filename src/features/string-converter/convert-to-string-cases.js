@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
-// DM: todoMM: rename the filename to match the default function name
-export default function Convert() {
+//(done) DM: todoMM: rename the filename to match the default function name
+export default function ConvertToStringCases() {
   const [input, setInput] = useState('')
   const [isPascalToCamel, setIsPascalToCamel] = useState(true)
 
@@ -41,5 +41,3 @@ export default function Convert() {
     </div>
   )
 }
-
-

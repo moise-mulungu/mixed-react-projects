@@ -15,15 +15,15 @@ import Counter2 from './counter2'
 import SelectLanguages from '@/ui/form/select-languages'
 import MultipleCheckbox from '@/ui/form/multiple-checkbox'
 import IconDropdowns from './icon-dropdowns'
-import AnchorLinksSnakeCase from '../component-examples/components/anchor-links'
+import AnchorLinks from '../component-examples/components/anchor-links'
 
 import Divider from '@/ui/divider'
 
 export default function ComponentExamples() {
-  const activeStyle = { color: 'bg-sky-400' } // want to add the styling when you hover over each link, but i am unable to do it. // DM: todoMM: google: "site:tailwindcss.com on hover"
+  // want to add the styling when you hover over each link, but i am unable to do it. // DM: todoMM: google: "site:tailwindcss.com on hover"
   // DM: todoMM: read this: https://nextjs.org/docs/pages/building-your-application/configuring/debugging#client-side-code (just the "client side code") to see how you can debug in Chrome. ;after you open Dev Tools and go to the Sources tab, you may need to to a hard-reload.
   // // stops execution here and you can see the value of activeStyle in the browser
-  const anchorLinks = [
+  const exampleAnchorLinks = [
     'hello',
     'icon-dropdowns',
     'contact-cards',
@@ -37,16 +37,18 @@ export default function ComponentExamples() {
     'game-character',
     'movie-ratings-animations',
   ]
+
+  const color = 'bg-sky-400'
   return (
     <>
       {/*
         DM: todoMM: we see repeated code, so make a separate component that will work in both locations. See the starter component I put in the ./components directory. Then, use it like this in both places:
-        <AnchorLinks anchorLinks={anchorLinks} />
+        <AnchorLinks exampleAnchorLinks={exampleAnchorLinks} />
         */}
 
       <>
-        <AnchorLinksSnakeCase anchorLinks={anchorLinks} />
-        {/* {anchorLinks.map((link) => {
+        <AnchorLinks anchorLinks={exampleAnchorLinks} styleColor={color} />
+        {/* {exampleAnchorLinks.map((link) => {
           const linkText = link
             .replace(/[-]/g, ' ')
             .split(' ')
