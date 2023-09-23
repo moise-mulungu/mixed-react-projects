@@ -34,7 +34,7 @@ export default function ComponentExamplesTwo() {
     'togglable-footer',
     'lifting-state',
   ]
-  const color = 'bg-sky-400'
+  const color = 'hover:bg-sky-400'
   return (
     <div className={`m-4`}>
       <Heading level="2">Components Examples Two</Heading>

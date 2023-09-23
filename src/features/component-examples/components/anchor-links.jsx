@@ -18,7 +18,7 @@ export default function AnchorLinks({ anchorLinks, styleColor }) {
           .join(' ')
         return (
           <>
-            <a className={`hover:${styleColor}`} key={link} href={`#${link}`}>
+            <a className={styleColor} key={link} href={`#${link}`}>
               {linkText}
             </a>
             {idx < anchorLinks.length - 1 ? (
