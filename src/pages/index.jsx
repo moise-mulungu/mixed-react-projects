@@ -28,6 +28,9 @@ export default function Pages() {
         <li>
           <Link href="/string-converter">String Converter</Link>
         </li>
+        <li>
+          <Link href="/weather-forecast">Weather</Link>
+        </li>
       </ul>
     </div>
   )
