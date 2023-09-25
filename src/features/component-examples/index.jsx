@@ -18,6 +18,7 @@ import IconDropdowns from './icon-dropdowns'
 import AnchorLinks from '../component-examples/components/anchor-links'
 
 import Divider from '@/ui/divider'
+// import { colors } from 'react-select/dist/declarations/src/theme'
 
 export default function ComponentExamples() {
   // want to add the styling when you hover over each link, but i am unable to do it. // DM: todoMM: google: "site:tailwindcss.com on hover"
@@ -38,7 +39,7 @@ export default function ComponentExamples() {
     'movie-ratings-animations',
   ]
 
-  const color = 'bg-sky-400'
+  const color = 'hover:bg-sky-400'
   return (
     <>
       {/*
