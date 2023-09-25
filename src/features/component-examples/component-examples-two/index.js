@@ -31,6 +31,8 @@ export default function ComponentExamplesTwo() {
     'complex-object',
     'gradient-generator',
     'shopping-list',
+    // DM: todoMM: togglable is misspelled so change it by doing a global search on "togglable-footer" and change all instances in the repo to the correct spelling.
+    // DM: todoMM: you are using the Code Spell Check VSCode extension, right?
     'togglable-footer',
     'lifting-state',
   ]

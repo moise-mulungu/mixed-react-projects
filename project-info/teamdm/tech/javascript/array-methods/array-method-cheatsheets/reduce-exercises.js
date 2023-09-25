@@ -178,7 +178,7 @@
 
       return acc
     }, 0) === 0
-    console.log({ numUnclosedParentheses })
+  console.log({ numUnclosedParentheses })
   return numUnclosedParentheses
   // DM: I don't think you should return a boolean from the reduce, because you can't know if all the parentheses are closed until the very end; MM: this is returning "undefined"
   // const allParenthesesAreClosed = string.split('').reduce(
@@ -193,6 +193,7 @@
   //   false //MM: i did not set the initial value of the accumulator here as the expected result has to be a boolean. DM: always set the initial value so that it is self-documenting, even if it works without it.
   // )
   // MM: DM: I removed uncommented the last lines as i found they are not necessary. I finally reach the solution.
+  // DM: todoMM: good!, year you have the info needed, but the challenge description said the final result is: "return true if all the "(" have a closing ")"" so return true|false based on the value in the numUnclosedParentheses.
 }
 
 {
