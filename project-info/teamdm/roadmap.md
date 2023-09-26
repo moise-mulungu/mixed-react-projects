@@ -118,4 +118,4 @@ MM: It seems like my vacation days are so many than yours, for that I can pick o
 10 holidays
 Total: 34 paid days off per year === 8.5 days / quarter
 ## timesheets (AKA hourly totals in the daily reports)
-see instructions in daily-reports-template.md
+see instructions in daily-reports-template.md(ok)

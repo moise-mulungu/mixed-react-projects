@@ -1,5 +1,5 @@
 
-DM: like with comments, put the howtoABC lines ABOVE the content that they refer to
+DM: like with comments, put the howtoABC lines ABOVE the content that they refer to(ok)
 * ***howtojs: error: react:: too many re-renders; use useEffect hook and put state changes inside it***
 ### Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
 * The React error `Too many re-renders. React limits the number of renders to prevent an infinite loop` happens due to the state update in the main body of the component or invoking an event handler, instead of passing as a function

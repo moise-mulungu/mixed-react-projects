@@ -10,7 +10,7 @@ import ComplexObject from './complex-object'
 import GradientGenerator from './gradient-generator'
 // import StickerPad from './dynamic-key-generator/sticker'
 import ShoppingList from './shopping-list'
-import TogglableFooter from './togglable-footer'
+import ToggleFooter from './toggle-footer'
 //(done) DM: todoMM: put this file in the right place in the ./src/ directory - no imports should come from outside the ./src directory
 import LiftingState from './lifting-state'
 //(done) DM: todoMM: with default imports, always use the name that corresponds to the filename: AnchorLinks in this case. Same for the other file.
@@ -31,9 +31,9 @@ export default function ComponentExamplesTwo() {
     'complex-object',
     'gradient-generator',
     'shopping-list',
-    // DM: todoMM: togglable is misspelled so change it by doing a global search on "togglable-footer" and change all instances in the repo to the correct spelling.
+    //(done) DM: todoMM: toggle is misspelled so change it by doing a global search on "toggle-footer" and change all instances in the repo to the correct spelling.
     // DM: todoMM: you are using the Code Spell Check VSCode extension, right?
-    'togglable-footer',
+    'toggle-footer',
     'lifting-state',
   ]
   const color = 'hover:bg-sky-400'
@@ -97,8 +97,8 @@ export default function ComponentExamplesTwo() {
         <ShoppingList />
       </div>
       <Divider />
-      <div id="togglable-footer">
-        <TogglableFooter />
+      <div id="toggle-footer">
+        <ToggleFooter />
       </div>
       <Divider />
       <div id="lifting-state">

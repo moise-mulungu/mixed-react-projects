@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+// import { ClipboardDocumentList } from '@heroicons/react/20/solid'
+import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 
 // DM: main lessons learned: create a state variable for every form input. Also, create state variables for any derived values from user input, such as inputTextCase.
 
-// DM: lesson: generally while working on React components, do the _minimum_ look-and-feel (CSS, TW) until you have the final version; only then make it pretty. That way you will not waste a lot of time on formatting when you know there will be interim versions that you will throw away. It is good for you to practice CSS a lot, but don't get TOO fancy or spend a lot of time on it, because the JS and React are more important.
+// DM: lesson: generally while working on React components, do the _minimum_ look-and-feel (CSS, TW) until you have the final version; only then make it pretty. That way you will not waste a lot of time on formatting when you know there will be interim versions that you will throw away. It is good for you to practice CSS a lot, but don't get TOO fancy or spend a lot of time on it, because the JS and React are more important.(ok)
 
 const debug = true
 /*
@@ -11,9 +13,9 @@ tailwind design src= https://tailwindui.com/components/application-ui/forms/sign
 react dev src= https://react.dev/reference/react-dom/components/input
 */
 
-// DM: todoMM: make sure all the fonts are consistent, and the text in the page matches the design.
+//(done) DM: todoMM: make sure all the fonts are consistent, and the text in the page matches the design.
 
-// DM: todoMM: the way it works now, we could just get rid of the "Convert" button, but let's not do that, because I'd like to add more cases to convert to and from. Today, read my changes and understand how the React works. Ask me about what you don't understand. Make howtoreact comments if you see a technique that is new to you.
+//(ok) DM: todoMM: the way it works now, we could just get rid of the "Convert" button, but let's not do that, because I'd like to add more cases to convert to and from. Today, read my changes and understand how the React works. Ask me about what you don't understand. Make howtoreact comments if you see a technique that is new to you.
 
 // DM: for DM: brainstorming possible enhancements for future development: API (conversion logic, case detection logic (maybe use an AI service in Google Cloud/AWS/Azure)) unit testing, handle ALL cases (also: title, start, snake, kebab, more?), contextual help/popups/etc. to also educate the user on the types of cases and their definitions.
 
@@ -26,6 +28,22 @@ export default function PascalToCamelCase() {
 
   // DM: good, I'm glad you wrote separate functions for each
   // DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions.
+
+  /*
+  lodash version
+  const _ = require('lodash');
+
+function camelToPascalCase(str) {
+  return _.startCase(str).replace(/\s(\w)/g, (match, p1) => p1.toUpperCase());
+}
+
+function pascalToCamelCase(str) {
+  return _.camelCase(str);
+}
+
+console.log(camelToPascalCase('helloWorld')); // Hello World
+console.log(pascalToCamelCase('HelloWorld')); // helloWorld
+  */
   function convertPascalToCamelCase() {
     const camelCase = inputString
       .split(' ')
@@ -90,6 +108,15 @@ export default function PascalToCamelCase() {
       convertCamelToPascalCase()
     } else {
       convertPascalToCamelCase()
+    }
+  }
+
+  async function copyToClipboard(text) {
+    try {
+      await navigator.clipboard.writeText(text)
+      console.log('Text copied to clipboard')
+    } catch (err) {
+      console.error('Unable to copy text', err)
     }
   }
 
@@ -213,8 +240,16 @@ export default function PascalToCamelCase() {
                   value={convertedString} // DM: read only input, so I removed the onClick prop
                   className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
                 />
+                <button
+                  title="copy to clipboard"
+                  onClick={copyToClipboard}
+                  // className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  <DocumentDuplicateIcon className="h-5 w-5" aria-hidden="true" />
+                </button>
+                {}
                 {/* 
-                  DM: todoMM: add an icon (inside a button) to the right of the text input that, upon click, lets the user copy the convertedString to the clipboard. Do not show the icon if convertedString==='' (how? do a global RegExp search in the repo on "howtoreact.*conditionally"). Use the heroicons (already in package.json) "document-duplicate" icon (search on "document-duplicate" here: https://heroicons.com/). On mouseover it should say "copy to clipboard" (hint: use the title attribute on the button tag). Make the button onClick attribute call a function that saves convertedString to the clipboard. For the "copy to clipboard" functionality to call onClick, here is the code suggested by ChatGPT:
+                  (in progress)DM: todoMM: add an icon (inside a button) to the right of the text input that, upon click, lets the user copy the convertedString to the clipboard. Do not show the icon if convertedString==='' (how? do a global RegExp search in the repo on "howtoreact.*conditionally"). Use the heroicons (already in package.json) "document-duplicate" icon (search on "document-duplicate" here: https://heroicons.com/). On mouseover it should say "copy to clipboard" (hint: use the title attribute on the button tag). Make the button onClick attribute call a function that saves convertedString to the clipboard. For the "copy to clipboard" functionality to call onClick, here is the code suggested by ChatGPT:
 
                   async function copyToClipboard(text) {
                     try {

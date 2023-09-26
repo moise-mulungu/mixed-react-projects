@@ -23,5 +23,5 @@ no logos or CSS
 no inputs or user interaction
 hardcode the city/country
 query the API using the hardcoded city/country
-show the query results as JSON (do a VSCode global search on "howtoreact.*display" to see an example of how you can display the API query results (JSON) in the Web page)
+show the query results as JSON (do a VSCode global search on "howtoreact.*display" to see an example of how you can display the API query results (JSON) in the Web page)(good)
 

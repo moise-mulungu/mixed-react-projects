@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from './footer'
 
-function TogglableFooter() {
+function ToggleFooter() {
   const [includeFooter, setIncludeFooter] = React.useState(false)
 
   return (
@@ -23,4 +23,4 @@ function TogglableFooter() {
   )
 }
 
-export default TogglableFooter
+export default ToggleFooter
