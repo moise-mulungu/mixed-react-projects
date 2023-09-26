@@ -1,4 +1,3 @@
-import React from 'react'
 import countriesData from './components/countries-data/countries-data'
 
 const countryNames = Object.entries(countriesData) // to convert object to array
