@@ -13,9 +13,9 @@ tailwind design src= https://tailwindui.com/components/application-ui/forms/sign
 react dev src= https://react.dev/reference/react-dom/components/input
 */
 
-//(done) DM: todoMM: make sure all the fonts are consistent, and the text in the page matches the design.
+// DM: todoMM: make sure all the fonts are consistent, and the text in the page matches the design. DM: meticulously check - "String" and "Converted string" are different.
 
-//(ok) DM: todoMM: the way it works now, we could just get rid of the "Convert" button, but let's not do that, because I'd like to add more cases to convert to and from. Today, read my changes and understand how the React works. Ask me about what you don't understand. Make howtoreact comments if you see a technique that is new to you.
+//(ok) DM: the way it works now, we could just get rid of the "Convert" button, but let's not do that, because I'd like to add more cases to convert to and from. Today, read my changes and understand how the React works. Ask me about what you don't understand. Make howtoreact comments if you see a technique that is new to you.
 
 // DM: for DM: brainstorming possible enhancements for future development: API (conversion logic, case detection logic (maybe use an AI service in Google Cloud/AWS/Azure)) unit testing, handle ALL cases (also: title, start, snake, kebab, more?), contextual help/popups/etc. to also educate the user on the types of cases and their definitions.
 
@@ -27,7 +27,7 @@ export default function PascalToCamelCase() {
   const [convertedString, setConvertedString] = useState('')
 
   // DM: good, I'm glad you wrote separate functions for each
-  // DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions.
+  // DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.
 
   /*
   lodash version
@@ -37,12 +37,14 @@ function camelToPascalCase(str) {
   return _.startCase(str).replace(/\s(\w)/g, (match, p1) => p1.toUpperCase());
 }
 
+// this is good
 function pascalToCamelCase(str) {
   return _.camelCase(str);
 }
 
 console.log(camelToPascalCase('helloWorld')); // Hello World
 console.log(pascalToCamelCase('HelloWorld')); // helloWorld
+
   */
   function convertPascalToCamelCase() {
     const camelCase = inputString
@@ -111,6 +113,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
     }
   }
 
+  /* DM: todoMM: watch the video I sent you again. You'll see what is missing here. You have a parameter 'text' - ask yourself: "how does 'text' get set? where is currently stored the value that you want to put into the clipboard?"  */
   async function copyToClipboard(text) {
     try {
       await navigator.clipboard.writeText(text)
@@ -168,7 +171,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                     />
                   </div>
                   <div className="ml-3 text-sm leading-6">
-                    {/* DM: todoMM: you don't need the DIV any longer, so add the TW utility classes from the DIV into the LABEL */}
+                    {/* DM: todoMM: you don't need the DIV any longer, so add the TW utility classes from the DIV into the LABEL - bump*/}
                     <label htmlFor="comments" className="font-medium text-gray-900">
                       PascalCase
                     </label>
@@ -186,7 +189,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                   you cannot pass a parameter.
 
                   DM: when getCase() is working and you can detect the case of the input text, pre-select the OTHER case below as a convenience for the user. ex: if input text is pascal, pre-select camel here. You'll need a new state variable inputTextCase that will contain the case detected by getCase(). 
-                  DM: todoMM: I did this instruction above, make sure you understand how it works. 
+                  DM: todoMM: I did this instruction above, make sure you understand how it works. bump
                     
                   */}
               </div>
@@ -242,6 +245,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                 />
                 <button
                   title="copy to clipboard"
+                  // DM: you are not passing any argument/parameter to copyToClipboard
                   onClick={copyToClipboard}
                   // className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >

@@ -194,7 +194,6 @@
   //   false //MM: i did not set the initial value of the accumulator here as the expected result has to be a boolean. DM: always set the initial value so that it is self-documenting, even if it works without it.
   // )
   // MM: DM: I removed uncommented the last lines as i found they are not necessary. I finally reach the solution.
-  // DM: todoMM: good!, year you have the info needed, but the challenge description said the final result is: "return true if all the "(" have a closing ")"" so return true|false based on the value in the numUnclosedParentheses.(this is already fixed)
 }
 
 {

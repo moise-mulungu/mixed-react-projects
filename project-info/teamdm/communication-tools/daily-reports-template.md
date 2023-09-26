@@ -8,7 +8,7 @@
 note: weekly total must be 40. Use PTO to make up the difference if your total hours is less than 40 by Friday. 
 PTO: 34 days/year === 8.5 days/quarter === 68 hours/quarter (8.5 * 8hr) 
 
-DM: todoDM: Moise, I'll go over these with you Monday.(great!)
+DM: todoDM: Moise, I'll go over these with you Monday.(great!)???
 
 
 # daily report [total hours today]hr

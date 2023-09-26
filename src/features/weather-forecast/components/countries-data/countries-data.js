@@ -1,4 +1,5 @@
 const countriesData = {
+  // DM: todoMM, do it with an array of countries, you don't need the numbers because you can get that from the array index, if needed.
   Africa: {
     1: 'Algeria',
     2: 'Angola',
@@ -164,4 +165,4 @@ const countriesData = {
 
 export default countriesData
 
-// MM: DM: instead of having an object of nested objects like this above, can i use a specific API that contains the list of all countries ?
+// MM: DM: instead of having an object of nested objects like this above, can i use a specific API that contains the list of all countries ? DM: sure, you can maybe find a free API that provides the info you want.

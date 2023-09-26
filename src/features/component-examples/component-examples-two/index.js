@@ -30,9 +30,9 @@ export default function ComponentExamplesTwo() {
     'react-accordion',
     'complex-object',
     'gradient-generator',
-    'shopping-list',
-    //(done) DM: todoMM: toggle is misspelled so change it by doing a global search on "toggle-footer" and change all instances in the repo to the correct spelling.
-    // DM: todoMM: you are using the Code Spell Check VSCode extension, right?
+    'shopping-list', // DM: todoMM: you are using the Code Spell Check VSCode extension, right? bump // DM: todoMM: Make sure you know how to mouse over the misspelled word, select 'quick fix' and see the suggested correct spelling.
+    ,
+    ,
     'toggle-footer',
     'lifting-state',
   ]
