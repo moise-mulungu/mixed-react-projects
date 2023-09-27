@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 // import { ClipboardDocumentList } from '@heroicons/react/20/solid'
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
+import { text } from 'express'
 
 // DM: main lessons learned: create a state variable for every form input. Also, create state variables for any derived values from user input, such as inputTextCase.
 
@@ -27,7 +28,7 @@ export default function PascalToCamelCase() {
   const [convertedString, setConvertedString] = useState('')
 
   // DM: good, I'm glad you wrote separate functions for each
-  // DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.
+  // DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.(MM: i think the previous version is better than lodash as the lodash doesn't fulfill the case conversion logic; I am still finding the case conversion logic with lodash.)
 
   /*
   lodash version
@@ -113,8 +114,8 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
     }
   }
 
-  /* DM: todoMM: watch the video I sent you again. You'll see what is missing here. You have a parameter 'text' - ask yourself: "how does 'text' get set? where is currently stored the value that you want to put into the clipboard?"  */
-  async function copyToClipboard(text) {
+  /*(done) DM: todoMM: watch the video I sent you again. You'll see what is missing here. You have a parameter 'text' - ask yourself: "how does 'text' get set? where is currently stored the value that you want to put into the clipboard?"  */
+  async function copyToClipboard({ text }) {
     try {
       await navigator.clipboard.writeText(text)
       console.log('Text copied to clipboard')
@@ -170,12 +171,13 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
                   </div>
-                  <div className="ml-3 text-sm leading-6">
-                    {/* DM: todoMM: you don't need the DIV any longer, so add the TW utility classes from the DIV into the LABEL - bump*/}
-                    <label htmlFor="comments" className="font-medium text-gray-900">
-                      PascalCase
-                    </label>
-                  </div>
+                  {/* (done)DM: todoMM: you don't need the DIV any longer, so add the TW utility classes from the DIV into the LABEL - bump*/}
+                  <label
+                    htmlFor="comments"
+                    className="font-medium text-gray-900 ml-3 text-sm leading-6"
+                  >
+                    PascalCase
+                  </label>
                 </div>
                 {/* 
                   DM: checkbox and radio are so similar that you can just change the "type" attribute from "checkbox" to "radio" 
@@ -189,7 +191,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                   you cannot pass a parameter.
 
                   DM: when getCase() is working and you can detect the case of the input text, pre-select the OTHER case below as a convenience for the user. ex: if input text is pascal, pre-select camel here. You'll need a new state variable inputTextCase that will contain the case detected by getCase(). 
-                  DM: todoMM: I did this instruction above, make sure you understand how it works. bump
+                  (in progress)DM: todoMM: I did this instruction above, make sure you understand how it works. bump
                     
                   */}
               </div>
@@ -246,7 +248,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                 <button
                   title="copy to clipboard"
                   // DM: you are not passing any argument/parameter to copyToClipboard
-                  onClick={copyToClipboard}
+                  onClick={copyToClipboard(text)}
                   // className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   <DocumentDuplicateIcon className="h-5 w-5" aria-hidden="true" />

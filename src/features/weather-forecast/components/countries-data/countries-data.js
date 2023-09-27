@@ -1,5 +1,5 @@
 const countriesData = {
-  // DM: todoMM, do it with an array of countries, you don't need the numbers because you can get that from the array index, if needed.
+  //(in progress) DM: todoMM, do it with an array of countries, you don't need the numbers because you can get that from the array index, if needed.
   Africa: {
     1: 'Algeria',
     2: 'Angola',
