@@ -1,5 +1,5 @@
 const countriesData = {
-  //(in progress) DM: todoMM, do it with an array of countries, you don't need the numbers because you can get that from the array index, if needed.
+  //(in progress, pending a successful API call, which will make clear exactly what country data will be needed, i.e., you may need to show full country name to the user, but send country code to the API) DM: todoMM, do it with an array of countries, you don't need the numbers because you can get that from the array index, if needed.
   Africa: {
     1: 'Algeria',
     2: 'Angola',
@@ -166,3 +166,4 @@ const countriesData = {
 export default countriesData
 
 // MM: DM: instead of having an object of nested objects like this above, can i use a specific API that contains the list of all countries ? DM: sure, you can maybe find a free API that provides the info you want.
+// DM: GitHub repos or gists often provide a convenient list of all countries of the world along with the country codes.

@@ -30,7 +30,7 @@ export default function ComponentExamplesTwo() {
     'react-accordion',
     'complex-object',
     'gradient-generator',
-    'shopping-list', //(done) DM: todoMM: you are using the Code Spell Check VSCode extension, right? bump //(done) DM: todoMM: Make sure you know how to mouse over the misspelled word, select 'quick fix' and see the suggested correct spelling.(i usually do it, once the word is not listed i google or change it.)
+    'shopping-list',
     ,
     ,
     'toggle-footer',

@@ -114,8 +114,10 @@ MM: It seems like my vacation days are so many than yours, for that I can pick o
 
 ## yearly PTO (paid time off)
 24 days (14 paid vacation, 2 paid personal leave, 8 sick)
-(all US work holidays plus DRC work holidays)
-10 holidays
-Total: 34 paid days off per year === 8.5 days / quarter
+10 holidays (all US work holidays plus DRC work holidays)
+Total: 34 paid days off per year 
+  * === 8.5 days / quarter 
+  * === 44hrs / quarter 
+  * === 3.5hrs / week (44hrs divided by 13wks is approximately 3.38)
 ## timesheets (AKA hourly totals in the daily reports)
 see instructions in daily-reports-template.md

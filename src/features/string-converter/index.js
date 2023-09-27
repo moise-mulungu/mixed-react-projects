@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 // import { ClipboardDocumentList } from '@heroicons/react/20/solid'
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
+
+// DM: todoMM: looks like VSCode auto-imported 'text' for you, probably because 'text' did not exist when you wrote it. Delete the next line.
 import { text } from 'express'
 
 // DM: main lessons learned: create a state variable for every form input. Also, create state variables for any derived values from user input, such as inputTextCase.
@@ -28,7 +30,7 @@ export default function PascalToCamelCase() {
   const [convertedString, setConvertedString] = useState('')
 
   // DM: good, I'm glad you wrote separate functions for each
-  // DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.(MM: i think the previous version is better than lodash as the lodash doesn't fulfill the case conversion logic; I am still finding the case conversion logic with lodash.)
+  // DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.(MM: i think the previous version is better than lodash as the lodash doesn't fulfill the case conversion logic; I am still finding the case conversion logic with lodash.) DM: OK, save the lodash stuff below for later when there's more types to convert from.
 
   /*
   lodash version
@@ -248,6 +250,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                 <button
                   title="copy to clipboard"
                   // DM: you are not passing any argument/parameter to copyToClipboard
+                  // DM: 'text' does not exist. Look at the last video I sent you.
                   onClick={copyToClipboard(text)}
                   // className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
