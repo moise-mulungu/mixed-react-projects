@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 // import { ClipboardDocumentList } from '@heroicons/react/20/solid'
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 
-// DM: todoMM: looks like VSCode auto-imported 'text' for you, probably because 'text' did not exist when you wrote it. Delete the next line.
-import { text } from 'express'
+//(done) DM: todoMM: looks like VSCode auto-imported 'text' for you, probably because 'text' did not exist when you wrote it. Delete the next line.
 
 // DM: main lessons learned: create a state variable for every form input. Also, create state variables for any derived values from user input, such as inputTextCase.
 
@@ -102,7 +101,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
     setTargetCase(detectedCase === 'camel' ? 'pascal' : 'camel')
   }
 
-  function handleCheckboxChange(caseType) {
+  function handleCheckboxChange() {
     // DM; targetCase is not a boolean, but 'pascal' or 'camel'
     // DM: the strategy here again is to have a state variable for the targetCase. It makes the code much simpler.
     setTargetCase(targetCase)
@@ -120,7 +119,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
   async function copyToClipboard({ text }) {
     try {
       await navigator.clipboard.writeText(text)
-      console.log('Text copied to clipboard')
+      alert('Text copied to clipboard')
     } catch (err) {
       console.error('Unable to copy text', err)
     }
@@ -233,7 +232,6 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                 <span className="bg-white px-6 text-gray-900 mt-4"></span>
               </div>
             </div>
-
             <div className="mt-4">
               <h3 className="text-start text-l font-medium leading-7 tracking-tight text-gray-600">
                 Converted String
@@ -251,12 +249,13 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                   title="copy to clipboard"
                   // DM: you are not passing any argument/parameter to copyToClipboard
                   // DM: 'text' does not exist. Look at the last video I sent you.
-                  onClick={copyToClipboard(text)}
+                  onClick={() => copyToClipboard(convertedString)}
                   // className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   <DocumentDuplicateIcon className="h-5 w-5" aria-hidden="true" />
                 </button>
                 {}
+
                 {/* 
                   (in progress)DM: todoMM: add an icon (inside a button) to the right of the text input that, upon click, lets the user copy the convertedString to the clipboard. Do not show the icon if convertedString==='' (how? do a global RegExp search in the repo on "howtoreact.*conditionally"). Use the heroicons (already in package.json) "document-duplicate" icon (search on "document-duplicate" here: https://heroicons.com/). On mouseover it should say "copy to clipboard" (hint: use the title attribute on the button tag). Make the button onClick attribute call a function that saves convertedString to the clipboard. For the "copy to clipboard" functionality to call onClick, here is the code suggested by ChatGPT:
 
@@ -276,7 +275,6 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                  */}
               </div>
             </div>
-
             {/*  howtoreact: format multiple values:: easiest way to format the HTML display of a bunch of values */}
             {debug && (
               <pre>
@@ -286,7 +284,12 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                   2
                 )}
               </pre>
+              //MM: DM: is this method of using json necessary for the UI? I suggested that approach below
             )}
+            inputString: {inputString} <br />
+            inputTextCase: {inputTextCase} <br />
+            targetCase: {targetCase} <br />
+            convertedString: {convertedString}
           </div>
         </div>
       </div>
