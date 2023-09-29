@@ -122,7 +122,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
       console.error('Unable to copy text', err)
     }
   }
-
+  const allOutputs = [inputString, inputTextCase, targetCase, convertedString]
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -284,10 +284,22 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
               </pre>
               //MM: DM: is this method of using json necessary for the UI? I suggested that approach below. DM: it's fine, it's just more verbose.
             )}
-            inputString: {inputString} <br />
+            {allOutputs.map((output, name) => {
+              console.log({ output, name })
+              return (
+                <>
+                  <ul>
+                    <li key={name}>{`${name}: ${output}`}</li>
+                  </ul>
+                </>
+                // MM: DM: i want the code to look like below
+              )
+            })}
+
+            {/* inputString: {inputString} <br />
             inputTextCase: {inputTextCase} <br />
             targetCase: {targetCase} <br />
-            convertedString: {convertedString}
+            convertedString: {convertedString} */}
           </div>
         </div>
       </div>
