@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 // import { ClipboardDocumentList } from '@heroicons/react/20/solid'
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 
-//(done) DM: todoMM: looks like VSCode auto-imported 'text' for you, probably because 'text' did not exist when you wrote it. Delete the next line.
-
 // DM: main lessons learned: create a state variable for every form input. Also, create state variables for any derived values from user input, such as inputTextCase.
 
 // DM: lesson: generally while working on React components, do the _minimum_ look-and-feel (CSS, TW) until you have the final version; only then make it pretty. That way you will not waste a lot of time on formatting when you know there will be interim versions that you will throw away. It is good for you to practice CSS a lot, but don't get TOO fancy or spend a lot of time on it, because the JS and React are more important.(ok)
@@ -284,7 +282,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                   2
                 )}
               </pre>
-              //MM: DM: is this method of using json necessary for the UI? I suggested that approach below
+              //MM: DM: is this method of using json necessary for the UI? I suggested that approach below. DM: it's fine, it's just more verbose.
             )}
             inputString: {inputString} <br />
             inputTextCase: {inputTextCase} <br />
