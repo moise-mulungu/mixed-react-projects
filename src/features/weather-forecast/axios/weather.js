@@ -24,25 +24,30 @@ const Weather = () => {
 
   return (
     <div>
-      {/* <p>
+      {/* DM: this is a good way to get what you want, no? */}
+      <p>
         Temperature: {weather.main.temp}°F ({weather.main.feels_like}°F)
       </p>
-      <p>Humidity: {weather.main.humidity} %</p> */}
+      <p>Humidity: {weather.main.humidity} %</p>
       <div>
         {/* it does not render the data to the browser after consoling */}
         {Object.entries(weather)?.map((item) => {
           // MM: DM: i want here to get the first nested children from the weather api
-          console.log('item:', { item })
+          console.log('item:', { item, typeof: typeof item })
 
           {
             //  MM: DM: i want here to get the second nested children from the weather api
+            // DM: you can't render an object or your'll get that error you mentioned
+            // DM: you can render a primitive
+            // DM: so, if the primitive value you want is inside the object, how do you access it?
             Object.entries(item)?.map((value) => {
-              console.log('value:', { value })
+              console.log('value:', { value, typeof: typeof value, isArray: Array.isArray(value) })
 
               {
                 //  MM: DM: i want here to get the third nested children from the weather api
                 Object.entries(value)?.map((element) => {
-                  console.log('element:', { element })
+                  console.log('element:', { element, typeof: typeof element })
+                  console.log('element:', { weather, item, value })
                   return <p>{element}</p>
                 })
               }
@@ -50,6 +55,11 @@ const Weather = () => {
           }
         })}
       </div>
+      <pre>
+        For viewing the entire object in the browser:
+        <br />
+        {JSON.stringify(weather, null, 2)}
+      </pre>
     </div>
   )
 }
