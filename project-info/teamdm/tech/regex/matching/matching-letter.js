@@ -1,7 +1,7 @@
 const sentence = 'i am a developer'
 const matchAllLowerCharacters = /[a-z]/g
 const result = sentence.match(matchAllLowerCharacters)
-console.log({ result }) // DM: todoMM: write the result so that you can see it in the future without having to run the code
+console.log({ result }) // DM: todoMM: always write the result so that you can see it in the future without having to run the code
 
 const matchAllUpperCharacters = /[A-Z]/g
 const result2 = sentence.match(matchAllUpperCharacters)

@@ -113,7 +113,9 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
     }
   }
 
-  /*(done) DM: todoMM: watch the video I sent you again. You'll see what is missing here. You have a parameter 'text' - ask yourself: "how does 'text' get set? where is currently stored the value that you want to put into the clipboard?"  */
+  /*DM: watch the video I sent you again. You'll see what is missing here. You have a parameter 'text' - ask yourself: "how does 'text' get set? where is currently stored the value that you want to put into the clipboard?"  
+  DM: todoMM: console.log? You can figure out why this is not working. You've seen this issue before. How do args get passed to functions? Question: what is the type of the parameter to copyToClipboard .
+  */
   async function copyToClipboard({ text }) {
     try {
       await navigator.clipboard.writeText(text)
@@ -292,7 +294,7 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                     <li key={name}>{`${name}: ${output}`}</li>
                   </ul>
                 </>
-                // MM: DM: i want the code to look like below
+                // MM: DM: i want the code to look like below. DM: you can figure it out, look at MDN docs on [].map()
               )
             })}
 
