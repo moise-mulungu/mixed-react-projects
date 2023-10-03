@@ -1,13 +1,13 @@
-import React from 'react';
-import Weather from './weather';
+import React from 'react'
+import Weather from './weather'
 
-const App = () => {
+const OpenWeatherMap = () => {
   return (
     <div>
-      <h1>Weather App</h1>
+      <h1>Weather OpenWeatherMap</h1>
       <Weather />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default OpenWeatherMap
