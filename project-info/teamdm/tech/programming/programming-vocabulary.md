@@ -260,3 +260,7 @@ consists of all the packages that are used in the project with its version numbe
 it consists of all the packages that are used in the project in its development phase and not in the production or testing environment with its version number. So, whenever you want to install any library that is required only in your development phase then you can find it in the package.json dev Dependencies object.
 
 src = https://www.geeksforgeeks.org/difference-between-dependencies-devdependencies-and-peerdependencies/
+
+## axios
+
+Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests.
