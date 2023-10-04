@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Conditions from '../conditions/conditions'
 
-//(done) DM: todoMM: put the exact URL the code came from. Ex the GitHub URL(s) or a web page
 // this came from TabNineAI where i asked how to create a weather SPA with react.
 const Forecast = () => {
   let [city, setCity] = useState('')

@@ -40,8 +40,12 @@ const Weather = () => {
             //(ok) DM: you can't render an object or your'll get that error you mentioned
             // DM: you can render a primitive
             //(done) DM: so, if the primitive value you want is inside the object, how do you access it?
+            // DM: given that the comments refer to the code below the comment, we are talking about the 'value' variable. Therefore, what kind of object does the 'value' variable contain? Your howtojs is good, but it shows how to access the properties of objects, not an array.
             /*
-            howtojs: object: access object properties:: You can access the properties of an object in JavaScript in 3 ways: 1. Dot property accessor: 2. object. property.Square brackets property accessor: 3. object['property']Object destructuring: const { property } = object.
+            howtojs: object: access object properties:: You can access the properties of an object in JavaScript in 3 ways: 
+            1. Dot property accessor: 
+            2. object. property.Square brackets property accessor: object['property'] 
+            3. Object destructuring: const { property } = object.
             */ 
             Object.entries(item)?.map((value) => {
               console.log('value:', { value, typeof: typeof value, isArray: Array.isArray(value) })
