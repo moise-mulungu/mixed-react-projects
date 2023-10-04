@@ -37,9 +37,12 @@ const Weather = () => {
 
           {
             //  MM: DM: i want here to get the second nested children from the weather api
-            // DM: you can't render an object or your'll get that error you mentioned
+            //(ok) DM: you can't render an object or your'll get that error you mentioned
             // DM: you can render a primitive
-            // DM: so, if the primitive value you want is inside the object, how do you access it?
+            //(done) DM: so, if the primitive value you want is inside the object, how do you access it?
+            /*
+            howtojs: object: access object properties:: You can access the properties of an object in JavaScript in 3 ways: 1. Dot property accessor: 2. object. property.Square brackets property accessor: 3. object['property']Object destructuring: const { property } = object.
+            */ 
             Object.entries(item)?.map((value) => {
               console.log('value:', { value, typeof: typeof value, isArray: Array.isArray(value) })
 

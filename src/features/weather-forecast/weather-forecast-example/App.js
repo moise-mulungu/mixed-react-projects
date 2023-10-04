@@ -1,3 +1,5 @@
+// src: https://dev.to/coderamrin/how-to-build-a-weather-app-with-react-tailwind-css-2c7b
+// tailwind src design: https://tailwindui.com/components/ecommerce/components/product-quickviews
 import './App.module.css'
 import { useState, useEffect } from 'react'
 
