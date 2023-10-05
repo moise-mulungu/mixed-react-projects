@@ -31,6 +31,7 @@ const Weather = () => {
     // )
     Object.entries(item).map((e) => {
       console.log({ e, typeof: typeof e }) // the same here, i successfully get the second nested children of the weather object here
+      // DM: good! 
       return (
         <p key={e[0]}>
           {e[0]}: {e[1]}
@@ -44,8 +45,10 @@ const Weather = () => {
       {/* DM: this is a good way to get what you want, no? */}
       <p>
         {/* MM: DM: these line below are throwing error: "TypeError: Cannot read properties of undefined (reading 'temp')", i then commented them out to get the code to compile */}
+        {/* DM: todoMM: console.log weather.main. Does it have a te property? */}
         {/* Temperature: {weather.main.temp}°F ({weather.main.feels_like}°F) */}
         {/* MM: DM: i still can get data of  the main object  */}
+        {/* where'e your console.log? What is typeof weatherObjectToArray.main and what is typeof weatherObjectToArray (is there a .main property on it?) */}
         Temperature: {weatherObjectToArray.main}°F ({weatherObjectToArray.main}°F)
       </p>
       {/* <p>Humidity: {weather.main.humidity} %</p> */}

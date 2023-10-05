@@ -5,7 +5,7 @@ DM: todoMM: read this carefully. I'll expect you to have done(ok)
 ## Console.log all the things!
 * any code you're blocked on should have thorough console.logs (so DM doesn't have to write them, and so DM sees what you've already been attempting to do and where you have already looked for errors).
 - it is impossible to debug without console.logs
-- DM wants to see console.logs for any code that is unfinished.(ok)
+- DM wants to see console.logs for any code that is unfinished.(ok) This serves 2 purposes: 1) I know what you are considering and can oer alternatives and 2) I don't have to write console.logs myself. You can comment out console.logs and just leave them there permanently.
 ## pursue the clues in the error message
 * google all (or part) of the error message if it is not immediately clear
 ## assumptions: list them, then double-check any possible wrong assumptions;

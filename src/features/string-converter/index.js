@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 // import { ClipboardDocumentList } from '@heroicons/react/20/solid'
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 
-// clip-board sources: https://www.npmjs.com/package/react-copy-to-clipboard 
+// clipboard sources: https://www.npmjs.com/package/react-copy-to-clipboard  DM: you don't hav eto put links to GitHub packages, because since the package names are unique it is always easy to find them via Google search.
+// DM: if this is not used, why do you import it?
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 
 // DM: main lessons learned: create a state variable for every form input. Also, create state variables for any derived values from user input, such as inputTextCase.
@@ -16,7 +17,6 @@ tailwind design src= https://tailwindui.com/components/application-ui/forms/sign
 react dev src= https://react.dev/reference/react-dom/components/input
 */
 
-//(done) DM: todoMM: make sure all the fonts are consistent, and the text in the page matches the design. DM: meticulously check - "String" and "Converted string" are different.
 
 //(ok) DM: the way it works now, we could just get rid of the "Convert" button, but let's not do that, because I'd like to add more cases to convert to and from. Today, read my changes and understand how the React works. Ask me about what you don't understand. Make howtoreact comments if you see a technique that is new to you.
 
@@ -34,6 +34,10 @@ export default function PascalToCamelCase() {
   //(done) DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.(MM: i think the previous version is better than lodash as the lodash doesn't fulfill the case conversion logic; I am still finding the case conversion logic with lodash.) DM: OK, save the lodash stuff below for later when there's more types to convert from.
 
   // lodash version
+  // DM: todoMM: create new vocabulary entries for the quoted phrases in the next few lines.
+  // DM: never mix imports ("ES6 Modules") with require ("CommonJS", an older "module system"). in React, you'll never require, the only time you require is in some NodeJS and config files.
+  // DM: also, full "namespace imports" increase your "bundle size" (the amount of bytes the browser must download from the hosting website), so use "named imports" to import specifically which functionality you need. NextJS Webpack config can do "tree shaking" to figure out the minimum bundle size.
+  // DM: todoMM: import { camelCase, startCase } from 'lodash' (imports can only be at the top of js files)
   const _ = require('lodash')
 
   // camel to pascal case
@@ -47,6 +51,7 @@ export default function PascalToCamelCase() {
   // this is good
   // pascal to camel case
   function convertPascalToCamelCase() {
+    // DM: todoMM: good, but assign the result of the lodash function to a variable
     return setConvertedString(_.camelCase(inputString))
     //  setConvertedString(inputString)
   }
@@ -119,11 +124,12 @@ export default function PascalToCamelCase() {
   }
 
   /*DM: watch the video I sent you again. You'll see what is missing here. You have a parameter 'text' - ask yourself: "how does 'text' get set? where is currently stored the value that you want to put into the clipboard?"  
-  (i progress...)DM: todoMM: console.log? You can figure out why this is not working. You've seen this issue before. How do args get passed to functions? Question: what is the type of the parameter to copyToClipboard. Ask AI to fix the copyToClipboard function error: text is undefined. 
+  (i progress...)DM: todoMM: console.log? You can figure out why this is not working. You've seen this issue before. How do args get passed to functions? Question: what is the type of the parameter to copyToClipboard. Ask AI to fix the copyToClipboard function error: text is undefined. DM: Is this working and done?
   */
   // async function copyToClipboard({ text }) {
   //   console.log('text:', { text })
   //   try {
+  //     // example of handle a promise with 'await'
   //     await navigator.clipboard.writeText(text)
   //     alert('Text copied to clipboard')
   //   } catch (err) {
@@ -131,20 +137,23 @@ export default function PascalToCamelCase() {
   //   }
   // }
 
+  // DM: todoMM: this isn't used, so put a note about that and comment it out
   const copyToClipboard = (text) => {
     if (!navigator.clipboard) {
       console.error('Copy to clipboard is not supported')
       return
     }
+    // DM: example of handle a promise with .then()
     navigator.clipboard.writeText(text).then(
       () => {
-        console.log('Text copied to clipboard')
+        alert('Text copied to clipboard')
       },
       (err) => {
         console.error('Unable to copy text: ', err)
       }
     )
   }
+
   const allOutputs = [inputString, inputTextCase, targetCase, convertedString]
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -266,6 +275,10 @@ export default function PascalToCamelCase() {
                   value={convertedString} // DM: read only input, so I removed the onClick prop
                   className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
                 />
+                {/* 
+                  DM: todoMM: we should never use a GitHub package for something that is simple because it makes the package.json and bundle size too large. So, npm uninstall CopyToClipboard package and revert the below to just the button with the onClick calling your copyToClipboard function above. Make sure both of the versions of copyToClipboard work correctly.
+                
+                 */}
                 <CopyToClipboard text={convertedString} onCopy={() => setCopiedText(copiedText)}>
                   <button
                     title="copy to clipboard"

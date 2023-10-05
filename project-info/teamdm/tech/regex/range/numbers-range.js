@@ -4,7 +4,6 @@ const sequentialNumbers = arrayOfNum.join('').match(/\d/g) // or str.join('').ma
 console.log(sequentialNumbers) // ['0', '1', '2', '3', '4', '5', '6', '7']
 
 const stringWithNumbers = 'My phone number is 021-987-345'
+// howtojs: regexp:: matching a range of number characters: /\d/ or /[2-8]/g, this will range from 2 to 8.
 const allNumChars = stringWithNumbers.match(/\d/g)
 console.log({ allNumChars }) // ['0', '2', '1', '9', '8', '7', '3', '4', '5']
-
-// howtojs: regexp:: matching range numbers characters ; To match these characters, use the following regular expression: /[2-8]/g, this will range from 2 to 8.

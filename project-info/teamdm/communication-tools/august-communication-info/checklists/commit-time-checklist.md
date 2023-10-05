@@ -13,6 +13,10 @@
   - default export function name matches filename, or directory name !important
   - if file is in a directory, the main file or only file, file is named index.js !important
   - one "default export" function per file; non-default exports are fine, but consider putting these functions in separate files if they become numerous.
+  - assign all expressions to a variable
+    - so that it can be easily logged 
+    - a good variable name is self-documenting, more readable
+    - EX: const convertedString = camelCase('myPascalCase')
   - UI: usability (ex: easy to see what is a button or input field) 
     - don't format much at the beginning of a project until you know for sure you will keep the UI permanently 
     - easiest solution: put each thing in a DIV so that each thing is on its own line; this solves the problem of margins touching 
