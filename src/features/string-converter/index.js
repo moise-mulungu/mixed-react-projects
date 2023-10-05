@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 // import { ClipboardDocumentList } from '@heroicons/react/20/solid'
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 
+// clip-board sources: https://www.npmjs.com/package/react-copy-to-clipboard 
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+
 // DM: main lessons learned: create a state variable for every form input. Also, create state variables for any derived values from user input, such as inputTextCase.
 
 // DM: lesson: generally while working on React components, do the _minimum_ look-and-feel (CSS, TW) until you have the final version; only then make it pretty. That way you will not waste a lot of time on formatting when you know there will be interim versions that you will throw away. It is good for you to practice CSS a lot, but don't get TOO fancy or spend a lot of time on it, because the JS and React are more important.(ok)
@@ -13,7 +16,7 @@ tailwind design src= https://tailwindui.com/components/application-ui/forms/sign
 react dev src= https://react.dev/reference/react-dom/components/input
 */
 
-// DM: todoMM: make sure all the fonts are consistent, and the text in the page matches the design. DM: meticulously check - "String" and "Converted string" are different.
+//(done) DM: todoMM: make sure all the fonts are consistent, and the text in the page matches the design. DM: meticulously check - "String" and "Converted string" are different.
 
 //(ok) DM: the way it works now, we could just get rid of the "Convert" button, but let's not do that, because I'd like to add more cases to convert to and from. Today, read my changes and understand how the React works. Ask me about what you don't understand. Make howtoreact comments if you see a technique that is new to you.
 
@@ -25,46 +28,48 @@ export default function PascalToCamelCase() {
   // DM: this part was still undone: it will hold either 'pascal' or 'camel'. DM: The default value should be the case type of the first radio button, not a boolean.
   const [targetCase, setTargetCase] = useState('pascal')
   const [convertedString, setConvertedString] = useState('')
+  const [copiedText, setCopiedText] = useState(false)
 
   // DM: good, I'm glad you wrote separate functions for each
-  // DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.(MM: i think the previous version is better than lodash as the lodash doesn't fulfill the case conversion logic; I am still finding the case conversion logic with lodash.) DM: OK, save the lodash stuff below for later when there's more types to convert from.
+  //(done) DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.(MM: i think the previous version is better than lodash as the lodash doesn't fulfill the case conversion logic; I am still finding the case conversion logic with lodash.) DM: OK, save the lodash stuff below for later when there's more types to convert from.
 
-  /*
-  lodash version
-  const _ = require('lodash');
+  // lodash version
+  const _ = require('lodash')
 
-function camelToPascalCase(str) {
-  return _.startCase(str).replace(/\s(\w)/g, (match, p1) => p1.toUpperCase());
-}
-
-// this is good
-function pascalToCamelCase(str) {
-  return _.camelCase(str);
-}
-
-console.log(camelToPascalCase('helloWorld')); // Hello World
-console.log(pascalToCamelCase('HelloWorld')); // helloWorld
-
-  */
-  function convertPascalToCamelCase() {
-    const camelCase = inputString
-      .split(' ')
-      .map((word) => {
-        return word.charAt(0).toLowerCase() + word.substr(1)
-      })
-      .join(' ')
-    setConvertedString(camelCase)
-  }
-
+  // camel to pascal case
   function convertCamelToPascalCase() {
-    const pascalCase = inputString
-      .split(' ')
-      .map((word) => {
-        return word.charAt(0).toUpperCase() + word.substr(1)
-      })
-      .join(' ')
-    setConvertedString(pascalCase)
+    return setConvertedString(
+      _.startCase(inputString).replace(/\s(\w)/g, (match, p1) => p1.toUpperCase())
+    )
+    //  setConvertedString(inputString)
   }
+
+  // this is good
+  // pascal to camel case
+  function convertPascalToCamelCase() {
+    return setConvertedString(_.camelCase(inputString))
+    //  setConvertedString(inputString)
+  }
+
+  // function convertPascalToCamelCase() {
+  //   const camelCase = inputString
+  //     .split(' ')
+  //     .map((word) => {
+  //       return word.charAt(0).toLowerCase() + word.substr(1)
+  //     })
+  //     .join(' ')
+  //   setConvertedString(camelCase)
+  // }
+
+  // function convertCamelToPascalCase() {
+  //   const pascalCase = inputString
+  //     .split(' ')
+  //     .map((word) => {
+  //       return word.charAt(0).toUpperCase() + word.substr(1)
+  //     })
+  //     .join(' ')
+  //   setConvertedString(pascalCase)
+  // }
   function getCase(str) {
     // MM: DM: i uncommented the Detected case: {inputTextCase}, then i found it worked DM: good
     if (/^[a-z]+(?:[A-Z][a-z]+)*$/.test(str)) {
@@ -116,14 +121,29 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
   /*DM: watch the video I sent you again. You'll see what is missing here. You have a parameter 'text' - ask yourself: "how does 'text' get set? where is currently stored the value that you want to put into the clipboard?"  
   (i progress...)DM: todoMM: console.log? You can figure out why this is not working. You've seen this issue before. How do args get passed to functions? Question: what is the type of the parameter to copyToClipboard. Ask AI to fix the copyToClipboard function error: text is undefined. 
   */
-  async function copyToClipboard({ text }) {
-    console.log(typeof { text })
-    try {
-      await navigator.clipboard.writeText(text)
-      alert('Text copied to clipboard')
-    } catch (err) {
-      console.error('Unable to copy text', err)
+  // async function copyToClipboard({ text }) {
+  //   console.log('text:', { text })
+  //   try {
+  //     await navigator.clipboard.writeText(text)
+  //     alert('Text copied to clipboard')
+  //   } catch (err) {
+  //     console.error('Unable to copy text', err)
+  //   }
+  // }
+
+  const copyToClipboard = (text) => {
+    if (!navigator.clipboard) {
+      console.error('Copy to clipboard is not supported')
+      return
     }
+    navigator.clipboard.writeText(text).then(
+      () => {
+        console.log('Text copied to clipboard')
+      },
+      (err) => {
+        console.error('Unable to copy text: ', err)
+      }
+    )
   }
   const allOutputs = [inputString, inputTextCase, targetCase, convertedString]
   return (
@@ -246,15 +266,17 @@ console.log(pascalToCamelCase('HelloWorld')); // helloWorld
                   value={convertedString} // DM: read only input, so I removed the onClick prop
                   className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
                 />
-                <button
-                  title="copy to clipboard"
-                  // DM: you are not passing any argument/parameter to copyToClipboard
-                  // DM: 'text' does not exist. Look at the last video I sent you.
-                  onClick={() => copyToClipboard(convertedString)}
-                  // className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  <DocumentDuplicateIcon className="h-5 w-5" aria-hidden="true" />
-                </button>
+                <CopyToClipboard text={convertedString} onCopy={() => setCopiedText(copiedText)}>
+                  <button
+                    title="copy to clipboard"
+                    // DM: you are not passing any argument/parameter to copyToClipboard
+                    // DM: 'text' does not exist. Look at the last video I sent you.
+                    // onClick={() => copyToClipboard(text)}
+                    // className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    <DocumentDuplicateIcon className="h-5 w-5" aria-hidden="true" />
+                  </button>
+                </CopyToClipboard>
                 {}
 
                 {/* 

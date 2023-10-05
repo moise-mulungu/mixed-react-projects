@@ -9,5 +9,6 @@ console.log({ result2 })
 
 const matchBothUpperAndLowerCharacters = /[A-Za-z]+/g
 const result3 = sentence.match(matchBothUpperAndLowerCharacters)
-console.log({ result3 }) //  ["i", "am", "a", "developer"] 
+console.log({ result3 }) //  ["i", "am", "a", "developer"]
 
+// howtojs: regexp:: matching letters characters; To match letters in JavaScript, you can use the following regular expression: /\w/ or /[A-Za-z]/

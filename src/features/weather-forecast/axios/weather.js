@@ -22,13 +22,33 @@ const Weather = () => {
       })
   }, [])
 
+  const weatherObjectToArray = Object.entries(weather).map((item) => {
+    console.log({ item, typeof: typeof item }) // i successfully get the first nested children of the weather object here
+    // return (
+    //   <p key={item[0]}>
+    //     {item[0]}: {item[1]}
+    //   </p>
+    // )
+    Object.entries(item).map((e) => {
+      console.log({ e, typeof: typeof e }) // the same here, i successfully get the second nested children of the weather object here
+      return (
+        <p key={e[0]}>
+          {e[0]}: {e[1]}
+        </p>
+      )
+    })
+  })
   return (
     <div>
+      {' '}
       {/* DM: this is a good way to get what you want, no? */}
       <p>
-        Temperature: {weather.main.temp}°F ({weather.main.feels_like}°F)
+        {/* MM: DM: these line below are throwing error: "TypeError: Cannot read properties of undefined (reading 'temp')", i then commented them out to get the code to compile */}
+        {/* Temperature: {weather.main.temp}°F ({weather.main.feels_like}°F) */}
+        {/* MM: DM: i still can get data of  the main object  */}
+        Temperature: {weatherObjectToArray.main}°F ({weatherObjectToArray.main}°F)
       </p>
-      <p>Humidity: {weather.main.humidity} %</p>
+      {/* <p>Humidity: {weather.main.humidity} %</p> */}
       <div>
         {/* it does not render the data to the browser after consoling */}
         {Object.entries(weather)?.map((item) => {
@@ -46,7 +66,7 @@ const Weather = () => {
             1. Dot property accessor: 
             2. object. property.Square brackets property accessor: object['property'] 
             3. Object destructuring: const { property } = object.
-            */ 
+            */
             Object.entries(item)?.map((value) => {
               console.log('value:', { value, typeof: typeof value, isArray: Array.isArray(value) })
 

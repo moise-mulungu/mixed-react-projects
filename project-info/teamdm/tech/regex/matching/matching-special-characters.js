@@ -12,3 +12,5 @@ const checkResultWithoutSpace = stringOfText.match(matchAllSpecialCharactersWith
 console.log({ checkResultWithoutSpace }) //  [":", "!", "@", "#", "$", "%", "&", "*", "(", ")"]
 
 // DM: good examples. I reordered the lines to group related things. Think of your future self reading this and be sure it is really clear and in order.
+
+// howtojs: regexp:: matching special characters without space; To match letters in JavaScript, use the following regular expression: /[^\w\s]/g or /[^A-Za-z0-9]/g. But to include space use /\W/g.

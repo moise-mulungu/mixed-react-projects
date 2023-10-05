@@ -29,4 +29,4 @@
     - links, info are often more useful for me, and in the future, if they are "inline" with the code
 - remove unnecessary console.logs (use judgement about which are temporary and which can be left commented out because they are useful in the future)
 
-DM: these are important to ensure I'm not losing time fixing things such as "default export function name matches filename, or directory name"
+DM: these are important to ensure I'm not losing time fixing things such as "default export function name matches filename, or directory name"(very informative!!!)
