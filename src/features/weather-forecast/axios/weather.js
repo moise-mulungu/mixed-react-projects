@@ -22,8 +22,12 @@ const Weather = () => {
       })
   }, [])
 
+  // const mainObject = weather.main.temp ; if i define it here it throws an error: ReferenceError: mainObject is not defined
+  // console.log('main-object:', { mainObject })
   const weatherObjectToArray = Object.entries(weather).map((item) => {
     console.log({ item, typeof: typeof item }) // i successfully get the first nested children of the weather object here
+    const mainObject = weather.main.temp
+    console.log('main-object:', { mainObject }) // But here it works
     // return (
     //   <p key={item[0]}>
     //     {item[0]}: {item[1]}
@@ -31,7 +35,7 @@ const Weather = () => {
     // )
     Object.entries(item).map((e) => {
       console.log({ e, typeof: typeof e }) // the same here, i successfully get the second nested children of the weather object here
-      // DM: good! 
+      // DM: good!
       return (
         <p key={e[0]}>
           {e[0]}: {e[1]}
@@ -49,7 +53,8 @@ const Weather = () => {
         {/* Temperature: {weather.main.temp}°F ({weather.main.feels_like}°F) */}
         {/* MM: DM: i still can get data of  the main object  */}
         {/* where'e your console.log? What is typeof weatherObjectToArray.main and what is typeof weatherObjectToArray (is there a .main property on it?) */}
-        Temperature: {weatherObjectToArray.main}°F ({weatherObjectToArray.main}°F)
+        {/* Temperature: {mainObject}°F */}
+        {/* ({weatherObjectToArray.main}°F) */}
       </p>
       {/* <p>Humidity: {weather.main.humidity} %</p> */}
       <div>

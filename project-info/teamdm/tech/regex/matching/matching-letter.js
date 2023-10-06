@@ -8,7 +8,7 @@ const result2 = sentence.match(matchAllUpperCharacters)
 console.log({ result2 })
 
 // DM: todoMM: \w matches alphanumeric not just letters
-// howtojs: regexp:: matching letters characters; To match letters in JavaScript, you can use the following regular expression: /\w/ or /[A-Za-z]/
+// howtojs: regexp:: matching letters characters; To match letters in JavaScript, you can use the following regular expression: /[A-Za-z]/. /[a-zA-Z]/g splits into letters, but /[A-Za-z]+/g splits into words.
 const matchBothUpperAndLowerCharacters = /[A-Za-z]+/g
 const result3 = sentence.match(matchBothUpperAndLowerCharacters)
 console.log({ result3 }) //  ["i", "am", "a", "developer"]

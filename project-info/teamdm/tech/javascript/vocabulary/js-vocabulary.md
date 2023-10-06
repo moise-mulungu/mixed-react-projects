@@ -433,3 +433,29 @@ export default function myFunction() { // closure
 // it doesn't matter where this is called
 // the "scope" is always the same and the value always is 1.
 ```
+## function signature
+
+The function signature consists of the method name and the number of arguments the function required. The parameters of a function don't need to be declared within the body of the function because they are already declared inside the function header. In Javascript, arguments are passed positionally.
+
+## ES6 module 
+An ES6 module is a JavaScript file that executes in strict mode only. It means that any variables or functions declared in the module won't be added automatically to the global scope
+
+## CommonJS
+ is a project to standardize the module ecosystem for JavaScript outside of web browsers (e.g. on web servers or native desktop applications). CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node. js
+
+## module system
+
+JavaScript modules allow you to break up your code into separate files. This makes it easier to maintain a code-base. Modules are imported from external files with the import statement. Modules also rely on type="module" in the <script> tag
+
+## namespace
+
+A namespace is a programming concept that gives identifiers (names of types, functions, variables, etc.) scope to avoid name conflicts. For instance, a program may need to use the same variable name in many contexts
+
+## bundle size
+The js bundle size is the total amount of JavaScript code that your website needs to run
+
+## Named import
+Is the process of import multiple names from the same module. import { foo, bar } from "/modules/my-module.js"; You can rename an export when importing it.
+
+## tree shaking
+tree shaking eliminates unused functions from across the bundle by starting at the entry point and only including functions that may be executed. It is succinctly described as "live code inclusion"
