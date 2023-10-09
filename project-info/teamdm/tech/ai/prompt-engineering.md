@@ -1,4 +1,4 @@
-Sure, here are **5 best practices** to write ChatGPT prompts:
+**5 best practices** to write ChatGPT prompts:
 
 1. **Give ChatGPT a role to play**: Assigning a role to ChatGPT helps it understand the context and expectations of the user. For example, "Play the role of my Spanish teacher. Teach me new vocabulary, explaining the words in English."
 
@@ -17,3 +17,5 @@ Here are some common mistakes in prompt engineering that you should avoid:
 - **Assuming AI context comprehension**: Assuming that ChatGPT understands the context of a prompt can lead to irrelevant or inaccurate responses.
 - **Expecting human intuition**: Expecting ChatGPT to have human-like intuition can lead to irrelevant or inaccurate responses.
 - **Ethical disregard**: Ignoring ethical considerations when crafting prompts can lead to biased or inappropriate responses.
+
+// DM: good!

@@ -38,7 +38,10 @@ export default function PascalToCamelCase() {
 
   // camel to pascal case
   function convertCamelToPascalCase() {
-    //(in progress; MM: DM: but i am a bit curious on the result of "void" while the code works. it does not thrown any error on the browser) DM: todoMM: what are you returning? i.e., what does setConvertedString() return? hold down the ctrl key while you mouseover setConvertedString below. You'll see info about the function signature, including what the function returns (void means nothing). Also, look at where you call convertCamelToPascalCase - are you using the value returned by the call? So, to fix this, call setConvertedString() on a separate line, then 'return' on a separate line.
+    //(in progress; MM: DM: but i am a bit curious on the result of "void" while the code works. it does not thrown any error on the browser. See my new comment below. There should be no code that doesn't serve a purpose. ) DM: todoMM: what are you returning? i.e., what does setConvertedString() return? hold down the ctrl key while you mouseover setConvertedString below. You'll see info about the function signature, including what the function returns (void means nothing). 
+    
+    // DM: RE the comment on the next line, what I meant to draw your attention to is, if you aren't using the value returned by convertCamelToPascalCase() where it is called below, then why are you trying to return something (the return value of setConvertedString) from it when you can just 'return;'?  
+    // Also, look at where you call convertCamelToPascalCase - are you using the value returned by the call? So, to fix this, call setConvertedString() on a separate line, then 'return' on a separate line.
     const firstCharacterToUpperCase = _.startCase(inputString)
     
     setConvertedString(firstCharacterToUpperCase) // MM: DM: still void after calling the function before the return statement.
@@ -47,6 +50,7 @@ export default function PascalToCamelCase() {
       // firstCharacterToUpperCase
       )
       //  setConvertedString(inputString)
+
     }
     /*
     MM: DM: in order to fix this issue i read this link to use the useEffect as follow: 

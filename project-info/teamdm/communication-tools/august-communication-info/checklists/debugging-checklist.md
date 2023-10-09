@@ -9,6 +9,9 @@ DM: todoMM: read this carefully. I'll expect you to have done(ok)
 ## pursue the clues in the error message
 * google all (or part) of the error message if it is not immediately clear
 ## assumptions: list them, then double-check any possible wrong assumptions;
+## get AI help
+AI prompt: "suggest fixes to the code|[functionName] and explain what you think should be fixed"
+note: AI chat in VSCode, when you say 'code' will inspect selected code, or if no code is selected, all the code in the currently open file. instead of 'code' you can also say 'functionName' to focus AI on a specific function.
 
 # debugging process
 
@@ -43,6 +46,7 @@ DM: todoMM: read this carefully. I'll expect you to have done(ok)
   - leave code unchanged, but commented out (so you can revert back if needed).
     - within reason, that is, use your judgement. Some attempts are an obvious 100% dead end, so you don't need to keep useless code around, so just put a note that you tried abc and abc did not work at all and why.
 
+DM: todoMM: checklist items are for general approaches that you can use for any debugging issue, not stuff specific to one app. This belongs in the weather.js file, not here.
 ## AI Prompt: fix the code Weather function
 - i asked the AI prompt to fix fix the code Weather function
 - the AI prompt corrected the code by :

@@ -95,4 +95,7 @@ Network throughput refers to the "**rate** of message delivery" over a communica
 Credentials refer to the verification of identity or tools for authentication. They may be part of a certificate or other authentication process that helps confirm a user's identity in relation to a network address or other system ID.
 
 ## API vs API endpoint
-An API (Application Programming Interface) is a set of routines, protocols, and tools for building software applications. An API endpoint is a specific entry point into an API that allows a client to access a specific set of functionality offered by the API.
+
+API (Application Programming Interface) is a set of routines, protocols, and tools for building software applications. 
+
+API endpoint is a specific entry point into an API that allows a client to access a specific set of functionality offered by the API. Most often, a URL.

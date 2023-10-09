@@ -3,7 +3,6 @@
 const stringOfText = 'This is a string with some special characters: !@#$%^&*()'
 
 // this will match all the provided special characters in the string; includes also empty spaces;
-//(done) DM: todoMM: make a howtojs. Don't cram too many different examples into 1 howto
 // howtojs: regexp:: matching all non-alphanumeric characters: /[^\w\s]/g or /[^A-Za-z0-9\s]/g. 
 const matchAllSpecialCharacters = /\W/g // DM: good. It does the same as /[^A-Za-z0-9]/g; 
 const checkResult = stringOfText.match(matchAllSpecialCharacters)
