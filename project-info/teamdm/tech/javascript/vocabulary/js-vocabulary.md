@@ -435,27 +435,46 @@ export default function myFunction() { // closure
 ```
 ## function signature
 
-The function signature consists of the method name and the number of arguments the function required. The parameters of a function don't need to be declared within the body of the function because they are already declared inside the function header. In Javascript, arguments are passed positionally.
+DM: todoMM: RE efficiency, you can make these notes faster to read by avoiding repetitive, conversational conventions, like repeating "The function signature" in the vocab definition. Web articles and AI are written with a lot of those that you can omit. Going forward, keep an eye on how I edit your vocab and howtos to make them more concise and quickly readable, and start doing the same yourself. 
+DM: todoMM:; check your JS vocab and if you don't already have it, make an entry that distinguishes between function and method (i.e., a method is a function that is the property of an object)
 
-## ES6 module 
+consists of
+* function name and the 
+* arguments 
+
+note: the parameters of a function don't need to be declared within the body of the function because they are already declared inside the function header
+note: in Javascript, arguments are passed positionally.
+
+## ES6 modules 
+
+DM: todoMM: try this one again. The below info on "strict mode" is only 1 minor detail about ES6 modules. If you use AI to get answers, you may need to 'start a new conversation" so that AI won't distort the answer by using context from previous questions in the same 'conversation'.
+
 An ES6 module is a JavaScript file that executes in strict mode only. It means that any variables or functions declared in the module won't be added automatically to the global scope
 
 ## CommonJS
  is a project to standardize the module ecosystem for JavaScript outside of web browsers (e.g. on web servers or native desktop applications). CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node. js
 
+## ES6 modules VS CommonJS 
+DM: todoMM: try your search/prompts The comparison is probably the most important aspect of both.
+
 ## module system
 
-JavaScript modules allow you to break up your code into separate files. This makes it easier to maintain a code-base. Modules are imported from external files with the import statement. Modules also rely on type="module" in the <script> tag
+JavaScript modules allow you to break up your code into separate files. This makes it easier to maintain a code-base. Modules are imported from external files with the import statement. Modules also rely on type="module" in the <script> tag DM: where is this tag located?
 
 ## namespace
 
 A namespace is a programming concept that gives identifiers (names of types, functions, variables, etc.) scope to avoid name conflicts. For instance, a program may need to use the same variable name in many contexts
 
+## namespace import
+new one; show an example
+
 ## bundle size
 The js bundle size is the total amount of JavaScript code that your website needs to run
 
 ## Named import
-Is the process of import multiple names from the same module. import { foo, bar } from "/modules/my-module.js"; You can rename an export when importing it.
+Is the process of import multiple names from the same module. 
+```import { foo, bar } from "/modules/my-module.js"; ```
+You can rename an export when importing it. DM: todoMM: show an example of howto do it
 
 ## tree shaking
 tree shaking eliminates unused functions from across the bundle by starting at the entry point and only including functions that may be executed. It is succinctly described as "live code inclusion"

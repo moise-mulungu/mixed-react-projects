@@ -2,9 +2,7 @@ import React, { useState } from 'react'
 // import { ClipboardDocumentList } from '@heroicons/react/20/solid'
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 
-// clipboard sources: https://www.npmjs.com/package/react-copy-to-clipboard (ok) DM: you don't have to put links to GitHub packages, because since the package names are unique it is always easy to find them via Google search.
-//(MM: DM: it was used as component from the react-copy-to-clipboard requirement component) DM: if this is not used, why do you import it?
-// import { CopyToClipboard } from 'react-copy-to-clipboard'
+
 import { camelCase, startCase } from 'lodash'
 
 // DM: main lessons learned: create a state variable for every form input. Also, create state variables for any derived values from user input, such as inputTextCase.
@@ -28,13 +26,12 @@ export default function PascalToCamelCase() {
   // DM: this part was still undone: it will hold either 'pascal' or 'camel'. DM: The default value should be the case type of the first radio button, not a boolean.
   const [targetCase, setTargetCase] = useState('pascal')
   const [convertedString, setConvertedString] = useState('')
-  // const [copiedText, setCopiedText] = useState(false); MM: DM: after reverting the code this state declaration is no more useful
+  // const [copiedText, setCopiedText] = useState(false); MM: DM: after reverting the code this state declaration is no more useful DM, yes good decision.
 
   // DM: good, I'm glad you wrote separate functions for each
   //(done) DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.(MM: i think the previous version is better than lodash as the lodash doesn't fulfill the case conversion logic; I am still finding the case conversion logic with lodash.) DM: OK, save the lodash stuff below for later when there's more types to convert from.
 
   // lodash version
-  //(done) DM: todoMM: create new vocabulary entries for the quoted phrases in the next few lines.
   // DM: never mix imports ("ES6 Modules") with require ("CommonJS", an older "module system"). in React, you'll never require, the only time you require is in some NodeJS and config files.
   // DM: also, full "namespace imports" increase your "bundle size" (the amount of bytes the browser must download from the hosting website), so use "named imports" to import specifically which functionality you need. NextJS Webpack config can do "tree shaking" to figure out the minimum bundle size.
   // DM: todoMM: import { camelCase, startCase } from 'lodash' (imports can only be at the top of js files)
@@ -42,6 +39,7 @@ export default function PascalToCamelCase() {
 
   // camel to pascal case
   function convertCamelToPascalCase() {
+    // DM: todoMM: what are you returning? i.e., what does setConvertedString() return? hold down the ctrl key while you mouseover setConvertedString below. You'll see info about the function signature, including what the function returns (void means nothing). Also, look at where you call convertCamelToPascalCase - are you using the value returned by the call? So, to fix this, call setConvertedString() on a separate line, then 'return' on a separate line.
     const firstCharacterToUpperCase = _.startCase(inputString)
     return setConvertedString(
       // _.startCase(inputString).replace(/\s(\w)/g, (match, p1) => p1.toUpperCase())
@@ -282,7 +280,7 @@ export default function PascalToCamelCase() {
                   className="block w-full rounded-md border-0 py-2.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
                 />
                 {/* 
-                  (done)DM: todoMM: we should never use a GitHub package for something that is simple because it makes the package.json and bundle size too large. So, npm uninstall CopyToClipboard package and revert the below to just the button with the onClick calling your copyToClipboard function above. Make sure both of the versions of copyToClipboard work correctly.
+                  DM: we should never use a GitHub package for something that is simple because it makes the package.json and bundle size too large. So, npm uninstall CopyToClipboard package and revert the below to just the button with the onClick calling your copyToClipboard function above. Make sure both of the versions of copyToClipboard work correctly.
                 
                  */}
                 <button

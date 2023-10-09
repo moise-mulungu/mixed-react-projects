@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const Weather = () => {
+  // DM: there is a short period of time, before the API fetch is complete, when weather === {}, so if you try to access weather.main, main is not yet a property on weather.
   const [weather, setWeather] = useState({})
 
   useEffect(() => {
@@ -22,12 +23,28 @@ const Weather = () => {
       })
   }, [])
 
-  // const mainObject = weather.main.temp ; if i define it here it throws an error: ReferenceError: mainObject is not defined
+  // const mainObject = weather.main.temp ; if i define it here it throws an error: ReferenceError: mainObject is not defined DM: see my comment above the useState line above. 
+  /* 
+     example of how to document steps taken to debug an error message:
+
+     follow the clues in the error message: "ReferenceError: mainObject is not defined"
+       global RegExp search of howtos: "howtojs.*ReferenceError: .* is not defined"
+         no matches, so try a shorter string: "howtojs.*ReferenceError:.*defined"
+         no matches, so try a shorter string: "howtojs.*ReferenceError"
+         no matches, so try without howtojs: "ReferenceError.*defined"
+         since there is no howtojs for ReferenceError, be sure to make one after you solve this error, either here or in react-errors.md
+       Google search: "ReferenceError is not defined" - read a few stackoverflow and see what you learn (make some )
+       Ask AI to find errors in your code and explain them
+
+     tip: ask AI to "explain the React Lifecycle using this component as an example" 
+       AI will explain things such as how the value in the state variable 'weather' is {} until setWeather is called 
+       you could also ask AI: "explain the React Lifecycle using the example of a simple component"
+  */
   // console.log('main-object:', { mainObject })
   const weatherObjectToArray = Object.entries(weather).map((item) => {
     console.log({ item, typeof: typeof item }) // i successfully get the first nested children of the weather object here
     const mainObject = weather.main.temp
-    console.log('main-object:', { mainObject }) // But here it works
+    console.log('main-object:', { mainObject }) // But here it works. DM; Is this a problem?
     // return (
     //   <p key={item[0]}>
     //     {item[0]}: {item[1]}
