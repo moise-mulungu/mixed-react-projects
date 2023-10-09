@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 // import { ClipboardDocumentList } from '@heroicons/react/20/solid'
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 
-
 import { camelCase, startCase } from 'lodash'
 
 // DM: main lessons learned: create a state variable for every form input. Also, create state variables for any derived values from user input, such as inputTextCase.
@@ -39,14 +38,24 @@ export default function PascalToCamelCase() {
 
   // camel to pascal case
   function convertCamelToPascalCase() {
-    // DM: todoMM: what are you returning? i.e., what does setConvertedString() return? hold down the ctrl key while you mouseover setConvertedString below. You'll see info about the function signature, including what the function returns (void means nothing). Also, look at where you call convertCamelToPascalCase - are you using the value returned by the call? So, to fix this, call setConvertedString() on a separate line, then 'return' on a separate line.
+    //(in progress; MM: DM: but i am a bit curious on the result of "void" while the code works. it does not thrown any error on the browser) DM: todoMM: what are you returning? i.e., what does setConvertedString() return? hold down the ctrl key while you mouseover setConvertedString below. You'll see info about the function signature, including what the function returns (void means nothing). Also, look at where you call convertCamelToPascalCase - are you using the value returned by the call? So, to fix this, call setConvertedString() on a separate line, then 'return' on a separate line.
     const firstCharacterToUpperCase = _.startCase(inputString)
+    
+    setConvertedString(firstCharacterToUpperCase) // MM: DM: still void after calling the function before the return statement.
     return setConvertedString(
       // _.startCase(inputString).replace(/\s(\w)/g, (match, p1) => p1.toUpperCase())
-      firstCharacterToUpperCase
-    )
-    //  setConvertedString(inputString)
-  }
+      // firstCharacterToUpperCase
+      )
+      //  setConvertedString(inputString)
+    }
+    /*
+    MM: DM: in order to fix this issue i read this link to use the useEffect as follow: 
+    useEffect(() => {
+      console.log('Do something after convertedString has changed', convertedString);
+    }, [convertedString]);
+    But i am not sure if that's the only way of doing it, or there may be a simplest way too.
+    https://stackoverflow.com/questions/56247433/how-to-use-setstate-callback-on-react-hooks
+    */
 
   // this is good
   // pascal to camel case

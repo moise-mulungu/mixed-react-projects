@@ -23,7 +23,7 @@ const Weather = () => {
       })
   }, [])
 
-  // const mainObject = weather.main.temp ; if i define it here it throws an error: ReferenceError: mainObject is not defined DM: see my comment above the useState line above. 
+  // const mainObject = weather.main.temp ; if i define it here it throws an error: ReferenceError: mainObject is not defined DM: see my comment above the useState line above.(ok)
   /* 
      example of how to document steps taken to debug an error message:
 
