@@ -42,3 +42,10 @@ DM: todoMM: read this carefully. I'll expect you to have done(ok)
 - preserve original code and attempted changes (within reason) because it may be useful again
   - leave code unchanged, but commented out (so you can revert back if needed).
     - within reason, that is, use your judgement. Some attempts are an obvious 100% dead end, so you don't need to keep useless code around, so just put a note that you tried abc and abc did not work at all and why.
+
+## AI Prompt: fix the code Weather function
+- i asked the AI prompt to fix fix the code Weather function
+- the AI prompt corrected the code by :
+- removing all the comments
+- converting the first nested children of the weather object into an array
+- then returned that array by trying to access the properties of the first children, but the AI prompt did not resolve it.
