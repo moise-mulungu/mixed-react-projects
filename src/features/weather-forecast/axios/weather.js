@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
+/* 
+DM: if you look at the diff from my last commit to your last commit on Tuesday, look at weather.js and pascal-to-camel-case-cleaned.md. I have no way of seeing what you changed, which wastes a lot of my time and makes it hard to review. So, as a rule, don't make a separate cleaned version, just update the code. If we want to see the old version, we can check out an older commit and look at it. 
+DM: If you want to do a side-by-side, then take the OLD version and put it into a new file, then make your changes to the new version, so I can see the changes.
+Also, don't comment copy the old code then comment it out, because in the new code I can't see what you changed.
+
+DM: weather app throws an error in the browser. "TypeError: Cannot read properties of undefined (reading 'feels_like')". Don't leave errors or I can't review. Comment them out and put a note about what is wrong.
+
+If you are careful about all these things before you commit, I will have time to answer questions and do some questaion-and-answer teaching like we did that day last week. Otherwise, i have to spend all of my time writing these notes and correcting your code and I don't have time to teach. 
+
+
+
+ */
+
 const Weather = () => {
   // DM: there is a short period of time, before the API fetch is complete, when weather === {}, so if you try to access weather.main, main is not yet a property on weather.
   const [weather, setWeather] = useState({})

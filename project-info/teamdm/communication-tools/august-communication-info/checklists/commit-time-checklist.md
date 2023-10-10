@@ -22,7 +22,9 @@
     - easiest solution: put each thing in a DIV so that each thing is on its own line; this solves the problem of margins touching 
     - consider using shared components in src/ui/form/button is an example
     - EX: 2023-10-03 I really couldn't understand the top part of your weather app. it is too messy
-  - clear, readable, exact variable names !important; check them at commit time to see if you can think of a better name; ask AI to suggest variable names based on your description of the variable contents.
+  - clear, readable, exact variable names !important; 
+    - check them at commit time to see if you can think of a better name; 
+    - you cn ask AI to suggest variable names based on your description of the variable contents.
   - add comments if new code is not intuitive
 - npm run dev must work. Don't commit a broken app. Also, don't leave any major/large parts of the site broken. It's ok to have small parts broken, if you are currently working on them and you've left documentation about the bug in the affected file.
 - record tasks completed and hours worked in ../daily/yyyy-mm-dd.md
