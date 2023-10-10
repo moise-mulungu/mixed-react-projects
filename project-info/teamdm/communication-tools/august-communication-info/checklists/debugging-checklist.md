@@ -47,9 +47,3 @@ note: AI chat in VSCode, when you say 'code' will inspect selected code, or if n
     - within reason, that is, use your judgement. Some attempts are an obvious 100% dead end, so you don't need to keep useless code around, so just put a note that you tried abc and abc did not work at all and why.
 
 DM: todoMM: checklist items are for general approaches that you can use for any debugging issue, not stuff specific to one app. This belongs in the weather.js file, not here.
-## AI Prompt: fix the code Weather function
-- i asked the AI prompt to fix fix the code Weather function
-- the AI prompt corrected the code by :
-- removing all the comments
-- converting the first nested children of the weather object into an array
-- then returned that array by trying to access the properties of the first children, but the AI prompt did not resolve it.
