@@ -21,7 +21,7 @@ import React, { useState } from 'react'
 import { DocumentDuplicateIcon } from '@heroicons/react/20/solid'
 import { camelCase, startCase } from 'lodash'
 
-export default function PascalToCamelCase() {
+export default function PascalToCamelCaseCleaned() {
   const [inputString, setInputString] = useState('')
   const [inputTextCase, setInputTextCase] = useState('unknown')
   const [targetCase, setTargetCase] = useState('pascal')
