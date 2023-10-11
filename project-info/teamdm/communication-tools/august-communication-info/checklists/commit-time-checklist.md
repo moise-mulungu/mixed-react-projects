@@ -34,7 +34,7 @@
     - the "enough detail" can be in the form of new code, or comments in the code (about debugging attempts, for example)
     - links, info are often more useful for me, and in the future, if they are "inline" with the code
 - remove unnecessary console.logs (use judgement about which are temporary and which can be left commented out because they are useful in the future)
-- check UI and text all functionality before committing
-- test all app URLS for which code was edited in this commit
+- check UI and test all app functionality before committing
+- check for errors by visiting in the browser all app URLS for which code was edited in this commit
 
 DM: these are important to ensure I'm not losing time fixing things such as "default export function name matches filename, or directory name"(very informative!!!)

@@ -39,6 +39,8 @@ export default function PascalToCamelCaseCleaned() {
 
   function convertStringToCase(string, targetCase) {
     if (targetCase === 'pascal') {
+      // DM: interesting! I've never split on \b
+      // 
       const words = string.split(/\b/)
       const pascalCase = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join('')
       setConvertedString(pascalCase)
@@ -86,7 +88,7 @@ export default function PascalToCamelCaseCleaned() {
   }
 
   /* DM: this version looks really great. 
-     DM: todoMM: I can't tell what the radio buttons apply to. Are they for the input string or for the converted string? MM: radio buttons are for input string, because the handleInputChange function uses setTargetCase to set the target case.
+     DM: todoMM: I can't tell what the radio buttons apply to. Are they for the input string or for the converted string? MM: radio buttons are for input string, because the handleInputChange function uses setTargetCase to set the target case. DM: yes WE know that, but my comment implies that it is hard for the user to know what the radios apply to. If you compare to your previous version, you no longer have the "To: " label which clarifies the purpose of the radios."
   */
 
   return (
@@ -107,7 +109,7 @@ export default function PascalToCamelCaseCleaned() {
                   <label htmlFor="string" className="font-medium text-gray-900">
                     Input String
                   </label>
-                  {/* (done)DM: todoMM: in the browser, I can't see where to type the string when I first land on the page. refresh to see that. Add a border to the input? */}
+                  
                   <input
                     id="string"
                     name="string"
@@ -176,9 +178,7 @@ export default function PascalToCamelCaseCleaned() {
                 </div>
               </div>
               <div className="mt-4">
-                {/*(done) DM: if the targetCase is PascalCase your converted string is not correct because it contains a space between the two words 
-                  (done)DM: todoMM: add to your commit checklist: check UI and test all functionality before committing.
-              */}
+                
                 <h3 className="text-start text-l font-medium leading-7 tracking-tight text-gray-600">
                   Converted String
                 </h3>
@@ -201,8 +201,7 @@ export default function PascalToCamelCaseCleaned() {
                 </div>
               </div>
 
-              {/* DM: debug doesn't exist in this file. Please be sure that your code runs before you commit.(ok)
-                 (done)DM: todoMM: add 'test all app URLS for which code was edited in this commit' to your commit checklist. */}
+              
               {true && (
                 <pre>
                   {JSON.stringify(
