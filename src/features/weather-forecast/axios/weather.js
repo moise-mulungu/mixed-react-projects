@@ -9,7 +9,7 @@ Also, don't comment copy the old code then comment it out, because in the new co
 
 DM: weather app throws an error in the browser. "TypeError: Cannot read properties of undefined (reading 'feels_like')". Don't leave errors or I can't review. Comment them out and put a note about what is wrong.
 
-If you are careful about all these things before you commit, I will have time to answer questions and do some questaion-and-answer teaching like we did that day last week. Otherwise, i have to spend all of my time writing these notes and correcting your code and I don't have time to teach. 
+If you are careful about all these things before you commit, I will have time to answer questions and do some question-and-answer teaching like we did that day last week. Otherwise, i have to spend all of my time writing these notes and correcting your code and I don't have time to teach. 
 
 
 

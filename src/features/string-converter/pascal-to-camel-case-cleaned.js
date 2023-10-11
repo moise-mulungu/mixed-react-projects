@@ -27,10 +27,21 @@ export default function PascalToCamelCaseCleaned() {
   const [targetCase, setTargetCase] = useState('pascal')
   const [convertedString, setConvertedString] = useState('')
 
+  // function convertStringToCase(string, targetCase) {
+  //   if (targetCase === 'pascal') {
+  //     const firstCharacterToUpperCase = startCase(string)
+  //     setConvertedString(firstCharacterToUpperCase)
+  //   } else {
+  //     const firstCharacterToLowerCase = camelCase(string)
+  //     setConvertedString(firstCharacterToLowerCase)
+  //   }
+  // }
+
   function convertStringToCase(string, targetCase) {
     if (targetCase === 'pascal') {
-      const firstCharacterToUpperCase = startCase(string)
-      setConvertedString(firstCharacterToUpperCase)
+      const words = string.split(/\b/)
+      const pascalCase = words.map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join('')
+      setConvertedString(pascalCase)
     } else {
       const firstCharacterToLowerCase = camelCase(string)
       setConvertedString(firstCharacterToLowerCase)
@@ -75,7 +86,7 @@ export default function PascalToCamelCaseCleaned() {
   }
 
   /* DM: this version looks really great. 
-     DM: todoMM: I can't tell what the radio buttons apply to. Are they for the input string or for the converted string? 
+     DM: todoMM: I can't tell what the radio buttons apply to. Are they for the input string or for the converted string? MM: radio buttons are for input string, because the handleInputChange function uses setTargetCase to set the target case.
   */
 
   return (
@@ -96,14 +107,15 @@ export default function PascalToCamelCaseCleaned() {
                   <label htmlFor="string" className="font-medium text-gray-900">
                     Input String
                   </label>
-                  {/* DM: todoMM: in the browser, I can't see where to type the string when I first land on the page. refresh to see that. Add a border to the input? */}
+                  {/* (done)DM: todoMM: in the browser, I can't see where to type the string when I first land on the page. refresh to see that. Add a border to the input? */}
                   <input
                     id="string"
                     name="string"
                     type="text"
                     value={inputString}
                     onChange={(e) => handleInputChange(e.target.value)}
-                    className="block w-full rounded-md border-gray-300 mt-1 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 p-2"
+                    // "block w-full rounded-md border-gray-200 mt-3 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   />
                   {inputTextCase !== 'unknown' && (
                     <span className="text-xs text-gray-500">Detected case: {inputTextCase}</span>
@@ -164,8 +176,8 @@ export default function PascalToCamelCaseCleaned() {
                 </div>
               </div>
               <div className="mt-4">
-              {/* DM: if the targetCase is PascalCase your converted string is not correct because it contains a space between the two words 
-                  DM: todoMM: add to your commit checklist: check UI and text all functionality before committing.
+                {/*(done) DM: if the targetCase is PascalCase your converted string is not correct because it contains a space between the two words 
+                  (done)DM: todoMM: add to your commit checklist: check UI and test all functionality before committing.
               */}
                 <h3 className="text-start text-l font-medium leading-7 tracking-tight text-gray-600">
                   Converted String
@@ -189,9 +201,8 @@ export default function PascalToCamelCaseCleaned() {
                 </div>
               </div>
 
-             {/* DM: debug doesn't exist in this file. Please be sure that your code runs before you commit.
-                 DM: todoMM: add 'test all app URLS for which code was edited in this commit' to your commit checklist. */}
-              {/* {debug && ( */}
+              {/* DM: debug doesn't exist in this file. Please be sure that your code runs before you commit.(ok)
+                 (done)DM: todoMM: add 'test all app URLS for which code was edited in this commit' to your commit checklist. */}
               {true && (
                 <pre>
                   {JSON.stringify(
