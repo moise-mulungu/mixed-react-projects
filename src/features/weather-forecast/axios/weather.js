@@ -11,6 +11,72 @@ DM: weather app throws an error in the browser. "TypeError: Cannot read properti
 
 If you are careful about all these things before you commit, I will have time to answer questions and do some question-and-answer teaching like we did that day last week. Otherwise, i have to spend all of my time writing these notes and correcting your code and I don't have time to teach. 
 
+const [degree, setDegree] = useState('fahrenheit')
+
+const handleDegreeChange = (e) => {
+  setDegree(e.target.value)
+}
+
+return (
+  <div>
+    <div className="flex mb-4">
+      <input
+        type="text"
+        className="border border-gray-300 rounded-l py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Enter city"
+        value={city}
+        onChange={handleCityChange}
+      />
+      <button
+        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-blue-500"
+        onClick={handleButtonClick}
+      >
+        Get Weather
+      </button>
+    </div>
+    <div className="mt-4">
+      <input
+        type="radio"
+        id="celsius"
+        name="degree"
+        value="celsius"
+        checked={degree === 'celsius'}
+        onChange={handleDegreeChange}
+      />
+      <label htmlFor="celsius" className="ml-2 mr-4">
+        Celsius
+      </label>
+      <input
+        type="radio"
+        id="fahrenheit"
+        name="degree"
+        value="fahrenheit"
+        checked={degree === 'fahrenheit'}
+        onChange={handleDegreeChange}
+      />
+      <label htmlFor="fahrenheit" className="ml-2">
+        Fahrenheit
+      </label>
+    </div>
+    <div className={`fixed inset-0 flex items-center justify-center ${modalOpen ? '' : 'hidden'}`}>
+      <div className="bg-white p-8 rounded-lg shadow-lg">
+        <p className="text-gray-800 text-lg font-semibold mb-4">Weather Information</p>
+        <p>Temperature: {degree === 'celsius' ? Math.round((weather.main?.temp - 32) * 5 / 9) : weather.main?.temp}°{degree.toUpperCase()}</p>
+        <p>Approximate: ({degree === 'celsius' ? Math.round((weather.main?.feels_like - 32) * 5 / 9) : weather.main?.feels_like}°{degree.toUpperCase()})</p>
+        <p>Humidity: {weather.main?.humidity}%</p>
+        <p>Description: {weather.weather?.[0]?.description}</p>
+        <p>Wind Speed: {weather.wind?.speed} mph</p>
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-4"
+          onClick={closeModal}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)
+
 
 
  */
@@ -18,15 +84,38 @@ If you are careful about all these things before you commit, I will have time to
 const Weather = () => {
   // DM: there is a short period of time, before the API fetch is complete, when weather === {}, so if you try to access weather.main, main is not yet a property on weather.
   const [weather, setWeather] = useState({})
+  const [city, setCity] = useState('London') // i initialized the city state with the default value of "London"
+  const [modalOpen, setModalOpen] = useState(false)
+  const [degree, setDegree] = useState('fahrenheit')
 
   useEffect(() => {
-    // Replace 'YOUR_API_KEY' with your own API key
+    fetchWeatherData() // The fetchWeatherData function is called when the component mounts and whenever the button is clicked
+  }, [])
+  // useEffect(() => {
+  //   // Replace 'YOUR_API_KEY' with your own API key
+  //   axios
+  //     .get('https://api.openweathermap.org/data/2.5/weather', {
+  //       params: {
+  //         appid: '85bd5941b66f2ecc9f970952677ab2f3',
+  //         units: 'imperial',
+  //         q: 'London',
+  //       },
+  //     })
+  //     .then((response) => {
+  //       setWeather(response.data)
+  //     })
+  //     .catch((error) => {
+  //       console.error(error)
+  //     })
+  // }, [])
+
+  const fetchWeatherData = () => {
     axios
       .get('https://api.openweathermap.org/data/2.5/weather', {
         params: {
           appid: '85bd5941b66f2ecc9f970952677ab2f3',
           units: 'imperial',
-          q: 'London',
+          q: city,
         },
       })
       .then((response) => {
@@ -35,8 +124,11 @@ const Weather = () => {
       .catch((error) => {
         console.error(error)
       })
-  }, [])
+  }
 
+  const convertFahrenheitToCelsius = (fahrenheit) => {
+    return Math.round(((fahrenheit - 32) * 5) / 9)
+  }
   // const mainObject = weather.main.temp ; if i define it here it throws an error: ReferenceError: mainObject is not defined DM: see my comment above the useState line above.(ok)
   /*
      example of how to document steps taken to debug an error message:
@@ -75,56 +167,160 @@ const Weather = () => {
   //     )
   //   })
   // })
+
+  // The handleCityChange function updates the city state whenever the input field value changes
+  const handleCityChange = (e) => {
+    setCity(e.target.value)
+  }
+
+  // The handleButtonClick function triggers the fetchWeatherData function to fetch weather data for the selected city
+  const handleButtonClick = () => {
+    fetchWeatherData()
+    setModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setModalOpen(false)
+  }
+
+  const handleDegreeChange = (e) => {
+    setDegree(e.target.value)
+  }
   return (
     <div>
-      {' '}
-      {/* DM: this is a good way to get what you want, no?
-      MM: i fixed this by asking SIderAI prompt on how to fix the Error: Objects are not valid as a React child (found: object with keys {lon, lat}). If you meant to render a collection of children, use an array instead." all the steps undertaken are listed in the src/features/weather-forecast/axios/debugging-weather-app.md fi */}
-      <p>Temperature: {weather.main?.temp}°F</p>
-      <p>Approximate: ({weather.main?.feels_like}°F)</p>
-      <p>Humidity: {weather.main?.humidity}%</p>
-      <p>Description: {weather.weather?.[0]?.description}</p>
-      <p>Wind Speed: {weather.wind?.speed} mph</p>
-      <div>
-        {/* MM: DM: all these below are no more necessary */}
-        {Object.entries(weather)?.map((item) => {
-          // MM: DM: i want here to get the first nested children from the weather api
-          console.log('item:', { item, typeof: typeof item })
-
-          {
-            //  MM: DM: i want here to get the second nested children from the weather api
-            //(ok) DM: you can't render an object or your'll get that error you mentioned
-            // DM: you can render a primitive
-            //(done) DM: so, if the primitive value you want is inside the object, how do you access it?
-            // DM: given that the comments refer to the code below the comment, we are talking about the 'value' variable. Therefore, what kind of object does the 'value' variable contain? Your howtojs is good, but it shows how to access the properties of objects, not an array.
-            /*
-            howtojs: object: access object properties:: You can access the properties of an object in JavaScript in 3 ways:
-            1. Dot property accessor:
-            2. object. property.Square brackets property accessor: object['property']
-            3. Object destructuring: const { property } = object.
-            */
-            Object.entries(item)?.map((value) => {
-              console.log('value:', { value, typeof: typeof value, isArray: Array.isArray(value) })
-
-              {
-                //  MM: DM: i want here to get the third nested children from the weather api
-                Object.entries(value)?.map((element) => {
-                  console.log('element:', { element, typeof: typeof element })
-                  console.log('element:', { weather, item, value })
-                  return <p>{element}</p>
-                })
-              }
-            })
-          }
-        })}
+      <div className="flex mb-4">
+        <input
+          type="text"
+          className="border border-gray-300 rounded-l py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter city"
+          value={city}
+          onChange={handleCityChange}
+        />
+        <button
+          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-blue-500"
+          onClick={handleButtonClick}
+        >
+          Get Weather
+        </button>
       </div>
-      <pre>
-        For viewing the entire object in the browser:
-        <br />
-        {JSON.stringify(weather, null, 2)}
-      </pre>
+      <div className="mt-4">
+        <input
+          type="radio"
+          id="celsius"
+          name="degree"
+          value="celsius"
+          checked={degree === 'celsius'}
+          onChange={handleDegreeChange}
+        />
+        <label htmlFor="celsius" className="ml-2 mr-4">
+          Celsius
+        </label>
+        <input
+          type="radio"
+          id="fahrenheit"
+          name="degree"
+          value="fahrenheit"
+          checked={degree === 'fahrenheit'}
+          onChange={handleDegreeChange}
+        />
+        <label htmlFor="fahrenheit" className="ml-2">
+          Fahrenheit
+        </label>
+      </div>
+      <div
+        className={`fixed inset-0 flex items-center justify-center ${modalOpen ? '' : 'hidden'}`}
+      >
+        <div className="bg-white p-8 rounded-lg shadow-lg">
+          <p className="text-gray-800 text-lg font-semibold mb-4">Weather Information</p>
+          {/* <p>
+            Temperature:{' '}
+            {degree === 'celsius'
+              ? Math.round(((weather.main?.temp - 32) * 5) / 9)
+              : weather.main?.temp}
+            °{degree.toUpperCase()}
+          </p>
+          <p>
+            Approximate: (
+            {degree === 'celsius'
+              ? Math.round(((weather.main?.feels_like - 32) * 5) / 9)
+              : weather.main?.feels_like}
+            °{degree.toUpperCase()})
+          </p> */}
+          <p>
+            Temperature:{' '}
+            {degree === 'celsius'
+              ? convertFahrenheitToCelsius(weather.main?.temp)
+              : weather.main?.temp}
+            °{degree.toUpperCase()}
+          </p>
+          <p>
+            Approximate: (
+            {degree === 'celsius'
+              ? convertFahrenheitToCelsius(weather.main?.feels_like)
+              : weather.main?.feels_like}
+            °{degree.toUpperCase()})
+          </p>
+          <p>Humidity: {weather.main?.humidity}%</p>
+          <p>Description: {weather.weather?.[0]?.description}</p>
+          <p>Wind Speed: {weather.wind?.speed} mph</p>
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-4"
+            onClick={closeModal}
+          >
+            Close
+          </button>
+        </div>
+      </div>
     </div>
   )
+  //   <div>
+  //     {' '}
+  //     {/* DM: this is a good way to get what you want, no?
+  //     MM: i fixed this by asking SIderAI prompt on how to fix the Error: Objects are not valid as a React child (found: object with keys {lon, lat}). If you meant to render a collection of children, use an array instead." all the steps undertaken are listed in the src/features/weather-forecast/axios/debugging-weather-app.md fi */}
+  //     <p>Temperature: {weather.main?.temp}°F</p>
+  //     <p>Approximate: ({weather.main?.feels_like}°F)</p>
+  //     <p>Humidity: {weather.main?.humidity}%</p>
+  //     <p>Description: {weather.weather?.[0]?.description}</p>
+  //     <p>Wind Speed: {weather.wind?.speed} mph</p>
+  //     <div>
+  //       {/* MM: DM: all these below are no more necessary */}
+  //       {Object.entries(weather)?.map((item) => {
+  //         // MM: DM: i want here to get the first nested children from the weather api
+  //         console.log('item:', { item, typeof: typeof item })
+
+  //         {
+  //           //  MM: DM: i want here to get the second nested children from the weather api
+  //           //(ok) DM: you can't render an object or your'll get that error you mentioned
+  //           // DM: you can render a primitive
+  //           //(done) DM: so, if the primitive value you want is inside the object, how do you access it?
+  //           // DM: given that the comments refer to the code below the comment, we are talking about the 'value' variable. Therefore, what kind of object does the 'value' variable contain? Your howtojs is good, but it shows how to access the properties of objects, not an array.
+  //           /*
+  //           howtojs: object: access object properties:: You can access the properties of an object in JavaScript in 3 ways:
+  //           1. Dot property accessor:
+  //           2. object. property.Square brackets property accessor: object['property']
+  //           3. Object destructuring: const { property } = object.
+  //           */
+  //           Object.entries(item)?.map((value) => {
+  //             console.log('value:', { value, typeof: typeof value, isArray: Array.isArray(value) })
+
+  //             {
+  //               //  MM: DM: i want here to get the third nested children from the weather api
+  //               Object.entries(value)?.map((element) => {
+  //                 console.log('element:', { element, typeof: typeof element })
+  //                 console.log('element:', { weather, item, value })
+  //                 return <p>{element}</p>
+  //               })
+  //             }
+  //           })
+  //         }
+  //       })}
+  //     </div>
+  //     <pre>
+  //       For viewing the entire object in the browser:
+  //       <br />
+  //       {JSON.stringify(weather, null, 2)}
+  //     </pre>
+  //   </div>
 }
 export default Weather
 
@@ -174,3 +370,5 @@ export default Weather
 // export default Weather
 
 // (done)DM: todoMM: revert this to the commented out original, then based on t9 suggestions, see if you can fix the errors. Select a specific part of the code, then ask 09 to suggest changes that the selected code only. Also, is this task part of the weather app, or just outputting those variables. You can do that better by just using the JSON.stringify approach I mentioned
+
+// MM: DM: after your review, i am thinking of enhancing the modal style to be more attractive.
