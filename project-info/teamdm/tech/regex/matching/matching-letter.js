@@ -13,7 +13,7 @@ const matchAllAlphaNumerics = /\w+/g
 const result4 = sentenceTwo.match(matchAllAlphaNumerics)
 // DM: todoMM: expected result?
 console.log({ result4 }) // ["I", "am", "a", "developer", "with", "100", "of", "56", "attempts", "of", "space", "_"]
-// DM: all this text is repetitive and doesn't provide any additional information "; To match letters in JavaScript, you can use the following regular expression". So I removed it.
+// DM: all this text is repetitive and doesn't provide any additional information "; To match letters in JavaScript, you can use the following regular expression". So I removed it.(ok)
 // howtojs: regexp:: matching alphabetical characters: /[A-Za-z]/. /[a-zA-Z]/g splits into letters, but /[A-Za-z]+/g splits into words.
 const matchBothUpperAndLowerCharacters = /[A-Za-z]+/g
 const result3 = sentence.match(matchBothUpperAndLowerCharacters)

@@ -3,8 +3,9 @@ import axios from 'axios'
 
 /* 
 DM: if you look at the diff from my last commit to your last commit on Tuesday, look at weather.js and pascal-to-camel-case-cleaned.md. I have no way of seeing what you changed, which wastes a lot of my time and makes it hard to review. So, as a rule, don't make a separate cleaned version, just update the code. If we want to see the old version, we can check out an older commit and look at it. 
+MM: DM: the pascalToCamelCaseCleaned function is for string converter app not for the weather app. 
 DM: If you want to do a side-by-side, then take the OLD version and put it into a new file, then make your changes to the new version, so I can see the changes.
-Also, don't comment copy the old code then comment it out, because in the new code I can't see what you changed.
+Also, don't comment copy the old code then comment it out, because in the new code I can't see what you changed.(ok)
 
 DM: weather app throws an error in the browser. "TypeError: Cannot read properties of undefined (reading 'feels_like')". Don't leave errors or I can't review. Comment them out and put a note about what is wrong.
 
@@ -79,9 +80,8 @@ const Weather = () => {
       {' '}
       {/* DM: this is a good way to get what you want, no?
       MM: i fixed this by asking SIderAI prompt on how to fix the Error: Objects are not valid as a React child (found: object with keys {lon, lat}). If you meant to render a collection of children, use an array instead." all the steps undertaken are listed in the src/features/weather-forecast/axios/debugging-weather-app.md fi */}
-      <p>
-        Temperature: {weather.main?.temp}°F ({weather.main.feels_like}°F)
-      </p>
+      <p>Temperature: {weather.main?.temp}°F</p>
+      <p>Approximate: ({weather.main?.feels_like}°F)</p>
       <p>Humidity: {weather.main?.humidity}%</p>
       <p>Description: {weather.weather?.[0]?.description}</p>
       <p>Wind Speed: {weather.wind?.speed} mph</p>
