@@ -1,4 +1,8 @@
-<!-- src: Sider AI prompt: "explain react state hook in depth", "what are values to pass to the initial state of react state hook?" and react dev: https://react.dev/reference/react/useState -->
+<!-- src: Sider AI prompt: "explain react state hook in depth", "what are values to pass to the initial state of react state hook?" and react dev: https://react.dev/reference/react/useState 
+
+DM: looks good! Good you did lots of howtos and practiced using AI in your learning process. 
+
+-->
 
 ***The React state hook (useState) is a built-in hook that allows functional components in React to have stateful behavior. It provides a way to store and manage data that can change over time within a component.***
 
@@ -8,13 +12,13 @@
 1. Importing the useState hook:
    - To use the useState hook, you need to import it from the 'react' package like this: `import React, { useState } from 'react';`
 
-***howtojs: react:: react-hook-useState;To initialize state, declare a variable with destructuring method and equalize to your initial value.***
+***howtojs: react:: react-hook-useState;To initialize state, declare variables using destructuring and initialize to your initial value.***
 1. Initializing state:
    
    - To initialize state, you call the useState hook and pass in the initial value for the state. The hook returns an array with two elements: the current state value and a function to update the state. For example: `const [count, setCount] = useState(0);`
    - In this example, the initial value of the state is 0, and the hook returns a variable called 'count' to access the current value of the state, and a function called 'setCount' to update the state.
 
-   ***howtojs: react:: react-hook-useState;To access the current value of the state, simply use the variable returned by the useState hook inside a curly brace in a tag element.***
+   ***howtojs: react:: react-hook-useState;To access the current value of the state variable in JSX, simply use the variable returned by the useState hook inside a curly brace in a tag element.***
 2. Accessing state:
    - To access the current value of the state, you simply use the variable returned by the useState hook. For example, to display the value of 'count' in JSX: `<p>Count: {count}</p>`
 
