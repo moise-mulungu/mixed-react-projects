@@ -110,4 +110,4 @@ You could also search: "interview question react render commit virtual dom" to f
 ## react hook lifecycle
 
 A React component undergoes three different phases in its lifecycle, including `mounting`, `updating`, and `unmounting`. Each phase has specific methods responsible for a particular stage in a component's lifecycle.
-react-hook-lifecycle image source: https://github.com/Wavez/react-hooks-lifecycle (done)DM: where is the image? State here where I can find the image.(the image is foud in teamdm/react-hooks folder).
+react-hook-lifecycle image source: https://github.com/Wavez/react-hooks-lifecycle (done)DM: where is the image? State here where I can find the image.(the image is found in teamdm/react-hooks folder).
