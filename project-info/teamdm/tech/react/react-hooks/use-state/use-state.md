@@ -4,34 +4,40 @@
 
 ## Steps to use useState hook in React:
 
+***howtojs: react:: react-hook-useState;to import useState from the 'react' package at the top of the file: import React, { useState } from 'react'***
 1. Importing the useState hook:
    - To use the useState hook, you need to import it from the 'react' package like this: `import React, { useState } from 'react';`
 
-2. Initializing state:
+***howtojs: react:: react-hook-useState;To initialize state, declare a variable with destructuring method and equalize to your initial value.***
+1. Initializing state:
+   
    - To initialize state, you call the useState hook and pass in the initial value for the state. The hook returns an array with two elements: the current state value and a function to update the state. For example: `const [count, setCount] = useState(0);`
    - In this example, the initial value of the state is 0, and the hook returns a variable called 'count' to access the current value of the state, and a function called 'setCount' to update the state.
 
-3. Accessing state:
+   ***howtojs: react:: react-hook-useState;To access the current value of the state, simply use the variable returned by the useState hook inside a curly brace in a tag element.***
+2. Accessing state:
    - To access the current value of the state, you simply use the variable returned by the useState hook. For example, to display the value of 'count' in JSX: `<p>Count: {count}</p>`
 
-4. Updating state:
+   ***howtojs: react:: react-hook-useState;To update the state, call the setter function returned by the useState hook and pass in the new value.***
+3. Updating state:
    - To update the state, you call the function returned by the useState hook and pass in the new value. For example, to increment the 'count' state by 1: `setCount(count + 1);`
    - When you call the state update function, React will re-render the component with the new state value, and any parts of the component that depend on the state will be updated.
 
+ ***howtojs: react:: react-hook-useState;to use multiple state variables, declare multiple variables with the useState hook multiple times in a component.***
 5. Multiple state variables:
    - You can use the useState hook multiple times in a component to manage multiple state variables. For example: 
      ```
      const [name, setName] = useState('');
      const [age, setAge] = useState(0);
      ```
-
+***howtojs: react:: react-hook-useState; functional updates, to update the function you need to set a function as an argument and return it that function***
 6. Functional updates:
    - The state update function returned by useState can also accept a function as an argument. This can be useful when the new state value depends on the previous state value. For example:
      ```
      setCount(prevCount => prevCount + 1);
      setCount(prevCount => prevCount * 2);
      ```
-
+***howtojs: react:: react-hook-useState; Object or array state, to manage state that is an object or an array, set your initial value to that object or array***
 7. Object or array state:
    - The useState hook can also be used to manage state that is an object or an array. For example:
      ```
