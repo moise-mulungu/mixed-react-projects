@@ -20,7 +20,7 @@ const Weather = () => {
   const [weather, setWeather] = useState({})
   const [city, setCity] = useState('') // i initialized the city state with the default value of "London"
   const [modalOpen, setModalOpen] = useState(false)
-  const [degree, setDegree] = useState('fahrenheit')
+  const [degree, setDegree] = useState('')
 
   useEffect(() => {
     fetchWeatherData() // The fetchWeatherData function is called when the component mounts and whenever the button is clicked
@@ -121,76 +121,76 @@ const Weather = () => {
     setDegree(e.target.value)
   }
   return (
-    <div className="grid place-items-center h-screen">
-      <div className="flex mb-0">
-        <label htmlFor="city" className="ml-2 mr-4">
-          Add city
-        </label>
-        <input
-          type="text"
-          className="border border-gray-300 rounded-l py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
-          placeholder="Enter city"
-          value={city}
-          onChange={handleCityChange}
-        />
-        <button
-          className="bg-blue-500 hover:bg-blue-600 text-white ml-1 py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-blue-500"
-          onClick={handleButtonClick}
-        >
-          Get Weather
-        </button>
-      </div>
-      <div className="flex mt-0 items-center">
-        <input
-          type="radio"
-          id="celsius"
-          name="degree"
-          value="celsius"
-          checked={degree === 'celsius'}
-          onChange={handleDegreeChange}
-        />
-        <label htmlFor="celsius" className="ml-2 mr-4">
-          Celsius
-        </label>
-        <input
-          type="radio"
-          id="fahrenheit"
-          name="degree"
-          value="fahrenheit"
-          checked={degree === 'fahrenheit'}
-          onChange={handleDegreeChange}
-        />
-        <label htmlFor="fahrenheit" className="ml-2">
-          Fahrenheit
-        </label>
-      </div>
-      <div className={`fixed inset-12 grid place-items-center ${modalOpen ? '' : 'hidden'}`}>
-        <div className="bg-white p-8 rounded-lg shadow-lg">
-          <p className="text-gray-800 text-lg font-semibold mb-4">Weather Information</p>
-
-          <p>
-            Temperature:{' '}
-            {degree === 'celsius'
-              ? convertFahrenheitToCelsius(weather.main?.temp)
-              : weather.main?.temp}
-            °{degree.toUpperCase()}
-          </p>
-          <p>
-            Approximate: (
-            {degree === 'celsius'
-              ? convertFahrenheitToCelsius(weather.main?.feels_like)
-              : weather.main?.feels_like}
-            °{degree.toUpperCase()})
-          </p>
-          <p>Humidity: {weather.main?.humidity}%</p>
-          <p>Description: {weather.weather?.[0]?.description}</p>
-          <p>Wind Speed: {weather.wind?.speed} mph</p>
+    <div className="h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+      <div className="relative py-3 sm:max-w-xl sm:mx-auto">
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl" /> */}
+        <div className="flex mb-0">
+          <input
+            type="text"
+            className="border border-gray-300 rounded-l py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
+            placeholder="Enter city"
+            value={city}
+            onChange={handleCityChange}
+          />
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-4"
-            onClick={closeModal}
+            className="bg-blue-500 hover:bg-blue-600 text-white ml-1 py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-blue-500"
+            onClick={handleButtonClick}
           >
-            Close
+            Get Weather
           </button>
+        </div>
+        <div className="flex mt-4 items-center">
+          <input
+            type="radio"
+            id="celsius"
+            name="degree"
+            value="celsius"
+            checked={degree === 'celsius'}
+            onChange={handleDegreeChange}
+          />
+          <label htmlFor="celsius" className="ml-2 mr-4">
+            Celsius
+          </label>
+          <input
+            type="radio"
+            id="fahrenheit"
+            name="degree"
+            value="fahrenheit"
+            checked={degree === 'fahrenheit'}
+            onChange={handleDegreeChange}
+          />
+          <label htmlFor="fahrenheit" className="ml-2">
+            Fahrenheit
+          </label>
+        </div>
+        <div className={`fixed inset-12 grid place-items-center ${modalOpen ? '' : 'hidden'}`}>
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <p className="text-gray-800 text-lg font-semibold mb-4">Weather Information</p>
+
+            <p>
+              Temperature:{' '}
+              {degree === 'celsius'
+                ? convertFahrenheitToCelsius(weather.main?.temp)
+                : weather.main?.temp}
+              °{degree.toUpperCase()}
+            </p>
+            <p>
+              Approximate: (
+              {degree === 'celsius'
+                ? convertFahrenheitToCelsius(weather.main?.feels_like)
+                : weather.main?.feels_like}
+              °{degree.toUpperCase()})
+            </p>
+            <p>Humidity: {weather.main?.humidity}%</p>
+            <p>Description: {weather.weather?.[0]?.description}</p>
+            <p>Wind Speed: {weather.wind?.speed} mph</p>
+            <button
+              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-4"
+              onClick={closeModal}
+            >
+              Close
+            </button>
+          </div>
         </div>
       </div>
     </div>
