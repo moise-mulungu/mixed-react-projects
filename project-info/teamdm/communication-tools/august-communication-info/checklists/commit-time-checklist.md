@@ -36,5 +36,6 @@
 - remove unnecessary console.logs (use judgement about which are temporary and which can be left commented out because they are useful in the future)
 - check UI and test all app functionality before committing
 - check for errors by visiting in the browser all app URLS for which code was edited in this commit
+- ensure you've asked AI to review all of the new code for "best practices"
 
 DM: these are important to ensure I'm not losing time fixing things such as "default export function name matches filename, or directory name"(very informative!!!)

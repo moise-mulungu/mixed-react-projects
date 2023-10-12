@@ -88,7 +88,7 @@ export default function PascalToCamelCaseCleaned() {
   }
 
   /* DM: this version looks really great. 
-     DM: todoMM: I can't tell what the radio buttons apply to. Are they for the input string or for the converted string? MM: radio buttons are for input string, because the handleInputChange function uses setTargetCase to set the target case. DM: yes WE know that, but my comment implies that it is hard for the user to know what the radios apply to. If you compare to your previous version, you no longer have the "To: " label which clarifies the purpose of the radios."
+     DM: todoMM: I can't tell what the radio buttons apply to. Are they for the input string or for the converted string? MM: radio buttons are for input string, because the handleInputChange function uses setTargetCase to set the target case. DM: yes WE know that, but my comment implies that it is hard for the user to know what the radios apply to. If you compare to your previous version, you no longer have the "To: " label which clarifies the purpose of the radios." MM: DM: that makes sense, you are right!.
   */
 
   return (

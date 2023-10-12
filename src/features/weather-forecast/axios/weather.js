@@ -374,4 +374,4 @@ export default Weather
 
 // (done)DM: todoMM: revert this to the commented out original, then based on t9 suggestions, see if you can fix the errors. Select a specific part of the code, then ask 09 to suggest changes that the selected code only. Also, is this task part of the weather app, or just outputting those variables. You can do that better by just using the JSON.stringify approach I mentioned
 
-// MM: DM: after your review, i am thinking of enhancing the modal style to be more attractive. DM: OK, but remember to develop all the functionality first, then make it pretty. You don't want to have to spend a lot of time re-doing the look & feel (UI) each time you change the functionality.
+// MM: DM: after your review, i am thinking of enhancing the modal style to be more attractive. DM: OK, but remember to develop all the functionality first, then make it pretty. You don't want to have to spend a lot of time re-doing the look & feel (UI) each time you change the functionality.(MM: at this stage, all the functionalities are complete. only the UI that i'll be working on)
