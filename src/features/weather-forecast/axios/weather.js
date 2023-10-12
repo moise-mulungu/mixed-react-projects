@@ -13,81 +13,12 @@ Also, don't comment copy the old code then comment it out, because in the new co
 DM: weather app throws an error in the browser. "TypeError: Cannot read properties of undefined (reading 'feels_like')". Don't leave errors or I can't review. Comment them out and put a note about what is wrong.
 
 If you are careful about all these things before you commit, I will have time to answer questions and do some question-and-answer teaching like we did that day last week. Otherwise, i have to spend all of my time writing these notes and correcting your code and I don't have time to teach. 
-
-const [degree, setDegree] = useState('fahrenheit')
-
-const handleDegreeChange = (e) => {
-  setDegree(e.target.value)
-}
-
-return (
-  <div>
-    <div className="flex mb-4">
-      <input
-        type="text"
-        className="border border-gray-300 rounded-l py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        placeholder="Enter city"
-        value={city}
-        onChange={handleCityChange}
-      />
-      <button
-        className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-blue-500"
-        onClick={handleButtonClick}
-      >
-        Get Weather
-      </button>
-    </div>
-    <div className="mt-4">
-      <input
-        type="radio"
-        id="celsius"
-        name="degree"
-        value="celsius"
-        checked={degree === 'celsius'}
-        onChange={handleDegreeChange}
-      />
-      <label htmlFor="celsius" className="ml-2 mr-4">
-        Celsius
-      </label>
-      <input
-        type="radio"
-        id="fahrenheit"
-        name="degree"
-        value="fahrenheit"
-        checked={degree === 'fahrenheit'}
-        onChange={handleDegreeChange}
-      />
-      <label htmlFor="fahrenheit" className="ml-2">
-        Fahrenheit
-      </label>
-    </div>
-    <div className={`fixed inset-0 flex items-center justify-center ${modalOpen ? '' : 'hidden'}`}>
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <p className="text-gray-800 text-lg font-semibold mb-4">Weather Information</p>
-        <p>Temperature: {degree === 'celsius' ? Math.round((weather.main?.temp - 32) * 5 / 9) : weather.main?.temp}°{degree.toUpperCase()}</p>
-        <p>Approximate: ({degree === 'celsius' ? Math.round((weather.main?.feels_like - 32) * 5 / 9) : weather.main?.feels_like}°{degree.toUpperCase()})</p>
-        <p>Humidity: {weather.main?.humidity}%</p>
-        <p>Description: {weather.weather?.[0]?.description}</p>
-        <p>Wind Speed: {weather.wind?.speed} mph</p>
-        <button
-          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-4"
-          onClick={closeModal}
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-)
-
-
-
  */
 
 const Weather = () => {
   // DM: there is a short period of time, before the API fetch is complete, when weather === {}, so if you try to access weather.main, main is not yet a property on weather.
   const [weather, setWeather] = useState({})
-  const [city, setCity] = useState('London') // i initialized the city state with the default value of "London"
+  const [city, setCity] = useState('') // i initialized the city state with the default value of "London"
   const [modalOpen, setModalOpen] = useState(false)
   const [degree, setDegree] = useState('fahrenheit')
 
@@ -190,23 +121,26 @@ const Weather = () => {
     setDegree(e.target.value)
   }
   return (
-    <div>
-      <div className="flex mb-4">
+    <div className="grid place-items-center h-screen">
+      <div className="flex mb-0">
+        <label htmlFor="city" className="ml-2 mr-4">
+          Add city
+        </label>
         <input
           type="text"
-          className="border border-gray-300 rounded-l py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-300 rounded-l py-2 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500 w-64"
           placeholder="Enter city"
           value={city}
           onChange={handleCityChange}
         />
         <button
-          className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="bg-blue-500 hover:bg-blue-600 text-white ml-1 py-2 px-4 rounded-r focus:outline-none focus:ring-2 focus:ring-blue-500"
           onClick={handleButtonClick}
         >
           Get Weather
         </button>
       </div>
-      <div className="mt-4">
+      <div className="flex mt-0 items-center">
         <input
           type="radio"
           id="celsius"
@@ -230,25 +164,10 @@ const Weather = () => {
           Fahrenheit
         </label>
       </div>
-      <div
-        className={`fixed inset-0 flex items-center justify-center ${modalOpen ? '' : 'hidden'}`}
-      >
+      <div className={`fixed inset-12 grid place-items-center ${modalOpen ? '' : 'hidden'}`}>
         <div className="bg-white p-8 rounded-lg shadow-lg">
           <p className="text-gray-800 text-lg font-semibold mb-4">Weather Information</p>
-          {/* <p>
-            Temperature:{' '}
-            {degree === 'celsius'
-              ? Math.round(((weather.main?.temp - 32) * 5) / 9)
-              : weather.main?.temp}
-            °{degree.toUpperCase()}
-          </p>
-          <p>
-            Approximate: (
-            {degree === 'celsius'
-              ? Math.round(((weather.main?.feels_like - 32) * 5) / 9)
-              : weather.main?.feels_like}
-            °{degree.toUpperCase()})
-          </p> */}
+
           <p>
             Temperature:{' '}
             {degree === 'celsius'
@@ -327,51 +246,6 @@ const Weather = () => {
 }
 export default Weather
 
-// import React, { useState, useEffect } from 'react'
-// import axios from 'axios'
-
-// const Weather = () => {
-//   const [weather, setWeather] = useState({})
-
-//   useEffect(() => {
-//     axios
-//       .get('https://api.openweathermap.org/data/2.5/weather', {
-//         params: {
-//           appid: '85bd5941b66f2ecc9f970952677ab2f3',
-//           units: 'imperial',
-//           q: 'London',
-//         },
-//       })
-//       .then((response) => {
-//         setWeather(response.data)
-//       })
-//       .catch((error) => {
-//         console.error(error)
-//       })
-//   }, [])
-
-//   return (
-//     <div>
-//       <div>
-//         <p>
-//           Temperature: {weather.main?.temp}°F ({weather.main.feels_like}°F)
-//         </p>
-//         <p>Humidity: {weather.main?.humidity}%</p>
-//         <p>Description: {weather.weather?.[0]?.description}</p>
-//         <p>Wind Speed: {weather.wind?.speed} mph</p>
-//       </div>
-
-//       <pre>
-//         For viewing the entire object in the browser:
-//         <br />
-//         {JSON.stringify(weather, null, 2)}
-//       </pre>
-//     </div>
-//   )
-// }
-
-// export default Weather
-
 // (done)DM: todoMM: revert this to the commented out original, then based on t9 suggestions, see if you can fix the errors. Select a specific part of the code, then ask 09 to suggest changes that the selected code only. Also, is this task part of the weather app, or just outputting those variables. You can do that better by just using the JSON.stringify approach I mentioned
 
-// MM: DM: after your review, i am thinking of enhancing the modal style to be more attractive. DM: OK, but remember to develop all the functionality first, then make it pretty. You don't want to have to spend a lot of time re-doing the look & feel (UI) each time you change the functionality.(MM: at this stage, all the functionalities are complete. only the UI that i'll be working on)
+// MM: DM: after your review, i am thinking of enhancing the modal style to be more attractive. DM: OK, but remember to develop all the functionality first, then make it pretty. You don't want to have to spend a lot of time re-doing the look & feel (UI) each time you change the functionality.(MM: at this stage, all the functionalities are complete. after working on the UI, this app is complete now)

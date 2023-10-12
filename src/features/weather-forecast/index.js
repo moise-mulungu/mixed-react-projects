@@ -3,17 +3,15 @@
 import React from 'react'
 // import Forecast from './components/forecast/forecast'
 // import App from './weather-forecast-example/App'
-import Divider from '@/ui/divider'
-//(in progress) DM: todoMM: change the name of the file or the default import name so that they are the same. This gets confusing to know what something is and where it comes from
-import OpenWeatherMap from './axios/index'
+//(done) DM: todoMM: change the name of the file or the default import name so that they are the same. This gets confusing to know what something is and where it comes from
+import WeatherForecastWithAxios from './axios/index'
 
 function WeatherForecast() {
   return (
     <div>
       <main>
-        <OpenWeatherMap />
+        <WeatherForecastWithAxios />
       </main>
-      <footer>Page created by Moise Mulungu</footer>
     </div>
   )
 }
