@@ -47,7 +47,7 @@ const Weather = () => {
     axios
       .get(
         'https://api.openweathermap.org/data/2.5/weather',
-        //MM: DM: here is another api that i tested to fetch data from "weatherApi": https://www.weatherapi.com/docs/
+        //MM: DM: here is weather-api that i tested to fetch data from "weatherApi": https://www.weatherapi.com/docs/
         // 'https://api.weatherapi.com/v1/current.json?key=fdcd3787290f409facc104541231310&q=London&aqi=no',
         {
           params: {
@@ -65,6 +65,18 @@ const Weather = () => {
         console.error(error)
       })
   }
+/*
+  const fetchWeatherData = (city) => {
+    axios
+      .get(`/api/weather?city=${city}`)
+      .then((response) => {
+        setWeather(response.data)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }
+  */
 
   const convertFahrenheitToCelsius = (fahrenheit) => {
     return Math.round(((fahrenheit - 32) * 5) / 9)
