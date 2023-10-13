@@ -45,13 +45,19 @@ const Weather = () => {
 
   const fetchWeatherData = () => {
     axios
-      .get('https://api.openweathermap.org/data/2.5/weather', {
-        params: {
-          appid: '85bd5941b66f2ecc9f970952677ab2f3',
-          units: 'imperial',
-          q: city,
-        },
-      })
+      .get(
+        'https://api.openweathermap.org/data/2.5/weather',
+        //MM: DM: here is another api that i tested to fetch data from "weatherApi": https://www.weatherapi.com/docs/
+        // 'https://api.weatherapi.com/v1/current.json?key=fdcd3787290f409facc104541231310&q=London&aqi=no',
+        {
+          params: {
+            appid: '85bd5941b66f2ecc9f970952677ab2f3',
+            // 'fdcd3787290f409facc104541231310',
+            units: 'imperial',
+            q: city,
+          },
+        }
+      )
       .then((response) => {
         setWeather(response.data)
       })
@@ -184,6 +190,9 @@ const Weather = () => {
             <p>Humidity: {weather.main?.humidity}%</p>
             <p>Description: {weather.weather?.[0]?.description}</p>
             <p>Wind Speed: {weather.wind?.speed} mph</p>
+            <p>Country:{weather.sys?.country}</p>
+            {/* <p>country: {weather.location?.country}</p>
+            <p>celsius: {weather.current?.temp_c}</p> */}
             <button
               className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mt-4"
               onClick={closeModal}
