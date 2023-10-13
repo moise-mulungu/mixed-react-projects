@@ -1,7 +1,7 @@
 import React from 'react'
 import Weather from './weather'
-// DM: todoMM: the import name does not match the filename or exported component name
-import WeatherForecastFooterFooter from './weather-forecast-footer'
+//(done) DM: todoMM: the import name does not match the filename or exported component name
+import WeatherForecastFooter from './weather-forecast-footer'
 
 const WeatherForecastWithAxios = () => {
   return (
@@ -10,7 +10,7 @@ const WeatherForecastWithAxios = () => {
         <h1 className="text-white text-2xl font-bold text-center">Weather Forecast</h1>
       </header>
       <Weather />
-      <WeatherForecastFooterFooter />
+      <WeatherForecastFooter />
     </div>
   )
 }

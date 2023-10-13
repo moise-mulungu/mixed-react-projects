@@ -1,6 +1,6 @@
 <!-- src: Sider AI prompt: "explain react state hook in depth", "what are values to pass to the initial state of react state hook?" and react dev: https://react.dev/reference/react/useState 
 
-DM: looks good! Good you did lots of howtos and practiced using AI in your learning process. 
+DM: looks good! Good you did lots of howtos and practiced using AI in your learning process.(ok)
 
 -->
 
