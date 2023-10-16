@@ -45,7 +45,7 @@ export default WeatherForecastWithAxios;
 
 DM: getting this app ready for deployment to production, in case any potential employer is looking at your code, we want to make sure you're following best practices for naming directories and component functions;
 
-DM: todoMM: have a look at the new file naming-conventions.md and apply those conventions to the directory/file naming and component function naming in this app. 
+(done)DM: todoMM: have a look at the new file naming-conventions.md and apply those conventions to the directory/file naming and component function naming in this app. 
 
 DM: note: it doesn't matter much what package (axios) you use to fetch, so I wouldn't use 'axios' in the name of the directory or component function. Name any function after what it does, not how it does it. Or, if the function is a React component, name it after what it is (what it displays), not what it does it with.
 

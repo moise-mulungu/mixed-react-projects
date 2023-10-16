@@ -107,12 +107,12 @@ const Weather = () => {
 
     return axios
       .get(url)
-      .then((response) => response.data)
+      .then((response) => setWeather(response.data))
       .catch((error) => {
         throw error
       })
 
-      /*
+    /*
       MM: DM: I faced a blocker of "Unhandled Runtime Error
       AxiosError: Request failed with status code 401". 
       1. Sider AI prompt: "how to fix Unhandled Runtime Error
@@ -120,7 +120,7 @@ const Weather = () => {
         answer: This is because the API key is not valid. Please check your API key and try again.
       
       2. i fixed my API_key in the .env.local file, but the error still persists.
-      */ 
+      */
   }
 
   const convertFahrenheitToCelsius = (fahrenheit) => {
