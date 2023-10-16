@@ -36,5 +36,6 @@ Here's a table summarizing the naming conventions for your provided file paths:
 | ./header.jsx          | header.jsx          | Header                  |
 | ./user-list/index.jsx | user-list/index.jsx | UserList                |
 | ./login-button.jsx    | login-button.jsx    | LoginButton             |
+DM: note the component function name uses the exact same words as found in the file/directory name (but the file name is in snake-case and the component function name is in PascalCase)
 
 Following these naming conventions will help improve code maintainability and make it easier for team members to understand and work with your Next.js project.

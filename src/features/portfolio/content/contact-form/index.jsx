@@ -40,7 +40,9 @@ export default function ContactForm() {
     return
 
     console.log({ mailerState })
-    const response = await fetch('http://localhost:3001/api/portfolio/contact', {
+    // DM: NextJS is running on part 3005, not 3001. Look at errors in browser dev tools in the console or netowrking tabs, it will give you clues.
+    // DM: you can use a "relative URL" here, like /api/portfolio/contact
+    const response = await fetch('/api/portfolio/contact', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

@@ -72,7 +72,8 @@ const Weather = () => {
   //     })
   // }
   // const fetchWeatherData = async (city) => {
-  const API_KEY = process.env.OPEN_WEATHER_MAP_API_KEY // MM: DM: my API key is in the.env.local file in the root of the project where i declared the OPEN_WEATHER_MAP_API_KEY variable that i assigned my API key.
+  // DM: Don't use secrets here. If the API key is in the code that runs in the browser (as does all code stemming from src/pages) it is not secure, because it can be seen in the network tab of browser dev tools. That is the reason we are moving your fetch from openweathermap.org to src/pages/api/weather.js because that code runs on the server only. So, here you want to fetch from your own API URL at /api/weather?city=London. 
+  // const API_KEY = process.env.OPEN_WEATHER_MAP_API_KEY // MM: DM: my API key is in the.env.local file in the root of the project where i declared the OPEN_WEATHER_MAP_API_KEY variable that i assigned my API key.
   /*
   const fetchWeatherData = (city) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
@@ -103,7 +104,7 @@ const Weather = () => {
   // }
 
   const fetchWeatherData = () => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+    const url = `/api/weather?city=${city}`
 
     return axios
       .get(url)
@@ -113,6 +114,7 @@ const Weather = () => {
       })
 
     /*
+
       MM: DM: I faced a blocker of "Unhandled Runtime Error
       AxiosError: Request failed with status code 401". 
       1. Sider AI prompt: "how to fix Unhandled Runtime Error

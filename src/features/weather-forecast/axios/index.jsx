@@ -4,6 +4,12 @@ import Weather from './weather'
 import WeatherForecastFooter from './weather-forecast-footer'
 import { fetchWeatherData } from './weather'
 
+/* 
+DM: I can't see what changes you made because everything looks new in this file. When you change the name of a file, just change the name of the file, don't create a new file. 
+DM: todoMM: put a marker by any changes you made Monday so I can review. 
+
+*/
+
 /*
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -65,6 +71,16 @@ const WeatherForecastWithAxios = () => {
   }
   */
 
+  /* 
+
+DM: RE my instruction to put comments about code into the file where the code is - that's why I'm moving this info from the daily report into here:
+
+MM: I changed files (index.js, weather.js, and weather-forecast-footer.js) extensions to jsx in the src/features/weather-forecast/axios folder and index.js in the src/pages/weather-forecast-page folder.
+
+DM: todoMM: ok, good, see my note in the naming-conventions file pointing out the relationship between file/directory name and component function name. 
+DM: again, I'd avoid using the word 'axios' in both filenames and function names because it doesn't matter what package you use to fetch data, and you might change it later.
+
+  */
 
 const WeatherForecast = () => {
   axios.fetchWeatherData = fetchWeatherData
