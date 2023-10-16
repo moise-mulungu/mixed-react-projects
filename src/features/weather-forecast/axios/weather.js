@@ -22,9 +22,15 @@ const Weather = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [degree, setDegree] = useState('')
 
+  /*
   useEffect(() => {
     fetchWeatherData() // The fetchWeatherData function is called when the component mounts and whenever the button is clicked
   }, [])
+  */
+  useEffect(() => {
+    fetchWeatherData()
+  }, [city])
+
   // useEffect(() => {
   //   // Replace 'YOUR_API_KEY' with your own API key
   //   axios
@@ -43,40 +49,79 @@ const Weather = () => {
   //     })
   // }, [])
 
-  const fetchWeatherData = () => {
-    axios
-      .get(
-        'https://api.openweathermap.org/data/2.5/weather',
-        //MM: DM: here is weather-api that i tested to fetch data from "weatherApi": https://www.weatherapi.com/docs/
-        // 'https://api.weatherapi.com/v1/current.json?key=fdcd3787290f409facc104541231310&q=London&aqi=no',
-        {
-          params: {
-            appid: '85bd5941b66f2ecc9f970952677ab2f3',
-            // 'fdcd3787290f409facc104541231310',
-            units: 'imperial',
-            q: city,
-          },
-        }
-      )
-      .then((response) => {
-        setWeather(response.data)
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  }
-/*
+  // const fetchWeatherData = () => {
+  //   axios
+  //     .get(
+  //       'https://api.openweathermap.org/data/2.5/weather',
+  //       //MM: DM: here is weather-api that i tested to fetch data from "weatherApi": https://www.weatherapi.com/docs/
+  //       // 'https://api.weatherapi.com/v1/current.json?key=fdcd3787290f409facc104541231310&q=London&aqi=no',
+  //       {
+  //         params: {
+  //           appid: '85bd5941b66f2ecc9f970952677ab2f3',
+  //           // 'fdcd3787290f409facc104541231310',
+  //           units: 'imperial',
+  //           q: city,
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       setWeather(response.data)
+  //     })
+  //     .catch((error) => {
+  //       console.error(error)
+  //     })
+  // }
+  // const fetchWeatherData = async (city) => {
+  const API_KEY = process.env.OPEN_WEATHER_MAP_API_KEY // MM: DM: my API key is in the.env.local file in the root of the project where i declared the OPEN_WEATHER_MAP_API_KEY variable that i assigned my API key.
+  /*
   const fetchWeatherData = (city) => {
-    axios
-      .get(`/api/weather?city=${city}`)
-      .then((response) => {
-        setWeather(response.data)
-      })
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+
+    return axios
+      .get(url)
+      .then((response) => response.data)
       .catch((error) => {
-        console.error(error)
+        throw error
       })
+    //   try {
+    //     const response = await axios.get(url)
+    //     setWeather(response.data)
+    //   } catch (error) {
+    //     throw error
+    //   }
+    // }
+    */
+  // const fetchWeatherData = async (city) => {
+  //   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+
+  //   try {
+  //     const response = await axios.get(url)
+  //     setWeather(response.data)
+  //   } catch (error) {
+  //     throw error
+  //   }
+  // }
+
+  const fetchWeatherData = () => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+
+    return axios
+      .get(url)
+      .then((response) => response.data)
+      .catch((error) => {
+        throw error
+      })
+
+      /*
+      MM: DM: I faced a blocker of "Unhandled Runtime Error
+      AxiosError: Request failed with status code 401". 
+      1. Sider AI prompt: "how to fix Unhandled Runtime Error
+      AxiosError: Request failed with status code 401."
+        answer: This is because the API key is not valid. Please check your API key and try again.
+      
+      2. i fixed my API_key in the .env.local file, but the error still persists.
+      */ 
   }
-  */
 
   const convertFahrenheitToCelsius = (fahrenheit) => {
     return Math.round(((fahrenheit - 32) * 5) / 9)
@@ -126,8 +171,14 @@ const Weather = () => {
   }
 
   // The handleButtonClick function triggers the fetchWeatherData function to fetch weather data for the selected city
+  /*
   const handleButtonClick = () => {
-    fetchWeatherData()
+    fetchWeatherData(city)
+    setModalOpen(true)
+  }
+  */
+  const handleButtonClick = () => {
+    fetchWeatherData(city)
     setModalOpen(true)
   }
 

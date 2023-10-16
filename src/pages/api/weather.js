@@ -1,7 +1,7 @@
 // import fetch from 'isomorphic-unfetch';
 import axios from 'axios'
 
-// DM: direct URL to the endpoint 
+// DM: direct URL to the endpoint
 // http://localhost:3005/api/weather?city=London
 
 /* 
@@ -16,14 +16,15 @@ search the repo to see how ETHEREAL_EMAIL_USERNAME and ETHEREAL_EMAIL_PASSWORD a
 note: you can ask T9 to review your code for security, error handling, etc. 
 
 */
-const API_KEY = '85bd5941b66f2ecc9f970952677ab2f3' // Replace with your OpenWeatherMap API key
+const MY_API_KEY = process.env.OPEN_WEATHER_MAP_API_KEY // MM: DM: the key is in the .env.local file in the root of the project
+// '85bd5941b66f2ecc9f970952677ab2f3' // Replace with your OpenWeatherMap API key
 
 export default async (req, res) => {
   const { city } = req.query // Get the city parameter from the query string
 
   try {
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${MY_API_KEY}`
     )
     const data = response.data
     res.status(200).json(data)
