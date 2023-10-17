@@ -23,17 +23,26 @@ note: total hours should add up to 8 usually. If not, then the total of the week
   * ? Work days: Christmas holidays Dec 25 - Jan 1
   * be sure you have enough accrued PTO to cover the required days off
 
-## [project name] [project hours today] hrs
+## [project/task name] [project/task hours today] hrs
+
+Here, put general high-level info about the work on the project. 
  
-note: if there is not enough detail in the new code and code comments, then add detail in the daily report to describe what you did
-* if you have errors, document the steps you took to debug/investigate the errors 
+Any info/detail related to code should be in comments just above the code in question. 
+
+DM: Moise, I'm drawing your attention to this section again, because in weather.js, you're not providing the info I need when you get blocked.
+If you have errors, document the steps you took to debug/investigate the errors 
 * what does "blocked" mean?
   * seeing a TypeError or a ReferenceError, or any type of error - this does not, in and of itself, mean "blocked", because the error message gives you clues that you can pursue.
   * getting unexpected/wrong output in the UI is not "blocked" 
   * see the debugging-checklist for steps you can take to debug the error or wrong output 
   * "blocked" means you have tried (and documented what you tried in comments) all the debugging techniques and still could not solve the problem
+  * DM: todoDM: move this to the debugging-checklist section on "blocked"
 
-note: git commit for each project 
+If the type of work you are doing means that I can't see in the code what you did, then put detailed info here that describes what you did and how you spent your time.
+
+## Miscellaneous
+
+Git commit for each project 
 * if a task is longer than 2 hours, break it into subtasks
 * there should be 3-5 commits each day
 

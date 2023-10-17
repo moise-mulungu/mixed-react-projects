@@ -5,8 +5,8 @@ import WeatherForecastFooter from './weather-forecast-footer'
 import { fetchWeatherData } from './weather'
 
 /* 
-(MM: this is not a new file, but i changed the file extension from "js" to "jsx" following the naming convention in NextJS, right?)DM: I can't see what changes you made because everything looks new in this file. When you change the name of a file, just change the name of the file, don't create a new file. 
-(MM: the commented codes are the one i tried to replace with the previous code, but as they were not responding as i expected that's why i commented them out. You told me to put into comment any new code that i have tried to work on, didn't you?)DM: todoMM: put a marker by any changes you made Monday so I can review. 
+(MM: this is not a new file, but i changed the file extension from "js" to "jsx" following the naming convention in NextJS, right? DM: ok, but for some reason in this file all the lines looked "new" in git, but the other renamed files that is not the case - I was able to see just edits you made.)DM: I can't see what changes you made because everything looks new in this file. When you change the name of a file, just change the name of the file, don't create a new file. 
+(MM: the commented codes are the one i tried to replace with the previous code, but as they were not responding as i expected that's why i commented them out. You told me to put into comment any new code that i have tried to work on, didn't you? DM: correct, leave previous code in comments, then delete them later when you're sure you don't need them anymore.)DM: todoMM: put a marker by any changes you made Monday so I can review. 
 
 */
 

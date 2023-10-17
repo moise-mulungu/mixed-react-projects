@@ -158,19 +158,29 @@ const Weather = () => {
          setModalOpen(true);
        };
    ```
-   * blockers: after following these steps, i faced an error : "Unhandled Runtime Error
-AxiosError: Request failed with status code 401"
 
-* TabNine prompt : "what does NAN signify when doing a math calculation in JS for this code:  
+DM: todoMM: Get the API endpoint working before you spend time on errors you see in the client code. Note: "client code" means the React code that runs in the browser, the browser being a "client" of the "back end service" which is your API endpoint at http://localhost:3005/api/weather?city=London. So paste http://localhost:3005/api/weather?city=London into your browser address bar to debug your API endpoint first. If you can't get the API endpoint to work, then the client code will never work. So, debug the API endpoint in src/pages/weather.js first, then work on the client code here. 
+
+DM: todoMM: ok, and what did you do next to debug/resolve this error? Asking AI is only one of the items in the debugging checklist. I need you to tell me what you tried in order for me to help you. Debugging errors like this is a very important skill you need to develop, so I shouldn't do it for you. So, what will you do next? 
+blockers: after following these steps, i faced an error : "Unhandled Runtime Error
+AxiosError: Request failed with status code 401" 
+
+TabNine prompt : "what does NAN signify when doing a math calculation in JS for this code:  
   ```js
   * const convertFahrenheitToCelsius = (fahrenheit) => {
       return Math.round(((fahrenheit - 32) * 5) / 9)
     }
     ```
     * the prompt answer was: "In JavaScript, NaN (Not a Number) is a special value used to represent a value that is not a number. It is a result of an invalid mathematical operation or an operation that involves a value that is not a number. So, in the context of the code you provided, NaN would be returned if the fahrenheit value is not a number, which could happen if the value is a string or a boolean value."
-    */
 
-  }
+DM: todoMM: The T9 response gave you some ideas. So, work on it and write here what you tried and learned. Also, apply the steps in the debugging checklist - one or several of those will help you diagnose the problem. Asking AI is only one of the debugging-checklist items.
+
+*/
+
+  } // end of convertFahrenheitToCelsius()
+
+  // -------------------------------------------------------
+
   // const mainObject = weather.main.temp ; if i define it here it throws an error: ReferenceError: mainObject is not defined DM: see my comment above the useState line above.(ok)
   /*
      example of how to document steps taken to debug an error message:

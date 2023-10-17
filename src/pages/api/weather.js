@@ -1,7 +1,7 @@
 // import fetch from 'isomorphic-unfetch';
 import axios from 'axios'
 
-// DM: direct URL to the endpoint
+// DM: direct URL to the endpoint for use in your browser while debugging the code in this file
 // http://localhost:3005/api/weather?city=London
 
 /*
