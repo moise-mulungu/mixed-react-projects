@@ -127,6 +127,49 @@ const Weather = () => {
 
   const convertFahrenheitToCelsius = (fahrenheit) => {
     return Math.round(((fahrenheit - 32) * 5) / 9)
+    /*
+    MM: DM: SiderAi prompt:
+    * i tried to fix the NAN error by asking the Sider AI prompt:
+  * "how to fix the NAN for the celsius degree value in the following code (src/features/weather-forecast/axios/weather.js file)?"
+  * the answer was: 
+    1. Update the fetchWeatherData function to pass the city parameter from the state:
+    ```js
+    const fetchWeatherData = () => {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`;
+
+      return axios
+        .get(url)
+        .then((response) => response.data)
+        .catch((error) => {
+          throw error;
+        });
+    };
+    ```
+    2. Add the city parameter to the useEffect dependency array to re-fetch the weather data whenever the city changes:
+   ```js
+       useEffect(() => {
+         fetchWeatherData();
+       }, [city]);
+   ```
+    3. In the handleButtonClick function, pass the city parameter to the fetchWeatherData function:
+   ```js
+       const handleButtonClick = () => {
+         fetchWeatherData(city);
+         setModalOpen(true);
+       };
+   ```
+   * blockers: after following these steps, i faced an error : "Unhandled Runtime Error
+AxiosError: Request failed with status code 401"
+
+* TabNine prompt : "what does NAN signify when doing a math calculation in JS for this code:  
+  ```js
+  * const convertFahrenheitToCelsius = (fahrenheit) => {
+      return Math.round(((fahrenheit - 32) * 5) / 9)
+    }
+    ```
+    * the prompt answer was: "In JavaScript, NaN (Not a Number) is a special value used to represent a value that is not a number. It is a result of an invalid mathematical operation or an operation that involves a value that is not a number. So, in the context of the code you provided, NaN would be returned if the fahrenheit value is not a number, which could happen if the value is a string or a boolean value."
+    */
+
   }
   // const mainObject = weather.main.temp ; if i define it here it throws an error: ReferenceError: mainObject is not defined DM: see my comment above the useState line above.(ok)
   /*
@@ -293,7 +336,7 @@ const Weather = () => {
   //           /*
   //           howtojs: object: access object properties:: You can access the properties of an object in JavaScript in 3 ways:
   //           1. Dot property accessor:
-  //           2. object. property.Square brackets property accessor: object['property']
+  //           2. object. property.Square brackets pro']
   //           3. Object destructuring: const { property } = object.
   //           */
   //           Object.entries(item)?.map((value) => {

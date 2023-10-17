@@ -40,8 +40,8 @@ export default function ContactForm() {
     return
 
     console.log({ mailerState })
-    // DM: NextJS is running on part 3005, not 3001. Look at errors in browser dev tools in the console or netowrking tabs, it will give you clues.
-    // DM: you can use a "relative URL" here, like /api/portfolio/contact
+    // (is this a todoMM?)DM: NextJS is running on part 3005, not 3001. Look at errors in browser dev tools in the console or networking tabs, it will give you clues.
+    // (and for this also?)DM: you can use a "relative URL" here, like /api/portfolio/contact
     const response = await fetch('/api/portfolio/contact', {
       method: 'POST',
       headers: {

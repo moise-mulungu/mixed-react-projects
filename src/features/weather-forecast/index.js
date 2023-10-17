@@ -4,13 +4,13 @@ import React from 'react'
 // import Forecast from './components/forecast/forecast'
 // import App from './weather-forecast-example/App'
 // DM: todoDM: revisit export and file naming conventions upon finalization of the app
-import WeatherForecastWithAxios from './axios/index'
+import OpenWeatherMapApi from './open-weather-map-api/index'
 
 function WeatherForecast() {
   return (
     <div>
       <main>
-        <WeatherForecastWithAxios />
+        <OpenWeatherMapApi />
       </main>
     </div>
   )
