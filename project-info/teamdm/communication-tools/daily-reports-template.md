@@ -29,7 +29,7 @@ Here, put general high-level info about the work on the project.
  
 Any info/detail related to code should be in comments just above the code in question. 
 
-DM: Moise, I'm drawing your attention to this section again, because in weather.js, you're not providing the info I need when you get blocked.
+DM: Moise, I'm drawing your attention to this section again, because in weather.js, you're not providing the info I need when you get blocked.(ok)
 If you have errors, document the steps you took to debug/investigate the errors 
 * what does "blocked" mean?
   * seeing a TypeError or a ReferenceError, or any type of error - this does not, in and of itself, mean "blocked", because the error message gives you clues that you can pursue.

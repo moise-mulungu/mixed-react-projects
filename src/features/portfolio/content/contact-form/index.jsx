@@ -43,7 +43,7 @@ export default function ContactForm() {
     // (is this a todoMM? DM: see below)DM: NextJS is running on part 3005, not 3001. Look at errors in browser dev tools in the console or networking tabs, it will give you clues.
     // (and for this also?)DM: you can use a "relative URL" here, like /api/portfolio/contact
     // DM: Note that in the same commit where I wrote the above, I changed the next line to reflect what I wrote. In this case, I just fixed the code for you, and the above explains why I did it.
-    // DM: todoMM: make a vocabulary entry in the programming vocab file for "relative URL"
+    //(done) DM: todoMM: make a vocabulary entry in the programming vocab file for "relative URL"
     const response = await fetch('/api/portfolio/contact', {
       method: 'POST',
       headers: {

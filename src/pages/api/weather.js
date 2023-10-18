@@ -1,7 +1,7 @@
 // import fetch from 'isomorphic-unfetch';
 import axios from 'axios'
 
-// DM: direct URL to the endpoint for use in your browser while debugging the code in this file
+// DM: direct URL to the endpoint for use in your browser while debugging the code in this file(cool)
 // http://localhost:3005/api/weather?city=London
 
 /*
@@ -40,6 +40,19 @@ export default async (req, res) => {
 }
 
 /*
+Sider prompt: how to make an API route in NextJS:
+  1. to create a new file "weather.js" in src/pages/api/ directory
+  2. to add the provided code
+  3. to replace "YOUR_API_KEY" with my actual OpenWeatherMap API key
+  4. to replace the fetchWeatherData function in src/features/weather-forecast/axios/weather.js  with the provided code
+  5. to import the fetchWeatherData function in the src/features/weather-forecast/axios/index.js and add it to the axios object
+  6. Replace "YOUR_API_KEY" with your actual OpenWeatherMap API key
+  7. test on the browser by making a request to http://localhost:3005/api/weather?city=London
+   
+* i order to keep the API key secret, i first started moving it into .env.local file and used in the src/pages/api/weather.js file by using process.env.[API_KEY] object.
+  * i used this SiderAI prompt for more clarity "is this declaration correct when using a secret code in the .env.local: const API_KEY = process.env.MY_API_KEY" 
+  * the answer was: "The declaration is correct assuming that the `MY_API_KEY` variable is defined in the `.env.local` file and contains the actual API key as its value. The `process.env` object in Node.js is used to access environment variables, which are set in the `.env.local` file. When you define an environment variable in the `.env.local` file, you can access its value in your code using the `process.env` object. So, in this case, the `API_KEY` constant is being assigned the value of the `MY_API_KEY` environment variable using the `process.env` object."
+
  * Sider prompt: "what is the better way to declare a variable that holds an API key used in the .env.local file in NextJS project?"
    * answer: 
      1. Install the dotenv package by running the following command in your project directory: `npm install dotenv` 

@@ -4,7 +4,7 @@ DM: this will be your debugging checklist. We can edit it together.
 # blockers
 * Moise, when you report a blocker, I'll expect you to have tried all the relevant items on this checklist and documented the result. That way I can understand EXACTLY where you got stuck and based on that, tailor my response so that you learn key This will help me help you, and it will help you when you come back to work on the bug.
 * You're not truly "blocked" if you haven't "shot all the arrows in your quiver" (i.e., tried all the debugging checklist items that you can try). 
-* !important: if you chose a stopping point because you ran out of time, don't call it a "blocker" just write "working on it, I'll continue tomorrow".
+* !important: if you chose a stopping point because you ran out of time, don't call it a "blocker" just write "working on it, I'll continue tomorrow".(ok)
 
 ## Console.log all the things!
 * any code you're blocked on should have thorough console.logs (so DM doesn't have to write them, and so DM sees what you've already been attempting to do and where you have already looked for errors).
