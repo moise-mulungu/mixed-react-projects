@@ -25,14 +25,16 @@ export default async (req, res) => {
 
   try {
     const response = await axios.get(
-      console.log('axios-value:', {
-        axios,
-      })`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
+      // console.log('axios-value:', {
+      //   axios,
+      // })
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
     )
     const data = response.data
     res.status(200).json(data)
   } catch (error) {
-    console.error(error)
+    // this is "server-side" code, so the console.error will be in the terminal, not in the browser
+    console.error(error, error.message)
     // DM: I added error message so that you can see what the error is in the browser at http://localhost:3005/api/weather?city=London
     // DM: I see mention of EAI_AGAIN in the error message
     // DM: you can google, or look at the openweathermap web site for the meaning of EAI_AGAIN code

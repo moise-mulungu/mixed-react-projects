@@ -19,7 +19,7 @@ In details:
 
 2. The First Parameter: The first parameter is a function where you can write your side-effect code.
 
-3. The Second Parameter (dependency array): This is optional. This array can contain several state variables or props which when changed will re-run the side-effect. If you pass an empty array [], the side-effect runs once when the component mounts and it will not run on updates.
+3. The Second Parameter (dependency array): This is optional, but almost always should be provided. This array can contain several state variables or props which when changed will re-run the side-effect. If you pass an empty array [], the side-effect runs once when the component mounts and it will not run on updates.
 
 ***howtojs: react:: react-hook-useEffect; useEffect return function. the function returned inside useEffect is called "cleanup function"iThis function runs before the component is removed from the UI to prevent memory leaks***
 4. Cleanup function: The function that is returned inside the useEffect hook is the cleanup function. This function runs before the component is removed from the UI to prevent memory leaks.
@@ -43,7 +43,10 @@ Significance of useEffect:
 - Listening/Unlistening to events: You can listen to events in the useEffect hook and return a cleanup function to unlisten to the events.
 
 
-***howtojs: react:: react-hook-useEffect; Manipulating the DOM. useEffect rarely manipulate the DOM, but in case a plugin is not managed, bind the plugin to the DOM.***
+***howtojs: react:: react-hook-useEffect; Manipulating the DOM. useEffect rarely manipulate the DOM, but in case a plugin is not managed by React, bind the plugin to the DOM.***
+
 - Manipulating DOM: Although it happens rarely, however, suppose you need to use a plugin not managed via React, it’s a good place to bind it to the DOM elements.
+
+DM: todoMM: good. Provide an example here of a "plugin" that is not managed by React. I'm not sure what you mean by "plugin".
 
 Major caution with useEffect is to ensure you manage dependencies correctly. When you include a value in the dependency array, your effect callback will reference the latest version of that value. Omitting it could lead to bugs and inconsistencies.
