@@ -72,7 +72,7 @@ const Weather = () => {
   //     })
   // }
   // const fetchWeatherData = async (city) => {
-  // DM: Don't use secrets here. If the API key is in the code that runs in the browser (as does all code stemming from src/pages) it is not secure, because it can be seen in the network tab of browser dev tools. That is the reason we are moving your fetch from openweathermap.org to src/pages/api/weather.js because that code runs on the server only. So, here you want to fetch from your own API URL at /api/weather?city=London. 
+  // DM: Don't use secrets here. If the API key is in the code that runs in the browser (as does all code stemming from src/pages) it is not secure, because it can be seen in the network tab of browser dev tools. That is the reason we are moving your fetch from openweathermap.org to src/pages/api/weather.js because that code runs on the server only. So, here you want to fetch from your own API URL at /api/weather?city=London.
   // const API_KEY = process.env.OPEN_WEATHER_MAP_API_KEY // MM: DM: my API key is in the.env.local file in the root of the project where i declared the OPEN_WEATHER_MAP_API_KEY variable that i assigned my API key.
   /*
   const fetchWeatherData = (city) => {
@@ -92,40 +92,50 @@ const Weather = () => {
     //   }
     // }
     */
-  // const fetchWeatherData = async (city) => {
-  //   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+  const fetchWeatherData = async (city) => {
+    // const url = `/api/weather?city=${city}`
+    // // `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${OPEN_WEATHER_MAP_API_KEY}`
 
-  //   try {
-  //     const response = await axios.get(url)
-  //     setWeather(response.data)
-  //   } catch (error) {
-  //     throw error
-  //   }
-  // }
+    // try {
+    //   const response = await axios.get(url)
+    //   setWeather(response.data)
+    // } catch (error) {
+    //   throw error
+    // }
 
-  const fetchWeatherData = () => {
-    const url = `/api/weather?city=${city}`
-
-    return axios
-      .get(url)
-      .then((response) => setWeather(response.data))
-      .catch((error) => {
-        throw error
-      })
-
-    /*
-
-      MM: DM: I faced a blocker of "Unhandled Runtime Error
-      AxiosError: Request failed with status code 401". 
-      1. Sider AI prompt: "how to fix Unhandled Runtime Error
-      AxiosError: Request failed with status code 401."
-        answer: This is because the API key is not valid. Please check your API key and try again.
-      
-      2. i fixed my API_key in the .env.local file, but the error still persists.
-      */
+    try {
+      const response = await axios.get(`/api/weather?city=${city}`)
+      setWeather(response.data) // Set the weather state with the fetched data.
+    } catch (error) {
+      console.error(error)
+      throw error
+    }
   }
 
+  // const fetchWeatherData = () => {
+  //   const url = `/api/weather?city=${city}`
+
+  //   return axios
+  //     .get(url)
+  //     .then((response) => setWeather(response.data))
+  //     .catch((error) => {
+  //       throw error
+  //     })
+
+  //   /*
+
+  //     MM: DM: I faced a blocker of "Unhandled Runtime Error
+  //     AxiosError: Request failed with status code 401".
+  //     1. Sider AI prompt: "how to fix Unhandled Runtime Error
+  //     AxiosError: Request failed with status code 401."
+  //       answer: This is because the API key is not valid. Please check your API key and try again.
+
+  //     2. i fixed my API_key in the .env.local file, but the error still persists.
+  //     */
+  // }
+
   const convertFahrenheitToCelsius = (fahrenheit) => {
+    console.log('fahrenheit:', { fahrenheit })
     return Math.round(((fahrenheit - 32) * 5) / 9)
     /*
     MM: DM: SiderAi prompt:
@@ -173,10 +183,67 @@ TabNine prompt : "what does NAN signify when doing a math calculation in JS for 
     ```
     * the prompt answer was: "In JavaScript, NaN (Not a Number) is a special value used to represent a value that is not a number. It is a result of an invalid mathematical operation or an operation that involves a value that is not a number. So, in the context of the code you provided, NaN would be returned if the fahrenheit value is not a number, which could happen if the value is a string or a boolean value."
 
-DM: todoMM: The T9 response gave you some ideas. So, work on it and write here what you tried and learned. Also, apply the steps in the debugging checklist - one or several of those will help you diagnose the problem. Asking AI is only one of the debugging-checklist items.
+(in progress)DM: todoMM: The T9 response gave you some ideas. So, work on it and write here what you tried and learned. Also, apply the steps in the debugging checklist - one or several of those will help you diagnose the problem. Asking AI is only one of the debugging-checklist items.
+MM: DM: the NAN error has gone, i didn't fix it. a new error arose, the value of the degree is over the expected. in order to debug it, i:
+  - console.log(fahrenheit) values, but it didn't show anything on the console tab on the browser. i am suspecting it could be prevented by the Axios internal error.
+  - i checked the function convertFahrenheitToCelsius, i found that it was correct, but the value of the degree does not change
+  - i used another Sider prompt: "the degree values are still the same as before after applying the changes in the code above."
+  - answer: 
 
+    If the degree values are not changing after applying the code changes, then it might be possible that the API you are using to fetch the weather data does not provide temperatures in Fahrenheit, or there is an error in decoding the response from the API.
+
+    Keep in mind that the code posted assumes that:
+
+    1. The endpoint `/api/weather?city=${city}` is returning valid data
+    2. This data includes a `main` object which contains `temp` and `feels_like` properties
+    3. The temperature values are provided in Fahrenheit
+
+    First, please verify that above assumptions are true:
+    1. API endpoint is correct 
+    2. Response object structure contains a `main` object with `temp` and `feels_like` properties
+    3. Then check the temperature unit in the API response or API documentation.
+
+    If in case they return the temperature in Celsius and you want to convert it in Fahrenheit, then you need to modify the `convertFahrenheitToCelsius` and `convertCelsiusToFahrenheit` function.
+    ```jsx
+    const convertCelsiusToFahrenheit = (celsius) => {
+        return Math.round((celsius * 9 / 5) + 32)
+    }
+
+    const convertFahrenheitToCelsius = (fahrenheit) => {
+        return Math.round(((fahrenheit - 32) * 5 / 9))
+    }
+    ```
+    In the `handleButtonClick` function, call `setWeather` after calling `fetchWeatherData`, because `fetchWeatherData` is async and it takes some time for the data to come from the API.
+    Replace just this one method from the entire component:
+    ```jsx
+    const handleButtonClick = async () => {
+          setWeather(await fetchWeatherData(city))
+          setModalOpen(true)
+    }
+    ```
+    Now, use this two functions inside your temperature display like this:
+
+    ```jsx
+      <p>
+        Temperature:{' '}
+        {degree === 'celsius'
+          ? weather.main?.temp
+          : convertCelsiusToFahrenheit(weather.main?.temp)}
+        °{degree.toLowerCase()}
+      </p>
+      <p>
+        Approximate: (
+        {degree === 'celsius'
+          ? weather.main?.feels_like
+          : convertCelsiusToFahrenheit(weather.main?.feels_like)}
+        °{degree.toLowerCase()})
+      </p>
+    ```
+    In the updated code, if the user chooses Fahrenheit, then it will convert the temperature (which is given by our API in Celsius) to Fahrenheit.
+
+    Hopefully this experiment should help you uncover the issue. But if you are still unable to resolve this and can provide us with the majority structure of the JSON received from the API, we would be happy to help you further.
+ - after trying the above suggestions, the app broke, then i reverted the previous code.
 */
-
   } // end of convertFahrenheitToCelsius()
 
   // -------------------------------------------------------
@@ -296,14 +363,14 @@ DM: todoMM: The T9 response gave you some ideas. So, work on it and write here w
               {degree === 'celsius'
                 ? convertFahrenheitToCelsius(weather.main?.temp)
                 : weather.main?.temp}
-              °{degree.toUpperCase()}
+              °{degree.toLowerCase()}
             </p>
             <p>
               Approximate: (
               {degree === 'celsius'
                 ? convertFahrenheitToCelsius(weather.main?.feels_like)
                 : weather.main?.feels_like}
-              °{degree.toUpperCase()})
+              °{degree.toLowerCase()})
             </p>
             <p>Humidity: {weather.main?.humidity}%</p>
             <p>Description: {weather.weather?.[0]?.description}</p>

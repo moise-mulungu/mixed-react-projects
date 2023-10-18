@@ -72,3 +72,24 @@ Sider prompt: how to make an API route in NextJS:
      4. In your Next.js code, require the dotenv package and call the config() method to load the environment variables from the .env.local file. Add the following lines at the top of your next.config.js file: `require('dotenv').config()`
 
 */
+   /*
+    Sider prompt: why am i getting "AxiosError: Request failed with status code 500" in this code
+    * answer:
+      A 500 error indicates a server-side issue, suggesting a problem with the server the request is being sent to, not your application itself.
+
+      In this case, you're trying to request data from the OpenWeather API and the request failed. Here are a couple possible issues:
+
+        1. The API endpoint you're trying to reach might be down or having some issues. To check, try accessing the URL directly in your browser or in tools like Postman.
+
+        2. The OpenWeatherMap API Key is missing, or invalid: Check the `process.env.OPEN_WEATHER_MAP_API_KEY` in your environment variables. Ensure it's present and correct. 
+
+        3. Incorrect city name or the OpenWeatherMap API doesn't have data for the given city name. Ensure you are passing a valid city name.
+
+        4. Make sure there are no restrictions set in OpenWeatherMap API in terms of the number of requests per day or for specific IP addresses.
+
+      It's also good practice to log your errors for better debugging. In your catch block, you can do `console.error(error.response)` or `console.error(error.request)` to get more details about the issue.
+
+      Consider contacting OpenWeather's support if you're continuing to receive this error as it might be an issue on their end.
+
+      blockers: i tried to change the fetchWeatherData function from the src/features/weather-forecast/weather.js and the async function in this file, but the error still persists.
+    */ 
