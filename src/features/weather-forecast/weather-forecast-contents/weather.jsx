@@ -104,7 +104,11 @@ const Weather = () => {
     // }
 
     try {
-      const response = await axios.get(`/api/weather?city=${city}`)
+      const response = await axios.get(
+        console.log('axios-value:', {
+          axios,
+        })`/api/weather?city=${city}`
+      )
       setWeather(response.data) // Set the weather state with the fetched data.
     } catch (error) {
       console.error(error)

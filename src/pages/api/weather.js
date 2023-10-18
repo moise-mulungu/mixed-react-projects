@@ -25,7 +25,9 @@ export default async (req, res) => {
 
   try {
     const response = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
+      console.log('axios-value:', {
+        axios,
+      })`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
     )
     const data = response.data
     res.status(200).json(data)
@@ -72,7 +74,7 @@ Sider prompt: how to make an API route in NextJS:
      4. In your Next.js code, require the dotenv package and call the config() method to load the environment variables from the .env.local file. Add the following lines at the top of your next.config.js file: `require('dotenv').config()`
 
 */
-   /*
+/*
     Sider prompt: why am i getting "AxiosError: Request failed with status code 500" in this code
     * answer:
       A 500 error indicates a server-side issue, suggesting a problem with the server the request is being sent to, not your application itself.
@@ -92,4 +94,4 @@ Sider prompt: how to make an API route in NextJS:
       Consider contacting OpenWeather's support if you're continuing to receive this error as it might be an issue on their end.
 
       blockers: i tried to change the fetchWeatherData function from the src/features/weather-forecast/weather.js and the async function in this file, but the error still persists.
-    */ 
+    */
