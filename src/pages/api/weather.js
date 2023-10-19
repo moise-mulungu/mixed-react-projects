@@ -23,6 +23,14 @@ note: you can ask T9 to review your code for security, error handling, etc.
 export default async (req, res) => {
   const { city } = req.query // Get the city parameter from the query string
 
+  /*
+  Sider AI prompt: "how to fix: GET http://localhost:3005/api/weather?city=undefined 500 (Internal Server Error)".
+  answer: 
+  if (!req.query.city) {
+    return res.status(400).send('Bad Request: city not specified')
+  } 
+  */
+
   try {
     const response = await axios.get(
       // console.log('axios-value:', {

@@ -92,52 +92,70 @@ const Weather = () => {
     //   }
     // }
     */
+
   const fetchWeatherData = async (city) => {
-    // const url = `/api/weather?city=${city}`
-    // // `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${OPEN_WEATHER_MAP_API_KEY}`
+   /*
+    Sider AI prompt: "how to fix: GET http://localhost:3005/api/weather?city=undefined 500 (Internal Server Error)".
+    answer: validate the city name before sending the request
+  */
+    if (city === '') {
+      alert('Please enter a city name')
+    } else {
+      // fetchWeatherData(city)
 
-    // try {
-    //   const response = await axios.get(url)
-    //   setWeather(response.data)
-    // } catch (error) {
-    //   throw error
-    // }
-
-    try {
-      const response = await axios.get(`/api/weather?city=${city}`)
-      setWeather(response.data) // Set the weather state with the fetched data.
-    } catch (error) {
-      // DM: this is "client-side" code so the error will be logged in the browser console.(ok)
-      // DM: often the entire error object huge, and you should analyze it for clues, but also log the error message
-      console.error(error, error.message)
-      throw error
+      try {
+        const response = await axios.get(`/api/weather?city=${city}`)
+        setWeather(response.data) // Set the weather state with the fetched data.
+      } catch (error) {
+        // DM: this is "client-side" code so the error will be logged in the browser console.(ok)
+        // DM: often the entire error object huge, and you should analyze it for clues, but also log the error message
+        console.error(error, error.message)
+        throw error
+      }
+      console.log('axios-value:', {
+        axios,
+      })
     }
-    console.log('axios-value:', {
-      axios,
-    })
   }
 
-  // const fetchWeatherData = () => {
-  //   const url = `/api/weather?city=${city}`
+  /*
+    The error is "GET http://localhost:3005/api/weather?city=undefined 500 (Internal Server Error)" which is an API endpoint that is trying to return information about the weather for a specific city. However, the city parameter is undefined, so the server doesn't know what information to return, resulting in a 500 Internal Server Error.
 
-  //   return axios
-  //     .get(url)
-  //     .then((response) => setWeather(response.data))
-  //     .catch((error) => {
-  //       throw error
-  //     })
+    Here's what might be causing the error:
 
-  //   /*
+    Lack of error handling in the server side code.
+    The server might be expecting to receive a city name in the request, but you're not sending one.
+    To fix this error, follow the following steps:
 
-  //     MM: DM: I faced a blocker of "Unhandled Runtime Error
-  //     AxiosError: Request failed with status code 401".
-  //     1. Sider AI prompt: "how to fix Unhandled Runtime Error
-  //     AxiosError: Request failed with status code 401."
-  //       answer: This is because the API key is not valid. Please check your API key and try again.
+    Front-end Level: You should ensure that the city name is well defined before making the request. This error could occur if you are getting the city name from an input form and the user submits the form without typing anything.
+  ```js
+      // Validate the city name before the request
+        if(!city || city === ""){
+            alert("Please enter a city name");
+        }
+        else{
+            fetch(`http://localhost:3005/api/weather?city=${city}`)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.log('Error:', error));
+        }
+  ```
+    Back-end level: Add error handling in the server-side to deal with cases where city is undefined.
+  ```js
+      // Express route
+      app.get('/api/weather', function (req, res) {
+          // Check if city is undefined
+          if(!req.query.city){
+              return res.status(400).send('Bad Request: city not specified');
+          }
 
-  //     2. i fixed my API_key in the .env.local file, but the error still persists.
-  //     */
-  // }
+          // Transfer to your weather API here
+          ...
+      });
+  ```
+    This way, you will only be trying to access your weather API when the city query is defined. If the API key is not defined, the server will send a 400 Bad Request error, which is better than a 500 Internal Server Error.
+  */
+ 
 
   const convertFahrenheitToCelsius = (fahrenheit) => {
     console.log('fahrenheit:', { fahrenheit })
