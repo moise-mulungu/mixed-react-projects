@@ -13,11 +13,35 @@ DM: this will be your debugging checklist. We can edit it together.
   1) I know what you are considering and can oer alternatives and 
   2) 2) I don't have to write console.logs myself.
 - best practice: comment out console.logs and just leave them there until the code is final.
+### assign all expressions to variables so that you can log them; example:
+* before:
+```js
+const convertFahrenheitToCelsius = (fahrenheit) => {
+  return Math.round(((fahrenheit - 32) * 5) / 9)
+}
+```
+* after: (assign each expression to a variable and log them all!)
+```js
+const convertFahrenheitToCelsius = (fahrenheit) => {
+  console.log('convertFahrenheitToCelsius:', { fahrenheit })
+  const celsius = ((fahrenheit - 32) * 5) / 9
+  const celsiusRounded = Math.round(celsius)
+  console.log('convertFahrenheitToCelsius:', { celsius, celsiusRounded })
+  return celsiusRounded
+}
+```
+### work your way backwards from the code that causes the error, console.logging variables as you go backwards
+Follow the sequence of executed code backwards until you find incorrect variable values.
 
 ## pursue the clues in the error message
 * google all (or part) of the error message if it is not immediately clear
-* 
-## assumptions: list them, then double-check any possible wrong assumptions;
+
+## debug API Endpoints first, before debugging the client code that uses the API endpoint 
+EX goto http://localhost:3005/api/weather?city=London and debug this code in src/pages/api/weatherAPI
+EX goto https://api.openweathermap.org/data/2.5/weather?q=undefined&units=imperial&appid=abc and see what it returns
+
+
+## assumptions: list your assumptions, then double-check any possible wrong assumptions
 
 ## get AI help
 AI prompt: "suggest fixes to the code|[functionName] and explain what you think should be fixed"
@@ -57,4 +81,21 @@ note: AI chat in VSCode, when you say 'code' will inspect selected code, or if n
 - preserve original code and attempted changes (within reason) because it may be useful again
   - leave code unchanged, but commented out (so you can revert back if needed).
     - within reason, that is, use your judgement. Some attempts are an obvious 100% dead end, so you don't need to keep useless code around, so just put a note that you tried abc and abc did not work at all and why.
+
+
+# programming tips to avoid bugs
+* pay close attention to detail, especially with data values, names of function params and API params
+* always copy and paste, don't type things manually, and you'll never make typos like leaving off the "s" in units
+
+
+# lessons from specific projects
+
+## debugging lessons from the weather API temperature 291 bug:
+* it didn't help to guess ahead about city, it was the units param all along. Always best to carefully follow the sequence of executed code backwards until you find incorrect variable values
+* you may have to rewrite some code in order to fully console.log all the things
+* be very careful about typos, they will break stuff EX: unit=imperial VS units=imperial
+* always copy and paste, don't type things manually, and you'll never make typos like leaving off the "s" in units
+* little details matter: EX: when you wrote the new axios.get call, you forgot to include the units param.
+* if you have a "previously it worked, but now it doesn't work situation, you can find the bug quickly by comparing previous to current code"
+* today's debugging was not rocket science, it was methodically following the code backwards from the error until we found the temperature number was 291, obviously wrong. Then we looked at what the NextJS API endpoint was providing, and it was 291, so we know the problem was there. We logged the data returned from openweatherapp API and saw 291 there, so we knew the problem just be that we were providing the wrong params to the openweathermap API. Then you said "previously it worked", then we knew to compare current API call to previous API call to find the difference. 
 

@@ -98,6 +98,7 @@ const Weather = () => {
     Sider AI prompt: "how to fix: GET http://localhost:3005/api/weather?city=undefined 500 (Internal Server Error)".
     answer: validate the city name before sending the request
   */
+    // DM: it is good to warn user
     if (city === '') {
       alert('Please enter a city name')
     } else {
@@ -158,8 +159,12 @@ const Weather = () => {
  
 
   const convertFahrenheitToCelsius = (fahrenheit) => {
-    console.log('fahrenheit:', { fahrenheit })
-    return Math.round(((fahrenheit - 32) * 5) / 9)
+    console.log('convertFahrenheitToCelsius:', { fahrenheit })
+    // assign each expression to a variable and log them all
+    const celsius = ((fahrenheit - 32) * 5) / 9
+    const celsiusRounded = Math.round(celsius)
+    console.log('convertFahrenheitToCelsius:', { celsius, celsiusRounded })
+    return celsiusRounded
     /*
     MM: DM: SiderAi prompt:
     * i tried to fix the NAN error by asking the Sider AI prompt:
@@ -334,6 +339,10 @@ MM: DM: the NAN error has gone, i didn't fix it. a new error arose, the value of
   const handleDegreeChange = (e) => {
     setDegree(e.target.value)
   }
+
+  const calculatedTemp = degree === 'celsius' ? convertFahrenheitToCelsius(weather.main?.temp) : weather.main?.temp
+  console.log({weatherMainTemp: weather.main?.temp, degree, calculatedTemp, weatherMain: weather.main})
+
   return (
     <div className="h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
       <div className="relative py-3 sm:max-w-xl sm:mx-auto">
@@ -383,9 +392,7 @@ MM: DM: the NAN error has gone, i didn't fix it. a new error arose, the value of
 
             <p>
               Temperature:{' '}
-              {degree === 'celsius'
-                ? convertFahrenheitToCelsius(weather.main?.temp)
-                : weather.main?.temp}
+              {calculatedTemp}
               °{degree.toLowerCase()}
             </p>
             <p>

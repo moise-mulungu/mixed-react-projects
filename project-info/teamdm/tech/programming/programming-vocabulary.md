@@ -265,7 +265,6 @@ src = https://www.geeksforgeeks.org/difference-between-dependencies-devdependenc
 
 Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests.
 
-(done)DM: todoMM: good. move this to web-vocabulary
 
 **Debouncing** and **throttling** are two programming techniques often used to limit the rate at which a function can fire or execute. They are often used in performance optimization, particularly in user interface development where certain events can trigger at a high rate, such as window resizing, scrolling, typing, or mouse movements. Here's a quick breakdown of each:
 

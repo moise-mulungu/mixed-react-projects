@@ -47,7 +47,7 @@ Significance of useEffect:
 
 - Manipulating DOM: Although it happens rarely, however, suppose you need to use a plugin not managed via React, it’s a good place to bind it to the DOM elements.
 
-(done)DM: todoMM: good. Provide an example here of a "plugin" that is not managed by React. I'm not sure what you mean by "plugin". MM: I created a new file where i added the code(project-info/teamdm/tech/react/react-hooks/use-effect/use-effect-plugin.js)
+EX project-info/teamdm/tech/react/react-hooks/use-effect/use-effect-plugin.js
 
 
 Major caution with useEffect is to ensure you manage dependencies correctly. When you include a value in the dependency array, your effect callback will reference the latest version of that value. Omitting it could lead to bugs and inconsistencies.

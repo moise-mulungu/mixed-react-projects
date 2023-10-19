@@ -60,6 +60,7 @@ For the first issue, I :
          * URL: Ensure that the URL you constructed for the GET request to the OpenWeatherMap API is correct.
 
        You'll want to add more error-handling to this code to help diagnose the issue. For example, you can add console logs to print out more details about the error, or even inspect the details of what's returned by the API call (the `error.response.data` in your catch block).
+
 ***howtojs: axios library:: to use the axios library, install its package(npm install axios), require axios on top of the file, use an axios function with get(api-endpoint), then(handle the response), and catch(handle the error) methods***
   3. i then tried to learn how axios library works with fetched data
     * i googled(https://axios-http.com/docs/example) and used this prompt: "how axios library works with fetched data"
@@ -78,7 +79,7 @@ For the first issue, I :
            })
            .catch(error => {
              // handle the error
-             console.log(error);
+             console.log(error, error.message, error.response?.data);
            });
          ```
 
@@ -123,6 +124,9 @@ For the first issue, I :
 ## the celsius and fahrenheit degree values were over not correct.
 
 This error were not displayed on the console, but when i put a city to get the temperature, the degree was over the expected value that the open weather map endpoint offers.
+
+
+DM: todoMM: limit your howtojs to general principles, not to a specific calculation for a specific app. In this case your howtojs line should include text regarding debugging a math formula. When you solve this problem, make a howtojs about what technique you used to debug and solve the error.
 
 ***howtojs: function:: to convert celsius to fahrenheit degrees, add a celsius param then return the celsius value times 9, divide by 5 plus 32(formula F = C * 9/5 + 32.).***
 To fix this issue:

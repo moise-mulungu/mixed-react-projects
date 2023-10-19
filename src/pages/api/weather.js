@@ -32,13 +32,11 @@ export default async (req, res) => {
   */
 
   try {
-    const response = await axios.get(
-      // console.log('axios-value:', {
-      //   axios,
-      // })
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
-    )
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
+    console.log({ apiUrl })
+    const response = await axios.get(apiUrl)
     const data = response.data
+    console.log({data})
     res.status(200).json(data)
   } catch (error) {
     // this is "server-side" code, so the console.error will be in the terminal, not in the browser
@@ -109,5 +107,6 @@ Sider prompt: how to make an API route in NextJS:
       * i searched for probable restrictions suggested in the Sider AI prompt response of "Make sure there are no restrictions set in OpenWeatherMap API in terms of the number of requests per day or for specific IP addresses"
         * i read the page related to the use of the open-weather-map-api(https://openweathermap.org/api/one-call-3), and i am not sure if the free plan that has some restrictions that cause the "Unhandled Runtime Error : AxiosError: Request failed with status code 500" error 
         * blockers: the error persisted after trying all the approaches. all details are in the src/features/weather-forecast/weather-forecast-contents/weather.jsx file.
+        * DM: fix the API first, so look at http://localhost:3005/api/weather?city=London and debug this code in this file first, before you try to use it in the client code. 
       * I paused there.
     */
