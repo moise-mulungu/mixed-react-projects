@@ -265,13 +265,16 @@ src = https://www.geeksforgeeks.org/difference-between-dependencies-devdependenc
 
 Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests.
 
-DM: todoMM: good. move this to web-vocabulary
-## A relative URL
+(done)DM: todoMM: good. move this to web-vocabulary
 
-Is a URL that only includes the path. The `path` is everything that comes after the `domain`, including the `directory` and `slug`. 
-EX: /path/to/file.html
+**Debouncing** and **throttling** are two programming techniques often used to limit the rate at which a function can fire or execute. They are often used in performance optimization, particularly in user interface development where certain events can trigger at a high rate, such as window resizing, scrolling, typing, or mouse movements. Here's a quick breakdown of each:
 
-Because relative URLs don't include the entire URL structure, it is assumed that when linking a relative URL, it uses the same `protocol`, `subdomain` and domain as the page it's on.
-- see project-info/teamdm/tech/web/anatomy-of-a-url/anatomy-of-a-url-vocabulary.md
+## Debounce: 
+Debouncing ensures that a given function will not be called until after a certain amount of time has passed since it was last called. This can be useful for events that you only want processed once the user or system is "done" with an action, such as resizing a window or typing in a form field. When the debounced function is invoked, it postpones the execution to the future. If the function gets invoked again within that time period, it restarts the timer.
+
+## Throttle: 
+Throttling, on the other hand, guarantees that a function will only run at most once during a specified period of time. Throttling is useful for limiting the rate of execution for events that occur continuously, such as scrolling events. If a function is throttled to execute every 100ms, it will execute the first time immediately, but then won't execute again until at least 100ms have passed since the last execution.
+
+In conclusion, use debounce when you want to limit the number of times a function can execute based on a delay after the last call, and use throttle when you want to limit the number of times a function can execute based on a delay since the first call.
 
 

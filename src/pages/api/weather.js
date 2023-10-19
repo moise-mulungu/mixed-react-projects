@@ -96,4 +96,10 @@ Sider prompt: how to make an API route in NextJS:
       Consider contacting OpenWeather's support if you're continuing to receive this error as it might be an issue on their end.
 
       blockers: i tried to change the fetchWeatherData function from the src/features/weather-forecast/weather.js and the async function in this file, but the error still persists.
+
+   * i attempted to fix the "Unhandled Runtime Error : AxiosError: Request failed with status code 500"  with this Sider prompt: "how to fix: Unhandled Runtime Error : AxiosError: Request failed with status code 500".
+      * i searched for probable restrictions suggested in the Sider AI prompt response of "Make sure there are no restrictions set in OpenWeatherMap API in terms of the number of requests per day or for specific IP addresses"
+        * i read the page related to the use of the open-weather-map-api(https://openweathermap.org/api/one-call-3), and i am not sure if the free plan that has some restrictions that cause the "Unhandled Runtime Error : AxiosError: Request failed with status code 500" error 
+        * blockers: the error persisted after trying all the approaches. all details are in the src/features/weather-forecast/weather-forecast-contents/weather.jsx file.
+      * I paused there.
     */

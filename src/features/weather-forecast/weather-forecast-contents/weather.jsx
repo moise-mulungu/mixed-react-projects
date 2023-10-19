@@ -104,19 +104,17 @@ const Weather = () => {
     // }
 
     try {
-      const response = await axios.get(
-        // console.log('axios-value:', {
-        //   axios,
-        // })
-        `/api/weather?city=${city}`
-      )
+      const response = await axios.get(`/api/weather?city=${city}`)
       setWeather(response.data) // Set the weather state with the fetched data.
     } catch (error) {
-      // DM: this is "client-side" code so the error will be logged in the browser console. 
+      // DM: this is "client-side" code so the error will be logged in the browser console.(ok)
       // DM: often the entire error object huge, and you should analyze it for clues, but also log the error message
       console.error(error, error.message)
       throw error
     }
+    console.log('axios-value:', {
+      axios,
+    })
   }
 
   // const fetchWeatherData = () => {
