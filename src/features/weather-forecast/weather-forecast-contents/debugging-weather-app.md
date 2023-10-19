@@ -29,6 +29,7 @@
   2. the celsius and fahrenheit degree values were over not correct.
    
 For the first issue, I :
+***howtojs: error:: error structure in javascript is made with the name or identifier(syntax , reference , type, evaluation , range, URI  and internal), and the message***
   1. asked SiderAI prompt to get the meaning of the error : "what are different parts of an error such as this one: "AxiosError: Request failed with status code 500"
      * answer:
        The given error message "AxiosError: Request failed with status code 500" is likely to be thrown when using Axios library (a promise-based HTTP client) in JavaScript. It is broken down into several parts:
@@ -43,6 +44,7 @@ For the first issue, I :
 
        However, this is a fairly high level error message. The exact reason for a 500 error can vary and additional information would typically be found within the server logs.
 
+***howtojs: error:: AxiosError: Request failed with status code 500, to fix this error, check the request endpoint, add your verified API key, check the fetch function, and verify the server***
   2. I used this prompt to get what could be the reasons for the error: "AxiosError: Request failed with status code 500"
      * answer: 
         The error `AxiosError: Request failed with status code 500` means that a request made using Axios has failed. Specifically, the HTTP status code 500 means that something went wrong on the server side that could not fulfill the request.
@@ -58,7 +60,7 @@ For the first issue, I :
          * URL: Ensure that the URL you constructed for the GET request to the OpenWeatherMap API is correct.
 
        You'll want to add more error-handling to this code to help diagnose the issue. For example, you can add console logs to print out more details about the error, or even inspect the details of what's returned by the API call (the `error.response.data` in your catch block).
-
+***howtojs: axios library:: to use the axios library, install its package(npm install axios), require axios on top of the file, use an axios function with get(api-endpoint), then(handle the response), and catch(handle the error) methods***
   3. i then tried to learn how axios library works with fetched data
     * i googled(https://axios-http.com/docs/example) and used this prompt: "how axios library works with fetched data"
     * answer :
@@ -85,6 +87,7 @@ For the first issue, I :
      * i checked the "handle response" function
      * and finally checked the "handle error" function
 
+***howtojs: axios library:: fetch data function, the fetch data method has two parameters; the API URL(get data) and options(headers and authentication).***
   5. i checked the fetchData function in the src/features/weather-forecast/weather-forecast-contents/weather.jsx file
      * i used a prompt: "how would the fetchWeatherData function be like?"
      * answer: 
@@ -119,7 +122,9 @@ For the first issue, I :
 
 ## the celsius and fahrenheit degree values were over not correct.
 
-This error were not displayed on the console, but when i put a city to get the temperature, the degree was over the expected value that the open weather map endpoint offers. 
+This error were not displayed on the console, but when i put a city to get the temperature, the degree was over the expected value that the open weather map endpoint offers.
+
+***howtojs: function:: to convert celsius to fahrenheit degrees, add a celsius param then return the celsius value times 9, divide by 5 plus 32(formula F = C * 9/5 + 32.).***
 To fix this issue:
   * i checked the convertFahrenheitToCelsius() function that converts a fahrenheit temperature degrees to celsius in the src/features/weather-forecast/weather-forecast-contents/weather.jsx file
   
@@ -129,6 +134,8 @@ To fix this issue:
       return Math.round(((fahrenheit - 32) * 5) / 9)
     }
   ```
+  ***howtojs: function:: to convert fahrenheit to celsius degrees, add a fahrenheit param then return the fahrenheit value minus 32, times 5 divide by 9(formula C = (F - 32) * 5/9.).***
+  
   * i open the Thunder Client API platform, run the open-weather-map-api endpoint to check whether the `temp` property  default degrees are in fahrenheit or in celsius.
   * i checked in the return statement of the weather function where i called convertFahrenheitToCelsius() function
   * when i used console.log(fahrenheit), i am getting fahrenheit values undefined.
