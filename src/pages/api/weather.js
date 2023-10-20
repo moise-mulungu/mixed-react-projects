@@ -29,7 +29,9 @@ export default async (req, res) => {
   if (!req.query.city) {
     return res.status(400).send('Bad Request: city not specified')
   } 
+  https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=85bd5941b66f2ecc9f970952677ab2f3
   */
+ // MM: DM: OpenWeatherMap Current-weather-data API documentation: https://openweathermap.org/current
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
   console.log({ apiUrl })
   try {
@@ -113,4 +115,21 @@ Sider prompt: how to make an API route in NextJS:
         * blockers: the error persisted after trying all the approaches. all details are in the src/features/weather-forecast/weather-forecast-contents/weather.jsx file.
         * DM: fix the API first, so look at http://localhost:3005/api/weather?city=London and debug this code in this file first, before you try to use it in the client code. 
       * I paused there.
+      * 
+ Sider prompt: AxiosError {message: 'Request failed with status code 500', name: 'AxiosError', code: 'ERR_BAD_RESPONSE', config: {…}, request: XMLHttpRequest, …} for this code:
+
+ The error 'Request failed with status code 500' is a server error indicating that your server encountered an unexpected condition that prevented it from fulfilling the request by the client.
+
+  Your code is fine, and the error is most probably not from your end but from the server side. It's probably that OpenWeatherMap's server is down or it's not capable of handling the request at the moment, or even your API key is invalid or expired. 
+
+    You can check a few things:
+
+    1. Ensure the API key (`process.env.OPEN_WEATHER_MAP_API_KEY`) is correct and not expired/revoked.
+
+    2. Confirm that the OpenWeatherMap API you are calling is up and functioning correctly. You can do this by taking the apiUrl and pasting it directly into your web browser and seeing if it returns the expected results.
+
+    3. Make sure city from `req.query` is valid and spelled correctly. The API will throw an error if the city is not recognized.
+
+    4. Sometimes, APIs don't allow certain types of requests or have rate limits, which might be causing the issue. Check the OpenWeatherMap API documentation to ensure you haven't exceeded their rate limit or are sending the request in a format it's not expecting.
+}
     */
