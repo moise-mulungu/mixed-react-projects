@@ -19,7 +19,10 @@ const useThrottle = (value, limit) => {
   return throttledValue
 }
 
-// usage
+/* 
+
+usage
+
 function Demo() {
   const [text, setText] = useState('Hello')
   const throttledText = useThrottle(text, 1000)
@@ -36,3 +39,5 @@ function Demo() {
     </div>
   )
 }
+
+ */
