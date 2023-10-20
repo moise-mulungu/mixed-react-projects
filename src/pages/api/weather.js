@@ -30,13 +30,17 @@ export default async (req, res) => {
     return res.status(400).send('Bad Request: city not specified')
   } 
   */
-
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
+  console.log({ apiUrl })
   try {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
-    console.log({ apiUrl })
-    const response = await axios.get(apiUrl)
+    const response = await axios.get(
+      // console.log('axios-value:', {
+      //   axios,
+      // })
+      // `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
+      apiUrl
+    )
     const data = response.data
-    console.log({data})
     res.status(200).json(data)
   } catch (error) {
     // this is "server-side" code, so the console.error will be in the terminal, not in the browser

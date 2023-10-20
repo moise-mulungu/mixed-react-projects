@@ -126,7 +126,7 @@ For the first issue, I :
 This error were not displayed on the console, but when i put a city to get the temperature, the degree was over the expected value that the open weather map endpoint offers.
 
 
-DM: todoMM: limit your howtojs to general principles, not to a specific calculation for a specific app. In this case your howtojs line should include text regarding debugging a math formula. When you solve this problem, make a howtojs about what technique you used to debug and solve the error.
+(done)DM: todoMM: limit your howtojs to general principles, not to a specific calculation for a specific app. In this case your howtojs line should include text regarding debugging a math formula. When you solve this problem, make a howtojs about what technique you used to debug and solve the error.
 
 ***howtojs: function:: to convert celsius to fahrenheit degrees, add a celsius param then return the celsius value times 9, divide by 5 plus 32(formula F = C * 9/5 + 32.).***
 To fix this issue:
@@ -144,3 +144,10 @@ To fix this issue:
   * i checked in the return statement of the weather function where i called convertFahrenheitToCelsius() function
   * when i used console.log(fahrenheit), i am getting fahrenheit values undefined.
   * As i could not make any progress, i paused there.
+
+* i proceeded the debug process of getting the exact fahrenheit and celsius degree values by:
+  1. reverted the previous code of fetchWeatherData() function and of useEffect() method in the src/features/weather-forecast/weather-forecast-contents/weather.jsx file
+  2. after reverting the app worked perfectly 
+  3. i looked closely at the difference between the previous and the current fetchWeatherData, i found that the first version had "q", "units", and "appid" properties in the params object, but the second version of the fetchWeatherData() function misses the "units" property.
+  4. i opened the src/pages/api/weather.js file where i am getting the open-weather-map-api, i realized that the "units" property was missing, then i added it.
+  5. i run the server for checking, then all the fahrenheit and celsius degree values were fixed.
