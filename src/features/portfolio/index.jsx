@@ -8,7 +8,7 @@ export default function Portfolio(props) {
   const { data } = props
 
   return (
-    <div className="bg-white">
+    <div className="bg-gray-200">
       <TopNav />
       <Content />
       <Footer />

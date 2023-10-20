@@ -1,5 +1,7 @@
-// 1. import useState
 import { useState } from 'react'
+
+import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
+
 import { contactFormText } from '@/constants/portfolio/contact-form'
 import {
   myEmail,
@@ -12,8 +14,6 @@ import {
 // DM: future plan: search "react send email" to find out how to send a gmail from a react component.
 
 // DM: events perform side effects, they do not return values. this is where you'd do whatever is needed to generate the email message. We'll use the referenced values later, though.
-
-import { BuildingOffice2Icon, EnvelopeIcon, PhoneIcon } from '@heroicons/react/24/outline'
 
 export default function ContactForm() {
   // 2. set up our useState to reflect a name, email, and message when sending an email.
@@ -37,7 +37,7 @@ export default function ContactForm() {
     alert(`${mailerState.name}
     ${mailerState.email}
     ${mailerState.message}`)
-    return
+    // return
 
     console.log({ mailerState })
     // (is this a todoMM? DM: see below)DM: NextJS is running on part 3005, not 3001. Look at errors in browser dev tools in the console or networking tabs, it will give you clues.

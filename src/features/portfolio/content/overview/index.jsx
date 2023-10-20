@@ -81,3 +81,50 @@ function Overview() {
 }
 
 export default Overview
+
+// import {
+//   contentOverviewHeaderText,
+//   contentOverviewParagraphText,
+// } from '@/constants/portfolio/content/overview'
+
+// import { socialLinks } from '@/constants/portfolio'
+// import { v4 as uuid } from 'uuid'
+
+// function Overview() {
+//   return (
+//     <section className="relative isolate overflow-hidden bg-gradient-to-r from-blue-800 to-purple-900 py-20">
+//       <div className="container mx-auto z-10">
+//         <img
+//           className="h-16 mx-auto"
+//           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+//           alt="Your Company"
+//         />
+
+//         <h1 className="mt-10 text-5xl font-bold tracking-tight text-white sm:text-6xl">
+//           {contentOverviewHeaderText}
+//         </h1>
+
+//         <p className="mt-6 text-3xl leading-relaxed text-white sm:text-4xl">
+//           {contentOverviewParagraphText}
+//         </p>
+
+//         <ul className="mt-8 flex justify-center space-x-6">
+//           {socialLinks.map(({ id, name, title, Icon, url }) => {
+//             return (
+//               <li key={uuid()} className="text-2xl">
+//                 <a
+//                   href={url}
+//                   className="text-white hover:text-blue-200 transition-colors duration-300"
+//                 >
+//                   <Icon title={title} />
+//                 </a>
+//               </li>
+//             )
+//           })}
+//         </ul>
+//       </div>
+//     </section>
+//   )
+// }
+
+// export default Overview
