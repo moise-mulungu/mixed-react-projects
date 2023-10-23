@@ -23,9 +23,9 @@ export default async (req, res) => {
   const { city } = req.query // Get the city parameter from the query string
 
   /*
-
+  
   DM: instead of asking AI you can just observe that city=undefined seems to always throw a 500 error. 
-
+  
   Sider AI prompt: "how to fix: GET http://localhost:3005/api/weather?city=undefined 500 (Internal Server Error)".
   answer: 
   if (!req.query.city) {
@@ -33,23 +33,20 @@ export default async (req, res) => {
   } 
   https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=xxx // DM: no secrets in GitHub/GitLab!
   */
- // OpenWeatherMap Current-weather-data API documentation: https://openweathermap.org/current
+  if (city === undefined) {
+    return res.status(400).json({ error: 'City is not provided' })
+  }
+  // OpenWeatherMap Current-weather-data API documentation: https://openweathermap.org/current
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
   console.log({ apiUrl })
+
   try {
-    const response = await axios.get(
-      // console.log('axios-value:', {
-      //   axios,
-      // })
-      // `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
-      apiUrl
-    )
+    const response = await axios.get(apiUrl)
     const data = response.data
-    console.log({data})
+    console.log({ data })
     res.status(200).json(data)
   } catch (error) {
-
-/* 
+    /* 
 
 2023-10-20 debugging notes:
 
@@ -72,7 +69,7 @@ export default async (req, res) => {
 */
 
     // this is "server-side" code, so the console.error will be in the terminal, not in the browser
-    console.error({error, errorMessage: error.message})
+    console.error({ error, errorMessage: error.message })
     // DM: I added error message so that you can see what the error is in the browser at http://localhost:3005/api/weather?city=London
     // DM: I see mention of EAI_AGAIN in the error message
     // DM: you can google, or look at the openweathermap web site for the meaning of EAI_AGAIN code
@@ -158,4 +155,25 @@ Sider prompt: how to make an API route in NextJS:
 
     4. Sometimes, APIs don't allow certain types of requests or have rate limits, which might be causing the issue. Check the OpenWeatherMap API documentation to ensure you haven't exceeded their rate limit or are sending the request in a format it's not expecting.
 }
+
+
+export default async (req, res) => {
+  const { city } = req.query
+
+  if (!city) {
+    return res.status(400).json({ error: 'City is not provided' });
+  }
+
+  const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
+  
+  try {
+    const response = await axios.get(apiUrl)
+    const data = response.data
+    res.status(200).json(data)
+  } catch (error) {
+    console.error({error, errorMessage: error.message})
+    res.status(500).json({ error: 'Unable to fetch weather data', message: error.message })
+  }
+}
+
     */

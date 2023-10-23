@@ -22,7 +22,7 @@ Steps:
 To run the server: node src/pages/api/portfolio/contact2.js
 */
 // DM: bump: you don't need express because nextjs is a server. Anything in src/pages/api is a server route, just like express provides
-const express = require('express')
+// const express = require('express')
 const nodemailer = require('nodemailer')
 const app = express()
 // DM: if you need cors, look in the nextjs docs for how to do cors. Or in the examples directory: https://github.com/vercel/next.js/tree/canary/examples

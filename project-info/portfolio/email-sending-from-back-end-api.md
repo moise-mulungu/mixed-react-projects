@@ -14,7 +14,7 @@
 - must have custom domain
 
 # conclusion
-// DM: bump:
+//(MM:yes, it gonna help) DM: bump:
 - get a domain like moisemulungu.com - you'll need it anyway
 - use Postmark (sign up using the email address moise|webmaster|info@moisemulungu.com)
   - think on what addresses you'll need:

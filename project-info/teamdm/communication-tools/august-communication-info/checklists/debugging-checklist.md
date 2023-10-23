@@ -1,6 +1,6 @@
 DM: this will be your debugging checklist. We can edit it together.
 
-DM: todoMM: read this note on blockers again, as your Friday work is relying only on AI queries. I specifically mentioned in the Thursday review that asking AI is only one part of the debugging process. If all you did was ask AI, but you didn't do the other stuff in the debugging checklist, you are not truly blocked.
+(done)DM: todoMM: read this note on blockers again, as your Friday work is relying only on AI queries. I specifically mentioned in the Thursday review that asking AI is only one part of the debugging process. If all you did was ask AI, but you didn't do the other stuff in the debugging checklist, you are not truly blocked.
 # note on blockers
 * When you report a blocker, I'll expect you to have tried all the relevant items on this checklist and documented the result. That way I can understand EXACTLY where you got stuck and based on that, tailor my response so that you learn key This will help me help you, and it will help you when you come back to work on the bug.
 * You're not truly "blocked" if you haven't "shot all the arrows in your quiver" (i.e., tried all the debugging checklist items that you can try). 
@@ -68,7 +68,7 @@ Follow the sequence of executed code backwards (in the order of execution) until
 ## 3. "AI coding assistant" may help (using the AI coding assistant in your IDE: TabNine or Github Copilot)
 # ------------------------------------------------------------
 example AI prompt: "suggest fixes to the code|[functionName] and explain what you think should be fixed"
-* this assumes you are using TabNine (T9) or Github Copilot (copilot) AI coding assistant, and therefore the AI coding assitant knows which code you are referring to. note: with T9/copilot AI chat in VSCode, when you say 'code' will inspect selected code, or if no code is selected, all the code in the currently open file. 
+* this assumes you are using TabNine (T9) or Github Copilot (copilot) AI coding assistant, and therefore the AI coding assistant knows which code you are referring to. note: with T9/copilot AI chat in VSCode, when you say 'code' will inspect selected code, or if no code is selected, all the code in the currently open file. 
   * DM: unsure about this: instead of 'code' you can also say 'functionName' to focus AI on a specific function.
 
 
@@ -108,7 +108,7 @@ EX goto https://api.openweathermap.org/data/2.5/weather?q=undefined&units=imperi
     * click on the "Headers" tab and look at URL and Status Code 
       * Status Code: Google the "http status code" EX: 500 means "internal server error" which means the server code is broken, not your code. EX: 404 means "not found" which means you are calling a wrong/non-existent API endpoint. 
       * URL: if the URL is wrong you'll get a 404 error. Or, if the query parameters are wrong, you'll get a 500 error (sometimes you get a 200 (success) and the error is described in the JSON response)
-  * clik on the "Response" tab and see what data/info the server is sending back to you
+  * click on the "Response" tab and see what data/info the server is sending back to you
   * explore the network tab - there is a lot to click on and explore
 * __VSCode terminal__ where "npm run dev" is running (for code stemming from "server-side code", i.e., src/pages/api routes)
   * your console.logs 
