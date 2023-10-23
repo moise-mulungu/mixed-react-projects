@@ -18,20 +18,22 @@ note: you can ask T9 to review your code for security, error handling, etc.
 */
 //(ok) DM: todoMM: you don't need to reassign this to a new variable, just use it directly in the URL
 // const MY_API_KEY = process.env.OPEN_WEATHER_MAP_API_KEY // MM: DM: the key is in the .env.local file in the root of the project
-// '85bd5941b66f2ecc9f970952677ab2f3' // Replace with your OpenWeatherMap API key
 
 export default async (req, res) => {
   const { city } = req.query // Get the city parameter from the query string
 
   /*
+
+  DM: instead of asking AI you can just observe that city=undefined seems to always throw a 500 error. 
+
   Sider AI prompt: "how to fix: GET http://localhost:3005/api/weather?city=undefined 500 (Internal Server Error)".
   answer: 
   if (!req.query.city) {
     return res.status(400).send('Bad Request: city not specified')
   } 
-  https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=85bd5941b66f2ecc9f970952677ab2f3
+  https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=xxx // DM: no secrets in GitHub/GitLab!
   */
- // MM: DM: OpenWeatherMap Current-weather-data API documentation: https://openweathermap.org/current
+ // OpenWeatherMap Current-weather-data API documentation: https://openweathermap.org/current
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
   console.log({ apiUrl })
   try {
@@ -43,10 +45,34 @@ export default async (req, res) => {
       apiUrl
     )
     const data = response.data
+    console.log({data})
     res.status(200).json(data)
   } catch (error) {
+
+/* 
+
+2023-10-20 debugging notes:
+
+* i tried to analyze the "axioserror {message: 'request failed with status code 500', name: 'axioserror', code: 'err_bad_response', config: {…}, request: xmlhttprequest, …}" error.
+  * DM: how did you try to analyze it? The above line doesn't give me any information at all, so it does not help me to help you.
+
+* i used this prompt: "AxiosError {message: 'Request failed with status code 500', name: 'AxiosError', code: 'ERR_BAD_RESPONSE', config: {…}, request: XMLHttpRequest, …}
+  * DM: was there any useful info in the AI response? If not, tell me here. Again, the above detail of your work is useless to me as it gives me no actionable information with which to help you.
+  * DM: If asking AI is how you analyzed it, remember to not to over-depend on AI. AI is not a replacement for your own thinking. AI is a tool to help you think, but you still have to do the thinking.
+  * DM: in your prompt, there is not enough context for AI to give you anything but a very generic answer. So it's good you tried it, but keep in mind that the suggestions will be very generic/vague and may even be wrong. For this bug, I would not ask AI any more. 
+
+* i have the assumption that the error is not from the code but from the OpenWeatherMap's server side that has restrictions on the my rate limit or i am sending the request in a format it's not expecting.
+  * DM: good! You told me your thinking, so I can help you!
+  * DM: the 2nd assumption is a good assumption. How will you further investigate? 
+
+* i tried to read the OpenWeatherMap API documentation to find if they mention some restrictions related to the fetch data method, but i did not find any: https://openweathermap.org/current
+  * DM: it is good that you read the API documentation, but since you didn't see a solution there you'll have to look elsewhere. But keep in mind that reading the docs is often a last step, only if other debugging methods don't work. Reading docs is a very difficult/slow way to figure out a problem, so you should look for other possible causes of the error first.
+
+* i paused again there.
+*/
+
     // this is "server-side" code, so the console.error will be in the terminal, not in the browser
-    console.error(error, error.message)
+    console.error({error, errorMessage: error.message})
     // DM: I added error message so that you can see what the error is in the browser at http://localhost:3005/api/weather?city=London
     // DM: I see mention of EAI_AGAIN in the error message
     // DM: you can google, or look at the openweathermap web site for the meaning of EAI_AGAIN code

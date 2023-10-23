@@ -36,7 +36,7 @@ const Weather = () => {
   //   axios
   //     .get('https://api.openweathermap.org/data/2.5/weather', {
   //       params: {
-  //         appid: '85bd5941b66f2ecc9f970952677ab2f3',
+  //         appid: ' see .env.local ',
   //         units: 'imperial',
   //         q: 'London',
   //       },
@@ -57,7 +57,7 @@ const Weather = () => {
   //       // 'https://api.weatherapi.com/v1/current.json?key=fdcd3787290f409facc104541231310&q=London&aqi=no',
   //       {
   //         params: {
-  //           appid: '85bd5941b66f2ecc9f970952677ab2f3',
+  //           appid: ' see .env.local ',
   //           // 'fdcd3787290f409facc104541231310',
   //           units: 'imperial',
   //           q: city,

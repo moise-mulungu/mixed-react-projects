@@ -21,7 +21,7 @@ Steps:
    DM: you don't need dotenv because nextjs has that functionality built-in. See contact.js how you can just use process.env.MY_ENVIRONMENT_VARIABLE which is in the .env.local
 To run the server: node src/pages/api/portfolio/contact2.js
 */
-// DM: you don't need express because nextjs is a server. Anything in src/pages/api is a server route, just like express provides
+// DM: bump: you don't need express because nextjs is a server. Anything in src/pages/api is a server route, just like express provides
 const express = require('express')
 const nodemailer = require('nodemailer')
 const app = express()
