@@ -478,3 +478,6 @@ You can rename an export when importing it. DM: todoMM: show an example of howto
 
 ## tree shaking
 tree shaking eliminates unused functions from across the bundle by starting at the entry point and only including functions that may be executed. It is succinctly described as "live code inclusion"
+
+## parameter
+A parameter in JavaScript is a variable used in the declaration of a function. It's a placeholder that will get its value from the actual arguments when the function is called. The value of the parameter can be any JavaScript data type, including objects and arrays. For example, in the function declaration `function myFunc (param1, param2) {...}`, param1 and param2 are parameters.
