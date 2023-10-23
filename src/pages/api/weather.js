@@ -22,6 +22,7 @@ note: you can ask T9 to review your code for security, error handling, etc.
 export default async (req, res) => {
   const { city } = req.query // Get the city parameter from the query string
 
+  console.log('is city undefined:', { city })
   /*
   
   DM: instead of asking AI you can just observe that city=undefined seems to always throw a 500 error. 
@@ -33,8 +34,12 @@ export default async (req, res) => {
   } 
   https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=xxx // DM: no secrets in GitHub/GitLab!
   */
-  if (city === undefined) {
-    return res.status(400).json({ error: 'City is not provided' })
+  const isNotDefined = !req.query.city
+  console.log('is undefined:', { isNotDefined })
+  
+  if (isNotDefined) {
+    // return res.status(400).json({ error: 'City is not provided' })
+    return res.status(400).send('Bad Request: city not specified')
   }
   // OpenWeatherMap Current-weather-data API documentation: https://openweathermap.org/current
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${process.env.OPEN_WEATHER_MAP_API_KEY}`
