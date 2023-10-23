@@ -33,6 +33,8 @@ The set of unique tokens used in a specific dataset or language.
 
 ## AI chat
 An AI chat, also known as a chatbot, is a computer program that uses artificial intelligence techniques to interact with users through textual or auditory means. It is designed to simulate human conversation and provide automated responses to user queries.
+* EX asking AI to review or refine code by writing text in a chat window. EX GitHub Copilot provides a chat window in addition to suggesting code completions. 
 
 ## AI assisted coding
-AI-assisted coding refers to using artificial intelligence to aid software developers in writing, reviewing, and, hopefully, improving their code. Large language models (LLMs) are at the heart of AI coding.
+AI-assisted coding refers to using artificial intelligence to aid software developers in writing, reviewing, and, hopefully, improving their code. Large language models (LLMs) are at the heart of AI coding. 
+* EX suggested code completions

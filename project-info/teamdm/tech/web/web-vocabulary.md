@@ -9,5 +9,7 @@ Because relative URLs don't include the entire URL structure, it is assumed that
 ## parameter
 A parameter is a programming variable or value that transfers data between functions. Functions, which are self-contained blocks of code that perform specific tasks, receive input data (arguments) through parameters.
 
-### url-parameter
-A URL parameter is a component of a URL (Uniform Resource Locator) that follows a question mark "?" and is used to pass additional information to a web server. It consists of a key-value pair, where the key represents a variable name, and the value represents the data associated with that variable.
+### url-parameter AKA query string parameter
+A URL parameter is a component of a URL (Uniform Resource Locator) that follows a question mark "?" and is used to pass additional information to a web server. It consists of a key-value pair delimited by "&" or sometimes ";", where the key represents a variable name, and the value represents the data associated with that variable.
+
+EX: https://www.example.com?name=John&age=30

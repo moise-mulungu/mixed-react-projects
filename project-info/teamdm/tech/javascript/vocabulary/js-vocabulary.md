@@ -481,3 +481,7 @@ tree shaking eliminates unused functions from across the bundle by starting at t
 
 ## parameter
 A parameter in JavaScript is a variable used in the declaration of a function. It's a placeholder that will get its value from the actual arguments when the function is called. The value of the parameter can be any JavaScript data type, including objects and arrays. For example, in the function declaration `function myFunc (param1, param2) {...}`, param1 and param2 are parameters.
+
+## parameter VS argument: depends on the context
+* parameter: when _defining a function_, you specify parameters
+* argument: when _calling a function_, you pass arguments to the function

@@ -15,7 +15,7 @@ Here are some key features of Chrome DevTools:
 
 5. Console: You can execute JavaScript code in the browser's context, log messages, inspect objects, and even interactively experiment with code.
 
-6. Mobile device emulation: DevTools allows you to emulate various mobile devices and test how your web application behaves on different screen sizes and resolutions.
+6. Mobile device emulation: DevTools allows you to emulate various mobile devices and test how your web application and UX behaves on different screen sizes and resolutions.
 
 ## how to open chrome devtools
 
