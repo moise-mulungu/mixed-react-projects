@@ -276,6 +276,8 @@ Throttling, on the other hand, guarantees that a function will only run at most 
 
 In conclusion, use debounce when you want to limit the number of times a function can execute based on a delay after the last call, and use throttle when you want to limit the number of times a function can execute based on a delay since the first call.
 
+# client-side code VS server-side code
+
 ## client-side code
 Client-side code refers to the code that is executed on the client's web browser.
 Ex: 
@@ -316,26 +318,15 @@ server-side code refers to the code that is executed on the server.
   });
 
   ```
-## Next.JS rendering
-Next.js is a popular React framework for building server-side rendered (SSR) web applications. It combines both client-side and server-side code to provide a seamless user experience
-  ```js
-  // pages/index.js with Next.JS
 
-  import React from 'react';
+## Next.JS rendering: client-side VS server-side
 
-  const HomePage = () => {
-    const currentTime = new Date().toLocaleTimeString();
+* Code that stems from src/pages is client-side code that runs in the browser
+  * note: NextJS may execute the code once on the server before sending to the browser, in some circumstances. Even if this is the case, the code will run in the browser. 
+  * 
+* Code that stems from src/pages/api is server-side code and runs in the server.
 
-    return (
-      <div>
-        <h1>Hello, Next.js!</h1>
-        <p>Current time: {currentTime}</p>
-      </div>
-    );
-  };
+DM: I removed the previous definition as it confuses the issue given this context of distinguishing between where the code runs: browser or server
 
-  export default HomePage;
-
-  ```
 
 
