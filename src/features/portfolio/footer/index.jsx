@@ -61,7 +61,8 @@ export default function Footer({ lang }) {
         ) 
       }
 
-*/
+      */
+/*
 import { useState, useEffect } from 'react'
 import { socialLinks, defaultSocialLink } from '@/constants/portfolio'
 import { classNames } from '@/ui/utils'
@@ -83,6 +84,39 @@ export default function Footer() {
           return (
             <li key={uuid} className="flex">
               <a href={url} className="hover:text-indigo-400">
+                {name && name}
+                {Icon && <Icon className="w-5 h-5" title={title} />}
+              </a>
+            </li>
+          )
+        })}
+      </ul>
+    </footer>
+  )
+}
+
+*/
+import { useState, useEffect } from 'react'
+import { socialLinks, defaultSocialLink } from '@/constants/portfolio'
+import { classNames } from '@/ui/utils'
+import { v4 as uuid } from 'uuid'
+
+const defaultSocialLinkId = defaultSocialLink
+
+export default function Footer() {
+  return (
+    <footer className="p-10 bg-gray-300 text-gray-800 flex flex-col md:flex-row md:items-center md:justify-between">
+      <span className="text-center text-md font-medium mb-2 md:mb-0 md:text-left">
+        © 2023{' '}
+        <a href="https://flowbite.com/" className="text-green-700 hover:text-indigo-700 underline">
+          Moise Mulungu™
+        </a>
+      </span>
+      <ul className="flex justify-center space-x-8 md:justify-end">
+        {socialLinks.map(({ id, name, title, Icon, url }) => {
+          return (
+            <li key={uuid} className="flex">
+              <a href={url} className="hover:text-indigo-700 font-medium text-sm">
                 {name && name}
                 {Icon && <Icon className="w-5 h-5" title={title} />}
               </a>
