@@ -35,7 +35,7 @@ export default async (req, res) => {
   https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid=xxx // DM: no secrets in GitHub/GitLab!
   */
   // DM; nice! Btw, you already have the variable city, so you can use it, instead of req.query.city . It is technically no difference, but someone reading your code may wonder why you didn't use 'city' and may spend time trying to figure out why you didn't use it. So, it is better to use 'city' instead of req.query.city, just so you don't make future readers spend time thinking about it.
-  const isNotDefined = !req.query.city
+  const isNotDefined = !city
   console.log('is undefined:', { isNotDefined })
 
   if (isNotDefined) {

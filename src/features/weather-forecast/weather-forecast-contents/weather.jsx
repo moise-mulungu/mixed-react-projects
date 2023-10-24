@@ -94,14 +94,13 @@ const Weather = () => {
     */
 
   const fetchWeatherData = async (city) => {
+    console.log('city value:', { city })
     /*
     Sider AI prompt: "how to fix: GET http://localhost:3005/api/weather?city=undefined 500 (Internal Server Error)".
     answer: validate the city name before sending the request
   */
     // DM: it is good to warn user
-    if (city === '') {
-      alert('Please enter a city name')
-    } else {
+    if (city) { // MM: DM: i checked if it's city, run the try(), catch(), else console.log "please enter a city name". it was tricky and difficult to find it, but it fixed now.
       // fetchWeatherData(city)
 
       try {
@@ -116,6 +115,8 @@ const Weather = () => {
       console.log('axios-value:', {
         axios,
       })
+    } else {
+      console.log('Please enter a city name')
     }
   }
 
@@ -327,8 +328,8 @@ MM: DM: the NAN error has gone, i didn't fix it. a new error arose, the value of
   }
   */
   const handleButtonClick = () => {
-    fetchWeatherData(city)
     setModalOpen(true)
+    fetchWeatherData(city)
   }
 
   const closeModal = () => {
@@ -388,10 +389,7 @@ MM: DM: the NAN error has gone, i didn't fix it. a new error arose, the value of
           <div className="bg-white p-8 rounded-lg shadow-lg">
             <p className="text-gray-800 text-lg font-semibold mb-4">Weather Information</p>
 
-            <p>
-              Temperature:{' '}
-              {calculatedTemp}
-            </p>
+            <p>Temperature: {calculatedTemp}</p>
             <p>
               Approximate: (
               {degree === 'celsius'
