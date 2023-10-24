@@ -149,7 +149,7 @@ const ProjectCard = ({ title, description, image, url, stack }) => (
         <img
           className="rounded-2xl object-cover border-2 border-gray-300"
           layout="fill"
-          objectFit="cover"
+          objectfit="cover"
           src={image || url}
           alt={description}
         />
@@ -179,8 +179,11 @@ const ProjectCards = () => (
       </div>
       <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none ">
         <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3 lg:gap-8">
-          {projectCardsData.map((card) => (
+          {/* {projectCardsData.map((card) => (
             <ProjectCard {...card} />
+          ))} */}
+          {projectCardsData.map((card, index) => (
+            <ProjectCard key={index} {...card} />
           ))}
         </dl>
       </div>

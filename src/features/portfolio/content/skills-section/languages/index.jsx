@@ -25,8 +25,8 @@ function Languages() {
       <h2 className="text-center text-gray-700 text-2xl font-medium py-2">{languageTitle}</h2>
       <ul className="flex flex-wrap justify-evenly items-center mt-2">
         {languages.map(({ name, Icon }) => (
-          <li className="m-2 p-2 bg-gray-100 rounded-md shadow">
-            <SkillData key={name} itemName={name} ItemIcon={Icon} />
+          <li key={name} className="m-2 p-2 bg-gray-100 rounded-md shadow">
+            <SkillData itemName={name} ItemIcon={Icon} />
           </li>
         ))}
       </ul>
