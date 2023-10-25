@@ -20,7 +20,7 @@ const Weather = () => {
   const [weather, setWeather] = useState({})
   const [city, setCity] = useState('') // i initialized the city state with the default value of "London"
   const [modalOpen, setModalOpen] = useState(false)
-  const [degree, setDegree] = useState('')
+  const [degree, setDegree] = useState('fahrenheit')
 
   /*
   useEffect(() => {
@@ -100,12 +100,21 @@ const Weather = () => {
     answer: validate the city name before sending the request
   */
     // DM: it is good to warn user
-    if (city) { // MM: DM: i checked if it's city, run the try(), catch(), else console.log "please enter a city name". it was tricky and difficult to find it, but it fixed now.
+    if (city) {
+      // MM: DM: i checked if it's city, run the try(), catch(), else console.log "please enter a city name". it was tricky and difficult to find it, but it fixed now.
       // fetchWeatherData(city)
 
       try {
         const response = await axios.get(`/api/weather?city=${city}`)
+        // Set the weather state with the fetched data.
+        setWeather(response.data)
+        /*
+        if (response.data.message && response.data.message.toLowerCase() === 'city not found') {
+        alert(`${city} is not a recognized city name. Please enter a valid city name.`)
+      } else {
         setWeather(response.data) // Set the weather state with the fetched data.
+      }
+        */
       } catch (error) {
         // DM: this is "client-side" code so the error will be logged in the browser console.(ok)
         // DM: often the entire error object huge, and you should analyze it for clues, but also log the error message
@@ -119,6 +128,32 @@ const Weather = () => {
       console.log('Please enter a city name')
     }
   }
+
+  /*
+  const fetchWeatherData = async (city) => {
+  console.log('city value:', { city })
+
+  if (city) { 
+    try {
+      const response = await axios.get(`/api/weather?city=${city}`)
+      if (Object.keys(response.data).length === 0) {
+        alert('City not found. Please enter a valid city name.')
+      } else {
+        setWeather(response.data) // Set the weather state with the fetched data.
+      }
+    } catch (error) {
+      console.error(error, error.message)
+      throw error
+    }
+    console.log('axios-value:', {
+      axios,
+    })
+  } else {
+    console.log('Please enter a city name')
+  }
+}
+
+  */
 
   /*
     The error is "GET http://localhost:3005/api/weather?city=undefined 500 (Internal Server Error)" which is an API endpoint that is trying to return information about the weather for a specific city. However, the city parameter is undefined, so the server doesn't know what information to return, resulting in a 500 Internal Server Error.
