@@ -98,12 +98,12 @@ import {
   contentOverviewParagraphText,
 } from '@/constants/portfolio/content/overview'
 import { socialLinks } from '@/constants/portfolio'
-import { v4 as uuid } from 'uuid'
+// import { v4 as uuid } from 'uuid'
 
 function Overview() {
   const renderSocialLinks = () => {
     return socialLinks.map(({ id, name, title, Icon, url }) => (
-      <li key={uuid()} className="ml-2 font-medium list-none">
+      <li key={id} className="ml-2 font-medium list-none">
         <a href={url} className="text-sm font-semibold leading-6 text-white">
           {name}
           {Icon && <Icon title={title} />}

@@ -182,8 +182,8 @@ const ProjectCards = () => (
           {/* {projectCardsData.map((card) => (
             <ProjectCard {...card} />
           ))} */}
-          {projectCardsData.map((card, index) => (
-            <ProjectCard key={index} {...card} />
+          {projectCardsData.map((card, id) => (
+            <ProjectCard key={id} {...card} />
           ))}
         </dl>
       </div>

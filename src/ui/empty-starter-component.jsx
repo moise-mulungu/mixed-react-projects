@@ -1,6 +1,6 @@
 export default function SkillData({ itemName, ItemIcon }) {
   return (
-    <li key={itemName}>
+    <div key={itemName}>
       <a
         href="#"
         className="bg-gray-100 text-gray-700 group flex items-center px-4
@@ -16,6 +16,6 @@ export default function SkillData({ itemName, ItemIcon }) {
         {/* DM: (no action needed) eslint formatting issue: eslint (standard) wants itemName || null */}
         {itemName ? itemName : null}
       </a>
-    </li>
+    </div>
   )
 }
