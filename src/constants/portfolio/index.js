@@ -5,6 +5,7 @@ import { GithubIcon, LinkedInIcon, AngelListIcon, MediumIcon, TwitterIcon } from
 export const appTitle = 'My Portfolio'
 
 export const socialLinks = [
+  // DM: todoMM: good solution to add the ID. Next time, if you know for sure that the titles will always be unique, you can use them; Even better, use the URL property as the ID, since URLs are unique by definition. That way you dont have to add the ID manually.
   { id: 'github', title: 'Github', Icon: GithubIcon, url: 'https://github.com/moise-mulungu/' },
   {
     id: 'linkedin',

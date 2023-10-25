@@ -1,3 +1,4 @@
+// DM: todoMM: work on the naming of the file
 export default function SkillData({ itemName, ItemIcon }) {
   return (
     <div key={itemName}>

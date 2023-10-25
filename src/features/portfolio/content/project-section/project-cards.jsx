@@ -182,9 +182,10 @@ const ProjectCards = () => (
           {/* {projectCardsData.map((card) => (
             <ProjectCard {...card} />
           ))} */}
-          {projectCardsData.map((card, id) => (
-            <ProjectCard key={id} {...card} />
-          ))}
+          {projectCardsData.map((card, id) => {
+            // DM: todoMM: the [].map function takes "positional parameters" (item, index, array) and you are using the index as the key. The 2nd parameter is always the index, no matter what you name it. So, you're still using index as the key prop. This is not recommended.  See https://reactjs.org/docs/lists-and-keys.html#keys
+            return <ProjectCard key={id} {...card} />
+          })}
         </dl>
       </div>
     </div>

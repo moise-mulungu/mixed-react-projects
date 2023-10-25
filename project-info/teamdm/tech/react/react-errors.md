@@ -3,8 +3,9 @@
 ### Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
 * The React error `Too many re-renders. React limits the number of renders to prevent an infinite loop` happens due to the state update in the main body of the component or invoking an event handler, instead of passing as a function
 
-(done)DM: todoMM: good, put an example here because this is not clear to me
+DM: todoMM: good, put an example here because this is not clear to me. DM: it may seem confusing, as I have said that comments apply to the next line. In this case, I was asking for an example right here, on the next line, for the first howto RE re-renders
 
+DM: if I intended to refer to the whole next howto, i'd put a comment here, immediately above it, with not empty line between.
 ***howtojs: error: react:: TypeError: cannot read properties of undefined; add an undefined check on the variable before you access a property on it***
 ### TypeError: cannot read properties of undefined (reading 'string')
 
@@ -121,4 +122,3 @@ const OtherSkills = () => {
 export default OtherSkills
 ```
 
-(done)DM: todoMM: great, but the lines after the howtojs do not add any further information. Show an example of the fix here.
