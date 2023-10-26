@@ -3,7 +3,29 @@
 ### Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
 * The React error `Too many re-renders. React limits the number of renders to prevent an infinite loop` happens due to the state update in the main body of the component or invoking an event handler, instead of passing as a function
 
-DM: todoMM: good, put an example here because this is not clear to me. DM: it may seem confusing, as I have said that comments apply to the next line. In this case, I was asking for an example right here, on the next line, for the first howto RE re-renders
+(done)DM: todoMM: good, put an example here because this is not clear to me. DM: it may seem confusing, as I have said that comments apply to the next line. In this case, I was asking for an example right here, on the next line, for the first howto RE re-renders
+```js
+  import React, { useState, useEffect } from 'react';
+
+  const ExampleComponent = () => {
+    const [count, setCount] = useState(0);
+
+// useEffect hook is used to update the count state. [count] is specified as the dependency array for the effect to prevent the infinite loop of re-renders.
+    useEffect(() => {
+      setCount(count + 1);
+    }, [count]);
+
+    return (
+      <div>
+        <h1>{count}</h1>
+        <button onClick={() => setCount(count + 1)}>Increment</button>
+      </div>
+    );
+  };
+
+  export default ExampleComponent;
+
+```
 
 DM: if I intended to refer to the whole next howto, i'd put a comment here, immediately above it, with not empty line between.
 ***howtojs: error: react:: TypeError: cannot read properties of undefined; add an undefined check on the variable before you access a property on it***
@@ -102,7 +124,7 @@ export default ItemList;
 ```
 ```js
 import { otherSkillsTitle, otherSkills } from '@/constants/portfolio/content/skills'
-import SkillData from '@/ui/empty-starter-component'
+import EmptyStarterComponent from '@/ui/empty-starter-component'
 
 const OtherSkills = () => {
   return (
@@ -111,7 +133,7 @@ const OtherSkills = () => {
       <ul className="flex flex-wrap justify-evenly items-center mt-2">
         {otherSkills.map(({ name, Icon }) => (
           <li key={name} className="m-2 p-2 bg-gray-100 rounded-md shadow">
-            <SkillData itemName={name} ItemIcon={Icon} />
+            <EmptyStarterComponent itemName={name} ItemIcon={Icon} />
           </li>
         ))}
       </ul>

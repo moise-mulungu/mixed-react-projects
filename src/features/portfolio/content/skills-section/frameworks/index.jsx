@@ -17,7 +17,7 @@
 // export default Frameworks
 
 import { frameworks, frameworkTitle } from '@/constants/portfolio/content/skills'
-import SkillData from '@/ui/empty-starter-component'
+import EmptyStarterComponent from '@/ui/empty-starter-component'
 
 const Frameworks = () => {
   return (
@@ -26,7 +26,7 @@ const Frameworks = () => {
       <ul className="flex flex-wrap justify-evenly items-center mt-2">
         {frameworks.map(({ name, Icon }) => (
           <li key={name} className="m-2 p-2 bg-gray-100 rounded-md shadow">
-            <SkillData itemName={name} ItemIcon={Icon} />
+            <EmptyStarterComponent itemName={name} ItemIcon={Icon} />
           </li>
         ))}
       </ul>

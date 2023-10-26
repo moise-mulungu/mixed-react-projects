@@ -9,7 +9,7 @@ https://github.com/jimmybutton/react-tailwind-table/tree/main
 install and run (learning by example; get it working first in a simple environment before you try to put it into your repo)
 push to GitHub (so we can both see it, review)
 update the packages to versions we are using in the repo
-move it to the repo (this is a creat-react-app repo, so you need to find just the files needed in NextJS)
+move it to the repo (this is a create-react-app repo, so you need to find just the files needed in NextJS)
 then update it for a new data source, adjust the styling
 
 

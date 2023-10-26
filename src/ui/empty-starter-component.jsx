@@ -1,5 +1,5 @@
-// DM: todoMM: work on the naming of the file
-export default function SkillData({ itemName, ItemIcon }) {
+// (done)DM: todoMM: work on the naming of the file
+export default function EmptyStarterComponent({ itemName, ItemIcon }) {
   return (
     <div key={itemName}>
       <a
