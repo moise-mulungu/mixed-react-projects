@@ -44,6 +44,23 @@
     - disregard for now: idea, date extension; idea: priority number: ugh ... XX: todoXX[1-3]: YYYY-MM-DD
     - disregard for now: knowledge-base enhancements; write doc with strategy for prioritizing tasks (ease\*impact) - very easy, high impact - do these first.
 
+## comments always refer to the line, statement, block immediately after the comment line. examples:
+```js
+// this refers to the next line
+const myVar = 1
+// this refers to the if-else statement on the next line
+if (myVar === 1) {
+  doSomething()
+}
+// this refers to the block that starts on the next line
+for (const myItem of myItems) {
+  doSomething(myItem)
+  if (myItem === null || myItem === undefined) {
+    show alert(myItem)
+  }
+}
+
+```
 ## knowledge base (KB): this repo will serve as a 'repository' our our accumulated knowledge
 
 - leave notes anywhere (in-context notes are best)

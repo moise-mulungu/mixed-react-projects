@@ -10,6 +10,7 @@
   const ExampleComponent = () => {
     const [count, setCount] = useState(0);
 
+// DM: todoMM: this useEffect would really cause an infinite loop. Do some asking copilot about this useEffect. You might have to change this file to a .js file in order to get Copilot help.
 // useEffect hook is used to update the count state. [count] is specified as the dependency array for the effect to prevent the infinite loop of re-renders.
     useEffect(() => {
       setCount(count + 1);
@@ -122,6 +123,7 @@ const Item = ({ name }) => {
 export default ItemList;
 
 ```
+// DM: what is this example code demonstrating?
 ```js
 import { otherSkillsTitle, otherSkills } from '@/constants/portfolio/content/skills'
 import EmptyStarterComponent from '@/ui/empty-starter-component'

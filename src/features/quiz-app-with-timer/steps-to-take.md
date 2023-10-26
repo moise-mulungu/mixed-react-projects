@@ -1,3 +1,6 @@
+DM: good that you've listed
+
+DM: todoMM: what do the indentations mean? indentations indicate that the indented line(s) are a subset of the line above. 
 1. create a "start quiz" button that will be on center of the main page
 2. clicking the button
    1. a pop with "some rules of the quiz"
