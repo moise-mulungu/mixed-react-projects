@@ -31,6 +31,9 @@ export default function Pages() {
         <li>
           <Link href="/weather-forecast-page">Weather Forecast</Link>
         </li>
+        <li>
+          <Link href="/quiz">Quiz App With Timer</Link>
+        </li>
       </ul>
     </div>
   )
