@@ -1,10 +1,12 @@
-import React from 'react'
+// import React, { useState } from 'react'
 import StartQuizButton from './start-quiz-button'
+// import { set } from 'react-hook-form'
+// import RulesOfTheQuiz from './rules-of-the-quiz'
 
 export default function QuizAppWithTimer() {
+
   return (
-    <div>
-      <h1>Your Awesome Quiz App With Timer</h1>
+    <div className="bg-blue-500 h-screen flex justify-center items-center">
       <StartQuizButton />
     </div>
   )

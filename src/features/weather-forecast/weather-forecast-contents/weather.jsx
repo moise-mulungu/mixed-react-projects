@@ -128,11 +128,16 @@ const Weather = () => {
         // DM: todoMM: here is the AI-generated message: you should not throw an error here, because this is client-side code, so the error will be logged in the browser console. Instead, you should handle the error here, and display a message to the user. You can do that by setting the weather state to an empty object, which will cause the weather display to be empty. Then, you can display a message to the user that the city was not found. You can do that by checking the response.data.message property. If it is "city not found", then display a message to the user. If it is not "city not found", then display a different message to the user. You can use the alert() function to display a message to the user. You can also use the Modal component from the Tailwind UI library to display a message to the user. See the Modal component in the src/pages/index.js file for an example of how to use the Modal component.
         // throw error
         setWeather({})
-        if (
-          error.response &&
-          error.response.data &&
-          error.response.data.message === 'city not found'
-        ) {
+        const errorResponse = error.response
+        console.log({ errorResponse })
+
+        const errorResponseData = errorResponse.data
+        console.log({ errorResponseData })
+
+        const errorResponseDataMessage = errorResponseData.message
+        console.log({ errorResponseDataMessage })
+
+        if (errorResponse && errorResponseData && errorResponseDataMessage === 'city not found') {
           alert('City not found')
         } else {
           alert('An error occurred. Please try again later.')
