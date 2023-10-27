@@ -67,7 +67,7 @@ export default function ComponentExamples() {
 
       {/* DM: try this sometime: instead of a separate page, put a searchable dropdown here so it is easy to find an example by searching on the name of the example in the dropdown. You can use src/ui/form/dropdown to build the searchable dropdown. 
       this is a better place to do it
-      (done)DM: todoMM: don't do the dropdown for now, but rather do this step first: make a list of links to each example below that looks like this:
+      (done)DM: don't do the dropdown for now, but rather do this step first: make a list of links to each example below that looks like this:
       ComponentName | ComponentName | ComponentName | ComponentName | ComponentName | ...
       Each (ComponentName) item should be an anchor link to the corresponding part of the page below
       ex: <a href="#hello">Hello</a>IconDropdowns

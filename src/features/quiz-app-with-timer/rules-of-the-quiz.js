@@ -1,21 +1,23 @@
 import React, { useState, useEffect } from 'react'
-export default function RulesOfTheQuiz({ onClose }) {
+
+// DM: I changed the name of the prop to have the same name as it has in the parent function so that it is easy to recognize as the same function in both components.
+export default function RulesOfTheQuiz({ handleExitShowRulesClick }) {
   //   const [quizInProgress, setQuizInProgress] = useState(false)
+
+  // DM: todoMM: good! Now lift to index.jsx all lines from here through the comment below: // END of lines to move
+  // important!: before you lift these lines, lift the code I mentioned in the parent component, StartQuizButton, up to index.jsx. Then lift the lines from this component up to index.jsx. Doing it in that order will make a lot more sense.
+  // the reason to lift these lines is because this component is for the rules of the quiz only, not the quiz itself. See the SOLID single-responsibility principle at https://en.wikipedia.org/wiki/SOLID
+
   const [showQuestion, setShowQuestion] = useState(false)
   const [quizData, setQuizData] = useState(null)
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null) // DM: good! you're handling errors
 
-  const handleContinueClick = () => {
-    setShowQuestion(true)
-  }
-
-  const handleExitClick = () => {
-    onClose()
-    // setQuizInProgress(false)
-  }
+  const loading = !quizData && !error
 
   useEffect(() => {
     const category = 'sql' // replace with your desired category
+
+    // DM: todoMM: to avoid difficulties caused by changing too many things at once, temporarily, have your API endpoint return the data in src/features/quiz-app-with-timer/quiz-javascript/questions.js
     const apiUrl = `/api/quiz?category=${category}`
 
     fetch(apiUrl)
@@ -39,10 +41,23 @@ export default function RulesOfTheQuiz({ onClose }) {
     return <div>Question Box</div>
   }
 
-  if (!quizData) {
+  if (loading) {
     return <div>Loading quiz data...</div>
   }
 
+  // END of lines to move
+
+  const handleContinueClick = () => {
+    // DM: after you lift the above lines to index.jsx, you'll need to pass setShowQuestion to RulesOfTheQuiz as a prop
+    setShowQuestion(true)
+  }
+
+  const handleExitClick = () => {
+    handleExitShowRulesClick()
+    // setQuizInProgress(false)
+  }
+
+  // DM: looks nice. I see you converted all this to tailwindcss.
   return (
     <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
       <div className="text-lg font-bold mb-4">Some Rules of this Quiz</div>

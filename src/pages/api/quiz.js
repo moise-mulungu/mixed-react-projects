@@ -9,7 +9,7 @@ export default async (req, res) => {
   }
   const apiUrl = `https://quizapi.io/api/v1/questions?apiKey=${process.env.QUIZ_APP_WITH_TIMER_API_KEY}&category=${category}&limit=10`
   console.log('api-url:', { apiUrl })
-  // https://quizapi.io/api/v1/questions?apiKey=UxNSqnjQwb1BlV5B6AHWqdrNehdxZjsxfcpX4wJH&category=sql&limit=10
+  // https://quizapi.io/api/v1/questions?apiKey=[no secrets in the repo!]&category=sql&limit=10
 
   try {
     const response = await axios.get(apiUrl)

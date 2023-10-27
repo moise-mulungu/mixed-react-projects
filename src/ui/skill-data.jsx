@@ -1,4 +1,5 @@
-//(done) DM: todoMM: work on the naming of the file DM: attention to detail is important. I said work on the naming of the "file" not the function name. The name of the file does not match what it is. It is not empty, it contains content i.e., JSX for displaying an icon with a label. So, name it for what it is.
+//(done) DM: work on the naming of the file DM: attention to detail is important. I said work on the naming of the "file" not the function name. The name of the file does not match what it is. It is not empty, it contains content i.e., JSX for displaying an icon with a label. So, name it for what it is.
+// DM: todoMM: great! now move this file into the directory where the rest of the portfolio code resides. The src/UI directory is for non-app-specific code, i.e., src/UI directory is for only reusable generic components that can be used by any of the apps in this repo. Try using the VSCode multi-file search and replace feature to quickly change the import statements in the files that import this file.
 export default function SkillData({ itemName, ItemIcon }) {
   return (
     <div key={itemName}>

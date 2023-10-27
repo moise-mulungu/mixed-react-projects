@@ -105,14 +105,18 @@ EX goto https://api.openweathermap.org/data/2.5/weather?q=undefined&units=imperi
   * note: after you open the network tab, perform the actions that cause the bug 
   * you'll see the API calls 
     * click on the name column
-    * click on the "Headers" tab and look at URL and Status Code 
+    * click on the "Headers" tab and look at URL and Status Code
       * Status Code: Google the "http status code" EX: 500 means "internal server error" which means the server code is broken, not your code. EX: 404 means "not found" which means you are calling a wrong/non-existent API endpoint. 
       * URL: if the URL is wrong you'll get a 404 error. Or, if the query parameters are wrong, you'll get a 500 error (sometimes you get a 200 (success) and the error is described in the JSON response)
+      *  (DM: bump on analyzing http status code meaning for clues)
   * click on the "Response" tab and see what data/info the server is sending back to you
   * explore the network tab - there is a lot to click on and explore
 * __VSCode terminal__ where "npm run dev" is running (for code stemming from "server-side code", i.e., src/pages/api routes) bump
   * your console.logs 
+    * apiUrl should be logged; does the URL look right? click it to see the JSON response in the browser
+      * EX https://my-public-api.com/api/v1/endpont?apiKey=[key]&paramName=paramValue
   * errors and warnings
+  * http://localhost:3005/api/my-api-endpoint?paramName=paramValue (to see what the API endpoint is returning)
 * __previous code that worked__ (if you have it)
   * compare previous code to current code to find the difference
   * commenting out previous code instead of deleting it is helpful (but you can use Git to compare to previous code, so commit often)

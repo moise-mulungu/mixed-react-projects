@@ -1,4 +1,4 @@
-// (ok)DM: never import React from 'react' in NextJS
+// (ok)DM: never import React from 'react' in NextJS DM: todoDM; find a ESLint config that calls this out
 // import React from 'react'
 //MM: DM: the nextjs styles documentation: https://nextjs.org/docs/app/building-your-application/styling/css-modules
 
@@ -16,11 +16,17 @@ export default function StartQuizButton() {
     setShowRules(false)
   }
 
+  /* 
+  DM: todoMM: good! Now, lift EVERYTHING in this component except the button tag UP to the parent component, index.jsx.
+  why: this is correctly a component for the button (the button only), so the rest of the code should be moved up to the parent component.
+  remember: once you lift state up to the parent component, you'll have to pass setShowRules to StartQuizButton as a prop. 
+  */
+
   return (
     <>
       {showRules ? (
         <div className="popup">
-          <RulesOfTheQuiz onClose={handleExitShowRulesClick} />
+          <RulesOfTheQuiz handleExitShowRulesClick={handleExitShowRulesClick} />
         </div>
       ) : (
         <button

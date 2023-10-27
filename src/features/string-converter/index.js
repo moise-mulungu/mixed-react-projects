@@ -38,7 +38,7 @@ export default function PascalToCamelCase() {
 
   // camel to pascal case
   // function convertCamelToPascalCase() {
-  //   //(in progress; MM: DM: but i am a bit curious on the result of "void" while the code works. it does not thrown any error on the browser. See my new comment below. There should be no code that doesn't serve a purpose. ) (done)DM: todoMM: what are you returning? i.e., what does setConvertedString() return? hold down the ctrl key while you mouseover setConvertedString below. You'll see info about the function signature, including what the function returns (void means nothing).
+  //   //(in progress; MM: DM: but i am a bit curious on the result of "void" while the code works. it does not thrown any error on the browser. See my new comment below. There should be no code that doesn't serve a purpose. ) (done)DM: what are you returning? i.e., what does setConvertedString() return? hold down the ctrl key while you mouseover setConvertedString below. You'll see info about the function signature, including what the function returns (void means nothing).
 
   //   // DM: RE the comment on the next line, what I meant to draw your attention to is, if you aren't using the value returned by convertCamelToPascalCase() where it is called below, then why are you trying to return something (the return value of setConvertedString) from it when you can just 'return;'?
   //   // Also, look at where you call convertCamelToPascalCase - are you using the value returned by the call? So, to fix this, call setConvertedString() on a separate line, then 'return' on a separate line.
@@ -153,7 +153,7 @@ export default function PascalToCamelCase() {
     convertStringToCase(inputString, targetCase)
   }
   /*DM: watch the video I sent you again. You'll see what is missing here. You have a parameter 'text' - ask yourself: "how does 'text' get set? where is currently stored the value that you want to put into the clipboard?"  
-  (done)DM: todoMM: console.log? You can figure out why this is not working. You've seen this issue before. How do args get passed to functions? Question: what is the type of the parameter to copyToClipboard. Ask AI to fix the copyToClipboard function error: text is undefined. DM: Is this working and done?
+  (done)DM: console.log? You can figure out why this is not working. You've seen this issue before. How do args get passed to functions? Question: what is the type of the parameter to copyToClipboard. Ask AI to fix the copyToClipboard function error: text is undefined. DM: Is this working and done?
   */
   // async function copyToClipboard({ text }) {
   //   console.log('text:', { text })
@@ -231,7 +231,7 @@ export default function PascalToCamelCase() {
   //                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
   //                     />
   //                   </div>
-  //                   {/* (done)DM: todoMM: you don't need the DIV any longer, so add the TW utility classes from the DIV into the LABEL - bump*/}
+  //                   {/* (done)DM: you don't need the DIV any longer, so add the TW utility classes from the DIV into the LABEL - bump*/}
   //                   <label
   //                     htmlFor="comments"
   //                     className="font-medium text-gray-900 ml-3 text-sm leading-6"
@@ -251,7 +251,7 @@ export default function PascalToCamelCase() {
   //                   you cannot pass a parameter.
 
   //                   DM: when getCase() is working and you can detect the case of the input text, pre-select the OTHER case below as a convenience for the user. ex: if input text is pascal, pre-select camel here. You'll need a new state variable inputTextCase that will contain the case detected by getCase().
-  //                   (done)DM: todoMM: I did this instruction above, make sure you understand how it works. bump
+  //                   (done)DM: I did this instruction above, make sure you understand how it works. bump
 
   //                   */}
   //               </div>
@@ -320,7 +320,7 @@ export default function PascalToCamelCase() {
   //                 {}
 
   //                 {/*
-  //                   (done)DM: todoMM: add an icon (inside a button) to the right of the text input that, upon click, lets the user copy the convertedString to the clipboard. Do not show the icon if convertedString==='' (how? do a global RegExp search in the repo on "howtoreact.*conditionally"). Use the heroicons (already in package.json) "document-duplicate" icon (search on "document-duplicate" here: https://heroicons.com/). On mouseover it should say "copy to clipboard" (hint: use the title attribute on the button tag). Make the button onClick attribute call a function that saves convertedString to the clipboard. For the "copy to clipboard" functionality to call onClick, here is the code suggested by ChatGPT:
+  //                   (done)DM: add an icon (inside a button) to the right of the text input that, upon click, lets the user copy the convertedString to the clipboard. Do not show the icon if convertedString==='' (how? do a global RegExp search in the repo on "howtoreact.*conditionally"). Use the heroicons (already in package.json) "document-duplicate" icon (search on "document-duplicate" here: https://heroicons.com/). On mouseover it should say "copy to clipboard" (hint: use the title attribute on the button tag). Make the button onClick attribute call a function that saves convertedString to the clipboard. For the "copy to clipboard" functionality to call onClick, here is the code suggested by ChatGPT:
 
   //                   async function copyToClipboard(text) {
   //                     try {
@@ -390,7 +390,7 @@ export default function PascalToCamelCase() {
                   <label htmlFor="string" className="font-medium text-gray-900">
                     Input String
                   </label>
-                  {/* (done)DM: todoMM: in the browser, I can't see where to type the string when I first land on the page. refresh to see that. Add a border to the input? */}
+                  {/* (done)DM: in the browser, I can't see where to type the string when I first land on the page. refresh to see that. Add a border to the input? */}
                   <input
                     id="string"
                     name="string"
@@ -460,7 +460,7 @@ export default function PascalToCamelCase() {
               </div>
               <div className="mt-4">
                 {/*(done) DM: if the targetCase is PascalCase your converted string is not correct because it contains a space between the two words 
-                (done)DM: todoMM: add to your commit checklist: check UI and test all functionality before committing.
+                (done)DM: add to your commit checklist: check UI and test all functionality before committing.
             */}
                 <h3 className="text-start text-l font-medium leading-7 tracking-tight text-gray-600">
                   Converted String
@@ -485,7 +485,7 @@ export default function PascalToCamelCase() {
               </div>
 
               {/* DM: debug doesn't exist in this file. Please be sure that your code runs before you commit.(ok)
-               (done)DM: todoMM: add 'test all app URLS for which code was edited in this commit' to your commit checklist. */}
+               (done)DM: add 'test all app URLS for which code was edited in this commit' to your commit checklist. */}
               {true && (
                 <pre>
                   {JSON.stringify(

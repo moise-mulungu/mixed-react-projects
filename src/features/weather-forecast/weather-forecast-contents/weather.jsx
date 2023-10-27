@@ -28,7 +28,8 @@ const Weather = () => {
   }, [])
   */
   useEffect(() => {
-    fetchWeatherData()
+    fetchWeatherData() // DM: this function requires an argument, no?
+    // DM: what is the purpose of this useEffect? do you need it anymore?
   }, [city])
 
   // useEffect(() => {
@@ -104,6 +105,25 @@ const Weather = () => {
       // MM: DM: i checked if it's city, run the try(), catch(), else console.log "please enter a city name". it was tricky and difficult to find it, but it fixed now.
       // fetchWeatherData(city)
 
+      /* 
+      
+      DM:
+
+      from the error messages when you submit an invalid city EX "Denv" it appears the openweathermap API doesn't like to receive an invalid city. 
+
+      so, you're going to have to validate that the user typed a correct city when they click the button.
+
+      See if openweathermap offers an endpoint that lists valid cities. It should, but may not.
+
+      If not, you'll have to find another API that does that. I wouldn't try to do it yourself, and I wouldn't try to find a GitHub package, because that will be a lot of work and a package can be out of date or be very large and slow down your app.
+
+      App users/customers will always expect you to catch their errors. "the customer is always right" as it is said.
+
+      Potential employers checking out your portfolio apps will try to break it, to see how you handle errors. So, it's vital that you handle errors gracefully - one technique is to prevent errors from happening in the first place by validating user input.
+
+
+      */
+
       try {
         const response = await axios.get(`/api/weather?city=${city}`)
         // Set the weather state with the fetched data.
@@ -124,10 +144,11 @@ const Weather = () => {
         I am assuming that you are using Git Lens with the side-by-side diffs so that you can see exactly what I added in my last review. That way it would be impossible for you to mistakenly think that you wrote it.
         So, I intended for you to do it.
         */
-        //(done) DM: todoMM: Copilot wrote the suggestion on the next line, it's a good suggestion. I think for now that you code a simple JS alert instead of throwing an error. Later, if you want, you can do something more fancy like a TW modal. The basic think is inform the user something went wrong.
+        //(done) DM: Copilot wrote the suggestion on the next line, it's a good suggestion. I think for now that you code a simple JS alert instead of throwing an error. Later, if you want, you can do something more fancy like a TW modal. The basic think is inform the user something went wrong.
         // DM: todoMM: here is the AI-generated message: you should not throw an error here, because this is client-side code, so the error will be logged in the browser console. Instead, you should handle the error here, and display a message to the user. You can do that by setting the weather state to an empty object, which will cause the weather display to be empty. Then, you can display a message to the user that the city was not found. You can do that by checking the response.data.message property. If it is "city not found", then display a message to the user. If it is not "city not found", then display a different message to the user. You can use the alert() function to display a message to the user. You can also use the Modal component from the Tailwind UI library to display a message to the user. See the Modal component in the src/pages/index.js file for an example of how to use the Modal component.
         // throw error
         setWeather({})
+
         const errorResponse = error.response
         console.log({ errorResponse })
 
@@ -137,9 +158,12 @@ const Weather = () => {
         const errorResponseDataMessage = errorResponseData.message
         console.log({ errorResponseDataMessage })
 
+        // DM: todoMM: since errorResponseDataMessage cannot exist unless errorResponseData and errorResponse exist, you don't have to check the latter 2 here, so just check errorResponseDataMessage === 'city not found'
         if (errorResponse && errorResponseData && errorResponseDataMessage === 'city not found') {
+          // DM: todoMM: in the alert message, use the city variable, not the hard-coded string 'city'
           alert('City not found')
         } else {
+          // DM: todoMM: if I type 'Denv' and click the button, I get this alert message. So, see the logs what errorResponseDataMessage is. I see a 404 error in the logs, so I know that the errorResponseDataMessage is 'Not Found'. So, I can use that in the alert message. So, I change the alert message to this: alert('City not found. Please enter a valid city name.')
           alert('An error occurred. Please try again later.')
         }
       }
@@ -522,6 +546,6 @@ MM: DM: the NAN error has gone, i didn't fix it. a new error arose, the value of
 }
 export default Weather
 
-// (done)DM: todoMM: revert this to the commented out original, then based on t9 suggestions, see if you can fix the errors. Select a specific part of the code, then ask 09 to suggest changes that the selected code only. Also, is this task part of the weather app, or just outputting those variables. You can do that better by just using the JSON.stringify approach I mentioned
+// (done)DM: revert this to the commented out original, then based on t9 suggestions, see if you can fix the errors. Select a specific part of the code, then ask 09 to suggest changes that the selected code only. Also, is this task part of the weather app, or just outputting those variables. You can do that better by just using the JSON.stringify approach I mentioned
 
 // MM: DM: after your review, i am thinking of enhancing the modal style to be more attractive. DM: OK, but remember to develop all the functionality first, then make it pretty. You don't want to have to spend a lot of time re-doing the look & feel (UI) each time you change the functionality.(MM: at this stage, all the functionalities are complete. after working on the UI, this app is complete now)

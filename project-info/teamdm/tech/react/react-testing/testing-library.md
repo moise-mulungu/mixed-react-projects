@@ -16,7 +16,6 @@
   ```js
   npm install --global mocha
   ```
-  (done)DM: todoMM: add the meanings of the acronyms BDD, TDD below
   3. Chai: is a popular BDD / TDD __assertion and expectation library__ for _node_ and the _browser_. It _can be paired_ with any javascript testing framework. It’s often associated with testing in Mocha, and can also be used with Jest and Enzyme. Some functionalities such as expect, should and assert, helps to declare what to expect in a test. It can also be made to make assertions for functions.
      installation:
 

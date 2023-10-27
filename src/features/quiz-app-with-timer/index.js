@@ -3,8 +3,9 @@ import StartQuizButton from './start-quiz-button'
 // import { set } from 'react-hook-form'
 // import RulesOfTheQuiz from './rules-of-the-quiz'
 
-export default function QuizAppWithTimer() {
+// DM: todoMM: all files that contain JSX should have the .jsx extension
 
+export default function QuizAppWithTimer() {
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
       <StartQuizButton />
