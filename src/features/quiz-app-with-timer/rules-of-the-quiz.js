@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 export default function RulesOfTheQuiz({ onClose }) {
-//   const [quizInProgress, setQuizInProgress] = useState(false)
-const [showQuestion, setShowQuestion] = useState(false);
+  //   const [quizInProgress, setQuizInProgress] = useState(false)
+  const [showQuestion, setShowQuestion] = useState(false)
+  const [quizData, setQuizData] = useState(null)
+  const [error, setError] = useState(null)
 
   const handleContinueClick = () => {
     setShowQuestion(true)
@@ -12,10 +14,35 @@ const [showQuestion, setShowQuestion] = useState(false);
     // setQuizInProgress(false)
   }
 
+  useEffect(() => {
+    const category = 'sql' // replace with your desired category
+    const apiUrl = `/api/quiz?category=${category}`
+
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('data:', data)
+        setQuizData(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching quiz data:', error)
+        setError(error)
+      })
+  }, [])
+
+  if (error) {
+    return <div>Error fetching quiz data: {error.message}</div>
+  }
+
   if (showQuestion) {
     // Render the question box if the quiz is in progress
     return <div>Question Box</div>
   }
+
+  if (!quizData) {
+    return <div>Loading quiz data...</div>
+  }
+
   return (
     <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
       <div className="text-lg font-bold mb-4">Some Rules of this Quiz</div>
