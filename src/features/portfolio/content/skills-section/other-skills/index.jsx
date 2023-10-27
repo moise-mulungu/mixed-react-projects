@@ -19,7 +19,7 @@
 // export default OtherSkills
 
 import { otherSkillsTitle, otherSkills } from '@/constants/portfolio/content/skills'
-import EmptyStarterComponent from '@/ui/empty-starter-component'
+import SkillData from '@/ui/skill-data'
 
 const OtherSkills = () => {
   return (
@@ -28,7 +28,7 @@ const OtherSkills = () => {
       <ul className="flex flex-wrap justify-evenly items-center mt-2">
         {otherSkills.map(({ name, Icon }) => (
           <li key={name} className="m-2 p-2 bg-gray-100 rounded-md shadow">
-            <EmptyStarterComponent itemName={name} ItemIcon={Icon} />
+            <SkillData itemName={name} ItemIcon={Icon} />
           </li>
         ))}
       </ul>

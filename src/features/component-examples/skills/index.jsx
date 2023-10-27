@@ -1,5 +1,5 @@
 import Item from '../../../component-examples/complex-object/item'
-import EmptyStarterComponent from '@/ui/empty-starter-component'
+import SkillData from '@/ui/skill-data'
 import { skills } from '@/constants/portfolio/content/skills'
 
 export function SkillSection() {
@@ -44,7 +44,7 @@ export function SkillSection() {
                   <Item
                     title={title}
                     items={items?.map(({ name, Icon }) => {
-                      return <EmptyStarterComponent itemName={name} ItemIcon={Icon} />
+                      return <SkillData itemName={name} ItemIcon={Icon} />
                     })}
                   />
                 )
@@ -54,7 +54,7 @@ export function SkillSection() {
                   <Item
                     title={title}
                     items={items?.map(({ name, Icon }) => {
-                      return <EmptyStarterComponent itemName={name} ItemIcon={Icon} />
+                      return <SkillData itemName={name} ItemIcon={Icon} />
                     })}
                   />
                 )
@@ -64,7 +64,7 @@ export function SkillSection() {
                   <Item
                     title={title}
                     items={items?.map(({ name, Icon }) => {
-                      return <EmptyStarterComponent itemName={name} ItemIcon={Icon} />
+                      return <SkillData itemName={name} ItemIcon={Icon} />
                     })}
                   />
                 )

@@ -182,10 +182,11 @@ const ProjectCards = () => (
           {/* {projectCardsData.map((card) => (
             <ProjectCard {...card} />
           ))} */}
-          {projectCardsData.map((card, id) => {
-            // DM: todoMM: the [].map function takes "positional parameters" (item, index, array) and you are using the index as the key. The 2nd parameter is always the index, no matter what you name it. So, you're still using index as the key prop. This is not recommended.  See https://reactjs.org/docs/lists-and-keys.html#keys DM: you haven't addressed the issue which is that the 2nd (positional) param to the map callback is the index, no matter what you name it. You are still using an index. putting it inside a string starting with 'card-' doesn't change that.
+          {projectCardsData.map((card) => {
+            console.log({ card })
+            // (done)DM: todoMM: the [].map function takes "positional parameters" (item, index, array) and you are using the index as the key. The 2nd parameter is always the index, no matter what you name it. So, you're still using index as the key prop. This is not recommended.  See https://reactjs.org/docs/lists-and-keys.html#keys DM: you haven't addressed the issue which is that the 2nd (positional) param to the map callback is the index, no matter what you name it. You are still using an index. putting it inside a string starting with 'card-' doesn't change that. MM: after consoling, i realized that it was easy to use title as key by accessing with card object parameter
             // related article: https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/
-            return <ProjectCard ProjectCard key={`card-${id}`} {...card} />
+            return <ProjectCard ProjectCard key={card.title} {...card} />
           })}
         </dl>
       </div>

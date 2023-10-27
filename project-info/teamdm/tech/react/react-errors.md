@@ -10,16 +10,16 @@
   const ExampleComponent = () => {
     const [count, setCount] = useState(0);
 
-// DM: todoMM: this useEffect would really cause an infinite loop. Do some asking copilot about this useEffect. You might have to change this file to a .js file in order to get Copilot help.
+// (MM: you are right, i just realized how it is important to double check everything before committing. done)DM: todoMM: this useEffect would really cause an infinite loop. Do some asking copilot about this useEffect. You might have to change this file to a .js file in order to get Copilot help.
 // useEffect hook is used to update the count state. [count] is specified as the dependency array for the effect to prevent the infinite loop of re-renders.
-    useEffect(() => {
-      setCount(count + 1);
-    }, [count]);
+   useEffect(() => {
+    setCount(prevCount => prevCount + 1);
+  }, []);
 
     return (
       <div>
         <h1>{count}</h1>
-        <button onClick={() => setCount(count + 1)}>Increment</button>
+       <button onClick={() => setCount(prevCount => prevCount + 1)}>Increment</button>
       </div>
     );
   };
@@ -123,10 +123,10 @@ const Item = ({ name }) => {
 export default ItemList;
 
 ```
-// DM: what is this example code demonstrating?
+// DM: what is this example code demonstrating?(MM: this a code where i used the key to resolve the error `each child in a list should have a unique "key" prop` above. you told me in the report file to put those examples of the repo here.)
 ```js
 import { otherSkillsTitle, otherSkills } from '@/constants/portfolio/content/skills'
-import EmptyStarterComponent from '@/ui/empty-starter-component'
+import SkillData from '@/ui/empty-starter-component'
 
 const OtherSkills = () => {
   return (
@@ -135,7 +135,7 @@ const OtherSkills = () => {
       <ul className="flex flex-wrap justify-evenly items-center mt-2">
         {otherSkills.map(({ name, Icon }) => (
           <li key={name} className="m-2 p-2 bg-gray-100 rounded-md shadow">
-            <EmptyStarterComponent itemName={name} ItemIcon={Icon} />
+            <SkillData itemName={name} ItemIcon={Icon} />
           </li>
         ))}
       </ul>

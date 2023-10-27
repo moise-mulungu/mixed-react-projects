@@ -1,7 +1,7 @@
 /* importing google fonts 
 MM: DM: this is the css file for the quiz app tutorial.
 
-DM: not sure if the @import will work. this may need to be done in pages/_app.js or pages/_document.js. Easier solution: if the fonts don't work, we can just use the default fonts, or maybe use TW to have nicer fonts?
+(ok)DM: not sure if the @import will work. this may need to be done in pages/_app.js or pages/_document.js. Easier solution: if the fonts don't work, we can just use the default fonts, or maybe use TW to have nicer fonts?
 */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{

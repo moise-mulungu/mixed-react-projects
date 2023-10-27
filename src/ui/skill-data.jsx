@@ -1,5 +1,5 @@
-// DM: todoMM: work on the naming of the file DM: attention to detail is important. I said work on the naming of the "file" not the function name. The name of the file does not match what it is. It is not empty, it contains content i.e., JSX for displaying an icon with a label. So, name it for what it is.
-export default function EmptyStarterComponent({ itemName, ItemIcon }) {
+//(done) DM: todoMM: work on the naming of the file DM: attention to detail is important. I said work on the naming of the "file" not the function name. The name of the file does not match what it is. It is not empty, it contains content i.e., JSX for displaying an icon with a label. So, name it for what it is.
+export default function SkillData({ itemName, ItemIcon }) {
   return (
     <div key={itemName}>
       <a
