@@ -2,19 +2,20 @@
 // import React from 'react'
 //MM: DM: the nextjs styles documentation: https://nextjs.org/docs/app/building-your-application/styling/css-modules
 
-import React, { useState } from 'react'
-import RulesOfTheQuiz from './rules-of-the-quiz'
+// import React, { useState } from 'react'
+// import RulesOfTheQuiz from './rules-of-the-quiz'
+// import { handleStartQuizClick } from './index'
 
-export default function StartQuizButton() {
-  const [showRules, setShowRules] = useState(false)
+export default function StartQuizButton({ handleStartQuizClick }) {
+  // const [showRules, setShowRules] = useState(false)
 
-  const handleStartQuizClick = () => {
-    setShowRules(true)
-  }
+  // const handleStartQuizClick = () => {
+  //   setShowRules(true)
+  // }
 
-  const handleExitShowRulesClick = () => {
-    setShowRules(false)
-  }
+  // const handleExitShowRulesClick = () => {
+  //   setShowRules(false)
+  // }
 
   /* 
   DM: todoMM: good! Now, lift EVERYTHING in this component except the button tag UP to the parent component, index.jsx.
@@ -24,7 +25,7 @@ export default function StartQuizButton() {
 
   return (
     <>
-      {showRules ? (
+      {/* {showRules ? (
         <div className="popup">
           <RulesOfTheQuiz handleExitShowRulesClick={handleExitShowRulesClick} />
         </div>
@@ -37,7 +38,13 @@ export default function StartQuizButton() {
           {' '}
           Start Quiz
         </button>
-      )}
+      )} */}
+      <button
+        className="bg-white text-blue-500 font-bold py-4 px-6 rounded"
+        onClick={handleStartQuizClick}
+      >
+        Start Quiz
+      </button>
     </>
   )
 }

@@ -1,14 +1,84 @@
-// import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import StartQuizButton from './start-quiz-button'
+import RulesOfTheQuiz from './rules-of-the-quiz'
 // import { set } from 'react-hook-form'
 // import RulesOfTheQuiz from './rules-of-the-quiz'
 
 //(done) DM: todoMM: all files that contain JSX should have the .jsx extension
 
 export default function QuizAppWithTimer() {
+  //   return (
+  //     <div className="bg-blue-500 h-screen flex justify-center items-center">
+  //       <StartQuizButton />
+  //     </div>
+  //   )
+  const [showRules, setShowRules] = useState(false)
+  const [showQuestion, setShowQuestion] = useState(false)
+  const [quizData, setQuizData] = useState(null)
+  const [error, setError] = useState(null)
+
+  const loading = !quizData && !error
+
+  useEffect(() => {
+    const category = 'sql' // replace with your desired category
+
+    const apiUrl = `/api/quiz?category=${category}`
+
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('data:', data)
+        setQuizData(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching quiz data:', error)
+        setError(error)
+      })
+  }, [])
+
+  const handleStartQuizClick = () => {
+    setShowRules(true)
+  }
+
+  const handleExitShowRulesClick = () => {
+    setShowRules(false)
+  }
+
+  if (loading) {
+    return <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
+  }
+
+  const handleContinueClick = () => {
+    setShowQuestion(true)
+  }
+
+  const handleExitClick = () => {
+    handleExitShowRulesClick()
+  }
+
+  if (error) {
+    return <div>Error fetching quiz data: {error.message}</div>
+  }
+
+  if (showQuestion) {
+    return <div>Question Box</div>
+  }
+
+  if (showRules) {
+    return (
+      <div className="popup bg-blue-500">
+        <RulesOfTheQuiz
+          handleExitShowRulesClick={handleExitShowRulesClick}
+          handleContinueClick={handleContinueClick}
+          handleExitClick={handleExitClick}
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
-      <StartQuizButton />
+      <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
     </div>
   )
 }
