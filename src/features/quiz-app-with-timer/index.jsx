@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
+
+import data from './data'
+
 import StartQuizButton from './start-quiz-button'
 import RulesOfTheQuiz from './rules-of-the-quiz'
 // import { set } from 'react-hook-form'
 // import RulesOfTheQuiz from './rules-of-the-quiz'
 
-//(done) DM: todoMM: all files that contain JSX should have the .jsx extension
+//(done) DM: all files that contain JSX should have the .jsx extension
 
 export default function QuizAppWithTimer() {
   //   return (
@@ -20,6 +23,10 @@ export default function QuizAppWithTimer() {
   const loading = !quizData && !error
 
   useEffect(() => {
+    // DM: let's wait until later to worry about the API endpoint. Right now, you're still "translating" the example Vanilla JS app into React. So do just that, i.e., use the same data that the Vanilla JS app was build with. Using different quiz data should be a later step WHY because it is better to "refactor" apps gradually. So, what this line does is it just sets your data immediately without fetching.
+    setQuizData(data)
+    return
+
     const category = 'sql' // replace with your desired category
 
     const apiUrl = `/api/quiz?category=${category}`
@@ -44,31 +51,36 @@ export default function QuizAppWithTimer() {
     setShowRules(false)
   }
 
+  // DM: todoMM: always put conditionally shown JSX just above the return statement. This makes it easier to see what is being rendered conditionally. Put this just before the if(error) block
   if (loading) {
     return <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
   }
 
+  // DM: todoMM: I like that you created this handler; now, give it a more descriptive name that expresses where/for what purpose it is used. I recommend handleContinueFromRulesClick, that way, we know which component is is for: RulesOfTheQuiz and not StartQuizButton
   const handleContinueClick = () => {
     setShowQuestion(true)
+    setShowRules(false)
   }
+  // DM: benefits of more descriptive names. Not only so humans can quickly understand your intent, but AI can also comprehend better what you want and make better suggestions.
 
+  // DM: todoMM: the function name is also not clear that it will be used only in RulesOfTheQuiz, so one might think "exit from what?". However, in this case there is no reason to create this function (which is an alias of handleExitShowRulesClick). So, delete this function and pass handleExitShowRulesClick to RulesOfTheQuiz as a prop.
   const handleExitClick = () => {
     handleExitShowRulesClick()
   }
 
+  // DM: good, this should be right here, along with the if (loading) block
   if (error) {
     return <div>Error fetching quiz data: {error.message}</div>
   }
 
-  if (showQuestion) {
-    return <div>Question Box</div>
-  }
+  // DM: as an example, I'm moving this into the return statement below. It belongs there - you'll see why later. One reason is, it can share the styling of the top-level DIV in the return statement
 
+  // DM: todoMM: move this into the JSX in the return statement below after my comment at the bottom of the JSX, showing it conditionally similar to how I conditionally showed <div>Question Box</div>
   if (showRules) {
     return (
       <div className="popup bg-blue-500">
         <RulesOfTheQuiz
-          handleExitShowRulesClick={handleExitShowRulesClick}
+          // not used in the component: handleExitShowRulesClick={handleExitShowRulesClick}
           handleContinueClick={handleContinueClick}
           handleExitClick={handleExitClick}
         />
@@ -78,7 +90,25 @@ export default function QuizAppWithTimer() {
 
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
-      <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
+      {/* DM: study this carefully. The pseudocode here is a hint for Copilot AAI, as well as for me to think "out loud", and documentation.
+         if showQuestion, render the question box
+         else render the start quiz button  
+     */}
+      {showQuestion ? ( // DM: todoMM: this is a good place to use the conditional operator (ternary operator)
+        <div>Question Box</div>
+      ) : (
+        <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
+      )}
+      {/* 
+         since it is a popup, it can go anywhere, so it can be here at the end of the JSX, but
+         notice that is inside the div that sets the background. That way, you'll still have the 
+         nice background and any future Look and Feel (L&F) that you might add. This is an advantage of s
+         showing it conditionally here (along with the top-level DIV) instead of above before the return statement.
+
+         If you put a newline after this comment, then type "{" to start, Copilot will suggest the proper way to do it.
+
+         if showRules, render RulesOfTheQuiz
+       */}
     </div>
   )
 }

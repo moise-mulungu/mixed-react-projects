@@ -1,3 +1,5 @@
+// DM: todoMM: not very clear WHY to move state up. Could you add a note about that?
+
 // src: https://react.dev/learn/sharing-state-between-components
 import { useState } from 'react'
 import { foods, filterItems } from './data.js'
@@ -22,12 +24,15 @@ export default function FilterableList() {
 
 // function SearchBar() {
 function SearchBar({ query, handleChange }) {
-  //   const [query, setQuery] = useState(''); remove the query state from the child
+  // lift the query state from the child to parent
+  //   const [query, setQuery] = useState('');
 
+  // lift the handleChange function from the child to parent
   //   function handleChange(e) {
   //     setQuery(e.target.value)
   //   }
 
+  // DM: todoMM: needs to be moved up, right?
   const filteredFoods = filterItems(foods, query)
 
   return (

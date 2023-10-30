@@ -18,8 +18,8 @@ export default function StartQuizButton({ handleStartQuizClick }) {
   // }
 
   /* 
-  DM: todoMM: good! Now, lift EVERYTHING in this component except the button tag UP to the parent component, index.jsx.
-  why: this is correctly a component for the button (the button only), so the rest of the code should be moved up to the parent component.
+  DM: good! Now, lift EVERYTHING in this component except the button tag UP to the parent component, index.jsx.
+  why: this is correctly a component for the button (the button only), so the rest of the code should be moved up to the parent component. 
   remember: once you lift state up to the parent component, you'll have to pass setShowRules to StartQuizButton as a prop. 
   */
 

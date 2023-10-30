@@ -45,4 +45,7 @@ Ai response:
   * answer was to check if one the following are well fixed: the api authentication, the parameter of the endpoint, the axios library version, and to test on an API test platform
   * i went through all these steps above for verification, but the error still persists.
   * i added console.logs to get different data.
+  * i created a fetch() function in the client-side code where i set the category parameter. but the error still persists.
+* i paused there.
+DM: todoMM: what does http status code 401 mean? what do the console.logs tell you (i.e., apiUrl is logged)? What does the logged error object tell you?
 */
