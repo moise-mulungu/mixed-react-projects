@@ -17,7 +17,7 @@
 // export default Frameworks
 
 import { frameworks, frameworkTitle } from '@/constants/portfolio/content/skills'
-import SkillData from '@/ui/skill-data'
+import SkillData from '@/features/portfolio/content/skills-section/skill-data'
 
 const Frameworks = () => {
   return (

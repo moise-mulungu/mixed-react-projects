@@ -38,4 +38,11 @@ Ai response:
     3. There is an issue with the axios library. Try updating the axios library to the latest version and see if that resolves the issue.
 
     4. There is an issue with the quizapi.io API. Try accessing the API directly using a tool like Postman to see if the API is returning the expected data.
+
+
+* blockers: i tried to test the endpoint on browser http://localhost:3005/api/quiz?category=html, but i got a{"error":"Unable to fetch quiz data","message":"Request failed with status code 401"}:
+  * i use this copilot prompt: after running http://localhost:3000/api/quiz. i am getting an "unable to fetch weather data" error
+  * answer was to check if one the following are well fixed: the api authentication, the parameter of the endpoint, the axios library version, and to test on an API test platform
+  * i went through all these steps above for verification, but the error still persists.
+  * i added console.logs to get different data.
 */

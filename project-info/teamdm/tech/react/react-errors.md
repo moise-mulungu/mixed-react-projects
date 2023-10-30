@@ -11,8 +11,24 @@
     const [count, setCount] = useState(0);
 
 // (MM: you are right, i just realized how it is important to double check everything before committing. done)DM: todoMM: this useEffect would really cause an infinite loop. Do some asking copilot about this useEffect. You might have to change this file to a .js file in order to get Copilot help. DM: good you changed to the updater-type argument to setCount in both places. 
-// DM: todoMM: for this example to be helpful when you see the error message in the future then search the repo and you arrive here, best if you show a before and after example. So, show the useEffect with the error that causes the endless loop (commented out) and below it the correct useEffect (which is what you have now). Also make a note as to why you need the useEffect (i.e., to initialize the count to 1 on the first render)
+//(done) DM: todoMM: for this example to be helpful when you see the error message in the future then search the repo and you arrive here, best if you show a before and after example. So, show the useEffect with the error that causes the endless loop (commented out) and below it the correct useEffect (which is what you have now). Also make a note as to why you need the useEffect (i.e., to initialize the count to 1 on the first render)
 // useEffect hook is used to update the count state. [count] is specified as the dependency array for the effect to prevent the infinite loop of re-renders.
+
+/*
+with infinite loop:
+  useEffect(() => {
+    setCount(count + 1)
+  }, [count])
+
+  return (
+    <div>
+      <h1>{count}</h1>
+      <button onClick={() => setCount(count +1)}>Increment</button>
+        </div>
+    </div>
+  )
+ export default ExampleComponent;
+*/
    useEffect(() => {
     setCount(prevCount => prevCount + 1);
   }, []);

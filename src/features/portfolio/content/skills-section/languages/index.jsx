@@ -17,7 +17,7 @@
 // export default Languages
 
 import { languageTitle, languages } from '@/constants/portfolio/content/skills'
-import SkillData from '@/ui/skill-data'
+import SkillData from '@/features/portfolio/content/skills-section/skill-data'
 
 function Languages() {
   return (
