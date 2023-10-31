@@ -57,7 +57,15 @@ export default function QuestionBox({
   //     }
   //   }
 
-  const { number, question, answer, options } = data[currentQuestionIndex]
+  // the difference between {boolean && (<></>)} and  {boolean ? (<></>)} is
+
+  // DM: todoMM: now I see what options means. this is a case where the DEV who wrote the article chose poor names. You can fix that right here easily by renaming options to choices. Note renaming a deconstructed property is called "aliasing". See the image in this dir which shows how I asked AI for better names. So, change EVERY related variable and function name in your app to reflect the changes I made to the property names in this object.; Use the VSCode global search and replace feature to do it quickly.
+  const {
+    numb: questionId,
+    question, // DM: I think 'question' is better than 'prompt'
+    answer: correctAnswer,
+    options: answerChoices,
+  } = data[currentQuestionIndex]
 
   //   return (
   //     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -99,7 +107,10 @@ export default function QuestionBox({
 
   return (
     // <div className="flex items-center justify-center min-h-screen bg-gray-100">
-    <div key={number} className="bg-white p-6 rounded shadow-md w-full max-w-md ">
+    <div
+      key={number} // number wasn't a property in the data.js file, so it would have been undefined and you'd get the usual warning about keys needing to be unique
+      className="bg-white p-6 rounded shadow-md w-full max-w-md "
+    >
       <div className="text-2xl font-bold   text-blue-600">{question}</div>
       <hr className="my-4" />
 

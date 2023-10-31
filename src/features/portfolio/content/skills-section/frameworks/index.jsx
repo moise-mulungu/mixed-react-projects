@@ -17,7 +17,7 @@
 // export default Frameworks
 
 import { frameworks, frameworkTitle } from '@/constants/portfolio/content/skills'
-//(done) DM: todoMM: since the only place this is imported into is the portfolio, skill-data.js should be moved to a good place in the portfolio folder
+//(done) DM: since the only place this is imported into is the portfolio, skill-data.js should be moved to a good place in the portfolio folder
 import SkillData from '@/features/portfolio/skill-data'
 
 const Frameworks = () => {

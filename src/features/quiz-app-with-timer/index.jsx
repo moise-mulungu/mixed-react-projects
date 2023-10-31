@@ -20,6 +20,7 @@ export default function QuizAppWithTimer() {
   const [showQuestion, setShowQuestion] = useState(false)
   const [quizData, setQuizData] = useState(null)
   const [error, setError] = useState(null)
+  // DM: todoMM: "option" is a little vague, so rename this to something more specific (see my comment in question-box.js); at this point, I know there are questions, but I have no idea what options. Clear, specific names are VERY, VERY important so that you don't slow me down (and, on-the-job, other DEVs on your team don't say you write confusing code)
   const [selectedOption, setSelectedOption] = useState(null)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
@@ -54,17 +55,19 @@ export default function QuizAppWithTimer() {
     setShowRules(false)
   }
 
-  //(done) DM: todoMM: always put conditionally shown JSX just above the return statement. This makes it easier to see what is being rendered conditionally. Put this just before the if(error) block
+  // DM: todoMM: always put conditionally shown JSX just above the return statement. This makes it easier to see what is being rendered conditionally. Put this just before the if(error) block DM: all handlers should be above this if block
   if (loading) {
     // return <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
-    return loading ? (
-      <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
-    ) : (
-      <p className="text-center text-gray-500 mt-4">Quiz data loaded!</p>
-    )
+    return <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
+    // DM: typically, when load complete, just show the content of the page, not a message that the data has loaded. users expect that the data just gets loaded, they don't care how/when it gets done.
+    // return loading ? (
+    //   <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
+    // ) : (
+    //   <p className="text-center text-gray-500 mt-4">Quiz data loaded!</p>
+    // )
   }
 
-  //(done) DM: todoMM: I like that you created this handler; now, give it a more descriptive name that expresses where/for what purpose it is used. I recommend handleContinueFromRulesClick, that way, we know which component is is for: RulesOfTheQuiz and not StartQuizButton
+  //(done) DM: I like that you created this handler; now, give it a more descriptive name that expresses where/for what purpose it is used. I recommend handleContinueFromRulesClick, that way, we know which component is is for: RulesOfTheQuiz and not StartQuizButton
   const handleContinueFromRulesClick = () => {
     setShowQuestion(true)
     setShowRules(false)
@@ -83,7 +86,7 @@ export default function QuizAppWithTimer() {
 
   // DM: as an example, I'm moving this into the return statement below. It belongs there - you'll see why later. One reason is, it can share the styling of the top-level DIV in the return statement
 
-  // DM: todoMM: move this into the JSX in the return statement below after my comment at the bottom of the JSX, showing it conditionally similar to how I conditionally showed <div>Question Box</div>
+  // DM: todoMM: move this into the JSX in the return statement below after my comment at the bottom of the JSX, showing it conditionally similar to how I conditionally showed <div>Question Box</div> bump
   if (showRules) {
     return (
       <div className="popup bg-blue-500">
@@ -119,6 +122,9 @@ function QuizAppWithTimer() {
 export default QuizAppWithTimer;
  */
 
+  /* 
+    DM: todoMM: this component is not doing anything with selectedOption and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
+ */
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value)
   }
@@ -136,7 +142,7 @@ export default QuizAppWithTimer;
       setSelectedOption(null)
     }
   }
-
+  //  boolean && doSomething() is example of  short-circuiting
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
       {/* DM: study this carefully. The pseudocode here is a hint for Copilot AAI, as well as for me to think "out loud", and documentation.
@@ -182,7 +188,7 @@ export default QuizAppWithTimer;
          nice background and any future Look and Feel (L&F) that you might add. This is an advantage of s
          showing it conditionally here (along with the top-level DIV) instead of above before the return statement.
 
-         If you put a newline after this comment, then type "{" to start, Copilot will suggest the proper way to do it.
+         If you put a newline after this comment, then type "{showRules" to start, Copilot will suggest the proper way to do it.
 
          if showRules, render RulesOfTheQuiz
        */}
