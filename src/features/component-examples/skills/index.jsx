@@ -1,5 +1,5 @@
 import Item from '../../../component-examples/complex-object/item'
-import SkillData from '@/features/portfolio/content/skills-section/skill-data'
+import SkillData from '@/features/portfolio/skill-data'
 import { skills } from '@/constants/portfolio/content/skills'
 
 export function SkillSection() {

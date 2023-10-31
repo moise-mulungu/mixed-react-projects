@@ -3,13 +3,13 @@
 // DM: I changed the name of the prop to have the same name as it has in the parent function so that it is easy to recognize as the same function in both components.
 // export default function RulesOfTheQuiz({ handleExitShowRulesClick }) {
 export default function RulesOfTheQuiz({
-  // handleExitShowRulesClick,
-  handleContinueClick,
-  handleExitClick,
+  handleExitShowRulesClick,
+  handleContinueFromRulesClick,
+  // handleExitClick,
 }) {
   //   const [quizInProgress, setQuizInProgress] = useState(false)
 
-  // DM: todoMM: good! Now lift to index.jsx all lines from here through the comment below: // END of lines to move
+  //(done) DM: todoMM: good! Now lift to index.jsx all lines from here through the comment below: // END of lines to move
   // important!: before you lift these lines, lift the code I mentioned in the parent component, StartQuizButton, up to index.jsx. Then lift the lines from this component up to index.jsx. Doing it in that order will make a lot more sense.
   // the reason to lift these lines is because this component is for the rules of the quiz only, not the quiz itself. See the SOLID single-responsibility principle at https://en.wikipedia.org/wiki/SOLID
 
@@ -22,7 +22,7 @@ export default function RulesOfTheQuiz({
   // useEffect(() => {
   //   const category = 'sql' // replace with your desired category
 
-  //   // DM: todoMM: to avoid difficulties caused by changing too many things at once, temporarily, have your API endpoint return the data in src/features/quiz-app-with-timer/quiz-javascript/questions.js
+  //   //(done) DM: todoMM: to avoid difficulties caused by changing too many things at once, temporarily, have your API endpoint return the data in src/features/quiz-app-with-timer/quiz-javascript/questions.js
   //   const apiUrl = `/api/quiz?category=${category}`
 
   //   fetch(apiUrl)
@@ -52,7 +52,7 @@ export default function RulesOfTheQuiz({
 
   // END of lines to move
 
-  // const handleContinueClick = () => {
+  // const handleContinueFromRulesClick = () => {
   //   // DM: after you lift the above lines to index.jsx, you'll need to pass setShowQuestion to RulesOfTheQuiz as a prop
   //   setShowQuestion(true)
   // }
@@ -79,7 +79,7 @@ export default function RulesOfTheQuiz({
     //     <button className="bg-red-500 text-white py-2 px-4 rounded mr-2" onClick={handleExitClick}>
     //       Exit Quiz
     //     </button>
-    //     <button className="bg-green-500 text-white py-2 px-4 rounded" onClick={handleContinueClick}>
+    //     <button className="bg-green-500 text-white py-2 px-4 rounded" onClick={handleContinueFromRulesClick}>
     //       Continue
     //     </button>
     //   </div>
@@ -100,13 +100,13 @@ export default function RulesOfTheQuiz({
           <div className="flex justify-between">
             <button
               className="bg-red-500 text-white py-2 px-4 rounded mr-2"
-              onClick={handleExitClick}
+              onClick={handleExitShowRulesClick}
             >
               Exit Quiz
             </button>
             <button
               className="bg-green-500 text-white py-2 px-4 rounded"
-              onClick={handleContinueClick}
+              onClick={handleContinueFromRulesClick}
             >
               Continue
             </button>

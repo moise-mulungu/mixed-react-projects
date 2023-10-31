@@ -3,7 +3,7 @@
 // after: Make them stay in sync: editing one input should update the other input with the same text, and vice versa.
 import { useState } from 'react'
 
-/* DM: I liked the way you documented the before and after by adding comments for each numbered step and leaving the "before" code in comments. It is really clear. note: I updated some of the comments. */
+/* DM: I liked the way you documented the before and after by adding comments for each numbered step and leaving the "before" code in comments. It is really clear. note: I updated some of the comments.(ok) */
 
 /*
 steps:

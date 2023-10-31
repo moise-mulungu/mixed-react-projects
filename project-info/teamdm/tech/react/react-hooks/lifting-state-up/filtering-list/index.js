@@ -1,5 +1,5 @@
-// DM: todoMM: not very clear WHY to move state up. Could you add a note about that?
-
+//(done)DM: todoMM: not very clear WHY to move state up. Could you add a note about that?
+// MM: DM: the FilterableList component is the parent component of SearchBar and List. The state query is declared in FilterableList and passed down to SearchBar as a prop. The handleChange function, which modifies query, is also passed down to SearchBar. This allows SearchBar to render the current query and update it as the user types into the search bar. The filteredFoods variable is also declared in FilterableList and passed down to List as a prop. This allows List to render the filtered list of foods.
 // src: https://react.dev/learn/sharing-state-between-components
 import { useState } from 'react'
 import { foods, filterItems } from './data.js'

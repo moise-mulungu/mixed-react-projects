@@ -56,17 +56,17 @@ export default function QuizAppWithTimer() {
     return <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
   }
 
-  // DM: todoMM: I like that you created this handler; now, give it a more descriptive name that expresses where/for what purpose it is used. I recommend handleContinueFromRulesClick, that way, we know which component is is for: RulesOfTheQuiz and not StartQuizButton
-  const handleContinueClick = () => {
+  //(done) DM: todoMM: I like that you created this handler; now, give it a more descriptive name that expresses where/for what purpose it is used. I recommend handleContinueFromRulesClick, that way, we know which component is is for: RulesOfTheQuiz and not StartQuizButton
+  const handleContinueFromRulesClick = () => {
     setShowQuestion(true)
     setShowRules(false)
   }
   // DM: benefits of more descriptive names. Not only so humans can quickly understand your intent, but AI can also comprehend better what you want and make better suggestions.
 
   // DM: todoMM: the function name is also not clear that it will be used only in RulesOfTheQuiz, so one might think "exit from what?". However, in this case there is no reason to create this function (which is an alias of handleExitShowRulesClick). So, delete this function and pass handleExitShowRulesClick to RulesOfTheQuiz as a prop.
-  const handleExitClick = () => {
-    handleExitShowRulesClick()
-  }
+  // const handleExitClick = () => {
+  //   handleExitShowRulesClick()
+  // }
 
   // DM: good, this should be right here, along with the if (loading) block
   if (error) {
@@ -81,8 +81,9 @@ export default function QuizAppWithTimer() {
       <div className="popup bg-blue-500">
         <RulesOfTheQuiz
           // not used in the component: handleExitShowRulesClick={handleExitShowRulesClick}
-          handleContinueClick={handleContinueClick}
-          handleExitClick={handleExitClick}
+          handleContinueFromRulesClick={handleContinueFromRulesClick}
+          // handleExitClick={handleExitClick}
+          handleExitShowRulesClick={handleExitShowRulesClick}
         />
       </div>
     )
