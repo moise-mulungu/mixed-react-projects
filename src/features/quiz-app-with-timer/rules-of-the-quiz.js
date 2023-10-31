@@ -6,9 +6,9 @@ export default function RulesOfTheQuiz({
   handleExitShowRulesClick,
   handleContinueFromRulesClick,
   // handleExitClick,
+  // showQuestion,
 }) {
   //   const [quizInProgress, setQuizInProgress] = useState(false)
-
   //(done) DM: todoMM: good! Now lift to index.jsx all lines from here through the comment below: // END of lines to move
   // important!: before you lift these lines, lift the code I mentioned in the parent component, StartQuizButton, up to index.jsx. Then lift the lines from this component up to index.jsx. Doing it in that order will make a lot more sense.
   // the reason to lift these lines is because this component is for the rules of the quiz only, not the quiz itself. See the SOLID single-responsibility principle at https://en.wikipedia.org/wiki/SOLID
@@ -61,6 +61,28 @@ export default function RulesOfTheQuiz({
   //   handleExitShowRulesClick()
   //   // setQuizInProgress(false)
   // }
+
+  /*
+ import React, { useState } from 'react';
+import data from './data.js';
+
+function QuizAppWithTimer() {
+  const [showData, setShowData] = useState(false);
+
+  const handleContinueClick = () => {
+    setShowData(true);
+  };
+
+  return (
+    <div>
+      <button onClick={handleContinueClick}>Continue</button>
+      {showQuestion && <pre>{JSON.stringify(data, null, 2)}</pre>}
+    </div>
+  );
+}
+
+export default QuizAppWithTimer;
+ */
 
   // DM: looks nice. I see you converted all this to tailwindcss.
   return (

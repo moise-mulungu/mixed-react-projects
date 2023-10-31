@@ -4,6 +4,7 @@ import data from './data'
 
 import StartQuizButton from './start-quiz-button'
 import RulesOfTheQuiz from './rules-of-the-quiz'
+import QuestionBox from './question-box'
 // import { set } from 'react-hook-form'
 // import RulesOfTheQuiz from './rules-of-the-quiz'
 
@@ -19,6 +20,8 @@ export default function QuizAppWithTimer() {
   const [showQuestion, setShowQuestion] = useState(false)
   const [quizData, setQuizData] = useState(null)
   const [error, setError] = useState(null)
+  const [selectedOption, setSelectedOption] = useState(null)
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
   const loading = !quizData && !error
 
@@ -51,9 +54,14 @@ export default function QuizAppWithTimer() {
     setShowRules(false)
   }
 
-  // DM: todoMM: always put conditionally shown JSX just above the return statement. This makes it easier to see what is being rendered conditionally. Put this just before the if(error) block
+  //(done) DM: todoMM: always put conditionally shown JSX just above the return statement. This makes it easier to see what is being rendered conditionally. Put this just before the if(error) block
   if (loading) {
-    return <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
+    // return <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
+    return loading ? (
+      <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
+    ) : (
+      <p className="text-center text-gray-500 mt-4">Quiz data loaded!</p>
+    )
   }
 
   //(done) DM: todoMM: I like that you created this handler; now, give it a more descriptive name that expresses where/for what purpose it is used. I recommend handleContinueFromRulesClick, that way, we know which component is is for: RulesOfTheQuiz and not StartQuizButton
@@ -89,6 +97,46 @@ export default function QuizAppWithTimer() {
     )
   }
 
+  /*
+ import React, { useState } from 'react';
+import data from './data.js';
+
+function QuizAppWithTimer() {
+  const [showData, setShowData] = useState(false);
+
+  const handleContinueClick = () => {
+    setShowData(true);
+  };
+
+  return (
+    <div>
+      <button onClick={handleContinueClick}>Continue</button>
+      {showData && <pre>{JSON.stringify(data, null, 2)}</pre>}
+    </div>
+  );
+}
+
+export default QuizAppWithTimer;
+ */
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value)
+  }
+
+  const handleNextQuestion = () => {
+    if (currentQuestionIndex < data.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1)
+      setSelectedOption(null)
+    }
+  }
+
+  const handlePreviousQuestion = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1)
+      setSelectedOption(null)
+    }
+  }
+
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
       {/* DM: study this carefully. The pseudocode here is a hint for Copilot AAI, as well as for me to think "out loud", and documentation.
@@ -96,7 +144,35 @@ export default function QuizAppWithTimer() {
          else render the start quiz button  
      */}
       {showQuestion ? ( // DM: todoMM: this is a good place to use the conditional operator (ternary operator)
-        <div>Question Box</div>
+        // <div>Question Box</div>
+        // data.map(({ number, question, answer, options }) => {
+        //   return (
+        //     <div key={number} className="bg-white p-6 rounded shadow-md w-1/2">
+        //       <div className="text-xl font-bold mb-4">{question}</div>
+        //       <div className="text-lg mb-2">{answer}</div>
+        //       <div className="text-sm">
+        //         {options.map((option) => {
+        //           return (
+        //             <div key={option} className="flex items-center">
+        //               <input type="radio" id={option} name={option} value={option} />
+        //               <label htmlFor={option} className="ml-2">
+        //                 {option}
+        //               </label>
+        //             </div>
+        //           )
+        //         })}
+        //       </div>
+        //     </div>
+        //   )
+        // })
+        // <QuestionBox />
+        <QuestionBox
+          selectedOption={selectedOption}
+          handleOptionChange={handleOptionChange}
+          currentQuestionIndex={currentQuestionIndex}
+          handleNextQuestion={handleNextQuestion}
+          handlePreviousQuestion={handlePreviousQuestion}
+        />
       ) : (
         <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
       )}
