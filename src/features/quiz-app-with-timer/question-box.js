@@ -1,13 +1,13 @@
 // import { useState } from 'react'
-//src: hpw to fetch data from json file in react-js: https://akhtarvahid.medium.com/how-to-access-fetch-the-local-json-file-to-react-5ce07c43731d 
+//src: hpw to fetch data from json file in react-js: https://akhtarvahid.medium.com/how-to-access-fetch-the-local-json-file-to-react-5ce07c43731d
 import data from './data.js'
 
 export default function QuestionBox({
   selectedOption,
   handleOptionChange,
   currentQuestionIndex,
-  handleNextClick,
-  handlePreviousClick,
+  handleNextQuestion,
+  handlePreviousQuestion,
 }) {
   //   const [selectedOption, setSelectedOption] = useState(null)
   //   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -17,14 +17,14 @@ export default function QuestionBox({
   //     // setShowAnswer(false)
   //   }
 
-  //  
+  //
   //   return (
   //     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
   //       {data.map(({ number, question, answer, options }) => {
   //         return (
   //           <div key={number} className="bg-white p-6 rounded shadow-md w-full max-w-md  ">
   //             <div className="text-2xl font-bold   text-blue-600">{question}</div>
-  //  
+  //
   //             <div className="text-sm">
   //               {options.map((option) => {
   //                 return (
@@ -43,14 +43,14 @@ export default function QuestionBox({
   //     </div>
   //   )
 
-  //   const handleNextClick = () => {
+  //   const handleNextQuestion = () => {
   //     if (currentQuestionIndex < data.length - 1) {
   //       setCurrentQuestionIndex(currentQuestionIndex + 1)
   //       setSelectedOption(null)
   //     }
   //   }
 
-  //   const handlePreviousClick = () => {
+  //   const handlePreviousQuestion = () => {
   //     if (currentQuestionIndex > 0) {
   //       setCurrentQuestionIndex(currentQuestionIndex - 1)
   //       setSelectedOption(null)
@@ -133,12 +133,12 @@ export default function QuestionBox({
 
       <div className="flex justify-between mt-4">
         <button
-          onClick={handlePreviousClick}
+          onClick={handlePreviousQuestion}
           className="bg-blue-500 text-white rounded px-4 py-2 mr-2"
         >
           Previous
         </button>
-        <button onClick={handleNextClick} className="bg-blue-500 text-white rounded px-4 py-2">
+        <button onClick={handleNextQuestion} className="bg-blue-500 text-white rounded px-4 py-2">
           Next
         </button>
       </div>
