@@ -13,10 +13,9 @@ export default function QuizAppWithTimer() {
   const [showQuestion, setShowQuestion] = useState(false)
   const [quizData, setQuizData] = useState(null)
   const [error, setError] = useState(null)
- 
 
   // const [timer, setTimer] = useState(15)
-  //(done) DM: todoMM: "option" is a little vague, so rename this to something more specific (see my comment in question-box.js); at this point, I know there are questions, but I have no idea what options. Clear, specific names are VERY, VERY important so that you don't slow me down (and, on-the-job, other DEVs on your team don't say you write confusing code)
+  //(done) DM: "option" is a little vague, so rename this to something more specific (see my comment in question-box.js); at this point, I know there are questions, but I have no idea what options. Clear, specific names are VERY, VERY important so that you don't slow me down (and, on-the-job, other DEVs on your team don't say you write confusing code)
   // const [selectedAnswer, setSelectedAnswer] = useState(null)
   // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
@@ -51,7 +50,7 @@ export default function QuizAppWithTimer() {
     setShowRules(false)
   }
 
-  // DM: todoMM: always put conditionally shown JSX just above the return statement. This makes it easier to see what is being rendered conditionally. Put this just before the if(error) block DM: all handlers should be above this if block(done)
+  // (done) DM: always put conditionally shown JSX just above the return statement. This makes it easier to see what is being rendered conditionally. Put this just before the if(error) block DM: all handlers should be above this if block
   const handleContinueFromRulesClick = () => {
     setShowQuestion(true)
     setShowRules(false)
@@ -61,7 +60,7 @@ export default function QuizAppWithTimer() {
   // }
 
   /* 
-    (done)DM: todoMM: this component is not doing anything with selectedAnswer and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
+    (done)DM: this component is not doing anything with selectedAnswer and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
  */
   // const handleNextQuestion = () => {
   //   if (currentQuestionIndex < data.length - 1) {
@@ -90,7 +89,7 @@ export default function QuizAppWithTimer() {
   //(done) DM: I like that you created this handler; now, give it a more descriptive name that expresses where/for what purpose it is used. I recommend handleContinueFromRulesClick, that way, we know which component is is for: RulesOfTheQuiz and not StartQuizButton
   // DM: benefits of more descriptive names. Not only so humans can quickly understand your intent, but AI can also comprehend better what you want and make better suggestions.
 
-  //(done) DM: todoMM: the function name is also not clear that it will be used only in RulesOfTheQuiz, so one might think "exit from what?". However, in this case there is no reason to create this function (which is an alias of handleExitShowRulesClick). So, delete this function and pass handleExitShowRulesClick to RulesOfTheQuiz as a prop.
+  //(done) DM: the function name is also not clear that it will be used only in RulesOfTheQuiz, so one might think "exit from what?". However, in this case there is no reason to create this function (which is an alias of handleExitShowRulesClick). So, delete this function and pass handleExitShowRulesClick to RulesOfTheQuiz as a prop.
   // const handleExitClick = () => {
   //   handleExitShowRulesClick()
   // }
@@ -102,15 +101,11 @@ export default function QuizAppWithTimer() {
 
   // DM: as an example, I'm moving this into the return statement below. It belongs there - you'll see why later. One reason is, it can share the styling of the top-level DIV in the return statement
 
-  //(done) DM: todoMM: move this into the JSX in the return statement below after my comment at the bottom of the JSX, showing it conditionally similar to how I conditionally showed <div>Question Box</div> bump
+  //(done) DM: move this into the JSX in the return statement below after my comment at the bottom of the JSX, showing it conditionally similar to how I conditionally showed <div>Question Box</div> bump
 
   //  boolean && doSomething() is example of  short-circuiting
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
-      {/* DM: study this carefully. The pseudocode here is a hint for Copilot AAI, as well as for me to think "out loud", and documentation.
-         if showQuestion, render the question box
-         else render the start quiz button  
-     */}
       {showQuestion && <QuestionBox />}
 
       {!showRules && !showQuestion && (
@@ -118,7 +113,7 @@ export default function QuizAppWithTimer() {
       )}
 
       {/* <StartQuizButton handleStartQuizClick={handleStartQuizClick} /> */}
-      {/* {showQuestion ? ( // DM: todoMM: this is a good place to use the conditional operator (ternary operator)
+      {/* {showQuestion ? ( // DM: this is a good place to use the conditional operator (ternary operator)
         // <div>Question Box</div>
         // data.map(({ number, question, answer, options }) => {
         //   return (

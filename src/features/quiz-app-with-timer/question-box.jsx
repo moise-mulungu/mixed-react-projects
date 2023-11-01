@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react'
 // src: how to set timer with react: https://www.geeksforgeeks.org/how-to-create-a-countdown-timer-using-reactjs/
 import data from './data.js'
 
+// DM: putting magic numbers into a constant
+const defaultSecondsToAnswerQuestion = 15
+
 export default function QuestionBox() {
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
-  const [timer, setTimer] = useState(15)
+  const [timer, setTimer] = useState(defaultSecondsToAnswerQuestion)
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false)
 
   useEffect(() => {
@@ -17,7 +20,7 @@ export default function QuestionBox() {
           clearInterval(countdown)
           setShowCorrectAnswer(true)
           // handleNextQuestion()
-          return 15 // Reset timer
+          return defaultSecondsToAnswerQuestion // Reset timer
         } else {
           return prevTimer - 1
         }
@@ -31,13 +34,15 @@ export default function QuestionBox() {
   //     // setShowAnswer(false)
   //   }
 
+  // DM: todoMM: rename more clearly to what it is. i don't know what "option" means
   const handleOptionChange = (event) => {
     setSelectedAnswer(event.target.value)
   }
 
   /* 
-    DM: todoMM: this component is not doing anything with selectedAnswer and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
+    (?) DM: todoMM: this component is not doing anything with selectedAnswer and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
  */
+  // DM: todoMM: rename to handleGotoNextQuestion
   const handleNextQuestion = () => {
     if (currentQuestionIndex < data.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
@@ -46,6 +51,7 @@ export default function QuestionBox() {
     }
   }
 
+  // DM: todoMM: rename to handleGotoPreviousQuestion
   const handlePreviousQuestion = () => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1)
@@ -95,13 +101,8 @@ export default function QuestionBox() {
 
   // the difference between {boolean && (<></>)} and  {boolean ? (<></>)} is
 
-  //(done) DM: todoMM: now I see what options means. this is a case where the DEV who wrote the article chose poor names. You can fix that right here easily by renaming options to choices. Note renaming a deconstructed property is called "aliasing". See the image in this dir which shows how I asked AI for better names. So, change EVERY related variable and function name in your app to reflect the changes I made to the property names in this object.; Use the VSCode global search and replace feature to do it quickly.
-  const {
-    questionId,
-    question, // DM: I think 'question' is better than 'prompt'
-    correctAnswer,
-    answerChoices,
-  } = data[currentQuestionIndex]
+  //(done) DM: now I see what options means. this is a case where the DEV who wrote the article chose poor names. You can fix that right here easily by renaming options to choices. Note renaming a deconstructed property is called "aliasing". See the image in this dir which shows how I asked AI for better names. So, change EVERY related variable and function name in your app to reflect the changes I made to the property names in this object.; Use the VSCode global search and replace feature to do it quickly.
+  const { questionId, question, correctAnswer, answerChoices } = data[currentQuestionIndex]
 
   //   return (
   //     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
@@ -158,6 +159,7 @@ export default function QuestionBox() {
 
       <div className="text-base mb-4">
         {answerChoices.map((option) => {
+          // DM: todoMM: "option" is vague; rename to answerChoice; rule of thumb: use the singular of the array name EX myItems.map(myItem ... )
           const isCorrect = option === correctAnswer
           const isSelected = option === selectedAnswer
           return (
@@ -188,6 +190,7 @@ export default function QuestionBox() {
       </div>
 
       <div className="flex justify-between">
+        {/* DM: tip: do you want to display button if currentQuestionIndex < 1 */}
         <button
           onClick={handlePreviousQuestion}
           className="bg-blue-500 text-white rounded px-4 py-2 mr-2"
