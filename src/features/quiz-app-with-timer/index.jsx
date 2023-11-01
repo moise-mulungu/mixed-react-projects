@@ -6,15 +6,16 @@ import StartQuizButton from './start-quiz-button'
 import RulesOfTheQuiz from './rules-of-the-quiz'
 import QuestionBox from './question-box'
 
-
 //(done) DM: all files that contain JSX should have the .jsx extension
 
 export default function QuizAppWithTimer() {
-
   const [showRules, setShowRules] = useState(false)
   const [showQuestion, setShowQuestion] = useState(false)
   const [quizData, setQuizData] = useState(null)
   const [error, setError] = useState(null)
+ 
+
+  // const [timer, setTimer] = useState(15)
   //(done) DM: todoMM: "option" is a little vague, so rename this to something more specific (see my comment in question-box.js); at this point, I know there are questions, but I have no idea what options. Clear, specific names are VERY, VERY important so that you don't slow me down (and, on-the-job, other DEVs on your team don't say you write confusing code)
   // const [selectedAnswer, setSelectedAnswer] = useState(null)
   // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
@@ -26,20 +27,20 @@ export default function QuizAppWithTimer() {
     setQuizData(data)
     return
 
-    const category = 'sql' // replace with your desired category
+    // const category = 'sql' // replace with your desired category
 
-    const apiUrl = `/api/quiz?category=${category}`
+    // const apiUrl = `/api/quiz?category=${category}`
 
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('data:', data)
-        setQuizData(data)
-      })
-      .catch((error) => {
-        console.error('Error fetching quiz data:', error)
-        setError(error)
-      })
+    // fetch(apiUrl)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log('data:', data)
+    //     setQuizData(data)
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error fetching quiz data:', error)
+    //     setError(error)
+    //   })
   }, [])
 
   const handleStartQuizClick = () => {
@@ -58,8 +59,8 @@ export default function QuizAppWithTimer() {
   // const handleOptionChange = (event) => {
   //   setSelectedAnswer(event.target.value)
   // }
-  
-    /* 
+
+  /* 
     (done)DM: todoMM: this component is not doing anything with selectedAnswer and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
  */
   // const handleNextQuestion = () => {
@@ -68,7 +69,7 @@ export default function QuizAppWithTimer() {
   //     setSelectedAnswer(null)
   //   }
   // }
-  
+
   // const handlePreviousQuestion = () => {
   //   if (currentQuestionIndex > 0) {
   //     setCurrentQuestionIndex(currentQuestionIndex - 1)
@@ -103,7 +104,6 @@ export default function QuizAppWithTimer() {
 
   //(done) DM: todoMM: move this into the JSX in the return statement below after my comment at the bottom of the JSX, showing it conditionally similar to how I conditionally showed <div>Question Box</div> bump
 
-
   //  boolean && doSomething() is example of  short-circuiting
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
@@ -111,7 +111,14 @@ export default function QuizAppWithTimer() {
          if showQuestion, render the question box
          else render the start quiz button  
      */}
-      {showQuestion ? ( // DM: todoMM: this is a good place to use the conditional operator (ternary operator)
+      {showQuestion && <QuestionBox />}
+
+      {!showRules && !showQuestion && (
+        <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
+      )}
+
+      {/* <StartQuizButton handleStartQuizClick={handleStartQuizClick} /> */}
+      {/* {showQuestion ? ( // DM: todoMM: this is a good place to use the conditional operator (ternary operator)
         // <div>Question Box</div>
         // data.map(({ number, question, answer, options }) => {
         //   return (
@@ -143,7 +150,7 @@ export default function QuizAppWithTimer() {
         />
       ) : (
         <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
-      )}
+      )} */}
       {/* 
          since it is a popup, it can go anywhere, so it can be here at the end of the JSX, but
          notice that is inside the div that sets the background. That way, you'll still have the 
@@ -153,6 +160,7 @@ export default function QuizAppWithTimer() {
          If you put a newline after this comment, then type "{showRules" to start, Copilot will suggest the proper way to do it.
 
          if showRules, render RulesOfTheQuiz
+        
        */}
       {showRules && (
         <div className="popup bg-blue-500">
@@ -167,4 +175,3 @@ export default function QuizAppWithTimer() {
     </div>
   )
 }
-

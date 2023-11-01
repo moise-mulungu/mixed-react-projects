@@ -1,11 +1,31 @@
-import { useState } from 'react'
-//src: hpw to fetch data from json file in react-js: https://akhtarvahid.medium.com/how-to-access-fetch-the-local-json-file-to-react-5ce07c43731d
+import { useState, useEffect } from 'react'
+//src: how to fetch data from json file in react-js: https://akhtarvahid.medium.com/how-to-access-fetch-the-local-json-file-to-react-5ce07c43731d
+
+// src: how to set timer with react: https://www.geeksforgeeks.org/how-to-create-a-countdown-timer-using-reactjs/
 import data from './data.js'
 
 export default function QuestionBox() {
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  const [timer, setTimer] = useState(15)
+  const [showCorrectAnswer, setShowCorrectAnswer] = useState(false)
 
+  useEffect(() => {
+    const countdown = setInterval(() => {
+      setTimer((prevTimer) => {
+        if (prevTimer <= 1) {
+          clearInterval(countdown)
+          setShowCorrectAnswer(true)
+          // handleNextQuestion()
+          return 15 // Reset timer
+        } else {
+          return prevTimer - 1
+        }
+      })
+    }, 1000)
+
+    return () => clearInterval(countdown)
+  }, [currentQuestionIndex])
   //   const handleOptionChange = (event) => {
   //     setSelectedOption(event.target.value)
   //     // setShowAnswer(false)
@@ -22,6 +42,7 @@ export default function QuestionBox() {
     if (currentQuestionIndex < data.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1)
       setSelectedAnswer(null)
+      setShowCorrectAnswer(false)
     }
   }
 
@@ -124,19 +145,25 @@ export default function QuestionBox() {
     // <div className="flex items-center justify-center min-h-screen bg-gray-100">
     <div
       key={questionId} // number wasn't a property in the data.js file, so it would have been undefined and you'd get the usual warning about keys needing to be unique
-      className="bg-white p-6 rounded shadow-md w-full max-w-md "
+      className="bg-white p-6 rounded shadow-md w-3/5 h-3/5 m-auto flex flex-col space-y-4"
     >
-      <div className="text-2xl font-bold   text-blue-600">{question}</div>
+      <div className="flex justify-between items-center">
+        <div className="text-2xl font-bold text-blue-600">{question}</div>
+        <div className="text-lg font-bold text-red-60 px-2 py-1 rounded">
+          Time remaining: {timer} seconds
+        </div>
+      </div>
       <hr className="my-4" />
+      {showCorrectAnswer && <p className="text-green-500">Answer: {correctAnswer}</p>}
 
-      <div className="text-sm">
+      <div className="text-base mb-4">
         {answerChoices.map((option) => {
           const isCorrect = option === correctAnswer
           const isSelected = option === selectedAnswer
           return (
             <div
               key={option}
-              className={`flex items-center mb-2 ${
+              className={`flex items-center mb-2 border border-blue-500 rounded p-2 ${
                 isSelected ? (isCorrect ? 'text-green-500' : 'text-red-500') : 'text-gray-600'
               }`}
             >
@@ -152,12 +179,15 @@ export default function QuestionBox() {
               <label htmlFor={option} className="ml-2">
                 {option}
               </label>
+              {showCorrectAnswer && isCorrect && (
+                <span className="text-green-500 ml-2 text-2xl">✓</span>
+              )}
             </div>
           )
         })}
       </div>
 
-      <div className="flex justify-between mt-4">
+      <div className="flex justify-between">
         <button
           onClick={handlePreviousQuestion}
           className="bg-blue-500 text-white rounded px-4 py-2 mr-2"
