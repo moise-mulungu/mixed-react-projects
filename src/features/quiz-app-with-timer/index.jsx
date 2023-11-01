@@ -5,24 +5,19 @@ import data from './data'
 import StartQuizButton from './start-quiz-button'
 import RulesOfTheQuiz from './rules-of-the-quiz'
 import QuestionBox from './question-box'
-// import { set } from 'react-hook-form'
-// import RulesOfTheQuiz from './rules-of-the-quiz'
+
 
 //(done) DM: all files that contain JSX should have the .jsx extension
 
 export default function QuizAppWithTimer() {
-  //   return (
-  //     <div className="bg-blue-500 h-screen flex justify-center items-center">
-  //       <StartQuizButton />
-  //     </div>
-  //   )
+
   const [showRules, setShowRules] = useState(false)
   const [showQuestion, setShowQuestion] = useState(false)
   const [quizData, setQuizData] = useState(null)
   const [error, setError] = useState(null)
-  // DM: todoMM: "option" is a little vague, so rename this to something more specific (see my comment in question-box.js); at this point, I know there are questions, but I have no idea what options. Clear, specific names are VERY, VERY important so that you don't slow me down (and, on-the-job, other DEVs on your team don't say you write confusing code)
-  const [selectedOption, setSelectedOption] = useState(null)
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+  //(done) DM: todoMM: "option" is a little vague, so rename this to something more specific (see my comment in question-box.js); at this point, I know there are questions, but I have no idea what options. Clear, specific names are VERY, VERY important so that you don't slow me down (and, on-the-job, other DEVs on your team don't say you write confusing code)
+  // const [selectedAnswer, setSelectedAnswer] = useState(null)
+  // const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
   const loading = !quizData && !error
 
@@ -55,11 +50,35 @@ export default function QuizAppWithTimer() {
     setShowRules(false)
   }
 
-  // DM: todoMM: always put conditionally shown JSX just above the return statement. This makes it easier to see what is being rendered conditionally. Put this just before the if(error) block DM: all handlers should be above this if block
+  // DM: todoMM: always put conditionally shown JSX just above the return statement. This makes it easier to see what is being rendered conditionally. Put this just before the if(error) block DM: all handlers should be above this if block(done)
+  const handleContinueFromRulesClick = () => {
+    setShowQuestion(true)
+    setShowRules(false)
+  }
+  // const handleOptionChange = (event) => {
+  //   setSelectedAnswer(event.target.value)
+  // }
+  
+    /* 
+    (done)DM: todoMM: this component is not doing anything with selectedAnswer and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
+ */
+  // const handleNextQuestion = () => {
+  //   if (currentQuestionIndex < data.length - 1) {
+  //     setCurrentQuestionIndex(currentQuestionIndex + 1)
+  //     setSelectedAnswer(null)
+  //   }
+  // }
+  
+  // const handlePreviousQuestion = () => {
+  //   if (currentQuestionIndex > 0) {
+  //     setCurrentQuestionIndex(currentQuestionIndex - 1)
+  //     setSelectedAnswer(null)
+  //   }
+  // }
   if (loading) {
     // return <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
     return <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
-    // DM: typically, when load complete, just show the content of the page, not a message that the data has loaded. users expect that the data just gets loaded, they don't care how/when it gets done.
+    //(ok) DM: typically, when load complete, just show the content of the page, not a message that the data has loaded. users expect that the data just gets loaded, they don't care how/when it gets done.
     // return loading ? (
     //   <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
     // ) : (
@@ -68,13 +87,9 @@ export default function QuizAppWithTimer() {
   }
 
   //(done) DM: I like that you created this handler; now, give it a more descriptive name that expresses where/for what purpose it is used. I recommend handleContinueFromRulesClick, that way, we know which component is is for: RulesOfTheQuiz and not StartQuizButton
-  const handleContinueFromRulesClick = () => {
-    setShowQuestion(true)
-    setShowRules(false)
-  }
   // DM: benefits of more descriptive names. Not only so humans can quickly understand your intent, but AI can also comprehend better what you want and make better suggestions.
 
-  // DM: todoMM: the function name is also not clear that it will be used only in RulesOfTheQuiz, so one might think "exit from what?". However, in this case there is no reason to create this function (which is an alias of handleExitShowRulesClick). So, delete this function and pass handleExitShowRulesClick to RulesOfTheQuiz as a prop.
+  //(done) DM: todoMM: the function name is also not clear that it will be used only in RulesOfTheQuiz, so one might think "exit from what?". However, in this case there is no reason to create this function (which is an alias of handleExitShowRulesClick). So, delete this function and pass handleExitShowRulesClick to RulesOfTheQuiz as a prop.
   // const handleExitClick = () => {
   //   handleExitShowRulesClick()
   // }
@@ -86,62 +101,9 @@ export default function QuizAppWithTimer() {
 
   // DM: as an example, I'm moving this into the return statement below. It belongs there - you'll see why later. One reason is, it can share the styling of the top-level DIV in the return statement
 
-  // DM: todoMM: move this into the JSX in the return statement below after my comment at the bottom of the JSX, showing it conditionally similar to how I conditionally showed <div>Question Box</div> bump
-  if (showRules) {
-    return (
-      <div className="popup bg-blue-500">
-        <RulesOfTheQuiz
-          // not used in the component: handleExitShowRulesClick={handleExitShowRulesClick}
-          handleContinueFromRulesClick={handleContinueFromRulesClick}
-          // handleExitClick={handleExitClick}
-          handleExitShowRulesClick={handleExitShowRulesClick}
-        />
-      </div>
-    )
-  }
+  //(done) DM: todoMM: move this into the JSX in the return statement below after my comment at the bottom of the JSX, showing it conditionally similar to how I conditionally showed <div>Question Box</div> bump
 
-  /*
- import React, { useState } from 'react';
-import data from './data.js';
 
-function QuizAppWithTimer() {
-  const [showData, setShowData] = useState(false);
-
-  const handleContinueClick = () => {
-    setShowData(true);
-  };
-
-  return (
-    <div>
-      <button onClick={handleContinueClick}>Continue</button>
-      {showData && <pre>{JSON.stringify(data, null, 2)}</pre>}
-    </div>
-  );
-}
-
-export default QuizAppWithTimer;
- */
-
-  /* 
-    DM: todoMM: this component is not doing anything with selectedOption and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
- */
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value)
-  }
-
-  const handleNextQuestion = () => {
-    if (currentQuestionIndex < data.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1)
-      setSelectedOption(null)
-    }
-  }
-
-  const handlePreviousQuestion = () => {
-    if (currentQuestionIndex > 0) {
-      setCurrentQuestionIndex(currentQuestionIndex - 1)
-      setSelectedOption(null)
-    }
-  }
   //  boolean && doSomething() is example of  short-circuiting
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
@@ -173,11 +135,11 @@ export default QuizAppWithTimer;
         // })
         // <QuestionBox />
         <QuestionBox
-          selectedOption={selectedOption}
-          handleOptionChange={handleOptionChange}
-          currentQuestionIndex={currentQuestionIndex}
-          handleNextQuestion={handleNextQuestion}
-          handlePreviousQuestion={handlePreviousQuestion}
+          // selectedAnswer={selectedAnswer}
+          // handleOptionChange={handleOptionChange}
+          // currentQuestionIndex={currentQuestionIndex}
+          // handleNextQuestion={handleNextQuestion}
+          // handlePreviousQuestion={handlePreviousQuestion}
         />
       ) : (
         <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
@@ -192,92 +154,17 @@ export default QuizAppWithTimer;
 
          if showRules, render RulesOfTheQuiz
        */}
+      {showRules && (
+        <div className="popup bg-blue-500">
+          <RulesOfTheQuiz
+            // not used in the component: handleExitShowRulesClick={handleExitShowRulesClick}
+            handleContinueFromRulesClick={handleContinueFromRulesClick}
+            // handleExitClick={handleExitClick}
+            handleExitShowRulesClick={handleExitShowRulesClick}
+          />
+        </div>
+      )}
     </div>
   )
 }
 
-/*
-MM: DM: here is the HTML from the tutorial
-<!-- Created By CodingNepal - www.codingnepalweb.com  -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Awesome Quiz App | CodingNepal</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- FontAweome CDN Link for Icons-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-</head>
-<body>
-    <!-- start Quiz button -->
-    <div className="start_btn"><button>Start Quiz</button></div>
-
-    <!-- Info Box -->
-    <div className="info_box">
-        <div className="info-title"><span>Some Rules of this Quiz</span></div>
-        <div className="info-list">
-            <div className="info">1. You will have only <span>15 seconds</span> per each question.</div>
-            <div className="info">2. Once you select your answer, it can't be undone.</div>
-            <div className="info">3. You can't select any option once time goes off.</div>
-            <div className="info">4. You can't exit from the Quiz while you're playing.</div>
-            <div className="info">5. You'll get points on the basis of your correct answers.</div>
-        </div>
-        <div className="buttons">
-            <button className="quit">Exit Quiz</button>
-            <button className="restart">Continue</button>
-        </div>
-    </div>
-
-    <!-- Quiz Box -->
-    <div className="quiz_box">
-        <header>
-            <div className="title">Awesome Quiz Application</div>
-            <div className="timer">
-                <div className="time_left_txt">Time Left</div>
-                <div className="timer_sec">15</div>
-            </div>
-            <div className="time_line"></div>
-        </header>
-        <section>
-            <div className="que_text">
-                <!-- Here I've inserted question from JavaScript -->
-            </div>
-            <div className="option_list">
-                <!-- Here I've inserted options from JavaScript -->
-            </div>
-        </section>
-
-        <!-- footer of Quiz Box -->
-        <footer>
-            <div className="total_que">
-                <!-- Here I've inserted Question Count Number from JavaScript -->
-            </div>
-            <button className="next_btn">Next Que</button>
-        </footer>
-    </div>
-
-    <!-- Result Box -->
-    <div className="result_box">
-        <div className="icon">
-            <i className="fas fa-crown"></i>
-        </div>
-        <div className="complete_text">You've completed the Quiz!</div>
-        <div className="score_text">
-            <!-- Here I've inserted Score Result from JavaScript -->
-        </div>
-        <div className="buttons">
-            <button className="restart">Replay Quiz</button>
-            <button className="quit">Quit Quiz</button>
-        </div>
-    </div>
-
-    <!-- Inside this JavaScript file I've inserted Questions and Options only -->
-    <script src="js/questions.js"></script>
-
-    <!-- Inside this JavaScript file I've coded all Quiz Codes -->
-    <script src="js/script.js"></script>
-
-</body>
-</html>
-*/

@@ -1,26 +1,41 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 //src: hpw to fetch data from json file in react-js: https://akhtarvahid.medium.com/how-to-access-fetch-the-local-json-file-to-react-5ce07c43731d
 import data from './data.js'
 
-export default function QuestionBox({
-  selectedOption,
-  handleOptionChange,
-  currentQuestionIndex,
-  handleNextQuestion,
-  handlePreviousQuestion,
-}) {
-  //   const [selectedOption, setSelectedOption] = useState(null)
-  //   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
+export default function QuestionBox() {
+  const [selectedAnswer, setSelectedAnswer] = useState(null)
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
   //   const handleOptionChange = (event) => {
   //     setSelectedOption(event.target.value)
   //     // setShowAnswer(false)
   //   }
 
+  const handleOptionChange = (event) => {
+    setSelectedAnswer(event.target.value)
+  }
+
+  /* 
+    DM: todoMM: this component is not doing anything with selectedAnswer and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
+ */
+  const handleNextQuestion = () => {
+    if (currentQuestionIndex < data.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1)
+      setSelectedAnswer(null)
+    }
+  }
+
+  const handlePreviousQuestion = () => {
+    if (currentQuestionIndex > 0) {
+      setCurrentQuestionIndex(currentQuestionIndex - 1)
+      setSelectedAnswer(null)
+    }
+  }
+
   //
   //   return (
   //     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-  //       {data.map(({ number, question, answer, options }) => {
+  //       {data.map(({ number, question, answer, answerChoices }) => {
   //         return (
   //           <div key={number} className="bg-white p-6 rounded shadow-md w-full max-w-md  ">
   //             <div className="text-2xl font-bold   text-blue-600">{question}</div>
@@ -59,12 +74,12 @@ export default function QuestionBox({
 
   // the difference between {boolean && (<></>)} and  {boolean ? (<></>)} is
 
-  // DM: todoMM: now I see what options means. this is a case where the DEV who wrote the article chose poor names. You can fix that right here easily by renaming options to choices. Note renaming a deconstructed property is called "aliasing". See the image in this dir which shows how I asked AI for better names. So, change EVERY related variable and function name in your app to reflect the changes I made to the property names in this object.; Use the VSCode global search and replace feature to do it quickly.
+  //(done) DM: todoMM: now I see what options means. this is a case where the DEV who wrote the article chose poor names. You can fix that right here easily by renaming options to choices. Note renaming a deconstructed property is called "aliasing". See the image in this dir which shows how I asked AI for better names. So, change EVERY related variable and function name in your app to reflect the changes I made to the property names in this object.; Use the VSCode global search and replace feature to do it quickly.
   const {
-    numb: questionId,
+    questionId,
     question, // DM: I think 'question' is better than 'prompt'
-    answer: correctAnswer,
-    options: answerChoices,
+    correctAnswer,
+    answerChoices,
   } = data[currentQuestionIndex]
 
   //   return (
@@ -108,16 +123,16 @@ export default function QuestionBox({
   return (
     // <div className="flex items-center justify-center min-h-screen bg-gray-100">
     <div
-      key={number} // number wasn't a property in the data.js file, so it would have been undefined and you'd get the usual warning about keys needing to be unique
+      key={questionId} // number wasn't a property in the data.js file, so it would have been undefined and you'd get the usual warning about keys needing to be unique
       className="bg-white p-6 rounded shadow-md w-full max-w-md "
     >
       <div className="text-2xl font-bold   text-blue-600">{question}</div>
       <hr className="my-4" />
 
       <div className="text-sm">
-        {options.map((option) => {
-          const isCorrect = option === answer
-          const isSelected = option === selectedOption
+        {answerChoices.map((option) => {
+          const isCorrect = option === correctAnswer
+          const isSelected = option === selectedAnswer
           return (
             <div
               key={option}

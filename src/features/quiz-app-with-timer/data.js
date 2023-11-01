@@ -1,10 +1,10 @@
 // creating an array and passing the number, questions, options, and answers
 const data = [
   {
-    numb: 1,
+    questionId: 1,
     question: 'What does HTML stand for?',
-    answer: 'Hyper Text Markup Language',
-    options: [
+    correctAnswer: 'Hyper Text Markup Language',
+    answerChoices: [
       'Hyper Text Preprocessor',
       'Hyper Text Markup Language',
       'Hyper Text Multiple Language',
@@ -12,10 +12,10 @@ const data = [
     ],
   },
   {
-    numb: 2,
+    questionId: 2,
     question: 'What does CSS stand for?',
-    answer: 'Cascading Style Sheet',
-    options: [
+    correctAnswer: 'Cascading Style Sheet',
+    answerChoices: [
       'Common Style Sheet',
       'Colorful Style Sheet',
       'Computer Style Sheet',
@@ -23,10 +23,10 @@ const data = [
     ],
   },
   {
-    numb: 3,
+    questionId: 3,
     question: 'What does PHP stand for?',
-    answer: 'Hypertext Preprocessor',
-    options: [
+    correctAnswer: 'Hypertext Preprocessor',
+    answerChoices: [
       'Hypertext Preprocessor',
       'Hypertext Programming',
       'Hypertext Preprogramming',
@@ -34,10 +34,10 @@ const data = [
     ],
   },
   {
-    numb: 4,
+    questionId: 4,
     question: 'What does SQL stand for?',
-    answer: 'Structured Query Language',
-    options: [
+    correctAnswer: 'Structured Query Language',
+    answerChoices: [
       'Stylish Question Language',
       'Stylesheet Query Language',
       'Statement Question Language',
@@ -45,10 +45,10 @@ const data = [
     ],
   },
   {
-    numb: 5,
+    questionId: 5,
     question: 'What does XML stand for?',
-    answer: 'eXtensible Markup Language',
-    options: [
+    correctAnswer: 'eXtensible Markup Language',
+    answerChoices: [
       'eXtensible Markup Language',
       'eXecutable Multiple Language',
       'eXTra Multi-Program Language',
@@ -56,13 +56,13 @@ const data = [
     ],
   },
   // you can uncomment the below codes and make duplicate as more as you want to add question
-  // but remember you need to give the numb value serialize like 1,2,3,5,6,7,8,9.....
+  // but remember you need to give the questionId value serialize like 1,2,3,5,6,7,8,9.....
 
   //   {
-  //   numb: 6,
+  //   questionId: 6,
   //   question: "Your Question is Here",
-  //   answer: "Correct answer of the question is here",
-  //   options: [
+  //   correctAnswer: "Correct answer of the question is here",
+  //   answerChoices: [
   //     "Option 1",
   //     "option 2",
   //     "option 3",
