@@ -13,6 +13,7 @@ export default function QuizAppWithTimer() {
   const [showQuestion, setShowQuestion] = useState(false)
   const [quizData, setQuizData] = useState(null)
   const [error, setError] = useState(null)
+  // const [quizStarted, setQuizStarted] = useState(false)
 
   // const [timer, setTimer] = useState(15)
   //(done) DM: "option" is a little vague, so rename this to something more specific (see my comment in question-box.js); at this point, I know there are questions, but I have no idea what options. Clear, specific names are VERY, VERY important so that you don't slow me down (and, on-the-job, other DEVs on your team don't say you write confusing code)
@@ -59,6 +60,11 @@ export default function QuizAppWithTimer() {
   //   setSelectedAnswer(event.target.value)
   // }
 
+  const handleExitGame = () => {
+    // Exit the game
+    setShowRules(false)
+    setShowQuestion(false)
+  }
   /* 
     (done)DM: this component is not doing anything with selectedAnswer and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
  */
@@ -106,7 +112,7 @@ export default function QuizAppWithTimer() {
   //  boolean && doSomething() is example of  short-circuiting
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
-      {showQuestion && <QuestionBox />}
+      {showQuestion && <QuestionBox handleExitGame={handleExitGame} />}
 
       {!showRules && !showQuestion && (
         <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
