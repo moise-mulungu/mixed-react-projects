@@ -35,7 +35,36 @@ Template literals are literals delimited with backtick ( ` ) characters, allowin
 
 ## short-circuiting evaluation
 
-the semantics of some Boolean operators in some programming languages in which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression
+the semantics of some Boolean operators in some programming languages in which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression or refers to the behavior of `logical operators (&& and ||)` where the second operand is not evaluated if the result can be determined by the first operand alone. This behavior can be useful in conditional statements and can help simplify code.
+
+```js
+//1. Using the logical AND operator (&&):
+  const x = 5;
+  const y = 10;
+
+  // If x is truthy, evaluate y
+  const result = x && y;
+  console.log(result); // Output: 10
+
+  // If x is falsy, skip evaluating y
+  const result2 = 0 && y;
+  console.log(result2); // Output: 0
+
+```
+```js
+// 2. Using the logical OR operator (||);
+  const x = 0;
+  const y = 10;
+
+  // If x is truthy, skip evaluating y
+  const result = x || y;
+  console.log(result); // Output: 10
+
+  // If x is falsy, evaluate y
+  const result2 = false || y;
+  console.log(result2); // Output: 10
+
+```
 DM: todoDM: concise examples from my Anki
 
 ## destructuring assignment(object and array destructuring)
