@@ -1,6 +1,20 @@
 import axios from 'axios'
 
+import data from '@/features/quiz-app-with-timer/server/data'
+
 export default async (req, res) => {
+  // temporary until you get the external API working. See output at: http://localhost:3005/api/quiz
+  return res.status(200).json(data) // the rest of the code below never runs if you return early.
+
+  /* 
+     DM: todoMM: comment out line 7 to test the external API code below. Look at the console.logs in the vs-code terminal to troubleshoot errors. When you're working on this nextjs API endpoint, don't edit the client-side code until you get the code in this file working.
+
+     use these URLs to trigger the code in this file to run. Check the vscode terminal to see the console.logs. Try all the different variations of the params to see what happens:
+     http://localhost:3005/api/quiz
+     http://localhost:3005/api/quiz?category=sql
+     http://localhost:3005/api/quiz?category=sql&otherParam=otherValue
+  */
+
   const { category } = req.query
 
   if (!category) {

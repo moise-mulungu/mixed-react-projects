@@ -1,5 +1,6 @@
 // import React from 'react';
 
+// DM: todoMM: rename the prop 'score' to distinguish between the score you show in the ui which is really score/totalQuestions
 export default function QuizScore({ score, totalQuestions, handleRestartQuiz, handleExitGame }) {
   return (
     <div className="flex items-center justify-center h-screen">

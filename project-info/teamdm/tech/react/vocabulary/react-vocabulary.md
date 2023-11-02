@@ -239,7 +239,7 @@ In React, conditional rendering refers to the ability to render different compon
 ### most useful methods for conditional rendering in react:
 <!-- src: https://flexiple.com/react/conditional-rendering-in-react -->
 
-***howtojs:: react-conditional-rendering: render with if/else statement; inside the if/else statement add the elements or components to render***
+***howtojs:: react-conditional-rendering outside JSX: render with if/else statement; inside the if/else statement add the elements or components to render***
   1. Using if/else statements:
    ```js
    // We’ll create a LoggedStatus component that displays either of these components depending on whether a user is logged in or not. A different greeting is rendered depending on the value of isLoggedInprop
@@ -251,10 +251,15 @@ In React, conditional rendering refers to the ability to render different compon
     }
    return <LoggedOutUser />;
    }
+   //  ALSO, with ternary operator
+   function LoggedStatus(props) {
+     const isLoggedIn = props.isLoggedIn;
+     return isLoggedIn ? <LoggedInUser /> : <LoggedOutUser />
+   }
 
    ```
   2. Ternary operators:
-***howtojs:: react-conditional-rendering: render with ternary operator; use curly brace with the condition that checks if the first element fulfill the given condition, otherwise the second element or component is checked also***
+***howtojs:: react-conditional-rendering inside JSX: render with ternary operator; use curly brace with the condition that checks if the first element fulfill the given condition, otherwise the second element or component is checked also***
 ```js
 // Show an “Update” button when an edit has been made, else, show the “Edit” button.
 render() {
@@ -270,11 +275,11 @@ render() {
   );
 }
 ```
-  3. Inline IF with Logical && operator.
-***howtojs:: react-conditional-rendering: render with logical operator; use the logical operator with AND or OR to evaluate two elements or components  ***
+  3. Inline IF with Logical && operator (short-circuiting).
+***howtojs:: react-conditional-rendering inside JSX (AKA "inline"): render with logical operator; use the logical operator with AND or OR to evaluate two elements or components  ***
 ```js
 //  Let’s say we want to render a message saying “You have X tasks to do”. When there are no pending tasks, no message should be displayed.
-  const todo = ['Eat', 'Play', 'Read'];
+const todo = ['Eat', 'Play', 'Read'];
 function TodoComponent(props) {
   const todoList = props.todoList;
   return (
@@ -290,14 +295,16 @@ function TodoComponent(props) {
 }
 ```
   4. Switch case operator:
-***howtojs:: react-conditional-rendering: render with switch case operator; use switch to check for multiple cases in your rendering***
+***howtojs:: react-conditional-rendering inline: render with switch case operator; use switch to check for multiple cases in your rendering***
   ```js
-    renderSwitch(param) {
+renderSwitch(param) {
   switch(param) {
     case 'foo':
+      return 'foo';
+    case 'bar':
       return 'bar';
     default:
-      return 'foo';
+      return 'baz';
   }
 }
   render() {
@@ -308,10 +315,10 @@ function TodoComponent(props) {
     );
   }
 ```
-  5. Conditional Rendering with enums.
-***howtojs:: react-conditional-rendering: render with enums; use enums to conditionally render key-valu properties of an object***
+  1. Rendering with enums.
+***howtojs:: react-rendering: render with enums; use enums to conditionally render key-value properties of an object***
 ```js
-// We want to create three different components Foo, Bar and Default. We want to show these components based on a certain state.
+// We want to create three different components Foo, Bar and Default. We want to show these components based on a certain state. They are all shown, but the state prop determines WHAT is shown
   class Enum extends React.Component {
     render() {
       return (
@@ -325,7 +332,7 @@ function TodoComponent(props) {
     }
   }
 ```
-  6. Higher-Order Components.
+  1. Higher-Order Components.
 ***howtojs:: react-conditional-rendering: render with high order component; use the HOC based on a condition by wrapping them in a higher-order component that handles the logic.***
 ```js
 // Let’s now take a look at a HOC that either shows a loading indicator or the desired component.
@@ -352,17 +359,19 @@ In ReactJS, both short-circuiting with logical AND (&&) and the conditional (ter
 * Short-circuiting with `logical AND (&&)`:
 
 This is used when you want to render either a component or nothing.
-  ```js
-  {condition && <Component />}
-  ```
+```js
+{condition && <Component />}
+```
 
 In this case, if condition is true, <Component /> will be rendered. If condition is false, nothing will be rendered.
 
 * `Conditional operator (? :)`:
 
 This is used when you want to render one of two components based on a condition.
-  ```js
-  {condition ? <ComponentIfTrue /> : <ComponentIfFalse />}
-  ```
+```js
+{condition ? <ComponentIfTrue /> : <ComponentIfFalse />}
+```
 
 In this case, if condition is true, <ComponentIfTrue /> will be rendered. If condition is false, <ComponentIfFalse /> will be rendered
+
+DM: good work!

@@ -56,7 +56,8 @@ the semantics of some Boolean operators in some programming languages in which t
   const x = 0;
   const y = 10;
 
-  // If x is truthy, skip evaluating y
+  // DM: todoMM: this is not what happened in the code. run all this code and make sure it is correct, then read the descriptions in comments to be sure they are correct.
+  // If x is truthy, skip evaluating y 
   const result = x || y;
   console.log(result); // Output: 10
 

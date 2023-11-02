@@ -24,23 +24,24 @@ export default function QuizAppWithTimer() {
 
   useEffect(() => {
     // DM: let's wait until later to worry about the API endpoint. Right now, you're still "translating" the example Vanilla JS app into React. So do just that, i.e., use the same data that the Vanilla JS app was build with. Using different quiz data should be a later step WHY because it is better to "refactor" apps gradually. So, what this line does is it just sets your data immediately without fetching.
-    setQuizData(data)
-    return
+    // setQuizData(data)
+    // return
+    // DM: your API endpoint is now returning the exact same data you were using before. See api/quiz for next steps.
 
-    // const category = 'sql' // replace with your desired category
+    const category = 'sql' // replace with your desired category
 
-    // const apiUrl = `/api/quiz?category=${category}`
+    const apiUrl = `/api/quiz?category=${category}`
 
-    // fetch(apiUrl)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log('data:', data)
-    //     setQuizData(data)
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error fetching quiz data:', error)
-    //     setError(error)
-    //   })
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('data:', data)
+        setQuizData(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching quiz data:', error)
+        setError(error)
+      })
   }, [])
 
   const handleStartQuizClick = () => {
@@ -62,7 +63,9 @@ export default function QuizAppWithTimer() {
 
   const handleExitGame = () => {
     // Exit the game
+    // DM: todoMM: I think you don't need this here because in order to exit the game, you wll have already set showRules to false?
     setShowRules(false)
+    // DM: todoMM: rename this to setShowQuiz because it is not about a specific question but whether to be in quiz mode (showing and answering questions)
     setShowQuestion(false)
   }
   /* 
@@ -112,7 +115,7 @@ export default function QuizAppWithTimer() {
   //  boolean && doSomething() is example of  short-circuiting
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
-      {showQuestion && <QuestionBox handleExitGame={handleExitGame} />}
+      {showQuestion && <QuestionBox handleExitGame={handleExitGame} quizData={quizData} />}
 
       {!showRules && !showQuestion && (
         <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
