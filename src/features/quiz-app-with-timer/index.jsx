@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import data from './data'
+// import data from './data'
 
 import StartQuizButton from './start-quiz-button'
 import RulesOfTheQuiz from './rules-of-the-quiz'
@@ -23,25 +23,25 @@ export default function QuizAppWithTimer() {
   const loading = !quizData && !error
 
   useEffect(() => {
-    //   // DM: let's wait until later to worry about the API endpoint. Right now, you're still "translating" the example Vanilla JS app into React. So do just that, i.e., use the same data that the Vanilla JS app was build with. Using different quiz data should be a later step WHY because it is better to "refactor" apps gradually. So, what this line does is it just sets your data immediately without fetching.
-    setQuizData(data)
-    //   // return
-    //   // DM: your API endpoint is now returning the exact same data you were using before. See api/quiz for next steps.
+    // DM: let's wait until later to worry about the API endpoint. Right now, you're still "translating" the example Vanilla JS app into React. So do just that, i.e., use the same data that the Vanilla JS app was build with. Using different quiz data should be a later step WHY because it is better to "refactor" apps gradually. So, what this line does is it just sets your data immediately without fetching.
+    // setQuizData(data)
+    // return
+    // DM: your API endpoint is now returning the exact same data you were using before. See api/quiz for next steps.
 
-    //   const category = 'sql' // replace with your desired category
+    const category = 'sql' // replace with your desired category
 
-    //   const apiUrl = `/api/quiz?category=${category}`
+    const apiUrl = `/api/quiz?category=${category}`
 
-    //   fetch(apiUrl)
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       console.log('data:', data)
-    //       setQuizData(data)
-    //     })
-    //     .catch((error) => {
-    //       console.error('Error fetching quiz data:', error)
-    //       setError(error)
-    //     })
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('data:', data)
+        setQuizData(data)
+      })
+      .catch((error) => {
+        console.error('Error fetching quiz data:', error)
+        setError(error)
+      })
   }, [])
 
   const handleStartQuizClick = () => {
@@ -65,7 +65,7 @@ export default function QuizAppWithTimer() {
     // Exit the game
     // DM: todoMM: I think you don't need this here because in order to exit the game, you wll have already set showRules to false?
     setShowRules(false)
-    //(done) DM: todoMM: rename this to setShowQuiz because it is not about a specific question but whether to be in quiz mode (showing and answering questions)
+    //(done) DM: rename this to setShowQuiz because it is not about a specific question but whether to be in quiz mode (showing and answering questions)
     setShowQuiz(false)
   }
   /* 

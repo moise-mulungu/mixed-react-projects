@@ -1,6 +1,6 @@
 // import React from 'react';
 
-//(done) DM: todoMM: rename the prop 'score' to distinguish between the score you show in the ui which is really score/totalQuestions
+//(done) DM: rename the prop 'score' to distinguish between the score you show in the ui which is really score/totalQuestions DM: great!
 export default function QuizScore({ score, totalQuestions, handleRestartQuiz, handleExitGame }) {
   const scoreResult = `${score}/${totalQuestions}`
   return (

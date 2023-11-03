@@ -7,14 +7,13 @@ import QuizScore from './quiz-score.js'
 // DM: putting magic numbers into a constant
 const defaultSecondsToAnswerQuestion = 15
 
-export default function QuestionBox({ handleExitGame }) {
+export default function QuestionBox({ handleExitGame, quizData }) {
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [timer, setTimer] = useState(defaultSecondsToAnswerQuestion)
   const [showCorrectAnswer, setShowCorrectAnswer] = useState(false)
   const [score, setScore] = useState(0)
   const [showScorePopup, setShowScorePopup] = useState(false)
-  const [quizData, setQuizData] = useState(null)
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -46,7 +45,7 @@ export default function QuestionBox({ handleExitGame }) {
   }
 
   const handleGotoNextQuestion = () => {
-    //(done) DM: todoMM: assign the expression in the if clause to a variable with a meaningful name. General rule: assign all logical expressions to a variable
+    //(done) DM: assign the expression in the if clause to a variable with a meaningful name. General rule: assign all logical expressions to a variable DM: good name
     const hasMoreQuestions = currentQuestionIndex < quizData.length - 1
 
     if (hasMoreQuestions) {
@@ -114,27 +113,7 @@ export default function QuestionBox({ handleExitGame }) {
   //       setSelectedOption(null)
   //     }
   //   }
-  useEffect(() => {
-    // DM: let's wait until later to worry about the API endpoint. Right now, you're still "translating" the example Vanilla JS app into React. So do just that, i.e., use the same data that the Vanilla JS app was build with. Using different quiz data should be a later step WHY because it is better to "refactor" apps gradually. So, what this line does is it just sets your data immediately without fetching.
-    // setQuizData(data)
-    // return
-    // DM: your API endpoint is now returning the exact same data you were using before. See api/quiz for next steps.
 
-    const category = 'sql' // replace with your desired category
-
-    const apiUrl = `/api/quiz?category=${category}`
-
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('data:', data)
-        setQuizData(data)
-      })
-      .catch((error) => {
-        console.error('Error fetching quiz data:', error)
-        setError(error)
-      })
-  }, [])
   // the difference between {boolean && (<></>)} and  {boolean ? (<></>)} is
 
   //(done) DM: now I see what options means. this is a case where the DEV who wrote the article chose poor names. You can fix that right here easily by renaming options to choices. Note renaming a deconstructed property is called "aliasing". See the image in this dir which shows how I asked AI for better names. So, change EVERY related variable and function name in your app to reflect the changes I made to the property names in this object.; Use the VSCode global search and replace feature to do it quickly.
@@ -184,7 +163,7 @@ export default function QuestionBox({ handleExitGame }) {
   return (
     // <div className="flex items-center justify-center min-h-screen bg-gray-100">
     <div
-      // DM: why do you need a key here? MM: as i returned a div for each question, that's why i need a key. you meant a key is only needed when rendering with map()?
+      // DM: why do you need a key here? MM: as i returned a div for each question, that's why i need a key. you meant a key is only needed when rendering with map()? DM: no, it's when there is 2+ of the same element in a row; in this case, you're only rendering one question at a time, so you don't need it.
       key={questionId} // number wasn't a property in the data.js file, so it would have been undefined and you'd get the usual warning about keys needing to be unique
       // key={id}
       className="bg-white p-6 rounded shadow-md w-3/5 h-3/5 m-auto flex flex-col space-y-4"
@@ -240,7 +219,7 @@ export default function QuestionBox({ handleExitGame }) {
       </div>
 
       <div className="flex justify-between">
-      DM: tip: do you want to display button if currentQuestionIndex < 1 DM: please address "tips" by either doing it or explaining why you don't want to do it or starting a discussion (such as asking me why i think it is important). MM: i can just ask if it's important or you have another idea about that!
+       
         <button
           onClick={handleGotoPreviousQuestion}
           className="bg-blue-500 text-white rounded px-4 py-2 mr-2"
@@ -256,7 +235,7 @@ export default function QuestionBox({ handleExitGame }) {
           </div>
       <QuizScore score={score} /> */}
 
-      {/*(in progress, but when i tried to use the conditional operator the score didn't display. below is the code with conditional operator) DM: todoMM: use the conditional operator here for readability */}
+      {/*(in progress, but when i tried to use the conditional operator the score didn't display. below is the code with conditional operator) DM: todoMM: use the conditional operator here for readability DM: select all the affected code (lines 260 through 324 then ask AI chat to rewrite using the conditional operator */}
       {!showScorePopup && (
         <>
           <div className="flex justify-between items-center">
@@ -298,6 +277,7 @@ export default function QuestionBox({ handleExitGame }) {
             })}
           </div>
           <div className="flex justify-between">
+            {/* DM: tip: do you want to display button if currentQuestionIndex < 1 */}
             <button
               onClick={handleGotoPreviousQuestion}
               className="bg-blue-500 text-white rounded px-4 py-2 mr-2"

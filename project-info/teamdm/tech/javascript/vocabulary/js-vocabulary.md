@@ -56,11 +56,12 @@ the semantics of some Boolean operators in some programming languages in which t
   const x = 0;
   const y = 10;
 
-  //(done) DM: todoMM: this is not what happened in the code. run all this code and make sure it is correct, then read the descriptions in comments to be sure they are correct.
+  // DM: todoMM: this is not what happened in the code. run all this code and make sure it is correct, then read the descriptions in comments to be sure they are correct. DM: are you sure it is 5? is X truthy? Note: I didn't mean that the output is wrong, but to check if the comment accurately describes what happens in the code.
   // If x is truthy, skip evaluating y 
   const result = x || y;
   console.log(result); // Output: 5
 
+  // DM: todoMM: the code doesn't employ x so the comment is not correct
   // If x is falsy, evaluate y
   const result2 = false || y;
   console.log(result2); // Output: 10

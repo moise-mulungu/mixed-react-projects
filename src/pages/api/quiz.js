@@ -7,6 +7,13 @@ export default async (req, res) => {
   return res.status(200).json(data) // the rest of the code below never runs if you return early.
 
   /* 
+  * i started by running these links: http://localhost:3005/api/quiz, http://localhost:3005/api/quiz?category=sql, http://localhost:3005/api/quiz?category=sql&otherParam=otherValue for the API endpoint check, i found all worked.
+  DM: I meant for you to test only http://localhost:3005/api/quiz There is a return statement (above) which is before the comment below with the latter 2 URLs, i.e., execution never arrives at that area of the code where these 2 URLs: http://localhost:3005/api/quiz?category=sql, http://localhost:3005/api/quiz?category=sql&otherParam=otherValue so I never meant for you to test these URLs until you comment out line 7 (when you work on the external API)
+
+
+*/
+
+  /* 
      DM: todoMM: comment out line 7 to test the external API code below. Look at the console.logs in the vs-code terminal to troubleshoot errors. When you're working on this nextjs API endpoint, don't edit the client-side code until you get the code in this file working.
 
      use these URLs to trigger the code in this file to run. Check the vscode terminal to see the console.logs. Try all the different variations of the params to see what happens:
@@ -15,7 +22,7 @@ export default async (req, res) => {
      http://localhost:3005/api/quiz?category=sql&otherParam=otherValue
   */
 
-  const { category } = req.query
+  const { category } = req.query // DM: there is a return befoRE this line, so the query params in the URLS are never read
 
   if (!category) {
     // return res.status(400).json({ error: 'City is not provided' })
