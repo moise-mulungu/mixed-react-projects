@@ -10,7 +10,7 @@ import QuestionBox from './question-box'
 
 export default function QuizAppWithTimer() {
   const [showRules, setShowRules] = useState(false)
-  const [showQuestion, setShowQuestion] = useState(false)
+  const [showQuiz, setShowQuiz] = useState(false)
   const [quizData, setQuizData] = useState(null)
   const [error, setError] = useState(null)
   // const [quizStarted, setQuizStarted] = useState(false)
@@ -23,25 +23,25 @@ export default function QuizAppWithTimer() {
   const loading = !quizData && !error
 
   useEffect(() => {
-    // DM: let's wait until later to worry about the API endpoint. Right now, you're still "translating" the example Vanilla JS app into React. So do just that, i.e., use the same data that the Vanilla JS app was build with. Using different quiz data should be a later step WHY because it is better to "refactor" apps gradually. So, what this line does is it just sets your data immediately without fetching.
-    // setQuizData(data)
-    // return
-    // DM: your API endpoint is now returning the exact same data you were using before. See api/quiz for next steps.
+    //   // DM: let's wait until later to worry about the API endpoint. Right now, you're still "translating" the example Vanilla JS app into React. So do just that, i.e., use the same data that the Vanilla JS app was build with. Using different quiz data should be a later step WHY because it is better to "refactor" apps gradually. So, what this line does is it just sets your data immediately without fetching.
+    setQuizData(data)
+    //   // return
+    //   // DM: your API endpoint is now returning the exact same data you were using before. See api/quiz for next steps.
 
-    const category = 'sql' // replace with your desired category
+    //   const category = 'sql' // replace with your desired category
 
-    const apiUrl = `/api/quiz?category=${category}`
+    //   const apiUrl = `/api/quiz?category=${category}`
 
-    fetch(apiUrl)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('data:', data)
-        setQuizData(data)
-      })
-      .catch((error) => {
-        console.error('Error fetching quiz data:', error)
-        setError(error)
-      })
+    //   fetch(apiUrl)
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       console.log('data:', data)
+    //       setQuizData(data)
+    //     })
+    //     .catch((error) => {
+    //       console.error('Error fetching quiz data:', error)
+    //       setError(error)
+    //     })
   }, [])
 
   const handleStartQuizClick = () => {
@@ -54,7 +54,7 @@ export default function QuizAppWithTimer() {
 
   // (done) DM: always put conditionally shown JSX just above the return statement. This makes it easier to see what is being rendered conditionally. Put this just before the if(error) block DM: all handlers should be above this if block
   const handleContinueFromRulesClick = () => {
-    setShowQuestion(true)
+    setShowQuiz(true)
     setShowRules(false)
   }
   // const handleOptionChange = (event) => {
@@ -65,8 +65,8 @@ export default function QuizAppWithTimer() {
     // Exit the game
     // DM: todoMM: I think you don't need this here because in order to exit the game, you wll have already set showRules to false?
     setShowRules(false)
-    // DM: todoMM: rename this to setShowQuiz because it is not about a specific question but whether to be in quiz mode (showing and answering questions)
-    setShowQuestion(false)
+    //(done) DM: todoMM: rename this to setShowQuiz because it is not about a specific question but whether to be in quiz mode (showing and answering questions)
+    setShowQuiz(false)
   }
   /* 
     (done)DM: this component is not doing anything with selectedAnswer and currentQuestionIndex and these 3 handlers. Also, they are not being shared with any other component. So, move them all into the QuestionBox component. That way, they are all together and it is clear that they are only used in that component.
@@ -115,14 +115,12 @@ export default function QuizAppWithTimer() {
   //  boolean && doSomething() is example of  short-circuiting
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
-      {showQuestion && <QuestionBox handleExitGame={handleExitGame} quizData={quizData} />}
+      {showQuiz && <QuestionBox handleExitGame={handleExitGame} quizData={quizData} />}
 
-      {!showRules && !showQuestion && (
-        <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
-      )}
+      {!showRules && !showQuiz && <StartQuizButton handleStartQuizClick={handleStartQuizClick} />}
 
       {/* <StartQuizButton handleStartQuizClick={handleStartQuizClick} /> */}
-      {/* {showQuestion ? ( // DM: this is a good place to use the conditional operator (ternary operator)
+      {/* {showQuiz ? ( // DM: this is a good place to use the conditional operator (ternary operator)
         // <div>Question Box</div>
         // data.map(({ number, question, answer, options }) => {
         //   return (
