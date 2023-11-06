@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 //src: how to fetch data from json file in react-js: https://akhtarvahid.medium.com/how-to-access-fetch-the-local-json-file-to-react-5ce07c43731d
 
 // src: how to set timer with react: https://www.geeksforgeeks.org/how-to-create-a-countdown-timer-using-reactjs/
-import QuizScore from './quiz-score.jsx'
+import QuizScore from './quiz-score'
 
 // DM: putting magic numbers into a constant
 const defaultSecondsToAnswerQuestion = 15
@@ -25,6 +25,11 @@ export default function QuestionBox({ handleExitGame, quizData }) {
         if (prevTimer <= 1 || selectedAnswer) {
           clearInterval(countdown)
           setShowCorrectAnswer(true)
+
+          // DM: tried the below, didn't like the UX.
+          // // DM: what you return here is used to setTimer, so if you want the timer to stop where it was when the user selected an answer, then return prevTimer. If you want the timer to reset to 15 seconds, then return defaultSecondsToAnswerQuestion
+          // return prevTimer
+
           return defaultSecondsToAnswerQuestion // Reset timer
         } else {
           return prevTimer - 1
@@ -45,6 +50,7 @@ export default function QuestionBox({ handleExitGame, quizData }) {
   const handleGotoNextQuestion = () => {
     const hasMoreQuestions = currentQuestionIndex < quizData.length - 1
 
+    // DM: todoDM: think about only setting setCurrentQuestionIndex here and put all the other logic into the new useEffect that has only [currentQuestionIndex] as the dependency. PRO: puts the "respond to change in currentQuestionIndex" logic in one place. PRO: more 'reactive' and seems better to keep business logic out of handlers. PRO: similar code in handleRestartQuiz, so if you want to change the business logic, you don't have to change it in two places.
     if (hasMoreQuestions) {
       const nextQuestionIndex = currentQuestionIndex + 1
       setCurrentQuestionIndex(nextQuestionIndex)
@@ -82,11 +88,22 @@ export default function QuestionBox({ handleExitGame, quizData }) {
               <div className="flex justify-between items-center">
                 <div className="text-xl font-bold text-blue-600">{question}</div>
                 <div
-                  className={`text-lg font-bold px-2 py-1 rounded w-62 text-center whitespace-nowrap ${
-                    timer > 10 ? 'text-green-500' : timer > 5 ? 'text-orange-500' : 'text-red-500'
-                  }`}
+                  // DM: I like using `` for className, and I often put each type of TW utility class on its own line, so it is easier to read and edit
+                  // DM: some disagree, and they say better to use classNames utility in ui/utils; see EX in src/features/portfolio/content/grid-example/index.js
+                  className={`
+                    text-lg font-bold text-center whitespace-nowrap
+                    px-2 py-1 
+                    rounded 
+                    w-62 
+                    ${
+                      timer > 10 ? 'text-green-500' : timer > 5 ? 'text-orange-500' : 'text-red-500'
+                    }
+                  `}
                 >
-                  Time remaining: {timer} seconds
+                  {/* DM: do you like the UX? */}
+                  {timer === defaultSecondsToAnswerQuestion ? null : (
+                    <span> Time remaining: {timer} seconds</span>
+                  )}
                 </div>
               </div>
               <hr className="my-4" />
@@ -126,15 +143,20 @@ export default function QuestionBox({ handleExitGame, quizData }) {
                 })}
               </div>
               <div className="flex justify-between">
-                {/* DM: tip: do you want to display button if currentQuestionIndex < 1 */}
-                {currentQuestionIndex > 0 ? (
-                  <button
-                    onClick={handleGotoPreviousQuestion}
-                    className="bg-blue-500 text-white rounded px-4 py-2 mr-2"
-                  >
-                    Previous
-                  </button>
-                ) : null}
+                {/* DM: todoMM: Good. The Next button is on the left in the first question, but on the right in all other questions. UX is better if the Next box stays in the same place always (on the right). So, adjust the styling so that it stays in the same place on the right during the first question (when Previous button is not shown) 
+                DM: I did it for you, because I wanted to show you the quickest way. flex justify-between wants SOMETHING to be there to maintain the layout of the , but you left nothing. so I wrapped it in a DIV outside the conditionally rendered part. Now, when not show Previous button, there is an empty div to occupy that space where the Previous button would be.
+                */}
+                <div>
+                  {currentQuestionIndex > 0 ? (
+                    <button
+                      onClick={handleGotoPreviousQuestion}
+                      className="bg-blue-500 text-white rounded px-4 py-2 mr-2"
+                    >
+                      Previous
+                    </button>
+                  ) : null}
+                </div>
+                {/* DM: good! */}
                 {showCorrectAnswer && selectedAnswer !== correctAnswer && (
                   <p className="text-green-500">Answer: {correctAnswer}</p>
                 )}
