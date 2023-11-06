@@ -26,7 +26,7 @@ export default function QuizAppWithTimer() {
     // DM: let's wait until later to worry about the API endpoint. Right now, you're still "translating" the example Vanilla JS app into React. So do just that, i.e., use the same data that the Vanilla JS app was build with. Using different quiz data should be a later step WHY because it is better to "refactor" apps gradually. So, what this line does is it just sets your data immediately without fetching.
     // setQuizData(data)
     // return
-    // DM: your API endpoint is now returning the exact same data you were using before. See api/quiz for next steps.
+    // DM: your API endpoint is now returning the exact same data you were using before. See api/quiz for next steps.(ok)
 
     const category = 'sql' // replace with your desired category
 
