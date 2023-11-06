@@ -1,6 +1,3 @@
-// import React from 'react';
-
-//(done) DM: rename the prop 'score' to distinguish between the score you show in the ui which is really score/totalQuestions DM: great!
 export default function QuizScore({ score, totalQuestions, handleRestartQuiz, handleExitGame }) {
   const scoreResult = `${score}/${totalQuestions}`
   return (
@@ -9,10 +6,7 @@ export default function QuizScore({ score, totalQuestions, handleRestartQuiz, ha
         <div className="text-2xl font-bold mb-4">You Scored:</div>
         <div className="text-xl">
           <div className="flex items-center justify-center">
-            <span className="font-bold text-blue-500 text-2xl">
-              {/* {score}/{totalQuestions} */}
-              {scoreResult}
-            </span>
+            <span className="font-bold text-blue-500 text-2xl">{scoreResult}</span>
           </div>
         </div>
         <div className="mt-5">
