@@ -207,3 +207,40 @@ export default function QuestionBox({ handleExitGame, quizData }) {
     </>
   )
 }
+
+/*
+MM: DM: i tested this and it works. i need to adjust it to fit the QuestionBox component.
+return (
+  <div>
+    {quizData.map((question, index) => {
+      return (
+        <div key={index}>
+          <h2>question: {question.question}</h2>
+          <ul>
+            {Object.entries(question.answers).map(([key, value]) => {
+              if (value) {
+                return <li key={key}>{value}</li>
+              } else {
+                return null
+              }
+            })}
+          </ul>
+        </div>
+      )
+    })}
+  </div>   
+)
+
+// here is the data from json format: 
+return (
+  <div>
+    {loading ? (
+      <div>Loading...</div>
+    ) : error ? (
+      <div>Error: {error.message}</div>
+    ) : (
+      <pre>{JSON.stringify(quizData, null, 2)}</pre>
+    )}
+  </div>
+)
+*/

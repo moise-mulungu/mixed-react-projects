@@ -5,10 +5,12 @@ import axios from 'axios'
 export default async (req, res) => {
   // temporary until you get the external API working. See output at: http://localhost:3005/api/quiz
   //   return res.status(200).json(data) // the rest of the code below never runs if you return early.
-  // DM: todoMM: good. use the lodash isEmpty like this: if (isEmpty(req.query)) { ... } // because is more readable and handles more situations, i.e., if req.query is undefined or {} empty object
-  if (Object.keys(req.query).length === 0) {
-    // DM: todoMM: good. should this be 500 (Error?). If you chose 400 specifically let me know your reasoning
-    return res.status(400).send('Bad Request: No query parameters provided')
+  //(done) DM: todoMM: good. use the lodash isEmpty like this: if (isEmpty(req.query)) { ... } // because is more readable and handles more situations, i.e., if req.query is undefined or {} empty object
+  // if (Object.keys(req.query).length === 0) {
+  const isEmpty = require('lodash/isEmpty')
+  if (isEmpty(req.query)) {
+    //(done) DM: todoMM: good. should this be 500 (Error?). If you chose 400 specifically let me know your reasoning
+    return res.status(500).send('Bad Request: No query parameters provided')
   }
   const { category } = req.query
   console.log('category:', { category })
