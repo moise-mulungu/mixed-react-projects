@@ -27,7 +27,7 @@ export default function QuestionBox({ handleExitGame, quizData }) {
           setShowCorrectAnswer(true)
 
           // DM: tried the below, didn't like the UX.
-          // // DM: what you return here is used to setTimer, so if you want the timer to stop where it was when the user selected an answer, then return prevTimer. If you want the timer to reset to 15 seconds, then return defaultSecondsToAnswerQuestion
+          // // DM: what you return here is used to setTimer, so if you want the timer to stop where it was when the user selected an answer, then return prevTimer. If you want the timer to reset to 15 seconds, then return defaultSecondsToAnswerQuestion. MM: if i return either prevTimer or defaultSecondsToAnswerQuestion, the timer does not reset to 15 unless i keep the first useEffect that sets the timer to 15 and return defaultSecondsToAnswerQuestion to the second useEffect.
           // return prevTimer
 
           return defaultSecondsToAnswerQuestion // Reset timer
@@ -102,7 +102,14 @@ export default function QuestionBox({ handleExitGame, quizData }) {
                 >
                   {/* DM: do you like the UX? */}
                   {timer === defaultSecondsToAnswerQuestion ? null : (
-                    <span> Time remaining: {timer} seconds</span>
+                    <span>
+                      {' '}
+                      Time remaining:{' '}
+                      <span className="font-mono inline-block w-6 text-right">
+                        {String(timer).padStart(2, ' ')}
+                      </span>{' '}
+                      seconds
+                    </span>
                   )}
                 </div>
               </div>
@@ -115,12 +122,12 @@ export default function QuestionBox({ handleExitGame, quizData }) {
                   return (
                     <div
                       key={answerChoice}
-                      className={`flex items-center mb-2 border border-blue-500 rounded p-2 ${
+                      className={`flex items-center mb-2 border-2 rounded-lg shadow-sm p-2 hover:bg-blue-100 transition-colors duration-200 ease-in-out ${
                         isSelected
                           ? isCorrect
-                            ? 'text-green-500'
-                            : 'text-red-500'
-                          : 'text-gray-600'
+                            ? 'border-green-500 text-green-500'
+                            : 'border-red-500 text-red-500'
+                          : 'border-gray-300 text-gray-600'
                       }`}
                     >
                       <input
@@ -136,7 +143,19 @@ export default function QuestionBox({ handleExitGame, quizData }) {
                         {answerChoice}
                       </label>
                       {showCorrectAnswer && isCorrect ? (
-                        <span className="text-green-500 ml-2 text-2xl">✓</span>
+                        <svg
+                          className="h-6 w-6 text-green-500 ml-2"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
                       ) : null}
                     </div>
                   )
