@@ -10,15 +10,15 @@ export default async (req, res) => {
   const isEmpty = require('lodash/isEmpty')
   if (isEmpty(req.query)) {
     //(done) DM: good. should this be 500 (Error?). If you chose 400 specifically let me know your reasoning
-    // DM: todoMM: back to 400 - don't always take my advice as gospel, esp if I give it in the form of a question, like I did above. Managers expect you to tell them when they are wrong. BTW, in an interview a manager asked me what I would do if  he we're to give me incorrect orders.
-    return res.status(500).send('Bad Request: No query parameters provided')
+    //(done) DM: todoMM: back to 400 - don't always take my advice as gospel, esp if I give it in the form of a question, like I did above. Managers expect you to tell them when they are wrong. BTW, in an interview a manager asked me what I would do if  he we're to give me incorrect orders. MM: DM: i found that 500 status is for server-side code, and 400 status is for client-side code, and is more appropriate for these types of errors(AI prompt: "400 status is for client-side code, and is more appropriate for these types of errors")
+    return res.status(400).send('Bad Request: No query parameters provided')
   }
   const { category } = req.query
   console.log('category:', { category })
 
   if (!category) {
     // return res.status(400).json({ error: 'City is not provided' })
-    // DM: 400 is Bad Request. 500 is Internal Server Error. 400 is more appropriate here, and above despite what I told you yesterday (although I did ask :)
+    //(ok) DM: 400 is Bad Request. 500 is Internal Server Error. 400 is more appropriate here, and above despite what I told you yesterday (although I did ask :)
     return res.status(400).send('Bad Request: category not specified')
   }
 
@@ -31,7 +31,7 @@ export default async (req, res) => {
     console.log('response:', { response })
 
     const data = response.data
-    console.log('data:', { data })
+    // console.log('data:', { data })
 
     /* 
       data transformation 
@@ -85,10 +85,29 @@ export default async (req, res) => {
         ],
       }
     */
-    // DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error. Console.log it and you'll figure it out.
+    //(done, but i used the above approach) DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error. Console.log it and you'll figure it out.
     // const transformedData = data.map((question) => {
 
-    const datam = res.status(200).json(data)
+    // change property names to match the client-side code
+    const transformedData = data.map((data) => {
+      const {
+        id: questionId,
+        question,
+        correct_answer: correctAnswer,
+        answers: answerChoices,
+      } = data
+      return {
+        questionId,
+        question,
+        correctAnswer,
+        answerChoices,
+      }
+    })
+
+    console.log('transformedData:', { transformedData })
+
+    res.status(200).json(transformedData)
+    // const datam = res.status(200).json(data)
   } catch (error) {
     console.error({ error, errorMessage: error.message })
     res.status(500).json({ error: 'Unable to fetch quiz data', message: error.message })

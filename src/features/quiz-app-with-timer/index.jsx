@@ -17,7 +17,7 @@ export default function QuizAppWithTimer() {
   useEffect(() => {
     const category = 'sql' // replace with your desired category
 
-    const apiUrl = `/api/quiz?category=${category}` 
+    const apiUrl = `/api/quiz2?category=${category}`
     // MM: DM: i will use `/api/quiz2?category=${category}` for the external api and will render it in the question-box.jsx file.
 
     fetch(apiUrl)

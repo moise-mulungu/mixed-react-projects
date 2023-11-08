@@ -116,9 +116,12 @@ export default function QuestionBox({ handleExitGame, quizData }) {
               <hr className="my-4" />
 
               <div className="text-base mb-4">
-                {answerChoices.map((answerChoice) => {
+                {Object.values(answerChoices).map((answerChoice) => {
                   const isCorrect = answerChoice === correctAnswer
                   const isSelected = answerChoice === selectedAnswer
+                  if (!answerChoice) {
+                    return null
+                  }
                   return (
                     <div
                       key={answerChoice}
@@ -176,9 +179,11 @@ export default function QuestionBox({ handleExitGame, quizData }) {
                   ) : null}
                 </div>
                 {/* DM: good! */}
-                {showCorrectAnswer && selectedAnswer !== correctAnswer && (
-                  <p className="text-green-500">Answer: {correctAnswer}</p>
-                )}
+                {showCorrectAnswer &&
+                  selectedAnswer !== correctAnswer &&
+                  (console.log({ showCorrectAnswer: showCorrectAnswer }),
+                  console.log({ correctAnswer: correctAnswer }),
+                  (<p className="text-green-500">Answer: {correctAnswer}</p>))}
                 <button
                   onClick={handleGotoNextQuestion}
                   className="bg-blue-500 text-white rounded px-4 py-2"
