@@ -85,13 +85,13 @@ export default async (req, res) => {
         ],
       }
     */
-    //(done, but i used the above approach ??) DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error. Console.log it and you'll figure it out.
+    //(done, but i used the above approach ?above?) DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error. Console.log it and you'll figure it out. DM: my instruction said "uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests". You didn't do that. I expect that you'll follow my instructions. If you decide on another approach, fine, but you should have first attempted what I instructed and let me know what you saw. I spend a lot of time writing these instructions. So that you can learn and learn efficiently.
     // const transformedData = data.map((question) => {
 
     // In my large comment above I gave AI examples of 1) a question object that works in client-side code and 2) a question object from the external API. Then I asked it to transform the 2nd object so that the properties match the first object. The property names are good enough that AI can almost get it right.
-    // DM: todoMM: follow the instructions in quiz3.js and see if you get a better Copilot response. Leave this file as is and don't use it anymore, use quiz3.js going forward.
+    // DM: todoMM: follow the instructions in quiz3.js and see if you get a better Copilot response. Leave this file as is and don't use it anymore, use quiz3.js going forward. (Use quiz.js in the client until you get quiz3.js returning data in the correct format.)
 
-    // I removed this next line from quiz3.js because it will confuse AI because it is too unspecific and references info that AI doesn't have access to. AI will not understand "client-side code"
+    // I removed this next line from quiz3.js because it will confuse AI because it is too unspecific and references info that AI doesn't have access to. AI will not understand "client-side code".
     // change property names to match the client-side code
     const transformedData = data.map((data) => {
       const {

@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+// DM: todoMM: test this at localhost:3005/api/quiz3 until the property names and values match what you get in localhost:3005/api/quiz
+
 // import data from '@/features/quiz-app-with-timer/server/data'
 
 export default async (req, res) => {
@@ -84,25 +86,10 @@ export default async (req, res) => {
           'Hyper Tool Multi Language',
         ],
       }
-    */
-    //(done, but i used the above approach ??) DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error. Console.log it and you'll figure it out.
-    // const transformedData = data.map((question) => {
 
-    // change property names to match the client-side code
-    const transformedData = data.map((data) => {
-      const {
-        id: questionId,
-        question,
-        correct_answer: correctAnswer,
-        answers: answerChoices,
-      } = data
-      return {
-        questionId,
-        question,
-        correctAnswer,
-        answerChoices,
-      }
-    })
+      DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error (because the object values weren't the same as quiz.js). Console.log it and figure out how to change the values. Note: sometimes the Copilot Chat in the left panel will give a better answer than the suggestions that you see as-you-type in the editor. 
+    */
+    // const transformedData = data.map((question) => {
 
     console.log('transformedData:', { transformedData })
 
