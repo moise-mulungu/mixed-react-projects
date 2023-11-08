@@ -88,17 +88,13 @@ export default async (req, res) => {
     //(done, but i used the above approach ??) DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error. Console.log it and you'll figure it out.
     // const transformedData = data.map((question) => {
 
-    // In my large comment above I gave AI examples of 1) a question object that works in client-side code and 2) a question object from the external API. Then I asked it to transform the 2nd object so that the properties match the first object. The property names are good enough that AI can almost get it right.
-    // DM: todoMM: follow the instructions in quiz3.js and see if you get a better Copilot response. Leave this file as is and don't use it anymore, use quiz3.js going forward.
-
-    // I removed this next line from quiz3.js because it will confuse AI because it is too unspecific and references info that AI doesn't have access to. AI will not understand "client-side code"
     // change property names to match the client-side code
     const transformedData = data.map((data) => {
       const {
         id: questionId,
         question,
-        correct_answer: correctAnswer, // this isn't an answer, it is a property name of the answerChoices object
-        answers: answerChoices, // this isn't an array of answers, it is an object with answer properties
+        correct_answer: correctAnswer,
+        answers: answerChoices,
       } = data
       return {
         questionId,
