@@ -87,9 +87,36 @@ export default async (req, res) => {
         ],
       }
 
-      DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error (because the object values weren't the same as quiz.js). Console.log it and figure out how to change the values. Note: sometimes the Copilot Chat in the left panel will give a better answer than the suggestions that you see as-you-type in the editor. 
+     (done) DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error (because the object values weren't the same as quiz.js). Console.log it and figure out how to change the values. Note: sometimes the Copilot Chat in the left panel will give a better answer than the suggestions that you see as-you-type in the editor. 
     */
-    // const transformedData = data.map((question) => {
+    const transformedData = data.map((question) => {
+      // console.log('question:', { question })
+
+      /*
+      MM: DM: this is the code that Copilot suggested, found it a bit confusing. but i used mine below after resolving the provided exercises.
+      const { id, question: questionText, correct_answer: correctAnswer, answers } = question
+      // console.log('questionText:', { questionText })
+      // console.log('correctAnswer:', { correctAnswer })
+      // console.log('answers:', { answers })
+
+      const answerChoices = Object.values(answers)
+      // console.log('answerChoices:', { answerChoices })
+
+      return {
+        questionId: id,
+        question: questionText,
+        correctAnswer,
+        answerChoices,
+      }
+      */
+      // i tested it on observable: https://observablehq.com/d/81ab9293d17d3d5e
+      return {
+        questionId: question.id,
+        question: question.question,
+        correctAnswer: question.correct_answer,
+        answers: Object.values(question.correct_answers),
+      }
+    })
 
     console.log('transformedData:', { transformedData })
 
