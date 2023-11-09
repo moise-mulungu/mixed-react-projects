@@ -52,7 +52,7 @@ export default async (req, res) => {
           answer_e: null,
           answer_f: null,
         },
-        multiple_correct_answers: 'false',
+        multiple_correct_answers: 'false', // DM: could cause a problem if true; maybe filter out questions with multiple_correct_answers === 'true'
         correct_answers: {
           answer_a_correct: 'false',
           answer_b_correct: 'false',
@@ -89,36 +89,95 @@ export default async (req, res) => {
 
      (done) DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error (because the object values weren't the same as quiz.js). Console.log it and figure out how to change the values. Note: sometimes the Copilot Chat in the left panel will give a better answer than the suggestions that you see as-you-type in the editor. 
     */
-    const transformedData = data.map((question) => {
-      // console.log('question:', { question })
+    const transformedData = data.map((questionObj) => {
+      console.log({ questionObj })
 
       /*
+      DM: I agree that code is confusing but only because it is poorly named (and not correct). AI isn't perfect. The deconstructing of the question object is good because you can rename poorly named property names, but the names AI chose we're confusing.
       MM: DM: this is the code that Copilot suggested, found it a bit confusing. but i used mine below after resolving the provided exercises.
-      const { id, question: questionText, correct_answer: correctAnswer, answers } = question
-      // console.log('questionText:', { questionText })
-      // console.log('correctAnswer:', { correctAnswer })
-      // console.log('answers:', { answers })
-
-      const answerChoices = Object.values(answers)
-      // console.log('answerChoices:', { answerChoices })
-
-      return {
-        questionId: id,
-        question: questionText,
-        correctAnswer,
-        answerChoices,
-      }
+      DM: I deleted the suggested code so that it doesn't confuse us or AI.
       */
+
+      // DM: I'll code part of the solution I'd use. You can use it as a starting point. I'll leave the rest to you.
+
+      // DM: I'm going to paste here the object structure of the questionObj so that I can see it while I code the solution.
+      /* DM: I removed some properties, leaving only the ones we need
+      {
+        id: 351,
+        question: 'What is a composite key?',
+        answers: {
+          answer_a: 'its is a key that is defined as the primary key in another table',
+          answer_b: 'it is a key that uniquely identifies a record in a database',
+          answer_c: 'its is an optional key and allows null values',
+          answer_d:
+            'it is a primary key that consists of more than one field that uniquely identifies a record',
+          answer_e: null,
+          answer_f: null,
+        },
+        // multiple_correct_answers: 'false', // DM: could cause a problem if true; Should we filter out questions with multiple_correct_answers === 'true'?
+        correct_answer: 'answer_a',
+      } */
+      // DM: note: I'll use deconstructing, so freshen your knowledge by asking AI chat "explain deconstructing an object while renaming properties with a brief example"
+      // DM: note; I'll use shorthand property names, so freshen your knowledge by asking AI chat "explain shorthand property names with a brief example"
+      // DM: first, for the fields that contain the correct values without transformation, I rename them to the property names needed in the returned JSON object
+      const {
+        id: questionId, // the correct property name is questionID so I rename "id" to that
+        question, // same property name in both data sets
+        // DM: renaming these for readability
+        correct_answer: correctAnswerKey, // my new name correctAnswerKey describes the value better than correct_answer
+        answers: answersLookup, // my new name answersLookup describes the value better than "answers"
+      } = questionObj
+
+      // DM: so, why did I go to so much trouble to rename these properties? Because: 1) helps you and I understand the code, 2) helps AI understand the code. It is also self-documenting as easy to read by us later or by someone else.
+
+      /* DM: it's always good to paste the desired object structure to keep it front of mind (and helps AI)
+         // this is what we want to return, because the front-end code is expecting this structure
+         {
+          "questionId": 1,
+          "question": "What does HTML stand for?",
+          "correctAnswer": "Hyper Text Markup Language",
+          "answerChoices": [
+            "Hyper Text Preprocessor",
+            "Hyper Text Markup Language",
+            "Hyper Text Multiple Language",
+            "Hyper Tool Multi Language"
+          ],
+        }
+      */
+
+      console.log({ questionId, question, correctAnswerKey, answersLookup })
+
+      const correctAnswer = 'to be computed'
+      const answerChoices = 'to be computed'
+
+      // using "// shorthand property names" to create the returned JSON object
+      return {
+        questionId, // shorthand property name
+        question, // shorthand property name
+
+        // temporary put local variables here so that you can see them in the returned JSON object in the browser: http:://localhost:3005/api/quiz3?category=sql
+        correctAnswerKey,
+        answersLookup,
+        // originalQuestionObj: questionObj,
+
+        // setting to "to be computed" temporarily until you code a solution
+        correctAnswer, // shorthand property name
+        answerChoices, // shorthand property name
+      }
+
+      // DM: remember, upon a return statement, execution goes to the next array item or to the end of the map statement. Therefore, the code from here through the end of the [].map callback never runs.
+
+      // DM: observable is not a good place to debug. You can debug here by putting console.logs and then looking at the terminal where you "npm run dev" OR you can add temporary properties to the returned JSON object and look at it in http:://localhost:3005/api/quiz3?category=sql
       // i tested it on observable: https://observablehq.com/d/81ab9293d17d3d5e
       return {
-        questionId: question.id,
-        question: question.question,
-        correctAnswer: question.correct_answer,
-        answers: Object.values(question.correct_answers),
+        questionId: questionObj.id,
+        question: questionObj.question,
+        correctAnswer: questionObj.correct_answer,
+        answers: Object.values(questionObj.correct_answers),
       }
     })
 
-    console.log('transformedData:', { transformedData })
+    console.log({ transformedData })
 
     res.status(200).json(transformedData)
     // const datam = res.status(200).json(data)
