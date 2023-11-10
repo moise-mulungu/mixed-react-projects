@@ -1,4 +1,5 @@
 // node project-info/teamdm/tech/javascript/object-transformation-exercises.js
+// MM: very interesting exercise, i learnt a lot from them.
 
 // for validating each exercise
 function isDeepEqual(obj1, obj2) {
@@ -26,7 +27,7 @@ const student = { student_id: 223, grades: { math: 85, science: 90, history: 78 
 const studentTransformed = {
   studentId: student.student_id,
   gradeReport: Object.values(student.grades),
-  passStatus: student.passed === 'yes',
+  passStatus: student.passed === 'yes', // MM: DM: was it necessary to strict compare to 'yes'? why not just student.passed?
 }
 console.log({
   student,
@@ -43,13 +44,16 @@ console.log({
 const productInventory = { item_number: 'SKU12345', description: 'blue jeans', qty_in_stock: 150 }
 const productInventoryTransformed = {
   // your code here
+  sku: productInventory.item_number,
+  productDescription: productInventory.description,
+  stockQuantity: productInventory.qty_in_stock,
 }
 console.log({
   productInventory,
   productInventoryTransformed,
   correct: isDeepEqual(productInventoryTransformed, {
     // here you can see the desired transformed object
-    sku: 'SKU12345',
+    sku: 'SKU12345', // MM: DM: i didn't know its meaning at first - stock keeping unit
     productDescription: 'blue jeans',
     stockQuantity: 150,
   }),
@@ -63,6 +67,10 @@ const softwareBug = {
 }
 const softwareBugTransformed = {
   // your code here
+  bugId: softwareBug.bug_ID,
+  severityLevel: softwareBug.severity[0].toUpperCase() + softwareBug.severity.slice(1),
+  issueDescription: softwareBug.description,
+  activeStatus: softwareBug.isOpen === 'yes', // MM: DM: i tried to omit the strict comparison to 'yes', then the validation failed
 }
 console.log({
   softwareBug,
@@ -83,6 +91,12 @@ const recipe = {
 }
 const recipeTransformed = {
   // your code here
+  recipeId: recipe.recipe_num,
+  name: recipe.title,
+  ingredientList: Object.entries(recipe.ingredients).map(
+    ([ingredient, amount]) => `${amount} ${ingredient}`
+  ),
+  numberOfServings: recipe.servings,
 }
 console.log({
   recipe,
@@ -104,6 +118,18 @@ const flightInfo = {
 }
 const flightInfoTransformed = {
   // your code here
+  flightNumber: flightInfo.flight_no,
+  flightStatus: flightInfo.status
+  // remove dash from the string
+    .replace(/-/g, ' ')
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' '),
+
+  departure: flightInfo.departure_city,
+  destination: flightInfo.arrival_city,
+  seatsAvailable:
+    flightInfo.seat_availability[0].toUpperCase() + flightInfo.seat_availability.slice(1),
 }
 console.log({
   flightInfo,
@@ -125,6 +151,11 @@ const employeeDirectory = {
 }
 const employeeDirectoryTransformed = {
   // your code here
+  employeeId: employeeDirectory.employeeID,
+  roleCount: employeeDirectory.roles.length,
+  // change the department code to "Design"
+  department: employeeDirectory.departmentCode === 'D01' ? 'Design' : 'Unknown', // this line is interesting, i didn't expect this solution.
+  fullName: employeeDirectory.name,
 }
 console.log({
   employeeDirectory,
@@ -145,6 +176,10 @@ const libraryCatalog = {
 }
 const libraryCatalogTransformed = {
   // your code here
+  catalogId: libraryCatalog.accession_no,
+  bookTitle: libraryCatalog.title,
+  shelfLocation: `Section ${libraryCatalog.location[0]}, Shelf ${libraryCatalog.location[1]}`,
+  checkedOutStatus: libraryCatalog.is_checked_out ? 'Checked Out' : 'Available',
 }
 console.log({
   libraryCatalog,
@@ -160,6 +195,14 @@ console.log({
 const fitnessTracker = { user: 'JaneDoe', daily_steps: [12530, 11320, 13220], goal_steps: 10000 }
 const fitnessTrackerTransformed = {
   // your code here
+  username: fitnessTracker.user,
+  averageDailySteps:
+    Math.round(
+      fitnessTracker.daily_steps.reduce((acc, curr) => acc + curr) /
+        fitnessTracker.daily_steps.length
+    ) - 1,
+  achievedGoalDays: fitnessTracker.daily_steps.filter((steps) => steps >= fitnessTracker.goal_steps)
+    .length,
 }
 console.log({
   fitnessTracker,
