@@ -120,6 +120,7 @@ export default async (req, res) => {
       // DM: note: I'll use deconstructing, so freshen your knowledge by asking AI chat "explain deconstructing an object while renaming properties with a brief example"
       // DM: note; I'll use shorthand property names, so freshen your knowledge by asking AI chat "explain shorthand property names with a brief example"
       // DM: first, for the fields that contain the correct values without transformation, I rename them to the property names needed in the returned JSON object
+      // howtojs:: "deconstructing assignment" with renaming WHY: to rename properties/variables to make them more readable (data property names are often poorly named)
       const {
         id: questionId, // the correct property name is questionID so I rename "id" to that
         question, // same property name in both data sets
@@ -150,7 +151,8 @@ export default async (req, res) => {
       const correctAnswer = 'to be computed'
       const answerChoices = 'to be computed'
 
-      // using "// shorthand property names" to create the returned JSON object
+      // DM: example of how I quickly changed the below comment into a howtojs
+      // howtojs:: using "shorthand property names" to create a new JSON object
       return {
         questionId, // shorthand property name
         question, // shorthand property name

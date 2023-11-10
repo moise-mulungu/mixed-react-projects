@@ -26,8 +26,10 @@ function isDeepEqual(obj1, obj2) {
 const student = { student_id: 223, grades: { math: 85, science: 90, history: 78 }, passed: 'yes' }
 const studentTransformed = {
   studentId: student.student_id,
+  // DM: this is a short howto. Note that it implies that the example is the working on the next line
+  // howtojs:: get object values in an array
   gradeReport: Object.values(student.grades),
-  passStatus: student.passed === 'yes', // MM: DM: was it necessary to strict compare to 'yes'? why not just student.passed?
+  passStatus: student.passed === 'yes', // MM: DM: was it necessary to strict compare to 'yes'? why not just student.passed? DM: strict equality is more readable, and what if student.passed is "no" which is truthy?
 }
 console.log({
   student,
@@ -53,7 +55,7 @@ console.log({
   productInventoryTransformed,
   correct: isDeepEqual(productInventoryTransformed, {
     // here you can see the desired transformed object
-    sku: 'SKU12345', // MM: DM: i didn't know its meaning at first - stock keeping unit
+    sku: 'SKU12345', // MM: DM: i didn't know its meaning at first - stock keeping unit DM: yeah, you run into such things when you work with data. now you know!
     productDescription: 'blue jeans',
     stockQuantity: 150,
   }),
@@ -70,7 +72,7 @@ const softwareBugTransformed = {
   bugId: softwareBug.bug_ID,
   severityLevel: softwareBug.severity[0].toUpperCase() + softwareBug.severity.slice(1),
   issueDescription: softwareBug.description,
-  activeStatus: softwareBug.isOpen === 'yes', // MM: DM: i tried to omit the strict comparison to 'yes', then the validation failed
+  activeStatus: softwareBug.isOpen === 'yes', // MM: DM: i tried to omit the strict comparison to 'yes', then the validation failed; DM: === 'yes' is more readable and maintainable
 }
 console.log({
   softwareBug,
@@ -120,7 +122,7 @@ const flightInfoTransformed = {
   // your code here
   flightNumber: flightInfo.flight_no,
   flightStatus: flightInfo.status
-  // remove dash from the string
+    // remove dash from the string
     .replace(/-/g, ' ')
     .split(' ')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -154,7 +156,8 @@ const employeeDirectoryTransformed = {
   employeeId: employeeDirectory.employeeID,
   roleCount: employeeDirectory.roles.length,
   // change the department code to "Design"
-  department: employeeDirectory.departmentCode === 'D01' ? 'Design' : 'Unknown', // this line is interesting, i didn't expect this solution.
+  // this line is interesting, i didn't expect this solution. DM: yeah, it is a readable solution.
+  department: employeeDirectory.departmentCode === 'D01' ? 'Design' : 'Unknown',
   fullName: employeeDirectory.name,
 }
 console.log({
@@ -199,7 +202,7 @@ const fitnessTrackerTransformed = {
   averageDailySteps:
     Math.round(
       fitnessTracker.daily_steps.reduce((acc, curr) => acc + curr) /
-        fitnessTracker.daily_steps.length
+        fitnessTracker.daily_steps.length // DM: todoMM:; always provide a starting value for [].reduce // don't depend on default values // also it is more readable
     ) - 1,
   achievedGoalDays: fitnessTracker.daily_steps.filter((steps) => steps >= fitnessTracker.goal_steps)
     .length,
@@ -213,6 +216,8 @@ console.log({
     achievedGoalDays: 3,
   }),
 })
+
+// DM: todoMM: finish the REST of these using deconstructing assignment with renaming variables and shorthand property names instead of the property access ("dot") operator EX fitnessTracker.user. We will discuss later which one is better, pros and cons.
 
 const vehicleRegistration = {
   plateNumber: 'ABC123',
@@ -228,6 +233,7 @@ console.log({
   vehicleRegistrationTransformed,
   correct: isDeepEqual(vehicleRegistrationTransformed, {
     licensePlate: 'ABC123',
+    // DM: no you know this ws created by AI. There is no way to derive "Sedan" from "2A" without a lookup table. AI left out that important part. What will you do? Sometimes at work you will be given poor instructions, or data can have errors. What will you do ≈≈≈ "sedan" if you have to complete an exercise but can't ask anyone for clarification?
     vehicleType: 'Sedan',
     ownerName: 'John Doe',
     registrationExpiry: 'December 31, 2023',
