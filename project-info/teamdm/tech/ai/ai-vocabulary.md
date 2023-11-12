@@ -38,3 +38,17 @@ An AI chat, also known as a chatbot, is a computer program that uses artificial 
 ## AI assisted coding
 AI-assisted coding refers to using artificial intelligence to aid software developers in writing, reviewing, and, hopefully, improving their code. Large language models (LLMs) are at the heart of AI coding. 
 * EX suggested code completions
+
+## lookup table
+A lookup table is a data structure used in programming to store a set of values, or mappings, which allows for a quick retrieval of a value associated with a particular key.
+
+  ```js
+  const vehicleLookupTable = {
+    "2A": "Sedan",
+    "2B": "SUV",
+    "2C": "Truck",
+    // more mappings...
+  };
+  const vehicleType = vehicleLookupTable["2A"]; // "Sedan"
+  ```
+  In this example, "2A", "2B", and "2C" are keys, and "Sedan", "SUV", and "Truck" are the corresponding values.

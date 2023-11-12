@@ -29,7 +29,7 @@ const studentTransformed = {
   // DM: this is a short howto. Note that it implies that the example is the working on the next line
   // howtojs:: get object values in an array
   gradeReport: Object.values(student.grades),
-  passStatus: student.passed === 'yes', // MM: DM: was it necessary to strict compare to 'yes'? why not just student.passed? DM: strict equality is more readable, and what if student.passed is "no" which is truthy?
+  passStatus: student.passed === 'yes', // MM: DM: was it necessary to strict compare to 'yes'? why not just student.passed? DM: strict equality is more readable, and what if student.passed is "no" which is truthy?(got it)
 }
 console.log({
   student,
@@ -195,14 +195,18 @@ console.log({
   }),
 })
 
-const fitnessTracker = { user: 'JaneDoe', daily_steps: [12530, 11320, 13220], goal_steps: 10000 }
+const fitnessTracker = {
+  user: 'JaneDoe',
+  daily_steps: [12_530, 11_320, 13_220],
+  goal_steps: 10_000,
+}
 const fitnessTrackerTransformed = {
   // your code here
   username: fitnessTracker.user,
   averageDailySteps:
     Math.round(
-      fitnessTracker.daily_steps.reduce((acc, curr) => acc + curr) /
-        fitnessTracker.daily_steps.length // DM: todoMM:; always provide a starting value for [].reduce // don't depend on default values // also it is more readable
+      fitnessTracker.daily_steps.reduce((acc, curr) => acc + curr, 0) /
+        fitnessTracker.daily_steps.length //(done) DM: todoMM:; always provide a starting value for [].reduce // don't depend on default values // also it is more readable. MM: DM: i couldn't realize at first what you meant by "the starting value", i am used to "the initial value".
     ) - 1,
   achievedGoalDays: fitnessTracker.daily_steps.filter((steps) => steps >= fitnessTracker.goal_steps)
     .length,
@@ -212,12 +216,12 @@ console.log({
   fitnessTrackerTransformed,
   correct: isDeepEqual(fitnessTrackerTransformed, {
     username: 'JaneDoe',
-    averageDailySteps: 12356,
+    averageDailySteps: 12_356,
     achievedGoalDays: 3,
   }),
 })
 
-// DM: todoMM: finish the REST of these using deconstructing assignment with renaming variables and shorthand property names instead of the property access ("dot") operator EX fitnessTracker.user. We will discuss later which one is better, pros and cons.
+//(done) DM: todoMM: finish the REST of these using deconstructing assignment with renaming variables and shorthand property names instead of the property access ("dot") operator EX fitnessTracker.user. We will discuss later which one is better, pros and cons.
 
 const vehicleRegistration = {
   plateNumber: 'ABC123',
@@ -225,15 +229,30 @@ const vehicleRegistration = {
   registeredTo: 'John Doe',
   validThrough: '2023-12-31',
 }
+
+const {
+  plateNumber: licensePlate,
+  vehicleTypeCode,
+  registeredTo: ownerName,
+  validThrough,
+} = vehicleRegistration
 const vehicleRegistrationTransformed = {
   // your code here
+  licensePlate,
+  vehicleType: vehicleTypeCode === '2A' ? 'Sedan' : 'Unknown',
+  ownerName,
+  registrationExpiry: new Date(validThrough).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }), // MM: DM: creating a new Date object with validThrough and then using toLocaleDateString() to format the date. awesome answer from copilot!
 }
 console.log({
   vehicleRegistration,
   vehicleRegistrationTransformed,
   correct: isDeepEqual(vehicleRegistrationTransformed, {
     licensePlate: 'ABC123',
-    // DM: no you know this ws created by AI. There is no way to derive "Sedan" from "2A" without a lookup table. AI left out that important part. What will you do? Sometimes at work you will be given poor instructions, or data can have errors. What will you do ≈≈≈ "sedan" if you have to complete an exercise but can't ask anyone for clarification?
+    // (great!)DM: now you know this was created by AI. There is no way to derive "Sedan" from "2A" without a lookup table. AI left out that important part. What will you do? Sometimes at work you will be given poor instructions, or data can have errors. What will you do ≈≈≈ "sedan" if you have to complete an exercise but can't ask anyone for clarification?
     vehicleType: 'Sedan',
     ownerName: 'John Doe',
     registrationExpiry: 'December 31, 2023',
@@ -246,8 +265,20 @@ const userAccountStatus = {
   statusIndicator: '1',
   userName: 'JaneSmith',
 }
+
+const {
+  userId: accountId,
+  accountTypeCode,
+  statusIndicator,
+  userName: userDisplayName,
+} = userAccountStatus
+
 const userAccountStatusTransformed = {
   // your code here
+  accountId,
+  accountType: accountTypeCode === 'SV' ? 'Savings' : 'Unknown',
+  accountStatus: statusIndicator === '1' ? 'Active' : 'Inactive',
+  userDisplayName,
 }
 console.log({
   userAccountStatus,
@@ -265,8 +296,12 @@ const employeeTaskAssignment = {
   taskId: 'T123',
   taskList: { T123: 'Inventory Audit', T124: 'Sales Report', T125: 'Market Analysis' },
 }
+
+const { employeeId, taskId, taskList } = employeeTaskAssignment
 const employeeTaskAssignmentTransformed = {
   // your code here
+  employeeId,
+  currentTask: taskList[taskId],
 }
 console.log({
   employeeTaskAssignment,
@@ -282,9 +317,14 @@ const bookGenreClassification = {
   genreCode: 'NF',
   genreMap: { F: 'Fiction', NF: 'Non-Fiction', SF: 'Science Fiction' },
 }
+
+const { isbn, genreCode, genreMap } = bookGenreClassification
 const bookGenreClassificationTransformed = {
   // your code here
+  isbn,
+  bookGenre: genreMap[genreCode],
 }
+
 console.log({
   bookGenreClassification,
   bookGenreClassificationTransformed,
