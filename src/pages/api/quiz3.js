@@ -1,4 +1,5 @@
 import axios from 'axios'
+import isEmpty from 'lodash/isEmpty'
 
 // DM: todoMM: test this at localhost:3005/api/quiz3 until the property names and values match what you get in localhost:3005/api/quiz
 
@@ -9,7 +10,7 @@ export default async (req, res) => {
   //   return res.status(200).json(data) // the rest of the code below never runs if you return early.
   //(done) DM: good. use the lodash isEmpty like this: if (isEmpty(req.query)) { ... } // because is more readable and handles more situations, i.e., if req.query is undefined or {} empty object
   // if (Object.keys(req.query).length === 0) {
-  const isEmpty = require('lodash/isEmpty')
+  // const isEmpty = require('lodash/isEmpty')
   if (isEmpty(req.query)) {
     //(done) DM: good. should this be 500 (Error?). If you chose 400 specifically let me know your reasoning
     //(done) DM: todoMM: back to 400 - don't always take my advice as gospel, esp if I give it in the form of a question, like I did above. Managers expect you to tell them when they are wrong. BTW, in an interview a manager asked me what I would do if  he we're to give me incorrect orders. MM: DM: i found that 500 status is for errors caused by server-side code, and 400 status is for errors caused by client-side code, and is more appropriate for these types of errors(AI prompt: "400 status is for client-side code, and is more appropriate for these types of errors")
@@ -146,11 +147,20 @@ export default async (req, res) => {
         }
       */
 
-      console.log({ questionId, question, correctAnswerKey, answersLookup })
+      // const correctAnswer = 'to be computed'
+      // const answerChoices = 'to be computed'
+      const correctAnswer = answersLookup[correctAnswerKey]
+      console.log({ correctAnswer })
 
-      const correctAnswer = 'to be computed'
-      const answerChoices = 'to be computed'
+      function shuffleArray(array) {
+        return array.sort(() => Math.random() - 0.5)
+      }
 
+      const answerChoices = Object.values(answersLookup).filter((answer) => answer !== null)
+      shuffleArray(answerChoices)
+      console.log({ answerChoices })
+
+      console.log('questionObject:', { questionId, question, correctAnswer, answersLookup })
       // DM: example of how I quickly changed the below comment into a howtojs
       // howtojs:: using "shorthand property names" to create a new JSON object
       return {
@@ -158,8 +168,11 @@ export default async (req, res) => {
         question, // shorthand property name
 
         // temporary put local variables here so that you can see them in the returned JSON object in the browser: http:://localhost:3005/api/quiz3?category=sql
-        correctAnswerKey,
-        answersLookup,
+        // correctAnswerKey,
+        // answersLookup: questionObj.correct_answers.map(
+        //   (answer) => console.log({ answer }),
+        //   answer === 'answer_a' ? 'true' : 'false'
+        // ),
         // originalQuestionObj: questionObj,
 
         // setting to "to be computed" temporarily until you code a solution
@@ -171,12 +184,12 @@ export default async (req, res) => {
 
       // DM: observable is not a good place to debug. You can debug here by putting console.logs and then looking at the terminal where you "npm run dev" OR you can add temporary properties to the returned JSON object and look at it in http:://localhost:3005/api/quiz3?category=sql
       // i tested it on observable: https://observablehq.com/d/81ab9293d17d3d5e
-      return {
-        questionId: questionObj.id,
-        question: questionObj.question,
-        correctAnswer: questionObj.correct_answer,
-        answers: Object.values(questionObj.correct_answers),
-      }
+      // return {
+      //   questionId: questionObj.id,
+      //   question: questionObj.question,
+      //   correctAnswer: questionObj.correct_answer,
+      //   answers: Object.values(questionObj.correct_answers),
+      // }
     })
 
     console.log({ transformedData })
@@ -190,3 +203,59 @@ export default async (req, res) => {
 }
 
 // http://localhost:3005/api/quiz2?category=sql&otherParam=otherValue
+
+/*
+import axios from 'axios'
+import isEmpty from 'lodash/isEmpty'
+
+export default async (req, res) => {
+  if (isEmpty(req.query)) {
+    return res.status(400).send('Bad Request: No query parameters provided')
+  }
+  const { category } = req.query
+  console.log('category:', { category })
+
+  if (!category) {
+    return res.status(400).send('Bad Request: category not specified')
+  }
+
+  const apiUrl = `https://quizapi.io/api/v1/questions?apiKey=${process.env.QUIZ_APP_WITH_TIMER_API_KEY}&category=${category}&limit=10`
+  console.log('api-url:', { apiUrl })
+
+  try {
+    const response = await axios.get(apiUrl)
+    console.log('response:', { response })
+
+    const data = response.data
+    const transformedData = data.map((questionObj) => {
+      console.log({ questionObj })
+
+      const {
+        id: questionId,
+        question,
+        correct_answer: correctAnswerKey,
+        answers: answersLookup,
+      } = questionObj
+
+      console.log({ questionId, question, correctAnswerKey, answersLookup })
+
+      const correctAnswer = answersLookup[correctAnswerKey]
+      const answerChoices = Object.values(answersLookup).filter(answer => answer !== null)
+
+      return {
+        questionId,
+        question,
+        correctAnswer,
+        answerChoices,
+      }
+    })
+
+    console.log({ transformedData })
+
+    res.status(200).json(transformedData)
+  } catch (error) {
+    console.error({ error, errorMessage: error.message })
+    res.status(500).json({ error: 'Unable to fetch quiz data', message: error.message })
+  }
+}
+*/
