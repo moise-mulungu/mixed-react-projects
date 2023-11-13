@@ -9,3 +9,6 @@ function shuffleArray(array) {
   }
   return array
 }
+
+// DM: todoMM: cool. add a test for this function. AI can write one. ask AI to write one using vanilla JS as Jest not set up here.
+// DM: todoMM: move this to the utils/array folder so it can be found and reused

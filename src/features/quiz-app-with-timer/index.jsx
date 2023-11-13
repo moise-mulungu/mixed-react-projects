@@ -34,7 +34,7 @@ export default function QuizAppWithTimer() {
         console.error('Error fetching quiz data:', error)
         setError(error)
       })
-  }, [selectedCategory])
+  }, [selectedCategory]) // DM: nice!
 
   const handleStartQuizClick = () => {
     setShowRules(true)
@@ -70,6 +70,9 @@ export default function QuizAppWithTimer() {
 
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
+      {/* DM: todoMM: show category dropdown at the same time as the start button, for UX per the image I put on Slack Monday
+                      Note: you won't need the categorySelected state in this case, because you're showing the category dropdown with the start button which already has the correct logic for both: !showRules && !showQuiz
+      */}
       {!categorySelected && (
         <CategorySelector
           setSelectedCategory={setSelectedCategory}

@@ -25,6 +25,8 @@ export default async (req, res) => {
     return res.status(400).send('Bad Request: category not specified')
   }
 
+  // DM: todoMM: allow category=html to be selected in the UI and passed to this API. Copy the import of "data" from quiz.js. If category=html, return data here. Otherwise, continue with the axios code below.
+
   const apiUrl = `https://quizapi.io/api/v1/questions?apiKey=${process.env.QUIZ_APP_WITH_TIMER_API_KEY}&category=${category}&limit=10`
   console.log('api-url:', { apiUrl })
   // https://quizapi.io/api/v1/questions?apiKey=[no secrets in the repo!]&category=sql&limit=10
@@ -152,6 +154,7 @@ export default async (req, res) => {
       const correctAnswer = answersLookup[correctAnswerKey]
       console.log({ correctAnswer })
 
+      // DM: todoMM: cool. move this to utils/array folder and import it in this file. This is a clearly a file that will be reused, so it should be in utils.
       function shuffleArray(array) {
         return array.sort(() => Math.random() - 0.5)
       }

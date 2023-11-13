@@ -206,7 +206,7 @@ const fitnessTrackerTransformed = {
   averageDailySteps:
     Math.round(
       fitnessTracker.daily_steps.reduce((acc, curr) => acc + curr, 0) /
-        fitnessTracker.daily_steps.length //(done) DM: todoMM:; always provide a starting value for [].reduce // don't depend on default values // also it is more readable. MM: DM: i couldn't realize at first what you meant by "the starting value", i am used to "the initial value".
+        fitnessTracker.daily_steps.length //(done) DM: always provide a starting value for [].reduce // don't depend on default values // also it is more readable. MM: DM: i couldn't realize at first what you meant by "the starting value", i am used to "the initial value". DM: the "correct" term is whatever it says on mdn.com reduce article, but, yeah, "initial value" is more common.
     ) - 1,
   achievedGoalDays: fitnessTracker.daily_steps.filter((steps) => steps >= fitnessTracker.goal_steps)
     .length,
@@ -221,7 +221,7 @@ console.log({
   }),
 })
 
-//(done) DM: todoMM: finish the REST of these using deconstructing assignment with renaming variables and shorthand property names instead of the property access ("dot") operator EX fitnessTracker.user. We will discuss later which one is better, pros and cons.
+//(done) DM: finish the REST of these using deconstructing assignment with renaming variables and shorthand property names instead of the property access ("dot") operator EX fitnessTracker.user. We will discuss later which one is better, pros and cons.
 
 const vehicleRegistration = {
   plateNumber: 'ABC123',
@@ -237,7 +237,6 @@ const {
   validThrough,
 } = vehicleRegistration
 const vehicleRegistrationTransformed = {
-  // your code here
   licensePlate,
   vehicleType: vehicleTypeCode === '2A' ? 'Sedan' : 'Unknown',
   ownerName,
@@ -246,13 +245,14 @@ const vehicleRegistrationTransformed = {
     month: 'long',
     day: 'numeric',
   }), // MM: DM: creating a new Date object with validThrough and then using toLocaleDateString() to format the date. awesome answer from copilot!
+  // DM: todoMM: create a howtojs for this. whenever you get that feeling like you expressed in your comment above, create a howtojs. To help properly phrase your howtojs, you can ask AI to describe what the line does.
 }
 console.log({
   vehicleRegistration,
   vehicleRegistrationTransformed,
   correct: isDeepEqual(vehicleRegistrationTransformed, {
     licensePlate: 'ABC123',
-    // (great!)DM: now you know this was created by AI. There is no way to derive "Sedan" from "2A" without a lookup table. AI left out that important part. What will you do? Sometimes at work you will be given poor instructions, or data can have errors. What will you do ≈≈≈ "sedan" if you have to complete an exercise but can't ask anyone for clarification?
+    // (great!)DM: now you know this was created by AI. There is no way to derive "Sedan" from "2A" without a lookup table. AI left out that important part. What will you do? Sometimes at work you will be given poor instructions, or data can have errors. What will you do ≈≈≈ "sedan" if you have to complete an exercise but can't ask anyone for clarification? DM: there was a question for you in there. How would you handle the situation?
     vehicleType: 'Sedan',
     ownerName: 'John Doe',
     registrationExpiry: 'December 31, 2023',
@@ -299,7 +299,6 @@ const employeeTaskAssignment = {
 
 const { employeeId, taskId, taskList } = employeeTaskAssignment
 const employeeTaskAssignmentTransformed = {
-  // your code here
   employeeId,
   currentTask: taskList[taskId],
 }
@@ -320,7 +319,6 @@ const bookGenreClassification = {
 
 const { isbn, genreCode, genreMap } = bookGenreClassification
 const bookGenreClassificationTransformed = {
-  // your code here
   isbn,
   bookGenre: genreMap[genreCode],
 }

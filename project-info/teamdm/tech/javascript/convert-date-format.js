@@ -30,3 +30,5 @@ function convertDateFormat(dateString) {
 
 const dateFormats = convertDateFormat('1993-12-04')
 console.log(dateFormats) // { ddMMyyyy: '04 December 1993', mmDDyyyy: 'December 04, 1993' }
+
+// DM: cool.

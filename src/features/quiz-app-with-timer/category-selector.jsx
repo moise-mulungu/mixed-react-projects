@@ -1,9 +1,15 @@
 // import React from 'react';
 
-const CategorySelector = ({ setSelectedCategory, handleCategorySelect }) => {
-  const categories = ['sql', 'linux', 'bash', 'code'] // Replace with your actual categories
+const CategorySelector = ({
+  setSelectedCategory,
+  handleCategorySelect,
+  // DM: now you can pass in the categories as a prop if needed
+  categories = ['sql', 'linux', 'bash', 'code'],
+}) => {
+  // const categories = ['sql', 'linux', 'bash', 'code'] // Replace with your actual categories
 
   const handleCategoryChange = (event) => {
+    // DM: todoMM: handleCategorySelect can call setSelectedCategory, so you don't need to pass it as a prop to this component
     setSelectedCategory(event.target.value)
     handleCategorySelect(event.target.value)
   }
