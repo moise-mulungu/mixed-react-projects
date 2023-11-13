@@ -5,19 +5,23 @@ import React, { useState, useEffect } from 'react'
 import StartQuizButton from './start-quiz-button'
 import RulesOfTheQuiz from './rules-of-the-quiz'
 import QuestionBox from './question-box'
+import CategorySelector from './category-selector'
 
 export default function QuizAppWithTimer() {
   const [showRules, setShowRules] = useState(false)
   const [showQuiz, setShowQuiz] = useState(false)
   const [quizData, setQuizData] = useState(null)
   const [error, setError] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState('sql')
+  const [categorySelected, setCategorySelected] = useState(false)
 
   const loading = !quizData && !error
 
   useEffect(() => {
-    const category = 'sql' // replace with your desired category
+    // const category = 'sql' // replace with your desired category
 
-    const apiUrl = `/api/quiz3?category=${category}`
+    // const apiUrl = `/api/quiz3?category=${category}`
+    const apiUrl = `/api/quiz3?category=${selectedCategory}`
     // MM: DM: i will use `/api/quiz2?category=${category}` for the external api and will render it in the question-box.jsx file.
 
     fetch(apiUrl)
@@ -30,7 +34,7 @@ export default function QuizAppWithTimer() {
         console.error('Error fetching quiz data:', error)
         setError(error)
       })
-  }, [])
+  }, [selectedCategory])
 
   const handleStartQuizClick = () => {
     setShowRules(true)
@@ -51,6 +55,10 @@ export default function QuizAppWithTimer() {
 
     setShowQuiz(false)
   }
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category)
+    setCategorySelected(true)
+  }
 
   if (loading) {
     return <p className="text-center text-gray-500 mt-4">Loading quiz data...</p>
@@ -62,9 +70,18 @@ export default function QuizAppWithTimer() {
 
   return (
     <div className="bg-blue-500 h-screen flex justify-center items-center">
-      {showQuiz && <QuestionBox handleExitGame={handleExitGame} quizData={quizData} />}
+      {!categorySelected && (
+        <CategorySelector
+          setSelectedCategory={setSelectedCategory}
+          handleCategorySelect={handleCategorySelect}
+        />
+      )}
 
-      {!showRules && !showQuiz && <StartQuizButton handleStartQuizClick={handleStartQuizClick} />}
+      {categorySelected && !showRules && !showQuiz && (
+        <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
+      )}
+
+      {showQuiz && <QuestionBox handleExitGame={handleExitGame} quizData={quizData} />}
 
       {showRules && (
         <div className="popup bg-blue-500">
