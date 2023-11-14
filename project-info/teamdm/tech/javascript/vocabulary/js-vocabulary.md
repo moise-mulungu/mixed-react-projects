@@ -415,9 +415,11 @@ A web API is an application programming interface for either a web server or a w
 - ECMAScript is its standard, as described in the ECMAScript language specification.
 - FAQ: https://2ality.com/2022/06/ecmascript-2022.html#faq (cool!)
 
-## CommonJS
+## CommonJS NOTE: not used in this repo, we use ES Modules
 
 CommonJS is a project to standardize the module ecosystem for JavaScript outside of web browsers. CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node.js. Increasingly ES Modules is used in NodeJS, and always in nextjs API routes.
+
+DM: todoMM: ask AI to write a few one-line examples of importing, exporting with CommonJS, then ask AI to write the exact same import using ES Modules. Show the code here so you can see the difference.
 
 ## why are functions called first class objects in js?
 

@@ -27,14 +27,23 @@ export default async (req, res) => {
     return res.status(400).send('Bad Request: category not specified')
   }
 
-  //(done) DM: todoMM: allow category=html to be selected in the UI and passed to this API. Copy the import of "data" from quiz.js. If category=html, return data here. Otherwise, continue with the axios code below.
+  //(done) DM: allow category=html to be selected in the UI and passed to this API. Copy the import of "data" from quiz.js. If category=html, return data here. Otherwise, continue with the axios code below. DM: good job!
+
+  /* 
+    DM: todoMM: advanced task, since you're doing well. You don't need to import all 3 data files. You can import only the one you need by using "dynamic imports". Read https://nextjs.org/learn-pages-router/seo/improve/dynamic-imports see the example and the line after "// Dynamically load libraries". note you cannot use "@" imports with dynamic imports, so you'll need to use the exact, full relative path.
+    DM: todoDM: follow-up with talk about vercel serverless functions (lambdas). Are they constantly running, or are they fired off on demand?
+  */
+
+  // DM: todoMM: change all parameter values to be lowercase. It is a (naming) convention so that there is never confusion about case.
   if (category === 'HTML') {
     return res.status(200).json(htmlData)
   } else if (category === 'JavaScript') {
     return res.status(200).json(jsData)
   } else if (category === 'CSS') {
     return res.status(200).json(cssData)
-  } else {
+  }
+  // DM: todoMM: because of  the return statements in the if/else statements above, you don't need an else here because execution will never get here if one of the above conditions was met. So, delete this else statement. it's more readable and there is not the big indent, which makes the code look more complicated and makes the Git diff harder to read, because Git diff shows that ALL the code below has changed (but its only because of the indent caused by else)
+  else {
     const apiUrl = `https://quizapi.io/api/v1/questions?apiKey=${process.env.QUIZ_APP_WITH_TIMER_API_KEY}&category=${category}&limit=10`
     console.log('api-url:', { apiUrl })
     // https://quizapi.io/api/v1/questions?apiKey=[no secrets in the repo!]&category=sql&limit=10

@@ -13,6 +13,7 @@ export default function QuizAppWithTimer() {
   const [showQuiz, setShowQuiz] = useState(false)
   const [quizData, setQuizData] = useState(null)
   const [error, setError] = useState(null)
+  // DM: this is correctly lowercase. See where it is used, it is only used WRT the "value" of the category select options, not the category the user sees.
   const [selectedCategory, setSelectedCategory] = useState('html')
   const [categorySelected, setCategorySelected] = useState(false)
 
@@ -73,7 +74,7 @@ export default function QuizAppWithTimer() {
   return (
     <div className="bg-blue-500 h-screen flex flex-col justify-center items-center">
       <Header />
-      {/*(done) DM: todoMM: show category dropdown at the same time as the start button, for UX per the image I put on Slack Monday
+      {/* DM: todoMM: show category dropdown at the same time as the start button, for UX per the image I put on Slack Monday. DM: CategorySelector is always present, you just have overlays hiding it. That could be a problem later if you change the layout. Also React DEV Tools will confusingly show the CategorySelector component as always being there, even though it's not visible. So, where can you move it so that it shows only when the start button shows?
                       Note: you won't need the categorySelected state in this case, because you're showing the category dropdown with the start button which already has the correct logic for both: !showRules && !showQuiz
       */}
 
