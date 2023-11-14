@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import data from '@/features/quiz-app-with-timer/server/data'
+import data from '@/features/quiz-app-with-timer/server/html-data'
 
 export default async (req, res) => {
   // temporary until you get the external API working. See output at: http://localhost:3005/api/quiz

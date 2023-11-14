@@ -82,8 +82,10 @@ export default function QuestionBox({ handleExitGame, quizData }) {
   return (
     <>
       {!showScorePopup && (
+        // <div className="fixed inset-0 z-50 flex items-center justify-center">
+        //   <div className="bg-white p-6 rounded shadow-md w-11/12 h-11/12 sm:w-3/4 sm:h-3/4 md:w-1/2 md:h-1/2 lg:w-2/3 lg:h-2/3 xl:w-1/2 xl:h-1/2 overflow-auto">
         <div className="fixed inset-0 z-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded shadow-md w-11/12 h-11/12 sm:w-3/4 sm:h-3/4 md:w-1/2 md:h-1/2 lg:w-2/3 lg:h-2/3 xl:w-1/2 xl:h-1/2 overflow-auto">
+          <div className="bg-white p-6 rounded shadow-md flex flex-col w-full max-w-[100vh] max-h-[80vh] overflow-auto">
             <>
               <div className="flex justify-between items-center">
                 <div className="text-xl font-bold text-blue-600">{question}</div>

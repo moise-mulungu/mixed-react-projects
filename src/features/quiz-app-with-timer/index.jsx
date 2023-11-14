@@ -6,13 +6,14 @@ import StartQuizButton from './start-quiz-button'
 import RulesOfTheQuiz from './rules-of-the-quiz'
 import QuestionBox from './question-box'
 import CategorySelector from './category-selector'
+import Header from './header'
 
 export default function QuizAppWithTimer() {
   const [showRules, setShowRules] = useState(false)
   const [showQuiz, setShowQuiz] = useState(false)
   const [quizData, setQuizData] = useState(null)
   const [error, setError] = useState(null)
-  const [selectedCategory, setSelectedCategory] = useState('sql')
+  const [selectedCategory, setSelectedCategory] = useState('html')
   const [categorySelected, setCategorySelected] = useState(false)
 
   const loading = !quizData && !error
@@ -22,6 +23,7 @@ export default function QuizAppWithTimer() {
 
     // const apiUrl = `/api/quiz3?category=${category}`
     const apiUrl = `/api/quiz3?category=${selectedCategory}`
+    // const apiUrl = selectedCategory ? `/api/quiz3?category=${selectedCategory}` : '/api/quiz3'
     // MM: DM: i will use `/api/quiz2?category=${category}` for the external api and will render it in the question-box.jsx file.
 
     fetch(apiUrl)
@@ -69,19 +71,21 @@ export default function QuizAppWithTimer() {
   }
 
   return (
-    <div className="bg-blue-500 h-screen flex justify-center items-center">
-      {/* DM: todoMM: show category dropdown at the same time as the start button, for UX per the image I put on Slack Monday
+    <div className="bg-blue-500 h-screen flex flex-col justify-center items-center">
+      <Header />
+      {/*(done) DM: todoMM: show category dropdown at the same time as the start button, for UX per the image I put on Slack Monday
                       Note: you won't need the categorySelected state in this case, because you're showing the category dropdown with the start button which already has the correct logic for both: !showRules && !showQuiz
       */}
-      {!categorySelected && (
-        <CategorySelector
-          setSelectedCategory={setSelectedCategory}
-          handleCategorySelect={handleCategorySelect}
-        />
-      )}
 
-      {categorySelected && !showRules && !showQuiz && (
-        <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
+      <CategorySelector
+        setSelectedCategory={setSelectedCategory}
+        handleCategorySelect={handleCategorySelect}
+      />
+
+      {selectedCategory && !showRules && !showQuiz && (
+        <div className="mt-4">
+          <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
+        </div>
       )}
 
       {showQuiz && <QuestionBox handleExitGame={handleExitGame} quizData={quizData} />}
