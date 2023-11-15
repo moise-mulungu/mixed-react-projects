@@ -31,10 +31,10 @@ export default async (req, res) => {
 
   /* 
     (done)DM: todoMM: advanced task, since you're doing well. You don't need to import all 3 data files. You can import only the one you need by using "dynamic imports". Read https://nextjs.org/learn-pages-router/seo/improve/dynamic-imports see the example and the line after "// Dynamically load libraries". note you cannot use "@" imports with dynamic imports, so you'll need to use the exact, full relative path.
-    DM: todoDM: follow-up with talk about vercel serverless functions (lambdas). Are they constantly running, or are they fired off on demand?MM: DM: the import with "@" works here!
+    DM: todoDM: follow-up with talk about vercel serverless functions (lambdas). Are they constantly running, or are they fired off on demand?MM: DM: the import with "@" works here! DM: cool!
   */
 
-  //(done) DM: todoMM: change all parameter values to be lowercase. It is a (naming) convention so that there is never confusion about case.
+  //(done) DM: todoMM: change all parameter values to be lowercase. It is a (naming) convention so that there is never confusion about case. DM: good
 
   // if (category.toLowerCase() === 'html') {
   //   return res.status(200).json(htmlData)
@@ -43,18 +43,20 @@ export default async (req, res) => {
   // } else if (category.toLowerCase() === 'css') {
   //   return res.status(200).json(cssData)
   // }
-  let data
+  // let data // avoid let
   if (category.toLowerCase() === 'html') {
-    data = await import('@/features/quiz-app-with-timer/server/html-data')
-  } else if (category.toLowerCase() === 'javascript') {
-    data = await import('@/features/quiz-app-with-timer/server/js-data')
-  } else if (category.toLowerCase() === 'css') {
-    data = await import('@/features/quiz-app-with-timer/server/css-data')
-  }
-
-  if (data) {
+    const data = await import('@/features/quiz-app-with-timer/server/html-data')
     return res.status(200).json(data.default)
   }
+  if (category.toLowerCase() === 'javascript') {
+    const data = await import('@/features/quiz-app-with-timer/server/js-data')
+    return res.status(200).json(data.default)
+  }
+  if (category.toLowerCase() === 'css') {
+    const data = await import('@/features/quiz-app-with-timer/server/css-data')
+    return res.status(200).json(data.default)
+  }
+
   //(done) DM: todoMM: because of  the return statements in the if/else statements above, you don't need an else here because execution will never get here if one of the above conditions was met. So, delete this else statement. it's more readable and there is not the big indent, which makes the code look more complicated and makes the Git diff harder to read, because Git diff shows that ALL the code below has changed (but its only because of the indent caused by else)
   // else {
   const apiUrl = `https://quizapi.io/api/v1/questions?apiKey=${process.env.QUIZ_APP_WITH_TIMER_API_KEY}&category=${category}&limit=10`
