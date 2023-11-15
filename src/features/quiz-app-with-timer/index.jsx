@@ -74,7 +74,7 @@ export default function QuizAppWithTimer() {
   return (
     <div className="bg-blue-500 h-screen flex flex-col justify-center items-center">
       <Header />
-      {/* DM: todoMM: show category dropdown at the same time as the start button, for UX per the image I put on Slack Monday. DM: CategorySelector is always present, you just have overlays hiding it. That could be a problem later if you change the layout. Also React DEV Tools will confusingly show the CategorySelector component as always being there, even though it's not visible. So, where can you move it so that it shows only when the start button shows?
+      {/* DM: todoMM: show category dropdown at the same time as the start button, for UX per the image I put on Slack Monday. DM: CategorySelector is always present, you just have overlays hiding it. That could be a problem later if you change the layout. Also React DEV Tools will confusingly show the CategorySelector component as always being there, even though it's not visible. So, where can you move it so that it shows only when the start button shows?(MM: DM: is this question still relevant after the changes I made? i put the category selector and the start quiz button in the same div, one on top of the other. isn't what you asked for? the dropdown displays for just selecting the category.)
                       Note: you won't need the categorySelected state in this case, because you're showing the category dropdown with the start button which already has the correct logic for both: !showRules && !showQuiz
       */}
 

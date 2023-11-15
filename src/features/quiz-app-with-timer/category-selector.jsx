@@ -22,7 +22,7 @@ const CategorySelector = ({
         className="block w-full bg-white border border-gray-300 focus:border-indigo-500 text-2xl leading-6 shadow-sm py-2 pl-3 pr-10 rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm sm:leading-5"
       >
         <option value="">Select a category</option>
-        {/*   // DM: todoMM: all params should be lower-case, so here you can show the mixed-case category to the user, but the value should be lower-case. This is because the external API requires lower-case (see my comment in quiz3.js) */}
+        {/*   //(done) DM: todoMM: all params should be lower-case, so here you can show the mixed-case category to the user, but the value should be lower-case. This is because the external API requires lower-case (see my comment in quiz3.js) */}
         {categories.map((category) => (
           <option key={category} value={category}>
             {category}

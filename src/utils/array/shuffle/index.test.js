@@ -2,20 +2,20 @@
 AI prompt answer: Testing a shuffle function can be tricky because the output is random. We can't predict the exact output, but we can test certain characteristics of the output. For example, we can check if the output array has the same length as the input array and contains the same elements. We can also check if the output array is different from the input array.
 */
 
-const shuffleArray = require('./fisher-yates-shuffle-algorithm')
+const shuffle = require('./index.js')
 
 // your tests go here
 
-describe('shuffleArray', () => {
+describe('shuffle', () => {
   it('returns an array with the same length', () => {
     const array = [1, 2, 3, 4, 5]
-    const result = shuffleArray(array)
+    const result = shuffle(array)
     expect(result.length).toEqual(array.length)
   })
 
   it('returns an array with the same elements', () => {
     const array = [1, 2, 3, 4, 5]
-    const result = shuffleArray(array)
+    const result = shuffle(array)
     const sortedOriginal = [...array].sort()
     const sortedResult = [...result].sort()
     expect(sortedResult).toEqual(sortedOriginal)
@@ -27,7 +27,7 @@ describe('shuffleArray', () => {
 
     // Run the shuffle function 100 times
     for (let i = 0; i < 100; i++) {
-      const result = shuffleArray([...array])
+      const result = shuffle([...array])
       if (JSON.stringify(result) !== JSON.stringify(array)) {
         different = true
         break
@@ -38,4 +38,4 @@ describe('shuffleArray', () => {
   })
 })
 
-// run the test with: npx jest fisher-yates-shuffle-algorithm.test.js
+// run the test with: npx jest index.test.js
