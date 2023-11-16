@@ -22,10 +22,14 @@ const CategorySelector = ({
         className="block w-full bg-white border border-gray-300 focus:border-indigo-500 text-2xl leading-6 shadow-sm py-2 pl-3 pr-10 rounded-md focus:outline-none focus:ring-indigo-500 sm:text-sm sm:leading-5"
       >
         <option value="">Select a category</option>
-        {/* DM: todoMM: all params should be lower-case, so here you can show the mixed-case category to the user, but the value should be lower-case. This is because the external API requires lower-case (see my comment in quiz3.js) DM: you also need to avoid sending upper- or mixed-case to the API. Where does the value that is passed to the API URL come from? Hint, it comes from the value of the select option. Make it lower case. WHY many times separate teams work on the back end and front end, so it is typically expected that params will be normalized to lowercase to avoid issues.
+        {/* DM: todoMM: all params should be lower-case, so here you can show the mixed-case category to the user, but the value should be lower-case. This is because the external API requires lower-case (see my comment in quiz3.js) DM: you also need to avoid sending upper- or mixed-case to the API. Where does the value that is passed to the API URL come from? Hint, it comes from the value of the select option. Make it lower case. WHY many times separate teams work on the back end and front end, so it is typically expected that params will be normalized to lowercase to avoid issues.(done)
          */}
         {categories.map((category) => (
-          <option key={category} value={category}>
+          <option
+            key={category}
+            value={category.toLowerCase()}
+            className="bg-white text-gray-900 font-bold py-4 px-6 rounded"
+          >
             {category}
           </option>
         ))}

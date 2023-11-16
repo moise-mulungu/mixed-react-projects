@@ -9,6 +9,6 @@
   6.  Could you illustrate a situation where your communication skills were crucial
   7. How do you create reports to communicate information to your teammates? 
 
-DM: good info. I have written out answers to these types of questions, so I can review them before interviews. Not requiring you to do that, but I'll just say I've found it helpful. Live interview: it's hard sometimes to remember a good example on the spot. AI or chatbot interview: copy and paste.
+DM: good info. I have written out answers to these types of questions, so I can review them before interviews. Not requiring you to do that, but I'll just say I've found it helpful. Live interview: it's hard sometimes to remember a good example on the spot. AI or chatbot interview: copy and paste.(ok)
 
 * blockers: i could not proceed with the interview live coding as yesterday due to a bad connection.

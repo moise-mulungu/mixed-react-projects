@@ -11,16 +11,16 @@ function shuffle(array) {
   return array
 }
 
-// export default shuffle
-module.exports = shuffle
-// DM: todoMM: we consistently use "es modules" in this repo, not "commonjs"
+export default shuffle
+// module.exports = shuffle
+//(done) DM: todoMM: we consistently use "es modules" in this repo, not "commonjs"
 // module.exports = shuffleArray;
 
 //(done) DM: cool. add a test for this function. AI can write one. ask AI to write one using "vanilla JS" as Jest not set up here.
 //(done) DM: move this to the utils/array folder so it can be found and reused
 
 /*
-(you missed the last part of this todo)DM: todoMM: ask AI to write a simple non-Jest, "vanilla JS" test, then you can put it here in this file. If AI gives you dumb answers, give AI as an example the (console.log) tests that are in the recent file of object transformations. NOTE: The code in your .test.js file doesn't work because it uses Jest functions, like "describe()". All code in src directories should work, and no code should be here that you haven't run to see if it works. So, delete that file.  
+(you missed the last part of this todo, done!)DM: todoMM: ask AI to write a simple non-Jest, "vanilla JS" test, then you can put it here in this file. If AI gives you dumb answers, give AI as an example the (console.log) tests that are in the recent file of object transformations. NOTE: The code in your .test.js file doesn't work because it uses Jest functions, like "describe()". All code in src directories should work, and no code should be here that you haven't run to see if it works. So, delete that file. MM: DM: why do you want me to delete the file while you asked to write test for the shuffle() function before?
 */
 
 {

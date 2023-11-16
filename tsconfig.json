@@ -31,7 +31,7 @@
     // added to follow @/* paths to JS files
     "**/*.js",
     "**/*.jsx"
-  ],
+, "src/utils/array/shuffle/index.test.mjs"  ],
   "exclude": ["node_modules"]
 }
 

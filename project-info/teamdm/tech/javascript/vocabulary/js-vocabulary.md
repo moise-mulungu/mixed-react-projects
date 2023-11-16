@@ -419,21 +419,39 @@ A web API is an application programming interface for either a web server or a w
 
 CommonJS is a project to standardize the module ecosystem for JavaScript outside of web browsers. CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node.js. Increasingly ES Modules is used in NodeJS, and always in nextjs API routes.
 
-DM: todoMM: following the same pattern, add entries for named imports and named exports
+(done)DM: todoMM: following the same pattern, add entries for named imports and named exports
 DM: made some edits to use a common vocabulary
 * CommonJS
 ```js
 // default import
-const YourModule = require('./YourModule')
+const YourModule = require('./YourModule');
 // default export
-module.exports = YourModule
+module.exports = YourModule;
+
+// named import
+const { myFunction, myVariable } = require('./lib');
+
+// named export
+exports.myFunction = function() {
+  // function body
+}
+exports.myVariable = 'some value';
 ```
 * ES Modules
 ```js
-// default import
-import YourModule from './YourModule.js'
+/// default import
+import YourModule from './YourModule.js';
 // default export
-export default YourModule  
+export default YourModule;
+
+// named import
+import { myFunction, myVariable } from './lib';
+
+// named export
+export const myFunction = () => {
+  // function body
+}
+export const myVariable = 'some value';
 ```
 
 

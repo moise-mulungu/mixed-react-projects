@@ -15,7 +15,7 @@ export default function QuizAppWithTimer() {
   const [error, setError] = useState(null)
   // DM: this is correctly lowercase. See where it is used, it is only used WRT the "value" of the category select options, not the category the user sees.
   const [selectedCategory, setSelectedCategory] = useState('html')
-  const [categorySelected, setCategorySelected] = useState(false)
+  // const [categorySelected, setCategorySelected] = useState(false)
 
   const loading = !quizData && !error
 
@@ -60,7 +60,7 @@ export default function QuizAppWithTimer() {
   }
   const handleCategorySelect = (category) => {
     setSelectedCategory(category)
-    setCategorySelected(true)
+    // setCategorySelected(true)
   }
 
   if (loading) {
@@ -74,17 +74,28 @@ export default function QuizAppWithTimer() {
   return (
     <div className="bg-blue-500 h-screen flex flex-col justify-center items-center">
       <Header />
-      {/* DM: todoMM: show category dropdown at the same time as the start button, for UX per the image I put on Slack Monday. DM: CategorySelector is always present, you just have overlays hiding it. That could be a problem later if you change the layout. Also React DEV Tools will confusingly show the CategorySelector component as always being there, even though it's not visible. So, where can you move it so that it shows only when the start button shows?(MM: DM: is this question still relevant after the changes I made? i put the category selector and the start quiz button in the same div, one on top of the other. isn't what you asked for? the dropdown displays for just selecting the category.) DM: No, by "show category dropdown at the same time as the start button" I mean that the category dropdown should be visible at the same time as the start button. As I mentioned: "CategorySelector is always present, you just have overlays hiding it". So, where can you move it so that it shows only when the start button shows? If you don't understand my instruction, copy my instruction and ctrl-I then ask AI how to do it. AI can also clarify what I mean. I mention this because in English my original and follow-up instruction is very clear. */}
+      {/* DM: todoMM: show category dropdown at the same time as the start button, for UX per the image I put on Slack Monday. DM: CategorySelector is always present, you just have overlays hiding it. That could be a problem later if you change the layout. Also React DEV Tools will confusingly show the CategorySelector component as always being there, even though it's not visible. So, where can you move it so that it shows only when the start button shows?(MM: DM: is this question still relevant after the changes I made? i put the category selector and the start quiz button in the same div, one on top of the other. isn't what you asked for? the dropdown displays for just selecting the category.) DM: No, by "show category dropdown at the same time as the start button" I mean that the category dropdown should be visible at the same time as the start button. As I mentioned: "CategorySelector is always present, you just have overlays hiding it". So, where can you move it so that it shows only when the start button shows? If you don't understand my instruction, copy my instruction and ctrl-I then ask AI how to do it. AI can also clarify what I mean. I mention this because in English my original and follow-up instruction is very clear.
       Note: you won't need the categorySelected state in this case, because you're showing the
       category dropdown with the start button which already has the correct logic for both:
       !showRules && !showQuiz */}
-      <CategorySelector
+      {/* <CategorySelector
         setSelectedCategory={setSelectedCategory}
         handleCategorySelect={handleCategorySelect}
       />
       {selectedCategory && !showRules && !showQuiz && (
         <div className="mt-4">
           <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
+        </div>
+      )} */}
+      {!showRules && !showQuiz && (
+        <div className="flex flex-col items-center justify-center w-full">
+          <CategorySelector
+            setSelectedCategory={setSelectedCategory}
+            handleCategorySelect={handleCategorySelect}
+          />
+          <div className="mt-4">
+            <StartQuizButton handleStartQuizClick={handleStartQuizClick} />
+          </div>
         </div>
       )}
       {showQuiz && <QuestionBox handleExitGame={handleExitGame} quizData={quizData} />}
