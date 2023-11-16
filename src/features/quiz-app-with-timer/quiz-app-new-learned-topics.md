@@ -23,3 +23,6 @@
 11. Data Transformation
 
 12. Error Handling
+
+DM: todoMM: good. put these in comments in the code over the applicable code, start each comment with lesson: and I'll be able to find them there. 
+DM: in general, should never be MD files in src, btw. this file should be in the project-info dirs, but since you'll put the above in comments in the code, it's not needed to move this file, just delete it when you're done. 

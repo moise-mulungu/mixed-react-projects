@@ -424,34 +424,32 @@ DM: made some edits to use a common vocabulary
 * CommonJS
 ```js
 // default import
-const YourModule = require('./YourModule');
+const YourModule = require('./YourModule')
 // default export
 module.exports = YourModule;
 
 // named import
-const { myFunction, myVariable } = require('./lib');
+const { myFunction, myVariable } = require('./lib')
 
 // named export
-exports.myFunction = function() {
-  // function body
-}
-exports.myVariable = 'some value';
+module.exports = { myFunction, myVariable }
+exports.myFunction = function() {}
+exports.myVariable = 'some value'
+//  In CommonJS, "exports" is an alias to module.exports
 ```
 * ES Modules
 ```js
 /// default import
-import YourModule from './YourModule.js';
+import YourModule from './YourModule.js'
 // default export
-export default YourModule;
+export default YourModule
 
 // named import
-import { myFunction, myVariable } from './lib';
+import { myFunction, myVariable } from './lib'
 
 // named export
-export const myFunction = () => {
-  // function body
-}
-export const myVariable = 'some value';
+export const myFunction = () => {}
+export const myVariable = 'some value'
 ```
 
 

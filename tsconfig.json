@@ -30,8 +30,10 @@
     "**/*.tsx",
     // added to follow @/* paths to JS files
     "**/*.js",
-    "**/*.jsx"
-, "src/utils/array/shuffle/index.test.mjs"  ],
+    "**/*.jsx",
+    // DM: todoMM: what is this for? always leave a comment when you add things to config files. in this case, you would explain why do you need to put a specific filename in the config files?
+    "src/utils/array/shuffle/index.test.mjs"
+  ],
   "exclude": ["node_modules"]
 }
 
