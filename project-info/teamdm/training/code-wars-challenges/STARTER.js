@@ -106,4 +106,4 @@ myFunction('', '') // expected result
        Note: the best solution should be readable as the highest priority, but not unnecessarily inefficient.
 */
 
-/* 16. Duncan moves the file out of this directory when it is complete 
+/* 16. Duncan moves the file out of this directory when it is complete */
