@@ -1,4 +1,5 @@
 export default function QuizScore({ score, totalQuestions, handleRestartQuiz, handleExitGame }) {
+  // 1. Lifting State Up: The QuizScore component is used to display the score of the quiz. It receives the score and totalQuestions props from the QuizAppWithTimer component. The handleRestartQuiz and handleExitGame functions are also passed down as props from the QuizAppWithTimer component. The handleRestartQuiz function is used to restart the quiz. The handleExitGame function is used to exit the game.
   const scoreResult = `${score}/${totalQuestions}`
   return (
     <div className="flex items-center justify-center h-screen">

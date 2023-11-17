@@ -8,6 +8,11 @@ import QuizScore from './quiz-score'
 const defaultSecondsToAnswerQuestion = 15
 
 export default function QuestionBox({ handleExitGame, quizData }) {
+
+  /*
+  1. State Variables: The component uses several state variables to manage the state of the quiz. These include selectedAnswer, currentQuestionIndex, timer, showCorrectAnswer, score, and showScorePopup. The selectedAnswer variable holds the answer that the user selects. The currentQuestionIndex variable holds the index of the current question. The timer variable holds the number of seconds remaining to answer the current question. The showCorrectAnswer variable is used to control the display of the correct answer. The score variable holds the number of correct answers. The showScorePopup variable is used to control the display of the QuizScore component.
+  Lifting state up: The handleExitGame, and quizData functions are also passed down as props from the QuizAppWithTimer component. The handleExitGame function is used to exit the game. The quizData variable holds the data for the quiz.
+  */
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [timer, setTimer] = useState(defaultSecondsToAnswerQuestion)
@@ -19,6 +24,9 @@ export default function QuestionBox({ handleExitGame, quizData }) {
     setTimer(defaultSecondsToAnswerQuestion)
   }, [currentQuestionIndex])
 
+  /*
+ 2. Timer: The useEffect hooks are used to manage a countdown timer for each question. The timer resets to defaultSecondsToAnswerQuestion whenever the currentQuestionIndex changes. The timer decreases by 1 every second until it reaches 1 or an answer is selected. When the timer reaches 1 or an answer is selected, the showCorrectAnswer variable is set to true. The timer is cleared when the component unmounts.
+  */
   useEffect(() => {
     const countdown = setInterval(() => {
       setTimer((prevTimer) => {
@@ -40,6 +48,7 @@ export default function QuestionBox({ handleExitGame, quizData }) {
     return () => clearInterval(countdown)
   }, [currentQuestionIndex, selectedAnswer])
 
+  // 3. Answer Selection: The handleAnswerSelection function is used to select an answer for the current question. If the selected answer is correct, the score is increased by 1. The selected answer is stored in the selectedAnswer state variable.
   const handleAnswerSelection = (event) => {
     setSelectedAnswer(event.target.value)
     if (event.target.value === correctAnswer) {
@@ -47,6 +56,7 @@ export default function QuestionBox({ handleExitGame, quizData }) {
     }
   }
 
+  // 4. Next Question: The handleGotoNextQuestion function is used to go to the next question. If there are no more questions, it shows the score popup. Otherwise, it increases the currentQuestionIndex by 1 and resets the selectedAnswer and showCorrectAnswer state variables.
   const handleGotoNextQuestion = () => {
     const hasMoreQuestions = currentQuestionIndex < quizData.length - 1
 
@@ -68,6 +78,7 @@ export default function QuestionBox({ handleExitGame, quizData }) {
     }
   }
 
+  // 5. Restart Quiz: The handleRestartQuiz function is used to restart the quiz. It resets all state variables to their initial values. The handleExitGame function is used to exit the quiz.
   const handleRestartQuiz = () => {
     setCurrentQuestionIndex(0)
     setSelectedAnswer(null)
@@ -77,13 +88,14 @@ export default function QuestionBox({ handleExitGame, quizData }) {
     setTimer(defaultSecondsToAnswerQuestion)
   }
 
+  // 6. Array destructuring: The question, correctAnswer, and answerChoices variables are destructured from the current question object in quizData. These are displayed to the user, and the user can select an answer choice by clicking on the corresponding radio button.
   const { question, correctAnswer, answerChoices } = quizData[currentQuestionIndex]
 
   return (
     <>
+    {/* 7. Conditional Rendering: The component uses conditional rendering to display different elements based on the state of the quiz. For example, if showScorePopup is true, the QuizScore component is displayed. If showScorePopup is false, the current question and answer choices are displayed. */}
       {!showScorePopup && (
-        // <div className="fixed inset-0 z-50 flex items-center justify-center">
-        //   <div className="bg-white p-6 rounded shadow-md w-11/12 h-11/12 sm:w-3/4 sm:h-3/4 md:w-1/2 md:h-1/2 lg:w-2/3 lg:h-2/3 xl:w-1/2 xl:h-1/2 overflow-auto">
+      
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded shadow-md flex flex-col w-full max-w-[100vh] max-h-[80vh] overflow-auto">
             <>
@@ -118,6 +130,7 @@ export default function QuestionBox({ handleExitGame, quizData }) {
               <hr className="my-4" />
 
               <div className="text-base mb-4">
+                {/* 8. Question and Answer Choices: The question and answerChoices are destructured from the current question object in quizData. These are displayed to the user, and the user can select an answer choice by clicking on the corresponding radio button. */}
                 {answerChoices.map((answerChoice) => {
                   const isCorrect = answerChoice === correctAnswer
                   const isSelected = answerChoice === selectedAnswer
@@ -164,7 +177,7 @@ export default function QuestionBox({ handleExitGame, quizData }) {
                 })}
               </div>
               <div className="flex justify-between">
-                {/* DM: todoMM: Good. The Next button is on the left in the first question, but on the right in all other questions. UX is better if the Next box stays in the same place always (on the right). So, adjust the styling so that it stays in the same place on the right during the first question (when Previous button is not shown) 
+                {/*(it think this is done!) DM: todoMM: Good. The Next button is on the left in the first question, but on the right in all other questions. UX is better if the Next box stays in the same place always (on the right). So, adjust the styling so that it stays in the same place on the right during the first question (when Previous button is not shown) 
                 DM: I did it for you, because I wanted to show you the quickest way. flex justify-between wants SOMETHING to be there to maintain the layout of the , but you left nothing. so I wrapped it in a DIV outside the conditionally rendered part. Now, when not show Previous button, there is an empty div to occupy that space where the Previous button would be.
                 */}
                 <div>
@@ -177,7 +190,7 @@ export default function QuestionBox({ handleExitGame, quizData }) {
                     </button>
                   ) : null}
                 </div>
-                {/* DM: good! */}
+                {/* DM: good! 9. Correct Answer Indicator: If showCorrectAnswer is true, a checkmark is displayed next to the correct answer.*/}
                 {showCorrectAnswer && selectedAnswer !== correctAnswer && (
                   <p className="text-green-500">Answer: {correctAnswer}</p>
                 )}
@@ -195,14 +208,12 @@ export default function QuestionBox({ handleExitGame, quizData }) {
       {showScorePopup ? (
         <div className="fixed top-0 left-0 w-full flex items-center justify-center">
           <div className="modal-overlay">
-            {/* <div className="bg-gray-100 p-6 rounded-lg shadow-lg max-w-md mx-auto"> */}
             <QuizScore
               score={score}
               totalQuestions={quizData.length}
               handleRestartQuiz={handleRestartQuiz}
               handleExitGame={handleExitGame}
             />
-            {/* </div> */}
           </div>
         </div>
       ) : null}
@@ -210,39 +221,3 @@ export default function QuestionBox({ handleExitGame, quizData }) {
   )
 }
 
-/*
-MM: DM: i tested this and it works. i need to adjust it to fit the QuestionBox component.
-return (
-  <div>
-    {quizData.map((question, index) => {
-      return (
-        <div key={index}>
-          <h2>question: {question.question}</h2>
-          <ul>
-            {Object.entries(question.answers).map(([key, value]) => {
-              if (value) {
-                return <li key={key}>{value}</li>
-              } else {
-                return null
-              }
-            })}
-          </ul>
-        </div>
-      )
-    })}
-  </div>   
-)
-
-// here is the data from json format: 
-return (
-  <div>
-    {loading ? (
-      <div>Loading...</div>
-    ) : error ? (
-      <div>Error: {error.message}</div>
-    ) : (
-      <pre>{JSON.stringify(quizData, null, 2)}</pre>
-    )}
-  </div>
-)
-*/

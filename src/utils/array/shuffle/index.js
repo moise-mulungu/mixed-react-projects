@@ -24,7 +24,7 @@ export default shuffle
 */
 
 {
-  // DM: todoMM: what is this for? This file needs a test to make sure the shuffle works, but I don't see shuffle called here.
+  // DM: todoMM: what is this for? This file needs a test to make sure the shuffle works, but I don't see shuffle called here. MM: DM: you said this above: "ask AI to write a simple non-Jest, "vanilla JS" test, then you can put it here in this file"
   // In this code, testAdd is a simple test function that checks if the add function returns the correct result. If the result is not as expected, it logs a failure message; otherwise, it logs that the test passed.
 
   function add(a, b) {

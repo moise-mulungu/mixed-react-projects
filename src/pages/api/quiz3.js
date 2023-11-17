@@ -3,11 +3,10 @@ import isEmpty from 'lodash/isEmpty'
 
 //(done) DM: todoMM: test this at localhost:3005/api/quiz3 until the property names and values match what you get in localhost:3005/api/quiz
 
-// import htmlData from '@/features/quiz-app-with-timer/server/html-data'
-// import jsData from '@/features/quiz-app-with-timer/server/js-data'
-// import cssData from '@/features/quiz-app-with-timer/server/css-data'
-
 export default async (req, res) => {
+  /*
+  1. Request Validation: The function first checks if the request contains any query parameters. If not, it sends a 400 Bad Request response. It then checks if the category query parameter is specified. If not, it sends another 400 Bad Request response.
+  */
   // temporary until you get the external API working. See output at: http://localhost:3005/api/quiz
   //   return res.status(200).json(data) // the rest of the code below never runs if you return early.
   //(done) DM: good. use the lodash isEmpty like this: if (isEmpty(req.query)) { ... } // because is more readable and handles more situations, i.e., if req.query is undefined or {} empty object
@@ -36,14 +35,7 @@ export default async (req, res) => {
 
   //(done) DM: todoMM: change all parameter values to be lowercase. It is a (naming) convention so that there is never confusion about case. DM: good
 
-  // if (category.toLowerCase() === 'html') {
-  //   return res.status(200).json(htmlData)
-  // } else if (category.toLowerCase() === 'javascript') {
-  //   return res.status(200).json(jsData)
-  // } else if (category.toLowerCase() === 'css') {
-  //   return res.status(200).json(cssData)
-  // }
-  // let data // avoid let
+  // 2. Local Data Import: If the category is 'html', 'javascript', or 'css', the function imports the corresponding local data file and sends it as the response. Otherwise, it continues with the axios code below.
   if (category.toLowerCase() === 'html') {
     const data = await import('@/features/quiz-app-with-timer/server/html-data')
     return res.status(200).json(data.default)
@@ -59,6 +51,8 @@ export default async (req, res) => {
 
   //(done) DM: todoMM: because of  the return statements in the if/else statements above, you don't need an else here because execution will never get here if one of the above conditions was met. So, delete this else statement. it's more readable and there is not the big indent, which makes the code look more complicated and makes the Git diff harder to read, because Git diff shows that ALL the code below has changed (but its only because of the indent caused by else)
   // else {
+
+  // 3. External API Call: If the category is not 'html', 'javascript', or 'css', the function makes a request to the external API and sends the response as the result. The response is an array of objects. Each object contains a question and its answer choices. 
   const apiUrl = `https://quizapi.io/api/v1/questions?apiKey=${process.env.QUIZ_APP_WITH_TIMER_API_KEY}&category=${category}&limit=10`
   console.log('api-url:', { apiUrl })
   // https://quizapi.io/api/v1/questions?apiKey=[no secrets in the repo!]&category=sql&limit=10
@@ -71,59 +65,10 @@ export default async (req, res) => {
     // console.log('data:', { data })
 
     /* 
-      data transformation 
-
-      FROM
-      {
-        id: 351,
-        question: 'What is a composite key?',
-        description: null,
-        answers: {
-          answer_a: 'its is a key that is defined as the primary key in another table',
-          answer_b: 'it is a key that uniquely identifies a record in a database',
-          answer_c: 'its is an optional key and allows null values',
-          answer_d:
-            'it is a primary key that consists of more than one field that uniquely identifies a record',
-          answer_e: null,
-          answer_f: null,
-        },
-        multiple_correct_answers: 'false', // DM: could cause a problem if true; maybe filter out questions with multiple_correct_answers === 'true'
-        correct_answers: {
-          answer_a_correct: 'false',
-          answer_b_correct: 'false',
-          answer_c_correct: 'false',
-          answer_d_correct: 'true',
-          answer_e_correct: 'false',
-          answer_f_correct: 'false',
-        },
-        correct_answer: 'answer_a',
-        explanation: null,
-        tip: null,
-        tags: [
-          {
-            name: 'MySQL',
-          },
-        ],
-        category: 'SQL',
-        difficulty: 'Easy',
-      }
-
-      TO (you want to return the SQL questions in the following format)
-
-      {
-        questionId: 1,
-        question: 'What does HTML stand for?',
-        correctAnswer: 'Hyper Text Markup Language',
-        answerChoices: [
-          'Hyper Text Preprocessor',
-          'Hyper Text Markup Language',
-          'Hyper Text Multiple Language',
-          'Hyper Tool Multi Language',
-        ],
-      }
 
      (done) DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error (because the object values weren't the same as quiz.js). Console.log it and figure out how to change the values. Note: sometimes the Copilot Chat in the left panel will give a better answer than the suggestions that you see as-you-type in the editor. 
     */
+   // 4. Data Transformation: The function then transforms the data received from the API. It maps over the array of question objects and for each object, it extracts the id, question, correct_answer, and answers. It then shuffles the answer choices and returns a new object with questionId, question, correctAnswer, and answerChoices. The correctAnswer is the correct answer to the question. The answerChoices is an array of answer choices that includes the correct answer. The answerChoices array is shuffled so that the correct answer is not always the first answer choice. The function then sends the transformed data as the response.
     const transformedData = data.map((questionObj) => {
       console.log({ questionObj })
 
@@ -181,8 +126,6 @@ export default async (req, res) => {
         }
       */
 
-      // const correctAnswer = 'to be computed'
-      // const answerChoices = 'to be computed'
       const correctAnswer = answersLookup[correctAnswerKey]
       console.log({ correctAnswer })
 
@@ -219,12 +162,7 @@ export default async (req, res) => {
 
       // DM: observable is not a good place to debug. You can debug here by putting console.logs and then looking at the terminal where you "npm run dev" OR you can add temporary properties to the returned JSON object and look at it in http:://localhost:3005/api/quiz3?category=sql
       // i tested it on observable: https://observablehq.com/d/81ab9293d17d3d5e
-      // return {
-      //   questionId: questionObj.id,
-      //   question: questionObj.question,
-      //   correctAnswer: questionObj.correct_answer,
-      //   answers: Object.values(questionObj.correct_answers),
-      // }
+   
     })
 
     console.log({ transformedData })
@@ -232,6 +170,7 @@ export default async (req, res) => {
     res.status(200).json(transformedData)
     // const datam = res.status(200).json(data)
   } catch (error) {
+    // 5. Error Handling: If an error occurs during the API request or data transformation, the function catches the error and sends a 500 Internal Server Error response with the error message.
     console.error({ error, errorMessage: error.message })
     res.status(500).json({ error: 'Unable to fetch quiz data', message: error.message })
   }
@@ -240,58 +179,3 @@ export default async (req, res) => {
 
 // http://localhost:3005/api/quiz2?category=sql&otherParam=otherValue
 
-/*
-import axios from 'axios'
-import isEmpty from 'lodash/isEmpty'
-
-export default async (req, res) => {
-  if (isEmpty(req.query)) {
-    return res.status(400).send('Bad Request: No query parameters provided')
-  }
-  const { category } = req.query
-  console.log('category:', { category })
-
-  if (!category) {
-    return res.status(400).send('Bad Request: category not specified')
-  }
-
-  const apiUrl = `https://quizapi.io/api/v1/questions?apiKey=${process.env.QUIZ_APP_WITH_TIMER_API_KEY}&category=${category}&limit=10`
-  console.log('api-url:', { apiUrl })
-
-  try {
-    const response = await axios.get(apiUrl)
-    console.log('response:', { response })
-
-    const data = response.data
-    const transformedData = data.map((questionObj) => {
-      console.log({ questionObj })
-
-      const {
-        id: questionId,
-        question,
-        correct_answer: correctAnswerKey,
-        answers: answersLookup,
-      } = questionObj
-
-      console.log({ questionId, question, correctAnswerKey, answersLookup })
-
-      const correctAnswer = answersLookup[correctAnswerKey]
-      const answerChoices = Object.values(answersLookup).filter(answer => answer !== null)
-
-      return {
-        questionId,
-        question,
-        correctAnswer,
-        answerChoices,
-      }
-    })
-
-    console.log({ transformedData })
-
-    res.status(200).json(transformedData)
-  } catch (error) {
-    console.error({ error, errorMessage: error.message })
-    res.status(500).json({ error: 'Unable to fetch quiz data', message: error.message })
-  }
-}
-*/
