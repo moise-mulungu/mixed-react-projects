@@ -1,5 +1,7 @@
 # The align-items
 
+DM: todoMM: good, put this in a folder called layout-modules to distinguish from the REST of CSS which is huge. same for the justify-content file
+
 ***The align-items property in CSS is used with `Flexbox` and `Grid` layouts to align items along the vertical (cross) axis. It sets the default alignment for all items within the container. Here are the possible values:***
 
 ## stretch

@@ -9,7 +9,7 @@
 */
 /* 
 
-STATUS: this task is in progress, i couldn't finish it because of power blackout for three hours today.
+STATUS: this task is in progress, i couldn't finish it because of power blackout for three hours today. DM: ok, I'll look at it when you've had a chance to try to complete it. 
 
 
 NEXT STEP(s):
