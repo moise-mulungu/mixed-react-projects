@@ -52,7 +52,7 @@ export default async (req, res) => {
   //(done) DM: todoMM: because of  the return statements in the if/else statements above, you don't need an else here because execution will never get here if one of the above conditions was met. So, delete this else statement. it's more readable and there is not the big indent, which makes the code look more complicated and makes the Git diff harder to read, because Git diff shows that ALL the code below has changed (but its only because of the indent caused by else)
   // else {
 
-  // 3. External API Call: If the category is not 'html', 'javascript', or 'css', the function makes a request to the external API and sends the response as the result. The response is an array of objects. Each object contains a question and its answer choices. 
+  // 3. External API Call: If the category is not 'html', 'javascript', or 'css', the function makes a request to the external API and sends the response as the result. The response is an array of objects. Each object contains a question and its answer choices.
   const apiUrl = `https://quizapi.io/api/v1/questions?apiKey=${process.env.QUIZ_APP_WITH_TIMER_API_KEY}&category=${category}&limit=10`
   console.log('api-url:', { apiUrl })
   // https://quizapi.io/api/v1/questions?apiKey=[no secrets in the repo!]&category=sql&limit=10
@@ -66,9 +66,9 @@ export default async (req, res) => {
 
     /* 
 
-     (done) DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error (because the object values weren't the same as quiz.js). Console.log it and figure out how to change the values. Note: sometimes the Copilot Chat in the left panel will give a better answer than the suggestions that you see as-you-type in the editor. 
+     (done) DM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error (because the object values weren't the same as quiz.js). Console.log it and figure out how to change the values. Note: sometimes the Copilot Chat in the left panel will give a better answer than the suggestions that you see as-you-type in the editor. 
     */
-   // 4. Data Transformation: The function then transforms the data received from the API. It maps over the array of question objects and for each object, it extracts the id, question, correct_answer, and answers. It then shuffles the answer choices and returns a new object with questionId, question, correctAnswer, and answerChoices. The correctAnswer is the correct answer to the question. The answerChoices is an array of answer choices that includes the correct answer. The answerChoices array is shuffled so that the correct answer is not always the first answer choice. The function then sends the transformed data as the response.
+    // 4. Data Transformation: The function then transforms the data received from the API. It maps over the array of question objects and for each object, it extracts the id, question, correct_answer, and answers. It then shuffles the answer choices and returns a new object with questionId, question, correctAnswer, and answerChoices. The correctAnswer is the correct answer to the question. The answerChoices is an array of answer choices that includes the correct answer. The answerChoices array is shuffled so that the correct answer is not always the first answer choice. The function then sends the transformed data as the response.
     const transformedData = data.map((questionObj) => {
       console.log({ questionObj })
 
@@ -162,7 +162,6 @@ export default async (req, res) => {
 
       // DM: observable is not a good place to debug. You can debug here by putting console.logs and then looking at the terminal where you "npm run dev" OR you can add temporary properties to the returned JSON object and look at it in http:://localhost:3005/api/quiz3?category=sql
       // i tested it on observable: https://observablehq.com/d/81ab9293d17d3d5e
-   
     })
 
     console.log({ transformedData })
@@ -178,4 +177,3 @@ export default async (req, res) => {
 }
 
 // http://localhost:3005/api/quiz2?category=sql&otherParam=otherValue
-

@@ -8,7 +8,6 @@ import QuizScore from './quiz-score'
 const defaultSecondsToAnswerQuestion = 15
 
 export default function QuestionBox({ handleExitGame, quizData }) {
-
   /*
   1. State Variables: The component uses several state variables to manage the state of the quiz. These include selectedAnswer, currentQuestionIndex, timer, showCorrectAnswer, score, and showScorePopup. The selectedAnswer variable holds the answer that the user selects. The currentQuestionIndex variable holds the index of the current question. The timer variable holds the number of seconds remaining to answer the current question. The showCorrectAnswer variable is used to control the display of the correct answer. The score variable holds the number of correct answers. The showScorePopup variable is used to control the display of the QuizScore component.
   Lifting state up: The handleExitGame, and quizData functions are also passed down as props from the QuizAppWithTimer component. The handleExitGame function is used to exit the game. The quizData variable holds the data for the quiz.
@@ -93,9 +92,8 @@ export default function QuestionBox({ handleExitGame, quizData }) {
 
   return (
     <>
-    {/* 7. Conditional Rendering: The component uses conditional rendering to display different elements based on the state of the quiz. For example, if showScorePopup is true, the QuizScore component is displayed. If showScorePopup is false, the current question and answer choices are displayed. */}
+      {/* 7. Conditional Rendering: The component uses conditional rendering to display different elements based on the state of the quiz. For example, if showScorePopup is true, the QuizScore component is displayed. If showScorePopup is false, the current question and answer choices are displayed. */}
       {!showScorePopup && (
-      
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded shadow-md flex flex-col w-full max-w-[100vh] max-h-[80vh] overflow-auto">
             <>
@@ -177,7 +175,7 @@ export default function QuestionBox({ handleExitGame, quizData }) {
                 })}
               </div>
               <div className="flex justify-between">
-                {/*(it think this is done!) DM: todoMM: Good. The Next button is on the left in the first question, but on the right in all other questions. UX is better if the Next box stays in the same place always (on the right). So, adjust the styling so that it stays in the same place on the right during the first question (when Previous button is not shown) 
+                {/*(it think this is done!) DM: Good. The Next button is on the left in the first question, but on the right in all other questions. UX is better if the Next box stays in the same place always (on the right). So, adjust the styling so that it stays in the same place on the right during the first question (when Previous button is not shown) 
                 DM: I did it for you, because I wanted to show you the quickest way. flex justify-between wants SOMETHING to be there to maintain the layout of the , but you left nothing. so I wrapped it in a DIV outside the conditionally rendered part. Now, when not show Previous button, there is an empty div to occupy that space where the Previous button would be.
                 */}
                 <div>
@@ -190,7 +188,7 @@ export default function QuestionBox({ handleExitGame, quizData }) {
                     </button>
                   ) : null}
                 </div>
-                {/* DM: good! 9. Correct Answer Indicator: If showCorrectAnswer is true, a checkmark is displayed next to the correct answer.*/}
+                {/* 9. Correct Answer Indicator: If showCorrectAnswer is true, a checkmark is displayed next to the correct answer.*/}
                 {showCorrectAnswer && selectedAnswer !== correctAnswer && (
                   <p className="text-green-500">Answer: {correctAnswer}</p>
                 )}
@@ -220,4 +218,3 @@ export default function QuestionBox({ handleExitGame, quizData }) {
     </>
   )
 }
-
