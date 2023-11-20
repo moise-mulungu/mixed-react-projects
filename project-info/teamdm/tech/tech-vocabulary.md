@@ -101,7 +101,11 @@ API (Application Programming Interface) is a set of routines, protocols, and too
 API endpoint is a specific entry point into an API that allows a client to access a specific set of functionality offered by the API. Most often, a URL.
 
 ## WebSocket
-Websocket is a computer communications protocol, providing simultaneous two-way communication channels over a single Transmission Control Protocol connection. The WebSocket protocol was standardized by the IETF as RFC 6455 in 2011.
+Websocket is a communications protocol, providing simultaneous two-way communication channels over a single Transmission Control Protocol (TCP) connection. 
+
+DM: last sentence is correct - I removed it because it's not anything you need to know, vocab should concise, read quickly
 
 ## live data
 Live data in computer science refers to data that is constantly changing and being updated in real-time. This could include data from sensors, network traffic, or user input. Live data is often used in applications that require up-to-date information, such as stock market tracking, weather updates, or real-time analytics.
+
+DM: going forward, use google search for vocab definitions, preferring the most authoritative sites, like MDN. AI is too often making things up, not blatantly wrong, but sometimes using the wrong terminology. Continue to use AI for code examples, but always test them to be sure they work.

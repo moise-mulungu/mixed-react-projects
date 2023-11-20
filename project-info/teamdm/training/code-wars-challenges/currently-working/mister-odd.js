@@ -96,7 +96,6 @@ function extractOddFromString(inputString) {
 
   const inputStringLowercase = inputString.toLowerCase()
   console.log('inputStringLowercase', inputStringLowercase)
-
   const inputStringArray = inputStringLowercase.split('')
   console.log('inputStringArray', inputStringArray)
 
@@ -105,7 +104,7 @@ function extractOddFromString(inputString) {
     (acc, char, i) => (char === 'o' ? [...acc, i] : acc),
     []
   )
-console.log('oddIndexesOfOs', oddIndexesOfOs)
+  console.log('oddIndexesOfOs', oddIndexesOfOs)
 
   const oddIndexesOfDs = inputStringArray.reduce(
     (acc, char, i) => (char === 'd' ? [...acc, i] : acc),

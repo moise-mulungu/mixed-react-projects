@@ -1,5 +1,7 @@
 <!-- a react chat application: https://www.youtube.com/watch?v=jcOKU9f86XE and a socket documentation: https://socket.io/docs/v4/ -->
 <!-- i'll read this freecodecamp article tomorrow: https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and-firebase/ -->
+DM: good. Firebase is very useful. One of my mentors swears by it. 
+DM: that article is HUGE. I imagine that the WebSocket "server" will be entirely in firebase. 
 
 Copilot prompt answer:
 
@@ -7,24 +9,29 @@ To create a React Chat Application, you would typically need the following featu
 
 ## User Authentication: 
 This could be simple username/password authentication or integration with OAuth providers like Google, Facebook, etc.
+DM: could be version 2 (v2) as you can just let anyone chat, in the first version (make a text field where user can enter his/her name)
 
 ## Real-time Messaging: 
 This is the core feature of any chat application. You would need a way to send and receive messages in real-time. This could be achieved using WebSockets or a real-time database like Firebase.
 
 ## Message History: 
 You should be able to store and retrieve past messages. This could be done using a database.
+DM: could be v2 since v1 could show just todays chats, or chats that have build up since the server was restarted.
 
 ## User Presence Information: 
 Indicators to show whether a user is online, offline, or idle.
+DM: possible v2 like the auth can be v2
 
 ## Typing Indicators: 
 To show when another user is typing a message.
 
 ## Read Receipts: 
 To show when a message has been read by the recipient.
+DM: v2?
 
 ## Private and Group Chats: 
 The ability to have one-on-one chats as well as group conversations.
+DM: I won't comment on v2 anymore, because I think you get the idea. Make the most simple version for v1, then start making enhancements. You might do each new enhancement separately, as a module that can be required by the main app - this let's you write blog posts about each new enhancement.  
 
 ## Notifications: 
 Users should be notified of new messages when they are not actively using the chat application.
@@ -44,8 +51,8 @@ Remember, these are just the basic features. Depending on your specific needs, y
 
 1. Setup the project
 
-   - Initialize a new React project using Create React App or a similar tool.
-   - Install necessary libraries (like react-router, socket.io-client, axios, etc.).
+   - Initialize a new React project using Create React App (NextJS) or a similar tool.
+   - Install necessary libraries (like react-router (not in nextjs, putting file in src/pages is how routing happens), socket.io-client, axios, etc.).
   
 2. Create the User Authentication system
 
@@ -58,10 +65,12 @@ Remember, these are just the basic features. Depending on your specific needs, y
    - Create a Chat component that displays a list of messages. 
    - Each message should display the sender's name, the message text, and the time it was sent.
    - Include a text input for sending new messages.
+   - DM: I'd do this first; I think you'll have to implement the server at the same time.
   
 4.  Implement Real-time Messaging
 
     - Establish a WebSocket connection when the Chat component mounts.  
+      - what does the Chat component connect TO?
     - When a new message is submitted, send it over the WebSocket connection.
     - Listen for incoming messages on the WebSocket and add them to the chat.
 
