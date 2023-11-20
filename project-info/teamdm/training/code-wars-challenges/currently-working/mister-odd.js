@@ -9,7 +9,7 @@
 */
 /* 
 
-STATUS: this task is in progress, i couldn't finish it because of power blackout for three hours today. DM: ok, I'll look at it when you've had a chance to try to complete it. 
+STATUS: in progress, the third test case is not passing. I am thinking on how to fix it. DM: ok, I'll look at it when you've had a chance to try to complete it. 
 
 
 NEXT STEP(s):
@@ -55,6 +55,7 @@ none
 
 // 4. Rename the parameter(s) in the codewars starter function if the parameter names are imprecise. pick a name using the any good words from the challenge description or from your input description in #5
 function extractOddFromString(inputString) {
+  console.log('inputString', inputString)
   /* 5. describe the inputs and outputs in detail: their types and possible values
           note: sometimes you have some requirements that aren't explicitly in the instructions, but are in the example.
   
@@ -93,47 +94,48 @@ function extractOddFromString(inputString) {
           * variable names should express exactly what the variable contains
           * see naming-conventions.md*/
 
-  // 1. convert all strings to lowercase
   const inputStringLowercase = inputString.toLowerCase()
+  console.log('inputStringLowercase', inputStringLowercase)
 
-  // Take 3 indexes i, j, k such that i < j < k and str[i] = "o", str[j] = "d", str[k] = "d"
-  const oddIndexesOfOs = []
-  for (let i = 0; i < inputStringLowercase.length; i++) {
-    if (inputStringLowercase[i] === 'o') {
-      oddIndexesOfOs.push(i)
-    }
-  }
-  console.log(oddIndexesOfOs)
+  const inputStringArray = inputStringLowercase.split('')
+  console.log('inputStringArray', inputStringArray)
 
-  const oddIndexesOfFirstDs = []
-  for (let i = 0; i < oddIndexesOfOs.length; i++) {
-    if (inputStringLowercase[oddIndexesOfOs[i] + 1] === 'd') {
-      oddIndexesOfFirstDs.push(oddIndexesOfOs[i])
-    }
-  }
-  console.log(oddIndexesOfFirstDs)
-  const oddIndexesOfLastDs = []
-  for (let i = 0; i < oddIndexesOfFirstDs.length; i++) {
-    if (inputStringLowercase[oddIndexesOfFirstDs[i] + 2] === 'd') {
-      oddIndexesOfLastDs.push(oddIndexesOfFirstDs[i])
-    }
-  }
+  // find the indexes of all the 'o's
+  const oddIndexesOfOs = inputStringArray.reduce(
+    (acc, char, i) => (char === 'o' ? [...acc, i] : acc),
+    []
+  )
+console.log('oddIndexesOfOs', oddIndexesOfOs)
 
-  console.log(oddIndexesOfLastDs)
+  const oddIndexesOfDs = inputStringArray.reduce(
+    (acc, char, i) => (char === 'd' ? [...acc, i] : acc),
+    []
+  )
+
+  console.log('oddIndexesOfDs', oddIndexesOfDs)
+
+  const count = oddIndexesOfOs.reduce((acc, oIndex) => {
+    const validDIndex = oddIndexesOfDs.find(
+      (dIndex, i) => dIndex > oIndex && oddIndexesOfDs[i + 1] > dIndex
+    )
+    return validDIndex ? acc + 1 : acc
+  }, 0)
+
   /* 9. use the named parts to create a readable solution. */
 
   /* 10. return the solution
         always return a variable, or, use only variables in return statements
         this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
      */
-  return ''
+
+  return count
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 // expected result
-extractOddFromString('ouddddbo') // 1
-extractOddFromString('ooudddbd') // 2
-extractOddFromString('qoddoldfoodgodnooofostorodrnvdmddddeidfoi') // 6
-extractOddFromString(' ') // 0
+console.log(extractOddFromString('oUddDdbo')) // 1
+console.log(extractOddFromString('ooudddbd')) // 2
+console.log(extractOddFromString('qoddoldfoodgodnooofostorodrnvdmddddeidfoi')) // 6
+console.log(extractOddFromString(' ')) // 0
 extractOddFromString(123) // not a string
 
 /* 11. Make it pretty! Review and edit the above code for conciseness and readability: clear, descriptive variable names
@@ -158,3 +160,27 @@ extractOddFromString(123) // not a string
   */
 
 /* 16. Duncan moves the file out of this directory when it is complete */
+
+/*
+function extractOddFromString(inputString) {
+  if (typeof inputString !== 'string') {
+    throw new Error('input must be a string')
+  } else if (inputString.length === 0) {
+    return 0
+  }
+
+  const inputStringArray = inputString.toLowerCase().split('')
+
+  const oddIndexesOfOs = inputStringArray.reduce((acc, char, i) => char === 'o' ? [...acc, i] : acc, [])
+  const oddIndexesOfDs = inputStringArray.reduce((acc, char, i) => char === 'd' ? [...acc, i] : acc, [])
+
+  const count = oddIndexesOfOs.reduce((acc, oIndex) => {
+    const validDIndex = oddIndexesOfDs.find((dIndex, i) => 
+      dIndex > oIndex && oddIndexesOfDs[i + 1] > dIndex
+    );
+    return validDIndex ? acc + 1 : acc;
+  }, 0);
+
+  return count;
+}
+*/
