@@ -99,3 +99,9 @@ Credentials refer to the verification of identity or tools for authentication. T
 API (Application Programming Interface) is a set of routines, protocols, and tools for building software applications. 
 
 API endpoint is a specific entry point into an API that allows a client to access a specific set of functionality offered by the API. Most often, a URL.
+
+## WebSocket
+Websocket is a computer communications protocol, providing simultaneous two-way communication channels over a single Transmission Control Protocol connection. The WebSocket protocol was standardized by the IETF as RFC 6455 in 2011.
+
+## live data
+Live data in computer science refers to data that is constantly changing and being updated in real-time. This could include data from sensors, network traffic, or user input. Live data is often used in applications that require up-to-date information, such as stock market tracking, weather updates, or real-time analytics.

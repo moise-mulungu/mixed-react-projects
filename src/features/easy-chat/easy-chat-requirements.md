@@ -1,0 +1,110 @@
+<!-- a react chat application: https://www.youtube.com/watch?v=jcOKU9f86XE and a socket documentation: https://socket.io/docs/v4/ -->
+<!-- i'll read this freecodecamp article tomorrow: https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and-firebase/ -->
+
+Copilot prompt answer:
+
+To create a React Chat Application, you would typically need the following features:
+
+## User Authentication: 
+This could be simple username/password authentication or integration with OAuth providers like Google, Facebook, etc.
+
+## Real-time Messaging: 
+This is the core feature of any chat application. You would need a way to send and receive messages in real-time. This could be achieved using WebSockets or a real-time database like Firebase.
+
+## Message History: 
+You should be able to store and retrieve past messages. This could be done using a database.
+
+## User Presence Information: 
+Indicators to show whether a user is online, offline, or idle.
+
+## Typing Indicators: 
+To show when another user is typing a message.
+
+## Read Receipts: 
+To show when a message has been read by the recipient.
+
+## Private and Group Chats: 
+The ability to have one-on-one chats as well as group conversations.
+
+## Notifications: 
+Users should be notified of new messages when they are not actively using the chat application.
+
+## File Sharing: 
+The ability to share files like images, videos, etc. in the chat.
+
+## User Profile Management: 
+Ability for users to manage their profiles, including changing their name, profile picture, etc.
+
+## Security: 
+Ensure that the chat data is secure and privacy is maintained.
+
+Remember, these are just the basic features. Depending on your specific needs, you might want to add more advanced features like video calling, chatbot, etc.
+
+## Copilot prompt sudo code: 
+
+1. Setup the project
+
+   - Initialize a new React project using Create React App or a similar tool.
+   - Install necessary libraries (like react-router, socket.io-client, axios, etc.).
+  
+2. Create the User Authentication system
+
+   - Create a Login/Register component. 
+   - Implement user authentication logic (could be JWT, OAuth, etc.).
+   - Store the authenticated user's data for later use.
+  
+3. Create the Chat Interface
+
+   - Create a Chat component that displays a list of messages. 
+   - Each message should display the sender's name, the message text, and the time it was sent.
+   - Include a text input for sending new messages.
+  
+4.  Implement Real-time Messaging
+
+    - Establish a WebSocket connection when the Chat component mounts.  
+    - When a new message is submitted, send it over the WebSocket connection.
+    - Listen for incoming messages on the WebSocket and add them to the chat.
+
+5. Implement Message History
+
+   - When the Chat component mounts, fetch the message history from the server and display it.
+   - When a new message is sent or received, add it to the message history.
+  
+6. Implement User Presence Information
+
+   - Send a status update over the WebSocket when the user goes online or offline.
+   - Listen for status updates from other users and update their presence status accordingly.
+  
+7. Implement Typing Indicators
+
+   - When the user starts or stops typing, send a typing event over the WebSocket.
+   - Listen for typing events from other users and display a typing indicator accordingly.
+  
+8. Implement Read Receipts
+
+   - When a message is read, send a read receipt over the WebSocket.
+   - Listen for read receipts from other users and mark their messages as read.
+  
+9. Implement Private and Group Chats
+
+   - Allow the user to start a new chat with any user or group of users.
+   - Display a list of the user's chats and allow them to switch between them.
+  
+10. Implement Notifications
+
+    - When a new message is received and the chat is not active, display a notification.
+  
+11. Implement File Sharing
+
+    - Allow the user to attach files to their messages.
+    - Display attached files in the chat.
+  
+12. Implement User Profile Management
+
+    - Allow the user to view and edit their profile.
+    - Display the user's profile picture and name in the chat.
+  
+13. Implement Security
+
+    - Ensure all data sent over the WebSocket is encrypted.
+    - Ensure all API endpoints are secured and only accessible to authenticated users.
