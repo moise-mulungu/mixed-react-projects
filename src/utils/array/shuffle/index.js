@@ -16,32 +16,39 @@ export default shuffle
 //(done) DM: we consistently use "es modules" in this repo, not "commonjs"
 // module.exports = shuffleArray;
 
-// DM: todoMM: I don't have time for this kind of back and forth. I expect you to read my instructions carefully. Read them carefully again, in order, and just figure it out. 
+//(done) DM: todoMM: I don't have time for this kind of back and forth. I expect you to read my instructions carefully. Read them carefully again, in order, and just figure it out.
 
 // DM: cool. add a test for this function. AI can write one. bump: ask AI to write one using "vanilla JS" as Jest not set up here.
 //(done) DM: move this to the utils/array folder so it can be found and reused
 
 /*
-(you missed the last part of this todo, done!)DM: bump: ask AI to write a simple non-Jest, "vanilla JS" test, then you can put it here in this file. If AI gives you dumb answers, give AI as an example the (console.log) tests that are in the recent file of object transformations. NOTE: The code in your .test.js file doesn't work because it uses Jest functions, like "describe()". All code in src directories should work, and no code should be here that you haven't run to see if it works. So, delete that file. MM: DM: why do you want me to delete the file while you asked to write test for the shuffle() function before? 
+(you missed the last part of this todo, done!)DM: bump: ask AI to write a simple non-Jest, "vanilla JS" test, then you can put it here in this file. If AI gives you dumb answers, give AI as an example the (console.log) tests that are in the recent file of object transformations. NOTE: The code in your .test.js file doesn't work because it uses Jest functions, like "describe()". All code in src directories shlayout-modulesould work, and no code should be here that you haven't run to see if it works. So, delete that file. MM: DM: why do you want me to delete the file while you asked to write test for the shuffle() function before? 
 */
 
-{
-  // DM: todoMM: what is this for? This file needs a test to make sure the shuffle works, but I don't see shuffle called here. MM: DM: you said this above: "ask AI to write a simple non-Jest, "vanilla JS" test, then you can put it here in this file"
+// DM: todoMM: what is this for? This file needs a test to make sure the shuffle works, but I don't see shuffle called here. MM: DM: you said this above: "ask AI to write a simple non-Jest, "vanilla JS" test, then you can put it here in this file"
 
-  // In this code, testAdd is a simple test function that checks if the add function returns the correct result. If the result is not as expected, it logs a failure message; otherwise, it logs that the test passed.
+// In this code, testAdd is a simple test function that checks if the add function returns the correct result. If the result is not as expected, it logs a failure message; otherwise, it logs that the test passed.
 
-  function add(a, b) {
-    return a + b
-  }
+// Define a test function
+function testShuffle(array) {
+  const shuffledArray = shuffle([...array])
 
-  function testAdd() {
-    const result = add(1, 2)
-    if (result !== 3) {
-      console.log(`Test failed: Expected 3 but got ${result}`)
-    } else {
-      console.log('Test passed')
+  // Sort both arrays
+  const sortedOriginal = [...array].sort()
+  const sortedShuffled = shuffledArray.sort()
+
+  // Check if the sorted arrays are identical
+  for (let i = 0; i < sortedOriginal.length; i++) {
+    if (sortedOriginal[i] !== sortedShuffled[i]) {
+      console.log('Test failed: shuffled array does not contain same elements as original array')
+      return false
     }
   }
 
-  testAdd()
+  console.log('Test passed: shuffled array has same elements as original array')
+  return true
 }
+
+// Run the test with an array of your choice
+const testResult = testShuffle([1, 2, 3, 4, 5])
+console.log(testResult) // This will log true if the test passed, false otherwise
