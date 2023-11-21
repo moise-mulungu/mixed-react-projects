@@ -15,6 +15,13 @@ export default function MessageInput({ onSendMessage }) {
 
   const rows = message.split('\n').length
 
+  /* 
+    DM: this all looks like a great start. I'm having trouble finding things to complain about! :) 
+        suggestion: you are allowing multiline messages. do you want to do that? 
+        suggestion: in either case, chat apps often let's you submit with the enter key. If multiline messages, then submit with ctrl-Enter is common.
+        otherwise, keep going! looking great.  
+  */
+
   return (
     <form onSubmit={handleSubmit} className="flex flex-col h-full border-t-2 border-purple-300 p-4">
       <textarea

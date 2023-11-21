@@ -29,7 +29,6 @@ export default shuffle
 
 // In this code, testAdd is a simple test function that checks if the add function returns the correct result. If the result is not as expected, it logs a failure message; otherwise, it logs that the test passed.
 
-//(done) DM: todoMM: test that the shuffled array is in a different order than the original array, i.e., that it was really shuffled
 // DM: good. I suppose there's not much else you can test.
 
 // Define a test function
@@ -47,9 +46,11 @@ function testShuffle(array) {
       return false
     }
   }
-  
+
+  //(done) DM: test that the shuffled array is in a different order than the original array, i.e., that it was really shuffled
   // Check if the shuffled array is in a different order
   for (let i = 0; i < array.length; i++) {
+    // DM: todoMM: it is possible that the first element of array is identical to the first element of shuffledArray. EX if it is a small array it is possible that after a valid shuffle, the first elements could be identical. Same could happen if there are a lot of repeated elements in the original array. Your test returns false if ANY of the elements DO match. So, write a test that checks if ANY of the elements DON'T match.
     if (array[i] === shuffledArray[i]) {
       console.log('Test failed: shuffled array is in the same order as original array')
       return false
