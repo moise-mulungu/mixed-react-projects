@@ -34,6 +34,9 @@ export default function Pages() {
         <li>
           <Link href="/quiz">Quiz App With Timer</Link>
         </li>
+        <li>
+          <Link href="/real-time-chat">Real Time Chat</Link>
+        </li>
       </ul>
     </div>
   )
