@@ -31,7 +31,7 @@ DM: v2?
 
 ## Private and Group Chats: 
 The ability to have one-on-one chats as well as group conversations.
-DM: I won't comment on v2 anymore, because I think you get the idea. Make the most simple version for v1, then start making enhancements. You might do each new enhancement separately, as a module that can be required by the main app - this let's you write blog posts about each new enhancement.  
+DM: I won't comment on v2 anymore, because I think you get the idea. Make the most simple version for v1, then start making enhancements. You might do each new enhancement separately, as a module that can be required by the main app - this let's you write blog posts about each new enhancement.(ok) 
 
 ## Notifications: 
 Users should be notified of new messages when they are not actively using the chat application.

@@ -29,7 +29,7 @@ export default shuffle
 
 // In this code, testAdd is a simple test function that checks if the add function returns the correct result. If the result is not as expected, it logs a failure message; otherwise, it logs that the test passed.
 
-// DM: todoMM: test that the shuffled array is in a different order than the original array, i.e., that it was really shuffled
+//(done) DM: todoMM: test that the shuffled array is in a different order than the original array, i.e., that it was really shuffled
 // DM: good. I suppose there's not much else you can test.
 
 // Define a test function
@@ -47,11 +47,19 @@ function testShuffle(array) {
       return false
     }
   }
+  
+  // Check if the shuffled array is in a different order
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] === shuffledArray[i]) {
+      console.log('Test failed: shuffled array is in the same order as original array')
+      return false
+    }
+  }
 
   console.log('Test passed: shuffled array has same elements as original array')
   return true
 }
 
 // Run the test with an array of your choice
-const testResult = testShuffle([1, 2, 3, 4, 5])
+const testResult = testShuffle([6, 14, 65, 4, 345, 75])
 console.log(testResult) // This will log true if the test passed, false otherwise
