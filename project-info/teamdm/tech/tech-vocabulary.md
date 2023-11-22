@@ -106,6 +106,6 @@ Websocket is a communications protocol, providing simultaneous two-way communica
 ## live data
 Live data in computer science refers to data that is constantly changing and being updated in real-time. This could include data from sensors, network traffic, or user input. Live data is often used in applications that require up-to-date information, such as stock market tracking, weather updates, or real-time analytics.
 
-DM: going forward, use google search for vocab definitions, preferring the most authoritative sites, like MDN. AI is too often making things up, not blatantly wrong, but sometimes using the wrong terminology. DM: personally, I often check both AI and Google Search, as AI is often concise, then Google Search to validate.
+DM: going forward, use google search for vocab definitions, preferring the most authoritative sites, like MDN. AI is too often making things up, not blatantly wrong, but sometimes using the wrong terminology. DM: personally, I often check both AI and Google Search, as AI is often concise, then Google Search to validate.(ok)
 
 DM: Continue to use AI for code examples, but always test them to be sure they work.(ok)
