@@ -3,6 +3,7 @@ import Header from './header'
 import ChatBox from './chat-box'
 import MessageInput from './message-input'
 import Footer from './footer'
+import User from './user'
 
 /* 
 (done)DM: todoMM: change the name of this directory to be the same as the src/pages directory name (which is in the URL - keeping the names consistent avoids confusion in a large codebase.
@@ -10,10 +11,15 @@ import Footer from './footer'
 
 export default function EasyChat() {
   const [messages, setMessages] = useState([])
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   // DM: nice function name
   const onSendMessage = (message) => {
     setMessages([...messages, { text: message, sender: 'You', timestamp: new Date() }])
+  }
+
+  if (!isAuthenticated) {
+    return <User onAuthenticate={() => setIsAuthenticated(true)} />
   }
 
   //(done) DM: todoMM: add some horizontal margin so that the purple box is not flush against the left edge of the screen. Otherwise, looks good.
