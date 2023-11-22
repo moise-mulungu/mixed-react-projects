@@ -1,10 +1,21 @@
 import { useState } from 'react'
+import { useContext } from 'react'
+import { UserContext } from './user-context'
+import { addDoc, collection } from 'firebase/firestore'
+import db from './firebase'
 
 export default function MessageInput({ onSendMessage }) {
   const [message, setMessage] = useState('')
 
-  const handleSubmit = (event) => {
+  // const handleSubmit = (event) => {
+  //   event.preventDefault()
+  //   onSendMessage(message)
+  //   setMessage('')
+  // }
+
+  const handleSubmit = async (event) => {
     event.preventDefault()
+    await sendMessage(message)
     onSendMessage(message)
     setMessage('')
   }
@@ -17,6 +28,19 @@ export default function MessageInput({ onSendMessage }) {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && e.ctrlKey) {
       handleSubmit(e)
+    }
+  }
+
+  const user = useContext(UserContext)
+  const sendMessage = async (message) => {
+    try {
+      await addDoc(collection(db, 'messages'), {
+        text: message,
+        createdAt: new Date().toISOString(),
+        user: user.displayName, // Or any other property of the suer object
+      })
+    } catch (e) {
+      console.error('Error adding document: ', e)
     }
   }
 
