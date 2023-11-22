@@ -1,3 +1,13 @@
+
+# moisemulungu.com domain transfer process
+https://www.namecheap.com/support/knowledgebase/article.aspx/1187/46/how-can-i-move-a-domain-from-one-namecheap-account-to-another/
+
+## moisemulungu.com initial setup steps
+* setup domain -> vercel 
+* setup email forwarding
+* other? DM will provide screenshot of his namecheap domain setup
+
+
 # Vercel: deployment and hosting
 
 # moisemulungu.vercel.app initially, later can buy custom domain if needed

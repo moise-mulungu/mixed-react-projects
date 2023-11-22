@@ -24,6 +24,7 @@ export default function MessageInput({ onSendMessage }) {
     setMessage(e.target.value)
   }
 
+  // DM: cool
   // ctrl + enter to send message and keep multiline
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && e.ctrlKey) {
@@ -50,7 +51,7 @@ export default function MessageInput({ onSendMessage }) {
     DM: this all looks like a great start. I'm having trouble finding things to complain about! :) 
         suggestion: you are allowing multiline messages. do you want to do that? 
         suggestion: in either case, chat apps often let's you submit with the enter key. If multiline messages, then submit with ctrl-Enter is common.
-        otherwise, keep going! looking great. MM: if i remove the multiline, users won't be able to send messages with line breaks. I think it's better to keep it as there is a send button.
+        otherwise, keep going! looking great. MM: if i remove the multiline, users won't be able to send messages with line breaks. I think it's better to keep it as there is a send button. DM: exactly so, and with they c-Enter option, you have the best of both worlds (use doesn't have to grab mouse to send).
   */
 
   return (

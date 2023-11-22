@@ -17,6 +17,7 @@ import { getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
+  // DM: todoMM: move this to the .env.local file, like you did with quiz3.js. NEVER put secrets in the codebase. This is a security risk. If anyone sees secret keys in your code they will not hire you because it will appear that you don't take security seriously. If any of the other properties in this object are secret, move them to .env.local as well (better safe than sorry).
   apiKey: 'AIzaSyDkDSHVPcfgxFq4ctp4ODGd68gsikQ8G7o',
   authDomain: 'real-time-chat-78e91.firebaseapp.com',
   projectId: 'real-time-chat-78e91',
@@ -47,6 +48,9 @@ const db = getFirestore()
 export default db
 
 /*
+
+DM: todoMM: this is good. Keep a careful list of the steps to setup your firebase project. If you don't you will regret it later, I know from experience.
+
 Steps for authentication:
   1. Go to the Firebase console(https://console.firebase.google.com/)
   2. Click on your project.
