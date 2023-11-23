@@ -6,6 +6,7 @@ import { UserContext } from './user-context'
 
 // DM: todoMM: move to directory named user/index.jsx and add user-context.jsx to that directory. This way, as this app grows (it seems like it will be come quite large), it will be easier to keep track of what files are imported by what other files.
 
+// todoDM: example for lesson on hoisting, const not hoisted, function declarations are hoisted
 const User = ({ onAuthenticate }) => {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')

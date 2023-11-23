@@ -205,7 +205,9 @@ myObject.myPropertyNameInAVariable // error! myPropertyNameInAVariable is undefi
 
 ## hoisting
 
-JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code.
+the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code that creates the functions, variables or classes
+
+DM: todoMM: in anticipation of an upcoming lesson on hoisting, add some more info here. Ask AI for example: "briefly, what are the main issues to be aware of surrounding JavaScript hoisting; provide brief code examples of each issue" 
 
 ## Assignment (=)
 
