@@ -21,8 +21,12 @@ function testShuffle(array) {
   const sortedOriginal = [...array].sort()
   const sortedShuffled = shuffledArray.sort()
 
-  // DM: todoMM: the comment is technically correct, but it doesn't explain what problem you are testing for. write a comment describing the practical problem you are testing for.
-  // Check if the sorted arrays are identical
+  //(done) DM: todoMM: the comment is technically correct, but it doesn't explain what problem you are testing for. write a comment describing the practical problem you are testing for.
+  /*
+  This test verifies the shuffle function by ensuring:
+   1. Element Integrity: Shuffled array contains the same elements as the original (checked via sorted equality).
+   2. Order Disruption: Shuffled array is not in the same order as the original (checked via element-wise comparison).
+  */ 
   for (let i = 0; i < sortedOriginal.length; i++) {
     if (sortedOriginal[i] !== sortedShuffled[i]) {
       console.log('Test failed: shuffled array does not contain same elements as original array')

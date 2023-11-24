@@ -67,9 +67,9 @@ console.timeEnd('reducing')
 
 console.log(lettersAndNumbersLowercaseToCount)
 
-// functions are "hoisted", that's why you can use it in the code above where it is declared below
+// functions are "hoisted", that's why you can use it in the code above where it is declared below(ok)
 function getText() {
-  // DM: getting "false positives" in this text when I VSCode global search so I'm replacing the text with a shorter, non-technical text
+  // DM: getting "false positives" in this text when I VSCode global search so I'm replacing the text with a shorter, non-technical text(ok)
   // howtojs: escape:: quote characters (backticks, single|double quote) in quoted text
   return `
 more
