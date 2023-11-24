@@ -103,6 +103,7 @@ DM: todoMM: this is very important to understand. ask AI to "restate this in oth
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
+export { app }
 // let app
 // if (!getApps().length) {
 //   app = initializeApp(firebaseConfig)

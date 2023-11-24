@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useContext } from 'react'
-import { UserContext } from './user-context'
+import { UserContext } from './user/user-context-provider'
 import { addDoc, collection } from 'firebase/firestore'
 import db from './firebase'
 
