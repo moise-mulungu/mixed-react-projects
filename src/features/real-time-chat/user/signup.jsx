@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Signup({ handleSignup, error, switchForm }) {
+export default function Signup({ handleSignup, error, toggleAuthenticationMode }) {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -39,7 +39,7 @@ export default function Signup({ handleSignup, error, switchForm }) {
             Signup
           </button>
           <button
-            onClick={switchForm}
+            onClick={toggleAuthenticationMode}
             className="p-2 mt-4 bg-pink-500 text-white rounded mb-2 w-full"
           >
             Login
