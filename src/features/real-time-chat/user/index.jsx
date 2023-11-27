@@ -1,7 +1,7 @@
 // JavaScript (React)
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+// import { useAuthState } from 'react-firebase-hooks/auth'
 import { login, signup } from '../firebase'
-import { useContext } from 'react'
 import { UserContext } from './user-context-provider'
 import Login from './login'
 import Signup from './signup'
@@ -31,6 +31,7 @@ const User = ({ onAuthenticate }) => {
   //   return re.test(String(email).toLowerCase())
   // }
   const { setUser } = useContext(UserContext)
+  // const [, , authError] = useAuthState()
 
   const handleLogin = (email, password) => {
     // if (!validateEmail(username)) {
@@ -76,6 +77,27 @@ const User = ({ onAuthenticate }) => {
         setError(errorMessage)
       })
   }
+  // const handleLogin = async (email, password) => {
+  //   try {
+  //     const userCredential = await login(email, password)
+  //     const user = userCredential.user
+  //     setUser(user)
+  //     onAuthenticate()
+  //   } catch (error) {
+  //     setError(error.message)
+  //   }
+  // }
+
+  // const handleSignup = async (email, username, password) => {
+  //   try {
+  //     const userCredential = await signup(email, password)
+  //     const user = userCredential.user
+  //     setUser(user)
+  //     setIsLogin(true)
+  //   } catch (error) {
+  //     setError(error.message)
+  //   }
+  // }
 
   const toggleAuthenticationMode = () => {
     setIsLogin(!isLogin) // Switch between Login and Signup
@@ -124,19 +146,43 @@ const User = ({ onAuthenticate }) => {
       {isLogin ? (
         <Login
           handleLogin={handleLogin}
-          error={error}
+          error={
+            error
+            // || authError
+          }
           toggleAuthenticationMode={toggleAuthenticationMode}
         />
       ) : (
         <Signup
           handleSignup={handleSignup}
-          error={error}
+          error={
+            error
+            // || authError
+          }
           toggleAuthenticationMode={toggleAuthenticationMode}
         />
       )}
     </div>
   )
 }
-// MM: DM: this component is not complete yet, i'll add other features to it later once i am done with either websocket or firebase
+/*
+React Firebase Hooks:
+1. installations process:
+  * i installed this the package: npm install react-firebase-hooks
+
+2. import:
+i imported { useAuth } from 'react-firebase-hooks/auth'
+
+3. usage:
+i declared a const [, , authError] = useAuth() state variable that i passed the toggleAuthenticationMode function as a prop to both components. i didn't declare a const [user] = useAuth() state variable because i'm using the UserContextProvider to manage the user state. when i tried to run i got the following error: 
+TypeError: (0 , react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_3__.useAuth) is not a function.
+
+4. solution:
+AI prompt: The 'react-firebase-hooks' library has been deprecated and is no longer maintained. It's possible that the version you're using doesn't include the useAuth function.
+
+You might want to consider using the 'react-firebase-hooks' successor library, 'reactfire', which is currently maintained by Firebase. It provides a similar set of hooks for Firebase services.
+
+But the google search didn't mention that the 'react-firebase-hooks' has been deprecated. i paused there, and i'll continue with the tutorial to understand more.
+*/
 
 export default User

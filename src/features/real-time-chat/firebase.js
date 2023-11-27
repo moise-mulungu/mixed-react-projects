@@ -44,7 +44,7 @@ const firebaseConfig = {
   4. restart the server
   5. confirm that the app still works(but it didn't)
 
-  blockers: i faced these two errors: "FirebaseError: Firebase: Error (auth/invalid-api-key)"" and "Firebase: Firebase App named '[DEFAULT]' already exists (app/duplicate-app)."
+  blockers: i faced these two errors: "FirebaseError: Firebase: Error (auth/invalid-api-key)" and "Firebase: Firebase App named '[DEFAULT]' already exists (app/duplicate-app)."
   attempted solution: i asked AI to help me and got the following response:
 
   The error message "Firebase: Error (auth/invalid-api-key)" indicates that the API key you're using to initialize Firebase is invalid. This could be due to a few reasons:
@@ -83,13 +83,13 @@ i console logged process.env and got all the variables i set in .env.local, then
   messagingSenderId: '146694862195',
   appId: '1:146694862195:web:5807cc69a5fc7c6f5a4106',
   measurementId: 'G-3FC7LLH74P',
+
   // apiKey: process.env.REACT_APP_API_KEY,
   // authDomain: process.env.REACT_APP_AUTH_DOMAIN,
   // projectId: process.env.REACT_APP_PROJECT_ID,
   // storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   // messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   // appId: process.env.REACT_APP_APP_ID,
-  // measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 }
 console.log({ process: process.env })
 console.log(firebaseConfig.apiKey)
@@ -142,4 +142,26 @@ Steps for authentication:
   3. In the left-hand menu, click on "Authentication".
   4. You will now be in the "Users" tab of the "Authentication" section.
   5. To enable or configure sign-in methods, click on the "Sign-in method" tab.
+*/
+
+/*
+MM: DM: i created a new project on firebase different from the first one to test the .env.local file contents. i followed the steps from this link https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and-firebase/. But the error still persists. Here is the code:
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyB0SF1IMQeIOI2MertvsUkfFJlFy-tC-eU",
+  authDomain: "app-chat-1f5a4.firebaseapp.com",
+  projectId: "app-chat-1f5a4",
+  storageBucket: "app-chat-1f5a4.appspot.com",
+  messagingSenderId: "825359150547",
+  appId: "1:825359150547:web:88e803e7fbc35d4ccfd326"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 */
