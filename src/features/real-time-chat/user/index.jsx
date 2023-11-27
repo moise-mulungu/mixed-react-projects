@@ -14,6 +14,7 @@ const User = ({ onAuthenticate }) => {
   // const [username, setUsername] = useState('')
   // const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
+  // DM: todoMM: rename to isLoggedIn - is more clear
   const [isLogin, setIsLogin] = useState(true)
 
   // const handleLogin = () => {
@@ -166,6 +167,8 @@ const User = ({ onAuthenticate }) => {
   )
 }
 /*
+
+
 React Firebase Hooks:
 1. installations process:
   * i installed this the package: npm install react-firebase-hooks
@@ -175,14 +178,15 @@ i imported { useAuth } from 'react-firebase-hooks/auth'
 
 3. usage:
 i declared a const [, , authError] = useAuth() state variable that i passed the toggleAuthenticationMode function as a prop to both components. i didn't declare a const [user] = useAuth() state variable because i'm using the UserContextProvider to manage the user state. when i tried to run i got the following error: 
-TypeError: (0 , react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_3__.useAuth) is not a function.
+DM: todoMM: check the import syntax is it a named import or a default import? (give me an answer to this question); Also, you imported useAuthState above which is a different name that you have here.
+TypeError: (0 , react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_3__.useAuth) is not a function. 
 
 4. solution:
 AI prompt: The 'react-firebase-hooks' library has been deprecated and is no longer maintained. It's possible that the version you're using doesn't include the useAuth function.
 
 You might want to consider using the 'react-firebase-hooks' successor library, 'reactfire', which is currently maintained by Firebase. It provides a similar set of hooks for Firebase services.
 
-But the google search didn't mention that the 'react-firebase-hooks' has been deprecated. i paused there, and i'll continue with the tutorial to understand more.
+But the google search didn't mention that the 'react-firebase-hooks' has been deprecated. i paused there, and i'll continue with the tutorial to understand more. DM: yeah AI may be confused, you can check the GitHub page for react-firebase-hooks to see if it is currently being maintained.
 */
 
 export default User

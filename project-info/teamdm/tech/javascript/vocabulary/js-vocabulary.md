@@ -206,6 +206,9 @@ myObject.myPropertyNameInAVariable // error! myPropertyNameInAVariable is undefi
 
 In this phase, the JavaScript engine reads through the entire code without executing it. It looks for variable and function declarations and creates memory spaces for them in what's called the `Variable Environment`. This is where hoisting takes place. The engine assigns memory space for variables and initializes them with a default value of undefined, and for functions, it stores the entire function's code. It also checks for syntax errors during this phase.
 
+DM: going forward, no that you're dealing with more adnavced topics that I may not know "off the top of my head", show your references for the definitions, i.e., a URL or put "AI" if that's the case. EX above I'm not familiar with the term "variable environment" so I wouldn't know if AI invented the term or borrowed it from another programming language or context. If I google search "js compile "Variable Environment"" I see little mention of it, but there are some. 
+DM: todoMM: I think "variable environment" means "memory space" but double check it with a google search. 
+
 ## Execution Phase
 
 After the compile phase, the JavaScript engine starts executing the code line by line. It assigns real values to the variables and executes the function calls. It's in this phase that the code actually performs actions.
@@ -214,46 +217,12 @@ After the compile phase, the JavaScript engine starts executing the code line by
 
 the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code that creates the functions, variables or classes
 
-(done) DM: todoMM: in anticipation of an upcoming lesson on hoisting, add some more info here. Ask AI for example: "briefly, what are the main issues to be aware of surrounding JavaScript hoisting; provide brief code examples of each issue" 
 
 ### main javascript hoisting issues
   There are a few key issues to be aware of when it comes to JavaScript hoisting:
 
-  1. __Only Declarations Are Hoisted__: 
-   Only variable and function declarations are hoisted, not initializations. If a variable is declared and initialized after using it, the value will be undefined.
-
-    ```js
-     console.log(myVar); // Outputs: undefined
-     var myVar = 5;
-    ```
-
-  2. __Let and Const Are Not Hoisted__: 
-   Variables declared with let and const are hoisted to the top of the block, but they remain uninitialized until the code execution reaches the declaration. Trying to access them before declaration results in a ReferenceError.
-
-     ```js
-     console.log(myLetVar); // Outputs: ReferenceError: myLetVar is not defined
-     let myLetVar = 5;
-     ```
-
-  3. __Function Expressions and Arrow Functions Are Not Hoisted__: 
-   Function expressions and arrow functions are not hoisted. If you try to call one before it's defined, you'll get a TypeError.
-
-     ```js
-     console.log(myFunc()); // Outputs: TypeError: myFunc is not a function
-     var myFunc = function() { return "Hello World"; };
-     ```
-
-  4. __Functions Are Hoisted First__: 
-   Function declarations are hoisted before variables. If a variable and function with the same name are declared, the variable will overwrite the function in the hoisting phase.
-   
-     ```js
-     console.log(myFunc()); // Outputs: "Hello World"
-     var myFunc = 5;
-     function myFunc() { return "Hello World"; }
-     console.log(myFunc); // Outputs: 5
-     ```
-     In this case, the function myFunc is hoisted first, then the variable myFunc is hoisted and overwrites the function. 
-
+  see ./javascript-hoisting-issues
+  
 ## Assignment (=)
 
 The assignment ( = ) operator is used to assign a value to a variable. The assignment operation evaluates to the assigned value. Chaining the assignment operator is possible in order to assign a single value to multiple variables

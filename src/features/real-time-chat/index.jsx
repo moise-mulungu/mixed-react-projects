@@ -8,13 +8,12 @@ import User from './user'
 import UserContextProvider from './user/user-context-provider'
 
 // DM: careful how you rename a directory, because I couldn't see the diffs in Git for index.js, but I could see it for all the other files. MM: i have already a component named RealTimeChat in ./pages/real-time-chat, now this component is in ./features/real-time-chat, so i named it to EasyChat to avoid confusion
-//(done) DM: todoMM: rename all files .jsx if they contain JSX. Otherwise, name them .js. This communicates to me their purpose
 
 /*
 (done)DM: change the name of this directory to be the same as the src/pages directory name (which is in the URL - keeping the names consistent avoids confusion in a large codebase.
 */
 
-export default function EasyChat() {
+export default function RealTimeChat() {
   const [messages, setMessages] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   // const [user, setUser] = useState(null)
@@ -26,7 +25,7 @@ export default function EasyChat() {
 
   if (!isAuthenticated) {
     // return <User onAuthenticate={() => setIsAuthenticated(true)} />
-    //(done) DM: todoMM: after you have put the user* files into a ./user directory (see todo in user.js), create a file named ./user/user-context-provider.jsx and extract user, setUser into that file. Then, import that file here and use it to wrap the User component here (and also in the top-level return statement). This way, you can keep all the user-related code in one place.
+    //(done) DM: after you have put the user* files into a ./user directory (see todo in user.js), create a file named ./user/user-context-provider.jsx and extract user, setUser into that file. Then, import that file here and use it to wrap the User component here (and also in the top-level return statement). This way, you can keep all the user-related code in one place.
     return (
       <UserContextProvider>
         <User onAuthenticate={() => setIsAuthenticated(true)} />

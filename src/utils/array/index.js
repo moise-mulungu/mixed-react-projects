@@ -9,5 +9,4 @@ export { default as allIntegers } from './all-integers'
 export { default as getUniqueItemInArray } from './get-unique-item-in-array'
 export { default as isArrayOfStrings } from './is-array-of-strings'
 export { default as isArraySorted } from './is-array-sorted'
-//(done) DM: todoMM: export shuffle here
 export { default as shuffle } from './shuffle'

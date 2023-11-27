@@ -20,7 +20,7 @@ import { getFirestore } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  // DM: todoMM: move this to the .env.local file, like you did with quiz3.js. NEVER put secrets in the codebase. This is a security risk. If anyone sees secret keys in your code they will not hire you because it will appear that you don't take security seriously. If any of the other properties in this object are secret, move them to .env.local as well (better safe than sorry).
+  // DM: todoMM: move this to the .env.local file, like you did with quiz3.js. NEVER put secrets in the codebase. This is a security risk. If anyone sees secret keys in your code they will not hire you because it will appear that you don't take security seriously. If any of the other properties in this object are secret, move them to .env.local as well (better safe than sorry, but only if they are secret!).
   /*
   Steps i took to move the firebaseConfig to .env.local:
   1. add the following to .env.local:
@@ -75,6 +75,28 @@ i console logged process.env and got all the variables i set in .env.local, then
 
   But after all the above, i still got the same errors. i decided to pause there first and reverted the changes.
 
+  DM: this are just strings that you are moving from one place to another. you're expectation should be that 0 problem/changes in the app. If there is a problem, then console.log the process.env.ENV_VAR_NAME to see if it is correct. 
+  DM: todoMM: only put the secrets in .env.local. the API key definitely, and maybe your messaging sender but only if it is a secret.  
+  DM: todoMM: .env.local is shared global file, so put something more specific in your variable names, such as REAL_TIME_CHAT_API_KEY
+
+    1. add the following to .env.local:
+    REACT_APP_API_KEY=AIzaSyDkDSHVPcfg
+    REACT_APP_AUTH_DOMAIN=real-time-chat-78e91.firebaseapp.com
+    REACT_APP_PROJECT_ID=real-time-chat-78e91
+    REACT_APP_STORAGE_BUCKET=real-time-chat-78e91.appspot.com
+    REACT_APP_MESSAGING_SENDER_ID=146694862195
+    REACT_APP_APP_ID=1:146694862195:web:5807cc69a5fc7c6f5a4106
+    REACT_APP_MEASUREMENT_ID=G-3FC7LLH74P
+
+  3. replace the values in the firebaseConfig object with the following:
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
+    measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+
   */
   apiKey: 'AIzaSyDkDSHVPcfgxFq4ctp4ODGd68gsikQ8G7o',
   authDomain: 'real-time-chat-78e91.firebaseapp.com',
@@ -91,6 +113,11 @@ i console logged process.env and got all the variables i set in .env.local, then
   // messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   // appId: process.env.REACT_APP_APP_ID,
 }
+/* 
+OK, I know the problem: your issue is that the below console.log is in client-side code. It is confusing that you can see the console.log (with correct env vars) ONCE in the terminal (on the server side) where you ran NPM run DEV, because in NextJS when you're using the "dev" command (see the package.json scripts for what "npm run dev" calls) it always runs client side code ONCE when the code compiles. Similarly, when you use "npm run build" the console.log below will also show once as it builds the production version of the site. HOWEVER, you want to use secrets in client-side code (remember this code is client-side code because it is called originally from src/pages, and because the functionality is triggered IN THE BROWSER by user actions in the browser EX login, send). 
+Moise, ask AI to rephrase the above "in other words [with example]" if it is unclear. For debugging, you need to really understand how NextJS works.
+SOLUTION - you need to use the NextJS solution to accessing secret vars in client-side code: search google on "NextJS DEV mode, how to use secret env vars in client side"
+*/
 console.log({ process: process.env })
 console.log(firebaseConfig.apiKey)
 /* 
@@ -112,7 +139,7 @@ export { app }
 // }
 // const analytics = getAnalytics(app)
 
-//(done) DM: todoMM: you will need this in other files, so export it
+//(done) DM: you will need this in other files, so export it
 // Initialize Firebase Auth
 const auth = getAuth()
 export { auth }
@@ -134,7 +161,7 @@ export default db
 /*
 
 
-(done)DM: todoMM: this is good. Keep a careful list of the steps to setup firebase in this project. If you don't you will regret it later, I know from experience.
+(done)DM: this is good. Keep a careful list of the steps to setup firebase in this project. If you don't you will regret it later, I know from experience.
 
 Steps for authentication:
   1. Go to the Firebase console(https://console.firebase.google.com/)
