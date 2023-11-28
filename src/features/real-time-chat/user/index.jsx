@@ -65,11 +65,17 @@ const User = ({ onAuthenticate }) => {
     signup(email, password)
       .then((userCredential) => {
         // Signed in
+        // userCredential.user
+        //   .updateProfile({
+        //     displayName: username,
+        //   })
+        //   .then(() => {
         const user = userCredential.user
         setUser(user)
         // ...
         // onAuthenticate()
         setIsLoggedIn(true)
+        // })
       })
       .catch((error) => {
         // const errorCode = error.code
@@ -191,6 +197,12 @@ AI prompt: The 'react-firebase-hooks' library has been deprecated and is no long
 You might want to consider using the 'react-firebase-hooks' successor library, 'reactfire', which is currently maintained by Firebase. It provides a similar set of hooks for Firebase services.
 
 But the google search didn't mention that the 'react-firebase-hooks' has been deprecated. i paused there, and i'll continue with the tutorial to understand more. DM: yeah AI may be confused, you can check the GitHub page for react-firebase-hooks to see if it is currently being maintained.(ok)
+*/
+
+/*
+the first project i created on firebase was called react-firebase-chat-app. The project was set up to use Cloud Firestore in Datastore mode. This mode can only be accessed from the Google Cloud Console. i could not create a normal database from the firebase console. i decided to create a second project called app-chat where i created a normal database. i replaced the previous project firebaseConfig with the ew one, but the authentication doesn't work.
+i got the following error: Firebase: Error (auth/operation-not-allowed).
+
 */
 
 export default User
