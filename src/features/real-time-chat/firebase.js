@@ -77,7 +77,7 @@ i console logged process.env and got all the variables i set in .env.local, then
 
   DM: this are just strings that you are moving from one place to another. you're expectation should be that 0 problem/changes in the app. If there is a problem, then console.log the process.env.ENV_VAR_NAME to see if it is correct. 
   DM: todoMM: only put the secrets in .env.local. the API key definitely, and maybe your messaging sender but only if it is a secret.  
-  DM: todoMM: .env.local is shared global file, so put something more specific in your variable names, such as REAL_TIME_CHAT_API_KEY. MM: i think i mentioned all the steps that i took above, but i encountered errors and i had to revert the changes. i added console.log and got the server running correctly, i don't what could be the problem. i will try again and see if i can get it working.
+  DM: todoMM: .env.local is shared global file, so put something more specific in your variable names, such as REAL_TIME_CHAT_API_KEY. MM: i think i mentioned all the steps that i took above, but i encountered errors and i had to revert the changes. i added console.log and got the server running correctly, i don't what could be the problem. i will try again and see if i can get it working. DM: OK, eventually you will have to use .env.local vars, so go ahead now and rename them everywhere as I suggested because REACT_APP_ is not specific at all.
 
     1. add the following to .env.local:
     REACT_APP_API_KEY=AIzaSyDkDSHVPcfg
@@ -105,6 +105,7 @@ i console logged process.env and got all the variables i set in .env.local, then
   // messagingSenderId: '146694862195',
   // appId: '1:146694862195:web:5807cc69a5fc7c6f5a4106',
   // measurementId: 'G-3FC7LLH74P',
+  /* DM: notes about this change should go here, not in another file */
   apiKey: 'AIzaSyB0SF1IMQeIOI2MertvsUkfFJlFy-tC-eU',
   authDomain: 'app-chat-1f5a4.firebaseapp.com',
   projectId: 'app-chat-1f5a4',
@@ -119,7 +120,9 @@ i console logged process.env and got all the variables i set in .env.local, then
   // messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   // appId: process.env.REACT_APP_APP_ID,
 }
-/* 
+/*
+DM: note: do this after you get the new app-chat config working:
+DM: todoMM: I forgot to put a "DM:" next to this, but I assume that the Git diff will alert you that I wrote it. This is the solution to your problem with .env.local env vars not working: So, in order to complete the todoMMs above, you'll have to work through this:
 OK, I know the problem: your issue is that the below console.log is in client-side code. It is confusing that you can see the console.log (with correct env vars) ONCE in the terminal (on the server side) where you ran NPM run DEV, because in NextJS when you're using the "dev" command (see the package.json scripts for what "npm run dev" calls) it always runs client side code ONCE when the code compiles. Similarly, when you use "npm run build" the console.log below will also show once as it builds the production version of the site. HOWEVER, you want to use secrets in client-side code (remember this code is client-side code because it is called originally from src/pages, and because the functionality is triggered IN THE BROWSER by user actions in the browser EX login, send). 
 Moise, ask AI to rephrase the above "in other words [with example]" if it is unclear. For debugging, you need to really understand how NextJS works.
 SOLUTION - you need to use the NextJS solution to accessing secret vars in client-side code: search google on "NextJS DEV mode, how to use secret env vars in client side"
@@ -129,8 +132,6 @@ console.log(firebaseConfig.apiKey)
 /* 
 variables: app, auth, DB
 are initialized "in the module scope" (outside of any function or block) so that when they are imported into other files, they are already initialized and ready to use. Most importantly, they are initialized only once in the lifecycle of the app (until you reload the browser, which causes the whole app to start over), not every time they are imported by different files. We want them to be initialized only once, when the app is initially loaded (this is all happening in the browser, BTW).
-
-(done)DM: todoMM: this is very important to understand. ask AI to "restate this in other words" to be sure you fully understand it.
 
 */
 
@@ -150,7 +151,7 @@ export { app }
 const auth = getAuth()
 export { auth }
 
-//(done) DM: todoMM: import into UserContextProvider (after you create it per other todoMMm)
+//(done) DM: import into UserContextProvider (after you create it per other todo__MM)
 // Export the auth object and the authentication functions
 export const signup = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)
@@ -178,7 +179,7 @@ Steps for authentication:
 */
 
 /*
-MM: DM: i created a new project on firebase different from the first one to test the .env.local file contents. i followed the steps from this link https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and-firebase/. But the error still persists. Here is the code:
+MM: i created a new project on firebase different from the first one to test the .env.local file contents. i followed the steps from this link https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and-firebase/. But the error still persists. Here is the code:
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";

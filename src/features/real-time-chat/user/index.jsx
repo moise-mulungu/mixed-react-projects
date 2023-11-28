@@ -14,7 +14,6 @@ const User = ({ onAuthenticate }) => {
   // const [username, setUsername] = useState('')
   // const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
-  //(done) DM: todoMM: rename to isLoggedIn - is more clear
   const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   // const handleLogin = () => {
@@ -184,7 +183,7 @@ i imported { useAuth } from 'react-firebase-hooks/auth'
 
 3. usage:
 i declared a const [, , authError] = useAuth() state variable that i passed the toggleAuthenticationMode function as a prop to both components. i didn't declare a const [user] = useAuth() state variable because i'm using the UserContextProvider to manage the user state. when i tried to run i got the following error: 
-(done)DM: todoMM: check the import syntax is it a named import or a default import? (give me an answer to this question); Also, you imported useAuthState above which is a different name that you have here. MM: the above export is named export because it's inside curly braces. i commented out the import { useAuthState } from 'react-firebase-hooks/auth'. AI copilot answer: useAuthState and useAuth are both named exports from the 'react-firebase-hooks/auth' module, but they serve different purposes:
+(done)DM: check the import syntax is it a named import or a default import? (give me an answer to this question); Also, you imported useAuthState above which is a different name that you have here. MM: the above export is named export because it's inside curly braces. i commented out the import { useAuthState } from 'react-firebase-hooks/auth'. AI copilot answer: useAuthState and useAuth are both named exports from the 'react-firebase-hooks/auth' module, but they serve different purposes:
 
 useAuthState: This is a hook that allows you to access the state of the current Firebase authentication. It returns an array containing the currently authenticated user (or null if no user is authenticated), a loading boolean, and an error object.
 useAuth: This hook does not exist in the 'react-firebase-hooks/auth' module. If you're trying to use it, you might be confusing it with another hook or a hook from a different library. Always make sure to check the library's documentation to see what hooks and functions are available for use.
@@ -199,9 +198,14 @@ You might want to consider using the 'react-firebase-hooks' successor library, '
 But the google search didn't mention that the 'react-firebase-hooks' has been deprecated. i paused there, and i'll continue with the tutorial to understand more. DM: yeah AI may be confused, you can check the GitHub page for react-firebase-hooks to see if it is currently being maintained.(ok)
 */
 
+// DM: todoMM: please move the below comment into the file where you are using the new configuration, which is firebase.js I presume?
 /*
 the first project i created on firebase was called react-firebase-chat-app. The project was set up to use Cloud Firestore in Datastore mode. This mode can only be accessed from the Google Cloud Console. i could not create a normal database from the firebase console. i decided to create a second project called app-chat where i created a normal database. i replaced the previous project firebaseConfig with the ew one, but the authentication doesn't work.
 i got the following error: Firebase: Error (auth/operation-not-allowed).
+DM: ok, things can get tricky when you have existing code that does things in a certain way, then you make a configuration change like you describe here. The way to solve it is: whatever instructions you follow to set up app-chat, test out app-chat in a super-basic sample project, using any sample code that the instructions provided. You could try it real quickly in a codesandbox react instance: https://codesandbox.io/examples/package/react Once you are sure it works in a simple environment per the exact instructions you followed, only then try it in your chat project. If it doesn't work, check that the code in your chat project is doing the same thing as the example code provided. 
+DM: todoMM: edit the next 2 lines to be sure you're using the correct Google Cloud/Firestore terminology:
+before: real-time-chat Google Cloud Firestore in Datastore mode? OR Google Cloud Datastore?
+after: app-chat: normal database? or Firebase Firestore Database?
 
 */
 
