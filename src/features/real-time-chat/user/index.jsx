@@ -14,8 +14,8 @@ const User = ({ onAuthenticate }) => {
   // const [username, setUsername] = useState('')
   // const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
-  // DM: todoMM: rename to isLoggedIn - is more clear
-  const [isLogin, setIsLogin] = useState(true)
+  //(done) DM: todoMM: rename to isLoggedIn - is more clear
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   // const handleLogin = () => {
   //   // Handle login
@@ -69,7 +69,7 @@ const User = ({ onAuthenticate }) => {
         setUser(user)
         // ...
         // onAuthenticate()
-        setIsLogin(true)
+        setIsLoggedIn(true)
       })
       .catch((error) => {
         // const errorCode = error.code
@@ -94,14 +94,14 @@ const User = ({ onAuthenticate }) => {
   //     const userCredential = await signup(email, password)
   //     const user = userCredential.user
   //     setUser(user)
-  //     setIsLogin(true)
+  //     setIsLoggedIn(true)
   //   } catch (error) {
   //     setError(error.message)
   //   }
   // }
 
   const toggleAuthenticationMode = () => {
-    setIsLogin(!isLogin) // Switch between Login and Signup
+    setIsLoggedIn(!isLoggedIn) // Switch between Login and Signup
   }
   // JavaScript (React)
   return (
@@ -144,7 +144,7 @@ const User = ({ onAuthenticate }) => {
     //   </div>
     // </div>
     <div>
-      {isLogin ? (
+      {isLoggedIn ? (
         <Login
           handleLogin={handleLogin}
           error={
@@ -178,7 +178,11 @@ i imported { useAuth } from 'react-firebase-hooks/auth'
 
 3. usage:
 i declared a const [, , authError] = useAuth() state variable that i passed the toggleAuthenticationMode function as a prop to both components. i didn't declare a const [user] = useAuth() state variable because i'm using the UserContextProvider to manage the user state. when i tried to run i got the following error: 
-DM: todoMM: check the import syntax is it a named import or a default import? (give me an answer to this question); Also, you imported useAuthState above which is a different name that you have here.
+(done)DM: todoMM: check the import syntax is it a named import or a default import? (give me an answer to this question); Also, you imported useAuthState above which is a different name that you have here. MM: the above export is named export because it's inside curly braces. i commented out the import { useAuthState } from 'react-firebase-hooks/auth'. AI copilot answer: useAuthState and useAuth are both named exports from the 'react-firebase-hooks/auth' module, but they serve different purposes:
+
+useAuthState: This is a hook that allows you to access the state of the current Firebase authentication. It returns an array containing the currently authenticated user (or null if no user is authenticated), a loading boolean, and an error object.
+useAuth: This hook does not exist in the 'react-firebase-hooks/auth' module. If you're trying to use it, you might be confusing it with another hook or a hook from a different library. Always make sure to check the library's documentation to see what hooks and functions are available for use.
+
 TypeError: (0 , react_firebase_hooks_auth__WEBPACK_IMPORTED_MODULE_3__.useAuth) is not a function. 
 
 4. solution:
@@ -186,7 +190,7 @@ AI prompt: The 'react-firebase-hooks' library has been deprecated and is no long
 
 You might want to consider using the 'react-firebase-hooks' successor library, 'reactfire', which is currently maintained by Firebase. It provides a similar set of hooks for Firebase services.
 
-But the google search didn't mention that the 'react-firebase-hooks' has been deprecated. i paused there, and i'll continue with the tutorial to understand more. DM: yeah AI may be confused, you can check the GitHub page for react-firebase-hooks to see if it is currently being maintained.
+But the google search didn't mention that the 'react-firebase-hooks' has been deprecated. i paused there, and i'll continue with the tutorial to understand more. DM: yeah AI may be confused, you can check the GitHub page for react-firebase-hooks to see if it is currently being maintained.(ok)
 */
 
 export default User

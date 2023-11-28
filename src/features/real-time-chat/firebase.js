@@ -77,7 +77,7 @@ i console logged process.env and got all the variables i set in .env.local, then
 
   DM: this are just strings that you are moving from one place to another. you're expectation should be that 0 problem/changes in the app. If there is a problem, then console.log the process.env.ENV_VAR_NAME to see if it is correct. 
   DM: todoMM: only put the secrets in .env.local. the API key definitely, and maybe your messaging sender but only if it is a secret.  
-  DM: todoMM: .env.local is shared global file, so put something more specific in your variable names, such as REAL_TIME_CHAT_API_KEY
+  DM: todoMM: .env.local is shared global file, so put something more specific in your variable names, such as REAL_TIME_CHAT_API_KEY. MM: i think i mentioned all the steps that i took above, but i encountered errors and i had to revert the changes. i added console.log and got the server running correctly, i don't what could be the problem. i will try again and see if i can get it working.
 
     1. add the following to .env.local:
     REACT_APP_API_KEY=AIzaSyDkDSHVPcfg
@@ -124,7 +124,7 @@ console.log(firebaseConfig.apiKey)
 variables: app, auth, DB
 are initialized "in the module scope" (outside of any function or block) so that when they are imported into other files, they are already initialized and ready to use. Most importantly, they are initialized only once in the lifecycle of the app (until you reload the browser, which causes the whole app to start over), not every time they are imported by different files. We want them to be initialized only once, when the app is initially loaded (this is all happening in the browser, BTW).
 
-DM: todoMM: this is very important to understand. ask AI to "restate this in other words" to be sure you fully understand it.
+(done)DM: todoMM: this is very important to understand. ask AI to "restate this in other words" to be sure you fully understand it.
 
 */
 
@@ -144,7 +144,7 @@ export { app }
 const auth = getAuth()
 export { auth }
 
-// DM: todoMM: import into UserContextProvider (after you create it per other todoMMm)
+//(done) DM: todoMM: import into UserContextProvider (after you create it per other todoMMm)
 // Export the auth object and the authentication functions
 export const signup = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)

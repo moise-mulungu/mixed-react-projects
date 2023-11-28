@@ -206,8 +206,8 @@ myObject.myPropertyNameInAVariable // error! myPropertyNameInAVariable is undefi
 
 In this phase, the JavaScript engine reads through the entire code without executing it. It looks for variable and function declarations and creates memory spaces for them in what's called the `Variable Environment`. This is where hoisting takes place. The engine assigns memory space for variables and initializes them with a default value of undefined, and for functions, it stores the entire function's code. It also checks for syntax errors during this phase.
 
-DM: going forward, no that you're dealing with more adnavced topics that I may not know "off the top of my head", show your references for the definitions, i.e., a URL or put "AI" if that's the case. EX above I'm not familiar with the term "variable environment" so I wouldn't know if AI invented the term or borrowed it from another programming language or context. If I google search "js compile "Variable Environment"" I see little mention of it, but there are some. 
-DM: todoMM: I think "variable environment" means "memory space" but double check it with a google search. 
+DM: going forward, know that you're dealing with more advanced topics that I may not know "off the top of my head", show your references for the definitions, i.e., a URL or put "AI" if that's the case. EX above I'm not familiar with the term "variable environment" so I wouldn't know if AI invented the term or borrowed it from another programming language or context. If I google search "js compile "Variable Environment"" I see little mention of it, but there are some. 
+(done)DM: todoMM: I think "variable environment" means "memory space" but double check it with a google search. MM: src: https://www.scaler.com/topics/hoisting-in-javascript/ and AI-Sider
 
 ## Execution Phase
 
