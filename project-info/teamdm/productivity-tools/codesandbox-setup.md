@@ -1,5 +1,27 @@
 
-// DM: todoMM: do all of the below
+//(done) DM: todoMM: do all of the below
+
+<!--
+1. project(https://github.com/theodorusclarence/ts-nextjs-tailwind-starter) installation:
+   1. forked the project
+   2. cloned 
+   3. installed dependencies; yarn was not install and encountered conflict between yarn and yarnpkg. i ru the following to resolve conflict: 
+      sudo apt-get remove yarnpkg
+      curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+      echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+      sudo apt-get update
+      sudo apt-get install yarn
+   this process took over an hour due to the packages volume and internet instability 
+   4. the localhost: 3000 run successfully with the NextJS homepage
+   5. added "**/*.js", "**/*.jsx" to the include property in tsconfig.json file
+   6. changed src/app/pages.tsx file extension to jsx
+   7. pushed with a "initial commit" as first commit
+   8. created a "three-button-exercise" branch
+   9. copilot prompt: "ReactJS, tailwindcss; write a component that displays a button group of 3 buttons that will change the background color of the page to 3 different colors"
+   10. add the copilot provided code to the src/app/page.jsx
+   11. close and run the server again
+   12. commit the change and pushed
+ -->
 
 
 # codesandbox.io sandbox for NextJS-tailwind
@@ -59,7 +81,7 @@ scenario: a feature/component/package called fooBar is not working in your app, 
   * npm install any packages that you need in the terminal (start a new terminal at the bottom panel)
 * see if it works!
   * DM's URL: https://jxf7z4-3000.csb.app/
-  * MM's URL: 
+  * MM's URL: https://github.com/moise-mulungu/ts-nextjs-tailwind-starter
 * commit changes to the branch
 
 # summary
