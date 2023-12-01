@@ -1,7 +1,8 @@
 
-//(done) DM: todoMM: do all of the below
+DM: the purpose of all this was to use codesandbox and do all of this work there, but it looks like you did all of this on your local machine? So, you've left me wondering why you didn't follow my instructions below by doing this on codesandbox and providing me a demo URL? I'm sure there is a reason, but you need to communicate it to me. That said, it is useful to have gone through the process of making this new repo work locally, and good job listing all your setup steps. 
 
-<!--
+DM: so, what was your reason? The idea was to learn how to use codesandbox.io which provides an environment to quickly test some new code outside the project repo AND get an instant sharable link.
+
 1. project(https://github.com/theodorusclarence/ts-nextjs-tailwind-starter) installation:
    1. forked the project
    2. cloned 
@@ -21,7 +22,7 @@
    10. add the copilot provided code to the src/app/page.jsx
    11. close and run the server again
    12. commit the change and pushed
- -->
+
 
 
 # codesandbox.io sandbox for NextJS-tailwind
@@ -82,6 +83,8 @@ scenario: a feature/component/package called fooBar is not working in your app, 
 * see if it works!
   * DM's URL: https://jxf7z4-3000.csb.app/
   * MM's URL: https://github.com/moise-mulungu/ts-nextjs-tailwind-starter
+    * DM: todoMM: import your new repo into codesandbox.io and send me the demo url. If there is some reason you absolutely cannot use codesandbox.io, then publish this on Vercel, then put your Vercel link into the README.md and push. The idea is to get a URL to share because it is too much trouble for me to clone and run locally (on the job, your manager/teammates will want a link they can click on quickly). 
+
 * commit changes to the branch
 
 # summary
