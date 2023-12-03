@@ -3,7 +3,7 @@
    Variables declared with let and const are hoisted to the top of the block, but they remain uninitialized until the code execution reaches the declaration. Trying to access them before declaration results in a ReferenceError.
 */
 
-// DM: I wrote some better examples to illustrate the point
+// DM: I wrote some better examples to illustrate the point(good!)
 
 // set the top-level if statements condition to `true` to run the code
 

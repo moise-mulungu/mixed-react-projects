@@ -1,4 +1,4 @@
-// DM: I need to do some more work on this, so I'll let you know when to read it
+// DM: I need to do some more work on this, so I'll let you know when to read it(ok)
 
 // this is really tricky, but read it and ask me questions. Then, come back later and read it again and again. It will sink in.
 // pay attention to "what is the path of execution through the code", because it is not linear

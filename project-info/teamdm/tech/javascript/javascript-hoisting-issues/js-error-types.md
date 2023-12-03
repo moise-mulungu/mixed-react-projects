@@ -34,4 +34,36 @@
     - occur when code doesn't perform as intended
     - no violations of language rules, hence no exceptions thrown
     - example: incorrect use of logic operators leading to wrong outcomes
+    - 
+    <!-- MM: i added this example because i found it very instructive -->
+      ```js
+      function calculateAverage(num1, num2) {
+          return num1 + num2 / 2;
+      }
+
+      console.log(calculateAverage(10, 20)); // Outputs 20, but the expected output is 15
+      // In this example, the intention is to calculate the average of num1 and num2. However, due to the precedence of operators in JavaScript, the division operation is performed first, and then the result is added to num1. This leads to incorrect results. The correct code should be:
+      
+      function calculateAverage(num1, num2) {
+        return (num1 + num2) / 2;
+      }
+
+      console.log(calculateAverage(10, 20)); // Outputs 15, which is the correct average
+      ```
+    - Best practices for debugging and preventing logic errors in JavaScript:
+      1. Use console.log Statements: This is a simple and effective way to track the flow of your program and inspect the values of variables at different stages of execution
+  
+      2. Use a Debugger: Modern browsers and IDEs have built-in debuggers that allow you to step through your code line by line, inspect variables, and see the call stack.
+  
+      3. Write Unit Tests: Writing tests for your functions can help ensure they are producing the expected output for a given input. This can help catch logic errors before they become a problem
+
+      4. Code Review: Having another set of eyes look over your code can help catch logic errors that you might have missed.
+
+      5. Understand the Problem Well: Make sure you fully understand the problem you're trying to solve before you start coding. This can help prevent logic errors caused by misunderstandings about what the code should be doing
+
+      6. Break Down Complex Problems: If a problem is complex, break it down into smaller parts. Solve and test each part individually. This can make it easier to spot logic error
+  
+      7. Use Linters: Linters can catch potential issues in your code that could lead to logic errors.
+
+      8. Follow Best Practices: Following best practices for coding in JavaScript can help prevent many common logic errors.
 

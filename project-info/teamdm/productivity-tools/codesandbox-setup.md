@@ -1,7 +1,17 @@
 
 DM: the purpose of all this was to use codesandbox and do all of this work there, but it looks like you did all of this on your local machine? So, you've left me wondering why you didn't follow my instructions below by doing this on codesandbox and providing me a demo URL? I'm sure there is a reason, but you need to communicate it to me. That said, it is useful to have gone through the process of making this new repo work locally, and good job listing all your setup steps. 
 
-DM: so, what was your reason? The idea was to learn how to use codesandbox.io which provides an environment to quickly test some new code outside the project repo AND get an instant sharable link.
+DM: so, what was your reason? The idea was to learn how to use codesandbox.io which provides an environment to quickly test some new code outside the project repo AND get an instant sharable link. 
+MM: there was a step that i didn't understand "how to import a repository from GitHub on codesanbox". i was mistaken for not asking AI for clarification, i just followed your provided steps below.
+Here is the AI prompt: how to import a repository from github on codesanbox?
+AI answer: 
+
+  1. Go to CodeSandbox website: https://codesandbox.io
+  2. Click on the "Sign In" button at the top right corner and sign in with your account.
+  3. After signing in, click on the "Create Sandbox" button at the bottom right corner.
+  4. In the new window that appears, click on the "Import Project" button at the top right corner.
+  5. In the "Import from GitHub" section, paste the URL of the GitHub repository you want to import.
+  6. Click on the "Import and Fork" button.
 
 1. project(https://github.com/theodorusclarence/ts-nextjs-tailwind-starter) installation:
    1. forked the project
@@ -82,8 +92,8 @@ scenario: a feature/component/package called fooBar is not working in your app, 
   * npm install any packages that you need in the terminal (start a new terminal at the bottom panel)
 * see if it works!
   * DM's URL: https://jxf7z4-3000.csb.app/
-  * MM's URL: https://github.com/moise-mulungu/ts-nextjs-tailwind-starter
-    * DM: todoMM: import your new repo into codesandbox.io and send me the demo url. If there is some reason you absolutely cannot use codesandbox.io, then publish this on Vercel, then put your Vercel link into the README.md and push. The idea is to get a URL to share because it is too much trouble for me to clone and run locally (on the job, your manager/teammates will want a link they can click on quickly). 
+  * MM's URL: https://codesandbox.io/p/github/moise-mulungu/ts-nextjs-tailwind-starter/main?workspaceId=c977606c-3102-4078-868c-1735ee81ab93
+    *(done) DM: todoMM: import your new repo into codesandbox.io and send me the demo url. If there is some reason you absolutely cannot use codesandbox.io, then publish this on Vercel, then put your Vercel link into the README.md and push. The idea is to get a URL to share because it is too much trouble for me to clone and run locally (on the job, your manager/teammates will want a link they can click on quickly). 
 
 * commit changes to the branch
 

@@ -567,3 +567,11 @@ A parameter in JavaScript is a variable used in the declaration of a function. I
 ## parameter VS argument: depends on the context
 * parameter: when _defining a function_, you specify parameters
 * argument: when _calling a function_, you pass arguments to the function
+
+## parsing vs execution code
+
+### parsing
+In this phase, the JavaScript engine reads the source code. It checks the syntax of the code and creates a data structure known as the Abstract Syntax Tree (AST). If there are any syntax errors (like missing brackets or typos), they are detected in this phase and a SyntaxError is thrown. The parsing phase does not involve running the code, it's only about understanding the structure of the code.
+
+### execution
+After the parsing phase, if no syntax errors are found, the JavaScript engine proceeds to the execution phase. In this phase, the engine runs the code line by line. It allocates memory for variables, performs computations, and carries out any actions specified by the code (like modifying the DOM, making network requests, etc.). If there are any errors that occur during the execution of the code (like trying to access an undefined variable or calling a non-existent function), they are detected in this phase and the appropriate error (like a ReferenceError or TypeError) is thrown.
