@@ -137,7 +137,8 @@ are initialized "in the module scope" (outside of any function or block) so that
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
-export { app }
+const auth = getAuth()
+export { app, auth }
 // let app
 // if (!getApps().length) {
 //   app = initializeApp(firebaseConfig)
@@ -148,8 +149,7 @@ export { app }
 
 //(done) DM: you will need this in other files, so export it
 // Initialize Firebase Auth
-const auth = getAuth()
-export { auth }
+// export { auth }
 
 //(done) DM: import into UserContextProvider (after you create it per other todo__MM)
 // Export the auth object and the authentication functions

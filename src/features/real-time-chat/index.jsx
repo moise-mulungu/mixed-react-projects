@@ -53,3 +53,45 @@ export default function RealTimeChat() {
     </UserContextProvider>
   )
 }
+
+
+/*
+import { useState } from 'react'
+import Header from './header'
+import ChatBox from './chat-box'
+import MessageInput from './message-input'
+import Footer from './footer'
+import User from './user'
+import UserContextProvider from './user/user-context-provider'
+
+export default function RealTimeChat() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  if (!isAuthenticated) {
+    return (
+      <UserContextProvider>
+        <User onAuthenticate={() => setIsAuthenticated(true)} />
+      </UserContextProvider>
+    )
+  }
+
+  return (
+    <UserContextProvider>
+      <div className="flex flex-col h-screen bg-gray-100 mx-2">
+        <Header />
+        <div className="flex-grow flex">
+          <div className="flex flex-col w-1/3 border-r-2 border-gray-200">
+            <ChatBox />
+          </div>
+          <div className="flex flex-col w-1/3 border-r-2 border-gray-200">
+            <MessageInput />
+          </div>
+          <div className="flex flex-col w-1/3" />
+        </div>
+        <Footer />
+      </div>
+    </UserContextProvider>
+  )
+}
+
+*/

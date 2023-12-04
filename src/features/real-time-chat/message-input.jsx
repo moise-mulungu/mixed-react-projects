@@ -70,3 +70,66 @@ export default function MessageInput({ onSendMessage }) {
     </form>
   )
 }
+
+/*
+import { useState, useContext } from 'react'
+import { UserContext } from './user/user-context-provider'
+import { addDoc, collection } from 'firebase/firestore'
+import db from './firebase'
+
+export default function MessageInput() {
+  const [message, setMessage] = useState('')
+  const user = useContext(UserContext)
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    await sendMessage(message)
+    setMessage('')
+  }
+
+  const handleInputChange = (e) => {
+    setMessage(e.target.value)
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && e.ctrlKey) {
+      handleSubmit(e)
+    }
+  }
+
+  const sendMessage = async (message) => {
+    if (!user || !user.displayName) {
+      console.error('User is not defined or does not have a displayName')
+      return
+    }
+    try {
+      await addDoc(collection(db, 'messages'), {
+        text: message,
+        createdAt: new Date().toISOString(),
+        user: user.displayName,
+      })
+    } catch (e) {
+      console.error('Error adding document: ', e)
+    }
+  }
+
+  const rows = message.split('\n').length
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col h-full border-t-2 border-purple-300 p-4">
+      <textarea
+        value={message}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
+        placeholder="Type your message here..."
+        className="w-full flex-grow mb-4 p-2 rounded border-2 border-purple-500 resize-none"
+        rows={rows}
+      />
+      <button type="submit" className="bg-purple-500 text-white rounded p-2">
+        Send
+      </button>
+    </form>
+  )
+}
+
+*/

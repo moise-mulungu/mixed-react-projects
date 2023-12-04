@@ -1,7 +1,11 @@
 // JavaScript (React)
 import { useState, useContext } from 'react'
 // import { useAuthState } from 'react-firebase-hooks/auth'
-import { login, signup } from '../firebase'
+import { 
+  // auth, 
+  login, signup } from '../firebase'
+// import firebase from 'firebase/app'
+// import 'firebase/auth'
 import { UserContext } from './user-context-provider'
 import Login from './login'
 import Signup from './signup'
@@ -33,7 +37,29 @@ const User = ({ onAuthenticate }) => {
   const { setUser } = useContext(UserContext)
   // const [, , authError] = useAuthState()
 
+  // auth.onAuthStateChanged((user) => {
+  //   if (!user) {
+  //     return
+  //   }
+  //   console.log(user.displayName) // Check if displayName is updated
+  //   setUser(user)
+  //   setIsLoggedIn(true)
+  // })
+
+  // auth.onAuthStateChanged((user) => {
+  //   if (!user) {
+  //     return
+  //   }
+  //   if ('displayName' in user) {
+  //     // Check if user has a displayName property
+  //     console.log(user.displayName)
+  //   } // Check if displayName is updated
+  //   setUser(user)
+  //   setIsLoggedIn(true)
+  // })
+
   const handleLogin = (email, password) => {
+    console.log('handleLogin called')
     // if (!validateEmail(username)) {
     //   setError('Invalid email format')
     //   return
@@ -43,6 +69,7 @@ const User = ({ onAuthenticate }) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user
+        console.log({ user })
         setUser(user)
         // ...
         onAuthenticate()
@@ -56,6 +83,7 @@ const User = ({ onAuthenticate }) => {
   }
 
   const handleSignup = (email, username, password) => {
+    console.log('handleSignup called')
     // if (!validateEmail(username)) {
     //   setError('Invalid email format')
     //   return
@@ -70,11 +98,39 @@ const User = ({ onAuthenticate }) => {
         //   })
         //   .then(() => {
         const user = userCredential.user
-        setUser(user)
-        // ...
-        // onAuthenticate()
-        setIsLoggedIn(true)
+        console.log({ user })
+        // setUser(user)
+        // setUser({ displayName: user.displayName || email })
+        // // ...
+        // // onAuthenticate()
+        // setIsLoggedIn(true)
+        // return user.updateProfile({
+        //   displayName: username, // Set displayName here
         // })
+        // .then(() => {
+        //   return user.reload()
+        // })
+        // .then(() => {
+        //   // Update successful.
+        //   // setUser(user)
+        //   // Get the current user from Firebase again.
+        //   const currentUser = firebase.auth().currentUser
+        //   console.log({ currentUser })
+        //   setUser(currentUser)
+        //   setIsLoggedIn(true)
+        // })
+        // .catch((error) => {
+        //   // An error occurred.
+        //   setError(error.message)
+        // })
+        // )
+      //   // })
+      // })
+      // .then(() => {
+      //   const user = auth.currentUser
+      //   console.log({ user })
+        setUser(user)
+        setIsLoggedIn(true)
       })
       .catch((error) => {
         // const errorCode = error.code
@@ -83,6 +139,8 @@ const User = ({ onAuthenticate }) => {
         setError(errorMessage)
       })
   }
+
+  console.log({ isLoggedIn })
   // const handleLogin = async (email, password) => {
   //   try {
   //     const userCredential = await login(email, password)
@@ -206,6 +264,12 @@ DM: ok, things can get tricky when you have existing code that does things in a 
 DM: todoMM: edit the next 2 lines to be sure you're using the correct Google Cloud/Firestore terminology:
 before: real-time-chat Google Cloud Firestore in Datastore mode? OR Google Cloud Datastore?
 after: app-chat: normal database? or Firebase Firestore Database?
+
+*/
+
+/*
+MM: DM: i faced blockers when i click a signup button of not loading and crashing the application: firebase error: next-dev.js:25 Error adding document:  FirebaseError: Function addDoc() called with invalid data. Unsupported field value: undefined (found in field user in document messages/tuCI3kKosIYNkT8UtssY). i tried all the solutions suggested by AI by adding console.log to the handleSignup function elements, but the errors still persist.
+after debugging i found that displayName is undefined. i commented the code and reverted the first ones, you can uncomment and have look at the errors.
 
 */
 
