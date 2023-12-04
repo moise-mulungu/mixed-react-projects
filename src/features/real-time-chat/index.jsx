@@ -54,8 +54,10 @@ export default function RealTimeChat() {
   )
 }
 
-
 /*
+
+DM: see my comment in message-input.jsx. same issue here.
+
 import { useState } from 'react'
 import Header from './header'
 import ChatBox from './chat-box'

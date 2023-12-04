@@ -138,6 +138,11 @@ are initialized "in the module scope" (outside of any function or block) so that
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
 const auth = getAuth()
+/* 
+DM: todoMM: don't export unnamed object literals like this. You can export each the usual way:
+export const app = initializeApp(firebaseConfig)
+export const auth = getAuth()
+ */
 export { app, auth }
 // let app
 // if (!getApps().length) {

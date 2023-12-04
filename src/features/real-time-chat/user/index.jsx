@@ -1,9 +1,11 @@
 // JavaScript (React)
 import { useState, useContext } from 'react'
 // import { useAuthState } from 'react-firebase-hooks/auth'
-import { 
-  // auth, 
-  login, signup } from '../firebase'
+import {
+  // auth,
+  login,
+  signup,
+} from '../firebase'
 // import firebase from 'firebase/app'
 // import 'firebase/auth'
 import { UserContext } from './user-context-provider'
@@ -124,11 +126,11 @@ const User = ({ onAuthenticate }) => {
         //   setError(error.message)
         // })
         // )
-      //   // })
-      // })
-      // .then(() => {
-      //   const user = auth.currentUser
-      //   console.log({ user })
+        //   // })
+        // })
+        // .then(() => {
+        //   const user = auth.currentUser
+        //   console.log({ user })
         setUser(user)
         setIsLoggedIn(true)
       })
@@ -136,7 +138,8 @@ const User = ({ onAuthenticate }) => {
         // const errorCode = error.code
         const errorMessage = error.message
         // Handle errors here
-        setError(errorMessage)
+        // DM: todoMM: this error message is not very helpful. It would be better to show the user the specific error message.. You can get the specific error message or more inform from looking at the entire error object. Hmmm, looks like the error wasn't caught here for some reason.
+        setError(errorMessage, error)
       })
   }
 
@@ -269,7 +272,9 @@ after: app-chat: normal database? or Firebase Firestore Database?
 
 /*
 MM: DM: i faced blockers when i click a signup button of not loading and crashing the application: firebase error: next-dev.js:25 Error adding document:  FirebaseError: Function addDoc() called with invalid data. Unsupported field value: undefined (found in field user in document messages/tuCI3kKosIYNkT8UtssY). i tried all the solutions suggested by AI by adding console.log to the handleSignup function elements, but the errors still persist.
-after debugging i found that displayName is undefined. i commented the code and reverted the first ones, you can uncomment and have look at the errors.
+after debugging i found that displayName is undefined. i commented the code and reverted the first ones, you can uncomment and have look at the errors. DM: I can't know which of the many commented out lines in this file to uncomment in order to see what you we're doing. Either leave specific instructions about what lines to uncomment, or leave the code in the exact state it was in when you got stuck, so I can see what you tried and what the errors are. (I know I've told you in the past not to leave the code in an error state, but if you note it specifically in a comment that you're leaving it broken so that I can help debug, its ok. ) 
+
+DM: todays bugs looks like it was difficult to figure out. One possible approach: the reason I had you do the codesandbox exercise, is you can try to implement just the part that is breaking (the login/signup?) in a new clean NextJS project, and once you have it working there, it will be easier to see what is different in your chat project and get clues as to why it is not working. It is your decision. If not, maybe if you leave the code in the broken state, I can see what you tried and get clues as to what is wrong. Definitely look closer at the error object and try to determine from all the details there what went wrong, including google the error messages you get. 
 
 */
 

@@ -34,7 +34,7 @@ export default function Signup({ handleSignup, error, toggleAuthenticationMode }
           {error && <p className="text-black">{error}</p>}
           <button
             onClick={() => {
-              console.log('Signup button clicked')
+              console.log('Signup button clicked', { email, username, password })
               handleSignup(email, username, password)
             }}
             className="p-2 mt-4 bg-yellow-500 text-white rounded mb-2 w-full"
