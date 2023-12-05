@@ -135,15 +135,15 @@ are initialized "in the module scope" (outside of any function or block) so that
 
 */
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig)
-const auth = getAuth()
-/* 
-DM: todoMM: don't export unnamed object literals like this. You can export each the usual way:
 export const app = initializeApp(firebaseConfig)
+// Initialize Firebase
+// const app = initializeApp(firebaseConfig)
+// export { app }
+/* 
+(done)DM: todoMM: don't export unnamed object literals like this. You can export each the usual way:
+*/
+// const auth = getAuth()
 export const auth = getAuth()
- */
-export { app, auth }
 // let app
 // if (!getApps().length) {
 //   app = initializeApp(firebaseConfig)

@@ -73,8 +73,7 @@ export default function MessageInput({ onSendMessage }) {
 
 /*
 
-DM: this looks like there are not many changes from the original above. It is better to comment out in place, rather than copy the entire code then comment out the entire code here. The reason is I can't tell what the diff is from this commented out code and the original code above, so I can't see what you traied to do, so I can't help. 
-
+DM: this looks like there are not many changes from the original above. It is better to comment out in place, rather than copy the entire code then comment out the entire code here. The reason is I can't tell what the diff is from this commented out code and the original code above, so I can't see what you traied to do, so I can't help. MM: i separated the two for code error reason, the same for other files, but i'll place the comments in the original code.
 
 import { useState, useContext } from 'react'
 import { UserContext } from './user/user-context-provider'
