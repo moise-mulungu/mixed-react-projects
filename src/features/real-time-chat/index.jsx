@@ -17,10 +17,16 @@ export default function RealTimeChat() {
   const [messages, setMessages] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   // const [user, setUser] = useState(null)
+  const [connectedUsers, setConnectedUsers] = useState([])
 
   // DM: nice function name
   const onSendMessage = (message) => {
     setMessages([...messages, { text: message, sender: 'You', timestamp: new Date() }])
+  }
+
+  const handleUserConnect = (user) => {
+    // new function to handle user connection
+    setConnectedUsers([...connectedUsers, user])
   }
 
   if (!isAuthenticated) {
@@ -28,7 +34,7 @@ export default function RealTimeChat() {
     //(done) DM: after you have put the user* files into a ./user directory (see todo in user.js), create a file named ./user/user-context-provider.jsx and extract user, setUser into that file. Then, import that file here and use it to wrap the User component here (and also in the top-level return statement). This way, you can keep all the user-related code in one place.
     return (
       <UserContextProvider>
-        <User onAuthenticate={() => setIsAuthenticated(true)} />
+        <User onAuthenticate={() => setIsAuthenticated(true)} onConnect={handleUserConnect} />
       </UserContextProvider>
     )
   }
@@ -46,7 +52,23 @@ export default function RealTimeChat() {
             {/*(done) DM: choose either onSendMessage or handleSendMessage (both names are great, imo), but the prop name should be the same as the function name. this makes it a LOT easier to follow what is what as you jump back and forth between components and tweak code. If they have different names, it gets confusing and mistakes can happen. (PS: I like onSendMessage a little better, since it isn't directly an event handler, but rather is called by an event handler in another component.) */}
             <MessageInput onSendMessage={onSendMessage} />
           </div>
-          <div className="flex flex-col w-1/3">{/* User component goes here */}</div>
+          <div className="flex flex-col w-1/3">
+            {/* Display connected users here */}
+            <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
+              Connected Users
+            </h2>
+            {connectedUsers.map(
+              (user, index) => (
+                console.log({ user }),
+                (
+                  <div key={index} className="text-gray-100 bg-green-500 p-2 rounded">
+                    {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email*/}
+                    {user.displayName}
+                  </div>
+                )
+              )
+            )}
+          </div>
         </div>
         <Footer />
       </div>

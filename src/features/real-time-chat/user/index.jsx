@@ -15,7 +15,7 @@ import Signup from './signup'
 //(done) DM: todoMM: move to directory named user/index.jsx and add user-context.jsx to that directory. This way, as this app grows (it seems like it will be come quite large), it will be easier to keep track of what files are imported by what other files.
 
 // todoDM: example for lesson on hoisting, const not hoisted, function declarations are hoisted
-const User = ({ onAuthenticate }) => {
+const User = ({ onAuthenticate, onConnect }) => {
   // const [email, setEmail] = useState('')
   // const [username, setUsername] = useState('')
   // const [password, setPassword] = useState('')
@@ -75,6 +75,7 @@ const User = ({ onAuthenticate }) => {
         setUser(user)
         // ...
         onAuthenticate()
+        onConnect(user) // call onConnect when a user logs in
       })
       .catch((error) => {
         // const errorCode = error.code
@@ -131,8 +132,22 @@ const User = ({ onAuthenticate }) => {
         // .then(() => {
         //   const user = auth.currentUser
         //   console.log({ user })
-        setUser(user)
-        setIsLoggedIn(true)
+        // setUser(user)
+        // setIsLoggedIn(true)
+        // onConnect(user) // call onConnect when a user logs in
+        user
+          .updateProfile({
+            displayName: username,
+          })
+          .then(() => {
+            console.log('Display Name updated')
+            setUser(user)
+            setIsLoggedIn(true)
+            onConnect(user) // call onConnect when a user logs in
+          })
+          .catch((error) => {
+            console.error('Error updating display name', error)
+          })
       })
       .catch((error) => {
         // const errorCode = error.code
