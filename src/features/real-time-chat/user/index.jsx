@@ -80,6 +80,8 @@ const User = ({ onAuthenticate, onConnect }) => {
       .catch((error) => {
         // const errorCode = error.code
         const errorMessage = error.message
+        console.log('login Error: ', error)
+
         // Handle errors here
         setError(errorMessage)
       })
@@ -101,7 +103,7 @@ const User = ({ onAuthenticate, onConnect }) => {
         //   })
         //   .then(() => {
         const user = userCredential.user
-        console.log({ user })
+        console.log({ user }) // DM: good, you logged it
         // setUser(user)
         // setUser({ displayName: user.displayName || email })
         // // ...
@@ -135,6 +137,10 @@ const User = ({ onAuthenticate, onConnect }) => {
         // setUser(user)
         // setIsLoggedIn(true)
         // onConnect(user) // call onConnect when a user logs in
+
+        // DM: this line triggers the error: "user.updateProfile is not a function". What does this mean? If user.updateProfile is not a function, then what data type is it? A string? Undefined? Do a console.log to find out. If it is undefined, then something is wrong with your user object. In the console.log({user}) above the log says it is of type UserImpl so it looks like it a valid user object. Google the error message (adding "firebase signup", for example, as context for the search). Maybe someone had that problem. Also, I imagine it's possible the user object is not created using the correct package? Or, something hasn't been initialized correctly, leaving the user object without a updateProfile property?
+        // DM: tomorrow be sure to push the app in the exact broken state you want me to debug, then write me what steps to reproduce the problem, what error I should see, what you tried to debug it, and what you think the problem might be. I'll try to help you debug it.
+        // DM: cloud services are hard to debug in some situations. If I we're you, I would find a recent instructions/tutorial to setup exactly the functionality you have broken now (ideally at the official site, but sometimes other sites are good). Follow the instructions exactly, and get it working in a simple project (like the project you created for codesandbox (you can do it on your local machine if codesandbox doesn't work for you)). Then, once you have it working in a simple project, you can compare your code to the example code and see what is different.
         user
           .updateProfile({
             displayName: username,
@@ -153,8 +159,10 @@ const User = ({ onAuthenticate, onConnect }) => {
         // const errorCode = error.code
         const errorMessage = error.message
         // Handle errors here
-        //(in progress) DM: todoMM: this error message is not very helpful. It would be better to show the user the specific error message.. You can get the specific error message or more inform from looking at the entire error object. Hmmm, looks like the error wasn't caught here for some reason. MM: firebase configuration is more complex that i am having difficulties to understand. some AI answers are not clear, and more confusing.
-        setError(errorMessage, error)
+        //(in progress) DM: todoMM: this error message is not very helpful. It would be better to show the user the specific error message.. You can get the specific error message or more inform from looking at the entire error object. Hmmm, looks like the error wasn't caught here for some reason. MM: firebase configuration is more complex that i am having difficulties to understand. some AI answers are not clear, and more confusing. DM: DEVs still have to use google or read docs/tutorials to figure out how to use a library. AI is not a complete replacement for that.
+        // so I can see the entire error (with all its properties) in the console (browser console)
+        console.log('signup Error: ', error)
+        setError(errorMessage)
       })
   }
 
@@ -288,6 +296,8 @@ after: app-chat: normal database? or Firebase Firestore Database?
 /*
 MM: DM: i faced blockers when i click a signup button of not loading and crashing the application: firebase error: next-dev.js:25 Error adding document:  FirebaseError: Function addDoc() called with invalid data. Unsupported field value: undefined (found in field user in document messages/tuCI3kKosIYNkT8UtssY). i tried all the solutions suggested by AI by adding console.log to the handleSignup function elements, but the errors still persist.
 after debugging i found that displayName is undefined. i commented the code and reverted the first ones, you can uncomment and have look at the errors. DM: I can't know which of the many commented out lines in this file to uncomment in order to see what you we're doing. Either leave specific instructions about what lines to uncomment, or leave the code in the exact state it was in when you got stuck, so I can see what you tried and what the errors are. (I know I've told you in the past not to leave the code in an error state, but if you note it specifically in a comment that you're leaving it broken so that I can help debug, its ok. MM: i think i am doing my best to follow all the instructions you are providing even though i am missing out some, in this firebase config case, i tried all the necessaries approaches by googling and asking AI suggestions as well, but i found it's very hard on my level to debug it. in the previous config of keeping secrets keys in env file, i attempted all the solutions but i couldn't get it right. i described the steps that i undertaken, however on your reviews i was expecting you to give me the right hints to solve the problem, but you have not yet. for implementing real-time messaging, i tried all the possible solutions as i mentioned above, but i was having errors, so i decided to keep the code in comments so that you would check them and give me hints to follow. i mentioned that in comments, the code made crash the app, and slow down the computer. how could i keep the app crash?, because i knew you would tell me to not leave the code in the error state.) 
+DM: RE secrets in the env file: see my new note in the firebase.js file
+DM: RE real-time messaging in your comment above: the point of my last message in the same line is I need specific instructions about what to uncomment. There is a ton of code commented in this file. Either give me exact instructions to reproduce your issue, or push the code in the broken state (which we usually avoid, but if you call it out for the purpose of me helping debug it is ok. There is nothing wrong with what you are coding and debugging, it is just how you are communicating to me that was my difficulty yesterday. So, before you you commit, look at the diff of your today's changes, and  imagine me reading the diff and your comments, and ask yourself, will I know what to do to reproduce the issue? Make it "easy" for me to help you. Clear communication takes work and practice, but it is worth practicing as you'll need in on the job. 
 
 DM: todays bugs looks like it was difficult to figure out. One possible approach: the reason I had you do the codesandbox exercise, is you can try to implement just the part that is breaking (the login/signup?) in a new clean NextJS project, and once you have it working there, it will be easier to see what is different in your chat project and get clues as to why it is not working. It is your decision. If not, maybe if you leave the code in the broken state, I can see what you tried and get clues as to what is wrong. Definitely look closer at the error object and try to determine from all the details there what went wrong, including google the error messages you get. 
 

@@ -26,6 +26,7 @@ export default function RealTimeChat() {
 
   const handleUserConnect = (user) => {
     // new function to handle user connection
+    // DM: todoMM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
     setConnectedUsers([...connectedUsers, user])
   }
 
@@ -34,7 +35,11 @@ export default function RealTimeChat() {
     //(done) DM: after you have put the user* files into a ./user directory (see todo in user.js), create a file named ./user/user-context-provider.jsx and extract user, setUser into that file. Then, import that file here and use it to wrap the User component here (and also in the top-level return statement). This way, you can keep all the user-related code in one place.
     return (
       <UserContextProvider>
-        <User onAuthenticate={() => setIsAuthenticated(true)} onConnect={handleUserConnect} />
+        <User
+          onAuthenticate={() => setIsAuthenticated(true)}
+          // DM: todoMM: use the same name in both files to avoid confusion. (I like onUserConnect. Don't worry about being concise - it is more important to be clear.)
+          onConnect={handleUserConnect}
+        />
       </UserContextProvider>
     )
   }

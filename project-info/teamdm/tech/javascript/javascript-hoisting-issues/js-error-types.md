@@ -67,3 +67,13 @@
 
       8. Follow Best Practices: Following best practices for coding in JavaScript can help prevent many common logic errors.
 
+      DM: cool, good list. 
+      DM: in this case, my personal rules would help:
+      * assigning each expression to a well-named variable
+      * no compound expressions, ie no more than one operator in the expression: num1 + num2 / 10 // 2 operators: + and /
+      ```js
+      const numerator = num1 + num2
+      const denominator = 2
+      return numerator / denominator
+      ```
+      DM: this way there would be no confusion about operator precedence, because you follow rules that keep things separated and simple (and easier to console.log, because console.log wouldn't show you the problem in the above example.)
