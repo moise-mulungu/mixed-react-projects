@@ -16,12 +16,13 @@ import Signup from './signup'
 //(done) DM: todoMM: move to directory named user/index.jsx and add user-context.jsx to that directory. This way, as this app grows (it seems like it will be come quite large), it will be easier to keep track of what files are imported by what other files.
 
 // todoDM: example for lesson on hoisting, const not hoisted, function declarations are hoisted
-const User = ({ onAuthenticate, onConnect }) => {
+const User = ({ onConnect }) => {
   // const [email, setEmail] = useState('')
   // const [username, setUsername] = useState('')
   // const [password, setPassword] = useState('')
   const [error, setError] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   // const handleLogin = () => {
   //   // Handle login
@@ -72,11 +73,12 @@ const User = ({ onAuthenticate, onConnect }) => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user
-        console.log({ user })
+        console.log(user.displayName)
         setUser(user)
         // ...
-        onAuthenticate()
+        // onAuthenticate()
         onConnect(user) // call onConnect when a user logs in
+        setLoading(true)
       })
       .catch((error) => {
         // const errorCode = error.code
@@ -85,6 +87,7 @@ const User = ({ onAuthenticate, onConnect }) => {
 
         // Handle errors here
         setError(errorMessage)
+        setLoading(true)
       })
   }
 
@@ -144,7 +147,7 @@ const User = ({ onAuthenticate, onConnect }) => {
         // DM: cloud services are hard to debug in some situations. If I we're you, I would find a recent instructions/tutorial to setup exactly the functionality you have broken now (ideally at the official site, but sometimes other sites are good). Follow the instructions exactly, and get it working in a simple project (like the project you created for codesandbox (you can do it on your local machine if codesandbox doesn't work for you)). Then, once you have it working in a simple project, you can compare your code to the example code and see what is different. MM: i guessed the problem was with the user object where the updateProfile should be imported from firebase/auth, but not accessed directly from the user object.
         // howtojs: javascript: user.updateProfile is not a function; to fix this error, you need to import the updateProfile function from firebase/auth and call it with the user object as the first argument because it is not a method of the user object or cannot be accessed directly from the user object.
         updateProfile(user, {
-          displayName: username,
+          displayName: username, // after implementing the changes, i am again getting the "next-dev.js:25 User or user.displayName is undefined" error, but it's weird as this issue was already solved. I'll try to debug it tomorrow.
         })
           .then(() => {
             console.log('Display Name updated')
@@ -193,7 +196,9 @@ const User = ({ onAuthenticate, onConnect }) => {
   const toggleAuthenticationMode = () => {
     setIsLoggedIn(!isLoggedIn) // Switch between Login and Signup
   }
+
   // JavaScript (React)
+
   return (
     // <div className="flex items-center justify-center h-screen bg-gray-100 mx-2">
     //   <div className="bg-purple-500 text-white rounded-lg shadow-lg p-8 w-1/3 h-2/3 flex items-center justify-center">
@@ -234,7 +239,7 @@ const User = ({ onAuthenticate, onConnect }) => {
     //   </div>
     // </div>
     <div>
-      {isLoggedIn ? (
+      {/* {isLoggedIn ? (
         <Login
           handleLogin={handleLogin}
           error={
@@ -252,10 +257,26 @@ const User = ({ onAuthenticate, onConnect }) => {
           }
           toggleAuthenticationMode={toggleAuthenticationMode}
         />
+      )} */}
+      {loading ? (
+        <div>Loading...</div>
+      ) : isLoggedIn ? (
+        <Login
+          handleLogin={handleLogin}
+          error={error}
+          toggleAuthenticationMode={toggleAuthenticationMode}
+        />
+      ) : (
+        <Signup
+          handleSignup={handleSignup}
+          error={error}
+          toggleAuthenticationMode={toggleAuthenticationMode}
+        />
       )}
     </div>
   )
 }
+
 /*
 
 

@@ -7,16 +7,50 @@ import db from './firebase'
 export default function MessageInput({ onSendMessage }) {
   const [message, setMessage] = useState('')
 
-  // const handleSubmit = (event) => {
+  // const handleSubmit = async (event) => {
   //   event.preventDefault()
+  //   await sendMessage(message)
   //   onSendMessage(message)
   //   setMessage('')
+  // }
+  // const sendMessage = async (message) => {
+  //   if (!user) {
+  //     console.error('User must be logged in to send a message')
+  //     return
+  //   }
+  //   try {
+  //     await addDoc(collection(db, 'messages'), {
+  //       text: message,
+  //       createdAt: new Date().toISOString(),
+  //       user: user.displayName,
+  //     })
+  //     onSendMessage({
+  //       text: message,
+  //       sender: user.displayName,
+  //       timestamp: new Date().toISOString(),
+  //     })
+  //     setMessage('')
+  //   } catch (e) {
+  //     console.error('Error adding document: ', e)
+  //   }
+  // }
+  // const handleInputChange = (e) => {
+  //   setMessage(e.target.value)
   // }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await sendMessage(message)
-    onSendMessage(message)
+    if (!user || !user.displayName) {
+      console.error('User or user.displayName is undefined')
+      return
+    }
+    const messageObj = {
+      text: message,
+      sender: user.displayName,
+      timestamp: new Date().toISOString(),
+    }
+    await addDoc(collection(db, 'messages'), messageObj)
+    onSendMessage(messageObj)
     setMessage('')
   }
 
@@ -33,17 +67,22 @@ export default function MessageInput({ onSendMessage }) {
   }
 
   const user = useContext(UserContext)
-  const sendMessage = async (message) => {
-    try {
-      await addDoc(collection(db, 'messages'), {
-        text: message,
-        createdAt: new Date().toISOString(),
-        user: user.displayName, // Or any other property of the suer object
-      })
-    } catch (e) {
-      console.error('Error adding document: ', e)
-    }
-  }
+  // const sendMessage = async (message) => {
+  //   try {
+  //     await addDoc(collection(db, 'messages'), {
+  //       text: message,
+  //       createdAt: new Date().toISOString(),
+  //       user: user.displayName, // Or any other property of the suer object
+  //     })
+  //   } catch (e) {
+  //     console.error('Error adding document: ', e)
+  //   }
+  // }
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault()
+  //   sendMessage(message)
+  // }
 
   const rows = message.split('\n').length
 
