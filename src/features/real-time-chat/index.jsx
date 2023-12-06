@@ -26,8 +26,9 @@ export default function RealTimeChat() {
 
   const handleUserConnect = (user) => {
     // new function to handle user connection
-    // DM: todoMM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
-    setConnectedUsers([...connectedUsers, user])
+    //(done) DM: todoMM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
+    // setConnectedUsers([...connectedUsers, user])
+    setConnectedUsers((previousUsers) => [...previousUsers, user])
   }
 
   if (!isAuthenticated) {
@@ -66,9 +67,12 @@ export default function RealTimeChat() {
               (user, index) => (
                 console.log({ user }),
                 (
-                  <div key={index} className="text-gray-100 bg-green-500 p-2 rounded">
+                  <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
                     {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email*/}
-                    {user.displayName}
+                    {/* {user.displayName} */}
+                    {user.displayName
+                      ? user.displayName[0].toUpperCase() + user.displayName.slice(1)
+                      : ''}
                   </div>
                 )
               )

@@ -76,4 +76,4 @@
       const denominator = 2
       return numerator / denominator
       ```
-      DM: this way there would be no confusion about operator precedence, because you follow rules that keep things separated and simple (and easier to console.log, because console.log wouldn't show you the problem in the above example.)
+      DM: this way there would be no confusion about operator precedence, because you follow rules that keep things separated and simple (and easier to console.log, because console.log wouldn't show you the problem in the above example.)ok

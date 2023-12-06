@@ -98,31 +98,18 @@ i console logged process.env and got all the variables i set in .env.local, then
     measurementId: process.env.REACT_APP_MEASUREMENT_ID,
 
   */
-  // apiKey: 'AIzaSyDkDSHVPcfgxFq4ctp4ODGd68gsikQ8G7o',
-  // authDomain: 'real-time-chat-78e91.firebaseapp.com',
-  // projectId: 'real-time-chat-78e91',
-  // storageBucket: 'real-time-chat-78e91.appspot.com',
-  // messagingSenderId: '146694862195',
-  // appId: '1:146694862195:web:5807cc69a5fc7c6f5a4106',
-  // measurementId: 'G-3FC7LLH74P',
-  /* DM: notes about this change should go here, not in another file */
-  apiKey: 'AIzaSyB0SF1IMQeIOI2MertvsUkfFJlFy-tC-eU',
-  authDomain: 'app-chat-1f5a4.firebaseapp.com',
-  projectId: 'app-chat-1f5a4',
-  storageBucket: 'app-chat-1f5a4.appspot.com',
-  messagingSenderId: '825359150547',
-  appId: '1:825359150547:web:88e803e7fbc35d4ccfd326',
 
-  // apiKey: process.env.REACT_APP_API_KEY,
-  // authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  // projectId: process.env.REACT_APP_PROJECT_ID,
-  // storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  // messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
-  // appId: process.env.REACT_APP_APP_ID,
+
+  apiKey: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_APP_ID,
 }
 /*
 DM: note: do this after you get the new app-chat config working:
-DM: this is where I gave you lots of info/hints about how to get the .env.local vars working. 
+DM: this is where I gave you lots of info/hints about how to get the .env.local vars working. MM: the instructions were clear but i don't know how i couldn't understand them. after reading for the second time, i understood what to do, so easy; so for NextJS, you have to use NEXT_PUBLIC_ before the variable name. i have updated the instructions above.
 DM: todoMM: I forgot to put a "DM:" next to this, but I assume that the Git diff will alert you that I wrote it. This is the solution to your problem with .env.local env vars not working: So, in order to complete the todoMMs above, you'll have to work through this:
 OK, I know the problem: your issue is that the below console.log is in client-side code. It is confusing that you can see the console.log (with correct env vars) ONCE in the terminal (on the server side) where you ran NPM run DEV, because in NextJS when you're using the "dev" command (see the package.json scripts for what "npm run dev" calls) it always runs client side code ONCE when the code compiles. Similarly, when you use "npm run build" the console.log below will also show once as it builds the production version of the site. HOWEVER, you want to use secrets in client-side code (remember this code is client-side code because it is called originally from src/pages, and because the functionality is triggered IN THE BROWSER by user actions in the browser EX login, send). 
 Moise, ask AI to rephrase the above "in other words [with example]" if it is unclear. For debugging, you need to really understand how NextJS works.
