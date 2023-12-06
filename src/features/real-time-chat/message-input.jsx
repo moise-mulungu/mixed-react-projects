@@ -40,10 +40,12 @@ export default function MessageInput({ onSendMessage }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    if (!user || !user.displayName) {
-      console.error('User or user.displayName is undefined')
+    if (!user?.displayName) {
+      // DM: todoMM: explore the user object in the browser console and find out where the displayName is. In general, always log variables so that you can inspect their contents.
+      console.error('User or user.displayName is undefined', { user })
       return
     }
+
     const messageObj = {
       text: message,
       sender: user.displayName,

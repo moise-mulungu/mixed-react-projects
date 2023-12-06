@@ -41,12 +41,12 @@ export default function Signup({ handleSignup, error, toggleAuthenticationMode }
           >
             Signup
           </button>
-          <button
+          {/*  its confusing to user if you show both buttons at once     <button
             onClick={toggleAuthenticationMode}
             className="p-2 mt-4 bg-pink-500 text-white rounded mb-2 w-full"
           >
             Login
-          </button>
+          </button> */}
         </div>
       </div>
     </div>

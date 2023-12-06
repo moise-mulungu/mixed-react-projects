@@ -42,7 +42,7 @@ export default function RealTimeChat() {
 
   const handleUserConnect = (user) => {
     // new function to handle user connection
-    //(done) DM: todoMM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
+    //(done) DM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
     // setConnectedUsers([...connectedUsers, user])
     setConnectedUsers((previousUsers) => [...previousUsers, user])
     setIsAuthenticated(true)
@@ -55,7 +55,7 @@ export default function RealTimeChat() {
   //   <UserContextProvider>
   //     <User
   //       onAuthenticate={() => setIsAuthenticated(true)}
-  //(MM: i don't understand what name you are referring to here, is onConnect or something else, if it's onConnect, there is no other file where it has another name.) DM: todoMM: use the same name in both files to avoid confusion. (I like onUserConnect. Don't worry about being concise - it is more important to be clear.)
+  //() DM: todoMM: use the same name in both files to avoid confusion. (I like onUserConnect. Don't worry about being concise - it is more important to be clear.) MM: i don't understand what name you are referring to here, is onConnect or something else, if it's onConnect, there is no other file where it has another name. DM: the idea is to use the same name in both files.
   //         onConnect={handleUserConnect}
   //       />
   //     </UserContextProvider>
@@ -84,14 +84,14 @@ export default function RealTimeChat() {
               </h2>
               {connectedUsers.map(
                 (user, index) => (
-                  console.log({ user }),
+                  console.log('real-time-chat/index.jsx ', { user }),
                   (
                     <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
-                      {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email*/}
+                      {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email DM: this is fixed?*/}
                       {/* {user.displayName} */}
                       {user.displayName
-                        ? user.displayName[0].toUpperCase() + user.displayName.slice(1)
-                        : ''}
+                        ? `user: ${user.displayName[0].toUpperCase() + user.displayName.slice(1)}`
+                        : ``}
                     </div>
                   )
                 )
