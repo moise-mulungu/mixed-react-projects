@@ -40,20 +40,22 @@ export default function MessageInput({ onSendMessage }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    if (!user?.displayName) {
-      // DM: todoMM: explore the user object in the browser console and find out where the displayName is. In general, always log variables so that you can inspect their contents.
+    if (!user.user?.displayName) {
+      //(done) DM: todoMM: explore the user object in the browser console and find out where the displayName is. In general, always log variables so that you can inspect their contents.
       console.error('User or user.displayName is undefined', { user })
+      // onAuthenticate(false)
       return
     }
 
     const messageObj = {
       text: message,
-      sender: user.displayName,
+      sender: user.user.displayName,
       timestamp: new Date().toISOString(),
     }
     await addDoc(collection(db, 'messages'), messageObj)
     onSendMessage(messageObj)
     setMessage('')
+    // onAuthenticate(true)
   }
 
   const handleInputChange = (e) => {

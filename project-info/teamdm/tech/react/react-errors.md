@@ -84,7 +84,6 @@ if (myValue === undefined) {
 
 DM: todoMM: put here another example solution, that you Google or ask Copilot AI
 
-
 ***howtojs: error: react:: Objects are not valid as a React child ; map over the object by using Object.entries() to change it it into an array***
 ### Error: Objects are not valid as a React child (found: object with keys {temp, feels_like, temp_min, temp_max, pressure, humidity}). If you meant to render a collection of children, use an array instead.
 * The React. js error `Objects are not valid as a React child` occurs when we try to directly render an object or an array in our JSX code. To solve the error, use the ***map() method to render arrays or access properties*** on the object in your JSX code

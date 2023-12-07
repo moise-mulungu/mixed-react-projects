@@ -1,19 +1,25 @@
 export default function ChatBox({ messages }) {
+  console.log('messages:', messages)
   return (
     <div className="flex-grow overflow-auto p-4 bg-purple-500 text-white">
-      {messages.map((message, index) => {
-        // dm: where is the property sender in the message object?
+      {messages?.map((message, index) => {
+        console.log('sender type:', typeof message.sender)
+        console.log('text type:', typeof message.text)
+        console.log('timestamp type:', typeof message.timestamp)
+        // dm: where is the property sender in the message object: MM: the sender property of the message object is being set to user.displayName in the MessageInput component. This user object is obtained from the UserContext using the useContext hook.?
         console.log({ message, index })
         return (
           <div
             key={
-              // ahem!
+              // ahem!(MM: In the context of code comments, "ahem!" is often used to draw attention to a particular piece of code. It's a way for the developer to say, "Pay attention to this," or "This might not be ideal, but it's necessary for now. is that the meaning you intended?)
               index
             }
             className="mb-4 border-b-2 border-purple-300 p-2"
           >
-            {/* <strong className="font-bold">{message.sender}</strong>: {message.text}{' '} */}
-            {/* <em className="text-sm text-purple-300">{message.timestamp.toLocaleTimeString()}</em> */}
+            <strong className="font-bold">{message?.sender}</strong>: {message?.text}{' '}
+            <em className="text-sm text-purple-300">
+              {new Date(message?.timestamp).toLocaleTimeString()}
+            </em>
           </div>
         )
       })}

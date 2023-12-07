@@ -48,6 +48,10 @@ export default function RealTimeChat() {
     setIsAuthenticated(true)
   }
 
+  const onAuthenticate = (isAuthenticated) => {
+    setIsAuthenticated(isAuthenticated)
+  }
+
   // if (!isAuthenticated) {
   // return <User onAuthenticate={() => setIsAuthenticated(true)} />
   //(done) DM: after you have put the user* files into a ./user directory (see todo in user.js), create a file named ./user/user-context-provider.jsx and extract user, setUser into that file. Then, import that file here and use it to wrap the User component here (and also in the top-level return statement). This way, you can keep all the user-related code in one place.
@@ -65,7 +69,7 @@ export default function RealTimeChat() {
   //(done) DM: add some horizontal margin so that the purple box is not flush against the left edge of the screen. Otherwise, looks good.
   return (
     <UserContextProvider>
-      {!isAuthenticated && <User onConnect={handleUserConnect} />}
+      {!isAuthenticated && <User onConnect={handleUserConnect} onAuthenticate={onAuthenticate} />}
       {isAuthenticated && (
         <div className="flex flex-col h-screen bg-gray-100 mx-2">
           <Header />
@@ -85,12 +89,13 @@ export default function RealTimeChat() {
               {connectedUsers.map(
                 (user, index) => (
                   console.log('real-time-chat/index.jsx ', { user }),
+                  console.log('displayName type:', typeof user.displayName),
                   (
                     <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
-                      {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email DM: this is fixed?*/}
+                      {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email DM: this is fixed?* Yes, it is!/}
                       {/* {user.displayName} */}
                       {user.displayName
-                        ? `user: ${user.displayName[0].toUpperCase() + user.displayName.slice(1)}`
+                        ? `user: ${user.displayName[0].toUpperCase() + user?.displayName.slice(1)}`
                         : ``}
                     </div>
                   )

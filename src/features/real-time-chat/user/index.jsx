@@ -16,7 +16,7 @@ import Signup from './signup'
 //(done) DM: todoMM: move to directory named user/index.jsx and add user-context.jsx to that directory. This way, as this app grows (it seems like it will be come quite large), it will be easier to keep track of what files are imported by what other files.
 
 // todoDM: example for lesson on hoisting, const not hoisted, function declarations are hoisted
-const User = ({ onConnect }) => {
+const User = ({ onAuthenticate, onConnect }) => {
   // const [email, setEmail] = useState('')
   // const [username, setUsername] = useState('')
   // const [password, setPassword] = useState('')
@@ -76,9 +76,9 @@ const User = ({ onConnect }) => {
         console.log(user.displayName)
         setUser(user)
         // ...
-        // onAuthenticate()
+        onAuthenticate()
         onConnect(user) // call onConnect when a user logs in
-        setLoading(true)
+        // setLoading(true)
       })
       .catch((error) => {
         // const errorCode = error.code
@@ -145,13 +145,20 @@ const User = ({ onConnect }) => {
         // DM: this line triggers the error: "user.updateProfile is not a function". What does this mean? If user.updateProfile is not a function, then what data type is it? A string? Undefined? Do a console.log to find out. If it is undefined, then something is wrong with your user object. In the console.log({user}) above the log says it is of type UserImpl so it looks like it a valid user object. Google the error message (adding "firebase signup", for example, as context for the search). Maybe someone had that problem. Also, I imagine it's possible the user object is not created using the correct package? Or, something hasn't been initialized correctly, leaving the user object without a updateProfile property?
         // DM: tomorrow be sure to push the app in the exact broken state you want me to debug, then write me what steps to reproduce the problem, what error I should see, what you tried to debug it, and what you think the problem might be. I'll try to help you debug it.
         // DM: cloud services are hard to debug in some situations. If I we're you, I would find a recent instructions/tutorial to setup exactly the functionality you have broken now (ideally at the official site, but sometimes other sites are good). Follow the instructions exactly, and get it working in a simple project (like the project you created for codesandbox (you can do it on your local machine if codesandbox doesn't work for you)). Then, once you have it working in a simple project, you can compare your code to the example code and see what is different. MM: i guessed the problem was with the user object where the updateProfile should be imported from firebase/auth, but not accessed directly from the user object.
-        // howtojs: javascript: user.updateProfile is not a function; to debug this kind of error, log(typeof myObject.myProperty). if it is undefined, then find out where it is set in the code, or if myProperty is expected to exit on myObject
+        // howtojs: javascript: user.updateProfile is not a function; to debug this kind of error, log(typeof myObject.myProperty). if it is undefined, then find out where it is set in the code, or if myProperty is expected to exist on myObject
         // howtojs: firebase: user.updateProfile is not a function; to fix this error, you need to import the updateProfile function from firebase/auth and call it with the user object as the first argument because it is not a method of the user object or cannot be accessed directly from the user object.
         updateProfile(user, {
           displayName: username, // after implementing the changes, i am again getting the "next-dev.js:25 User or user.displayName is undefined" error, but it's weird as this issue was already solved. I'll try to debug it tomorrow.
         })
+          // .then(() => {
+          //   console.log('Display Name updated')
+          //   setUser(user)
+          //   setIsLoggedIn(true)
+          //   onConnect(user) // call onConnect when a user logs in
           .then(() => {
-            console.log('Display Name updated')
+            return user.reload()
+          })
+          .then(() => {
             setUser(user)
             setIsLoggedIn(true)
             onConnect(user) // call onConnect when a user logs in
@@ -240,7 +247,7 @@ const User = ({ onConnect }) => {
     //   </div>
     // </div>
     <div>
-      {/* {isLoggedIn ? (
+      {isLoggedIn ? (
         <Login
           handleLogin={handleLogin}
           error={
@@ -258,10 +265,10 @@ const User = ({ onConnect }) => {
           }
           toggleAuthenticationMode={toggleAuthenticationMode}
         />
-      )} */}
+      )}
 
-      {/* DM: todoMM: what does "loading" mean here? What is loading? */}
-      {loading ? (
+      {/*(done) DM: todoMM: what does "loading" mean here? What is loading? MM: i added this loading because after setting up the real-time messaging, the login/signup was not displaying, so this indicates whether some asynchronous operation is currently in progress, it serves a network request, such as fetching data from an API. but i reverted back the previous code as the loading is not necessary here */}
+      {/* {loading ? (
         <div>Loading...</div>
       ) : isLoggedIn ? (
         <Login
@@ -275,7 +282,7 @@ const User = ({ onConnect }) => {
           error={error}
           toggleAuthenticationMode={toggleAuthenticationMode}
         />
-      )}
+      )} */}
     </div>
   )
 }
