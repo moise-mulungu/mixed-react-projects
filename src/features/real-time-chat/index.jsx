@@ -45,6 +45,15 @@ export default function RealTimeChat() {
     // Remove the message from the local state
     setMessages((previousMessages) => previousMessages.filter((m) => m.id !== message.id))
 
+    // Get the document reference
+    const docRef = doc(db, 'messages', message.id)
+
+    // Check if the document reference is defined
+    if (!docRef) {
+      console.error('Document reference is undefined', { message })
+      return
+    }
+
     // Remove the message from Firestore
     try {
       await deleteDoc(doc(db, 'messages', message.id))

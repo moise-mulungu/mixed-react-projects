@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useContext } from 'react'
 import { UserContext } from './user/user-context-provider'
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, getDoc } from 'firebase/firestore'
 import db from './firebase'
 
 export default function MessageInput({ onSendMessage }) {
@@ -64,6 +64,13 @@ export default function MessageInput({ onSendMessage }) {
     setMessage('')
     // onAuthenticate(true)
   }
+
+  /*
+  the error: Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'indexOf'). this error was happening when i wanted to delete a specific message, but instead of deleting one message, all messages were deleted at once. in order to fix this i:
+  1. tried to get a specific id for each message by using the getDoc that is used to retrieve the document after it's created
+  2. used again compared the getDoc with addDoc
+  3. after many attempts, i paused and would continue tomorrow.
+  */
 
   const handleInputChange = (e) => {
     setMessage(e.target.value)

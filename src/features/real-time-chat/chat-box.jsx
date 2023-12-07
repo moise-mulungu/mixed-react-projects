@@ -36,7 +36,15 @@ export default function ChatBox({ messages, deleteMessage }) {
     </div>
   )
 }
+/*
+The error: Objects are not valid as a React child (found: object with keys {text, sender, timestamp, id}). If you meant to render a collection of children, use an array instead. was thrown when trying to send message, i searched for it in the react-errors.md file where it describes the process of :
+1. check in the return statement of the JSX if there is a map function
+2. converting an object into array with Object.entries() method
+3. use array?.map() function to render if array is not null or undefined. If array is null or undefined, the expression will short-circuit and return undefined without throwing an error.
+4. After all the above attempts nothing was found.
+MM: i'll continue working on it tomorrow.
 
+*/
 /*
 
 DM: THis doesn't help because you're not telling me what was this code for? What did you try? What didn't work? As with my comment in message-input.jsx today, best comment out individual lines (and those lines should have a comment explaining their purpose), otherwise I'm lost.  DM: ok these sound good, but please put them in the code as comments over the code where it happens. Otherwise its too hard for me to follow. You can leave the app in a broken state and then I can help debug, but give me instructions about what is the problem, what you tried, and what I should do to reproduce the bug (ie try to login, try to signup, etc)(ok, it's done!)
