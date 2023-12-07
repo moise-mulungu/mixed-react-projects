@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import db from './firebase'
+import { doc, deleteDoc } from 'firebase/firestore'
 // import { UserContext } from './user/user-context-provider'
 import Header from './header'
 import ChatBox from './chat-box'
@@ -40,6 +41,18 @@ export default function RealTimeChat() {
     setMessages([...messages, { text: message, sender: 'You', timestamp: new Date() }])
   }
 
+  const deleteMessage = async (message) => {
+    // Remove the message from the local state
+    setMessages((previousMessages) => previousMessages.filter((m) => m.id !== message.id))
+
+    // Remove the message from Firestore
+    try {
+      await deleteDoc(doc(db, 'messages', message.id))
+    } catch (e) {
+      console.error('Error removing document: ', e)
+    }
+  }
+
   const handleUserConnect = (user) => {
     // new function to handle user connection
     //(done) DM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
@@ -75,7 +88,7 @@ export default function RealTimeChat() {
           <Header />
           <div className="flex-grow flex">
             <div className="flex flex-col w-1/3 border-r-2 border-gray-200">
-              <ChatBox messages={messages} />
+              <ChatBox messages={messages} deleteMessage={deleteMessage} />
             </div>
             <div className="flex flex-col w-1/3 border-r-2 border-gray-200">
               {/*(done) DM: choose either onSendMessage or handleSendMessage (both names are great, imo), but the prop name should be the same as the function name. this makes it a LOT easier to follow what is what as you jump back and forth between components and tweak code. If they have different names, it gets confusing and mistakes can happen. (PS: I like onSendMessage a little better, since it isn't directly an event handler, but rather is called by an event handler in another component.) */}

@@ -78,7 +78,7 @@ const User = ({ onAuthenticate, onConnect }) => {
         // ...
         onAuthenticate()
         onConnect(user) // call onConnect when a user logs in
-        // setLoading(true)
+        // setLoading(false)
       })
       .catch((error) => {
         // const errorCode = error.code

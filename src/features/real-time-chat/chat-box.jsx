@@ -1,4 +1,7 @@
-export default function ChatBox({ messages }) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+
+export default function ChatBox({ messages, deleteMessage }) {
   console.log('messages:', messages)
   return (
     <div className="flex-grow overflow-auto p-4 bg-purple-500 text-white">
@@ -16,10 +19,17 @@ export default function ChatBox({ messages }) {
             }
             className="mb-4 border-b-2 border-purple-300 p-2"
           >
-            <strong className="font-bold">{message?.sender}</strong>: {message?.text}{' '}
-            <em className="text-sm text-purple-300">
-              {new Date(message?.timestamp).toLocaleTimeString()}
-            </em>
+            <div className="flex justify-between">
+              <div>
+                <strong className="font-bold mr-2">{message?.sender}</strong>: {message?.text}{' '}
+                <em className="text-sm text-purple-300">
+                  {new Date(message?.timestamp).toLocaleTimeString()}
+                </em>
+              </div>
+              <button onClick={() => deleteMessage(message)}>
+                <FontAwesomeIcon icon={faTrash} />
+              </button>
+            </div>
           </div>
         )
       })}

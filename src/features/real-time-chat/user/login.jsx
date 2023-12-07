@@ -30,12 +30,12 @@ export default function Login({ handleLogin, error, toggleAuthenticationMode }) 
           >
             Login
           </button>
-{/*           <button
+          <button
             onClick={toggleAuthenticationMode}
             className="p-2 mt-4 bg-yellow-500 text-white rounded mb-2 w-full"
           >
             Signup
-          </button> */}
+          </button>
         </div>
       </div>
     </div>

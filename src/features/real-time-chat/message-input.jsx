@@ -52,7 +52,14 @@ export default function MessageInput({ onSendMessage }) {
       sender: user.user.displayName,
       timestamp: new Date().toISOString(),
     }
-    await addDoc(collection(db, 'messages'), messageObj)
+    // await addDoc(collection(db, 'messages'), messageObj)
+    const docRef = await addDoc(collection(db, 'messages'), messageObj)
+
+    // Retrieve the document to get its id
+    const docSnapshot = await getDoc(docRef)
+
+    // Add the Firestore-generated id to the message object
+    messageObj.id = docSnapshot.id
     onSendMessage(messageObj)
     setMessage('')
     // onAuthenticate(true)
