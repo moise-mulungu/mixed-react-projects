@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export default function ChatBox({ messages, deleteMessage }) {
-  console.log('messages:', messages)
+  console.log('messages:', typeof messages)
   return (
     <div className="flex-grow overflow-auto p-4 bg-purple-500 text-white">
       {messages?.map((message, index) => {
@@ -16,6 +16,7 @@ export default function ChatBox({ messages, deleteMessage }) {
             key={
               // ahem!(MM: In the context of code comments, "ahem!" is often used to draw attention to a particular piece of code. It's a way for the developer to say, "Pay attention to this," or "This might not be ideal, but it's necessary for now. is that the meaning you intended?)
               index
+              // id
             }
             className="mb-4 border-b-2 border-purple-300 p-2"
           >
@@ -23,7 +24,8 @@ export default function ChatBox({ messages, deleteMessage }) {
               <div>
                 <strong className="font-bold mr-2">{message?.sender}</strong>: {message?.text}{' '}
                 <em className="text-sm text-purple-300">
-                  {new Date(message?.timestamp).toLocaleTimeString()}
+                  {/* {new Date(message?.timestamp).toLocaleTimeString()} */}
+                  {message?.timestamp ? new Date(message?.timestamp).toLocaleTimeString() : ''}
                 </em>
               </div>
               <button onClick={() => deleteMessage(message)}>

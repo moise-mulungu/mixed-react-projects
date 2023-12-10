@@ -23,12 +23,17 @@ export default function RealTimeChat() {
   const [connectedUsers, setConnectedUsers] = useState([])
 
   // set up a real-time listener on the 'messages' collection Firestore database
+  /*
+  MM: DM: in order to fix the TypeError: Cannot read properties of undefined (reading 'indexOf') error, the object that stores the messages state didn't have an id property, to fix it i added an id to it.
+  */
   useEffect(() => {
     const q = query(collection(db, 'messages'), orderBy('timestamp'))
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const messages = []
       snapshot.forEach((doc) => {
-        messages.push(doc.data())
+        // messages.push(doc.data())
+        // adding an id for each message
+        messages.push({ id: doc.id, ...doc.data() })
       })
       setMessages(messages)
     })
@@ -37,8 +42,13 @@ export default function RealTimeChat() {
   }, [])
 
   // DM: nice function name
+  /*
+  MM: DM: to fix the "Error: Objects are not valid as a React child (found: object with keys {text, sender, timestamp, id}). If you meant to render a collection of children, use an array instead." error. the onSendMessage function was sending an object to the setMessages function, where the message was expected to be a string, but in the MessageInput component the message is an object, so i changed the message to be an object in the onSendMessage function to match the MessageInput component.
+  */
   const onSendMessage = (message) => {
-    setMessages([...messages, { text: message, sender: 'You', timestamp: new Date() }])
+    console.log({ message })
+    // setMessages([...messages, { text: message, sender: 'You', timestamp: new Date() }])
+    setMessages([...messages, message])
   }
 
   const deleteMessage = async (message) => {
@@ -46,13 +56,13 @@ export default function RealTimeChat() {
     setMessages((previousMessages) => previousMessages.filter((m) => m.id !== message.id))
 
     // Get the document reference
-    const docRef = doc(db, 'messages', message.id)
+    // const docRef = doc(db, 'messages', message.id)
 
-    // Check if the document reference is defined
-    if (!docRef) {
-      console.error('Document reference is undefined', { message })
-      return
-    }
+    // // Check if the document reference is defined
+    // if (!docRef) {
+    //   console.error('Document reference is undefined', { message })
+    //   return
+    // }
 
     // Remove the message from Firestore
     try {
@@ -108,21 +118,33 @@ export default function RealTimeChat() {
               <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
                 Connected Users
               </h2>
-              {connectedUsers.map(
+              {/* {connectedUsers.map(
                 (user, index) => (
                   console.log('real-time-chat/index.jsx ', { user }),
                   console.log('displayName type:', typeof user.displayName),
                   (
-                    <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
-                      {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email DM: this is fixed?* Yes, it is!/}
+                    <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4"> */}
+              {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email DM: this is fixed?* Yes, it is!/}
                       {/* {user.displayName} */}
-                      {user.displayName
+              {/* {user.displayName
                         ? `user: ${user.displayName[0].toUpperCase() + user?.displayName.slice(1)}`
                         : ``}
                     </div>
                   )
                 )
-              )}
+              )} */}
+              {connectedUsers.map((user, index) => {
+                console.log('real-time-chat/index.jsx ', { user })
+                console.log('displayName type:', typeof user.displayName)
+                if (user && user.displayName) {
+                  return (
+                    <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
+                      {`user: ${user.displayName[0].toUpperCase() + user.displayName.slice(1)}`}
+                    </div>
+                  )
+                }
+                return null
+              })}
             </div>
           </div>
           <Footer />
