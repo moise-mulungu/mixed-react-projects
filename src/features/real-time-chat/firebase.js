@@ -17,6 +17,9 @@ import {
 // import { getAnalytics } from 'firebase/analytics'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
+import { getDatabase } from 'firebase/database'
+// import firebase from 'firebase/app';
+// import 'firebase/database';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -112,6 +115,7 @@ i console logged process.env and got all the variables i set in .env.local, then
   storageBucket: 'app-chat-1f5a4.appspot.com',
   messagingSenderId: '825359150547',
   appId: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_APP_ID,
+  databaseURL: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_DATABASE_URL,
 }
 /*
 DM: note: do this after you get the new app-chat config working:
@@ -133,6 +137,29 @@ export const app = initializeApp(firebaseConfig)
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig)
 // export { app }
+
+/*
+How to create a realtime database in Firebase:
+To create a Realtime Database in Firebase, follow these steps:
+
+  1. Go to the Firebase console.
+  2. Click on your project.
+  3. In the left-hand menu, click on "Realtime Database" under the "Build" section.
+  4. Click on the "Create database" button in the middle of the screen.
+  5. In the "Security rules for Realtime Database" dialog that appears, you can choose to start in either "Locked mode" or "Test mode".
+
+    "Test mode" means that read and write access to your database will be open to everyone for 30 days. This can be useful for testing, but you should switch to "Locked mode" before launching your app to prevent unauthorized access.
+
+    "Locked mode" means that read and write access to your database will be denied to everyone except you. You'll need to set up security rules to allow users to access your database.
+
+  6. Click "Enable".
+  7. You'll be taken to the data view of your new Realtime Database. Here, you can manually add, edit, and delete data.
+
+Remember to replace the databaseURL in your Firebase configuration with the URL of your new Realtime Database. The URL should look something like this: https://your-project-id-default-rtdb.firebaseio.com/. 
+You can find this URL in the Realtime Database section of the Firebase console, at the top of the data view.
+*/
+// Initialize Realtime Database
+export const database = getDatabase()
 /* 
 (done)DM: don't export unnamed object literals like this. You can export each the usual way:
 */

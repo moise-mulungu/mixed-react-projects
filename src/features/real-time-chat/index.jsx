@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import db from './firebase'
+import db, { database } from './firebase'
 import { doc, deleteDoc } from 'firebase/firestore'
 // import { UserContext } from './user/user-context-provider'
 import Header from './header'
@@ -9,6 +9,11 @@ import MessageInput from './message-input'
 import Footer from './footer'
 import User from './user'
 import UserContextProvider from './user/user-context-provider'
+import { ref, onValue, set } from 'firebase/database'
+import { serverTimestamp } from 'firebase/database'
+
+// import firebase from 'firebase/app'
+// import 'firebase/database'
 
 // DM: careful how you rename a directory, because I couldn't see the diffs in Git for index.js, but I could see it for all the other files. MM: i have already a component named RealTimeChat in ./pages/real-time-chat, now this component is in ./features/real-time-chat, so i named it to EasyChat to avoid confusion
 
@@ -28,7 +33,7 @@ export default function RealTimeChat() {
   */
   useEffect(() => {
     const q = query(collection(db, 'messages'), orderBy('timestamp'))
-    const unsubscribe = onSnapshot(q, (snapshot) => {
+    const unsubscribeFirestore = onSnapshot(q, (snapshot) => {
       const messages = []
       snapshot.forEach((doc) => {
         // messages.push(doc.data())
@@ -38,8 +43,25 @@ export default function RealTimeChat() {
       setMessages(messages)
     })
 
-    return () => unsubscribe()
-  }, [])
+    // Set up Realtime Database presence subscription
+    const unsubscribeDatabase = connectedUsers.map((user) => {
+      const userStatusRef = ref(database, 'status/' + user.uid)
+
+      return onValue(userStatusRef, (snapshot) => {
+        const status = snapshot.val()
+        if (status) {
+          console.log(`User ${user.uid} is ${status.state}`)
+          // Here you can update your state or UI based on the user's status
+        }
+      })
+    })
+    // return () => unsubscribe()
+    // Return a cleanup function that unsubscribes from both listeners
+    return () => {
+      unsubscribeFirestore()
+      unsubscribeDatabase.forEach((unsubscribe) => unsubscribe())
+    }
+  }, [connectedUsers]) // include connectedUsers in the dependency array so that the useEffect hook will run again when the connectedUsers state changes
 
   // DM: nice function name
   /*
@@ -73,6 +95,12 @@ export default function RealTimeChat() {
   }
 
   const handleUserConnect = (user) => {
+    const userStatusDatabaseRef = ref(database, 'status/' + user.uid)
+
+    set(userStatusDatabaseRef, {
+      state: 'online',
+      last_changed: serverTimestamp(),
+    })
     // new function to handle user connection
     //(done) DM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
     // setConnectedUsers([...connectedUsers, user])
