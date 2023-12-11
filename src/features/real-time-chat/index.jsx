@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import db, { database } from './firebase'
 import { doc, deleteDoc } from 'firebase/firestore'
@@ -11,8 +11,9 @@ import User from './user'
 import UserContextProvider from './user/user-context-provider'
 import { ref, onValue, set } from 'firebase/database'
 import { serverTimestamp } from 'firebase/database'
+import { UserContext } from './user/user-context-provider'
 
-// import firebase from 'firebase/app'
+// import firebase from 'firebase/app'a
 // import 'firebase/database'
 
 // DM: careful how you rename a directory, because I couldn't see the diffs in Git for index.js, but I could see it for all the other files. MM: i have already a component named RealTimeChat in ./pages/real-time-chat, now this component is in ./features/real-time-chat, so i named it to EasyChat to avoid confusion
@@ -26,11 +27,21 @@ export default function RealTimeChat() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   // const [user, setUser] = useState(null)
   const [connectedUsers, setConnectedUsers] = useState([])
+  const [typingUsers, setTypingUsers] = useState([])
 
   // set up a real-time listener on the 'messages' collection Firestore database
   /*
   MM: DM: in order to fix the TypeError: Cannot read properties of undefined (reading 'indexOf') error, the object that stores the messages state didn't have an id property, to fix it i added an id to it.
   */
+  const currentUser = useContext(UserContext)
+  // New function to handle typing status
+  const onTyping = (isTyping) => {
+    if (currentUser) {
+      const typingRef = ref(database, 'typing/' + currentUser.uid)
+      set(typingRef, isTyping)
+    }
+  }
+
   useEffect(() => {
     const q = query(collection(db, 'messages'), orderBy('timestamp'))
     const unsubscribeFirestore = onSnapshot(q, (snapshot) => {
@@ -55,11 +66,22 @@ export default function RealTimeChat() {
         }
       })
     })
-    // return () => unsubscribe()
+    // New subscription for typing status
+    const typingRef = ref(database, 'typing')
+    const unsubscribeTyping = onValue(typingRef, (snapshot) => {
+      const typingUsers = []
+      snapshot.forEach((childSnapshot) => {
+        if (childSnapshot.val() === true) {
+          typingUsers.push(childSnapshot.key)
+        }
+      })
+      setTypingUsers(typingUsers)
+    })
     // Return a cleanup function that unsubscribes from both listeners
     return () => {
       unsubscribeFirestore()
       unsubscribeDatabase.forEach((unsubscribe) => unsubscribe())
+      unsubscribeTyping() // Unsubscribe from typing status
     }
   }, [connectedUsers]) // include connectedUsers in the dependency array so that the useEffect hook will run again when the connectedUsers state changes
 
@@ -139,7 +161,7 @@ export default function RealTimeChat() {
             </div>
             <div className="flex flex-col w-1/3 border-r-2 border-gray-200">
               {/*(done) DM: choose either onSendMessage or handleSendMessage (both names are great, imo), but the prop name should be the same as the function name. this makes it a LOT easier to follow what is what as you jump back and forth between components and tweak code. If they have different names, it gets confusing and mistakes can happen. (PS: I like onSendMessage a little better, since it isn't directly an event handler, but rather is called by an event handler in another component.) */}
-              <MessageInput onSendMessage={onSendMessage} />
+              <MessageInput onSendMessage={onSendMessage} onTyping={onTyping} />
             </div>
             <div className="flex flex-col w-1/3">
               {/* Display connected users here */}
@@ -174,6 +196,17 @@ export default function RealTimeChat() {
                 return null
               })}
             </div>
+            <div className="flex flex-col w-1/3 ml-2">
+              <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
+                Typing Users
+              </h2>
+              {typingUsers.map((user, index) => (
+                <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
+                  {`${user} is typing...`}
+                </div>
+              ))}
+            </div>
+            {/* MM: DM: this part of code still needs styling improvements, i'll continue with it tomorrow */}
           </div>
           <Footer />
         </div>

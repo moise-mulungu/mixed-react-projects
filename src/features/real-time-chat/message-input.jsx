@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useContext } from 'react'
+import { useEffect } from 'react'
 import { UserContext } from './user/user-context-provider'
 import { addDoc, collection, getDoc } from 'firebase/firestore'
 import db from './firebase'
 
-export default function MessageInput({ onSendMessage }) {
+export default function MessageInput({ onSendMessage, onTyping }) {
   const [message, setMessage] = useState('')
 
   // const handleSubmit = async (event) => {
@@ -37,6 +38,11 @@ export default function MessageInput({ onSendMessage }) {
   // const handleInputChange = (e) => {
   //   setMessage(e.target.value)
   // }
+  useEffect(() => {
+    return () => {
+      onTyping(false)
+    }
+  }, [])
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -74,6 +80,7 @@ export default function MessageInput({ onSendMessage }) {
 
   const handleInputChange = (e) => {
     setMessage(e.target.value)
+    onTyping(e.target.value !== '')
   }
 
   // DM: cool
