@@ -156,6 +156,7 @@ const User = ({ onAuthenticate, onConnect }) => {
           //   setIsLoggedIn(true)
           //   onConnect(user) // call onConnect when a user logs in
           .then(() => {
+            // DM: todoMM: I'm curious,w hat does user.reload() do? Why are you're returning it because the next .then() doesn't have a parameter so why doe you need to return the result of user.reload()?
             return user.reload()
           })
           .then(() => {
@@ -267,7 +268,7 @@ const User = ({ onAuthenticate, onConnect }) => {
         />
       )}
 
-      {/*(done) DM: todoMM: what does "loading" mean here? What is loading? MM: i added this loading because after setting up the real-time messaging, the login/signup was not displaying, so this indicates whether some asynchronous operation is currently in progress, it serves a network request, such as fetching data from an API. but i reverted back the previous code as the loading is not necessary here */}
+      {/*(done) DM: what does "loading" mean here? What is loading? MM: i added this loading because after setting up the real-time messaging, the login/signup was not displaying, so this indicates whether some asynchronous operation is currently in progress, it serves a network request, such as fetching data from an API. but i reverted back the previous code as the loading is not necessary here */}
       {/* {loading ? (
         <div>Loading...</div>
       ) : isLoggedIn ? (

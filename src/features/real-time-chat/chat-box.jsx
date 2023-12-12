@@ -14,7 +14,7 @@ export default function ChatBox({ messages, deleteMessage }) {
         return (
           <div
             key={
-              // ahem!(MM: In the context of code comments, "ahem!" is often used to draw attention to a particular piece of code. It's a way for the developer to say, "Pay attention to this," or "This might not be ideal, but it's necessary for now. is that the meaning you intended?)
+              // ahem!(MM: In the context of code comments, "ahem!" is often used to draw attention to a particular piece of code. It's a way for the developer to say, "Pay attention to this," or "This might not be ideal, but it's necessary for now. is that the meaning you intended?) DM: hehe, no "ahem!" means in this case: "take a look at this" and a friendly scolding, indicating "something's amiss here" - in this case implying that you'll remember you're not supposed to use index for a ReactJS key.
               index
               // id
             }
@@ -39,12 +39,14 @@ export default function ChatBox({ messages, deleteMessage }) {
   )
 }
 /*
+
 The error: Objects are not valid as a React child (found: object with keys {text, sender, timestamp, id}). If you meant to render a collection of children, use an array instead. was thrown when trying to send message, i searched for it in the react-errors.md file where it describes the process of :
 1. check in the return statement of the JSX if there is a map function
 2. converting an object into array with Object.entries() method
 3. use array?.map() function to render if array is not null or undefined. If array is null or undefined, the expression will short-circuit and return undefined without throwing an error.
 4. After all the above attempts nothing was found.
-MM: i'll continue working on it tomorrow.
+MM: i'll continue working on it tomorrow. DM: ok, good, keep going.
+DM: todoMM: please put this comment near the affected code because I don't know what code this applies to. It is frustrating because I have no idea what you're talking about! Be careful each time you add a comment like this that is is directly above the affected code. And, if instructions are necessary to reproduce the problem, then give those instructions. OK, no I assume this is no longer an issue. If you had put this message immediately/directly in the line above the affected code, when you later did the fix above, you would have realized that this comment was no longer relevant and you would have deleted it. So, please be careful to put comments directly above the affected code. It is extremely frustrating to try to figure out what happened of what I should do with this Git diff!
 
 */
 /*

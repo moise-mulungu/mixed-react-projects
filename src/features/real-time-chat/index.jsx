@@ -9,6 +9,17 @@ import MessageInput from './message-input'
 import Footer from './footer'
 import User from './user'
 import UserContextProvider from './user/user-context-provider'
+/* DM: todoMM: these names don't tell me what they do, so rename them to be more descriptive. Here's a template showing the necessary syntax:
+import { 
+  // explain how to use 
+  ref as nameThatDescribesWhatIAmOrWhatIDo, 
+  // explain how to use 
+  onValue as nameThatDescribesWhatIAmOrWhatIDo, 
+  // explain how to use 
+  set as nameThatDescribesWhatIAmOrWhatIDo,
+} from 'firebase/database'
+
+ */
 import { ref, onValue, set } from 'firebase/database'
 import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
@@ -92,6 +103,7 @@ export default function RealTimeChat() {
   const onSendMessage = (message) => {
     console.log({ message })
     // setMessages([...messages, { text: message, sender: 'You', timestamp: new Date() }])
+    // DM: todoMM: use the function form of the setter, as you have done a few lines below
     setMessages([...messages, message])
   }
 
@@ -110,6 +122,7 @@ export default function RealTimeChat() {
 
     // Remove the message from Firestore
     try {
+      // DM: todoMM: assign all expressions to a well-named variable (for readability and console.logging). What is a doc? is it a message in the database?
       await deleteDoc(doc(db, 'messages', message.id))
     } catch (e) {
       console.error('Error removing document: ', e)
