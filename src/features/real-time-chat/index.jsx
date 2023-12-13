@@ -57,7 +57,7 @@ export default function RealTimeChat() {
   // New function to handle typing status
   const onTyping = (isTyping) => {
     if (currentUser) {
-      const typingRef = createDatabaseReference(database, 'typing/' + currentUser.uid)
+      const typingRef = createDatabaseReference(database, `typing/${currentUser.uid}`)
       setDatabaseValue(typingRef, isTyping)
     }
   }
@@ -175,9 +175,9 @@ export default function RealTimeChat() {
     <UserContextProvider>
       {!isAuthenticated && <User onConnect={handleUserConnect} onAuthenticate={onAuthenticate} />}
       {isAuthenticated && (
-        <div className="flex flex-col h-screen bg-gray-100 mx-2">
+        <div className="md:flex md:flex-col h-screen bg-gray-100 mx-2">
           <Header />
-          <div className="flex-grow flex">
+          <div className="md:flex-grow md:flex">
             <div className="flex flex-col w-1/3 border-r-2 border-gray-200">
               <ChatBox messages={messages} deleteMessage={deleteMessage} />
             </div>
@@ -222,11 +222,16 @@ export default function RealTimeChat() {
               <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
                 Typing Users
               </h2>
-              {typingUsers.map((user, index) => (
-                <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
-                  {`${user} is typing...`}
-                </div>
-              ))}
+              {typingUsers.map(
+                (user, index) => (
+                  console.log('typingUsers', { user }),
+                  (
+                    <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
+                      {`${user} is typing...`}
+                    </div>
+                  )
+                )
+              )}
             </div>
             {/* MM: DM: this part of code still needs styling improvements, i'll continue with it tomorrow */}
           </div>
@@ -241,42 +246,22 @@ export default function RealTimeChat() {
 
 DM: see my comment in message-input.jsx. same issue here.(ok) 
 
-import { useState } from 'react'
-import Header from './header'
-import ChatBox from './chat-box'
-import MessageInput from './message-input'
-import Footer from './footer'
-import User from './user'
-import UserContextProvider from './user/user-context-provider'
+MM: DM: i realized that the app was responsive but it was not attractive on mobile device. i tested it on the Mobile simulator - responsive testing tool in chrome dev tools, and i found that the app was not responsive on mobile devices, so i read the document that provides the responsive design features by the framework to make the app responsive on mobile devices.(https://tailwindcss.com/docs/responsive-design)
+To use media queries in Tailwind CSS, you can use the responsive design features provided by the framework. Here are the steps:
 
-export default function RealTimeChat() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+1. Understand the breakpoints: Tailwind CSS comes with five default breakpoints:
 
-  if (!isAuthenticated) {
-    return (
-      <UserContextProvider>
-        <User onAuthenticate={() => setIsAuthenticated(true)} />
-      </UserContextProvider>
-    )
-  }
+  sm: 640px
+  md: 768px
+  lg: 1024px
+  xl: 1280px
+  2xl: 1536px
 
-  return (
-    <UserContextProvider>
-      <div className="flex flex-col h-screen bg-gray-100 mx-2">
-        <Header />
-        <div className="flex-grow flex">
-          <div className="flex flex-col w-1/3 border-r-2 border-gray-200">
-            <ChatBox />
-          </div>
-          <div className="flex flex-col w-1/3 border-r-2 border-gray-200">
-            <MessageInput />
-          </div>
-          <div className="flex flex-col w-1/3" />
-        </div>
-        <Footer />
-      </div>
-    </UserContextProvider>
-  )
-}
+2. Use the breakpoints: To apply a style only at a specific breakpoint, you prepend the breakpoint name to the utility class with a colon. For example, md:bg-red-500 will apply the bg-red-500 class only on medium screens (768px and above).
+
+3. Apply to your elements: Here's an example of how you can use media queries in your HTML:
+
+<div className="bg-red-500 md:bg-blue-500 lg:bg-green-500 xl:bg-yellow-500 2xl:bg-purple-500">
+  This is a div with a background color that changes at different breakpoints. 
 
 */
