@@ -26,19 +26,26 @@ export default function Login({ handleLogin, error, toggleAuthenticationMode }) 
           {error && <p className="text-black">{error}</p>}
           <button
             onClick={() => handleLogin(email, password)}
-            className="p-2 mt-4 bg-pink-500 text-white rounded mb-2 w-full"
+            className="p-2 mt-4 bg-green-500 text-white rounded mb-2 w-full"
           >
             Login
           </button>
           {/* 
-          DM: todoMM: ok, I see how you're thinking, but a button under the un/pw inputs communicate to the user that they can type in the un/pw and then click the signup button. However if I do that, I lose what I typed and I have to start over. This really happened to me a few times. UX issue. So, instead of a signup button, show it as a link, so they know they have to click the link first before entering un/pw.
+          (done)DM: todoMM: ok, I see how you're thinking, but a button under the un/pw inputs communicate to the user that they can type in the un/pw and then click the signup button. However if I do that, I lose what I typed and I have to start over. This really happened to me a few times. UX issue. So, instead of a signup button, show it as a link, so they know they have to click the link first before entering un/pw. MM: i also added the login anchor tag link to the signup page as well. 
            */}
-          <button
+          {/* <button
             onClick={toggleAuthenticationMode}
             className="p-2 mt-4 bg-yellow-500 text-white rounded mb-2 w-full"
           >
             Signup
-          </button>
+          </button> */}
+          <a
+            href="#"
+            onClick={toggleAuthenticationMode}
+            className="text-white text-xl border-b-2 border-yellow-500"
+          >
+            Signup
+          </a>
         </div>
       </div>
     </div>

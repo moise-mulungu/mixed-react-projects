@@ -156,7 +156,7 @@ const User = ({ onAuthenticate, onConnect }) => {
           //   setIsLoggedIn(true)
           //   onConnect(user) // call onConnect when a user logs in
           .then(() => {
-            // DM: todoMM: I'm curious,w hat does user.reload() do? Why are you're returning it because the next .then() doesn't have a parameter so why doe you need to return the result of user.reload()?
+            //(done) DM: todoMM: I'm curious,w hat does user.reload() do? Why are you're returning it because the next .then() doesn't have a parameter so why doe you need to return the result of user.reload()? MM: The user.reload() function is a Firebase Authentication method that refreshes the local user data with the latest data from the Firebase server. It's used here to ensure that the local user object is up-to-date after updating the user's profile. The return user.reload() line is used to chain promises. It ensures that the next .then() block, where setUser(user) is called, doesn't execute until after the user data has been reloaded. Even though user.reload() doesn't return a value used in the next .then() block, it returns a promise that resolves when the user data has been reloaded.
             return user.reload()
           })
           .then(() => {

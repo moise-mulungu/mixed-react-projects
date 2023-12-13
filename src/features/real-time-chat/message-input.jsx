@@ -1,7 +1,5 @@
-// DM: todoMM: combine the next 3 lines into one import
-import { useState } from 'react'
-import { useContext } from 'react'
-import { useEffect } from 'react'
+//(done) DM: todoMM: combine the next 3 lines into one import
+import { useState, useContext, useEffect } from 'react'
 import { UserContext } from './user/user-context-provider'
 import { addDoc, collection, getDoc } from 'firebase/firestore'
 import db from './firebase'
@@ -138,7 +136,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 
 /*
 
-DM: this looks like there are not many changes from the original above. It is better to comment out in place, rather than copy the entire code then comment out the entire code here. The reason is I can't tell what the diff is from this commented out code and the original code above, so I can't see what you traied to do, so I can't help. MM: i separated the two for code error reason, the same for other files, but i'll place the comments in the original code.
+DM: this looks like there are not many changes from the original above. It is better to comment out in place, rather than copy the entire code then comment out the entire code here. The reason is I can't tell what the diff is from this commented out code and the original code above, so I can't see what you tried to do, so I can't help. MM: i separated the two for code error reason, the same for other files, but i'll place the comments in the original code.
 
 import { useState, useContext } from 'react'
 import { UserContext } from './user/user-context-provider'

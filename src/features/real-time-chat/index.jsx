@@ -9,10 +9,10 @@ import MessageInput from './message-input'
 import Footer from './footer'
 import User from './user'
 import UserContextProvider from './user/user-context-provider'
-/* DM: todoMM: these names don't tell me what they do, so rename them to be more descriptive. Here's a template showing the necessary syntax:
+/* (done)DM: todoMM: these names don't tell me what they do, so rename them to be more descriptive. Here's a template showing the necessary syntax:
 import { 
   // explain how to use 
-  ref as nameThatDescribesWhatIAmOrWhatIDo, 
+   ref as nameThatDescribesWhatIAmOrWhatIDo, 
   // explain how to use 
   onValue as nameThatDescribesWhatIAmOrWhatIDo, 
   // explain how to use 
@@ -20,7 +20,16 @@ import {
 } from 'firebase/database'
 
  */
-import { ref, onValue, set } from 'firebase/database'
+import {
+  // 'ref' is used to create a reference to a specific location in your Database.
+  ref as createDatabaseReference,
+
+  // 'onValue' sets up a listener that gets called whenever the data at a particular location changes.
+  onValue as listenToDatabaseValueChanges,
+
+  // 'set' writes or replaces data at a specific location in your Database.
+  set as setDatabaseValue,
+} from 'firebase/database'
 import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
 
@@ -48,8 +57,8 @@ export default function RealTimeChat() {
   // New function to handle typing status
   const onTyping = (isTyping) => {
     if (currentUser) {
-      const typingRef = ref(database, 'typing/' + currentUser.uid)
-      set(typingRef, isTyping)
+      const typingRef = createDatabaseReference(database, 'typing/' + currentUser.uid)
+      setDatabaseValue(typingRef, isTyping)
     }
   }
 
@@ -67,9 +76,9 @@ export default function RealTimeChat() {
 
     // Set up Realtime Database presence subscription
     const unsubscribeDatabase = connectedUsers.map((user) => {
-      const userStatusRef = ref(database, 'status/' + user.uid)
+      const userStatusRef = createDatabaseReference(database, 'status/' + user.uid)
 
-      return onValue(userStatusRef, (snapshot) => {
+      return listenToDatabaseValueChanges(userStatusRef, (snapshot) => {
         const status = snapshot.val()
         if (status) {
           console.log(`User ${user.uid} is ${status.state}`)
@@ -78,8 +87,8 @@ export default function RealTimeChat() {
       })
     })
     // New subscription for typing status
-    const typingRef = ref(database, 'typing')
-    const unsubscribeTyping = onValue(typingRef, (snapshot) => {
+    const typingRef = createDatabaseReference(database, 'typing')
+    const unsubscribeTyping = listenToDatabaseValueChanges(typingRef, (snapshot) => {
       const typingUsers = []
       snapshot.forEach((childSnapshot) => {
         if (childSnapshot.val() === true) {
@@ -130,9 +139,9 @@ export default function RealTimeChat() {
   }
 
   const handleUserConnect = (user) => {
-    const userStatusDatabaseRef = ref(database, 'status/' + user.uid)
+    const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
 
-    set(userStatusDatabaseRef, {
+    setDatabaseValue(userStatusDatabaseRef, {
       state: 'online',
       last_changed: serverTimestamp(),
     })

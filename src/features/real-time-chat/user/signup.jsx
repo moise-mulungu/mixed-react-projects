@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-export default function Signup({ handleSignup, error }) {
+export default function Signup({ handleSignup, error, toggleAuthenticationMode }) {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -44,7 +44,7 @@ export default function Signup({ handleSignup, error }) {
           {/*  
             its confusing to user if you show both buttons at once; MM: DM: good, but the aim of the app is switch from login to signup, or to login only after user has signed up. or i can keep both login and signup buttons in the login component to allow access the signup section, but on the signup i just keep one button, is that right?     
             DM: see my comment in the login file
-            DM: todoMM: change the commented-out login button so that it looks like a link back to the login  
+            (done)DM: todoMM: change the commented-out login button so that it looks like a link back to the login  
             
             <button
             onClick={toggleAuthenticationMode}
@@ -52,6 +52,13 @@ export default function Signup({ handleSignup, error }) {
           >
             Login
           </button> */}
+          <a
+            href="#"
+            onClick={toggleAuthenticationMode}
+            className="text-white text-xl border-b-2 border-green-500"
+          >
+            Login
+          </a>
         </div>
       </div>
     </div>
