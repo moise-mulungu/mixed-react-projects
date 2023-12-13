@@ -31,7 +31,7 @@ export default function Login({ handleLogin, error, toggleAuthenticationMode }) 
             Login
           </button>
           {/* 
-          (done)DM: todoMM: ok, I see how you're thinking, but a button under the un/pw inputs communicate to the user that they can type in the un/pw and then click the signup button. However if I do that, I lose what I typed and I have to start over. This really happened to me a few times. UX issue. So, instead of a signup button, show it as a link, so they know they have to click the link first before entering un/pw. MM: i also added the login anchor tag link to the signup page as well. 
+          (done)DM: ok, I see how you're thinking, but a button under the un/pw inputs communicate to the user that they can type in the un/pw and then click the signup button. However if I do that, I lose what I typed and I have to start over. This really happened to me a few times. UX issue. So, instead of a signup button, show it as a link, so they know they have to click the link first before entering un/pw. MM: i also added the login anchor tag link to the signup page as well. 
            */}
           {/* <button
             onClick={toggleAuthenticationMode}

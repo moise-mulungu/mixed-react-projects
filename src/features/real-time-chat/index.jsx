@@ -9,7 +9,7 @@ import MessageInput from './message-input'
 import Footer from './footer'
 import User from './user'
 import UserContextProvider from './user/user-context-provider'
-/* (done)DM: todoMM: these names don't tell me what they do, so rename them to be more descriptive. Here's a template showing the necessary syntax:
+/* (done)DM: these names don't tell me what they do, so rename them to be more descriptive. Here's a template showing the necessary syntax:
 import { 
   // explain how to use 
    ref as nameThatDescribesWhatIAmOrWhatIDo, 
@@ -22,12 +22,14 @@ import {
  */
 import {
   // 'ref' is used to create a reference to a specific location in your Database.
+  // DM: todoMM: ok, good, but what do you mean by "location" in the database? what is the reference attached to, what can you so with the reference returned?
   ref as createDatabaseReference,
 
   // 'onValue' sets up a listener that gets called whenever the data at a particular location changes.
+  // DM: todoMM: ok, got it. Is location/value refer to a document in a collection, or to a particular field in a document?
   onValue as listenToDatabaseValueChanges,
 
-  // 'set' writes or replaces data at a specific location in your Database.
+  // 'set' writes or replaces data at a specific location in your Database. DM: good
   set as setDatabaseValue,
 } from 'firebase/database'
 import { serverTimestamp } from 'firebase/database'
@@ -246,6 +248,7 @@ export default function RealTimeChat() {
 
 DM: see my comment in message-input.jsx. same issue here.(ok) 
 
+DM: good stuff
 MM: DM: i realized that the app was responsive but it was not attractive on mobile device. i tested it on the Mobile simulator - responsive testing tool in chrome dev tools, and i found that the app was not responsive on mobile devices, so i read the document that provides the responsive design features by the framework to make the app responsive on mobile devices.(https://tailwindcss.com/docs/responsive-design)
 To use media queries in Tailwind CSS, you can use the responsive design features provided by the framework. Here are the steps:
 

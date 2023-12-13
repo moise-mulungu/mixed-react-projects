@@ -44,7 +44,7 @@ export default function Signup({ handleSignup, error, toggleAuthenticationMode }
           {/*  
             its confusing to user if you show both buttons at once; MM: DM: good, but the aim of the app is switch from login to signup, or to login only after user has signed up. or i can keep both login and signup buttons in the login component to allow access the signup section, but on the signup i just keep one button, is that right?     
             DM: see my comment in the login file
-            (done)DM: todoMM: change the commented-out login button so that it looks like a link back to the login  
+            (done)DM: change the commented-out login button so that it looks like a link back to the login  
             
             <button
             onClick={toggleAuthenticationMode}

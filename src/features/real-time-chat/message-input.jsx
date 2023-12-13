@@ -1,4 +1,3 @@
-//(done) DM: todoMM: combine the next 3 lines into one import
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from './user/user-context-provider'
 import { addDoc, collection, getDoc } from 'firebase/firestore'
