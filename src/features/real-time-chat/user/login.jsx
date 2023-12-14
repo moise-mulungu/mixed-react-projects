@@ -5,8 +5,8 @@ export default function Login({ handleLogin, error, toggleAuthenticationMode }) 
   const [password, setPassword] = useState('')
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100 mx-2">
-      <div className="bg-purple-500 text-white rounded-lg shadow-lg p-8 w-1/3 h-2/3 flex items-center justify-center">
+    <div className="flex items-center justify-center h-screen bg-gray-100 mx-2 md:mx-0">
+      <div className="bg-purple-500 text-white rounded-lg shadow-lg p-8 md:w-1/3 h-full md:h-2/3 flex items-center justify-center">
         <div>
           <h1 className="text-2xl font-bold mb-2">Login</h1>
           <input

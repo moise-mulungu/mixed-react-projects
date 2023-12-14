@@ -126,7 +126,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
         className="w-full flex-grow mb-4 p-2 rounded border-2 border-purple-500 resize-none"
         rows={rows}
       />
-      <button type="submit" className="bg-purple-500 text-white rounded p-2">
+      <button type="submit" className="bg-green-500 text-white rounded p-2">
         Send
       </button>
     </form>

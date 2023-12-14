@@ -190,50 +190,77 @@ export default function RealTimeChat() {
     <UserContextProvider>
       {!isAuthenticated && <User onConnect={handleUserConnect} onAuthenticate={onAuthenticate} />}
       {isAuthenticated && (
-        <div className="md:flex md:flex-col h-screen bg-gray-100 mx-2">
-          <Header />
-          <div className="md:flex-grow md:flex">
-            <div className="flex flex-col w-1/3 border-r-2 border-gray-200">
+        <div className="flex flex-col h-screen bg-gray-100 mx-2 md:mx-0">
+          <Header className="h-10 md:h-10" />
+          <div className="flex flex-col md:flex-row flex-grow h-80 md:h-80">
+            <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
               <ChatBox messages={messages} deleteMessage={deleteMessage} />
             </div>
-            <div className="flex flex-col w-1/3 border-r-2 border-gray-200">
+            <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
               {/*(done) DM: choose either onSendMessage or handleSendMessage (both names are great, imo), but the prop name should be the same as the function name. this makes it a LOT easier to follow what is what as you jump back and forth between components and tweak code. If they have different names, it gets confusing and mistakes can happen. (PS: I like onSendMessage a little better, since it isn't directly an event handler, but rather is called by an event handler in another component.) */}
               <MessageInput onSendMessage={onSendMessage} onTyping={onTyping} />
             </div>
-            <div className="flex flex-col w-1/3">
-              {/* Display connected users here */}
-              <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
-                Connected Users
-              </h2>
-              {/* {connectedUsers.map(
+            <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
+              <div className="flex flex-col h-full">
+                {/* Display connected users here */}
+                <div className="flex-grow">
+                  <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
+                    Connected Users
+                  </h2>
+                  {/* {connectedUsers.map(
                 (user, index) => (
                   console.log('real-time-chat/index.jsx ', { user }),
                   console.log('displayName type:', typeof user.displayName),
                   (
                     <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4"> */}
-              {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email DM: this is fixed?* Yes, it is!/}
+                  {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email DM: this is fixed?* Yes, it is!/}
                       {/* {user.displayName} */}
-              {/* {user.displayName
+                  {/* {user.displayName
                         ? `user: ${user.displayName[0].toUpperCase() + user?.displayName.slice(1)}`
                         : ``}
-                    </div>
-                  )
-                )
-              )} */}
-              {connectedUsers.map((user, index) => {
-                console.log('real-time-chat/index.jsx ', { user })
-                console.log('displayName type:', typeof user.displayName)
-                if (user && user.displayName) {
-                  return (
-                    <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
-                      {`user: ${user.displayName[0].toUpperCase() + user.displayName.slice(1)}`}
-                    </div>
-                  )
-                }
-                return null
-              })}
+                        </div>
+                        )
+                        )
+                      )} */}
+                  {connectedUsers.map((user, index) => {
+                    console.log('real-time-chat/index.jsx ', { user })
+                    console.log('displayName type:', typeof user.displayName)
+                    if (user && user.displayName) {
+                      return (
+                        // <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
+                        //   {`user: ${user.displayName[0].toUpperCase() + user.displayName.slice(1)}`}
+                        // </div>
+                        <div
+                          key={index}
+                          className="flex items-center text-gray-500 p-2 rounded mt-4"
+                        >
+                          <span>
+                            {user.displayName[0].toUpperCase() + user.displayName.slice(1)}
+                          </span>
+                          <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
+                        </div>
+                      )
+                    }
+                    return null
+                  })}
+                </div>
+                <div className="flex-grow">
+                  <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
+                    Typing Users
+                  </h2>
+                  {typingUsers.map((user, index) => {
+                    console.log('typingUsers', { user })
+                    return (
+                      <div key={index} className="text-gray-100 p-2 rounded mt-4">
+                        <span>{`${user} is typing`}</span>
+                        <span className="text-green-500">...</span>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col w-1/3 ml-2">
+            {/* <div className="flex flex-col w-1/3 ml-2">
               <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
                 Typing Users
               </h2>
@@ -247,10 +274,9 @@ export default function RealTimeChat() {
                   )
                 )
               )}
-            </div>
-            {/* MM: DM: this part of code still needs styling improvements, i'll continue with it tomorrow */}
+            </div> */}
           </div>
-          <Footer />
+          <Footer className="h-10 md:h-10" />
         </div>
       )}
     </UserContextProvider>
@@ -278,6 +304,8 @@ To use media queries in Tailwind CSS, you can use the responsive design features
 3. Apply to your elements: Here's an example of how you can use media queries in your HTML:
 
 <div className="bg-red-500 md:bg-blue-500 lg:bg-green-500 xl:bg-yellow-500 2xl:bg-purple-500">
-  This is a div with a background color that changes at different breakpoints. 
+  This is a div with a background color that changes at different breakpoints.
+</div>
 
+MM: DM: for today's work, i added screenshots of the login, signup and chatbox components on how they look like on mobile device by using the chrome extension Mobile Simulator - Responsive Testing Tool in the src/features/real-time-chat/image folder.
 */

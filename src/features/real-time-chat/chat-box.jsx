@@ -4,7 +4,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 export default function ChatBox({ messages, deleteMessage }) {
   console.log('messages:', typeof messages)
   return (
-    <div className="flex-grow overflow-auto p-4 bg-purple-500 text-white">
+    <div className="flex-grow overflow-auto rounded p-4 bg-purple-500 text-white">
       {messages?.map((message, index) => {
         console.log('sender type:', typeof message.sender)
         console.log('text type:', typeof message.text)
