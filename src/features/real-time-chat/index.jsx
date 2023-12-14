@@ -225,11 +225,13 @@ export default function RealTimeChat() {
                   {connectedUsers.map((user, index) => {
                     console.log('real-time-chat/index.jsx ', { user })
                     console.log('displayName type:', typeof user.displayName)
+                    // DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on.
                     if (user && user.displayName) {
                       return (
                         // <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
                         //   {`user: ${user.displayName[0].toUpperCase() + user.displayName.slice(1)}`}
                         // </div>
+                        // DM: todoMM: check your browser console warnings while you use all the functionality of the app. Fix all the usage of index as key. I don"t want to have to keep reminding you about this same issue.
                         <div
                           key={index}
                           className="flex items-center text-gray-500 p-2 rounded mt-4"
