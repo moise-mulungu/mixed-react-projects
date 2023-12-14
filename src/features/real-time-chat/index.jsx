@@ -22,11 +22,24 @@ import {
  */
 import {
   // 'ref' is used to create a reference to a specific location in your Database.
-  // DM: todoMM: ok, good, but what do you mean by "location" in the database? what is the reference attached to, what can you so with the reference returned?
+  //(done) DM: todoMM: ok, good, but what do you mean by "location" in the database? what is the reference attached to, what can you so with the reference returned?
   ref as createDatabaseReference,
 
   // 'onValue' sets up a listener that gets called whenever the data at a particular location changes.
-  // DM: todoMM: ok, got it. Is location/value refer to a document in a collection, or to a particular field in a document?
+  //(done) DM: todoMM: ok, got it. Is location/value refer to a document in a collection, or to a particular field in a document? MM: In the context of Firebase's Realtime Database, a "location" refers to a specific path in your database. It's like a URL for your data. For example, if you have a database structure like this:
+  /*
+  - users
+    - user1
+      - name: "Alice"
+      - age: 20
+    - user2
+      - name: "Bob"
+      - age: 25
+      
+  The location /users/user1 refers to the data { name: "Alice", age: 20 }, and the location /users/user1/name refers to the data "Alice".
+    
+  When you create a reference using ref or createDatabaseReference, you're specifying the path to the data you want to interact with. You can then use this reference to read data, write data, or listen for data changes at that location.
+  */
   onValue as listenToDatabaseValueChanges,
 
   // 'set' writes or replaces data at a specific location in your Database. DM: good

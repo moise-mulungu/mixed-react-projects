@@ -49,42 +49,42 @@ Remember, these are just the basic features. Depending on your specific needs, y
 
 ## Copilot prompt sudo code: 
 
-1. Setup the project
+1. Setup the project(done)
 
    - Initialize a new React project using Create React App (NextJS) or a similar tool.
    - Install necessary libraries (like react-router (not in nextjs, putting file in src/pages is how routing happens), socket.io-client, axios, etc.).
   
-2. Create the User Authentication system
+2. Create the User Authentication system(done)
 
    - Create a Login/Register component. 
    - Implement user authentication logic (could be JWT, OAuth, etc.).
    - Store the authenticated user's data for later use.
   
-3. Create the Chat Interface
+3. Create the Chat Interface(done. may be modified when implementing the point 9)
 
    - Create a Chat component that displays a list of messages. 
    - Each message should display the sender's name, the message text, and the time it was sent.
    - Include a text input for sending new messages.
    - DM: I'd do this first; I think you'll have to implement the server at the same time.
   
-4.  Implement Real-time Messaging
+4.  Implement Real-time Messaging(done)
 
     - Establish a WebSocket connection when the Chat component mounts.  
       - what does the Chat component connect TO?
     - When a new message is submitted, send it over the WebSocket connection.
     - Listen for incoming messages on the WebSocket and add them to the chat.
 
-5. Implement Message History
+5. Implement Message History(done)
 
    - When the Chat component mounts, fetch the message history from the server and display it.
    - When a new message is sent or received, add it to the message history.
   
-6. Implement User Presence Information
+6. Implement User Presence Information(done)
 
    - Send a status update over the WebSocket when the user goes online or offline.
    - Listen for status updates from other users and update their presence status accordingly.
   
-7. Implement Typing Indicators
+7. Implement Typing Indicators(in progress)
 
    - When the user starts or stops typing, send a typing event over the WebSocket.
    - Listen for typing events from other users and display a typing indicator accordingly.
@@ -113,7 +113,7 @@ Remember, these are just the basic features. Depending on your specific needs, y
     - Allow the user to view and edit their profile.
     - Display the user's profile picture and name in the chat.
   
-13. Implement Security
+13. Implement Security(done)
 
     - Ensure all data sent over the WebSocket is encrypted.
     - Ensure all API endpoints are secured and only accessible to authenticated users.
