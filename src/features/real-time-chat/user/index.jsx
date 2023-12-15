@@ -15,7 +15,8 @@ import Signup from './signup'
 //(done) DM: todoMM: move to directory named user/index.jsx and add user-context.jsx to that directory. This way, as this app grows (it seems like it will be come quite large), it will be easier to keep track of what files are imported by what other files.
 
 // todoDM: example for lesson on hoisting, const not hoisted, function declarations are hoisted
-const User = ({ onAuthenticate, onConnect }) => {
+// DM: let's get back to function declarations not arrow functions for the main function in a file. It is a more self-documenting that way.
+export default function User({ onAuthenticate, onConnect }) {
   // const [email, setEmail] = useState('')
   // const [username, setUsername] = useState('')
   // const [password, setPassword] = useState('')
@@ -338,5 +339,3 @@ DM: RE real-time messaging in your comment above: the point of my last message i
 DM: todays bugs looks like it was difficult to figure out. One possible approach: the reason I had you do the codesandbox exercise, is you can try to implement just the part that is breaking (the login/signup?) in a new clean NextJS project, and once you have it working there, it will be easier to see what is different in your chat project and get clues as to why it is not working. It is your decision. If not, maybe if you leave the code in the broken state, I can see what you tried and get clues as to what is wrong. Definitely look closer at the error object and try to determine from all the details there what went wrong, including google the error messages you get. 
 
 */
-
-export default User
