@@ -79,7 +79,7 @@ Remember, these are just the basic features. Depending on your specific needs, y
    - When the Chat component mounts, fetch the message history from the server and display it.
    - When a new message is sent or received, add it to the message history.
 
-   DM: will I see history from the chat messages I wrote on previous days?
+   DM: will I see history from the chat messages I wrote on previous days? MM: good question! history from the previous day? No, i need to update it.
   
 6. Implement User Presence Information(done)
 
@@ -91,7 +91,7 @@ Remember, these are just the basic features. Depending on your specific needs, y
    - When the user starts or stops typing, send a typing event over the WebSocket.
    - Listen for typing events from other users and display a typing indicator accordingly.
   
-DM: do you still plan to implement the remainder of these?
+DM: do you still plan to implement the remainder of these? MM: yes, i think they are crucial for the app to make it complex and attractive.
 
 8. Implement Read Receipts
 
