@@ -9,6 +9,7 @@ import MessageInput from './message-input'
 import Footer from './footer'
 import User from './user'
 import UserContextProvider from './user/user-context-provider'
+import UserProfile from './user/user-profile'
 /* (done)DM: these names don't tell me what they do, so rename them to be more descriptive. Here's a template showing the necessary syntax:
 import { 
   // explain how to use 
@@ -63,6 +64,8 @@ export default function RealTimeChat() {
   // const [user, setUser] = useState(null)
   const [connectedUsers, setConnectedUsers] = useState([])
   const [typingUsers, setTypingUsers] = useState([])
+  const [selectedUser, setSelectedUser] = useState(null)
+  const [isProfileVisible, setProfileVisible] = useState(false)
 
   // set up a real-time listener on the 'messages' collection Firestore database
   /*
@@ -192,77 +195,85 @@ export default function RealTimeChat() {
       {isAuthenticated && (
         <div className="flex flex-col h-screen bg-gray-100 mx-2 md:mx-0">
           <Header className="h-10 md:h-10" />
-          <div className="flex flex-col md:flex-row flex-grow h-80 md:h-80">
-            <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
-              <ChatBox messages={messages} deleteMessage={deleteMessage} />
-            </div>
-            <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
-              {/*(done) DM: choose either onSendMessage or handleSendMessage (both names are great, imo), but the prop name should be the same as the function name. this makes it a LOT easier to follow what is what as you jump back and forth between components and tweak code. If they have different names, it gets confusing and mistakes can happen. (PS: I like onSendMessage a little better, since it isn't directly an event handler, but rather is called by an event handler in another component.) */}
-              <MessageInput onSendMessage={onSendMessage} onTyping={onTyping} />
-            </div>
-            <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
-              <div className="flex flex-col h-full">
-                {/* Display connected users here */}
-                <div className="flex-grow">
-                  <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
-                    Connected Users
-                  </h2>
-                  {/* {connectedUsers.map(
+          {isProfileVisible ? (
+            <UserProfile setSelectedUser={setSelectedUser} setProfileVisible={setProfileVisible} />
+          ) : (
+            <div className="flex-1">
+              <div className="flex flex-col md:flex-row flex-grow h-full md:h-full">
+                <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
+                  <ChatBox messages={messages} deleteMessage={deleteMessage} />
+                </div>
+                <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
+                  {/*(done) DM: choose either onSendMessage or handleSendMessage (both names are great, imo), but the prop name should be the same as the function name. this makes it a LOT easier to follow what is what as you jump back and forth between components and tweak code. If they have different names, it gets confusing and mistakes can happen. (PS: I like onSendMessage a little better, since it isn't directly an event handler, but rather is called by an event handler in another component.) */}
+                  <MessageInput onSendMessage={onSendMessage} onTyping={onTyping} />
+                </div>
+                <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
+                  <div className="flex flex-col h-full">
+                    {/* Display connected users here */}
+                    <div className="flex-grow">
+                      <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center mb-4">
+                        Connected Users
+                      </h2>
+                      {/* {connectedUsers.map(
                 (user, index) => (
                   console.log('real-time-chat/index.jsx ', { user }),
                   console.log('displayName type:', typeof user.displayName),
                   (
                     <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4"> */}
-                  {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email DM: this is fixed?* Yes, it is!/}
+                      {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email DM: this is fixed?* Yes, it is!/}
                       {/* {user.displayName} */}
-                  {/* {user.displayName
+                      {/* {user.displayName
                         ? `user: ${user.displayName[0].toUpperCase() + user?.displayName.slice(1)}`
                         : ``}
                         </div>
                         )
                         )
                       )} */}
-                  {connectedUsers.map((user) => {
-                    console.log('real-time-chat/index.jsx ', { user })
-                    console.log('displayName type:', typeof user.displayName)
-                    // DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on. MM: This is necessary to check a possibility of user to be be null or undefined, or if user.displayName could be null, undefined, or an empty string. i think it's safer to keep it.
-                    if (user && user.displayName) {
-                      return (
-                        // <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
-                        //   {`user: ${user.displayName[0].toUpperCase() + user.displayName.slice(1)}`}
-                        // </div>
-                        //(done) DM: todoMM: check your browser console warnings while you use all the functionality of the app. Fix all the usage of index as key. I don"t want to have to keep reminding you about this same issue.
-                        <div
-                          key={user} // i added this because each user should be unique
-                          className="flex items-center text-gray-500 p-2 rounded mt-4"
-                        >
-                          <span>
-                            {user.displayName[0].toUpperCase() + user.displayName.slice(1)}
-                          </span>
-                          <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
-                        </div>
-                      )
-                    }
-                    return null
-                  })}
+                      {connectedUsers.map((user) => {
+                        console.log('real-time-chat/index.jsx ', { user })
+                        console.log('displayName type:', typeof user.displayName)
+                        // DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on. MM: This is necessary to check a possibility of user to be be null or undefined, or if user.displayName could be null, undefined, or an empty string. i think it's safer to keep it.
+                        if (user && user.displayName) {
+                          return (
+                            // <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
+                            //   {`user: ${user.displayName[0].toUpperCase() + user.displayName.slice(1)}`}
+                            // </div>
+                            //(done) DM: todoMM: check your browser console warnings while you use all the functionality of the app. Fix all the usage of index as key. I don"t want to have to keep reminding you about this same issue.
+                            <div
+                              key={user} // i added this because each user should be unique
+                              className="flex items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
+                              onClick={() => {
+                                setSelectedUser(user)
+                                setProfileVisible(true)
+                              }}
+                            >
+                              <span>
+                                {user.displayName[0].toUpperCase() + user.displayName.slice(1)}
+                              </span>
+                              <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
+                            </div>
+                          )
+                        }
+                        return null
+                      })}
+                    </div>
+                    <div className="flex-grow">
+                      <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
+                        Typing Users
+                      </h2>
+                      {typingUsers.map((user, index) => {
+                        console.log('typingUsers', { user })
+                        return (
+                          <div key={index} className="text-gray-100 p-2 rounded mt-4">
+                            <span>{`${user} is typing`}</span>
+                            <span className="text-green-500">...</span>
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
                 </div>
-                <div className="flex-grow">
-                  <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
-                    Typing Users
-                  </h2>
-                  {typingUsers.map((user, index) => {
-                    console.log('typingUsers', { user })
-                    return (
-                      <div key={index} className="text-gray-100 p-2 rounded mt-4">
-                        <span>{`${user} is typing`}</span>
-                        <span className="text-green-500">...</span>
-                      </div>
-                    )
-                  })}
-                </div>
-              </div>
-            </div>
-            {/* <div className="flex flex-col w-1/3 ml-2">
+                {/* <div className="flex flex-col w-1/3 ml-2">
               <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
                 Typing Users
               </h2>
@@ -277,7 +288,9 @@ export default function RealTimeChat() {
                 )
               )}
             </div> */}
-          </div>
+              </div>
+            </div>
+          )}
           <Footer className="h-10 md:h-10" />
         </div>
       )}

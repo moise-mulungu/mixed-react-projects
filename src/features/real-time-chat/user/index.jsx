@@ -1,6 +1,5 @@
 // JavaScript (React)
 import { useState, useContext } from 'react'
-// import { useAuthState } from 'react-firebase-hooks/auth'
 import {
   // auth,
   login,
@@ -38,7 +37,7 @@ const User = ({ onAuthenticate, onConnect }) => {
   //     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   //   return re.test(String(email).toLowerCase())
   // }
-  const { setUser } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
   // const [, , authError] = useAuthState()
 
   // auth.onAuthStateChanged((user) => {
@@ -165,6 +164,7 @@ const User = ({ onAuthenticate, onConnect }) => {
           .then(() => {
             setUser(user)
             setIsLoggedIn(true)
+            onAuthenticate()
             onConnect(user) // call onConnect when a user logs in
           })
           .catch((error) => {
