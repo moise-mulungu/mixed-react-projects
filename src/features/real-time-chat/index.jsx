@@ -1,8 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
 import db, { database } from './firebase'
-import { doc, deleteDoc } from 'firebase/firestore'
-// import { UserContext } from './user/user-context-provider'
 import Header from './header'
 import ChatBox from './chat-box'
 import MessageInput from './message-input'
@@ -48,6 +46,7 @@ import {
 } from 'firebase/database'
 import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
+import { doc, getDoc, deleteDoc } from 'firebase/firestore'
 
 // import firebase from 'firebase/app'a
 // import 'firebase/database'
@@ -127,6 +126,18 @@ export default function RealTimeChat() {
   /*
   MM: DM: to fix the "Error: Objects are not valid as a React child (found: object with keys {text, sender, timestamp, id}). If you meant to render a collection of children, use an array instead." error. the onSendMessage function was sending an object to the setMessages function, where the message was expected to be a string, but in the MessageInput component the message is an object, so i changed the message to be an object in the onSendMessage function to match the MessageInput component.
   */
+
+  // fetch user data from firestore
+  async function fetchUser(uid) {
+    const userRef = doc(db, 'users', uid)
+    const userSnapshot = await getDoc(userRef)
+    if (userSnapshot.exists()) {
+      return userSnapshot.data()
+    } else {
+      console.error('User does not exist:', uid)
+      return null
+    }
+  }
   const onSendMessage = (message) => {
     console.log({ message })
     // setMessages([...messages, { text: message, sender: 'You', timestamp: new Date() }])
@@ -201,7 +212,11 @@ export default function RealTimeChat() {
             <div className="flex-1">
               <div className="flex flex-col md:flex-row flex-grow h-full md:h-full">
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
-                  <ChatBox messages={messages} deleteMessage={deleteMessage} />
+                  <ChatBox
+                    fetchUser={fetchUser}
+                    messages={messages}
+                    deleteMessage={deleteMessage}
+                  />
                 </div>
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
                   {/*(done) DM: choose either onSendMessage or handleSendMessage (both names are great, imo), but the prop name should be the same as the function name. this makes it a LOT easier to follow what is what as you jump back and forth between components and tweak code. If they have different names, it gets confusing and mistakes can happen. (PS: I like onSendMessage a little better, since it isn't directly an event handler, but rather is called by an event handler in another component.) */}

@@ -51,9 +51,16 @@ export default function MessageInput({ onSendMessage, onTyping }) {
       return
     }
 
+    // Trim the message and check if it's empty
+    const trimmedMessage = message.trim()
+    if (trimmedMessage === '') {
+      return
+    }
+
     const messageObj = {
       text: message,
-      sender: user.user.displayName,
+      // sender: user.user.displayName,
+      sender: user.user.uid, // Store the user's ID instead of the display name
       timestamp: new Date().toISOString(),
     }
     // await addDoc(collection(db, 'messages'), messageObj)
