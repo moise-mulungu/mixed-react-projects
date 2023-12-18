@@ -8,13 +8,17 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   const [senderData, setSenderData] = useState({})
 
   useEffect(() => {
+    // DM: todoMM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
     const fetchAllUserData = async () => {
+      // DM: todoMM: write a comment to explain what/why this code
       const newSenderData = {}
       for (const message of messages) {
+        // DM: todoMM: careful of expensive operations inside a loop. what if there are 200 messages? You can't fetch the user for each message. One solution is to, inside this loop, get a list of unique message.sender, then after the loop, call fetchUser for each unique sender(id).
         newSenderData[message.sender] = await fetchUser(message.sender)
       }
       setSenderData(newSenderData)
     }
+    // DM: another solution is to have firestore "push" the latest user info to you when user info is changed by user, or, if that is not possible, every 5 minutes or so. Or, you could "pull" every 5 minutes by using setInterval to query the DB for latest user info ("pull" might configurable in firebase, so be sure to query Google/AI for your top-level goal "how do I avoid user data getting stale over time?")
 
     fetchAllUserData()
   }, [messages, fetchUser])
