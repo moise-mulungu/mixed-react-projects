@@ -79,7 +79,7 @@ Remember, these are just the basic features. Depending on your specific needs, y
    - When the Chat component mounts, fetch the message history from the server and display it.
    - When a new message is sent or received, add it to the message history.
 
-   DM: will I see history from the chat messages I wrote on previous days? MM: good question! history from the previous day? No, i need to update it. DM: yeah, that's what "history" means
+   DM: will I see history from the chat messages I wrote on previous days? MM: good question! history from the previous day? No, i need to update it. DM: yeah, that's what "history" means(good)
   
 6. Implement User Presence Information(done)
 

@@ -3,11 +3,10 @@ import { UserContext } from './user-context-provider'
 import { updateProfile } from 'firebase/auth'
 
 const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
-  //   const [displayName, setDisplayName] = useState(user.displayName);
   const [displayName, setDisplayName] = useState(user ? user.displayName : '')
   const [photoURL, setPhotoURL] = useState(user ? user.photoURL : '')
 
-  // DM: traditionally, the useState declarations come first in a component
+  // DM: traditionally, the useState declarations come first in a component(ok)
   const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
