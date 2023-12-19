@@ -1,32 +1,45 @@
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { db } from './firebase'
 
 export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   console.log('messages:', typeof messages)
 
-  const [senderData, setSenderData] = useState({})
+  const [userData, setUserData] = useState({})
 
   useEffect(() => {
-    // DM: todoMM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
+    //(done) DM: todoMM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
     const fetchAllUserData = async () => {
-      // DM: todoMM: write a comment to explain what/why this code
-      const newSenderData = {}
-      for (const message of messages) {
-        // DM: todoMM: careful of expensive operations inside a loop. what if there are 200 messages? You can't fetch the user for each message. One solution is to, inside this loop, get a list of unique message.sender, then after the loop, call fetchUser for each unique sender(id).
-        newSenderData[message.sender] = await fetchUser(message.sender)
+      //(done) DM: todoMM: write a comment to explain what/why this code
+      // The fetchAllUserData function fetches the user data for each sender of the messages and stores it in the userData state. This data is then used to display the sender's information for each message.
+      const uniqueSenders = [...new Set(messages.map((message) => message.sender))]
+      const newUserData = {}
+      for (const sender of uniqueSenders) {
+        //(done) DM: todoMM: careful of expensive operations inside a loop. what if there are 200 messages? You can't fetch the user for each message. One solution is to, inside this loop, get a list of unique message.sender, then after the loop, call fetchUser for each unique sender(id).
+        newUserData[sender] = await fetchUser(sender)
       }
-      setSenderData(newSenderData)
+      setUserData(newUserData)
     }
     // DM: another solution is to have firestore "push" the latest user info to you when user info is changed by user, or, if that is not possible, every 5 minutes or so. Or, you could "pull" every 5 minutes by using setInterval to query the DB for latest user info ("pull" might configurable in firebase, so be sure to query Google/AI for your top-level goal "how do I avoid user data getting stale over time?")
+    const unsubscribe = db.collection('users').onSnapshot((snapshot) => {
+      const newUserData = {}
+      snapshot.docs.forEach((doc) => {
+        newUserData[doc.id] = doc.data()
+      })
+      setUserData(newUserData)
+    })
+
+    // MM: i am facing this error : TypeError: Cannot read properties of undefined (reading 'collection'). but i'll work on it next time.
 
     fetchAllUserData()
+    return () => unsubscribe()
   }, [messages, fetchUser])
 
   return (
     <div className="flex-grow overflow-auto rounded p-4 bg-purple-500 text-white">
       {messages?.map((message, index) => {
-        const sender = senderData[message.sender]?.displayName || message.sender
+        const sender = userData[message.sender]?.displayName || message.sender
         console.log({ sender })
         console.log('sender type:', typeof message.sender)
         console.log('text type:', typeof message.text)
