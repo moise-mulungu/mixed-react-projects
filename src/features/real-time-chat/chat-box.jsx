@@ -10,10 +10,11 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
 
   useEffect(() => {
     let unsubscribe
-    //(done) DM: todoMM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
+    //(done) DM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
+    // DM: todoMM: you are fetching, but the ultimate purpose of this function is to setAllUserData, correct?
     const fetchAllUserData = async () => {
-      //(done) DM: todoMM: write a comment to explain what/why this code
-      // The fetchAllUserData function fetches the user data for each sender of the messages and stores it in the userData state. This data is then used to display the sender's information for each message.
+      //(done) DM: write a comment to explain what/why this code
+      // The fetchAllUserData function fetches the user data for each sender of the messages and stores it in the userData state. This data is then used to display the sender's information for each message. DM: good
       const uniqueSenders = [...new Set(messages.map((message) => message.sender))]
       const newUserData = {}
       for (const sender of uniqueSenders) {
@@ -30,6 +31,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
     //   })
     //   setUserData(newUserData)
     // })
+    // DM: todoMM: use a guard clause at the beginning of the useEffect to handle when !db. That way you don't have to use `let unsubscribe` and `unsubscribe && unsubscribe()`. Following the rule to avoid `let` whenever possible will help you write better code.
     if (db) {
       unsubscribe = db.collection('users').onSnapshot((snapshot) => {
         const newUserData = {}
@@ -41,10 +43,15 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
 
       fetchAllUserData()
     }
-    // MM: i am facing this error : TypeError: Cannot read properties of undefined (reading 'collection'). but i'll work on it next time.
+    // MM: i am facing this error : TypeError: Cannot read properties of undefined (reading 'collection'). but i'll work on it next time. DM: what does this comment refer to? I see fetchAllUserData above and below this comment line.
 
     // fetchAllUserData()
-    return () => unsubscribe && unsubscribe()
+    //
+    return () => {
+      // DM todoMM: keep in mind this cleanup function will be called every time one of the dependencies changes. Do you want to unsubscribe each time the messages variable changes?
+
+      unsubscribe && unsubscribe()
+    }
   }, [messages, fetchUser, db])
 
   return (
