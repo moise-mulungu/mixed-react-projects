@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import { db } from './firebase'
+import db from './firebase'
 
 export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   console.log('messages:', typeof messages)
@@ -9,6 +9,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   const [userData, setUserData] = useState({})
 
   useEffect(() => {
+    let unsubscribe
     //(done) DM: todoMM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
     const fetchAllUserData = async () => {
       //(done) DM: todoMM: write a comment to explain what/why this code
@@ -22,19 +23,29 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
       setUserData(newUserData)
     }
     // DM: another solution is to have firestore "push" the latest user info to you when user info is changed by user, or, if that is not possible, every 5 minutes or so. Or, you could "pull" every 5 minutes by using setInterval to query the DB for latest user info ("pull" might configurable in firebase, so be sure to query Google/AI for your top-level goal "how do I avoid user data getting stale over time?")
-    const unsubscribe = db.collection('users').onSnapshot((snapshot) => {
-      const newUserData = {}
-      snapshot.docs.forEach((doc) => {
-        newUserData[doc.id] = doc.data()
+    // const unsubscribe = db.collection('users').onSnapshot((snapshot) => {
+    //   const newUserData = {}
+    //   snapshot.docs.forEach((doc) => {
+    //     newUserData[doc.id] = doc.data()
+    //   })
+    //   setUserData(newUserData)
+    // })
+    if (db) {
+      unsubscribe = db.collection('users').onSnapshot((snapshot) => {
+        const newUserData = {}
+        snapshot.docs.forEach((doc) => {
+          newUserData[doc.id] = doc.data()
+        })
+        setUserData(newUserData)
       })
-      setUserData(newUserData)
-    })
 
+      fetchAllUserData()
+    }
     // MM: i am facing this error : TypeError: Cannot read properties of undefined (reading 'collection'). but i'll work on it next time.
 
-    fetchAllUserData()
-    return () => unsubscribe()
-  }, [messages, fetchUser])
+    // fetchAllUserData()
+    return () => unsubscribe && unsubscribe()
+  }, [messages, fetchUser, db])
 
   return (
     <div className="flex-grow overflow-auto rounded p-4 bg-purple-500 text-white">
