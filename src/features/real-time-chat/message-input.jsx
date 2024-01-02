@@ -1,42 +1,64 @@
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from './user/user-context-provider'
-import { addDoc, collection, getDoc } from 'firebase/firestore'
+import { addDoc, collection, getDoc, getDocs, updateDoc, doc } from 'firebase/firestore'
 import db from './firebase'
 
 export default function MessageInput({ onSendMessage, onTyping }) {
   const [message, setMessage] = useState('')
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   await sendMessage(message)
-  //   onSendMessage(message)
-  //   setMessage('')
-  // }
-  // const sendMessage = async (message) => {
-  //   if (!user) {
-  //     console.error('User must be logged in to send a message')
-  //     return
-  //   }
-  //   try {
-  //     await addDoc(collection(db, 'messages'), {
-  //       text: message,
-  //       createdAt: new Date().toISOString(),
-  //       user: user.displayName,
-  //     })
-  //     onSendMessage({
-  //       text: message,
-  //       sender: user.displayName,
-  //       timestamp: new Date().toISOString(),
-  //     })
-  //     setMessage('')
-  //   } catch (e) {
-  //     console.error('Error adding document: ', e)
-  //   }
-  // }
-  // const handleInputChange = (e) => {
-  //   setMessage(e.target.value)
-  // }
   useEffect(() => {
+    /*
+    In order to update the senderName for the previous messages: 
+    - I created a script that would fetch all messages and update them with the senderName. 
+    - I used the updateAllMessages function to update the senderName for all messages. 
+    - I used the updatePromises array to hold all update promises. 
+    - I used the userPromise to fetch the user associated with the message.
+    But after all the above steps, the senderName for the previous messages was not updated.
+    To resolve this issue, copilot suggest to check for the four points to check:
+
+      1. Authentication: Ensure that the user is authenticated when trying to update the documents. If the user is not authenticated, the update operation will fail due to your Firestore rules. MM: for this issue, all users are authenticated, so i don't think this is the issue.
+
+      2. Data Consistency: As mentioned before, ensure that the sender field in your messages collection correctly corresponds to a user ID in your users collection. If there's a mismatch or if a user document doesn't exist for a given sender ID, the senderName won't be updated. MM; the issue might be here, but i am not sure.
+
+      3. Error Handling: You've added error handling to your updateDoc function, which is great. Check your console to see if any errors are being logged when trying to update the documents. MM: I added the error handling, but i didn't see any errors in the console.
+
+      4. Real-time Updates: If you're using Firestore's real-time updates feature to listen for changes to your messages collection, make sure that you're listening for modified events in addition to added events. This will ensure that your app reflects the updated senderName in real-time. MM: also for this there is no issue, i'm listening for modified events in addition to added events.
+      
+    */
+    const updateAllMessages = async () => {
+      // Fetch all messages
+      const messagesSnapshot = await getDocs(collection(db, 'messages'))
+
+      // Prepare an array to hold all update promises
+      const updatePromises = []
+
+      // Loop over each message
+      messagesSnapshot.docs.forEach((messageDoc) => {
+        // Fetch the user associated with this message
+        const userPromise = getDoc(doc(db, 'users', messageDoc.data().sender))
+
+        // Add the update promise to the array
+        updatePromises.push(
+          userPromise.then(async (userSnapshot) => {
+            if (userSnapshot.exists()) {
+              // Update the message with the user's displayName
+              return updateDoc(doc(db, 'messages', messageDoc.id), {
+                senderName: userSnapshot.data().displayName,
+              }).catch((error) => {
+                console.error(`Failed to update document: ${messageDoc.id}`, error)
+              })
+            } else {
+              console.warn(`User document not found for sender ID: ${messageDoc.data().sender}`)
+            }
+          })
+        )
+      })
+
+      // Wait for all updates to complete
+      await Promise.all(updatePromises)
+    }
+
+    updateAllMessages()
     return () => {
       onTyping(false)
     }
@@ -59,8 +81,8 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 
     const messageObj = {
       text: message,
-      // sender: user.user.displayName,
       sender: user.user.uid, // Store the user's ID instead of the display name
+      senderName: user.user.displayName,
       timestamp: new Date().toISOString(),
     }
     // await addDoc(collection(db, 'messages'), messageObj)
@@ -143,65 +165,5 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 /*
 
 DM: this looks like there are not many changes from the original above. It is better to comment out in place, rather than copy the entire code then comment out the entire code here. The reason is I can't tell what the diff is from this commented out code and the original code above, so I can't see what you tried to do, so I can't help. MM: i separated the two for code error reason, the same for other files, but i'll place the comments in the original code.
-
-import { useState, useContext } from 'react'
-import { UserContext } from './user/user-context-provider'
-import { addDoc, collection } from 'firebase/firestore'
-import db from './firebase'
-
-export default function MessageInput() {
-  const [message, setMessage] = useState('')
-  const user = useContext(UserContext)
-
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    await sendMessage(message)
-    setMessage('')
-  }
-
-  const handleInputChange = (e) => {
-    setMessage(e.target.value)
-  }
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && e.ctrlKey) {
-      handleSubmit(e)
-    }
-  }
-
-  const sendMessage = async (message) => {
-    if (!user || !user.displayName) {
-      console.error('User is not defined or does not have a displayName')
-      return
-    }
-    try {
-      await addDoc(collection(db, 'messages'), {
-        text: message,
-        createdAt: new Date().toISOString(),
-        user: user.displayName,
-      })
-    } catch (e) {
-      console.error('Error adding document: ', e)
-    }
-  }
-
-  const rows = message.split('\n').length
-
-  return (
-    <form onSubmit={handleSubmit} className="flex flex-col h-full border-t-2 border-purple-300 p-4">
-      <textarea
-        value={message}
-        onChange={handleInputChange}
-        onKeyDown={handleKeyDown}
-        placeholder="Type your message here..."
-        className="w-full flex-grow mb-4 p-2 rounded border-2 border-purple-500 resize-none"
-        rows={rows}
-      />
-      <button type="submit" className="bg-purple-500 text-white rounded p-2">
-        Send
-      </button>
-    </form>
-  )
-}
 
 */

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { usersCollection } from './firebase'
+import { onSnapshot } from 'firebase/firestore'
 import db from './firebase'
 
 export default function ChatBox({ messages, deleteMessage, fetchUser }) {
@@ -9,7 +11,9 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   const [userData, setUserData] = useState({})
 
   useEffect(() => {
-    let unsubscribe
+    // let unsubscribe
+    // Guard clause to handle when db is not defined
+    if (!db) return
     //(done) DM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
     // DM: todoMM: you are fetching, but the ultimate purpose of this function is to setAllUserData, correct?
     const fetchAllUserData = async () => {
@@ -31,33 +35,34 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
     //   })
     //   setUserData(newUserData)
     // })
-    // DM: todoMM: use a guard clause at the beginning of the useEffect to handle when !db. That way you don't have to use `let unsubscribe` and `unsubscribe && unsubscribe()`. Following the rule to avoid `let` whenever possible will help you write better code.
-    if (db) {
-      unsubscribe = db.collection('users').onSnapshot((snapshot) => {
-        const newUserData = {}
-        snapshot.docs.forEach((doc) => {
-          newUserData[doc.id] = doc.data()
-        })
-        setUserData(newUserData)
+    //(done) DM: todoMM: use a guard clause at the beginning of the useEffect to handle when !db. That way you don't have to use `let unsubscribe` and `unsubscribe && unsubscribe()`. Following the rule to avoid `let` whenever possible will help you write better code.
+    // if (db) {
+    const unsubscribe = onSnapshot(usersCollection, (snapshot) => {
+      const newUserData = {}
+      snapshot.docs.forEach((doc) => {
+        newUserData[doc.id] = doc.data()
       })
+      setUserData(newUserData)
+    })
 
-      fetchAllUserData()
-    }
+    fetchAllUserData()
+    // }
     // MM: i am facing this error : TypeError: Cannot read properties of undefined (reading 'collection'). but i'll work on it next time. DM: what does this comment refer to? I see fetchAllUserData above and below this comment line.
 
     // fetchAllUserData()
     //
     return () => {
-      // DM todoMM: keep in mind this cleanup function will be called every time one of the dependencies changes. Do you want to unsubscribe each time the messages variable changes?
+      //(done) DM todoMM: keep in mind this cleanup function will be called every time one of the dependencies changes. Do you want to unsubscribe each time the messages variable changes?
 
-      unsubscribe && unsubscribe()
+      unsubscribe()
     }
   }, [messages, fetchUser, db])
 
   return (
     <div className="flex-grow overflow-auto rounded p-4 bg-purple-500 text-white">
       {messages?.map((message, index) => {
-        const sender = userData[message.sender]?.displayName || message.sender
+        // const sender = userData[message.sender]?.displayName || message.sender
+        const sender = message.senderName || message.sender
         console.log({ sender })
         console.log('sender type:', typeof message.sender)
         console.log('text type:', typeof message.text)

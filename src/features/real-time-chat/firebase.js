@@ -18,8 +18,7 @@ import {
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { getDatabase } from 'firebase/database'
-// import firebase from 'firebase/app';
-// import 'firebase/database';
+import { collection } from 'firebase/firestore'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -190,6 +189,7 @@ export const login = (email, password) => {
 
 // Initialize Firestore
 const db = getFirestore()
+export const usersCollection = collection(db, 'users')
 export default db
 
 /*
