@@ -38,11 +38,15 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
     //(done) DM: todoMM: use a guard clause at the beginning of the useEffect to handle when !db. That way you don't have to use `let unsubscribe` and `unsubscribe && unsubscribe()`. Following the rule to avoid `let` whenever possible will help you write better code.
     // if (db) {
     const unsubscribe = onSnapshot(usersCollection, (snapshot) => {
+      // DM: todoMM: I'm seeing an error when I change my display name, I think it is here. Put a try-catch around the code in this callback so you can know for sure where the error is happening.
+      console.log('onSnapshot callback invoked', { snapshot })
       const newUserData = {}
       snapshot.docs.forEach((doc) => {
+        console.log('onSnapshot callback invoked', { doc, docData: doc.data() })
         newUserData[doc.id] = doc.data()
       })
       setUserData(newUserData)
+      // DM: todoMM:
     })
 
     fetchAllUserData()

@@ -92,6 +92,7 @@ export default function RealTimeChat() {
     })
 
     // Set up Realtime Database presence subscription
+    // DM: todoMM: rename unsubscribeDatabase to unsubscribeDatabaseListeners (or something like that) to make it clear that it is an array (plural) of unsubscribe functions.
     const unsubscribeDatabase = connectedUsers.map((user) => {
       const userStatusRef = createDatabaseReference(database, 'status/' + user.uid)
 

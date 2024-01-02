@@ -9,7 +9,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
   useEffect(() => {
     /*
     In order to update the senderName for the previous messages: 
-    - I created a script that would fetch all messages and update them with the senderName. 
+    - I created functionality that would fetch all messages and update them with the senderName. DM: a script is something that runs standalone from the Linux command line.
     - I used the updateAllMessages function to update the senderName for all messages. 
     - I used the updatePromises array to hold all update promises. 
     - I used the userPromise to fetch the user associated with the message.
@@ -18,7 +18,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 
       1. Authentication: Ensure that the user is authenticated when trying to update the documents. If the user is not authenticated, the update operation will fail due to your Firestore rules. MM: for this issue, all users are authenticated, so i don't think this is the issue.
 
-      2. Data Consistency: As mentioned before, ensure that the sender field in your messages collection correctly corresponds to a user ID in your users collection. If there's a mismatch or if a user document doesn't exist for a given sender ID, the senderName won't be updated. MM; the issue might be here, but i am not sure.
+      2. Data Consistency: As mentioned before, ensure that the sender field in your messages collection correctly corresponds to a user ID in your users collection. If there's a mismatch or if a user document doesn't exist for a given sender ID, the senderName won't be updated. MM; the issue might be here, but i am not sure. DM: todoMM: how can you find out?
 
       3. Error Handling: You've added error handling to your updateDoc function, which is great. Check your console to see if any errors are being logged when trying to update the documents. MM: I added the error handling, but i didn't see any errors in the console.
 
@@ -107,6 +107,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 
   const handleInputChange = (e) => {
     setMessage(e.target.value)
+    // DM: todoMM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
     onTyping(e.target.value !== '')
   }
 
