@@ -1,10 +1,6 @@
 // JavaScript (React)
-import { useState, useContext } from 'react'
-import {
-  // auth,
-  login,
-  signup,
-} from '../firebase'
+import { useState, useContext, useEffect } from 'react'
+import { auth, login, signup } from '../firebase'
 import { updateProfile } from 'firebase/auth'
 // import firebase from 'firebase/app'
 // import 'firebase/auth'
@@ -61,6 +57,23 @@ export default function User({ onAuthenticate, onConnect }) {
   //   setUser(user)
   //   setIsLoggedIn(true)
   // })
+  useEffect(() => {
+    // Listen for changes to the user's authentication state
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in
+        setUser(user)
+        onAuthenticate()
+        onConnect(user)
+      } else {
+        // User is signed out
+        setUser(null)
+      }
+    })
+
+    // Clean up the listener on component unmount
+    return () => unsubscribe()
+  }, [])
 
   const handleLogin = (email, password) => {
     console.log('handleLogin called')
