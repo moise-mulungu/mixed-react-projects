@@ -1,3 +1,5 @@
+# DM: todoMM: pick which specifically of these are needed and add them to the .gitignore file in the root directory of the project. Only add specifically which ones are needed, not all of them. We don't use yarn, for example. This looks like a copy/paste from a .gitignore from a boilerplate project.
+
 # Logs
 logs
 *.log

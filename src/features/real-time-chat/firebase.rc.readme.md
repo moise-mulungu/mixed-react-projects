@@ -1,0 +1,1 @@
+DM: todoMM: document the purpose of .firebaserc; also, my question: config files are usually located in the root directory of a project, so do you have info saying firebase.json and .firebaserc should be here?

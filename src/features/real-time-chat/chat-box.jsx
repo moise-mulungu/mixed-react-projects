@@ -39,7 +39,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
     //(done) DM: todoMM: use a guard clause at the beginning of the useEffect to handle when !db. That way you don't have to use `let unsubscribe` and `unsubscribe && unsubscribe()`. Following the rule to avoid `let` whenever possible will help you write better code.
     // if (db) {
     const unsubscribe = onSnapshot(usersCollection, (snapshot) => {
-      //(done) DM: todoMM: I'm seeing an error when I change my display name, I think it is here. Put a try-catch around the code in this callback so you can know for sure where the error is happening.
+      //(done) DM: I'm seeing an error when I change my display name, I think it is here. Put a try-catch around the code in this callback so you can know for sure where the error is happening.
       try {
         console.log('onSnapshot callback invoked', { snapshot })
         const newUserData = {}
@@ -51,7 +51,6 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
       } catch (error) {
         console.error('Error in onSnapshot callback:', error)
       }
-      // DM: todoMM:
     })
 
     fetchAllUserData()
@@ -71,7 +70,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
     <div className="flex-grow overflow-auto rounded p-4 bg-purple-500 text-white">
       {messages?.map((message, index) => {
         // const sender = userData[message.sender]?.displayName || message.sender
-        const sender = message.senderName || message.sender // MM: DM: I use this because the sender property of the message object is being set to user.displayName in the MessageInput component. This user object is obtained from the UserContext using the useContext hook.
+        const sender = message.senderName || message.sender // MM: I use this because the sender property of the message object is being set to user.displayName in the MessageInput component. This user object is obtained from the UserContext using the useContext hook.
         console.log({ sender })
         console.log('sender type:', typeof message.sender)
         console.log('text type:', typeof message.text)

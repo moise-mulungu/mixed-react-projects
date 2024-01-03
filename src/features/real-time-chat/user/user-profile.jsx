@@ -5,13 +5,16 @@ import { setDoc, doc } from 'firebase/firestore'
 import db, { auth } from '../firebase'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 
+// DM: todoMM: don't force the user to upload a photo file. Typically that is optional (if someone doesn't want to put up a picture). So, make it an optional field and indicate that in the UI. I tried to change my name without uploading a photo and it threw an error and wouldn't submit. Also, when I chose a file, it didn't work, so I can't test changing my display name.
+
 const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   const [displayName, setDisplayName] = useState(user ? user.displayName : '')
   const [photoURL, setPhotoURL] = useState(user ? user.photoURL : '')
+  // DM: todoMM: give this a more specific name. what kind of file/for what purpose the file?
   const [selectedFile, setSelectedFile] = useState(null)
 
+  // DM: todoMM:; should this run on every render? or only when the user (or some other data) changes?
   const storage = getStorage()
-  // DM: traditionally, the useState declarations come first in a component(ok)
   const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
@@ -56,7 +59,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
                 displayName,
                 photoURL: downloadURL,
               })
-              // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile.
+              // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
               const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
                 if (updatedUser) {
                   setUser(updatedUser)
@@ -96,6 +99,14 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   8. Run gsutil cors set cors.json gs://your-firebase-storage-bucket-url to set the CORS configuration for your Firebase Storage. Replace your-firebase-storage-bucket-url with the URL of your Firebase Storage bucket, which should look something like gs://app-chat-1f5a4.appspot.com.
 
 I was blocked on step 8 because gsutil was not correctly installed on my machine, so i had to configure it first. i didn't finish the configuration because i was running out of time. i will come back to this later.
+
+DM: these instructions may be designed for a new project, not an existing project? For example, I see "firebase init". You can seriously mess up an existing project by following instructions that are for a new project. It might be relatively simple to set up CORS for your existing project. 
+DM: when you ask AI for assistance, be sure to give key context: "existing app, NextJS, connecting to firebase from the client side, [the REST of your question goes here]"
+DM: the above often says to put new files in the root directory of your app, but you're putting them in this local directory. "npm run dev" is run from the root directory of your app, so usually that is where configuration files should go. 
+DM: You should read NextJS instructions for CORS for client-side requests (server-side will be different).
+DM: keep going as you are, but note that one of the advantages of putting firebase stuff in server-side (src/pages/api/real-time-chat.js) is you don't have to worry about CORS. But, go ahead and try to get it working client-side. You'll learn a lot, and it is not necessary now to do all the work of moving firebase interaction to the server side.
+
+
   */
 
   return (

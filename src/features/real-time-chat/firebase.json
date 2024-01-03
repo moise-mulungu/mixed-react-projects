@@ -1,3 +1,4 @@
+// DM: todoMM: put a comment explaining the purpose of this
 {
   "firestore": {
     "rules": "firestore.rules"
