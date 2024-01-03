@@ -1,6 +1,8 @@
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from './user-context-provider'
 import { updateProfile } from 'firebase/auth'
+import { setDoc, doc } from 'firebase/firestore'
+import db, { auth } from '../firebase'
 
 const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   const [displayName, setDisplayName] = useState(user ? user.displayName : '')
@@ -22,12 +24,25 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
       photoURL,
     })
       .then(() => {
-        return user.reload()
+        // Update the displayName in the user data collection
+        return setDoc(doc(db, 'users', user.uid), {
+          displayName,
+          photoURL,
+        })
       })
+      // .then(() => {
+      //   return user.reload()
+      // })
       .then(() => {
-        setUser(user)
-        setSelectedUser(null) // Clear the selected user
-        setProfileVisible(false) // Close the profile
+        // Listen for changes to the user's authentication state
+        const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+          if (updatedUser) {
+            setUser(updatedUser)
+            setSelectedUser(null) // Clear the selected user
+            setProfileVisible(false) // Close the profile
+            unsubscribe() // Unsubscribe from the listener once we've received the updated user
+          }
+        })
       })
       .catch((error) => {
         console.error('Error updating profile', error)
