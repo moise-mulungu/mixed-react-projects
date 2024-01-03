@@ -3,11 +3,14 @@ import { UserContext } from './user-context-provider'
 import { updateProfile } from 'firebase/auth'
 import { setDoc, doc } from 'firebase/firestore'
 import db, { auth } from '../firebase'
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 
 const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   const [displayName, setDisplayName] = useState(user ? user.displayName : '')
   const [photoURL, setPhotoURL] = useState(user ? user.photoURL : '')
+  const [selectedFile, setSelectedFile] = useState(null)
 
+  const storage = getStorage()
   // DM: traditionally, the useState declarations come first in a component(ok)
   const { user, setUser } = useContext(UserContext)
 
@@ -19,35 +22,81 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   }, [user])
 
   const handleUpdateProfile = () => {
-    updateProfile(user, {
-      displayName,
-      photoURL,
-    })
-      .then(() => {
-        // Update the displayName in the user data collection
-        return setDoc(doc(db, 'users', user.uid), {
-          displayName,
-          photoURL,
+    //  This line creates a reference to a location in Firebase Storage where the user's profile photo will be stored
+    const storageRef = ref(storage, `profilePhotos/${user.uid}`)
+    // This line starts the process of uploading the user's selected file (presumably their new profile photo) to Firebase Storage
+    const uploadTask = uploadBytesResumable(storageRef, selectedFile)
+    // This line sets up a listener that will be called every time the upload state changes
+    uploadTask.on(
+      'state_changed',
+      (snapshot) => {
+        // Handle the upload progress
+      },
+      (error) => {
+        console.error('Error uploading file', error)
+      },
+      () => {
+        // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          updateProfile(user, {
+            displayName,
+            photoURL: downloadURL,
+          })
+            .then(() => {
+              //  is used to update the user's profile in Firestore. It sets the user's display name and profile photo URL in the document that represents the user.
+              return setDoc(doc(db, 'users', user.uid), {
+                displayName,
+                photoURL: downloadURL,
+              })
+            })
+            .then(() => {
+              // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
+              setUser({
+                ...user,
+                displayName,
+                photoURL: downloadURL,
+              })
+              // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile.
+              const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+                if (updatedUser) {
+                  setUser(updatedUser)
+                  setSelectedUser(null)
+                  setProfileVisible(false)
+                  unsubscribe()
+                }
+              })
+            })
+            // If any error occurs during the profile update, it's logged to the console with console.error.
+            .catch((error) => {
+              console.error('Error updating profile', error)
+            })
         })
-      })
-      // .then(() => {
-      //   return user.reload()
-      // })
-      .then(() => {
-        // Listen for changes to the user's authentication state
-        const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
-          if (updatedUser) {
-            setUser(updatedUser)
-            setSelectedUser(null) // Clear the selected user
-            setProfileVisible(false) // Close the profile
-            unsubscribe() // Unsubscribe from the listener once we've received the updated user
-          }
-        })
-      })
-      .catch((error) => {
-        console.error('Error updating profile', error)
-      })
+      }
+    )
   }
+
+  /*
+  After implementing the above code, i encountered the following error: "1 Access to XMLHttpRequest at 'https://firebasestorage.googleapis.com/v0/b/app-chat-1f5a4.appspot.com/o?name=profilePhotos%2Fj0nwHQJVpgYxYPDvwTsm7g7ycNj1' from origin 'http://localhost:3005' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: It does not have HTTP ok status."
+  To fix that, i got an AI prompt to :
+  1. create a file called cors.json in the root of your project with the following content:
+  [
+    {
+      "origin": ["*"],
+      "method": ["GET"],
+      "maxAgeSeconds": 3600
+    }
+  ]
+  2. run the following command in your terminal:
+  firebase init or firebase login if not logged in yet.
+  3. Open your terminal.
+  4. Navigate to the root directory of your real-time-chat app.
+  5. Run firebase init and follow the prompts to set up the services you want to use. Make sure to select Storage when asked which Firebase features you want to set up.
+  6. After initialization, a firebase.json file will be created in the root directory of your real-time-chat app.
+  7. Create a cors.json file in the same directory with the CORS configuration you provided.
+  8. Run gsutil cors set cors.json gs://your-firebase-storage-bucket-url to set the CORS configuration for your Firebase Storage. Replace your-firebase-storage-bucket-url with the URL of your Firebase Storage bucket, which should look something like gs://app-chat-1f5a4.appspot.com.
+
+I was blocked on step 8 because gsutil was not correctly installed on my machine, so i had to configure it first. i didn't finish the configuration because i was running out of time. i will come back to this later.
+  */
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-2">
@@ -75,9 +124,10 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
           <input
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="photoURL"
-            type="text"
-            value={photoURL}
-            onChange={(e) => setPhotoURL(e.target.value)}
+            // type="text"
+            type="file"
+            // value={selectedFile}
+            onChange={(e) => setSelectedFile(e.target.files[0])}
           />
         </div>
         <div className="flex items-center justify-between">

@@ -19,6 +19,7 @@ import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } f
 import { getFirestore } from 'firebase/firestore'
 import { getDatabase } from 'firebase/database'
 import { collection } from 'firebase/firestore'
+import { getStorage } from 'firebase/storage'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -124,8 +125,7 @@ OK, I know the problem: your issue is that the below console.log is in client-si
 Moise, ask AI to rephrase the above "in other words [with example]" if it is unclear. For debugging, you need to really understand how NextJS works.
 SOLUTION - you need to use the NextJS solution to accessing secret vars in client-side code: search google on "NextJS DEV mode, how to use secret env vars in client side"
 */
-console.log({ process: process.env })
-console.log(firebaseConfig.apiKey)
+
 /* 
 variables: app, auth, DB
 are initialized "in the module scope" (outside of any function or block) so that when they are imported into other files, they are already initialized and ready to use. Most importantly, they are initialized only once in the lifecycle of the app (until you reload the browser, which causes the whole app to start over), not every time they are imported by different files. We want them to be initialized only once, when the app is initially loaded (this is all happening in the browser, BTW).
@@ -136,7 +136,7 @@ export const app = initializeApp(firebaseConfig)
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig)
 // export { app }
-
+export const storage = getStorage(app)
 // DM: good!
 /*
 How to create a realtime database in Firebase:
