@@ -5,17 +5,17 @@ import { setDoc, doc } from 'firebase/firestore'
 import db, { auth } from '../firebase'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 
-//(done) DM: todoMM: don't force the user to upload a photo file. Typically that is optional (if someone doesn't want to put up a picture). So, make it an optional field and indicate that in the UI. I tried to change my name without uploading a photo and it threw an error and wouldn't submit. Also, when I chose a file, it didn't work, so I can't test changing my display name.
+//(done) DM: don't force the user to upload a photo file. Typically that is optional (if someone doesn't want to put up a picture). So, make it an optional field and indicate that in the UI. I tried to change my name without uploading a photo and it threw an error and wouldn't submit. Also, when I chose a file, it didn't work, so I can't test changing my display name.
 
 const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   const [displayName, setDisplayName] = useState(user ? user.displayName : '')
   const [photoURL, setPhotoURL] = useState(user ? user.photoURL : '')
-  //(done) DM: todoMM: give this a more specific name. what kind of file/for what purpose the file?
+  //(done) DM: give this a more specific name. what kind of file/for what purpose the file?
   // const [selectedFile, setSelectedFile] = useState(null)
   const [selectedProfilePhoto, setSelectedProfilePhoto] = useState(null)
 
-  //(done) DM: todoMM:; should this run on every render? or only when the user (or some other data) changes? MM: The getStorage() function is used to initialize a reference to Firebase Storage. This line of code is outside of any React hooks, so it will run every time the component re-renders. However, the getStorage() function is a memoized function, which means that it will only initialize a reference to Firebase Storage once. The reference will be stored in memory and returned on subsequent calls to getStorage(). So, the getStorage() function will only run once, even though it's outside of any React hooks.
-  const storage = getStorage()
+  //(done) DM: should this run on every render? or only when the user (or some other data) changes? MM: The getStorage() function is used to initialize a reference to Firebase Storage. This line of code is outside of any React hooks, so it will run every time the component re-renders. However, the getStorage() function is a memoized function, which means that it will only initialize a reference to Firebase Storage once. The reference will be stored in memory and returned on subsequent calls to getStorage(). So, the getStorage() function will only run once, even though it's outside of any React hooks. DM: super, it is called upon each render but the return value is cached and returned on subsequent calls. I'll add a comment as it is not obvious that it is cached.
+  const storage = getStorage() // return value is cached
   const { user, setUser } = useContext(UserContext)
 
   useEffect(() => {
@@ -25,7 +25,26 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
     }
   }, [user])
 
-  const handleUpdateProfile = () => {
+  const handleUpdateProfile = async () => {
+    /* 
+      DM: todoMM: Combine the if and else block into one block. By doing them separately the code is hard to read, and hard to tell what is the difference between with or without uploaded file. Also, the code is repetative, which is a "code smell". (which will always invite extra scrutiny from reviewers, tech leads, etc.) First step: convert the .then().catch() to async/await.
+
+
+      step 1: convert all .then().catch() to async/await and try/catch
+      * I did the else block for you, so you can see an example
+      * you can convert the if block to async/await and try/catch
+
+      step 2: combine the if and else blocks into one block that handles both situations (it will be easy now)
+    
+      Why use async/await? 
+      * it is easier to read EX returning the result of a call (which is a promise) is syntactically correct, but hard to read and a bit of a code smell.
+      * likely easier to debug your profilePhoto file code if you are doing separate await calls for each firebase action
+      * you won't need the repeated code as getDownloadURL is the only difference between the two blocks
+      * async/await shows you are up-to-date with modern JS. then/catch is the old way of doing things. 
+        * async/await is the new way and really helps with this exact problem of repeated code.
+        * it is good to know both ways, so you can read/edit older code, but async/await is the preferred way to do things now.
+
+    */
     if (selectedProfilePhoto) {
       // Only start the upload process if a file has been selected
       //  This line creates a reference to a location in Firebase Storage where the user's profile photo will be stored
@@ -62,6 +81,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
                   displayName,
                   photoURL: downloadURL,
                 })
+                // DM: todoMM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback.
                 // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
                 const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
                   if (updatedUser) {
@@ -70,6 +90,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
                     setProfileVisible(false)
                     unsubscribe()
                   }
+                  // DM: todoMM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error?
                 })
               })
               // If any error occurs during the profile update, it's logged to the console with console.error.
@@ -80,36 +101,65 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         }
       )
     } else {
-      // If no file has been selected, just update the display name
-      updateProfile(user, {
-        displayName,
-        photoURL: user.photoURL, // Keep the existing photo URL
-      })
-        .then(() => {
-          return setDoc(doc(db, 'users', user.uid), {
-            displayName,
-            photoURL: user.photoURL, // Keep the existing photo URL
-          })
+      // DM: this code does the exact same thing as the commented-out code that follows it. I rewrote this as async/await and try/catch, so you could see an example and compare to the then-catch.
+      try {
+        const userPhotoUrl = user.photoURL // to avoid repeated code
+        await updateProfile(user, {
+          displayName,
+          photoURL: userPhotoUrl, // Keep the existing photo URL
         })
-        .then(() => {
-          setUser({
-            ...user,
-            displayName,
-            photoURL: user.photoURL, // Keep the existing photo URL
-          })
+        await setDoc(doc(db, 'users', user.uid), {
+          displayName,
+          photoURL: userPhotoUrl, // Keep the existing photo URL
+        })
+        setUser({
+          ...user,
+          displayName,
+          photoURL: userPhotoUrl, // Keep the existing photo URL
+        })
+        const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+          if (updatedUser) {
+            setUser(updatedUser)
+            setSelectedUser(null)
+            setProfileVisible(false)
+            unsubscribe()
+          }
+        })
+      } catch (error) {
+        console.error('Error updating profile', error)
+      }
+      return
 
-          const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
-            if (updatedUser) {
-              setUser(updatedUser)
-              setSelectedUser(null)
-              setProfileVisible(false)
-              unsubscribe()
-            }
-          })
-        })
-        .catch((error) => {
-          console.error('Error updating profile', error)
-        })
+      // // If no file has been selected, just update the display name
+      // updateProfile(user, {
+      //   displayName,
+      //   photoURL: user.photoURL, // Keep the existing photo URL
+      // })
+      //   .then(() => {
+      //     return setDoc(doc(db, 'users', user.uid), {
+      //       displayName,
+      //       photoURL: user.photoURL, // Keep the existing photo URL
+      //     })
+      //   })
+      //   .then(() => {
+      //     setUser({
+      //       ...user,
+      //       displayName,
+      //       photoURL: user.photoURL, // Keep the existing photo URL
+      //     })
+
+      //     const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+      //       if (updatedUser) {
+      //         setUser(updatedUser)
+      //         setSelectedUser(null)
+      //         setProfileVisible(false)
+      //         unsubscribe()
+      //       }
+      //     })
+      //   })
+      //   .catch((error) => {
+      //     console.error('Error updating profile', error)
+      //   })
     }
   }
 
@@ -135,6 +185,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
 
 I was blocked on step 8 because gsutil was not correctly installed on my machine, so i had to configure it first. i didn't finish the configuration because i was running out of time. i will come back to this later.
 
+DM: just checking if you saw these comments?
 DM: these instructions may be designed for a new project, not an existing project? For example, I see "firebase init". You can seriously mess up an existing project by following instructions that are for a new project. It might be relatively simple to set up CORS for your existing project. 
 DM: when you ask AI for assistance, be sure to give key context: "existing app, NextJS, connecting to firebase from the client side, [the REST of your question goes here]"
 DM: the above often says to put new files in the root directory of your app, but you're putting them in this local directory. "npm run dev" is run from the root directory of your app, so usually that is where configuration files should go. 

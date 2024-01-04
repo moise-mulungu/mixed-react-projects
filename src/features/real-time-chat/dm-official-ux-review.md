@@ -16,3 +16,10 @@ DM: todoMM: this is my official UX review, implement each or let's discuss if yo
 * users should be able to delete their messages only, so show delete icon next to my message only
   * you can login as a separate user
 * btw, I used a fake email in the signup dmdmdm@dmdmdm.com and there wasn't an email sent to verify - that would be a good part of auth.
+* don't show the login screen if the app is in the process of validating the user. Is it based on cookies or how does the app know that the user is logged in on a previous day?
+* user profile edit page: "Photo URL" - it is a file, no? not a URL?
+* user profile edit page: if user has previously uploaded a file, show it here (if you haven't already)
+
+# done
+DM: todoMM: put the done ones here 
+
