@@ -263,7 +263,7 @@ export default function RealTimeChat() {
                                 setProfileVisible(true)
                               }}
                             >
-                              <span>
+                              <span className="hover:text-purple-500 transition-colors duration-200">
                                 {user.displayName[0].toUpperCase() + user.displayName.slice(1)}
                               </span>
                               <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />

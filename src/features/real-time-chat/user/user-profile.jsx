@@ -145,7 +145,14 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
   */
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-2">
+    <div
+      className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-2"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          setProfileVisible(false)
+        }
+      }}
+    >
       <div className="p-8 bg-white shadow-md rounded">
         <h2 className="text-2xl text-purple-500 font-bold mb-5 text-center">User Profile</h2>
         <div className="flex items-center justify-center mb-5">
@@ -183,6 +190,13 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
             onClick={handleUpdateProfile}
           >
             Update Profile
+          </button>
+          <button
+            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="button"
+            onClick={() => setProfileVisible(false)}
+          >
+            Cancel
           </button>
         </div>
       </div>

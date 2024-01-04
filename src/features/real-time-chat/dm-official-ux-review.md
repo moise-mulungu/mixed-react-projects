@@ -3,11 +3,11 @@ DM: todoMM: this is my official UX review, implement each or let's discuss if yo
 * if possible, when I change my username, make the previous messages reflect the new username.(MM: done)
 * "typing users" you could indicate as an animated "..." next to the connected user. it would save space on mobile. Also, the user who posted the most recently could be at the top of the connected users list.
 * profile popup
-  * make username change color (slightly, like very light purple) upon mouseover, or an underline, so that it is clear that username is a clickable thing. See how it works in slack.
+  * make username change color (slightly, like very light purple) upon mouseover, or an underline, so that it is clear that username is a clickable thing. See how it works in slack.(MM: done)
 	* if click on username in the left column, that should also show the profile, but if I click on your name, I shouldn't be able to update, just view.
   * typically you want 2 things so that users can exit the popup without clicking "update profile" button
-    * click anywhere outside the popup, the popup closes
-    * an "X" at the top right they can click to close the popup and/or a "Cancel" button
+    * click anywhere outside the popup, the popup closes(MM: done)
+    * an "X" at the top right they can click to close the popup and/or a "Cancel" button (MM: done)
 * if I reload, I shouldn't have to login again. (MM: done)
 * login: usually when I enter email, when I put cursor into the input field and type first letter, Chrome will show previous emails I've used, but it doesn't work in the login screen. I'm curious why that is the case, as all login forms allow that default Chrome functionality to happen. 
 * seems like older messages disappear after a period of time? they should not disappear.
