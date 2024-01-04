@@ -1,4 +1,4 @@
-// DM: todoMM: put a comment explaining the purpose of this
+//(in progress) DM: todoMM: put a comment explaining the purpose of this. MM: but it says with the red line that comments are not allowed in a JSON file
 {
   "firestore": {
     "rules": "firestore.rules"

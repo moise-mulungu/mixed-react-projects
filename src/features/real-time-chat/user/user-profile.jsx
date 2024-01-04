@@ -5,15 +5,16 @@ import { setDoc, doc } from 'firebase/firestore'
 import db, { auth } from '../firebase'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 
-// DM: todoMM: don't force the user to upload a photo file. Typically that is optional (if someone doesn't want to put up a picture). So, make it an optional field and indicate that in the UI. I tried to change my name without uploading a photo and it threw an error and wouldn't submit. Also, when I chose a file, it didn't work, so I can't test changing my display name.
+//(done) DM: todoMM: don't force the user to upload a photo file. Typically that is optional (if someone doesn't want to put up a picture). So, make it an optional field and indicate that in the UI. I tried to change my name without uploading a photo and it threw an error and wouldn't submit. Also, when I chose a file, it didn't work, so I can't test changing my display name.
 
 const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   const [displayName, setDisplayName] = useState(user ? user.displayName : '')
   const [photoURL, setPhotoURL] = useState(user ? user.photoURL : '')
-  // DM: todoMM: give this a more specific name. what kind of file/for what purpose the file?
-  const [selectedFile, setSelectedFile] = useState(null)
+  //(done) DM: todoMM: give this a more specific name. what kind of file/for what purpose the file?
+  // const [selectedFile, setSelectedFile] = useState(null)
+  const [selectedProfilePhoto, setSelectedProfilePhoto] = useState(null)
 
-  // DM: todoMM:; should this run on every render? or only when the user (or some other data) changes?
+  //(done) DM: todoMM:; should this run on every render? or only when the user (or some other data) changes? MM: The getStorage() function is used to initialize a reference to Firebase Storage. This line of code is outside of any React hooks, so it will run every time the component re-renders. However, the getStorage() function is a memoized function, which means that it will only initialize a reference to Firebase Storage once. The reference will be stored in memory and returned on subsequent calls to getStorage(). So, the getStorage() function will only run once, even though it's outside of any React hooks.
   const storage = getStorage()
   const { user, setUser } = useContext(UserContext)
 
@@ -25,57 +26,91 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   }, [user])
 
   const handleUpdateProfile = () => {
-    //  This line creates a reference to a location in Firebase Storage where the user's profile photo will be stored
-    const storageRef = ref(storage, `profilePhotos/${user.uid}`)
-    // This line starts the process of uploading the user's selected file (presumably their new profile photo) to Firebase Storage
-    const uploadTask = uploadBytesResumable(storageRef, selectedFile)
-    // This line sets up a listener that will be called every time the upload state changes
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        // Handle the upload progress
-      },
-      (error) => {
-        console.error('Error uploading file', error)
-      },
-      () => {
-        // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          updateProfile(user, {
-            displayName,
-            photoURL: downloadURL,
+    if (selectedProfilePhoto) {
+      // Only start the upload process if a file has been selected
+      //  This line creates a reference to a location in Firebase Storage where the user's profile photo will be stored
+      const storageRef = ref(storage, `profilePhotos/${user.uid}`)
+      // This line starts the process of uploading the user's selected file (presumably their new profile photo) to Firebase Storage
+      const uploadTask = uploadBytesResumable(storageRef, selectedProfilePhoto)
+      // This line sets up a listener that will be called every time the upload state changes
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          // Handle the upload progress
+        },
+        (error) => {
+          console.error('Error uploading file', error)
+        },
+        () => {
+          // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
+          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            updateProfile(user, {
+              displayName,
+              photoURL: downloadURL,
+            })
+              .then(() => {
+                //  is used to update the user's profile in Firestore. It sets the user's display name and profile photo URL in the document that represents the user.
+                return setDoc(doc(db, 'users', user.uid), {
+                  displayName,
+                  photoURL: downloadURL,
+                })
+              })
+              .then(() => {
+                // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
+                setUser({
+                  ...user,
+                  displayName,
+                  photoURL: downloadURL,
+                })
+                // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
+                const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+                  if (updatedUser) {
+                    setUser(updatedUser)
+                    setSelectedUser(null)
+                    setProfileVisible(false)
+                    unsubscribe()
+                  }
+                })
+              })
+              // If any error occurs during the profile update, it's logged to the console with console.error.
+              .catch((error) => {
+                console.error('Error updating profile', error)
+              })
           })
-            .then(() => {
-              //  is used to update the user's profile in Firestore. It sets the user's display name and profile photo URL in the document that represents the user.
-              return setDoc(doc(db, 'users', user.uid), {
-                displayName,
-                photoURL: downloadURL,
-              })
-            })
-            .then(() => {
-              // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
-              setUser({
-                ...user,
-                displayName,
-                photoURL: downloadURL,
-              })
-              // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
-              const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
-                if (updatedUser) {
-                  setUser(updatedUser)
-                  setSelectedUser(null)
-                  setProfileVisible(false)
-                  unsubscribe()
-                }
-              })
-            })
-            // If any error occurs during the profile update, it's logged to the console with console.error.
-            .catch((error) => {
-              console.error('Error updating profile', error)
-            })
+        }
+      )
+    } else {
+      // If no file has been selected, just update the display name
+      updateProfile(user, {
+        displayName,
+        photoURL: user.photoURL, // Keep the existing photo URL
+      })
+        .then(() => {
+          return setDoc(doc(db, 'users', user.uid), {
+            displayName,
+            photoURL: user.photoURL, // Keep the existing photo URL
+          })
         })
-      }
-    )
+        .then(() => {
+          setUser({
+            ...user,
+            displayName,
+            photoURL: user.photoURL, // Keep the existing photo URL
+          })
+
+          const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+            if (updatedUser) {
+              setUser(updatedUser)
+              setSelectedUser(null)
+              setProfileVisible(false)
+              unsubscribe()
+            }
+          })
+        })
+        .catch((error) => {
+          console.error('Error updating profile', error)
+        })
+    }
   }
 
   /*
