@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { usersCollection } from './firebase'
@@ -10,6 +10,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   console.log('messages:', typeof messages)
 
   const [userData, setUserData] = useState({})
+  const messagesContainerRef = useRef(null)
 
   useEffect(() => {
     // let unsubscribe
@@ -66,11 +67,22 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
     }
   }, [messages, fetchUser, db])
 
+  useEffect(() => {
+    if (messagesContainerRef.current) {
+      const { scrollHeight } = messagesContainerRef.current
+      messagesContainerRef.current.scrollTop = scrollHeight
+    }
+  }, [messages])
+
   return (
-    <div className="flex-grow overflow-auto rounded p-4 bg-purple-500 text-white">
+    <div
+      ref={messagesContainerRef}
+      className="flex-grow overflow-y-auto rounded p-4 bg-purple-500 text-white h-96"
+    >
       {messages?.map((message, index) => {
         // const sender = userData[message.sender]?.displayName || message.sender
         const sender = message.senderName || message.sender // MM: I use this because the sender property of the message object is being set to user.displayName in the MessageInput component. This user object is obtained from the UserContext using the useContext hook.
+        const user = userData[message.sender]
         console.log({ sender })
         console.log('sender type:', typeof message.sender)
         console.log('text type:', typeof message.text)
@@ -93,7 +105,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
                   {message?.timestamp ? new Date(message?.timestamp).toLocaleTimeString() : ''}
                 </em> */}
                 {/* Display the sender's display name */}
-                <strong className="font-bold mr-2">{sender}</strong>: {message?.text}{' '}
+                <strong className="font-bold mr-2">{user?.name || sender}</strong>: {message?.text}{' '}
                 <em className="text-sm text-purple-300">
                   {message?.timestamp ? new Date(message?.timestamp).toLocaleTimeString() : ''}
                 </em>
