@@ -6,8 +6,6 @@ DM: todoMM: this is my official UX review, implement each or let's discuss if yo
 
 * login: usually when I enter email, when I put cursor into the input field and type first letter, Chrome will show previous emails I've used, but it doesn't work in the login screen. I'm curious why that is the case, as all login forms allow that default Chrome functionality to happen. 
 * seems like older messages disappear after a period of time? they should not disappear.
-* make the messages column scrollable  so that when lots of messages you can see them all.
-  * also, the messages column should always auto-scroll to the bottom so that  users can see the latest messages. 
 * users should be able to delete their messages only, so show delete icon next to my message only
   * you can login as a separate user
 * btw, I used a fake email in the signup dmdmdm@dmdmdm.com and there wasn't an email sent to verify - that would be a good part of auth.
@@ -23,6 +21,8 @@ DM: todoMM: this is my official UX review, implement each or let's discuss if yo
   * make username change color (slightly, like very light purple) upon mouseover, or an underline, so that it is clear that username is a clickable thing. See how it works in slack.(MM: done)
 	* if click on username in the left column, that should also show the profile, but if I click on your name, I shouldn't be able to update, just view.
   * typically you want 2 things so that users can exit the popup without clicking "update profile" button
-    * click anywhere outside the popup, the popup closes(MM: done)
+    * click anywhere outside the popup, the popup closes
     * an "X" at the top right they can click to close the popup and/or a "Cancel" button (MM: done)
-* if I reload, I shouldn't have to login again. (MM: done)
+* if I reload, I shouldn't have to login again.
+* make the messages column scrollable  so that when lots of messages you can see them all.
+  * also, the messages column should always auto-scroll to the bottom so that  users can see the latest messages. 

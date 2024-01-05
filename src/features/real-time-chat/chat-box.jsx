@@ -6,7 +6,7 @@ import { onSnapshot } from 'firebase/firestore'
 import db from './firebase'
 // import { getDoc, doc } from 'firebase/firestore'
 
-export default function ChatBox({ messages, deleteMessage, fetchUser }) {
+export default function ChatBox({ messages, deleteMessage, fetchUser, currentUser }) {
   console.log('messages:', typeof messages)
 
   const [userData, setUserData] = useState({})
@@ -110,9 +110,18 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
                   {message?.timestamp ? new Date(message?.timestamp).toLocaleTimeString() : ''}
                 </em>
               </div>
-              <button onClick={() => deleteMessage(message)}>
-                <FontAwesomeIcon icon={faTrash} />
-              </button>
+
+              {currentUser &&
+                currentUser?.uid === message.sender &&
+                (console.log('currentUser', currentUser), // to check if the current user is the sender of the message
+                console.log('currentUser?.uid', currentUser?.uid), // to check if the current user has a uid
+                (console.log('message.sender', message.sender), // to check if the message object has a sender property
+                (
+                  <button onClick={() => deleteMessage(message)}>
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                )))}
+              {/* MM: why the delete icon message disappear? i have an assumption that there is a mismatch between the currentUser.uid and message.sender. In order to fix this i put console log to verify each details, but i'll continue with it next time because i was running out of the time.*/}
             </div>
           </div>
         )

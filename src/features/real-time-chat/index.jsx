@@ -73,7 +73,7 @@ export default function RealTimeChat() {
   const currentUser = useContext(UserContext)
   // New function to handle typing status
   const onTyping = (isTyping) => {
-    if (currentUser) {
+    if (currentUser && currentUser.uid) {
       const typingRef = createDatabaseReference(database, `typing/${currentUser.uid}`)
       setDatabaseValue(typingRef, isTyping)
     }
@@ -217,6 +217,7 @@ export default function RealTimeChat() {
                     fetchUser={fetchUser}
                     messages={messages}
                     deleteMessage={deleteMessage}
+                    currentUser={currentUser}
                   />
                 </div>
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
