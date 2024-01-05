@@ -73,6 +73,7 @@ export default function RealTimeChat() {
   const currentUser = useContext(UserContext)
   // New function to handle typing status
   const onTyping = (isTyping) => {
+    // DM: todoMM: use optional chaining to make this more concise
     if (currentUser && currentUser.uid) {
       const typingRef = createDatabaseReference(database, `typing/${currentUser.uid}`)
       setDatabaseValue(typingRef, isTyping)

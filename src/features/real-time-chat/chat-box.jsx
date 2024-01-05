@@ -121,7 +121,11 @@ export default function ChatBox({ messages, deleteMessage, fetchUser, currentUse
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
                 )))}
-              {/* MM: why the delete icon message disappear? i have an assumption that there is a mismatch between the currentUser.uid and message.sender. In order to fix this i put console log to verify each details, but i'll continue with it next time because i was running out of the time.*/}
+              {/* MM: why the delete icon message disappear? i have an assumption that there is a mismatch between the currentUser.uid and message.sender. In order to fix this i put console log to verify each details, but i'll continue with it next time because i was running out of the time.
+                DM: todoMM: check your console.logs. I dont see any logs containing "currentUser" or "message.sender" in the console. That code above is really wierd - dont console.logs after && like that - its impossible to understand the code. Put your console.logs before the return statement of this [].map callback. Or you can use JSON stringify
+              */}
+              {/* JSON stringify in a pre tag is nice but it only shows the values of the final render so best to use console.logs */}
+              <pre>{JSON.stringify({ currentUser, message }, null, 2)}</pre>
             </div>
           </div>
         )

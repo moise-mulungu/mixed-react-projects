@@ -27,7 +27,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
 
   const handleUpdateProfile = async () => {
     /* 
-      (done)DM: todoMM: Combine the if and else block into one block. By doing them separately the code is hard to read, and hard to tell what is the difference between with or without uploaded file. Also, the code is repetitive, which is a "code smell". (which will always invite extra scrutiny from reviewers, tech leads, etc.) First step: convert the .then().catch() to async/await.
+      ()DM: todoMM: Combine the if and else block into one block. By doing them separately the code is hard to read, and hard to tell what is the difference between with or without uploaded file. Also, the code is repetitive, which is a "code smell". (which will always invite extra scrutiny from reviewers, tech leads, etc.) First step: convert the .then().catch() to async/await.
 
 
       step 1: convert all .then().catch() to async/await and try/catch
@@ -43,6 +43,9 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
       * async/await shows you are up-to-date with modern JS. then/catch is the old way of doing things. 
         * async/await is the new way and really helps with this exact problem of repeated code.
         * it is good to know both ways, so you can read/edit older code, but async/await is the preferred way to do things now.
+
+      DM: still not done because step 2 "Combine the if and else block into one block" is not done. you still have the code separated into if and else blocks and you still have repeated code: updateProfile, setDoc, setUser are each called twice but the only difference in the repetitions of those calls is the value of userPhotoUrl. How can you make the code more succinct?
+
 
     */
     try {
@@ -112,7 +115,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         })
       }
 
-      // DM: todoMM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback.
+      // DM: todoMM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer?
       // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
       const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
         if (updatedUser) {
@@ -121,7 +124,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
           setProfileVisible(false)
           unsubscribe()
         }
-        // DM: todoMM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error?
+        // DM: todoMM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error? Your answer?
         else {
           // If !updatedUser, it means the user is not authenticated. You can handle this case as you see fit.
           console.error('User is not authenticated')
