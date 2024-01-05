@@ -14,7 +14,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   // const [selectedFile, setSelectedFile] = useState(null)
   const [selectedProfilePhoto, setSelectedProfilePhoto] = useState(null)
 
-  //(done) DM: should this run on every render? or only when the user (or some other data) changes? MM: The getStorage() function is used to initialize a reference to Firebase Storage. This line of code is outside of any React hooks, so it will run every time the component re-renders. However, the getStorage() function is a memoized function, which means that it will only initialize a reference to Firebase Storage once. The reference will be stored in memory and returned on subsequent calls to getStorage(). So, the getStorage() function will only run once, even though it's outside of any React hooks. DM: super, it is called upon each render but the return value is cached and returned on subsequent calls. I'll add a comment as it is not obvious that it is cached.
+  //(done) DM: should this run on every render? or only when the user (or some other data) changes? MM: The getStorage() function is used to initialize a reference to Firebase Storage. This line of code is outside of any React hooks, so it will run every time the component re-renders. However, the getStorage() function is a memoized function, which means that it will only initialize a reference to Firebase Storage once. The reference will be stored in memory and returned on subsequent calls to getStorage(). So, the getStorage() function will only run once, even though it's outside of any React hooks. DM: super, it is called upon each render but the return value is cached and returned on subsequent calls. I'll add a comment as it is not obvious that it is cached.(ok)
   const storage = getStorage() // return value is cached
   const { user, setUser } = useContext(UserContext)
 
@@ -27,7 +27,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
 
   const handleUpdateProfile = async () => {
     /* 
-      DM: todoMM: Combine the if and else block into one block. By doing them separately the code is hard to read, and hard to tell what is the difference between with or without uploaded file. Also, the code is repetative, which is a "code smell". (which will always invite extra scrutiny from reviewers, tech leads, etc.) First step: convert the .then().catch() to async/await.
+      (done)DM: todoMM: Combine the if and else block into one block. By doing them separately the code is hard to read, and hard to tell what is the difference between with or without uploaded file. Also, the code is repetitive, which is a "code smell". (which will always invite extra scrutiny from reviewers, tech leads, etc.) First step: convert the .then().catch() to async/await.
 
 
       step 1: convert all .then().catch() to async/await and try/catch
@@ -45,123 +45,155 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         * it is good to know both ways, so you can read/edit older code, but async/await is the preferred way to do things now.
 
     */
-    if (selectedProfilePhoto) {
-      // Only start the upload process if a file has been selected
-      //  This line creates a reference to a location in Firebase Storage where the user's profile photo will be stored
-      const storageRef = ref(storage, `profilePhotos/${user.uid}`)
-      // This line starts the process of uploading the user's selected file (presumably their new profile photo) to Firebase Storage
-      const uploadTask = uploadBytesResumable(storageRef, selectedProfilePhoto)
-      // This line sets up a listener that will be called every time the upload state changes
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          // Handle the upload progress
-        },
-        (error) => {
-          console.error('Error uploading file', error)
-        },
-        () => {
-          // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            updateProfile(user, {
-              displayName,
-              photoURL: downloadURL,
-            })
-              .then(() => {
-                //  is used to update the user's profile in Firestore. It sets the user's display name and profile photo URL in the document that represents the user.
-                return setDoc(doc(db, 'users', user.uid), {
-                  displayName,
-                  photoURL: downloadURL,
-                })
-              })
-              .then(() => {
-                // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
-                setUser({
-                  ...user,
-                  displayName,
-                  photoURL: downloadURL,
-                })
-                // DM: todoMM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback.
-                // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
-                const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
-                  if (updatedUser) {
-                    setUser(updatedUser)
-                    setSelectedUser(null)
-                    setProfileVisible(false)
-                    unsubscribe()
-                  }
-                  // DM: todoMM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error?
-                })
-              })
-              // If any error occurs during the profile update, it's logged to the console with console.error.
-              .catch((error) => {
-                console.error('Error updating profile', error)
-              })
-          })
-        }
-      )
-    } else {
-      // DM: this code does the exact same thing as the commented-out code that follows it. I rewrote this as async/await and try/catch, so you could see an example and compare to the then-catch.
-      try {
-        const userPhotoUrl = user.photoURL // to avoid repeated code
+    try {
+      if (selectedProfilePhoto) {
+        // Only start the upload process if a file has been selected
+        //  This line creates a reference to a location in Firebase Storage where the user's profile photo will be stored
+        const storageRef = ref(storage, `profilePhotos/${user.uid}`)
+        // This line starts the process of uploading the user's selected file (presumably their new profile photo) to Firebase Storage
+        const uploadTask = uploadBytesResumable(storageRef, selectedProfilePhoto)
+        // This line sets up a listener that will be called every time the upload state changes
+        uploadTask.on(
+          'state_changed',
+          (snapshot) => {
+            // Handle the upload progress
+          },
+          (error) => {
+            console.error('Error uploading file', error)
+          }
+        )
+
+        const userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
+        // () => {
+        // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
+        // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        //   updateProfile(user, {
+        //     displayName,
+        //     photoURL: downloadURL,
+        //   })
         await updateProfile(user, {
           displayName,
-          photoURL: userPhotoUrl, // Keep the existing photo URL
+          photoURL: userPhotoUrl,
         })
+
+        // .then(() => {
+        //  is used to update the user's profile in Firestore. It sets the user's display name and profile photo URL in the document that represents the user.
+        //   return setDoc(doc(db, 'users', user.uid), {
+        //     displayName,
+        //     photoURL: downloadURL,
+        //   })
+        // })
         await setDoc(doc(db, 'users', user.uid), {
           displayName,
-          photoURL: userPhotoUrl, // Keep the existing photo URL
+          photoURL: userPhotoUrl,
         })
+        // .then(() => {
+        // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
         setUser({
           ...user,
           displayName,
-          photoURL: userPhotoUrl, // Keep the existing photo URL
+          photoURL: downloadURL,
         })
-        const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
-          if (updatedUser) {
-            setUser(updatedUser)
-            setSelectedUser(null)
-            setProfileVisible(false)
-            unsubscribe()
-          }
+      } else {
+        await updateProfile(user, {
+          displayName,
+          photoURL: user.photoURL, // Keep the existing photo URL
         })
-      } catch (error) {
-        console.error('Error updating profile', error)
+
+        await setDoc(doc(db, 'users', user.uid), {
+          displayName,
+          photoURL: user.photoURL, // Keep the existing photo URL
+        })
+
+        setUser({
+          ...user,
+          displayName,
+          photoURL: user.photoURL, // Keep the existing photo URL
+        })
       }
-      return
 
-      // // If no file has been selected, just update the display name
-      // updateProfile(user, {
-      //   displayName,
-      //   photoURL: user.photoURL, // Keep the existing photo URL
-      // })
-      //   .then(() => {
-      //     return setDoc(doc(db, 'users', user.uid), {
-      //       displayName,
-      //       photoURL: user.photoURL, // Keep the existing photo URL
-      //     })
-      //   })
-      //   .then(() => {
-      //     setUser({
-      //       ...user,
-      //       displayName,
-      //       photoURL: user.photoURL, // Keep the existing photo URL
-      //     })
-
-      //     const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
-      //       if (updatedUser) {
-      //         setUser(updatedUser)
-      //         setSelectedUser(null)
-      //         setProfileVisible(false)
-      //         unsubscribe()
-      //       }
-      //     })
-      //   })
-      //   .catch((error) => {
-      //     console.error('Error updating profile', error)
-      //   })
+      // DM: todoMM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback.
+      // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
+      const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+        if (updatedUser) {
+          setUser(updatedUser)
+          setSelectedUser(null)
+          setProfileVisible(false)
+          unsubscribe()
+        }
+        // DM: todoMM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error?
+        else {
+          // If !updatedUser, it means the user is not authenticated. You can handle this case as you see fit.
+          console.error('User is not authenticated')
+        }
+      })
+    } catch (error) {
+      // If any error occurs during the profile update, it's logged to the console with console.error.
+      console.error('Error updating profile', error)
     }
   }
+  // DM: this code does the exact same thing as the commented-out code that follows it. I rewrote this as async/await and try/catch, so you could see an example and compare to the then-catch.
+  //     try {
+  //       const userPhotoUrl = user.photoURL // to avoid repeated code
+  //       await updateProfile(user, {
+  //     displayName,
+  //     photoURL: userPhotoUrl, // Keep the existing photo URL
+  //   })
+  //   await setDoc(doc(db, 'users', user.uid), {
+  //     displayName,
+  //     photoURL: userPhotoUrl, // Keep the existing photo URL
+  //   })
+  //   setUser({
+  //     ...user,
+  //     displayName,
+  //     photoURL: userPhotoUrl, // Keep the existing photo URL
+  //   })
+  //   const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+  //     if (updatedUser) {
+  //       setUser(updatedUser)
+  //       setSelectedUser(null)
+  //       setProfileVisible(false)
+  //       unsubscribe()
+  //     }
+  //   })
+
+  // } catch (error) {
+  //   console.error('Error updating profile', error)
+  // }
+  // return
+
+  // // If no file has been selected, just update the display name
+  // updateProfile(user, {
+  //   displayName,
+  //   photoURL: user.photoURL, // Keep the existing photo URL
+  // })
+  //   .then(() => {
+  //     return setDoc(doc(db, 'users', user.uid), {
+  //       displayName,
+  //       photoURL: user.photoURL, // Keep the existing photo URL
+  //     })
+  //   })
+  //   .then(() => {
+  //     setUser({
+  //       ...user,
+  //       displayName,
+  //       photoURL: user.photoURL, // Keep the existing photo URL
+  //     })
+
+  //     const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+  //       if (updatedUser) {
+  //         setUser(updatedUser)
+  //         setSelectedUser(null)
+  //         setProfileVisible(false)
+  //         unsubscribe()
+  //       }
+  //     })
+  //   })
+  //   .catch((error) => {
+  //     console.error('Error updating profile', error)
+  //   })
+  //   }
+  // }
 
   /*
   After implementing the above code, i encountered the following error: "1 Access to XMLHttpRequest at 'https://firebasestorage.googleapis.com/v0/b/app-chat-1f5a4.appspot.com/o?name=profilePhotos%2Fj0nwHQJVpgYxYPDvwTsm7g7ycNj1' from origin 'http://localhost:3005' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: It does not have HTTP ok status."
