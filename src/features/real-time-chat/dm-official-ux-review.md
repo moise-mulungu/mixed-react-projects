@@ -7,12 +7,15 @@
 ## "typing users" you could indicate as an animated "..." next to the connected user. it would save space on mobile. Also, the user who posted the most recently could be at the top of the connected users list.
 WHY saves space (esp in mobile), is a common UI indication of activity
 Impact 3 note: assumes that the "typing users" feature itself is important
+Effort 3 - i gave this 3 because i have not successfully yet displayed the list of users when someone is connected, the first is to list the users and then to check if the user can see other users.
 
 ## profile popup - if click on my username in the left column, that should also show the profile, but if I click on another user's name, I shouldn't be able to update, just view.
 Impact 2 - convenient for user. is a way to see profile of other users
+Effort 2 - i that's interesting to implement as well. the effort level can vary between 1-2
 
 ## login: usually when I enter email, when I put cursor into the input field and type first letter, Chrome will show previous emails I've used, but it doesn't work in the login screen. I'm curious why that is the case, as all login forms allow that default Chrome functionality to happen.
 Impact 3 - is common 
+Effort 1 - i am not sure how long it may take, but with assumption i think it can't be difficult.
 
 ## seems like older messages disappear after a period of time? they should not disappear.
 * let's discuss before assigning Effort/Impact
