@@ -1,16 +1,26 @@
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState, useRef, useContext } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { usersCollection } from './firebase'
 import { onSnapshot } from 'firebase/firestore'
 import db from './firebase'
-// import { getDoc, doc } from 'firebase/firestore'
+import { UserContext } from './user/user-context-provider'
 
-export default function ChatBox({ messages, deleteMessage, fetchUser, currentUser }) {
+export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   console.log('messages:', typeof messages)
 
   const [userData, setUserData] = useState({})
   const messagesContainerRef = useRef(null)
+
+  const { user: currentUser } = useContext(UserContext)
+  /*
+  The error of currentUser and message.sender mismatch was due to use of UserContext inside the root component. i did the following to debug:
+  1. check if the currentUser is null or undefined with console.log(currentUser) and console.log(message.sender)
+  2. i found both of them are null or undefined
+  3. to solve the issue was to check where the UserContext is being used, and i found it is being used in the RealTimeChat component.
+  4. i removed the UserContext from the RealTimeChat component to the ChatBox component without passing it as a prop to the ChatBox component.
+  5. i used the useContext hook to get the currentUser from the UserContext.
+  */
 
   useEffect(() => {
     // let unsubscribe
@@ -43,12 +53,13 @@ export default function ChatBox({ messages, deleteMessage, fetchUser, currentUse
       //(done) DM: I'm seeing an error when I change my display name, I think it is here. Put a try-catch around the code in this callback so you can know for sure where the error is happening.
       try {
         console.log('onSnapshot callback invoked', { snapshot })
-        const newUserData = {}
+        // const newUserData = {}
+        const updatedUserData = { ...userData }
         snapshot.docs.forEach((doc) => {
           console.log('onSnapshot callback invoked', { doc, docData: doc.data() })
-          newUserData[doc.id] = doc.data()
+          updatedUserData[doc.id] = doc.data()
         })
-        setUserData(newUserData)
+        setUserData(updatedUserData)
       } catch (error) {
         console.error('Error in onSnapshot callback:', error)
       }
@@ -89,6 +100,11 @@ export default function ChatBox({ messages, deleteMessage, fetchUser, currentUse
         console.log('timestamp type:', typeof message.timestamp)
         // dm: where is the property sender in the message object: MM: the sender property of the message object is being set to user.displayName in the MessageInput component. This user object is obtained from the UserContext using the useContext hook.?
         console.log({ message, index })
+        console.log('currentUser', currentUser)
+        console.log('currentUser?.uid', currentUser?.uid)
+        console.log('message.sender', message.sender)
+        console.log('message', JSON.stringify(message, null, 2))
+        console.log('index', index)
 
         return (
           <div
@@ -111,21 +127,16 @@ export default function ChatBox({ messages, deleteMessage, fetchUser, currentUse
                 </em>
               </div>
 
-              {currentUser &&
-                currentUser?.uid === message.sender &&
-                (console.log('currentUser', currentUser), // to check if the current user is the sender of the message
-                console.log('currentUser?.uid', currentUser?.uid), // to check if the current user has a uid
-                (console.log('message.sender', message.sender), // to check if the message object has a sender property
-                (
-                  <button onClick={() => deleteMessage(message)}>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                )))}
+              {currentUser && currentUser?.uid === message.sender && (
+                <button onClick={() => deleteMessage(message)}>
+                  <FontAwesomeIcon icon={faTrash} />
+                </button>
+              )}
               {/* MM: why the delete icon message disappear? i have an assumption that there is a mismatch between the currentUser.uid and message.sender. In order to fix this i put console log to verify each details, but i'll continue with it next time because i was running out of the time.
-                DM: todoMM: check your console.logs. I dont see any logs containing "currentUser" or "message.sender" in the console. That code above is really wierd - dont console.logs after && like that - its impossible to understand the code. Put your console.logs before the return statement of this [].map callback. Or you can use JSON stringify
+                (done)DM: todoMM: check your console.logs. I don't see any logs containing "currentUser" or "message.sender" in the console. That code above is really weird - don't console.logs after && like that - its impossible to understand the code. Put your console.logs before the return statement of this [].map callback. Or you can use JSON stringify
               */}
               {/* JSON stringify in a pre tag is nice but it only shows the values of the final render so best to use console.logs */}
-              <pre>{JSON.stringify({ currentUser, message }, null, 2)}</pre>
+              {/* <pre>{JSON.stringify({ currentUser, message }, null, 2)}</pre> */}
             </div>
           </div>
         )

@@ -71,10 +71,12 @@ export default function RealTimeChat() {
   MM: DM: in order to fix the TypeError: Cannot read properties of undefined (reading 'indexOf') error, the object that stores the messages state didn't have an id property, to fix it i added an id to it.
   */
   const currentUser = useContext(UserContext)
+  console.log('currentUser of RealTimeChat:', { currentUser })
+
   // New function to handle typing status
   const onTyping = (isTyping) => {
-    // DM: todoMM: use optional chaining to make this more concise
-    if (currentUser && currentUser.uid) {
+    //(done) DM: todoMM: use optional chaining to make this more concise
+    if (currentUser?.uid) {
       const typingRef = createDatabaseReference(database, `typing/${currentUser.uid}`)
       setDatabaseValue(typingRef, isTyping)
     }

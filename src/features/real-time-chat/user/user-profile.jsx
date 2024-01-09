@@ -27,7 +27,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
 
   const handleUpdateProfile = async () => {
     /* 
-      ()DM: todoMM: Combine the if and else block into one block. By doing them separately the code is hard to read, and hard to tell what is the difference between with or without uploaded file. Also, the code is repetitive, which is a "code smell". (which will always invite extra scrutiny from reviewers, tech leads, etc.) First step: convert the .then().catch() to async/await.
+      (done)DM: todoMM: Combine the if and else block into one block. By doing them separately the code is hard to read, and hard to tell what is the difference between with or without uploaded file. Also, the code is repetitive, which is a "code smell". (which will always invite extra scrutiny from reviewers, tech leads, etc.) First step: convert the .then().catch() to async/await.
 
 
       step 1: convert all .then().catch() to async/await and try/catch
@@ -44,11 +44,13 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         * async/await is the new way and really helps with this exact problem of repeated code.
         * it is good to know both ways, so you can read/edit older code, but async/await is the preferred way to do things now.
 
-      DM: still not done because step 2 "Combine the if and else block into one block" is not done. you still have the code separated into if and else blocks and you still have repeated code: updateProfile, setDoc, setUser are each called twice but the only difference in the repetitions of those calls is the value of userPhotoUrl. How can you make the code more succinct?
+      DM: still not done because step 2 "Combine the if and else block into one block" is not done. you still have the code separated into if and else blocks and you still have repeated code: updateProfile, setDoc, setUser are each called twice but the only difference in the repetitions of those calls is the value of userPhotoUrl. How can you make the code more succinct?MM: I think i did it. i combined the if and else blocks into one block. i also removed the repeated code. i think it's done now.
 
 
     */
     try {
+      const userPhotoUrl = user.photoURL // default to the existing photo URL
+
       if (selectedProfilePhoto) {
         // Only start the upload process if a file has been selected
         //  This line creates a reference to a location in Firebase Storage where the user's profile photo will be stored
@@ -66,7 +68,8 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
           }
         )
 
-        const userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
+        userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
+        // }
         // () => {
         // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
         // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -97,22 +100,23 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
           displayName,
           photoURL: downloadURL,
         })
-      } else {
-        await updateProfile(user, {
-          displayName,
-          photoURL: user.photoURL, // Keep the existing photo URL
-        })
+        // }
+        // else {
+        //   await updateProfile(user, {
+        //     displayName,
+        //     photoURL: user.photoURL, // Keep the existing photo URL
+        //   })
 
-        await setDoc(doc(db, 'users', user.uid), {
-          displayName,
-          photoURL: user.photoURL, // Keep the existing photo URL
-        })
+        //   await setDoc(doc(db, 'users', user.uid), {
+        //     displayName,
+        //     photoURL: user.photoURL, // Keep the existing photo URL
+        //   })
 
-        setUser({
-          ...user,
-          displayName,
-          photoURL: user.photoURL, // Keep the existing photo URL
-        })
+        //   setUser({
+        //     ...user,
+        //     displayName,
+        //     photoURL: user.photoURL, // Keep the existing photo URL
+        //   })
       }
 
       // DM: todoMM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer?
@@ -123,9 +127,13 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
           setSelectedUser(null)
           setProfileVisible(false)
           unsubscribe()
-        }
-        // DM: todoMM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error? Your answer?
-        else {
+        } else {
+        /*
+        (done)DM: todoMM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error? Your answer? 
+        MM: In Firebase, auth.onAuthStateChanged is a listener that triggers whenever the user's sign-in state changes. The callback function receives the updated user object. If the user is signed in, updatedUser will be a User object. If the user is not signed in, updatedUser will be null.
+
+        So, if !updatedUser is true, it means that the user is not signed in. This could occur if the user signs out, if the user's session expires, or if the user's account is deleted.
+        */
           // If !updatedUser, it means the user is not authenticated. You can handle this case as you see fit.
           console.error('User is not authenticated')
         }
