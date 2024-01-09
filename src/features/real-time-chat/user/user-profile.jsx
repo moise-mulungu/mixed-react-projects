@@ -44,7 +44,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         * async/await is the new way and really helps with this exact problem of repeated code.
         * it is good to know both ways, so you can read/edit older code, but async/await is the preferred way to do things now.
 
-      DM: still not done because step 2 "Combine the if and else block into one block" is not done. you still have the code separated into if and else blocks and you still have repeated code: updateProfile, setDoc, setUser are each called twice but the only difference in the repetitions of those calls is the value of userPhotoUrl. How can you make the code more succinct?MM: I think i did it. i combined the if and else blocks into one block. i also removed the repeated code. i think it's done now.
+      DM: still not done because step 2 "Combine the if and else block into one block" is not done. you still have the code separated into if and else blocks and you still have repeated code: updateProfile, setDoc, setUser are each called twice but the only difference in the repetitions of those calls is the value of userPhotoUrl. How can you make the code more succinct? MM: I think i did it. i combined the if and else blocks into one block. i also removed the repeated code. i think it's done now. DM: you're getting warmer, but if photo is not edited, what happens? it appears that nothing happens.
 
 
     */
@@ -98,6 +98,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         setUser({
           ...user,
           displayName,
+          // DM: where is downloadURL defined?
           photoURL: downloadURL,
         })
         // }
@@ -119,23 +120,28 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         //   })
       }
 
-      // DM: todoMM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer?
+      // DM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer?
       // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
       const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
-        if (updatedUser) {
+        // DM: this tells us exactly what !!updatedUser really means
+        const userIsSignedIn = !!updatedUser
+        if (userIsSignedIn) {
           setUser(updatedUser)
           setSelectedUser(null)
           setProfileVisible(false)
           unsubscribe()
         } else {
-        /*
-        (done)DM: todoMM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error? Your answer? 
-        MM: In Firebase, auth.onAuthStateChanged is a listener that triggers whenever the user's sign-in state changes. The callback function receives the updated user object. If the user is signed in, updatedUser will be a User object. If the user is not signed in, updatedUser will be null.
+          /*
+        (done)DM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error? Your answer? 
+        MM: In Firebase, auth.onAuthStateChanged is a listener that triggers whenever the user's sign-in state changes. The callback function receives the updated user object. If the user is signed in, updatedUser will be a User object. If the user is not signed in, updatedUser will be null. DM: good. I changed the code to reflect this information in the variable names and error messages.
 
-        So, if !updatedUser is true, it means that the user is not signed in. This could occur if the user signs out, if the user's session expires, or if the user's account is deleted.
+        So, if !!updatedUser is false, it means that the user is not signed in. This could occur if the user signs out, if the user's session expires, or if the user's account is deleted.
         */
           // If !updatedUser, it means the user is not authenticated. You can handle this case as you see fit.
-          console.error('User is not authenticated')
+          console.error(
+            // DM: this way, you'll have a nice error message in the console. You can also use console.warn() to get a yellow warning message in the console, if hte issue doesnt merit an error message (i.e., if it will happen sometimes and is not a big deal). )
+            "User is is not signed in (not authenticated). This could occur if the user signs out, if the user's session expires, or if the user's account is deleted"
+          )
         }
       })
     } catch (error) {

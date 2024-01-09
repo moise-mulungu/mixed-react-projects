@@ -75,7 +75,8 @@ export default function RealTimeChat() {
 
   // New function to handle typing status
   const onTyping = (isTyping) => {
-    //(done) DM: todoMM: use optional chaining to make this more concise
+    //(done) DM: use optional chaining to make this more concise
+    // DM: todoMM: do a global regexp search to see if this pattern is elsewhere in the chat codebase: if \(\w+ &&  If so, use optional chaining there, too.
     if (currentUser?.uid) {
       const typingRef = createDatabaseReference(database, `typing/${currentUser.uid}`)
       setDatabaseValue(typingRef, isTyping)
