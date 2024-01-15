@@ -1,5 +1,5 @@
-* This project will be build in French, but for the better understanding of both of us, i will first give the overview in English. its project that will track deposit, withdrawal, and assistance funds to members of a solidarity fund. data will be collected by a solidarity fund collector who would have the task to record all the provided details below and submit to the one responsible for the project. 
-  * DM: todoMM: good. but keep all notes, plans, etc. in English because you have an non-French-speaking project manager/lead. Create a translation file in ./constants/i18n.js a la:
+* This project will be build in French, but for the better understanding of both of us, i will first give the overview in English. it will track deposit, withdrawal, and assistance funds to members of a solidarity fund. data will be collected by a solidarity fund collector who would have the task to record all the provided details below and submit to the one responsible for the project. 
+  * DM: todoMM: good. but keep all notes, plans, etc. in English because you have an non-French-speaking project manager/lead. Create a translation file in ./constants/i18n.js, MM: DM: what do the name of the file i18n.js mean here? a la:
   ```js
 	const translations = [
     {id: "appTitle", // permanent Ids for referencing in code and for react key props
@@ -19,7 +19,7 @@
 
 ## Main Page
 ###  Header 
-* Fiche de recolte hebdomadaire des donnees d'epargne
+* Fiche de recolte hebdomadaire des données d'épargne
   
 ### Contact
 * Nom du groupe de Solidarite: Name of the solidarity fund
@@ -28,7 +28,7 @@
 * Jour et Date de la reunion: date of the meeting
   * DM: make sure all EN translations are complete and accurate(good)
 * Nmbre des membres presents a la reunion: Number of attendees(meeting)
-* Nom du Collector: Collector's name
+* Nom du Collecteur: Collector's name
 
 ### first table data(member)
 * Numero: Number
