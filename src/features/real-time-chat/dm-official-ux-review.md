@@ -8,9 +8,9 @@
 WHY saves space (esp in mobile), is a common UI indication of activity
 Impact 3 note: assumes that the "typing users" feature itself is important
 Effort 
-  * dependency: 
+  * dependency: ?
   * MM: i gave this 3 because i have not successfully yet displayed the list of users when someone is connected, the first is to list the users and then to check if the user can see other users.
-  * DM: good point, but only show the effort to do the thing. You can list dependencies separately. "displaying the list of connected users" is something you have to do anyway, this is just about adding a "..." after you already have that info in the app.(good)
+  * DM: good point, but only show the effort to do the thing. You can list dependencies separately. "displaying the list of connected users" is something you have to do anyway, this is just about adding a "..." after you already have that info in the app.(ok) DM: so, what is the effort? Put something after effort. If you don't know yet, still you should make your best estimate, and you can put "(may be adjusted after the dependent code is written)
   
 ## profile popup - if click on my username in the left column, that should also show the profile, but if I click on another user's name, I shouldn't be able to update, just view.
 Impact 2 - convenient for user. is a way to see profile of other users
@@ -28,7 +28,7 @@ Impact 3 - use industry-standard auth workflow. every authenticated app validate
 Effort 3 - i would have to go through the firebase documentation for modifying the authentication process.
 
 ## don't show the login screen if the app is in the process of validating the user. Is it based on cookies or how does the app know that the user is logged in on a previous day?
-Impact 2 - avoid confusion as user may think he/she needs to login. always show the current status if something is happening EX loading... "loggin in..."
+Impact 2 - avoid confusion as user may think he/she needs to login. always show the current status if something is happening EX loading... "logging in..."
 Effort 1 - this can be done by just adding some lines of code in the function that handles the login process.
 
 ## user profile edit page: "Photo URL" - it is a file, no? not a URL? Edit field title to be more accurate.

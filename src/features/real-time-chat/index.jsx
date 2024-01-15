@@ -76,7 +76,7 @@ export default function RealTimeChat() {
   // New function to handle typing status
   const onTyping = (isTyping) => {
     //(done) DM: use optional chaining to make this more concise
-    //(done) DM: todoMM: do a global regexp search to see if this pattern is elsewhere in the chat codebase: if \(\w+ &&  If so, use optional chaining there, too.
+    //(done) DM: do a global regexp search to see if this pattern is elsewhere in the chat codebase: if \(\w+ &&  If so, use optional chaining there, too.
     if (currentUser?.uid) {
       const typingRef = createDatabaseReference(database, `typing/${currentUser.uid}`)
       setDatabaseValue(typingRef, isTyping)
@@ -96,7 +96,7 @@ export default function RealTimeChat() {
     })
 
     // Set up Realtime Database presence subscription
-    //(done) DM: todoMM: rename unsubscribeDatabase to unsubscribeDatabaseListeners (or something like that) to make it clear that it is an array (plural) of unsubscribe functions.
+    //(done) DM: rename unsubscribeDatabase to unsubscribeDatabaseListeners (or something like that) to make it clear that it is an array (plural) of unsubscribe functions.
     const unsubscribeDatabaseListeners = connectedUsers.map((user) => {
       const userStatusRef = createDatabaseReference(database, 'status/' + user.uid)
 
@@ -184,12 +184,12 @@ export default function RealTimeChat() {
     // setConnectedUsers([...connectedUsers, user])
     setConnectedUsers((previousUsers) => {
       const updatedUsers = [...previousUsers, user]
+      // DM: todoMM: don't set another state variable in the setter of a state variable. You are setting the same state var below. What is the reason to set it here?
       setIsAuthenticated(true)
       return updatedUsers
     })
     setIsAuthenticated(true)
   }
-
   const onAuthenticate = (isAuthenticated) => {
     setIsAuthenticated(isAuthenticated)
   }
@@ -258,7 +258,6 @@ export default function RealTimeChat() {
                         console.log('real-time-chat/index.jsx ', { user })
                         console.log('displayName type:', typeof user.displayName)
                         // DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on. MM: This is necessary to check a possibility of user to be be null or undefined, or if user.displayName could be null, undefined, or an empty string. i think it's safer to keep it.
-                        // if (user && user.displayName) {
                         if (user?.displayName) {
                           // optional chaining
                           return (

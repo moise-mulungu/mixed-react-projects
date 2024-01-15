@@ -51,6 +51,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
     try {
       // const userPhotoUrl = user.photoURL // default to the existing photo URL
 
+      // DM:: todoMM: I don't see an ELSE clause for this IF clause. How will you handle the case where the user does not upload a photo? That scenario is not handled in the code, nothing happens if no photo uploaded. Ask yourself: what is the difference between photo uploaded or not? Then, think of how you can adjust the code so that the differences between selectedProfilePhoto or not are held in variables.
       if (selectedProfilePhoto) {
         // Only start the upload process if a file has been selected
         //  This line creates a reference to a location in Firebase Storage where the user's profile photo will be stored
