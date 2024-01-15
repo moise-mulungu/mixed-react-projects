@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from 'react'
 import { UserContext } from './user-context-provider'
-import { updateProfile } from 'firebase/auth'
+import { updateProfile, getAuth } from 'firebase/auth'
 import { setDoc, doc } from 'firebase/firestore'
 import db, { auth } from '../firebase'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
@@ -95,8 +95,12 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         })
         // .then(() => {
         // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
+        await user.reload() // Refresh the user object
+
+        const auth = getAuth()
+        const updatedUser = auth.currentUser
         setUser({
-          ...user,
+          ...updatedUser,
           displayName,
           // DM: where is downloadURL defined?
           photoURL: userPhotoUrl,
@@ -124,8 +128,8 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
       // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
       const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
         // DM: this tells us exactly what !!updatedUser really means
-        const userIsSignedIn = !!updatedUser
-        if (userIsSignedIn) {
+        // const userIsSignedIn = !!updatedUser
+        if (updatedUser) {
           setUser(updatedUser)
           setSelectedUser(null)
           setProfileVisible(false)

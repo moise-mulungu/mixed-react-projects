@@ -159,7 +159,8 @@ const Weather = () => {
         console.log({ errorResponseDataMessage })
 
         // DM: todoMM: since errorResponseDataMessage cannot exist unless errorResponseData and errorResponse exist, you don't have to check the latter 2 here, so just check errorResponseDataMessage === 'city not found'
-        if (errorResponse && errorResponseData && errorResponseDataMessage === 'city not found') {
+        // if (errorResponse && errorResponseData && errorResponseDataMessage === 'city not found') {
+        if (errorResponse?.data?.message === 'city not found') {
           //(done) DM: todoMM: in the alert message, use the city variable, not the hard-coded string 'city'
           alert(`"${city}" not found`)
         } else {
