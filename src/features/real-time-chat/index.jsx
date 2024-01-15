@@ -182,7 +182,11 @@ export default function RealTimeChat() {
     // new function to handle user connection
     //(done) DM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
     // setConnectedUsers([...connectedUsers, user])
-    setConnectedUsers((previousUsers) => [...previousUsers, user])
+    setConnectedUsers((previousUsers) => {
+      const updatedUsers = [...previousUsers, user]
+      setIsAuthenticated(true)
+      return updatedUsers
+    })
     setIsAuthenticated(true)
   }
 

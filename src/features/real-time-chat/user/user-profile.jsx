@@ -49,7 +49,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
 
     */
     try {
-      const userPhotoUrl = user.photoURL // default to the existing photo URL
+      // const userPhotoUrl = user.photoURL // default to the existing photo URL
 
       if (selectedProfilePhoto) {
         // Only start the upload process if a file has been selected
@@ -68,7 +68,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
           }
         )
 
-        userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
+        const userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
         // }
         // () => {
         // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
@@ -95,16 +95,18 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         })
         // .then(() => {
         // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
-        await user.reload() // Refresh the user object
+        console.log('displayName:', displayName)
+        console.log('userPhotoUrl:', userPhotoUrl)
 
-        const auth = getAuth()
-        const updatedUser = auth.currentUser
-        setUser({
-          ...updatedUser,
+        setUser((prevUser) => ({
+          ...prevUser,
           displayName,
-          // DM: where is downloadURL defined?
           photoURL: userPhotoUrl,
-        })
+        }))
+
+        /*
+        MM: DM: I attempted for a second time to fix the username update, but it still doesn't work. i don't know why. i tried to console.log the displayName and userPhotoUrl, but i don't find any clue. i tried to look back to commit history but i didn't see any major change that could have caused this bug.
+        */
         // }
         // else {
         //   await updateProfile(user, {
@@ -127,9 +129,11 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
       // DM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer? MM: The unsubscribe function returned by auth.onAuthStateChanged is called to clean up the listener when the user is signed in.
       // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
       const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+        console.log('updatedUser', updatedUser)
+
         // DM: this tells us exactly what !!updatedUser really means
-        // const userIsSignedIn = !!updatedUser
-        if (updatedUser) {
+        const userIsSignedIn = !!updatedUser
+        if (userIsSignedIn) {
           setUser(updatedUser)
           setSelectedUser(null)
           setProfileVisible(false)
