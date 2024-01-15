@@ -26,7 +26,7 @@
 * Village ou Adresse: location of the association
 * Numero de la reunion: Number of the meeting
 * Jour et Date de la reunion: date of the meeting
-  * DM: make sure all EN translations are complete and accurate
+  * DM: make sure all EN translations are complete and accurate(good)
 * Nmbre des membres presents a la reunion: Number of attendees(meeting)
 * Nom du Collector: Collector's name
 

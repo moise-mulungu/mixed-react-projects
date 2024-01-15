@@ -99,7 +99,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
           ...user,
           displayName,
           // DM: where is downloadURL defined?
-          photoURL: downloadURL,
+          photoURL: userPhotoUrl,
         })
         // }
         // else {
@@ -120,7 +120,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         //   })
       }
 
-      // DM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer?
+      // DM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer? MM: The unsubscribe function returned by auth.onAuthStateChanged is called to clean up the listener when the user is signed in.
       // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
       const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
         // DM: this tells us exactly what !!updatedUser really means
@@ -133,7 +133,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         } else {
           /*
         (done)DM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error? Your answer? 
-        MM: In Firebase, auth.onAuthStateChanged is a listener that triggers whenever the user's sign-in state changes. The callback function receives the updated user object. If the user is signed in, updatedUser will be a User object. If the user is not signed in, updatedUser will be null. DM: good. I changed the code to reflect this information in the variable names and error messages.
+        MM: In Firebase, auth.onAuthStateChanged is a listener that triggers whenever the user's sign-in state changes. The callback function receives the updated user object. If the user is signed in, updatedUser will be a User object. If the user is not signed in, updatedUser will be null. DM: good. I changed the code to reflect this information in the variable names and error messages.MM: ok
 
         So, if !!updatedUser is false, it means that the user is not signed in. This could occur if the user signs out, if the user's session expires, or if the user's account is deleted.
         */
