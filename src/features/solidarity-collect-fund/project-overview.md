@@ -17,41 +17,34 @@
     * note: figuring out how to make AI help you may take more than a few minutes, but the time is worth the practice with using AI.
   * Of course, if you're going to copy and paste into the repo French-language plans and instructions from the project owners, that is fine and good, but put a translation near it for me (AI can generate it but you should proof-read it for accuracy.)
 
-## Main Page
-###  Header 
-* Fiche de recolte hebdomadaire des données d'épargne
-  
-### Contact
-* Nom du groupe de Solidarite: Name of the solidarity fund
-* Village ou Adresse: location of the association
-* Numero de la reunion: Number of the meeting
-* Jour et Date de la reunion: date of the meeting
-  * DM: make sure all EN translations are complete and accurate(good)
-* Nmbre des membres presents a la reunion: Number of attendees(meeting) DM: todoMM: this doesn't match what is in i18n.js - don't leave duplicated or out-of-date info in the repo. if all this info is in the i18n.js then delete it here.
-* Nom du Collecteur: Collector's name
+## Project features
 
-### first table data(member)
-* Numero: Number
-* Nom Complet: Full-name
-* Part: Share
-* Somme hebdomadaire: weekly sum
-* Dette: Debt
-* Remboursement: Payment
-* Reste: Remains
-* Observation: Observation
-* total hebdomadaire: weekly total
-* somme totale: total sum(of all weekly sum, even for previous ones)
+### authentication 
+* login/signup pages
+  * form
+    * id-number (provided by the team lead)
+    * username (this will be modified)
+    * full-name (from his id-card) - only for the signup page
+    * login/signup links
+    * button (submit)
 
-### second table data(association)
-* Numero: Number
-* Nom complet: Full-name
-* Amande: Fine
-* Solidarite: solidarity(this is a weekly contribution to be kept for assistance)
-* cas de solidarite: solidarity case(if a member got sick or lost his family member)
-* Montant: amount(how much was contributed by individual for a solidarity case)
-* observation: observation
+### main-page
+this section will be stored in a database. the database will consist of many solidarity fund associations:
+* header (name of the project)
+* contact-section: this will hold data from a specific solidarity fund
+  * title of the organization/association
+  * location
+  * meeting's date
+  * Number of attendees
+  * collector's name ()
+* table-section(1):
+  * columns: row number, full-name, share, sum, debt, reimbursement, Meeting registration number, Weekly sum, Weekly total, Weekly savings.
+* table-section(2):
+  * columns: row number, full-name, fine, amount, cash desk, solidarity-case, amount
+  * links to the previous table and to the members information
 
-### number of cash desks
-* there going to be three different cash desks: one for solidarity, one for debt, and another for reserve.
-
-MM: DM: i'll have to update other elements before starting the project.
+### cash desks
+* table for :
+  * solidarity
+  * debt
+  * savings

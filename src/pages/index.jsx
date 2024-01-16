@@ -37,6 +37,9 @@ export default function Pages() {
         <li>
           <Link href="/real-time-chat">Real Time Chat</Link>
         </li>
+        <li>
+          <Link href="/solidarity-collect-fund-page">Solidarity Collect Fund</Link>
+        </li>
       </ul>
     </div>
   )
