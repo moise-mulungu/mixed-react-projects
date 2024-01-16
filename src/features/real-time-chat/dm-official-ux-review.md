@@ -7,8 +7,9 @@
 ## "typing users" you could indicate as an animated "..." next to the connected user. it would save space on mobile. Also, the user who posted the most recently could be at the top of the connected users list.
 WHY saves space (esp in mobile), is a common UI indication of activity
 Impact 3 note: assumes that the "typing users" feature itself is important
-Effort 3: may be adjusted after the dependent code is written
-  * dependency: ?
+Effort 2: may be adjusted after the dependent code is written
+  * I changed it to 2 because it is a simple UI addition using data that is already available (after you have the list of users who are typing). Simple UI change would be a 1, but maybe a 2 if you need to put typingUsers into global state.
+  * dependency: ? DM: todoMM: what is this line for?
   * MM: i gave this 3 because i have not successfully yet displayed the list of users when someone is connected, the first is to list the users and then to check if the user can see other users.
   * DM: good point, but only show the effort to do the thing. You can list dependencies separately. "displaying the list of connected users" is something you have to do anyway, this is just about adding a "..." after you already have that info in the app.(ok) DM: so, what is the effort? Put something after effort. If you don't know yet, still you should make your best estimate, and you can put "(may be adjusted after the dependent code is written)
   
@@ -55,6 +56,11 @@ Impact 3 - option to delete is "de rigueur" for user apps
 ## User Profile page: display the users email (not editable, unless you have a feature to update the email on the account)
 Impact 2 - always provide user all the information. what if user forgets which email user used to create the account
 
+## user profile, upon change username, if there are no messages yet, the username under Connected Users does not change upon save. However, if there are messages by the user, then username does change in all places.
+* to test this, remove all messages for a user and change the user name. Upon save of the new user name, you should see the new user name under Connected Users.
+Impact 3 - user must always see the change, otherwise user will waste time wondering why that cant see the change and assume that app is buggy/broken.
+
+DM: todoMM: put a Effort number for all the items above
 
 
 # done

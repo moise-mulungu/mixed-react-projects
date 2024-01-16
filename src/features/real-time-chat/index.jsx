@@ -184,7 +184,7 @@ export default function RealTimeChat() {
     // setConnectedUsers([...connectedUsers, user])
     setConnectedUsers((previousUsers) => {
       const updatedUsers = [...previousUsers, user]
-      //(done) DM: todoMM: don't set another state variable in the setter of a state variable. You are setting the same state var below. What is the reason to set it here?
+      //(done) DM: don't set another state variable in the setter of a state variable. You are setting the same state var below. What is the reason to set it here?
       return updatedUsers
     })
     setIsAuthenticated(true)
