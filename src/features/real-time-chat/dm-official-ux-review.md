@@ -31,10 +31,6 @@ Effort 3 - i would have to go through the firebase documentation for modifying t
 Impact 2 - avoid confusion as user may think he/she needs to login. always show the current status if something is happening EX loading... "logging in..."
 Effort 1 - this can be done by just adding some lines of code in the function that handles the login process.
 
-## user profile edit page: "Photo URL" - it is a file, no? not a URL? Edit field title to be more accurate.
-Impact 2 "don't make the user think"
-Effort 2: uploading file with firebase is more complex than expected, but i think effort 2 is appropriate.
-
 ## user profile edit page: if user has previously uploaded a file, show it here (if you haven't already)
 Impact 3 - always show the information the user needs (i.e., user can see he/she has already uploaded a photo and which photo)
 Effort  2
@@ -80,3 +76,7 @@ Impact 2 - always provide user all the information. what if user forgets which e
   * also, the messages column should always auto-scroll to the bottom so that  users can see the latest messages. 
 ## users should be able to delete their messages only, so show delete icon next to my message only
 Effort 3 - i worked on this task for almost three hours in aim to figure out what to fix. details are provided in the files
+
+## user profile edit page: "Photo URL" - it is a file, no? not a URL? Edit field title to be more accurate.
+Impact 2 "don't make the user think"
+Effort 2: uploading file with firebase is more complex than expected, but i think effort 2 is appropriate.

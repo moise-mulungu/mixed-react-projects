@@ -25,7 +25,34 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
     }
   }, [user])
 
+  const updateProfileAndFirestore = async (userPhotoUrl) => {
+    await updateProfile(user, {
+      displayName,
+      photoURL: userPhotoUrl,
+    })
+
+    // .then(() => {
+    //  is used to update the user's profile in Firestore. It sets the user's display name and profile photo URL in the document that represents the user.
+    //   return setDoc(doc(db, 'users', user.uid), {
+    //     displayName,
+    //     photoURL: downloadURL,
+    //   })
+    // })
+    await setDoc(doc(db, 'users', user.uid), {
+      displayName,
+      photoURL: userPhotoUrl,
+    })
+    // .then(() => {
+    // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
+    console.log('displayName:', displayName)
+    console.log('userPhotoUrl:', userPhotoUrl)
+  }
+
   const handleUpdateProfile = async () => {
+    if (!user) {
+      console.error('User is not defined')
+      return
+    }
     /* 
       (done)DM: todoMM: Combine the if and else block into one block. By doing them separately the code is hard to read, and hard to tell what is the difference between with or without uploaded file. Also, the code is repetitive, which is a "code smell". (which will always invite extra scrutiny from reviewers, tech leads, etc.) First step: convert the .then().catch() to async/await.
 
@@ -52,7 +79,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
       // const userPhotoUrl = user.photoURL // default to the existing photo URL
 
       //(done) DM:: todoMM: I don't see an ELSE clause for this IF clause. How will you handle the case where the user does not upload a photo? That scenario is not handled in the code, nothing happens if no photo uploaded. Ask yourself: what is the difference between photo uploaded or not? Then, think of how you can adjust the code so that the differences between selectedProfilePhoto or not are held in variables. MM: hum! that's was the solution to the username update! good
-      const userPhotoUrl = user.photoURL // default to the existing photo URL
+      let userPhotoUrl = user.photoURL // default to the existing photo URL
       if (selectedProfilePhoto) {
         // Only start the upload process if a file has been selected
         //  This line creates a reference to a location in Firebase Storage where the user's profile photo will be stored
@@ -67,14 +94,24 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
           },
           (error) => {
             console.error('Error uploading file', error)
+          },
+          () => {
+            // Upload completed successfully, now we can get the download URL
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              userPhotoUrl = downloadURL
+
+              // Now you can update the user's profile with the new photo URL
+              updateProfileAndFirestore(userPhotoUrl)
+            })
           }
         )
 
-        userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
+        // userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
       } else {
         // Handle the case where no photo is uploaded
         // For example, you might want to set userPhotoUrl to a default image
-        userPhotoUrl = 'url-to-default-image'
+        // userPhotoUrl = 'url-to-default-image'
+        updateProfileAndFirestore(userPhotoUrl)
       }
       // }
       // () => {
@@ -84,33 +121,11 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
       //     displayName,
       //     photoURL: downloadURL,
       //   })
-      await updateProfile(user, {
-        displayName,
-        photoURL: userPhotoUrl,
-      })
-
-      // .then(() => {
-      //  is used to update the user's profile in Firestore. It sets the user's display name and profile photo URL in the document that represents the user.
-      //   return setDoc(doc(db, 'users', user.uid), {
-      //     displayName,
-      //     photoURL: downloadURL,
-      //   })
-      // })
-      await setDoc(doc(db, 'users', user.uid), {
-        displayName,
-        photoURL: userPhotoUrl,
-      })
-      // .then(() => {
-      // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
-      console.log('displayName:', displayName)
-      console.log('userPhotoUrl:', userPhotoUrl)
-
       setUser((prevUser) => ({
         ...prevUser,
         displayName,
         photoURL: userPhotoUrl,
       }))
-
       /*
         MM: DM: I attempted for a second time to fix the username update, but it still doesn't work. i don't know why. i tried to console.log the displayName and userPhotoUrl, but i don't find any clue. i tried to look back to commit history but i didn't see any major change that could have caused this bug.
         */
@@ -164,6 +179,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
       console.error('Error updating profile', error)
     }
   }
+
   // DM: this code does the exact same thing as the commented-out code that follows it. I rewrote this as async/await and try/catch, so you could see an example and compare to the then-catch.
   //     try {
   //       const userPhotoUrl = user.photoURL // to avoid repeated code
@@ -295,7 +311,7 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
             // type="text"
             type="file"
             // value={selectedFile}
-            onChange={(e) => setSelectedFile(e.target.files[0])}
+            onChange={(e) => setSelectedProfilePhoto(e.target.files[0])}
           />
         </div>
         <div className="flex items-center justify-between">
