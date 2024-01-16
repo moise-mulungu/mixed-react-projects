@@ -7,7 +7,7 @@
 ## "typing users" you could indicate as an animated "..." next to the connected user. it would save space on mobile. Also, the user who posted the most recently could be at the top of the connected users list.
 WHY saves space (esp in mobile), is a common UI indication of activity
 Impact 3 note: assumes that the "typing users" feature itself is important
-Effort 
+Effort 3: may be adjusted after the dependent code is written
   * dependency: ?
   * MM: i gave this 3 because i have not successfully yet displayed the list of users when someone is connected, the first is to list the users and then to check if the user can see other users.
   * DM: good point, but only show the effort to do the thing. You can list dependencies separately. "displaying the list of connected users" is something you have to do anyway, this is just about adding a "..." after you already have that info in the app.(ok) DM: so, what is the effort? Put something after effort. If you don't know yet, still you should make your best estimate, and you can put "(may be adjusted after the dependent code is written)

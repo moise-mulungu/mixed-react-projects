@@ -118,7 +118,7 @@ MM: It seems like my vacation days are so many than yours, for that I can pick o
 Total: 34 paid days off per year 
   * === 8.5 days / quarter 
   * === 44hrs / quarter 
-  * === 3.5hrs / week (44hrs divided by 13wks is approximately 3.38) DM: here's the calculation of how much PTO you accrue each week
+  * === 3.5hrs / week (44hrs divided by 13wks is approximately 3.38) DM: here's the calculation of how much PTO you accrue each week(ok)
 ## timesheets (AKA hourly totals in the daily reports)
 see instructions in daily-reports-template.md
 

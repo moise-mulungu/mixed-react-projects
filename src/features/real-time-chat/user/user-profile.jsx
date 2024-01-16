@@ -51,7 +51,8 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
     try {
       // const userPhotoUrl = user.photoURL // default to the existing photo URL
 
-      // DM:: todoMM: I don't see an ELSE clause for this IF clause. How will you handle the case where the user does not upload a photo? That scenario is not handled in the code, nothing happens if no photo uploaded. Ask yourself: what is the difference between photo uploaded or not? Then, think of how you can adjust the code so that the differences between selectedProfilePhoto or not are held in variables.
+      //(done) DM:: todoMM: I don't see an ELSE clause for this IF clause. How will you handle the case where the user does not upload a photo? That scenario is not handled in the code, nothing happens if no photo uploaded. Ask yourself: what is the difference between photo uploaded or not? Then, think of how you can adjust the code so that the differences between selectedProfilePhoto or not are held in variables. MM: hum! that's was the solution to the username update! good
+      const userPhotoUrl = user.photoURL // default to the existing photo URL
       if (selectedProfilePhoto) {
         // Only start the upload process if a file has been selected
         //  This line creates a reference to a location in Firebase Storage where the user's profile photo will be stored
@@ -69,63 +70,68 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
           }
         )
 
-        const userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
-        // }
-        // () => {
-        // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
-        // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        //   updateProfile(user, {
-        //     displayName,
-        //     photoURL: downloadURL,
-        //   })
-        await updateProfile(user, {
-          displayName,
-          photoURL: userPhotoUrl,
-        })
+        userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
+      } else {
+        // Handle the case where no photo is uploaded
+        // For example, you might want to set userPhotoUrl to a default image
+        userPhotoUrl = 'url-to-default-image'
+      }
+      // }
+      // () => {
+      // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
+      // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+      //   updateProfile(user, {
+      //     displayName,
+      //     photoURL: downloadURL,
+      //   })
+      await updateProfile(user, {
+        displayName,
+        photoURL: userPhotoUrl,
+      })
 
-        // .then(() => {
-        //  is used to update the user's profile in Firestore. It sets the user's display name and profile photo URL in the document that represents the user.
-        //   return setDoc(doc(db, 'users', user.uid), {
-        //     displayName,
-        //     photoURL: downloadURL,
-        //   })
-        // })
-        await setDoc(doc(db, 'users', user.uid), {
-          displayName,
-          photoURL: userPhotoUrl,
-        })
-        // .then(() => {
-        // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
-        console.log('displayName:', displayName)
-        console.log('userPhotoUrl:', userPhotoUrl)
+      // .then(() => {
+      //  is used to update the user's profile in Firestore. It sets the user's display name and profile photo URL in the document that represents the user.
+      //   return setDoc(doc(db, 'users', user.uid), {
+      //     displayName,
+      //     photoURL: downloadURL,
+      //   })
+      // })
+      await setDoc(doc(db, 'users', user.uid), {
+        displayName,
+        photoURL: userPhotoUrl,
+      })
+      // .then(() => {
+      // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
+      console.log('displayName:', displayName)
+      console.log('userPhotoUrl:', userPhotoUrl)
 
-        setUser((prevUser) => ({
-          ...prevUser,
-          displayName,
-          photoURL: userPhotoUrl,
-        }))
+      setUser((prevUser) => ({
+        ...prevUser,
+        displayName,
+        photoURL: userPhotoUrl,
+      }))
 
-        /*
+      /*
         MM: DM: I attempted for a second time to fix the username update, but it still doesn't work. i don't know why. i tried to console.log the displayName and userPhotoUrl, but i don't find any clue. i tried to look back to commit history but i didn't see any major change that could have caused this bug.
         */
-        // }
-        // else {
-        //   await updateProfile(user, {
-        //     displayName,
-        //     photoURL: user.photoURL, // Keep the existing photo URL
-        //   })
+      // }
+      // else {
+      //   await updateProfile(user, {
+      //     displayName,
+      //     photoURL: user.photoURL, // Keep the existing photo URL
+      //   })
 
-        //   await setDoc(doc(db, 'users', user.uid), {
-        //     displayName,
-        //     photoURL: user.photoURL, // Keep the existing photo URL
-        //   })
+      //   await setDoc(doc(db, 'users', user.uid), {
+      //     displayName,
+      //     photoURL: user.photoURL, // Keep the existing photo URL
+      //   })
 
-        //   setUser({
-        //     ...user,
-        //     displayName,
-        //     photoURL: user.photoURL, // Keep the existing photo URL
-        //   })
-      }
+      //   setUser({
+      //     ...user,
+      //     displayName,
+      //     photoURL: user.photoURL, // Keep the existing photo URL
+      //   })
+      // }
 
       // DM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer? MM: The unsubscribe function returned by auth.onAuthStateChanged is called to clean up the listener when the user is signed in.
       // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful

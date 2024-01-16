@@ -17,7 +17,7 @@ note: total hours should add up to 8 usually. If not, then the total of the week
 # PTO [PTO hours used] hrs (if PTO was used this day)
 * note: PTO (paid time off AKA vacation + holidays + sick time) hours current balance: estimated 40hrs as of Oct 1
   * PTO accrues at the rate listed in roadmap.md
-  * I estimated 40hrs because you haven't been putting 40/week in the hours, and you haven't kept track of PTO since the start of the year. So, let's go with 40hrs DM: here is where I got the 40 hours accrued prior to Oct 1
+  * I estimated 40hrs because you haven't been putting 40/week in the hours, and you haven't kept track of PTO since the start of the year. So, let's go with 40hrs DM: here is where I got the 40 hours accrued prior to Oct 1(ok)
 * Note: required days off: (this was the rule at Cisco)
   * 2 work days: Thanksgiving Thu, Fri
   * ? Work days: Christmas holidays Dec 25 - Jan 1
