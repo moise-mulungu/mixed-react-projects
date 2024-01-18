@@ -116,6 +116,8 @@ export default function RealTimeChat() {
         if (childSnapshot.val() === true) {
           typingUsers.push(childSnapshot.key)
         }
+        //2. check the typingUsers value
+        console.log('Typing users:', typingUsers)
       })
       setTypingUsers(typingUsers)
     })
@@ -229,7 +231,10 @@ export default function RealTimeChat() {
                 </div>
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
                   {/*(done) DM: choose either onSendMessage or handleSendMessage (both names are great, imo), but the prop name should be the same as the function name. this makes it a LOT easier to follow what is what as you jump back and forth between components and tweak code. If they have different names, it gets confusing and mistakes can happen. (PS: I like onSendMessage a little better, since it isn't directly an event handler, but rather is called by an event handler in another component.) */}
-                  <MessageInput onSendMessage={onSendMessage} onTyping={onTyping} />
+                  <MessageInput
+                    onSendMessage={onSendMessage}
+                    onTyping={(isTyping) => onTyping(isTyping)}
+                  />
                 </div>
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
                   <div className="flex flex-col h-full">
@@ -253,11 +258,13 @@ export default function RealTimeChat() {
                         )
                         )
                       )} */}
-                      {connectedUsers.map((user) => {
-                        console.log('real-time-chat/index.jsx ', { user })
-                        console.log('displayName type:', typeof user.displayName)
-                        // DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on. MM: This is necessary to check a possibility of user to be be null or undefined, or if user.displayName could be null, undefined, or an empty string. i think it's safer to keep it.
-                        if (user?.displayName) {
+                      {connectedUsers.map(
+                        (user) => {
+                          console.log('real-time-chat/index.jsx ', { user })
+                          console.log('displayName type:', typeof user.displayName)
+                          // DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on. MM: This is necessary to check a possibility of user to be be null or undefined, or if user.displayName could be null, undefined, or an empty string. i think it's safer to keep it.
+                          // if (user?.displayName) {
+                          const isTyping = typingUsers.includes(user.uid)
                           // optional chaining
                           return (
                             // <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
@@ -276,13 +283,14 @@ export default function RealTimeChat() {
                                 {user.displayName[0].toUpperCase() + user.displayName.slice(1)}
                               </span>
                               <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
+                              {isTyping && <span className="ml-2 animate-pulse">...</span>}
                             </div>
                           )
                         }
-                        return null
-                      })}
+                        // return null
+                      )}
                     </div>
-                    <div className="flex-grow">
+                    {/* <div className="flex-grow">
                       <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
                         Typing Users
                       </h2>
@@ -295,7 +303,7 @@ export default function RealTimeChat() {
                           </div>
                         )
                       })}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 {/* <div className="flex flex-col w-1/3 ml-2">

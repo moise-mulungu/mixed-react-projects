@@ -59,6 +59,9 @@ export default function MessageInput({ onSendMessage, onTyping }) {
     }
 
     updateAllMessages()
+    if (message !== '') {
+      onTyping(true)
+    }
     return () => {
       onTyping(false)
     }
@@ -108,9 +111,27 @@ export default function MessageInput({ onSendMessage, onTyping }) {
   const handleInputChange = (e) => {
     setMessage(e.target.value)
     // DM: todoMM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
-    onTyping(e.target.value !== '')
+    const isInputFieldNotEmpty = e.target.value !== ''
+    // 1. try to debug why the animated typing dots are not showing up 
+    console.log('Is input field not empty:', isInputFieldNotEmpty) 
+    onTyping(isInputFieldNotEmpty)
   }
 
+  /*
+  1. added a console.log to the onTyping function to check if the function is being called when the user is typing above. this part is working fine as the isInputFieldNotEmpty is being logged in the console to true when the user is typing and false when the user is not typing.
+  2. added a console.log to the useEffect to check if the useEffect is being called when the user is typing above console.log('Typing users:', typingUsers) in the src/features/real-time-chat/index.jsx file. this doesn't show up in the console when the user is typing.
+  3. to check if the The typing status might not be getting updated in the Realtime Database. You can check this by going to the Firebase Console, navigating to the Realtime Database section, and looking at the typing node while you're typing something into the input field.
+    - Open your Firebase project in the Firebase Console. You can do this by navigating to the Firebase Console and clicking on your project.
+
+    - In the left-hand menu, you should see a section labeled "Develop". Under this section, you'll find both "Cloud Firestore" and "Realtime Database".
+
+    - Click on "Realtime Database". This will take you to the Realtime Database interface.
+
+    - In the Realtime Database interface, you should see a tree-like structure representing your database. This is where you should be able to see the typing node.
+
+  For this step, i couldn't see the typing node in the firebase Realtime Database tab suggested by the AI prompt. i would have to double check the code for the realtime database.
+  */ 
+  
   // DM: cool
   // ctrl + enter to send message and keep multiline
   const handleKeyDown = (e) => {
