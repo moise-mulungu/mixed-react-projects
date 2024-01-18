@@ -1,6 +1,7 @@
 // user/user-context-provider.jsx
 import React, { createContext, useState, useEffect } from 'react'
 import { auth } from '../firebase' // import your Firebase auth object
+import LinearProgress from '@material-ui/core/LinearProgress'
 
 export const UserContext = createContext()
 
@@ -17,7 +18,7 @@ export default function UserContextProvider({ children }) {
     return unsubscribe
   }, [])
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <LinearProgress />
 
   return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>
 }

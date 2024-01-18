@@ -58,10 +58,6 @@ Effort 3
 ## User Profile page: display the users email (not editable, unless you have a feature to update the email on the account)
 Impact 2 - always provide user all the information. what if user forgets which email user used to create the account
 
-## user profile, upon change username, if there are no messages yet, the username under Connected Users does not change upon save. However, if there are messages by the user, then username does change in all places.
-* to test this, remove all messages for a user and change the user name. Upon save of the new user name, you should see the new user name under Connected Users.
-Impact 3 - user must always see the change, otherwise user will waste time wondering why that cant see the change and assume that app is buggy/broken.
-Effort 2
 
 (done)DM: todoMM: put a Effort number for all the items above
 
@@ -83,9 +79,14 @@ Effort 2
 
 ## done - make the messages column scrollable  so that when lots of messages you can see them all.
   * also, the messages column should always auto-scroll to the bottom so that  users can see the latest messages. 
-## users should be able to delete their messages only, so show delete icon next to my message only
+## done - users should be able to delete their messages only, so show delete icon next to my message only
 Effort 3 - i worked on this task for almost three hours in aim to figure out what to fix. details are provided in the files
 
-## user profile edit page: "Photo URL" - it is a file, no? not a URL? Edit field title to be more accurate.
+## done - user profile edit page: "Photo URL" - it is a file, no? not a URL? Edit field title to be more accurate.
 Impact 2 "don't make the user think"
 Effort 2: uploading file with firebase is more complex than expected, but i think effort 2 is appropriate.
+
+## done - user profile, upon change username, if there are no messages yet, the username under Connected Users does not change upon save. However, if there are messages by the user, then username does change in all places.
+* to test this, remove all messages for a user and change the user name. Upon save of the new user name, you should see the new user name under Connected Users.
+Impact 3 - user must always see the change, otherwise user will waste time wondering why that cant see the change and assume that app is buggy/broken.
+Effort 2

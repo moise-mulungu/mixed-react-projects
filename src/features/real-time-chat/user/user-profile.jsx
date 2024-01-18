@@ -4,6 +4,8 @@ import { updateProfile, getAuth } from 'firebase/auth'
 import { setDoc, doc } from 'firebase/firestore'
 import db, { auth } from '../firebase'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
+// import { set } from 'firebase/database'
+import { BounceLoader } from 'react-spinners'
 
 //(done) DM: don't force the user to upload a photo file. Typically that is optional (if someone doesn't want to put up a picture). So, make it an optional field and indicate that in the UI. I tried to change my name without uploading a photo and it threw an error and wouldn't submit. Also, when I chose a file, it didn't work, so I can't test changing my display name.
 
@@ -13,10 +15,22 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   //(done) DM: give this a more specific name. what kind of file/for what purpose the file?
   // const [selectedFile, setSelectedFile] = useState(null)
   const [selectedProfilePhoto, setSelectedProfilePhoto] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
 
   //(done) DM: should this run on every render? or only when the user (or some other data) changes? MM: The getStorage() function is used to initialize a reference to Firebase Storage. This line of code is outside of any React hooks, so it will run every time the component re-renders. However, the getStorage() function is a memoized function, which means that it will only initialize a reference to Firebase Storage once. The reference will be stored in memory and returned on subsequent calls to getStorage(). So, the getStorage() function will only run once, even though it's outside of any React hooks. DM: super, it is called upon each render but the return value is cached and returned on subsequent calls. I'll add a comment as it is not obvious that it is cached.(ok)
   const storage = getStorage() // return value is cached
   const { user, setUser } = useContext(UserContext)
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+      if (updatedUser) {
+        setUser(updatedUser)
+      }
+    })
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe()
+  }, [])
 
   useEffect(() => {
     if (user) {
@@ -75,6 +89,8 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
 
 
     */
+    setIsLoading(true)
+
     try {
       // const userPhotoUrl = user.photoURL // default to the existing photo URL
 
@@ -95,13 +111,21 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
           (error) => {
             console.error('Error uploading file', error)
           },
-          () => {
-            // Upload completed successfully, now we can get the download URL
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              userPhotoUrl = downloadURL
-
-              // Now you can update the user's profile with the new photo URL
-              updateProfileAndFirestore(userPhotoUrl)
+          async () => {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref)
+            userPhotoUrl = downloadURL
+            await updateProfileAndFirestore(userPhotoUrl)
+            const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+              if (updatedUser) {
+                setUser(updatedUser)
+                setSelectedUser(null)
+                setProfileVisible(false)
+                unsubscribe()
+              } else {
+                console.error(
+                  "User is is not signed in (not authenticated). This could occur if the user signs out, if the user's session expires, or if the user's account is deleted"
+                )
+              }
             })
           }
         )
@@ -111,72 +135,74 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         // Handle the case where no photo is uploaded
         // For example, you might want to set userPhotoUrl to a default image
         // userPhotoUrl = 'url-to-default-image'
-        updateProfileAndFirestore(userPhotoUrl)
-      }
-      // }
-      // () => {
-      // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
-      // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-      //   updateProfile(user, {
-      //     displayName,
-      //     photoURL: downloadURL,
-      //   })
-      setUser((prevUser) => ({
-        ...prevUser,
-        displayName,
-        photoURL: userPhotoUrl,
-      }))
-      /*
+        await updateProfileAndFirestore(userPhotoUrl)
+        // }
+        // () => {
+        // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
+        // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        //   updateProfile(user, {
+        //     displayName,
+        //     photoURL: downloadURL,
+        //   })
+        // setUser((prevUser) => ({
+        //   ...prevUser,
+        //   displayName,
+        //   photoURL: userPhotoUrl,
+        // }))
+        /*
         MM: DM: I attempted for a second time to fix the username update, but it still doesn't work. i don't know why. i tried to console.log the displayName and userPhotoUrl, but i don't find any clue. i tried to look back to commit history but i didn't see any major change that could have caused this bug.
         */
-      // }
-      // else {
-      //   await updateProfile(user, {
-      //     displayName,
-      //     photoURL: user.photoURL, // Keep the existing photo URL
-      //   })
+        // }
+        // else {
+        //   await updateProfile(user, {
+        //     displayName,
+        //     photoURL: user.photoURL, // Keep the existing photo URL
+        //   })
 
-      //   await setDoc(doc(db, 'users', user.uid), {
-      //     displayName,
-      //     photoURL: user.photoURL, // Keep the existing photo URL
-      //   })
+        //   await setDoc(doc(db, 'users', user.uid), {
+        //     displayName,
+        //     photoURL: user.photoURL, // Keep the existing photo URL
+        //   })
 
-      //   setUser({
-      //     ...user,
-      //     displayName,
-      //     photoURL: user.photoURL, // Keep the existing photo URL
-      //   })
-      // }
+        //   setUser({
+        //     ...user,
+        //     displayName,
+        //     photoURL: user.photoURL, // Keep the existing photo URL
+        //   })
+        // }
 
-      // DM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer? MM: The unsubscribe function returned by auth.onAuthStateChanged is called to clean up the listener when the user is signed in.
-      // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
-      const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
-        console.log('updatedUser', updatedUser)
+        // DM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer? MM: The unsubscribe function returned by auth.onAuthStateChanged is called to clean up the listener when the user is signed in.
+        // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
+        const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
+          console.log('updatedUser', updatedUser)
 
-        // DM: this tells us exactly what !!updatedUser really means
-        const userIsSignedIn = !!updatedUser
-        if (userIsSignedIn) {
-          setUser(updatedUser)
-          setSelectedUser(null)
-          setProfileVisible(false)
-          unsubscribe()
-        } else {
-          /*
-        (done)DM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error? Your answer? 
-        MM: In Firebase, auth.onAuthStateChanged is a listener that triggers whenever the user's sign-in state changes. The callback function receives the updated user object. If the user is signed in, updatedUser will be a User object. If the user is not signed in, updatedUser will be null. DM: good. I changed the code to reflect this information in the variable names and error messages.MM: ok
-
-        So, if !!updatedUser is false, it means that the user is not signed in. This could occur if the user signs out, if the user's session expires, or if the user's account is deleted.
-        */
-          // If !updatedUser, it means the user is not authenticated. You can handle this case as you see fit.
-          console.error(
-            // DM: this way, you'll have a nice error message in the console. You can also use console.warn() to get a yellow warning message in the console, if hte issue doesnt merit an error message (i.e., if it will happen sometimes and is not a big deal). )
-            "User is is not signed in (not authenticated). This could occur if the user signs out, if the user's session expires, or if the user's account is deleted"
-          )
-        }
-      })
+          // DM: this tells us exactly what !!updatedUser really means
+          const userIsSignedIn = !!updatedUser
+          if (userIsSignedIn) {
+            setUser(updatedUser)
+            setSelectedUser(null)
+            setProfileVisible(false)
+            unsubscribe()
+          } else {
+            /*
+          (done)DM: this is a question only, no need to code anything now: if !updatedUser what does this mean? do you need to catch an error? Your answer? 
+          MM: In Firebase, auth.onAuthStateChanged is a listener that triggers whenever the user's sign-in state changes. The callback function receives the updated user object. If the user is signed in, updatedUser will be a User object. If the user is not signed in, updatedUser will be null. DM: good. I changed the code to reflect this information in the variable names and error messages.MM: ok
+          
+          So, if !!updatedUser is false, it means that the user is not signed in. This could occur if the user signs out, if the user's session expires, or if the user's account is deleted.
+          */
+            // If !updatedUser, it means the user is not authenticated. You can handle this case as you see fit.
+            console.error(
+              // DM: this way, you'll have a nice error message in the console. You can also use console.warn() to get a yellow warning message in the console, if hte issue doesnt merit an error message (i.e., if it will happen sometimes and is not a big deal). )
+              "User is is not signed in (not authenticated). This could occur if the user signs out, if the user's session expires, or if the user's account is deleted"
+            )
+          }
+        })
+      }
     } catch (error) {
       // If any error occurs during the profile update, it's logged to the console with console.error.
       console.error('Error updating profile', error)
+    } finally {
+      setIsLoading(false) // End loading
     }
   }
 
@@ -284,53 +310,61 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
         }
       }}
     >
-      <div className="p-8 bg-white shadow-md rounded">
-        <h2 className="text-2xl text-purple-500 font-bold mb-5 text-center">User Profile</h2>
-        <div className="flex items-center justify-center mb-5">
-          <img className="w-24 h-24 rounded-full" src={photoURL} alt="Profile" />
+      {isLoading ? (
+        // Replace this with your actual loading indicator
+        <BounceLoader color={'#123abc'} loading={isLoading} size={60} />
+      ) : (
+        // <div className="w-1/2 h-1">
+        //   <LinearProgress classes={{ root: 'h-full', bar: 'bg-blue-500' }} />
+        // </div>
+        <div className="p-8 bg-white shadow-md rounded">
+          <h2 className="text-2xl text-purple-500 font-bold mb-5 text-center">User Profile</h2>
+          <div className="flex items-center justify-center mb-5">
+            <img className="w-24 h-24 rounded-full" src={photoURL} alt="Profile" />
+          </div>
+          <div className="mb-4">
+            <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="displayName">
+              Display Name
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline"
+              id="displayName"
+              type="text"
+              value={displayName}
+              onChange={(e) => setDisplayName(e.target.value)}
+            />
+          </div>
+          <div className="mb-6">
+            <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="photoURL">
+              Photo URL
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="photoURL"
+              // type="text"
+              type="file"
+              // value={selectedFile}
+              onChange={(e) => setSelectedProfilePhoto(e.target.files[0])}
+            />
+          </div>
+          <div className="flex items-center justify-between">
+            <button
+              className="bg-green-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+              onClick={handleUpdateProfile}
+            >
+              Update Profile
+            </button>
+            <button
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+              onClick={() => setProfileVisible(false)}
+            >
+              Cancel
+            </button>
+          </div>
         </div>
-        <div className="mb-4">
-          <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="displayName">
-            Display Name
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-500 leading-tight focus:outline-none focus:shadow-outline"
-            id="displayName"
-            type="text"
-            value={displayName}
-            onChange={(e) => setDisplayName(e.target.value)}
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="photoURL">
-            Photo URL
-          </label>
-          <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            id="photoURL"
-            // type="text"
-            type="file"
-            // value={selectedFile}
-            onChange={(e) => setSelectedProfilePhoto(e.target.files[0])}
-          />
-        </div>
-        <div className="flex items-center justify-between">
-          <button
-            className="bg-green-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            onClick={handleUpdateProfile}
-          >
-            Update Profile
-          </button>
-          <button
-            className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            type="button"
-            onClick={() => setProfileVisible(false)}
-          >
-            Cancel
-          </button>
-        </div>
-      </div>
+      )}
     </div>
   )
 }
