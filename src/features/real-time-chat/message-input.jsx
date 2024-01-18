@@ -63,6 +63,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
       onTyping(true)
     }
     return () => {
+      // DM: todoMM: this is good thinking, but if the user types a little bit, then moves to a different tab to read the news or whatever, the typing status stays true for a long time, perhaps all day. See my other note on using a timeout to set the onTyping to false
       onTyping(false)
     }
   }, [])
@@ -112,8 +113,8 @@ export default function MessageInput({ onSendMessage, onTyping }) {
     setMessage(e.target.value)
     // DM: todoMM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
     const isInputFieldNotEmpty = e.target.value !== ''
-    // 1. try to debug why the animated typing dots are not showing up 
-    console.log('Is input field not empty:', isInputFieldNotEmpty) 
+    // 1. try to debug why the animated typing dots are not showing up
+    console.log('Is input field not empty:', isInputFieldNotEmpty)
     onTyping(isInputFieldNotEmpty)
   }
 
@@ -130,8 +131,21 @@ export default function MessageInput({ onSendMessage, onTyping }) {
     - In the Realtime Database interface, you should see a tree-like structure representing your database. This is where you should be able to see the typing node.
 
   For this step, i couldn't see the typing node in the firebase Realtime Database tab suggested by the AI prompt. i would have to double check the code for the realtime database.
-  */ 
+
+  DM: todoMM: OK First step is to get the isTyping status reflected in the database. The next step, read the following:
+  So, I started typing this: "I see that you're sending setDatabaseValue(typingRef, isTyping) up on each keystroke." Then Copilot suggested this:
+  "This is not what you want. You want to send it only when the user starts typing and when the user stops typing. You can do this by using a timer. When the user starts typing, you start a timer. When the user stops typing, you clear the timer. If the timer expires, then you send the typing status to the database. This is how you can avoid sending the typing status on each keystroke."
+  DM: this is a good point. but it is not really clear. I would think of it this way:
+  * on the first keystroke, you send typing=true to the databse, then you set a timer to expire in 3 seconds. when it it expires, you send typing=false to the database.
+  * on the next keystroke, you clear the timer, then you send typing=true to the database, then you set a timer to expire in 3 seconds. when it it expires, it sends typing=false to the database.
+  * this reliably records
+  * you can also "throttle" (see "throttle vs debounce") the keystrokes to 3 seconds. This way you don't send a keystroke every time the user types a letter, but only every 3 seconds. This is a good idea because it reduces the number of writes to the database, which is good for performance and cost.
   
+
+
+
+  */
+
   // DM: cool
   // ctrl + enter to send message and keep multiline
   const handleKeyDown = (e) => {

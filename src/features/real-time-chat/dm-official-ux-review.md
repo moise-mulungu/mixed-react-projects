@@ -4,12 +4,13 @@
 * DM: todoDM: Duncan will give an "impact" number for each item: 1-3, 3 being highest/best/most useful impact
 * (done)DM: : Moise will give an "effort" number for each item: 1-3, 3 being highest amount of time/work needed (is it "hard" or a "quickie")
 
+DM: todoMM: sort these putting the ones you'll do first at the top. Sort by the impact/effort ratio. If impact is 3 and effort is 1, that goes first, then impact 3, effort 2, ...
+
 ## "typing users" you could indicate as an animated "..." next to the connected user. it would save space on mobile. Also, the user who posted the most recently could be at the top of the connected users list.
 WHY saves space (esp in mobile), is a common UI indication of activity
 Impact 3 note: assumes that the "typing users" feature itself is important
 Effort 2: may be adjusted after the dependent code is written
   * I changed it to 2 because it is a simple UI addition using data that is already available (after you have the list of users who are typing). Simple UI change would be a 1, but maybe a 2 if you need to put typingUsers into global state.
-  (MM: i just delete it)DM: todoMM: what is this line for?
   * MM: i gave this 3 because i have not successfully yet displayed the list of users when someone is connected, the first is to list the users and then to check if the user can see other users.
   * DM: good point, but only show the effort to do the thing. You can list dependencies separately. "displaying the list of connected users" is something you have to do anyway, this is just about adding a "..." after you already have that info in the app.(ok) DM: so, what is the effort? Put something after effort. If you don't know yet, still you should make your best estimate, and you can put "(may be adjusted after the dependent code is written)
   
@@ -49,17 +50,23 @@ Effort 2 - what type of communication to use for users? do you mean adding text 
 ## if I mistakenly enter "dmdmdm@dmdmdm" (invalid email) during signup, no error is shown, and it doesnt log me in or take me directly to the app after signup, yet the user was created
 Impact 2 - always catch and "surface" all errors to the user. the fact that I can enter an incorrect email and this error is not surfaced to the user indicates that there is an area of code that is not covered by error catching and handling code.
   * note: this kind of thing is why DEVs need testing, to catch unexpected errors like this. I only noticed it because I used an invalid email.
-Effort 2: i'll catch the error of invalid email, but for a valid email once you sign up, it directing straight to the app. you can double check!
+Effort 1: i'll catch the error of invalid email, but for a valid email once you sign up, it directing straight to the app. you can double check! DM: ok that's a temporary workaround, but never make the user do extra work. 
+* I'm going to change this to a 1 because it is very simple to validate an form input for a proper email formatting.
 
 ## option to delete account
-Impact 3 - option to delete is "de rigueur" for user apps
+Impact 2 - option to delete is "de rigueur" for user apps
+* changing it to a 2 because I don't think it is that important for a portfolio app.
 Effort 3
+* DM: todoMM: think about how you would do this and write your approach here. There are various ways. You  don't have to code this item, but think it thru enough to justify an effort of 3. BTW, the items in this file are not requirements, but rather for discussion and prioritizing. We may decide not to do some of them, especially if the impact is low and the effort high.
 
 ## User Profile page: display the users email (not editable, unless you have a feature to update the email on the account)
 Impact 2 - always provide user all the information. what if user forgets which email user used to create the account
+Effort ?
 
+## user profile edit page: "Photo URL" - it is a file, no? not a URL? Edit field title to be more accurate.
+Impact 2 "don't make the user think"
+Effort 1: this is just a text change. "Photo URL" is not clear because user is not uploading a URL, but an image file
 
-(done)DM: todoMM: put a Effort number for all the items above
 
 
 # done
@@ -81,12 +88,12 @@ Impact 2 - always provide user all the information. what if user forgets which e
   * also, the messages column should always auto-scroll to the bottom so that  users can see the latest messages. 
 ## done - users should be able to delete their messages only, so show delete icon next to my message only
 Effort 3 - i worked on this task for almost three hours in aim to figure out what to fix. details are provided in the files
+* DM: nice!
 
-## done - user profile edit page: "Photo URL" - it is a file, no? not a URL? Edit field title to be more accurate.
-Impact 2 "don't make the user think"
-Effort 2: uploading file with firebase is more complex than expected, but i think effort 2 is appropriate.
+
 
 ## done - user profile, upon change username, if there are no messages yet, the username under Connected Users does not change upon save. However, if there are messages by the user, then username does change in all places.
 * to test this, remove all messages for a user and change the user name. Upon save of the new user name, you should see the new user name under Connected Users.
 Impact 3 - user must always see the change, otherwise user will waste time wondering why that cant see the change and assume that app is buggy/broken.
 Effort 2
+* DM: good!
