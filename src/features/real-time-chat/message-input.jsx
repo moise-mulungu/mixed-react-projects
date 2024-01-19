@@ -1,10 +1,13 @@
-import { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect, useRef } from 'react'
 import { UserContext } from './user/user-context-provider'
 import { addDoc, collection, getDoc, getDocs, updateDoc, doc } from 'firebase/firestore'
 import db from './firebase'
+import _ from 'lodash' // for throttling
 
 export default function MessageInput({ onSendMessage, onTyping }) {
   const [message, setMessage] = useState('')
+  const [prevMessage, setPrevMessage] = useState('') // to store the previous message
+  const typingTimeoutRef = useRef(null) // reference to store the timeout
 
   useEffect(() => {
     /*
@@ -63,8 +66,9 @@ export default function MessageInput({ onSendMessage, onTyping }) {
       onTyping(true)
     }
     return () => {
-      // DM: todoMM: this is good thinking, but if the user types a little bit, then moves to a different tab to read the news or whatever, the typing status stays true for a long time, perhaps all day. See my other note on using a timeout to set the onTyping to false
+      //(done) DM: todoMM: this is good thinking, but if the user types a little bit, then moves to a different tab to read the news or whatever, the typing status stays true for a long time, perhaps all day. See my other note on using a timeout to set the onTyping to false
       onTyping(false)
+      if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current) // clear the timeout when the component unmounts
     }
   }, [])
 
@@ -111,11 +115,25 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 
   const handleInputChange = (e) => {
     setMessage(e.target.value)
-    // DM: todoMM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
+    //(done) DM: todoMM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
     const isInputFieldNotEmpty = e.target.value !== ''
+    const isUserTyping = isInputFieldNotEmpty && e.target.value !== prevMessage // user is typing if the field is not empty and the value has changed
+    if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current) // clear the previous timeout
+
+    // set a new timeout
+    typingTimeoutRef.current = setTimeout(() => {
+      onTyping(false)
+    }, 3000) // 3 seconds
+
+    // throttle the onTyping function to only call it once every 3 seconds
+    const throttledOnTyping = _.throttle(onTyping, 3000)
+    throttledOnTyping(isUserTyping)
+    console.log('Is input field not empty:', isInputFieldNotEmpty) // Add this line
+    console.log('Is user typing:', isUserTyping) // Add this line
     // 1. try to debug why the animated typing dots are not showing up
-    console.log('Is input field not empty:', isInputFieldNotEmpty)
-    onTyping(isInputFieldNotEmpty)
+    console.log('Is input field not empty:', isUserTyping)
+    onTyping(isUserTyping)
+    setPrevMessage(e.target.value) // update the previous message
   }
 
   /*
@@ -132,7 +150,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 
   For this step, i couldn't see the typing node in the firebase Realtime Database tab suggested by the AI prompt. i would have to double check the code for the realtime database.
 
-  DM: todoMM: OK First step is to get the isTyping status reflected in the database. The next step, read the following:
+  (done)DM: todoMM: OK First step is to get the isTyping status reflected in the database. The next step, read the following:
   So, I started typing this: "I see that you're sending setDatabaseValue(typingRef, isTyping) up on each keystroke." Then Copilot suggested this:
   "This is not what you want. You want to send it only when the user starts typing and when the user stops typing. You can do this by using a timer. When the user starts typing, you start a timer. When the user stops typing, you clear the timer. If the timer expires, then you send the typing status to the database. This is how you can avoid sending the typing status on each keystroke."
   DM: this is a good point. but it is not really clear. I would think of it this way:
@@ -140,9 +158,6 @@ export default function MessageInput({ onSendMessage, onTyping }) {
   * on the next keystroke, you clear the timer, then you send typing=true to the database, then you set a timer to expire in 3 seconds. when it it expires, it sends typing=false to the database.
   * this reliably records
   * you can also "throttle" (see "throttle vs debounce") the keystrokes to 3 seconds. This way you don't send a keystroke every time the user types a letter, but only every 3 seconds. This is a good idea because it reduces the number of writes to the database, which is good for performance and cost.
-  
-
-
 
   */
 
@@ -180,7 +195,8 @@ export default function MessageInput({ onSendMessage, onTyping }) {
         suggestion: in either case, chat apps often let's you submit with the enter key. If multiline messages, then submit with ctrl-Enter is common.
         otherwise, keep going! looking great. MM: if i remove the multiline, users won't be able to send messages with line breaks. I think it's better to keep it as there is a send button. DM: exactly so, and with they c-Enter option, you have the best of both worlds (use doesn't have to grab mouse to send).
   */
-
+  // verify if the onTyping function is being passed correctly as a prop to the MessageInput component
+  console.log('onTyping prop:', onTyping)
   return (
     <form onSubmit={handleSubmit} className="flex flex-col h-full border-t-2 border-purple-300 p-4">
       <textarea
@@ -202,4 +218,29 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 
 DM: this looks like there are not many changes from the original above. It is better to comment out in place, rather than copy the entire code then comment out the entire code here. The reason is I can't tell what the diff is from this commented out code and the original code above, so I can't see what you tried to do, so I can't help. MM: i separated the two for code error reason, the same for other files, but i'll place the comments in the original code.
 
+*/
+
+/*
+In order to fix the animated typing dots, i:
+  1. changed the firebase realtime database rules from :
+    {
+      "rules": {
+        ".read": "auth != null",
+        ".write": "auth != null"
+      }
+    }
+    to:
+    "rules": {
+        "typing": {
+          ".read": true,
+          ".write": false
+        }
+      }
+    }
+
+  2. checked if there is a realtime function that handles the typing status. after checking i found the onTyping function in both RealTimeChat and MessageInput components is well written and should work fine.
+
+  3. i added console.logs to check one function after the other. the onTyping function is being called when the user is typing, but the createDatabaseRef function is not being called when the user is typing. i tried to debug this issue, but i couldn't find the issue.
+
+  4. after checking the firebase config file, the RealTimeChat and the MessageInput components, i couldn't find the issue. i am completely blocked and i don't know how to fix this issue. 
 */

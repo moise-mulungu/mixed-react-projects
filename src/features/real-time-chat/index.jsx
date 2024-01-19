@@ -58,6 +58,10 @@ import { doc, getDoc, deleteDoc } from 'firebase/firestore'
 */
 
 export default function RealTimeChat() {
+  console.log('RealTimeChat component rendered') // to check if the component is rendered
+
+  console.log('Database object:', database) // to check the database object is passed to the RealTimeChat component
+
   const [messages, setMessages] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   // const [user, setUser] = useState(null)
@@ -75,15 +79,18 @@ export default function RealTimeChat() {
 
   // New function to handle typing status
   const onTyping = (isTyping) => {
+    console.log('RealTimeChat onTyping function called with:', isTyping) // Add this line
     //(done) DM: use optional chaining to make this more concise
     //(done) DM: do a global regexp search to see if this pattern is elsewhere in the chat codebase: if \(\w+ &&  If so, use optional chaining there, too.
     if (currentUser?.uid) {
       const typingRef = createDatabaseReference(database, `typing/${currentUser.uid}`)
+      // console.log('Typing ref:', typingRef, 'Is typing:', isTyping) // Add this line
       setDatabaseValue(typingRef, isTyping)
     }
   }
 
   useEffect(() => {
+    console.log('useEffect hook executed') // to check if the useEffect hook is executed
     const q = query(collection(db, 'messages'), orderBy('timestamp'))
     const unsubscribeFirestore = onSnapshot(q, (snapshot) => {
       const messages = []
@@ -109,16 +116,18 @@ export default function RealTimeChat() {
       })
     })
     // New subscription for typing status
+    console.log('Database object:', database) // Add this line
     const typingRef = createDatabaseReference(database, 'typing')
+    console.log('Typing reference:', typingRef) // Add this line
     const unsubscribeTyping = listenToDatabaseValueChanges(typingRef, (snapshot) => {
       const typingUsers = []
       snapshot.forEach((childSnapshot) => {
         if (childSnapshot.val() === true) {
           typingUsers.push(childSnapshot.key)
         }
-        //2. check the typingUsers value
-        console.log('Typing users:', typingUsers)
       })
+      //2. check the typingUsers value
+      console.log('Updated typingUsers state:', typingUsers) // to check the typingUsers value
       setTypingUsers(typingUsers)
     })
     // Return a cleanup function that unsubscribes from both listeners
