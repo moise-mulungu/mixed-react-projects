@@ -22,15 +22,30 @@
 ### authentication 
 * login/signup pages
   * form
-    * id-number (provided by the team lead)
+    * id-number (provided by the team lead) 
+      * DM: ID number of what? the person? the project?
     * username (this will be modified)
+      * DM: modified by whom? the user, or project owner, administrator?
     * full-name (from his id-card) - only for the signup page
     * login/signup links
+      * DM: more detail on this, please
     * button (submit)
+
+DM: todoMM: for both tables below, list out the functionality you need for each such as search, sorting, adding, editing, etc. This will help choose the best React table solution.
+
+### user roles
+* project owner 
+  * DM: how many?
+* solidarity fund collector
+  * DM: how many?
+* administrator?
+* read-only users?
+  * DM: how many?
 
 ### main-page
 this section will be stored in a database. the database will consist of many solidarity fund associations:
 * header (name of the project)
+  * DM: how/where will the user select the project
 * contact-section: this will hold data from a specific solidarity fund
   * title of the organization/association
   * location
@@ -42,9 +57,11 @@ this section will be stored in a database. the database will consist of many sol
 * table-section(2):
   * columns: row number, full-name, fine, amount, cash desk, solidarity-case, amount
   * links to the previous table and to the members information
+    * DM: by "previous table" do you mean "table-section(1)"?
 
 ### cash desks
 * table for :
   * solidarity
   * debt
   * savings
+* DM: please add more details about this

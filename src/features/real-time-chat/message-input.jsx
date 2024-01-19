@@ -2,6 +2,7 @@ import { useState, useContext, useEffect, useRef } from 'react'
 import { UserContext } from './user/user-context-provider'
 import { addDoc, collection, getDoc, getDocs, updateDoc, doc } from 'firebase/firestore'
 import db from './firebase'
+// DM: todoMM: dont import the entire lodash, just import the throttle function. This will reduce the size of the bundle.
 import _ from 'lodash' // for throttling
 
 export default function MessageInput({ onSendMessage, onTyping }) {
@@ -66,7 +67,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
       onTyping(true)
     }
     return () => {
-      //(done) DM: todoMM: this is good thinking, but if the user types a little bit, then moves to a different tab to read the news or whatever, the typing status stays true for a long time, perhaps all day. See my other note on using a timeout to set the onTyping to false
+      //(done) DM: this is good thinking, but if the user types a little bit, then moves to a different tab to read the news or whatever, the typing status stays true for a long time, perhaps all day. See my other note on using a timeout to set the onTyping to false
       onTyping(false)
       if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current) // clear the timeout when the component unmounts
     }
@@ -115,9 +116,12 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 
   const handleInputChange = (e) => {
     setMessage(e.target.value)
-    //(done) DM: todoMM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
+    //(done) DM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
     const isInputFieldNotEmpty = e.target.value !== ''
+    // DM: todoMM: assign e.target.value !== prevMessage to a well-named variable, also. You can remove the comments on the next line if the variable names are clear.
     const isUserTyping = isInputFieldNotEmpty && e.target.value !== prevMessage // user is typing if the field is not empty and the value has changed
+
+    // DM: good job with this timeout code!
     if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current) // clear the previous timeout
 
     // set a new timeout

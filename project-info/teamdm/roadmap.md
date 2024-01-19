@@ -94,10 +94,10 @@
 * internet outages
 * talk about holidays, vacation time
 ## typical US, per year: https://getsling.com/blog/average-vacation-pto-time
-10 days paid holiday 
-14 days paid vacation
-2 days paid personal leave
-8 days paid sick leave
+10 days paid holiday (accrue at a rate of 1.6 hours/week 10*8/52)
+14 days paid vacation (accrue at a rate of 2.2 hours/week 14*8/52)
+2 days paid personal leave (accrue at a rate of 0.3 hours/week 2*8/52)
+8 days paid sick leave (accrue at a rate of 1.2 hours/week 8*8/52)
 ### Combined holidays
 January 1	New Year's Day[1]	[OK]
 January 17	Patrice Lumumba Assassination	1961 [OK]

@@ -24,10 +24,13 @@ Effort 3 - i would have to go through the firebase documentation for modifying t
 
 ## user profile edit page: if user has previously uploaded a file, show it here (if you haven't already)
 Impact 3 - always show the information the user needs (i.e., user can see he/she has already uploaded a photo and which photo)
-Effort  3: i change this to 3 because firebase data storage for retrieval is more complex than expected.
+Effort  2: 
   * MM: as i am still unable to upload the image, it will be hard to estimate the effort, but it will be hard.
   * DM: estimate the effort assuming Effort after uploading the image is complete, as you'll have to do that anyway, even if you didn't add this functionality.
+  * MM: i change this to 3 because firebase data storage for retrieval is more complex than expected.
+  * DM: I changed it to 2 because you already have the profile image showing on the profile page - this is already done!
   
+// DM: todoMM: this should come before Impact 3 Effort 3. Think of it like Impact - Effort. 3 - 3 is 0. 2 - 1 is 1. Sort again based on that.
 ## don't show the login screen if the app is in the process of validating the user. Is it based on cookies or how does the app know that the user is logged in on a previous day?
 Impact 2 - avoid confusion as user may think he/she needs to login. always show the current status if something is happening EX loading... "logging in..."
 Effort 1 - this can be done by just adding some lines of code in the function that handles the login process.
@@ -53,8 +56,11 @@ Effort 3 - i came to realize that accessing firebase database is a bit tricky, i
 * DM: todoMM: think about how you would do this and write your approach here. There are various ways. You  don't have to code this item, but think it thru enough to justify an effort of 3. BTW, the items in this file are not requirements, but rather for discussion and prioritizing. We may decide not to do some of them, especially if the impact is low and the effort high.
 
 ## User Profile page: display the users email (not editable, unless you have a feature to update the email on the account)
-Impact 2 - always provide user all the information. what if user forgets which email user used to create the account
-Effort 3 - for this, i would have to first access firebase data storage and retrieve data from.  
+Impact 3 - always provide user all the information. what if user forgets which email user used to create the account
+* DM changed to 3 because it is really important
+Effort 1 - for this, i would have to first access firebase data storage and retrieve data from.  
+  * DM: todoMM: but you already have code to get data from db. This is the most basic thing in a database-backed app, so you'll learn to do it quickly. Changed to 1 because it seems like a copy and paste to fetch from DB in a new location. 
+  * DM: todoMM: see the Zustand package on GitHub for storing global state that can easily be accessed by any component. Make a fake global state variable, such as key: testKey, value: testValue, then access it in any component! You'll see how easy it is to store all user values in one place and access it from anywhere in your component tree. 
 
 ## user profile edit page: "Photo URL" - it is a file, no? not a URL? Edit field title to be more accurate.
 Impact 2 "don't make the user think"

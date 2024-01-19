@@ -79,12 +79,17 @@ export default function RealTimeChat() {
 
   // New function to handle typing status
   const onTyping = (isTyping) => {
-    console.log('RealTimeChat onTyping function called with:', isTyping) // Add this line
+    console.log('RealTimeChat onTyping function called with:', isTyping, {
+      // DM: todoMM: these are both undefined, so the if statement below will never be true.
+      currentUserUid: currentUser?.uid,
+      currentUser,
+    }) // Add this line
     //(done) DM: use optional chaining to make this more concise
     //(done) DM: do a global regexp search to see if this pattern is elsewhere in the chat codebase: if \(\w+ &&  If so, use optional chaining there, too.
     if (currentUser?.uid) {
       const typingRef = createDatabaseReference(database, `typing/${currentUser.uid}`)
-      // console.log('Typing ref:', typingRef, 'Is typing:', isTyping) // Add this line
+      // DM: you'll see that this line is never executed, so nothing saved to the DB
+      console.log('Typing ref:', typingRef, 'Is typing:', isTyping) // Add this line
       setDatabaseValue(typingRef, isTyping)
     }
   }
