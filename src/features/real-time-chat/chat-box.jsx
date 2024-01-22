@@ -5,12 +5,17 @@ import { usersCollection } from './firebase'
 import { onSnapshot } from 'firebase/firestore'
 import db from './firebase'
 import { UserContext } from './user/user-context-provider'
+import { globalStateStore } from './global-state-store'
 
 export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   console.log('messages:', typeof messages)
 
   const [userData, setUserData] = useState({})
   const messagesContainerRef = useRef(null)
+
+  // testing global state with Zustand
+  const testKey = useStore((state) => state.testKey) // Access the global state
+  const setTestKey = useStore((state) => state.setTestKey) // Access the setter function
 
   const { user: currentUser } = useContext(UserContext)
   /*
@@ -20,6 +25,21 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   3. to solve the issue was to check where the UserContext is being used, and i found it is being used in the RealTimeChat component.
   4. i removed the UserContext from the RealTimeChat component to the ChatBox component without passing it as a prop to the ChatBox component.
   5. i used the useContext hook to get the currentUser from the UserContext.
+  */
+
+  useEffect(() => {
+    setTestKey('newValue') // Update the global state
+  }, [])
+
+  /*
+  to test Zustand global state i did the following:
+    1. read the documentation of Zustand on the following link: https://github.com/pmndrs/zustand(MM: DM: next time, i'll find out all the global states in this project and put them in the globalStateStore component)
+    2. installed Zustand package by running "npm install zustand"
+    3. created a global-state-store.jsx file in the real-time-chat folder, and added a component called globalStateStore.
+    5. created two variables testKey and setTestKey to access the global state and the setter function.
+    4. imported the globalStateStore component in the chat-box.jsx component.
+    6. created a testKey state with its setter function setTestKey in the ChatBox()
+    7. added a useEffect where i passed the setTestKey function with the value of "newValue"
   */
 
   useEffect(() => {
