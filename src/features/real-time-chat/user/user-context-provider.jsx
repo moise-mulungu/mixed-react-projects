@@ -11,6 +11,7 @@ export default function UserContextProvider({ children }) {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((firebaseUser) => {
+      console.log('Firebase user:', firebaseUser) // check your console to see the Firebase user object if it has a uid property.
       setUser(firebaseUser)
       setLoading(false)
     })

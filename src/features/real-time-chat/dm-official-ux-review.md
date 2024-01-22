@@ -17,13 +17,19 @@ Effort 1 - for this, i would have to first access firebase data storage and retr
   *(in progress) DM: todoMM: but you already have code to get data from db. This is the most basic thing in a database-backed app, so you'll learn to do it quickly. Changed to 1 because it seems like a copy and paste to fetch from DB in a new location. 
   *(done) DM: todoMM: see the Zustand package on GitHub for storing global state that can easily be accessed by any component. Make a fake global state variable, such as key: testKey, value: testValue, then access it in any component! You'll see how easy it is to store all user values in one place and access it from anywhere in your component tree.
 
-## "typing users" you could indicate as an animated "..." next to the connected user. it would save space on mobile. Also, the user who posted the most recently could be at the top of the connected users list.
+## "typing users" you could indicate as an animated "..." next to the connected user. it would save space on mobile. 
+
 WHY saves space (esp in mobile), is a common UI indication of activity
 Impact 3 note: assumes that the "typing users" feature itself is important
 Effort 2: may be adjusted after the dependent code is written
   * I changed it to 2 because it is a simple UI addition using data that is already available (after you have the list of users who are typing). Simple UI change would be a 1, but maybe a 2 if you need to put typingUsers into global state.
   * MM: i gave this 3 because i have not successfully yet displayed the list of users when someone is connected, the first is to list the users and then to check if the user can see other users.
   * DM: good point, but only show the effort to do the thing. You can list dependencies separately. "displaying the list of connected users" is something you have to do anyway, this is just about adding a "..." after you already have that info in the app.(ok) DM: so, what is the effort? Put something after effort. If you don't know yet, still you should make your best estimate, and you can put "(may be adjusted after the dependent code is written)
+  
+MM: this could constitute a separate task as the "typing users" above is complete
+## Also, the user who posted the most recently could be at the top of the connected users list.
+Impact 3
+Effort 2: i keep the same effort avlue as the "typing users" task above.
 
 ## user profile edit page: if user has previously uploaded a file, show it here (if you haven't already)
 Impact 3 - always show the information the user needs (i.e., user can see he/she has already uploaded a photo and which photo)
@@ -103,3 +109,11 @@ Effort 3 - i worked on this task for almost three hours in aim to figure out wha
 Impact 3 - user must always see the change, otherwise user will waste time wondering why that cant see the change and assume that app is buggy/broken.
 Effort 2
 * DM: good!
+
+## done - "typing users" you could indicate as an animated "..." next to the connected user. it would save space on mobile. 
+WHY saves space (esp in mobile), is a common UI indication of activity
+Impact 3 note: assumes that the "typing users" feature itself is important
+Effort 2: may be adjusted after the dependent code is written
+  * I changed it to 2 because it is a simple UI addition using data that is already available (after you have the list of users who are typing). Simple UI change would be a 1, but maybe a 2 if you need to put typingUsers into global state.
+  * MM: i gave this 3 because i have not successfully yet displayed the list of users when someone is connected, the first is to list the users and then to check if the user can see other users.
+  * DM: good point, but only show the effort to do the thing. You can list dependencies separately. "displaying the list of connected users" is something you have to do anyway, this is just about adding a "..." after you already have that info in the app.(ok) DM: so, what is the effort? Put something after effort. If you don't know yet, still you should make your best estimate, and you can put "(may be adjusted after the dependent code is written)

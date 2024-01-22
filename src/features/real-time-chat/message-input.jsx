@@ -2,8 +2,8 @@ import { useState, useContext, useEffect, useRef } from 'react'
 import { UserContext } from './user/user-context-provider'
 import { addDoc, collection, getDoc, getDocs, updateDoc, doc } from 'firebase/firestore'
 import db from './firebase'
-// DM: todoMM: dont import the entire lodash, just import the throttle function. This will reduce the size of the bundle.
-import _ from 'lodash' // for throttling
+//(done) DM: todoMM: don't import the entire lodash, just import the throttle function. This will reduce the size of the bundle.
+import { throttle } from 'lodash' // for throttling
 
 export default function MessageInput({ onSendMessage, onTyping }) {
   const [message, setMessage] = useState('')
@@ -118,10 +118,9 @@ export default function MessageInput({ onSendMessage, onTyping }) {
     setMessage(e.target.value)
     //(done) DM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
     const isInputFieldNotEmpty = e.target.value !== ''
-    // DM: todoMM: assign e.target.value !== prevMessage to a well-named variable, also. You can remove the comments on the next line if the variable names are clear.
-    const isUserTyping = isInputFieldNotEmpty && e.target.value !== prevMessage // user is typing if the field is not empty and the value has changed
+    //(done) DM: todoMM: assign e.target.value !== prevMessage to a well-named variable, also. You can remove the comments on the next line if the variable names are clear.
+    const isUserTypingNewContent = isInputFieldNotEmpty && e.target.value !== prevMessage // check if the user is typing new content
 
-    // DM: good job with this timeout code!
     if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current) // clear the previous timeout
 
     // set a new timeout
@@ -130,13 +129,13 @@ export default function MessageInput({ onSendMessage, onTyping }) {
     }, 3000) // 3 seconds
 
     // throttle the onTyping function to only call it once every 3 seconds
-    const throttledOnTyping = _.throttle(onTyping, 3000)
-    throttledOnTyping(isUserTyping)
+    const throttledOnTyping = throttle(onTyping, 3000)
+    throttledOnTyping(isUserTypingNewContent)
     console.log('Is input field not empty:', isInputFieldNotEmpty) // Add this line
-    console.log('Is user typing:', isUserTyping) // Add this line
+    console.log('Is user typing:', isUserTypingNewContent) // Add this line
     // 1. try to debug why the animated typing dots are not showing up
-    console.log('Is input field not empty:', isUserTyping)
-    onTyping(isUserTyping)
+    console.log('Is input field not empty:', isUserTypingNewContent)
+    onTyping(isUserTypingNewContent)
     setPrevMessage(e.target.value) // update the previous message
   }
 

@@ -14,8 +14,8 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   const messagesContainerRef = useRef(null)
 
   // testing global state with Zustand
-  const testKey = useStore((state) => state.testKey) // Access the global state
-  const setTestKey = useStore((state) => state.setTestKey) // Access the setter function
+  const testKey = globalStateStore((state) => state.testKey) // Access the global state
+  const setTestKey = globalStateStore((state) => state.setTestKey) // Access the setter function
 
   const { user: currentUser } = useContext(UserContext)
   /*
