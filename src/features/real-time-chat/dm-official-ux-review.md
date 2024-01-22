@@ -10,6 +10,13 @@
 Impact 3 - is common 
 Effort 1 - i am not sure how long it may take, but with assumption i think it can't be difficult.
 
+## User Profile page: display the users email (not editable, unless you have a feature to update the email on the account)
+Impact 3 - always provide user all the information. what if user forgets which email user used to create the account
+* DM changed to 3 because it is really important
+Effort 1 - for this, i would have to first access firebase data storage and retrieve data from.  
+  *(in progress) DM: todoMM: but you already have code to get data from db. This is the most basic thing in a database-backed app, so you'll learn to do it quickly. Changed to 1 because it seems like a copy and paste to fetch from DB in a new location. 
+  *(done) DM: todoMM: see the Zustand package on GitHub for storing global state that can easily be accessed by any component. Make a fake global state variable, such as key: testKey, value: testValue, then access it in any component! You'll see how easy it is to store all user values in one place and access it from anywhere in your component tree.
+
 ## "typing users" you could indicate as an animated "..." next to the connected user. it would save space on mobile. Also, the user who posted the most recently could be at the top of the connected users list.
 WHY saves space (esp in mobile), is a common UI indication of activity
 Impact 3 note: assumes that the "typing users" feature itself is important
@@ -17,10 +24,6 @@ Effort 2: may be adjusted after the dependent code is written
   * I changed it to 2 because it is a simple UI addition using data that is already available (after you have the list of users who are typing). Simple UI change would be a 1, but maybe a 2 if you need to put typingUsers into global state.
   * MM: i gave this 3 because i have not successfully yet displayed the list of users when someone is connected, the first is to list the users and then to check if the user can see other users.
   * DM: good point, but only show the effort to do the thing. You can list dependencies separately. "displaying the list of connected users" is something you have to do anyway, this is just about adding a "..." after you already have that info in the app.(ok) DM: so, what is the effort? Put something after effort. If you don't know yet, still you should make your best estimate, and you can put "(may be adjusted after the dependent code is written)
-  
-## btw, I used a fake email in the signup dmdmdm@dmdmdm.com and there wasn't an email sent to verify - that would be a good part of auth.
-Impact 3 - use industry-standard auth workflow. every authenticated app validates user via email confirmation step
-Effort 3 - i would have to go through the firebase documentation for modifying the authentication process.
 
 ## user profile edit page: if user has previously uploaded a file, show it here (if you haven't already)
 Impact 3 - always show the information the user needs (i.e., user can see he/she has already uploaded a photo and which photo)
@@ -30,7 +33,7 @@ Effort  2:
   * MM: i change this to 3 because firebase data storage for retrieval is more complex than expected.
   * DM: I changed it to 2 because you already have the profile image showing on the profile page - this is already done!
   
-// DM: todoMM: this should come before Impact 3 Effort 3. Think of it like Impact - Effort. 3 - 3 is 0. 2 - 1 is 1. Sort again based on that.
+//(done) DM: todoMM: this should come before Impact 3 Effort 3. Think of it like Impact - Effort. 3 - 3 is 0. 2 - 1 is 1. Sort again based on that. MM: i sorted them out according to the result of subtraction between Impact/Effort. the bigger the result, the first on the list. right?
 ## don't show the login screen if the app is in the process of validating the user. Is it based on cookies or how does the app know that the user is logged in on a previous day?
 Impact 2 - avoid confusion as user may think he/she needs to login. always show the current status if something is happening EX loading... "logging in..."
 Effort 1 - this can be done by just adding some lines of code in the function that handles the login process.
@@ -40,6 +43,14 @@ Impact 2 - always catch and "surface" all errors to the user. the fact that I ca
   * note: this kind of thing is why DEVs need testing, to catch unexpected errors like this. I only noticed it because I used an invalid email.
 Effort 1: i'll catch the error of invalid email, but for a valid email once you sign up, it directing straight to the app. you can double check! DM: ok that's a temporary workaround, but never make the user do extra work. 
 * I'm going to change this to a 1 because it is very simple to validate an form input for a proper email formatting.
+
+## user profile edit page: "Photo URL" - it is a file, no? not a URL? Edit field title to be more accurate.
+Impact 2 "don't make the user think"
+Effort 1: this is just a text change. "Photo URL" is not clear because user is not uploading a URL, but an image file.
+
+## btw, I used a fake email in the signup dmdmdm@dmdmdm.com and there wasn't an email sent to verify - that would be a good part of auth.
+Impact 3 - use industry-standard auth workflow. every authenticated app validates user via email confirmation step
+Effort 3 - i would have to go through the firebase documentation for modifying the authentication process.
 
 ## profile popup - if click on my username in the left column, that should also show the profile, but if I click on another user's name, I shouldn't be able to update, just view.
 Impact 2 - convenient for user. is a way to see profile of other users
@@ -52,19 +63,9 @@ Effort 2 - what type of communication to use for users? do you mean adding text 
 ## option to delete account
 Impact 2 - option to delete is "de rigueur" for user apps
 * changing it to a 2 because I don't think it is that important for a portfolio app.
-Effort 3 - i came to realize that accessing firebase database is a bit tricky, i can estimate between 2 and 3, but i keep to 3 
-* DM: todoMM: think about how you would do this and write your approach here. There are various ways. You  don't have to code this item, but think it thru enough to justify an effort of 3. BTW, the items in this file are not requirements, but rather for discussion and prioritizing. We may decide not to do some of them, especially if the impact is low and the effort high.
+Effort 2 - i think Effort 2 is appropriate ven though accessing firebase database is a bit tricky.
+*(done) DM: todoMM: think about how you would do this and write your approach here. There are various ways. You  don't have to code this item, but think it thru enough to justify an effort of 3. BTW, the items in this file are not requirements, but rather for discussion and prioritizing. We may decide not to do some of them, especially if the impact is low and the effort high.
 
-## User Profile page: display the users email (not editable, unless you have a feature to update the email on the account)
-Impact 3 - always provide user all the information. what if user forgets which email user used to create the account
-* DM changed to 3 because it is really important
-Effort 1 - for this, i would have to first access firebase data storage and retrieve data from.  
-  * DM: todoMM: but you already have code to get data from db. This is the most basic thing in a database-backed app, so you'll learn to do it quickly. Changed to 1 because it seems like a copy and paste to fetch from DB in a new location. 
-  * DM: todoMM: see the Zustand package on GitHub for storing global state that can easily be accessed by any component. Make a fake global state variable, such as key: testKey, value: testValue, then access it in any component! You'll see how easy it is to store all user values in one place and access it from anywhere in your component tree. 
-
-## user profile edit page: "Photo URL" - it is a file, no? not a URL? Edit field title to be more accurate.
-Impact 2 "don't make the user think"
-Effort 1: this is just a text change. "Photo URL" is not clear because user is not uploading a URL, but an image file
 
 ## hit "Enter" 3 times then click "Send". It correctly posts no message, but the empty lines are still there. Remove all "whitespace" if user submits (via Send or via ctrl-Enter)
 Impact 1 - user may come back to the app (without closing the browser tab) and be confused/irritated by extra spaces; don't leave messes around;
