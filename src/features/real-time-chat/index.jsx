@@ -20,4 +20,7 @@ after those console.logs, i found that setDatabaseValue was not showing in the c
  - created a new component RealTimeChatProvider that wraps the RealTimeChat component and provides the UserContext to it.
  - changed the root component in the index.jsx file from RealTimeChat to RealTimeChatProvider
  - initialized the userContext in the RealTimeChat component. 
+
+DM: ok, good job, this is helpful to me as code reviewer
+
 */
