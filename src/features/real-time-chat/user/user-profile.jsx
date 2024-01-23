@@ -2,10 +2,12 @@ import { useState, useContext, useEffect } from 'react'
 import { UserContext } from './user-context-provider'
 import { updateProfile, getAuth } from 'firebase/auth'
 import { setDoc, doc } from 'firebase/firestore'
-import db, { auth } from '../firebase'
+import db, { auth, signOut } from '../firebase'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 // import { set } from 'firebase/database'
 import { BounceLoader } from 'react-spinners'
+import { useRouter } from 'next/router'
+import User from './index'
 
 //(done) DM: don't force the user to upload a photo file. Typically that is optional (if someone doesn't want to put up a picture). So, make it an optional field and indicate that in the UI. I tried to change my name without uploading a photo and it threw an error and wouldn't submit. Also, when I chose a file, it didn't work, so I can't test changing my display name.
 
@@ -16,15 +18,20 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   // const [selectedFile, setSelectedFile] = useState(null)
   const [selectedProfilePhoto, setSelectedProfilePhoto] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  // Add a new state variable
+  const [isSignedOut, setIsSignedOut] = useState(false)
 
   //(done) DM: should this run on every render? or only when the user (or some other data) changes? MM: The getStorage() function is used to initialize a reference to Firebase Storage. This line of code is outside of any React hooks, so it will run every time the component re-renders. However, the getStorage() function is a memoized function, which means that it will only initialize a reference to Firebase Storage once. The reference will be stored in memory and returned on subsequent calls to getStorage(). So, the getStorage() function will only run once, even though it's outside of any React hooks. DM: super, it is called upon each render but the return value is cached and returned on subsequent calls. I'll add a comment as it is not obvious that it is cached.(ok)
   const storage = getStorage() // return value is cached
   const { user, setUser } = useContext(UserContext)
+  const router = useRouter()
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
       if (updatedUser) {
         setUser(updatedUser)
+      } else {
+        setUser(null)
       }
     })
 
@@ -301,6 +308,16 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
 
   */
 
+  const handleSignOut = async () => {
+    try {
+      await signOut()
+      setProfileVisible(false)
+      setIsSignedOut(true) // Set isSignedOut to true when the user signs out
+    } catch (error) {
+      console.error('Error signing out', error)
+    }
+  }
+
   return (
     <div
       className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-2"
@@ -310,7 +327,9 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
         }
       }}
     >
-      {isLoading ? (
+      {isSignedOut ? (
+        <User />
+      ) : isLoading ? (
         // Replace this with your actual loading indicator
         <BounceLoader color={'#123abc'} loading={isLoading} size={60} />
       ) : (
@@ -361,6 +380,13 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
               onClick={() => setProfileVisible(false)}
             >
               Cancel
+            </button>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              type="button"
+              onClick={handleSignOut}
+            >
+              Sign Out
             </button>
           </div>
         </div>

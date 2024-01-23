@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore'
-import db, { database } from './firebase'
+import db, { database, auth } from './firebase'
 import Header from './header'
 import ChatBox from './chat-box'
 import MessageInput from './message-input'
@@ -69,6 +69,8 @@ export default function RealTimeChat() {
   const [typingUsers, setTypingUsers] = useState([])
   const [selectedUser, setSelectedUser] = useState(null)
   const [isProfileVisible, setProfileVisible] = useState(false)
+  // Add a new state variable for loading
+  const [loading, setLoading] = useState(true)
 
   // set up a real-time listener on the 'messages' collection Firestore database
   /*
@@ -145,11 +147,24 @@ export default function RealTimeChat() {
       console.log('Updated typingUsers state:', typingUsers) // to check the typingUsers value
       setTypingUsers(typingUsers)
     })
+
+    // Set up Firebase auth state listener
+    const unsubscribeAuth = auth.onAuthStateChanged((updatedUser) => {
+      if (updatedUser) {
+        setIsAuthenticated(true)
+      } else {
+        setIsAuthenticated(false)
+      }
+      // Set loading to false after the auth state has been checked
+      setLoading(false)
+    })
+
     // Return a cleanup function that unsubscribes from both listeners
     return () => {
       unsubscribeFirestore()
       unsubscribeDatabaseListeners.forEach((unsubscribe) => unsubscribe())
       unsubscribeTyping() // Unsubscribe from typing status
+      unsubscribeAuth()
     }
   }, [connectedUsers]) // include connectedUsers in the dependency array so that the useEffect hook will run again when the connectedUsers state changes
 
@@ -232,7 +247,9 @@ export default function RealTimeChat() {
   //     </UserContextProvider>
   //   )
   // }
-
+  // if (loading) {
+  //   return <LinearProgress /> // Replace this with your actual loading component
+  // }
   //(done) DM: add some horizontal margin so that the purple box is not flush against the left edge of the screen. Otherwise, looks good.
   return (
     // <UserContextProvider>
@@ -306,7 +323,8 @@ export default function RealTimeChat() {
                             >
                               <div className="flex items-center">
                                 <span className="hover:text-purple-500 transition-colors duration-200">
-                                  {user.displayName[0].toUpperCase() + user.displayName.slice(1)}
+                                  {user.displayName &&
+                                    user.displayName[0].toUpperCase() + user.displayName.slice(1)}
                                 </span>
                                 <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
                               </div>

@@ -1,12 +1,13 @@
 // JavaScript (React)
 import { useState, useContext, useEffect } from 'react'
-import { auth, login, signup } from '../firebase'
+import { auth, login, signup, signOut } from '../firebase'
 import { updateProfile } from 'firebase/auth'
 // import firebase from 'firebase/app'
 // import 'firebase/auth'
 import { UserContext } from './user-context-provider'
 import Login from './login'
 import Signup from './signup'
+import AuthContext from '../auth-context'
 
 //(done) DM: todoMM: move to directory named user/index.jsx and add user-context.jsx to that directory. This way, as this app grows (it seems like it will be come quite large), it will be easier to keep track of what files are imported by what other files.
 
@@ -193,6 +194,16 @@ export default function User({ onAuthenticate, onConnect }) {
         // so I can see the entire error (with all its properties) in the console (browser console)
         console.log('signup Error: ', error)
         setError(errorMessage)
+      })
+  }
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        setUser(null)
+      })
+      .catch((error) => {
+        console.error('Error signing out', error)
       })
   }
 

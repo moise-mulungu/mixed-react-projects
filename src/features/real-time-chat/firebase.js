@@ -15,7 +15,12 @@ import {
   initializeApp,
 } from 'firebase/app'
 // import { getAnalytics } from 'firebase/analytics'
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut as firebaseSignOut,
+} from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { getDatabase } from 'firebase/database'
 import { collection } from 'firebase/firestore'
@@ -185,6 +190,10 @@ export const signup = (email, password) => {
 
 export const login = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
+}
+
+export const signOut = () => {
+  return firebaseSignOut(auth)
 }
 
 // Initialize Firestore
