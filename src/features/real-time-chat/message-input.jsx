@@ -118,8 +118,9 @@ export default function MessageInput({ onSendMessage, onTyping }) {
     setMessage(e.target.value)
     //(done) DM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
     const isInputFieldNotEmpty = e.target.value !== ''
-    //(you didnt follow my instructions) DM: todoMM: assign e.target.value !== prevMessage to a well-named variable, also. You can remove the comments on the next line if the variable names are clear.
-    const isUserTypingNewContent = isInputFieldNotEmpty && e.target.value !== prevMessage // check if the user is typing new content
+    //(you didn't follow my instructions. done) DM: todoMM: assign e.target.value !== prevMessage to a well-named variable, also. You can remove the comments on the next line if the variable names are clear.
+    const isDifferentFromPreviousMessage = e.target.value !== prevMessage
+    const isUserTypingNewContent = isInputFieldNotEmpty && isDifferentFromPreviousMessage // check if the user is typing new content
 
     if (typingTimeoutRef.current) clearTimeout(typingTimeoutRef.current) // clear the previous timeout
 
