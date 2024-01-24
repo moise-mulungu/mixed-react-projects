@@ -24,7 +24,7 @@ export default function Login({ handleLogin, error, toggleAuthenticationMode }) 
             type="password"
             placeholder="Password"
             className="p-2 border-2 border-gray-200 rounded mb-2 w-full text-black"
-            // DM: todoMM: likely browsers wouldnt require you to set autoComplete to "off" as that would mean the default is a security flaw, so find out if this is the case and what is the default of autoComplete for a password type. I would guess that the default is "off" for password type, but you should find out, as you correctly realized it is a serious security issue.
+            // DM: todoMM: likely browsers wouldn't require you to set autoComplete to "off" as that would mean the default is a security flaw, so find out if this is the case and what is the default of autoComplete for a password type. I would guess that the default is "off" for password type, but you should find out, as you correctly realized it is a serious security issue.
             autoComplete="off" // avoid chrome autofill for security reasons
           />
           {error && <p className="text-black">{error}</p>}

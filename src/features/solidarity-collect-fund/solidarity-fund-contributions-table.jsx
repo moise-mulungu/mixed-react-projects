@@ -241,116 +241,6 @@ export default function SolidarityFundContributionsTable() {
       </table>
     </div>
   )
-  // return (
-  //   <div className="w-full h-full mt-4 mx-4 rounded-lg overflow-hidden shadow-lg">
-  //     <form onSubmit={handleSubmit}>
-  //       {rows.map((row, rowIndex) => (
-  //         <div key={rowIndex}>
-  //           <input
-  //             type="text"
-  //             value={row.fullName}
-  //             onChange={(e) => handleChange(e, rowIndex, 'fullName')}
-  //           />
-  //           <input
-  //             type="number"
-  //             value={row.share}
-  //             onChange={(e) => handleChange(e, rowIndex, 'share')}
-  //           />
-  //           <input
-  //             type="number"
-  //             value={row.sum}
-  //             onChange={(e) => handleChange(e, rowIndex, 'sum')}
-  //           />
-  //           <input
-  //             type="number"
-  //             value={row.debt}
-  //             onChange={(e) => handleChange(e, rowIndex, 'debt')}
-  //           />
-  //           <input
-  //             type="number"
-  //             value={row.reimbursement}
-  //             onChange={(e) => handleChange(e, rowIndex, 'reimbursement')}
-  //           />
-  //           <input
-  //             type="number"
-  //             value={row.meetingRegNo}
-  //             onChange={(e) => handleChange(e, rowIndex, 'meetingRegNo')}
-  //           />
-  //           <input
-  //             type="number"
-  //             value={row.weeklySum}
-  //             onChange={(e) => handleChange(e, rowIndex, 'weeklySum')}
-  //           />
-  //           <input
-  //             type="number"
-  //             value={row.weekly}
-  //             onChange={(e) => handleChange(e, rowIndex, 'weekly')}
-  //           />
-  //         </div>
-  //       ))}
-
-  //       <button type="submit">Submit</button>
-  //     </form>
-  //     <table className="min-w-full divide-y divide-gray-200 border border-gray-200">
-  //       <thead className="bg-gray-50">
-  //         <tr>
-  //           {[
-  //             'No',
-  //             'Full Name',
-  //             'Share',
-  //             'Sum',
-  //             'Debt',
-  //             'Reimbursement',
-  //             'Meeting Reg. No',
-  //             'Weekly Sum',
-  //             'Weekly',
-  //           ].map((header, idx) => (
-  //             <th
-  //               key={idx}
-  //               scope="col"
-  //               className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider border-r border-gray-200"
-  //             >
-  //               {header}
-  //             </th>
-  //           ))}
-  //         </tr>
-  //       </thead>
-  //       <tbody className="bg-white divide-y divide-gray-200">
-  //         {rows.map((row, idx) => (
-  //           <tr key={idx}>
-  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
-  //               {idx + 1}
-  //             </td>
-  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
-  //               {row.fullName}
-  //             </td>
-  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
-  //               {row.share}
-  //             </td>
-  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
-  //               {row.sum}
-  //             </td>
-  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
-  //               {row.debt}
-  //             </td>
-  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
-  //               {row.reimbursement}
-  //             </td>
-  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
-  //               {row.meetingRegNo}
-  //             </td>
-  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
-  //               {row.weeklySum}
-  //             </td>
-  //             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200">
-  //               {row.weekly}
-  //             </td>
-  //           </tr>
-  //         ))}
-  //       </tbody>
-  //     </table>
-  //   </div>
-  // )
 }
 
 /*
@@ -366,4 +256,22 @@ I did the following to make it work:
   9. create a table header and table body with the destructured props
 When i try to type in the input fields, i couldn't edit or add anything. to fix that i added "type" attribute to the input fields and a "value" attribute with the value from the data array and an "onChange" attribute with the updateMyData function, but the input fields are still not editable.
 i stop by here because i am running out of time. i will continue working on it tomorrow.
+
+What is the advantage of using react-table package?:
+  react-table is a lightweight, fast, and flexible library that provides a headless approach to building tables in React. Here are some advantages of using react-table:
+
+    1. Flexibility: react-table is unopinionated about how you render your views and includes no built-in UI. This gives you complete control over the look and feel of your tables.
+
+    2. Performance: react-table is built to be fast. It uses a virtual DOM to only render the rows that are currently visible, which makes it highly efficient for large data sets.
+
+    3. Extensibility: react-table supports plugins and hooks, allowing you to customize its functionality to suit your needs.
+
+    4. Features: Despite its simplicity, react-table supports complex features like sorting, filtering, pagination, inline editing, expandable rows, and more.
+
+    5. Ease of Use: react-table uses hooks, which makes it easy to use and integrate with other hooks-based libraries.
+
+    6. Integration: It can be easily integrated with other libraries like react-virtualized for virtualization, react-dnd for drag and drop, etc.
+
+  Remember, react-table is a headless utility, which means it doesn't render or supply any UI elements. You're in control of all UI components, and you use the hooks provided by react-table to control the state and logic of your tables.
+
 */
