@@ -350,6 +350,17 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
           <div className="flex items-center justify-center mb-5">
             <img className="w-24 h-24 rounded-full" src={photoURL} alt="Profile" />
           </div>
+          {/* 
+          MM: to display the user's email, i just added a new section in the JSX code that is of a label with a span that displays the user object email property. The section is read-only, meaning it displays the email but doesn't allow editing.
+           */}
+          <div className="mb-4">
+            <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="email">
+              Email
+            </label>
+            <span className="text-gray-500 leading-tight" id="email">
+              {user ? user.email : ''}
+            </span>
+          </div>
           <div className="mb-4">
             <label className="block text-purple-500 text-sm font-bold mb-2" htmlFor="displayName">
               Display Name

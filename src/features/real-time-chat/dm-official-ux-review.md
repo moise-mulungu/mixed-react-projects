@@ -5,13 +5,6 @@
 * (done)DM: : Moise will give an "effort" number for each item: 1-3, 3 being highest amount of time/work needed (is it "hard" or a "quickie")
 
 (done) DM: todoMM: sort these putting the ones you'll do first at the top. Sort by the impact/effort ratio. If impact is 3 and effort is 1, that goes first, then impact 3, effort 2, ...
-
-## User Profile page: display the users email (not editable, unless you have a feature to update the email on the account)
-Impact 3 - always provide user all the information. what if user forgets which email user used to create the account
-* DM changed to 3 because it is really important
-Effort 1 - for this, i would have to first access firebase data storage and retrieve data from.  
-  *(in progress) DM: todoMM: but you already have code to get data from db. This is the most basic thing in a database-backed app, so you'll learn to do it quickly. Changed to 1 because it seems like a copy and paste to fetch from DB in a new location. 
-  *(done) DM: todoMM: see the Zustand package on GitHub for storing global state that can easily be accessed by any component. Make a fake global state variable, such as key: testKey, value: testValue, then access it in any component! You'll see how easy it is to store all user values in one place and access it from anywhere in your component tree.
   
 MM: this could constitute a separate task as the "typing users" above is complete
 ## Also, the user who posted the most recently could be at the top of the connected users list.
@@ -108,3 +101,10 @@ Effort 2: may be adjusted after the dependent code is written
 ## done - login: usually when I enter email, when I put cursor into the input field and type first letter, Chrome will show previous emails I've used, but it doesn't work in the login screen. I'm curious why that is the case, as all login forms allow that default Chrome functionality to happen.
 Impact 3 - is common 
 Effort 1 - i am not sure how long it may take, but with assumption i think it can't be difficult.
+
+## done - User Profile page: display the users email (not editable, unless you have a feature to update the email on the account)
+Impact 3 - always provide user all the information. what if user forgets which email user used to create the account
+* DM changed to 3 because it is really important
+Effort 1 - for this, i would have to first access firebase data storage and retrieve data from.  
+  *(in progress) DM: todoMM: but you already have code to get data from db. This is the most basic thing in a database-backed app, so you'll learn to do it quickly. Changed to 1 because it seems like a copy and paste to fetch from DB in a new location. 
+  *(done) DM: todoMM: see the Zustand package on GitHub for storing global state that can easily be accessed by any component. Make a fake global state variable, such as key: testKey, value: testValue, then access it in any component! You'll see how easy it is to store all user values in one place and access it from anywhere in your component tree.
