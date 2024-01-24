@@ -196,7 +196,7 @@ export default function RealTimeChat() {
     // DM: todoMM: use the function form of the setter, as you have done a few lines below
     setMessages([...messages, message])
 
-    //  When a message is sent, move the sender to the top of the connectedUsers list
+    //  When a message is sent, move the sender to the top of the connectedUsers list DM: good!
     setConnectedUsers((previousUsers) => {
       const updatedUsers = [
         message.user,
@@ -257,7 +257,7 @@ export default function RealTimeChat() {
     2. Also, when a new message is sent, i should move the sender to the top of the connectedUsers list.
       - when message is sent by the user, that user should be moved to the top of the connectedUsers list.
 
-    3. to make sure that users are inserted in the connectedUsers array, i used Firefox and Chrome browser to connect with two different users. after connecting, i found that only the connected user that is connected first is inserted in the connectedUsers array, and the other user is not inserted in the array.
+    3. to make sure that users are inserted in the connectedUsers array, i used Firefox and Chrome browser to connect with two different users. after connecting, i found that only the connected user that is connected first is inserted in the connectedUsers array, and the other user is not inserted in the array. DM: ok, good detail, thanks
 
     4. to fix that, AI suggested this "the issue might be in the implementation of onConnect function in the parent component. This function should update the connectedUsers state in the parent component and also update the list of connected users in your Firebase database". so i replaced the handleUserConnect function with the onConnect function that is passed from the User component to the RealTimeChat component.
 
@@ -273,6 +273,7 @@ export default function RealTimeChat() {
     console.log('onConnect function called with:', user)
     // Update the local state
     setConnectedUsers((prevUsers) => {
+      // DM: good name! good guard clause!
       // Check if the user is already in the list
       const isUserAlreadyConnected = prevUsers.some((prevUser) => prevUser.uid === user.uid)
 

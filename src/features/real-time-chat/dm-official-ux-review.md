@@ -59,7 +59,9 @@ Effort 1 - i will have to refactor the code
 
 ## seems like older messages disappear after a period of time? they should not disappear.
 * let's discuss before assigning Effort/Impact
-* MM: when working with messages, i often delete them for testing new implemented features, but for this task i'll have to keep them for verification for one day. the Effort/Impact could be assigned next week. after double-checking i found that old messages do not disappear, you may check on your side as well.
+* MM: when working with messages, i often delete them for testing new implemented features, but for this task i'll have to keep them for verification for one day. the Effort/Impact could be assigned next week. 
+  * MM: after double-checking i found that old messages do not disappear, you may check on your side as well. 
+    * DM: todoMM: I don't know how to test that specifically. Give me steps to set up the test. Dont make me think too hard :)
 
 # done
 
@@ -107,4 +109,4 @@ Impact 3 - always provide user all the information. what if user forgets which e
 * DM changed to 3 because it is really important
 Effort 1 - for this, i would have to first access firebase data storage and retrieve data from.  
   *(in progress) DM: todoMM: but you already have code to get data from db. This is the most basic thing in a database-backed app, so you'll learn to do it quickly. Changed to 1 because it seems like a copy and paste to fetch from DB in a new location. 
-  *(done) DM: todoMM: see the Zustand package on GitHub for storing global state that can easily be accessed by any component. Make a fake global state variable, such as key: testKey, value: testValue, then access it in any component! You'll see how easy it is to store all user values in one place and access it from anywhere in your component tree.
+  *(done) DM: see the Zustand package on GitHub for storing global state that can easily be accessed by any component. Make a fake global state variable, such as key: testKey, value: testValue, then access it in any component! You'll see how easy it is to store all user values in one place and access it from anywhere in your component tree.

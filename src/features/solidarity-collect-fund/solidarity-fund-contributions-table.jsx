@@ -258,6 +258,9 @@ I did the following to make it work:
 When i try to type in the input fields, i couldn't edit or add anything. to fix that i added "type" attribute to the input fields and a "value" attribute with the value from the data array and an "onChange" attribute with the updateMyData function, but the input fields are still not editable.
 i stop by here because i am running out of time. i will continue working on it tomorrow.
 
+// DM: todoMM: the below are not a discussion of why you chose react-table. IT looks like a AI-generated list of benefits, followed by a list of how to make "input fields editable". So I still don't understand why you chose react-table over other solutions.
+
+// DM: todoMM: is this from AI? please list the source for these, URL or AI.
 What is the advantage of using react-table package?:
   react-table is a lightweight, fast, and flexible library that provides a headless approach to building tables in React. Here are some advantages of using react-table:
 
@@ -278,6 +281,7 @@ What is the advantage of using react-table package?:
 */
 
 /*
+DM: todoMM: input fields are editable by default, so I'm not sure what you mean here. "input fields" refers to <input> elements in a form. Please explain what you want to edit, then update the text below using correct vocabulary.
 to make the input fields editable, i first read this article: https://akd3257.medium.com/how-to-make-a-table-in-react-with-hooks-aa55dd8829
 and then did the following:
 1. create an updater function to use with the input fields

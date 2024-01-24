@@ -15,10 +15,11 @@ export default function Login({ handleLogin, error, toggleAuthenticationMode }) 
             type="email"
             placeholder="Email"
             className="p-2 border-2 border-gray-200 rounded mb-2 w-full text-black"
-            // (done)DM: todoMM: this makes it work in windows chrome! Try adding a "name" attribute and see if it works without explicitly setting autoComplete.
+            // (in progress)DM: todoMM: name attribute makes it work in windows chrome! Try adding a "name" attribute and see if it works without explicitly setting autoComplete.
             // autoComplete="email"
             name="email"
-            // i tested the name attribute with type "email" on Chrome it didn't work, but on Firefox it worked.
+            // i tested the name attribute with type "email" on Chrome it didn't work, but on Firefox it worked. DM: I'm not sure what you mean. Question: in linux Chrome autofill doesnt work regardless of whether you use name or autoComplete attribute, correct? If this is an issue, then document it here permanently.
+            // DM: todoMM: do you want to use name instead of autoComplete in the signup form also? I've never used "autocomplete" specifically because I think name only is needed.
           />
           <input
             value={password}
@@ -26,8 +27,8 @@ export default function Login({ handleLogin, error, toggleAuthenticationMode }) 
             type="password"
             placeholder="Password"
             className="p-2 border-2 border-gray-200 rounded mb-2 w-full text-black"
-            //(done) DM: todoMM: likely browsers wouldn't require you to set autoComplete to "off" as that would mean the default is a security flaw, so find out if this is the case and what is the default of autoComplete for a password type. I would guess that the default is "off" for password type, but you should find out, as you correctly realized it is a serious security issue. MM: from AI and google search: The default value of the "autoComplete" attribute for a password type input is "off". This means that the browser should not automatically complete the input with previously saved values. i think it's not necessary to add autoComplete="off" below
-            // autoComplete="off" // avoid chrome autofill for security reasons
+            //(done) DM: likely browsers wouldn't require you to set autoComplete to "off" as that would mean the default is a security flaw, so find out if this is the case and what is the default of autoComplete for a password type. I would guess that the default is "off" for password type, but you should find out, as you correctly realized it is a serious security issue. MM: from AI and google search: The default value of the "autoComplete" attribute for a password type input is "off". This means that the browser should not automatically complete the input with previously saved values. i think it's not necessary to add autoComplete="off" below
+            // autoComplete="off" // not needed, "off" is the default
           />
           {error && <p className="text-black">{error}</p>}
           <button
@@ -92,7 +93,7 @@ In order to fix the "login: usually when I enter email, when I put cursor into t
 
   DM: thanks for the detailed explanation. it helps me kow what you did, how you're thinking and is great practice in tech communication for you. 
   DM: todoMM: put a logout button on the main app page, not just the profile page.
-  (done)DM: todoMM: make the signup fields autofill
+  (done)DM: make the signup fields autofill
 
   DM: it happens sometimes when you do a ton of work but later find out there was a much easier way to do it. In this case, you could have made sure you understand autofill in browsers by asking AI. It's had to tell, but often more planning/research before you start coding is helpful.
 */
