@@ -8,6 +8,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/
 import { BounceLoader } from 'react-spinners'
 import { useRouter } from 'next/router'
 import User from './index'
+import { FiLogOut } from 'react-icons/fi'
 
 //(done) DM: don't force the user to upload a photo file. Typically that is optional (if someone doesn't want to put up a picture). So, make it an optional field and indicate that in the UI. I tried to change my name without uploading a photo and it threw an error and wouldn't submit. Also, when I chose a file, it didn't work, so I can't test changing my display name.
 
@@ -336,8 +337,16 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
         // <div className="w-1/2 h-1">
         //   <LinearProgress classes={{ root: 'h-full', bar: 'bg-blue-500' }} />
         // </div>
-        <div className="p-8 bg-white shadow-md rounded">
+        <div className="p-8 bg-white shadow-md rounded relative">
           <h2 className="text-2xl text-purple-500 font-bold mb-5 text-center">User Profile</h2>
+          <div className="absolute top-0 right-0 p-2 mt-2 mr-2 flex flex-col items-center">
+            <FiLogOut
+              onClick={handleSignOut}
+              className="cursor-pointer text-red-500 hover:text-red-700"
+              size={24}
+            />
+            <span className="text-xs text-red-500 mt-1">Sign Out</span>
+          </div>
           <div className="flex items-center justify-center mb-5">
             <img className="w-24 h-24 rounded-full" src={photoURL} alt="Profile" />
           </div>
@@ -380,13 +389,6 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
               onClick={() => setProfileVisible(false)}
             >
               Cancel
-            </button>
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-              type="button"
-              onClick={handleSignOut}
-            >
-              Sign Out
             </button>
           </div>
         </div>

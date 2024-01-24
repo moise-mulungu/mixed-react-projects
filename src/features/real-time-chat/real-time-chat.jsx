@@ -47,6 +47,8 @@ import {
 import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
 import { doc, getDoc, deleteDoc } from 'firebase/firestore'
+// import { IoLogOutOutline } from 'react-icons/io5'
+import { FiLogOut } from 'react-icons/fi'
 
 // import firebase from 'firebase/app'a
 // import 'firebase/database'
@@ -234,6 +236,17 @@ export default function RealTimeChat() {
     setIsAuthenticated(isAuthenticated)
   }
 
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        console.log('User signed out')
+      })
+      .catch((error) => {
+        console.error('Error signing out: ', error)
+      })
+  }
+
   // if (!isAuthenticated) {
   // return <User onAuthenticate={() => setIsAuthenticated(true)} />
   //(done) DM: after you have put the user* files into a ./user directory (see todo in user.js), create a file named ./user/user-context-provider.jsx and extract user, setUser into that file. Then, import that file here and use it to wrap the User component here (and also in the top-level return statement). This way, you can keep all the user-related code in one place.
@@ -333,6 +346,14 @@ export default function RealTimeChat() {
                                   ...
                                 </span>
                               )}
+                              <div className="flex items-center">
+                                <FiLogOut
+                                  onClick={handleSignOut}
+                                  className="cursor-pointer text-red-500 hover:text-red-700 mr-1"
+                                  size={24}
+                                />
+                                <span className="text-xs text-red-500 mt-0.5">Sign Out</span>
+                              </div>
                             </div>
                           )
                         }

@@ -16,6 +16,7 @@ export default function Signup({ handleSignup, error, toggleAuthenticationMode }
             type="email"
             placeholder="Email"
             className="p-2 border-2 border-gray-200 rounded mb-2 w-full text-black"
+            autoComplete="email"
           />
           <input
             value={username}
@@ -23,6 +24,7 @@ export default function Signup({ handleSignup, error, toggleAuthenticationMode }
             type="text"
             placeholder="Username"
             className="p-2 border-2 border-gray-200 rounded mb-2 w-full text-black"
+            autoComplete="username"
           />
           <input
             value={password}
@@ -41,7 +43,7 @@ export default function Signup({ handleSignup, error, toggleAuthenticationMode }
           >
             Signup
           </button>
-          {/*  
+          {/*           
             its confusing to user if you show both buttons at once; MM: DM: good, but the aim of the app is switch from login to signup, or to login only after user has signed up. or i can keep both login and signup buttons in the login component to allow access the signup section, but on the signup i just keep one button, is that right?     
             DM: see my comment in the login file
             (done)DM: change the commented-out login button so that it looks like a link back to the login  
