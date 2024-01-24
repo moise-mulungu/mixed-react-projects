@@ -276,3 +276,15 @@ What is the advantage of using react-table package?:
   Remember, react-table is a headless utility, which means it doesn't render or supply any UI elements. You're in control of all UI components, and you use the hooks provided by react-table to control the state and logic of your tables.
 
 */
+
+/*
+to make the input fields editable, i first read this article: https://akd3257.medium.com/how-to-make-a-table-in-react-with-hooks-aa55dd8829
+and then did the following:
+1. create an updater function to use with the input fields
+2. pass the updater function to the useTable hook
+3. create a cellProps object with the updateMyData function
+4. pass the cellProps object to the useTable hook
+5. add the updateMyData function to the Cell property of the columns array
+6. add the updateMyData function to the Cell property of the rows array
+
+*/
