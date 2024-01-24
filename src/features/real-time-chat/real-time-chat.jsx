@@ -124,6 +124,10 @@ export default function RealTimeChat() {
     // Set up Realtime Database presence subscription
     //(done) DM: rename unsubscribeDatabase to unsubscribeDatabaseListeners (or something like that) to make it clear that it is an array (plural) of unsubscribe functions.
     const unsubscribeDatabaseListeners = connectedUsers.map((user) => {
+      if (!user) {
+        console.error('User is undefined')
+        return
+      }
       const userStatusRef = createDatabaseReference(database, 'status/' + user.uid)
 
       return listenToDatabaseValueChanges(userStatusRef, (snapshot) => {
@@ -191,6 +195,15 @@ export default function RealTimeChat() {
     // setMessages([...messages, { text: message, sender: 'You', timestamp: new Date() }])
     // DM: todoMM: use the function form of the setter, as you have done a few lines below
     setMessages([...messages, message])
+
+    //  When a message is sent, move the sender to the top of the connectedUsers list
+    setConnectedUsers((previousUsers) => {
+      const updatedUsers = [
+        message.user,
+        ...previousUsers.filter((u) => u.uid !== message.sender.uid),
+      ]
+      return updatedUsers
+    })
   }
 
   const deleteMessage = async (message) => {
@@ -215,23 +228,80 @@ export default function RealTimeChat() {
     }
   }
 
-  const handleUserConnect = (user) => {
+  // const handleUserConnect = (user) => {
+  //   const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
+
+  //   setDatabaseValue(userStatusDatabaseRef, {
+  //     state: 'online',
+  //     last_changed: serverTimestamp(),
+  //   })
+  //   // new function to handle user connection
+  //   //(done) DM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
+  //   // setConnectedUsers([...connectedUsers, user])
+  //   setConnectedUsers((previousUsers) => {
+  //     // const updatedUsers = [...previousUsers, user]
+  //     const updatedUsers = [user, ...previousUsers.filter((u) => u.uid !== user.uid)]
+  //     //(done) DM: don't set another state variable in the setter of a state variable. You are setting the same state var below. What is the reason to set it here?
+  //     return updatedUsers
+  //   })
+  //   setIsAuthenticated(true)
+  // }
+
+  /*
+  The steps i took to work on the "List all the connected users" task. to list the current users on the page, i found that i should start by 
+    1. modifying the currentUsers state because i was just appending the users to the end of the connectedUsers array, so i should insert new users at the beginning of the array.
+      - i modified the handleUserConnect function to insert new users once they are connected at the beginning of the connectedUsers array.
+      - after modifying the code, i encountered an error of "TypeError: message.user is undefined".
+      - to fix that error i changed message.user to message.sender in the onSendMessage function.
+      - after fixing the first error, a second arose "TypeError: Cannot read properties of undefined (reading 'displayName')". to fix that i should make sure the user is defined before accessing its properties. so added an if statement to check if the user is defined.
+    2. Also, when a new message is sent, i should move the sender to the top of the connectedUsers list.
+      - when message is sent by the user, that user should be moved to the top of the connectedUsers list.
+
+    3. to make sure that users are inserted in the connectedUsers array, i used Firefox and Chrome browser to connect with two different users. after connecting, i found that only the connected user that is connected first is inserted in the connectedUsers array, and the other user is not inserted in the array.
+
+    4. to fix that, AI suggested this "the issue might be in the implementation of onConnect function in the parent component. This function should update the connectedUsers state in the parent component and also update the list of connected users in your Firebase database". so i replaced the handleUserConnect function with the onConnect function that is passed from the User component to the RealTimeChat component.
+
+    5. i checked again the users on the two browsers, but there is no change.
+
+    6. i decided to add console.log to check first the connectedUsers array. but i found it doesn't show on the console. i then console.log the onConnect function is it's rendering, that also doesn't show on the console.
+
+    7. i then checked the User component to see if the onConnect function is passed to the RealTimeChat component, and i found that it's passed correctly.
+
+  From that point, i didn't know what to do next, i paused there and i decided to ask for help.
+  */
+  const onConnect = (user) => {
+    console.log('onConnect function called with:', user)
+    // Update the local state
+    setConnectedUsers((prevUsers) => {
+      // Check if the user is already in the list
+      const isUserAlreadyConnected = prevUsers.some((prevUser) => prevUser.uid === user.uid)
+
+      // If the user is already in the list, return the previous state
+      if (isUserAlreadyConnected) {
+        return prevUsers
+      }
+
+      // If the user is not in the list, add them to the state
+      const updatedUsers = [user, ...prevUsers]
+
+      // Log the list of connected users
+      console.log('Connected users:', updatedUsers)
+
+      return updatedUsers
+    })
+
+    // Update the list of connected users in the database
     const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
 
     setDatabaseValue(userStatusDatabaseRef, {
       state: 'online',
       last_changed: serverTimestamp(),
     })
-    // new function to handle user connection
-    //(done) DM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
-    // setConnectedUsers([...connectedUsers, user])
-    setConnectedUsers((previousUsers) => {
-      const updatedUsers = [...previousUsers, user]
-      //(done) DM: don't set another state variable in the setter of a state variable. You are setting the same state var below. What is the reason to set it here?
-      return updatedUsers
-    })
+
+    // Set isAuthenticated to true
     setIsAuthenticated(true)
   }
+
   const onAuthenticate = (isAuthenticated) => {
     setIsAuthenticated(isAuthenticated)
   }
@@ -267,7 +337,7 @@ export default function RealTimeChat() {
   return (
     // <UserContextProvider>
     <>
-      {!isAuthenticated && <User onConnect={handleUserConnect} onAuthenticate={onAuthenticate} />}
+      {!isAuthenticated && <User onConnect={onConnect} onAuthenticate={onAuthenticate} />}
       {isAuthenticated && (
         <div className="flex flex-col h-screen bg-gray-100 mx-2 md:mx-0">
           <Header className="h-10 md:h-10" />
@@ -315,6 +385,10 @@ export default function RealTimeChat() {
                       )} */}
                       {connectedUsers.map(
                         (user) => {
+                          if (!user) {
+                            console.error('User is undefined')
+                            return
+                          }
                           console.log('real-time-chat/index.jsx ', { user })
                           console.log('displayName type:', typeof user.displayName)
                           // (done)DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on. MM: This is necessary to check a possibility of user to be be null or undefined, or if user.displayName could be null, undefined, or an empty string. i think it's safer to keep it.

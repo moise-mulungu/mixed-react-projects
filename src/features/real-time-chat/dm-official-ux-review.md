@@ -6,10 +6,10 @@
 
 (done) DM: todoMM: sort these putting the ones you'll do first at the top. Sort by the impact/effort ratio. If impact is 3 and effort is 1, that goes first, then impact 3, effort 2, ...
   
-MM: this could constitute a separate task as the "typing users" above is complete
-## Also, the user who posted the most recently could be at the top of the connected users list.
+MM: this could constitute a separate task as the "typing users" above is complete. i updated the task as well.
+## List all the connected users in the main app page and the user who posted the most recently message could be at the top of the connected users list.
 Impact 3
-Effort 2: i keep the same effort avlue as the "typing users" task above.
+Effort 2: i keep the same effort value as the "typing users" task above.
 
 ## user profile edit page: if user has previously uploaded a file, show it here (if you haven't already)
 Impact 3 - always show the information the user needs (i.e., user can see he/she has already uploaded a photo and which photo)

@@ -7,13 +7,14 @@ import { updateProfile } from 'firebase/auth'
 import { UserContext } from './user-context-provider'
 import Login from './login'
 import Signup from './signup'
-import AuthContext from '../auth-context'
 
 //(done) DM: todoMM: move to directory named user/index.jsx and add user-context.jsx to that directory. This way, as this app grows (it seems like it will be come quite large), it will be easier to keep track of what files are imported by what other files.
 
 // todoDM: example for lesson on hoisting, const not hoisted, function declarations are hoisted
 // DM: let's get back to function declarations not arrow functions for the main function in a file. It is a more self-documenting that way.(ok)
 export default function User({ onAuthenticate, onConnect }) {
+  // Inside the User component
+  console.log('User props:', onAuthenticate, onConnect)
   // const [email, setEmail] = useState('')
   // const [username, setUsername] = useState('')
   // const [password, setPassword] = useState('')
