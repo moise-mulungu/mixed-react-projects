@@ -198,7 +198,8 @@ export default function SolidarityFundContributionsTable() {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
     columns,
     data,
-    updateMyData,
+    // updateMyData,
+    cellProps: { updateMyData },
   })
 
   return (
