@@ -163,8 +163,18 @@ export const auth = getAuth()
 //(done) DM: import into UserContextProvider (after you create it per other todo__MM)
 
 // Export the auth object and the authentication functions
-export const signup = (email, password) => {
-  return createUserWithEmailAndPassword(auth, email, password)
+export const signup = (email, password, displayName) => {
+  return createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
+    // Set the displayName
+    return userCredential.user
+      .updateProfile({
+        displayName: displayName,
+      })
+      .then(() => {
+        // Reload the user to get the latest data
+        return userCredential.user.reload()
+      })
+  })
 }
 
 export const login = (email, password) => {

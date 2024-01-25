@@ -233,6 +233,31 @@ export default function RealTimeChat() {
 
   From that point, i didn't know what to do next, i paused there and i decided to ask for help.
   */
+
+  useEffect(() => {
+    const usersStatusRef = createDatabaseReference(database, 'status')
+
+    const unsubscribe = listenToDatabaseValueChanges(usersStatusRef, (snapshot) => {
+      const updatedUsers = []
+      snapshot.forEach((childSnapshot) => {
+        const userStatus = childSnapshot.val()
+        console.log('UserStatus:', userStatus) // Log the userStatus object
+        console.log('DisplayName on Connected Users:', userStatus.displayName) // Log the displayName property
+        if (userStatus.state === 'online') {
+          updatedUsers.push({
+            uid: childSnapshot.key,
+            displayName: userStatus.displayName, // Include the displayName
+            ...userStatus,
+          })
+        }
+      })
+      console.log('updated users here:', updatedUsers) // Log the updatedUsers array
+      setConnectedUsers(updatedUsers)
+    })
+
+    return () => unsubscribe()
+  }, [])
+
   const onConnect = (user) => {
     // Check if user is defined and has a uid property
     if (!user || !user.uid) {
@@ -332,6 +357,7 @@ export default function RealTimeChat() {
                         }
                         console.log('real-time-chat/index.jsx ', { user })
                         console.log('displayName type:', typeof user.displayName)
+                        console.log('displayName:', user.displayName)
                         // (done)DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on. MM: This is necessary to check a possibility of user to be be null or undefined, or if user.displayName could be null, undefined, or an empty string. i think it's safer to keep it.
                         const isTyping = typingUsers.includes(user.uid)
                         // optional chaining
@@ -347,7 +373,9 @@ export default function RealTimeChat() {
                           >
                             <div className="flex items-center">
                               <span className="hover:text-purple-500 transition-colors duration-200">
-                                {user.displayName &&
+                                {' '}
+                                Test
+                                {user?.displayName &&
                                   user.displayName[0].toUpperCase() + user.displayName.slice(1)}
                               </span>
                               <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
@@ -406,4 +434,48 @@ To use media queries in Tailwind CSS, you can use the responsive design features
 </div>
 
 MM: DM: for today's work, i added screenshots of the login, signup and chatbox components on how they look like on mobile device by using the chrome extension Mobile Simulator - Responsive Testing Tool in the src/features/real-time-chat/image folder.
+*/
+
+/*
+To list all connected users in the chatbox, i:
+  1. console.logged the connectedUsers array to check if the users are inserted in the array.
+  2. i found that the users are not inserted in the array, apart from the one that is connected first.
+  3. i suspected that the issue might be related to real-time updates of the connectedUsers state across different browser instances. so i checked the connectedUsers array on the two browsers, but there is no change.
+  4. AI suggested to listen for changes in the connected users in the Firebase database and update the connectedUsers state accordingly. i'll have to create a reference to the location in the database where the status of connected users is stored and listen for changes.
+  5. i created a useEffect hook that will update the connectedUsers state in real-time whenever a user connects or disconnects, regardless of the browser instance.
+  6. i then checked the connectedUsers array on the two browsers, but there is no change.
+  7. AI suggested one thing to the issue might be due to the fact that the useEffect hook that listens for changes in the status node in your Firebase Realtime Database is only triggered when the connectedUsers state changes. This means that if a user's status changes in another browser, your current browser won't know about it unless the connectedUsers state changes.
+
+  8. To fix this, i can remove the dependency on connectedUsers from the useEffect hook that listens for changes in the status node
+  9. i checked the console.log again, but no change.
+  10. AI suggested to change my Firebase Realtime Database rules from this: 
+    {
+    "rules": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+      }
+    }
+      to this:
+    {
+    "rules": {
+      "typing": {
+        ".read": true,
+        ".write": false
+      },
+      "status": {
+        ".read": true,
+        ".write": "auth != null"
+      }
+    }
+    This approach worked worked and the connected users are listed in the chatbox.
+
+  11. But the displayName of the connected users is not displayed, so i checked the console.log of the connectedUsers array, and i found that the displayName is undefined.
+  12. to solve i should i need to include the displayName in the updatedUsers array. after adding the displayName with the console.log, the userStatus.displayName was undefined
+  13. another solution was this: f the displayName property is not present or has an invalid value, you'll need to update the code that sets the user status in the Firebase Realtime Database to include the displayName.
+  14. the code that sets the user status in the Firebase Realtime Database is in the user-context-provider.jsx file, so i updated the code and added console.log to check the displayName, but it was undefined.
+  15. the next approach was this: if the displayName is null or undefined, it means that it's not set for the user. You need to set it when you create the user or update the user's profile. i configured the signup function in the firebase config file to include the displayName, after that the displayName showed on the console.log, but it was not displayed on the chatbox.
+
+I paused here for today and i am asking for help.
+
+
 */
