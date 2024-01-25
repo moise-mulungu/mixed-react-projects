@@ -17,9 +17,10 @@ export default function Login({ handleLogin, error, toggleAuthenticationMode }) 
             className="p-2 border-2 border-gray-200 rounded mb-2 w-full text-black"
             // (in progress)DM: todoMM: name attribute makes it work in windows chrome! Try adding a "name" attribute and see if it works without explicitly setting autoComplete.
             // autoComplete="email"
-            name="email"
-            // i tested the name attribute with type "email" on Chrome it didn't work, but on Firefox it worked. DM: I'm not sure what you mean. Question: in linux Chrome autofill doesnt work regardless of whether you use name or autoComplete attribute, correct? If this is an issue, then document it here permanently.
-            // DM: todoMM: do you want to use name instead of autoComplete in the signup form also? I've never used "autocomplete" specifically because I think name only is needed.
+            name="email" //MM: this is the name attribute that the above comment is referring to, right? and below i explained the difference between Chrome and Firefox with the name attribute.
+            // i tested the name attribute with type "email" on Chrome it didn't work, but on Firefox it worked. DM: I'm not sure what you mean. Question: in linux Chrome autofill doesn't work regardless of whether you use name or autoComplete attribute, correct? If this is an issue, then document it here permanently.
+            //(done) DM: todoMM: do you want to use name instead of autoComplete in the signup form also? I've never used "autocomplete" specifically because I think name only is needed. MM: this is a good question, i got this from AI : The "autocomplete" attribute is used to specify whether a form should have autocomplete enabled or disabled. It does not affect the behavior of the form itself, but rather how the browser should handle autocomplete for the form. The "name" attribute, on the other hand, is used to give a form element a name that can be used to reference the element in the server-side processing of the form data.
+            //MM: AI prompt: what is better between the two for a app that requires authentication?: Consider using the "autocomplete" attribute in form fields to control autofill behavior. Set it to "off" for sensitive information like login credentials in a real-time chat app to enhance security. This helps reduce the risk of unauthorized access to user accounts.
           />
           <input
             value={password}

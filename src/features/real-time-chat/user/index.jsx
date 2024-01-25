@@ -1,9 +1,6 @@
-// JavaScript (React)
 import { useState, useContext, useEffect } from 'react'
 import { auth, login, signup, signOut } from '../firebase'
 import { updateProfile } from 'firebase/auth'
-// import firebase from 'firebase/app'
-// import 'firebase/auth'
 import { UserContext } from './user-context-provider'
 import Login from './login'
 import Signup from './signup'
@@ -15,50 +12,13 @@ import Signup from './signup'
 export default function User({ onAuthenticate, onConnect }) {
   // Inside the User component
   console.log('User props:', onAuthenticate, onConnect)
-  // const [email, setEmail] = useState('')
-  // const [username, setUsername] = useState('')
-  // const [password, setPassword] = useState('')
+
   const [error, setError] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(true)
   const [loading, setLoading] = useState(false)
 
-  // const handleLogin = () => {
-  //   // Handle login
-  //   onAuthenticate()
-  // }
-
-  // const handleSignup = () => {
-  //   // Handle signup
-  //   onAuthenticate()
-  // }
-  // function validateEmail(email) {
-  //   const re =
-  //     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  //   return re.test(String(email).toLowerCase())
-  // }
   const { user, setUser } = useContext(UserContext)
-  // const [, , authError] = useAuthState()
 
-  // auth.onAuthStateChanged((user) => {
-  //   if (!user) {
-  //     return
-  //   }
-  //   console.log(user.displayName) // Check if displayName is updated
-  //   setUser(user)
-  //   setIsLoggedIn(true)
-  // })
-
-  // auth.onAuthStateChanged((user) => {
-  //   if (!user) {
-  //     return
-  //   }
-  //   if ('displayName' in user) {
-  //     // Check if user has a displayName property
-  //     console.log(user.displayName)
-  //   } // Check if displayName is updated
-  //   setUser(user)
-  //   setIsLoggedIn(true)
-  // })
   useEffect(() => {
     // Listen for changes to the user's authentication state
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -79,11 +39,7 @@ export default function User({ onAuthenticate, onConnect }) {
 
   const handleLogin = (email, password) => {
     console.log('handleLogin called')
-    // if (!validateEmail(username)) {
-    //   setError('Invalid email format')
-    //   return
-    // }
-    // const email = `${username}@dummy.com`
+
     login(email, password)
       .then((userCredential) => {
         // Signed in
@@ -93,10 +49,8 @@ export default function User({ onAuthenticate, onConnect }) {
         // ...
         onAuthenticate()
         onConnect(user) // call onConnect when a user logs in
-        // setLoading(false)
       })
       .catch((error) => {
-        // const errorCode = error.code
         const errorMessage = error.message
         console.log('login Error: ', error)
 
@@ -108,54 +62,11 @@ export default function User({ onAuthenticate, onConnect }) {
 
   const handleSignup = (email, username, password) => {
     console.log('handleSignup called')
-    // if (!validateEmail(username)) {
-    //   setError('Invalid email format')
-    //   return
-    // }
-    // const email = `${username}@dummy.com`
+
     signup(email, password)
       .then((userCredential) => {
-        // Signed in
-        // userCredential.user
-        //   .updateProfile({
-        //     displayName: username,
-        //   })
-        //   .then(() => {
         const user = userCredential.user
         console.log(typeof user) // DM: good, you logged it
-        // setUser(user)
-        // setUser({ displayName: user.displayName || email })
-        // // ...
-        // // onAuthenticate()
-        // setIsLoggedIn(true)
-        // return user.updateProfile({
-        //   displayName: username, // Set displayName here
-        // })
-        // .then(() => {
-        //   return user.reload()
-        // })
-        // .then(() => {
-        //   // Update successful.
-        //   // setUser(user)
-        //   // Get the current user from Firebase again.
-        //   const currentUser = firebase.auth().currentUser
-        //   console.log({ currentUser })
-        //   setUser(currentUser)
-        //   setIsLoggedIn(true)
-        // })
-        // .catch((error) => {
-        //   // An error occurred.
-        //   setError(error.message)
-        // })
-        // )
-        //   // })
-        // })
-        // .then(() => {
-        //   const user = auth.currentUser
-        //   console.log({ user })
-        // setUser(user)
-        // setIsLoggedIn(true)
-        // onConnect(user) // call onConnect when a user logs in
 
         // DM: this line triggers the error: "user.updateProfile is not a function". What does this mean? If user.updateProfile is not a function, then what data type is it? A string? Undefined? Do a console.log to find out. If it is undefined, then something is wrong with your user object. In the console.log({user}) above the log says it is of type UserImpl so it looks like it a valid user object. Google the error message (adding "firebase signup", for example, as context for the search). Maybe someone had that problem. Also, I imagine it's possible the user object is not created using the correct package? Or, something hasn't been initialized correctly, leaving the user object without a updateProfile property?
         // DM: tomorrow be sure to push the app in the exact broken state you want me to debug, then write me what steps to reproduce the problem, what error I should see, what you tried to debug it, and what you think the problem might be. I'll try to help you debug it.
@@ -163,13 +74,8 @@ export default function User({ onAuthenticate, onConnect }) {
         // howtojs: javascript: user.updateProfile is not a function; to debug this kind of error, log(typeof myObject.myProperty). if it is undefined, then find out where it is set in the code, or if myProperty is expected to exist on myObject
         // howtojs: firebase: user.updateProfile is not a function; to fix this error, you need to import the updateProfile function from firebase/auth and call it with the user object as the first argument because it is not a method of the user object or cannot be accessed directly from the user object.
         updateProfile(user, {
-          displayName: username, // after implementing the changes, i am again getting the "next-dev.js:25 User or user.displayName is undefined" error, but it's weird as this issue was already solved. I'll try to debug it tomorrow.
+          displayName: username,
         })
-          // .then(() => {
-          //   console.log('Display Name updated')
-          //   setUser(user)
-          //   setIsLoggedIn(true)
-          //   onConnect(user) // call onConnect when a user logs in
           .then(() => {
             //(done) DM: I'm curious,w hat does user.reload() do? Why are you're returning it because the next .then() doesn't have a parameter so why doe you need to return the result of user.reload()? DM: ah, makes sense. good answer! I'm moving some of your response below as permanent documentation
 
@@ -191,7 +97,7 @@ export default function User({ onAuthenticate, onConnect }) {
         // const errorCode = error.code
         const errorMessage = error.message
         // Handle errors here
-        //(in progress) DM: this error message is not very helpful. It would be better to show the user the specific error message.. You can get the specific error message or more inform from looking at the entire error object. Hmmm, looks like the error wasn't caught here for some reason. MM: firebase configuration is more complex that i am having difficulties to understand. some AI answers are not clear, and more confusing. DM: DEVs still have to use google or read docs/tutorials to figure out how to use a library. AI is not a complete replacement for that.(ok)
+        //(done) DM: this error message is not very helpful. It would be better to show the user the specific error message.. You can get the specific error message or more inform from looking at the entire error object. Hmmm, looks like the error wasn't caught here for some reason. MM: firebase configuration is more complex that i am having difficulties to understand. some AI answers are not clear, and more confusing. DM: DEVs still have to use google or read docs/tutorials to figure out how to use a library. AI is not a complete replacement for that.(ok)
         // so I can see the entire error (with all its properties) in the console (browser console)
         console.log('signup Error: ', error)
         setError(errorMessage)
@@ -209,110 +115,28 @@ export default function User({ onAuthenticate, onConnect }) {
   }
 
   console.log({ isLoggedIn })
-  // const handleLogin = async (email, password) => {
-  //   try {
-  //     const userCredential = await login(email, password)
-  //     const user = userCredential.user
-  //     setUser(user)
-  //     onAuthenticate()
-  //   } catch (error) {
-  //     setError(error.message)
-  //   }
-  // }
-
-  // const handleSignup = async (email, username, password) => {
-  //   try {
-  //     const userCredential = await signup(email, password)
-  //     const user = userCredential.user
-  //     setUser(user)
-  //     setIsLoggedIn(true)
-  //   } catch (error) {
-  //     setError(error.message)
-  //   }
-  // }
 
   const toggleAuthenticationMode = () => {
     setIsLoggedIn(!isLoggedIn) // Switch between Login and Signup
   }
 
-  // JavaScript (React)
-
   return (
-    // <div className="flex items-center justify-center h-screen bg-gray-100 mx-2">
-    //   <div className="bg-purple-500 text-white rounded-lg shadow-lg p-8 w-1/3 h-2/3 flex items-center justify-center">
-    //     <div>
-    //       <input
-    //         value={email}
-    //         onChange={(e) => setEmail(e.target.value)}
-    //         type="email"
-    //         placeholder="Email"
-    //         className="p-2 border-2 border-gray-200 rounded mb-2 w-full text-black"
-    //       />
-    //       <input
-    //         value={username}
-    //         // value={email}
-    //         onChange={(e) => setUsername(e.target.value)}
-    //         type="text"
-    //         placeholder="Username"
-    //         className="p-2 border-2 border-gray-200 rounded mb-2 w-full text-black"
-    //       />
-    //       <input
-    //         value={password}
-    //         onChange={(e) => setPassword(e.target.value)}
-    //         type="password"
-    //         placeholder="Password"
-    //         className="p-2 border-2 border-gray-200 rounded mb-2 w-full text-black"
-    //       />
-    //       {error && <p className="text-black">{error}</p>}
-    //       <button
-    //         onClick={handleLogin}
-    //         className="p-2 mt-4 bg-pink-500 text-white rounded mb-2 w-full"
-    //       >
-    //         Login
-    //       </button>
-    //       <button onClick={handleSignup} className="p-2 bg-yellow-500 text-white rounded w-full">
-    //         Signup
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
     <div>
       {isLoggedIn ? (
         <Login
           handleLogin={handleLogin}
-          error={
-            error
-            // || authError
-          }
+          error={error}
           toggleAuthenticationMode={toggleAuthenticationMode}
         />
       ) : (
         <Signup
           handleSignup={handleSignup}
-          error={
-            error
-            // || authError
-          }
+          error={error}
           toggleAuthenticationMode={toggleAuthenticationMode}
         />
       )}
 
       {/*(done) DM: what does "loading" mean here? What is loading? MM: i added this loading because after setting up the real-time messaging, the login/signup was not displaying, so this indicates whether some asynchronous operation is currently in progress, it serves a network request, such as fetching data from an API. but i reverted back the previous code as the loading is not necessary here */}
-      {/* {loading ? (
-        <div>Loading...</div>
-      ) : isLoggedIn ? (
-        <Login
-          handleLogin={handleLogin}
-          error={error}
-          toggleAuthenticationMode={toggleAuthenticationMode}
-        />
-      ) : (
-        <Signup
-          handleSignup={handleSignup}
-          error={error}
-          toggleAuthenticationMode={toggleAuthenticationMode}
-        />
-      )} */}
     </div>
   )
 }
@@ -344,16 +168,7 @@ You might want to consider using the 'react-firebase-hooks' successor library, '
 But the google search didn't mention that the 'react-firebase-hooks' has been deprecated. i paused there, and i'll continue with the tutorial to understand more. DM: yeah AI may be confused, you can check the GitHub page for react-firebase-hooks to see if it is currently being maintained.(ok)
 */
 
-// DM: todoMM: please move the below comment into the file where you are using the new configuration, which is firebase.js I presume?
-/*
-the first project i created on firebase was called react-firebase-chat-app. The project was set up to use Cloud Firestore in Datastore mode. This mode can only be accessed from the Google Cloud Console. i could not create a normal database from the firebase console. i decided to create a second project called app-chat where i created a normal database. i replaced the previous project firebaseConfig with the ew one, but the authentication doesn't work.
-i got the following error: Firebase: Error (auth/operation-not-allowed).
-DM: ok, things can get tricky when you have existing code that does things in a certain way, then you make a configuration change like you describe here. The way to solve it is: whatever instructions you follow to set up app-chat, test out app-chat in a super-basic sample project, using any sample code that the instructions provided. You could try it real quickly in a codesandbox react instance: https://codesandbox.io/examples/package/react Once you are sure it works in a simple environment per the exact instructions you followed, only then try it in your chat project. If it doesn't work, check that the code in your chat project is doing the same thing as the example code provided. 
-DM: todoMM: edit the next 2 lines to be sure you're using the correct Google Cloud/Firestore terminology:
-before: real-time-chat Google Cloud Firestore in Datastore mode? OR Google Cloud Datastore?
-after: app-chat: normal database? or Firebase Firestore Database?
-
-*/
+//(done) DM: todoMM: please move the below comment into the file where you are using the new configuration, which is firebase.js I presume?
 
 /*
 MM: DM: i faced blockers when i click a signup button of not loading and crashing the application: firebase error: next-dev.js:25 Error adding document:  FirebaseError: Function addDoc() called with invalid data. Unsupported field value: undefined (found in field user in document messages/tuCI3kKosIYNkT8UtssY). i tried all the solutions suggested by AI by adding console.log to the handleSignup function elements, but the errors still persist.

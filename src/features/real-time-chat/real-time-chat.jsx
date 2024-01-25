@@ -6,7 +6,6 @@ import ChatBox from './chat-box'
 import MessageInput from './message-input'
 import Footer from './footer'
 import User from './user'
-// import UserContextProvider from './user/user-context-provider'
 import UserProfile from './user/user-profile'
 /* (done)DM: these names don't tell me what they do, so rename them to be more descriptive. Here's a template showing the necessary syntax:
 import { 
@@ -47,11 +46,7 @@ import {
 import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
 import { doc, getDoc, deleteDoc } from 'firebase/firestore'
-// import { IoLogOutOutline } from 'react-icons/io5'
 import { FiLogOut } from 'react-icons/fi'
-
-// import firebase from 'firebase/app'a
-// import 'firebase/database'
 
 // DM: careful how you rename a directory, because I couldn't see the diffs in Git for index.js, but I could see it for all the other files. MM: i have already a component named RealTimeChat in ./pages/real-time-chat, now this component is in ./features/real-time-chat, so i named it to EasyChat to avoid confusion
 
@@ -66,7 +61,6 @@ export default function RealTimeChat() {
 
   const [messages, setMessages] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  // const [user, setUser] = useState(null)
   const [connectedUsers, setConnectedUsers] = useState([])
   const [typingUsers, setTypingUsers] = useState([])
   const [selectedUser, setSelectedUser] = useState(null)
@@ -78,8 +72,6 @@ export default function RealTimeChat() {
   /*
   MM: DM: in order to fix the TypeError: Cannot read properties of undefined (reading 'indexOf') error, the object that stores the messages state didn't have an id property, to fix it i added an id to it.
   */
-  // const currentUser = useContext(UserContext)
-  // console.log('currentUser of RealTimeChat:', { currentUser })
   const { user: currentUser } = useContext(UserContext)
   console.log('currentUser of RealTimeChat:', { currentUser })
 
@@ -114,7 +106,6 @@ export default function RealTimeChat() {
     const unsubscribeFirestore = onSnapshot(q, (snapshot) => {
       const messages = []
       snapshot.forEach((doc) => {
-        // messages.push(doc.data())
         // adding an id for each message
         messages.push({ id: doc.id, ...doc.data() })
       })
@@ -192,9 +183,8 @@ export default function RealTimeChat() {
   }
   const onSendMessage = (message) => {
     console.log({ message })
-    // setMessages([...messages, { text: message, sender: 'You', timestamp: new Date() }])
-    // DM: todoMM: use the function form of the setter, as you have done a few lines below
-    setMessages([...messages, message])
+    //(done) DM: todoMM: use the function form of the setter, as you have done a few lines below
+    setMessages((previousMessages) => [...previousMessages, message])
 
     //  When a message is sent, move the sender to the top of the connectedUsers list DM: good!
     setConnectedUsers((previousUsers) => {
@@ -210,42 +200,16 @@ export default function RealTimeChat() {
     // Remove the message from the local state
     setMessages((previousMessages) => previousMessages.filter((m) => m.id !== message.id))
 
-    // Get the document reference
-    // const docRef = doc(db, 'messages', message.id)
-
-    // // Check if the document reference is defined
-    // if (!docRef) {
-    //   console.error('Document reference is undefined', { message })
-    //   return
-    // }
-
     // Remove the message from Firestore
     try {
-      // DM: todoMM: assign all expressions to a well-named variable (for readability and console.logging). What is a doc? is it a message in the database?
-      await deleteDoc(doc(db, 'messages', message.id))
+      //(done) DM: todoMM: assign all expressions to a well-named variable (for readability and console.logging). What is a doc? is it a message in the database?
+      // Assign the document reference to a well-named variable
+      const messageDocRef = doc(db, 'messages', message.id)
+      await deleteDoc(messageDocRef)
     } catch (e) {
       console.error('Error removing document: ', e)
     }
   }
-
-  // const handleUserConnect = (user) => {
-  //   const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
-
-  //   setDatabaseValue(userStatusDatabaseRef, {
-  //     state: 'online',
-  //     last_changed: serverTimestamp(),
-  //   })
-  //   // new function to handle user connection
-  //   //(done) DM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
-  //   // setConnectedUsers([...connectedUsers, user])
-  //   setConnectedUsers((previousUsers) => {
-  //     // const updatedUsers = [...previousUsers, user]
-  //     const updatedUsers = [user, ...previousUsers.filter((u) => u.uid !== user.uid)]
-  //     //(done) DM: don't set another state variable in the setter of a state variable. You are setting the same state var below. What is the reason to set it here?
-  //     return updatedUsers
-  //   })
-  //   setIsAuthenticated(true)
-  // }
 
   /*
   The steps i took to work on the "List all the connected users" task. to list the current users on the page, i found that i should start by 
@@ -270,10 +234,15 @@ export default function RealTimeChat() {
   From that point, i didn't know what to do next, i paused there and i decided to ask for help.
   */
   const onConnect = (user) => {
+    // Check if user is defined and has a uid property
+    if (!user || !user.uid) {
+      console.error('Invalid user object:', user)
+      return
+    }
     console.log('onConnect function called with:', user)
     // Update the local state
     setConnectedUsers((prevUsers) => {
-      // DM: good name! good guard clause!
+      // DM: good name! good guard clause!(ok)
       // Check if the user is already in the list
       const isUserAlreadyConnected = prevUsers.some((prevUser) => prevUser.uid === user.uid)
 
@@ -318,25 +287,11 @@ export default function RealTimeChat() {
       })
   }
 
-  // if (!isAuthenticated) {
-  // return <User onAuthenticate={() => setIsAuthenticated(true)} />
   //(done) DM: after you have put the user* files into a ./user directory (see todo in user.js), create a file named ./user/user-context-provider.jsx and extract user, setUser into that file. Then, import that file here and use it to wrap the User component here (and also in the top-level return statement). This way, you can keep all the user-related code in one place.
-  // return (
-  //   <UserContextProvider>
-  //     <User
-  //       onAuthenticate={() => setIsAuthenticated(true)}
+
   //() DM: todoMM: use the same name in both files to avoid confusion. (I like onUserConnect. Don't worry about being concise - it is more important to be clear.) MM: i don't understand what name you are referring to here, is onConnect or something else, if it's onConnect, there is no other file where it has another name. DM: the idea is to use the same name in both files.
-  //         onConnect={handleUserConnect}
-  //       />
-  //     </UserContextProvider>
-  //   )
-  // }
-  // if (loading) {
-  //   return <LinearProgress /> // Replace this with your actual loading component
-  // }
   //(done) DM: add some horizontal margin so that the purple box is not flush against the left edge of the screen. Otherwise, looks good.
   return (
-    // <UserContextProvider>
     <>
       {!isAuthenticated && <User onConnect={onConnect} onAuthenticate={onAuthenticate} />}
       {isAuthenticated && (
@@ -369,103 +324,53 @@ export default function RealTimeChat() {
                       <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center mb-4">
                         Connected Users
                       </h2>
-                      {/* {connectedUsers.map(
-                (user, index) => (
-                  console.log('real-time-chat/index.jsx ', { user }),
-                  console.log('displayName type:', typeof user.displayName),
-                  (
-                    <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4"> */}
-                      {/* {user.email} MM: DM: i am still working on this, to display the username instead of the email DM: this is fixed?* Yes, it is!/}
-                      {/* {user.displayName} */}
-                      {/* {user.displayName
-                        ? `user: ${user.displayName[0].toUpperCase() + user?.displayName.slice(1)}`
-                        : ``}
-                        </div>
-                        )
-                        )
-                      )} */}
-                      {connectedUsers.map(
-                        (user) => {
-                          if (!user) {
-                            console.error('User is undefined')
-                            return
-                          }
-                          console.log('real-time-chat/index.jsx ', { user })
-                          console.log('displayName type:', typeof user.displayName)
-                          // (done)DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on. MM: This is necessary to check a possibility of user to be be null or undefined, or if user.displayName could be null, undefined, or an empty string. i think it's safer to keep it.
-                          // if (user?.displayName) {
-                          const isTyping = typingUsers.includes(user.uid)
-                          // optional chaining
-                          return (
-                            // <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
-                            //   {`user: ${user.displayName[0].toUpperCase() + user.displayName.slice(1)}`}
-                            // </div>
-                            //(done) DM: todoMM: check your browser console warnings while you use all the functionality of the app. Fix all the usage of index as key. I don"t want to have to keep reminding you about this same issue.
-                            <div
-                              key={user} // i added this because each user should be unique
-                              className="flex justify-between items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
-                              onClick={() => {
-                                setSelectedUser(user)
-                                setProfileVisible(true)
-                              }}
-                            >
-                              <div className="flex items-center">
-                                <span className="hover:text-purple-500 transition-colors duration-200">
-                                  {user.displayName &&
-                                    user.displayName[0].toUpperCase() + user.displayName.slice(1)}
-                                </span>
-                                <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
-                              </div>
-                              {isTyping && (
-                                <span className="ml-2 animate-pulse text-2xl text-blue-500 flex-shrink-0">
-                                  ...
-                                </span>
-                              )}
-                              <div className="flex items-center">
-                                <FiLogOut
-                                  onClick={handleSignOut}
-                                  className="cursor-pointer text-red-500 hover:text-red-700 mr-1"
-                                  size={24}
-                                />
-                                <span className="text-xs text-red-500 mt-0.5">Sign Out</span>
-                              </div>
-                            </div>
-                          )
+
+                      {connectedUsers.map((user) => {
+                        if (!user) {
+                          console.error('User is undefined')
+                          return
                         }
-                        // return null
-                      )}
-                    </div>
-                    {/* <div className="flex-grow">
-                      <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
-                        Typing Users
-                      </h2>
-                      {typingUsers.map((user, index) => {
-                        console.log('typingUsers', { user })
+                        console.log('real-time-chat/index.jsx ', { user })
+                        console.log('displayName type:', typeof user.displayName)
+                        // (done)DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on. MM: This is necessary to check a possibility of user to be be null or undefined, or if user.displayName could be null, undefined, or an empty string. i think it's safer to keep it.
+                        const isTyping = typingUsers.includes(user.uid)
+                        // optional chaining
                         return (
-                          <div key={index} className="text-gray-100 p-2 rounded mt-4">
-                            <span>{`${user} is typing`}</span>
-                            <span className="text-green-500">...</span>
+                          //(done) DM: todoMM: check your browser console warnings while you use all the functionality of the app. Fix all the usage of index as key. I don"t want to have to keep reminding you about this same issue.
+                          <div
+                            key={user} // i added this because each user should be unique
+                            className="flex justify-between items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
+                            onClick={() => {
+                              setSelectedUser(user)
+                              setProfileVisible(true)
+                            }}
+                          >
+                            <div className="flex items-center">
+                              <span className="hover:text-purple-500 transition-colors duration-200">
+                                {user.displayName &&
+                                  user.displayName[0].toUpperCase() + user.displayName.slice(1)}
+                              </span>
+                              <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
+                            </div>
+                            {isTyping && (
+                              <span className="ml-2 animate-pulse text-2xl text-blue-500 flex-shrink-0">
+                                ...
+                              </span>
+                            )}
+                            <div className="flex items-center">
+                              <FiLogOut
+                                onClick={handleSignOut}
+                                className="cursor-pointer text-red-500 hover:text-red-700 mr-1"
+                                size={24}
+                              />
+                              <span className="text-xs text-red-500 mt-0.5">Sign Out</span>
+                            </div>
                           </div>
                         )
                       })}
-                    </div> */}
+                    </div>
                   </div>
                 </div>
-                {/* <div className="flex flex-col w-1/3 ml-2">
-              <h2 className="text-gray-100 bg-purple-500 p-2 rounded text-xl font-bold text-center">
-                Typing Users
-              </h2>
-              {typingUsers.map(
-                (user, index) => (
-                  console.log('typingUsers', { user }),
-                  (
-                    <div key={index} className="text-gray-100 bg-green-500 p-2 rounded mt-4">
-                      {`${user} is typing...`}
-                    </div>
-                  )
-                )
-              )}
-            </div> */}
               </div>
             </div>
           )}
@@ -473,7 +378,6 @@ export default function RealTimeChat() {
         </div>
       )}
     </>
-    // </UserContextProvider>
   )
 }
 

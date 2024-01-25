@@ -1,6 +1,6 @@
 import RealTimeChat from './real-time-chat'
 import UserContextProvider from './user/user-context-provider'
-// RealTimeChatProvider component
+
 export default function RealTimeChatProvider() {
   return (
     <UserContextProvider>

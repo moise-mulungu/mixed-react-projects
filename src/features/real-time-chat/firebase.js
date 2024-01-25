@@ -10,11 +10,8 @@ Steps to set up Firebase for your project:
 3. Add Firebase SDK to your app: 
   * After registering your app, you'll be presented with your Firebase SDK snippet. This contains the configuration for your Firebase project.
 */
-import {
-  // getApps,
-  initializeApp,
-} from 'firebase/app'
-// import { getAnalytics } from 'firebase/analytics'
+import { initializeApp } from 'firebase/app'
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -28,7 +25,7 @@ import { getStorage } from 'firebase/storage'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  // DM: todoMM: move this to the .env.local file, like you did with quiz3.js. NEVER put secrets in the codebase. This is a security risk. If anyone sees secret keys in your code they will not hire you because it will appear that you don't take security seriously. If any of the other properties in this object are secret, move them to .env.local as well (better safe than sorry, but only if they are secret!).
+  // (done)DM: todoMM: move this to the .env.local file, like you did with quiz3.js. NEVER put secrets in the codebase. This is a security risk. If anyone sees secret keys in your code they will not hire you because it will appear that you don't take security seriously. If any of the other properties in this object are secret, move them to .env.local as well (better safe than sorry, but only if they are secret!).
   /*
   Steps i took to move the firebaseConfig to .env.local:
   1. add the following to .env.local:
@@ -84,8 +81,8 @@ i console logged process.env and got all the variables i set in .env.local, then
   But after all the above, i still got the same errors. i decided to pause there first and reverted the changes.
 
   DM: this are just strings that you are moving from one place to another. you're expectation should be that 0 problem/changes in the app. If there is a problem, then console.log the process.env.ENV_VAR_NAME to see if it is correct. 
-  DM: todoMM: only put the secrets in .env.local. the API key definitely, and maybe your messaging sender but only if it is a secret.  
-  DM: todoMM: .env.local is shared global file, so put something more specific in your variable names, such as REAL_TIME_CHAT_API_KEY. MM: i think i mentioned all the steps that i took above, but i encountered errors and i had to revert the changes. i added console.log and got the server running correctly, i don't what could be the problem. i will try again and see if i can get it working. DM: OK, eventually you will have to use .env.local vars, so go ahead now and rename them everywhere as I suggested because REACT_APP_ is not specific at all.
+  (done)DM: todoMM: only put the secrets in .env.local. the API key definitely, and maybe your messaging sender but only if it is a secret.  
+  (done)DM: todoMM: .env.local is shared global file, so put something more specific in your variable names, such as REAL_TIME_CHAT_API_KEY. MM: i think i mentioned all the steps that i took above, but i encountered errors and i had to revert the changes. i added console.log and got the server running correctly, i don't what could be the problem. i will try again and see if i can get it working. DM: OK, eventually you will have to use .env.local vars, so go ahead now and rename them everywhere as I suggested because REACT_APP_ is not specific at all.
 
     1. add the following to .env.local:
     REACT_APP_API_KEY=AIzaSyDkDSHVPcfg
@@ -109,12 +106,6 @@ i console logged process.env and got all the variables i set in .env.local, then
 
   // DM: just to be sure I mentioned it: only apiKey is necessary to be treated as secrets. Maybe one or two others, but not all of them. When you publish to Vercel, it will be a lot of tedious work to set up these env vars for production, so better if you only move them to .env.local if they are truly secret. EX password is secret, username is not. apiKey is secret, authDomain is not. MM: i have updated the .env.local file with the following:
   apiKey: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_API_KEY,
-  // authDomain: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_AUTH_DOMAIN,
-  // projectId: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_PROJECT_ID,
-  // storageBucket: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_STORAGE_BUCKET,
-  // messagingSenderId: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_MESSAGING_SENDER_ID,
-  //
-
   authDomain: 'app-chat-1f5a4.firebaseapp.com',
   projectId: 'app-chat-1f5a4',
   storageBucket: 'app-chat-1f5a4.appspot.com',
@@ -138,9 +129,6 @@ are initialized "in the module scope" (outside of any function or block) so that
 */
 
 export const app = initializeApp(firebaseConfig)
-// Initialize Firebase
-// const app = initializeApp(firebaseConfig)
-// export { app }
 export const storage = getStorage(app)
 // DM: good!
 /*
@@ -168,21 +156,12 @@ export const database = getDatabase()
 /* 
 (done)DM: don't export unnamed object literals like this. You can export each the usual way:
 */
-// const auth = getAuth()
 export const auth = getAuth()
-// let app
-// if (!getApps().length) {
-//   app = initializeApp(firebaseConfig)
-// } else {
-//   app = getApps()[0]
-// }
-// const analytics = getAnalytics(app)
 
 //(done) DM: you will need this in other files, so export it
-// Initialize Firebase Auth
-// export { auth }
 
 //(done) DM: import into UserContextProvider (after you create it per other todo__MM)
+
 // Export the auth object and the authentication functions
 export const signup = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)
@@ -212,26 +191,4 @@ Steps for authentication:
   3. In the left-hand menu, click on "Authentication".
   4. You will now be in the "Users" tab of the "Authentication" section.
   5. To enable or configure sign-in methods, click on the "Sign-in method" tab.
-*/
-
-/*
-MM: i created a new project on firebase different from the first one to test the .env.local file contents. i followed the steps from this link https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and-firebase/. But the error still persists. Here is the code:
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyB0SF1IMQeIOI2MertvsUkfFJlFy-tC-eU",
-  authDomain: "app-chat-1f5a4.firebaseapp.com",
-  projectId: "app-chat-1f5a4",
-  storageBucket: "app-chat-1f5a4.appspot.com",
-  messagingSenderId: "825359150547",
-  appId: "1:825359150547:web:88e803e7fbc35d4ccfd326"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
 */

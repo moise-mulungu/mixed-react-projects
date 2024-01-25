@@ -4,7 +4,6 @@ import { updateProfile, getAuth } from 'firebase/auth'
 import { setDoc, doc } from 'firebase/firestore'
 import db, { auth, signOut } from '../firebase'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
-// import { set } from 'firebase/database'
 import { BounceLoader } from 'react-spinners'
 import { useRouter } from 'next/router'
 import User from './index'
@@ -16,10 +15,8 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   const [displayName, setDisplayName] = useState(user ? user.displayName : '')
   const [photoURL, setPhotoURL] = useState(user ? user.photoURL : '')
   //(done) DM: give this a more specific name. what kind of file/for what purpose the file?
-  // const [selectedFile, setSelectedFile] = useState(null)
   const [selectedProfilePhoto, setSelectedProfilePhoto] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  // Add a new state variable
   const [isSignedOut, setIsSignedOut] = useState(false)
 
   //(done) DM: should this run on every render? or only when the user (or some other data) changes? MM: The getStorage() function is used to initialize a reference to Firebase Storage. This line of code is outside of any React hooks, so it will run every time the component re-renders. However, the getStorage() function is a memoized function, which means that it will only initialize a reference to Firebase Storage once. The reference will be stored in memory and returned on subsequent calls to getStorage(). So, the getStorage() function will only run once, even though it's outside of any React hooks. DM: super, it is called upon each render but the return value is cached and returned on subsequent calls. I'll add a comment as it is not obvious that it is cached.(ok)
@@ -53,19 +50,11 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
       photoURL: userPhotoUrl,
     })
 
-    // .then(() => {
-    //  is used to update the user's profile in Firestore. It sets the user's display name and profile photo URL in the document that represents the user.
-    //   return setDoc(doc(db, 'users', user.uid), {
-    //     displayName,
-    //     photoURL: downloadURL,
-    //   })
-    // })
     await setDoc(doc(db, 'users', user.uid), {
       displayName,
       photoURL: userPhotoUrl,
     })
-    // .then(() => {
-    // is used to update the user object in the local state of your app. It sets the user's display name and profile photo URL in the user object.
+
     console.log('displayName:', displayName)
     console.log('userPhotoUrl:', userPhotoUrl)
   }
@@ -100,7 +89,6 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
     setIsLoading(true)
 
     try {
-      // const userPhotoUrl = user.photoURL // default to the existing photo URL
 
       //(done) DM:: I don't see an ELSE clause for this IF clause. How will you handle the case where the user does not upload a photo? That scenario is not handled in the code, nothing happens if no photo uploaded. Ask yourself: what is the difference between photo uploaded or not? Then, think of how you can adjust the code so that the differences between selectedProfilePhoto or not are held in variables. MM: hum! that's was the solution to the username update! good
       let userPhotoUrl = user.photoURL // default to the existing photo URL
@@ -140,45 +128,12 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
 
         // userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
       } else {
-        // Handle the case where no photo is uploaded
-        // For example, you might want to set userPhotoUrl to a default image
-        // userPhotoUrl = 'url-to-default-image'
         await updateProfileAndFirestore(userPhotoUrl)
-        // }
-        // () => {
-        // is used to update the user's profile in Firebase Authentication. It sets the user's display name and profile photo URL.
-        // getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-        //   updateProfile(user, {
-        //     displayName,
-        //     photoURL: downloadURL,
-        //   })
-        // setUser((prevUser) => ({
-        //   ...prevUser,
-        //   displayName,
-        //   photoURL: userPhotoUrl,
-        // }))
+     
         /*
         MM: DM: I attempted for a second time to fix the username update, but it still doesn't work. i don't know why. i tried to console.log the displayName and userPhotoUrl, but i don't find any clue. i tried to look back to commit history but i didn't see any major change that could have caused this bug.
         */
-        // }
-        // else {
-        //   await updateProfile(user, {
-        //     displayName,
-        //     photoURL: user.photoURL, // Keep the existing photo URL
-        //   })
-
-        //   await setDoc(doc(db, 'users', user.uid), {
-        //     displayName,
-        //     photoURL: user.photoURL, // Keep the existing photo URL
-        //   })
-
-        //   setUser({
-        //     ...user,
-        //     displayName,
-        //     photoURL: user.photoURL, // Keep the existing photo URL
-        //   })
-        // }
-
+        
         // DM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer? MM: The unsubscribe function returned by auth.onAuthStateChanged is called to clean up the listener when the user is signed in.
         // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
         const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
@@ -215,67 +170,6 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
   }
 
   // DM: this code does the exact same thing as the commented-out code that follows it. I rewrote this as async/await and try/catch, so you could see an example and compare to the then-catch.
-  //     try {
-  //       const userPhotoUrl = user.photoURL // to avoid repeated code
-  //       await updateProfile(user, {
-  //     displayName,
-  //     photoURL: userPhotoUrl, // Keep the existing photo URL
-  //   })
-  //   await setDoc(doc(db, 'users', user.uid), {
-  //     displayName,
-  //     photoURL: userPhotoUrl, // Keep the existing photo URL
-  //   })
-  //   setUser({
-  //     ...user,
-  //     displayName,
-  //     photoURL: userPhotoUrl, // Keep the existing photo URL
-  //   })
-  //   const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
-  //     if (updatedUser) {
-  //       setUser(updatedUser)
-  //       setSelectedUser(null)
-  //       setProfileVisible(false)
-  //       unsubscribe()
-  //     }
-  //   })
-
-  // } catch (error) {
-  //   console.error('Error updating profile', error)
-  // }
-  // return
-
-  // // If no file has been selected, just update the display name
-  // updateProfile(user, {
-  //   displayName,
-  //   photoURL: user.photoURL, // Keep the existing photo URL
-  // })
-  //   .then(() => {
-  //     return setDoc(doc(db, 'users', user.uid), {
-  //       displayName,
-  //       photoURL: user.photoURL, // Keep the existing photo URL
-  //     })
-  //   })
-  //   .then(() => {
-  //     setUser({
-  //       ...user,
-  //       displayName,
-  //       photoURL: user.photoURL, // Keep the existing photo URL
-  //     })
-
-  //     const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
-  //       if (updatedUser) {
-  //         setUser(updatedUser)
-  //         setSelectedUser(null)
-  //         setProfileVisible(false)
-  //         unsubscribe()
-  //       }
-  //     })
-  //   })
-  //   .catch((error) => {
-  //     console.error('Error updating profile', error)
-  //   })
-  //   }
-  // }
 
   /*
   After implementing the above code, i encountered the following error: "1 Access to XMLHttpRequest at 'https://firebasestorage.googleapis.com/v0/b/app-chat-1f5a4.appspot.com/o?name=profilePhotos%2Fj0nwHQJVpgYxYPDvwTsm7g7ycNj1' from origin 'http://localhost:3005' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: It does not have HTTP ok status."
@@ -331,12 +225,8 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
       {isSignedOut ? (
         <User />
       ) : isLoading ? (
-        // Replace this with your actual loading indicator
         <BounceLoader color={'#123abc'} loading={isLoading} size={60} />
       ) : (
-        // <div className="w-1/2 h-1">
-        //   <LinearProgress classes={{ root: 'h-full', bar: 'bg-blue-500' }} />
-        // </div>
         <div className="p-8 bg-white shadow-md rounded relative">
           <h2 className="text-2xl text-purple-500 font-bold mb-5 text-center">User Profile</h2>
           <div className="absolute top-0 right-0 p-2 mt-2 mr-2 flex flex-col items-center">
@@ -380,9 +270,7 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="photoURL"
-              // type="text"
               type="file"
-              // value={selectedFile}
               onChange={(e) => setSelectedProfilePhoto(e.target.files[0])}
             />
           </div>

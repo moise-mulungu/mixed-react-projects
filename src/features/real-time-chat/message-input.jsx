@@ -174,23 +174,6 @@ export default function MessageInput({ onSendMessage, onTyping }) {
   }
 
   const user = useContext(UserContext)
-  // const sendMessage = async (message) => {
-  //   try {
-  //     await addDoc(collection(db, 'messages'), {
-  //       text: message,
-  //       createdAt: new Date().toISOString(),
-  //       user: user.displayName, // Or any other property of the suer object
-  //     })
-  //   } catch (e) {
-  //     console.error('Error adding document: ', e)
-  //   }
-  // }
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-  //   sendMessage(message)
-  // }
-
   const rows = message.split('\n').length
 
   /* 

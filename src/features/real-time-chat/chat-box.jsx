@@ -43,7 +43,6 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
   */
 
   useEffect(() => {
-    // let unsubscribe
     // Guard clause to handle when db is not defined
     if (!db) return
     //(done) DM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
@@ -60,20 +59,13 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
       setUserData(newUserData)
     }
     // DM: another solution is to have firestore "push" the latest user info to you when user info is changed by user, or, if that is not possible, every 5 minutes or so. Or, you could "pull" every 5 minutes by using setInterval to query the DB for latest user info ("pull" might configurable in firebase, so be sure to query Google/AI for your top-level goal "how do I avoid user data getting stale over time?")
-    // const unsubscribe = db.collection('users').onSnapshot((snapshot) => {
-    //   const newUserData = {}
-    //   snapshot.docs.forEach((doc) => {
-    //     newUserData[doc.id] = doc.data()
-    //   })
-    //   setUserData(newUserData)
-    // })
+    
     //(done) DM: todoMM: use a guard clause at the beginning of the useEffect to handle when !db. That way you don't have to use `let unsubscribe` and `unsubscribe && unsubscribe()`. Following the rule to avoid `let` whenever possible will help you write better code.
     // if (db) {
     const unsubscribe = onSnapshot(usersCollection, (snapshot) => {
       //(done) DM: I'm seeing an error when I change my display name, I think it is here. Put a try-catch around the code in this callback so you can know for sure where the error is happening.
       try {
         console.log('onSnapshot callback invoked', { snapshot })
-        // const newUserData = {}
         const updatedUserData = { ...userData }
         snapshot.docs.forEach((doc) => {
           console.log('onSnapshot callback invoked', { doc, docData: doc.data() })
@@ -86,11 +78,6 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
     })
 
     fetchAllUserData()
-    // }
-    // MM: i am facing this error : TypeError: Cannot read properties of undefined (reading 'collection'). but i'll work on it next time. DM: what does this comment refer to? I see fetchAllUserData above and below this comment line.
-
-    // fetchAllUserData()
-    //
     return () => {
       //(done) DM todoMM: keep in mind this cleanup function will be called every time one of the dependencies changes. Do you want to unsubscribe each time the messages variable changes?
 
@@ -111,8 +98,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
       className="flex-grow overflow-y-auto rounded p-4 bg-purple-500 text-white h-96"
     >
       {messages?.map((message, index) => {
-        // const sender = userData[message.sender]?.displayName || message.sender
-        const sender = message.senderName || message.sender // MM: I use this because the sender property of the message object is being set to user.displayName in the MessageInput component. This user object is obtained from the UserContext using the useContext hook.
+        const sender = message.senderName || message.sender 
         const user = userData[message.sender]
         console.log({ sender })
         console.log('sender type:', typeof message.sender)
@@ -136,11 +122,6 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
           >
             <div className="flex justify-between">
               <div>
-                {/* <strong className="font-bold mr-2">{message?.sender}</strong>: {message?.text}{' '}
-                <em className="text-sm text-purple-300">
-                  {message?.timestamp ? new Date(message?.timestamp).toLocaleTimeString() : ''}
-                </em> */}
-                {/* Display the sender's display name */}
                 <strong className="font-bold mr-2">{user?.name || sender}</strong>: {message?.text}{' '}
                 <em className="text-sm text-purple-300">
                   {message?.timestamp ? new Date(message?.timestamp).toLocaleTimeString() : ''}
@@ -155,8 +136,6 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
               {/* MM: why the delete icon message disappear? i have an assumption that there is a mismatch between the currentUser.uid and message.sender. In order to fix this i put console log to verify each details, but i'll continue with it next time because i was running out of the time.
                 (done)DM: check your console.logs. I don't see any logs containing "currentUser" or "message.sender" in the console. That code above is really weird - don't console.logs after && like that - its impossible to understand the code. Put your console.logs before the return statement of this [].map callback. Or you can use JSON stringify
               */}
-              {/* JSON stringify in a pre tag is nice but it only shows the values of the final render so best to use console.logs */}
-              {/* <pre>{JSON.stringify({ currentUser, message }, null, 2)}</pre> */}
             </div>
           </div>
         )
@@ -167,48 +146,16 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
 /*
 
 The error: Objects are not valid as a React child (found: object with keys {text, sender, timestamp, id}). If you meant to render a collection of children, use an array instead. was thrown when trying to send message, i searched for it in the react-errors.md file where it describes the process of :
-1. check in the return statement of the JSX if there is a map function
-2. converting an object into array with Object.entries() method
-3. use array?.map() function to render if array is not null or undefined. If array is null or undefined, the expression will short-circuit and return undefined without throwing an error.
-4. After all the above attempts nothing was found.
+  1. check in the return statement of the JSX if there is a map function
+  2. converting an object into array with Object.entries() method
+  3. use array?.map() function to render if array is not null or undefined. If array is null or undefined, the expression will short-circuit and return undefined without throwing an error.
+  4. After all the above attempts nothing was found.
 MM: i'll continue working on it tomorrow. DM: ok, good, keep going.
+
 (done)DM: todoMM: please put this comment near the affected code because I don't know what code this applies to. It is frustrating because I have no idea what you're talking about! Be careful each time you add a comment like this that is is directly above the affected code. And, if instructions are necessary to reproduce the problem, then give those instructions. OK, no I assume this is no longer an issue. If you had put this message immediately/directly in the line above the affected code, when you later did the fix above, you would have realized that this comment was no longer relevant and you would have deleted it. So, please be careful to put comments directly above the affected code. It is extremely frustrating to try to figure out what happened of what I should do with this Git diff! MM: this issue is no more relevant, i already fixed the problem. i think the problem is the day i wrote the comment you didn't get time to review it, then the next day i fixed the problem and forgot to delete the comment. But it's talking about the code above. DM: ok, just reiterating that if you always put comments directly above the affected code, there will never be confusion like this.(ok)
 
 */
+
 /*
-
 DM: THis doesn't help because you're not telling me what was this code for? What did you try? What didn't work? As with my comment in message-input.jsx today, best comment out individual lines (and those lines should have a comment explaining their purpose), otherwise I'm lost.  DM: ok these sound good, but please put them in the code as comments over the code where it happens. Otherwise its too hard for me to follow. You can leave the app in a broken state and then I can help debug, but give me instructions about what is the problem, what you tried, and what I should do to reproduce the bug (ie try to login, try to signup, etc)(ok, it's done!)
-
-import { useEffect, useState } from 'react';
-// import the firebase functions; onSnapshot function to get the messages from the database in real-time, query function to order the messages by the time they were created, collection function to get the messages from the database, and orderBy function to order the messages by the time they were created
-import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
-import db from './firebase';
-
-export default function ChatBox() {
-  // declare the state message so that it can only be accessed here
-  const [messages, setMessages] = useState([]);
-
-  // useEffect hook to get the messages from the database and set them to the state
-  useEffect(() => {
-    const messagesCollection = collection(db, 'messages');
-    const q = query(messagesCollection, orderBy('createdAt'));
-    const unsubscribe = onSnapshot(q, (snapshot) => {
-      setMessages(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })));
-    });
-
-    return () => unsubscribe();
-  }, []);
-
-  return (
-    <div className="flex-grow overflow-auto p-4 bg-purple-500 text-white">
-      {messages.map((message, index) => (
-        <div key={index} className="mb-4 border-b-2 border-purple-300 p-2">
-          <strong className="font-bold">{message.user}</strong>: {message.text}{' '}
-          <em className="text-sm text-purple-300">{new Date(message.createdAt).toLocaleTimeString()}</em>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 */
