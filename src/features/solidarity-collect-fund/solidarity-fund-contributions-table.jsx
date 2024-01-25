@@ -258,9 +258,13 @@ I did the following to make it work:
 When i try to type in the input fields, i couldn't edit or add anything. to fix that i added "type" attribute to the input fields and a "value" attribute with the value from the data array and an "onChange" attribute with the updateMyData function, but the input fields are still not editable.
 i stop by here because i am running out of time. i will continue working on it tomorrow.
 
-// DM: todoMM: the below are not a discussion of why you chose react-table. IT looks like a AI-generated list of benefits, followed by a list of how to make "input fields editable". So I still don't understand why you chose react-table over other solutions.
+DM: todoMM: the below are not a discussion of why you chose react-table. IT looks like a AI-generated list of benefits, followed by a list of how to make "input fields editable". So I still don't understand why you chose react-table over other solutions. MM: this question can be a bit harder to compare react-table from the others because that's my first time to work on a project that requires a table, good comparison can be made if you have worked with all the solutions. But my choice is from researches o both AI and google-search and found that react-table is a popular package for creating tables in react:
+  1. React-table is a popular choice since it's simple to set up, customize, and extend. The sorting, filtering, and pagination features of tables in ReactJS make it a powerful and declarative tool. React-table has its own plugin system that allows us to alter or expand any logical phase, stage, or process behind the scenes. We can also customize its look and appearance until the last component. src: https://www.simplilearn.com/tutorials/reactjs-tutorial/reactjs-table#:~:text=React%2Dtable%20is%20a%20popular,a%20powerful%20and%20declarative%20tool.
 
-// DM: todoMM: is this from AI? please list the source for these, URL or AI.
+  2. react-table is a great choice if our application is going to be client-driven, it provides out-of-the-box features for grouping rows ( pivot tables ) and column header grouping which is not available in the other packages. It is lightweight and performs seamlessly with 100K records. src: https://www.ideas2it.com/blogs/react-table-vs-react-bootstrap-table-2-vs-griddle-react-v0#:~:text=react%2Dtable%20is%20a%20great,performs%20seamlessly%20with%20100K%20records.
+
+
+(done)DM: todoMM: is this from AI? please list the source for these, URL or AI. MM: this is AI generated.
 What is the advantage of using react-table package?:
   react-table is a lightweight, fast, and flexible library that provides a headless approach to building tables in React. Here are some advantages of using react-table:
 
@@ -281,7 +285,8 @@ What is the advantage of using react-table package?:
 */
 
 /*
-DM: todoMM: input fields are editable by default, so I'm not sure what you mean here. "input fields" refers to <input> elements in a form. Please explain what you want to edit, then update the text below using correct vocabulary.
+(done)DM: todoMM: input fields are editable by default, so I'm not sure what you mean here. "input fields" refers to <input> elements in a form. Please explain what you want to edit, then update the text below using correct vocabulary. MM: i am not sure if inputs are editable by default, if you had time to check the first code, input were not editable. that's why i tried to update the code to make the input editable.
+what i wanted to edit is on each column of the table, for example the full-name should accept text input, the share should accept number input, and so on.
 to make the input fields editable, i first read this article: https://akd3257.medium.com/how-to-make-a-table-in-react-with-hooks-aa55dd8829
 and then did the following:
 1. create an updater function to use with the input fields

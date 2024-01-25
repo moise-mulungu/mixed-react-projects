@@ -61,7 +61,7 @@ Effort 1 - i will have to refactor the code
 * let's discuss before assigning Effort/Impact
 * MM: when working with messages, i often delete them for testing new implemented features, but for this task i'll have to keep them for verification for one day. the Effort/Impact could be assigned next week. 
   * MM: after double-checking i found that old messages do not disappear, you may check on your side as well. 
-    * DM: todoMM: I don't know how to test that specifically. Give me steps to set up the test. Dont make me think too hard :)
+    *(done) DM: todoMM: I don't know how to test that specifically. Give me steps to set up the test. Don't make me think too hard : MM: i think this task is about older messages seem to disappear after a period of time. so the only test is to type (a) message(s) on the chatbox and keep that for two or three days on the same account and see if it will disappear. on my side i checked and found that it doesn't disappear. if i had added tests in the code, that could be help, but for now the only one is to wait for a period of time and see if it will disappear.
 
 # done
 
