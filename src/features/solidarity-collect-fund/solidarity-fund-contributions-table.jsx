@@ -21,6 +21,7 @@ export default function SolidarityFundContributionsTable() {
     // ... more data rows
   ])
 
+  // DM: todoMM: what trigger? what kind of trigger. Give it a more descriptive name
   const [trigger, setTrigger] = useState(false)
 
   const columns = useMemo(() => {
@@ -29,6 +30,7 @@ export default function SolidarityFundContributionsTable() {
         Header: 'Full Name',
         accessor: 'fullName',
         Cell: ({ value, rowIndex, column }) => {
+          // DM: todoMM: why do you call useContext for each column, when you can call it once at the beginning of the current function (SolidarityFundContributionsTable function) ?
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -200,6 +202,7 @@ export default function SolidarityFundContributionsTable() {
   const addRow = () => {
     setData((old) => [
       ...old,
+      /* DM: todoMM: if this is the same as the one above (the default value for setData) assign it to a variable defaultDateRow and put the variable above the function (right after the imports)  */
       {
         fullName: null,
         share: null,
@@ -229,6 +232,7 @@ export default function SolidarityFundContributionsTable() {
   }
 
   const addColumn = () => {
+    // DM: todoMM: avoid letting user edit/add columns. This is incredibly complex because what column/field do you store the new column in the database. I imagine that the columns would be determined by the requirements provided by the NGO. If not, you should determine the columns needed.
     setTrigger(true)
   }
 

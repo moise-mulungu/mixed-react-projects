@@ -5,7 +5,17 @@
 * (done)DM: : Moise will give an "effort" number for each item: 1-3, 3 being highest amount of time/work needed (is it "hard" or a "quickie")
 
 (done) DM: todoMM: sort these putting the ones you'll do first at the top. Sort by the impact/effort ratio. If impact is 3 and effort is 1, that goes first, then impact 3, effort 2, ...
+
+DM: todoMM: if I put a new item here, always put the Effort and add any comments, discussion, questions that you may have
   
+## Reverse sort the messages so that the newest message is at the top
+Impact 3 Cannot see new messages
+Effort 
+
+## bug - upon new signup, the dislpay name is empty, so any messages the user types is not shown in the messages list. Solution: upon signup, automatically populate displayName with username from the signup form
+Impact 3 
+Effort 
+
 MM: this could constitute a separate task as the "typing users" above is complete. i updated the task as well.
 ## List all the connected users in the main app page and the user who posted the most recently message could be at the top of the connected users list.
 Impact 3

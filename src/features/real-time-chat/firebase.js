@@ -23,9 +23,10 @@ import { getDatabase } from 'firebase/database'
 import { collection } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
+// DM: todoMM: whatever of the comments inside of the firebaseConfig you want to keep, move to a separate file firebase-config.readme.md to avoid cluttering up this file. This file will be much easier to read.
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  // (done)DM: todoMM: move this to the .env.local file, like you did with quiz3.js. NEVER put secrets in the codebase. This is a security risk. If anyone sees secret keys in your code they will not hire you because it will appear that you don't take security seriously. If any of the other properties in this object are secret, move them to .env.local as well (better safe than sorry, but only if they are secret!).
+  // (done)DM: move this to the .env.local file, like you did with quiz3.js. NEVER put secrets in the codebase. This is a security risk. If anyone sees secret keys in your code they will not hire you because it will appear that you don't take security seriously. If any of the other properties in this object are secret, move them to .env.local as well (better safe than sorry, but only if they are secret!).
   /*
   Steps i took to move the firebaseConfig to .env.local:
   1. add the following to .env.local:
@@ -81,8 +82,8 @@ i console logged process.env and got all the variables i set in .env.local, then
   But after all the above, i still got the same errors. i decided to pause there first and reverted the changes.
 
   DM: this are just strings that you are moving from one place to another. you're expectation should be that 0 problem/changes in the app. If there is a problem, then console.log the process.env.ENV_VAR_NAME to see if it is correct. 
-  (done)DM: todoMM: only put the secrets in .env.local. the API key definitely, and maybe your messaging sender but only if it is a secret.  
-  (done)DM: todoMM: .env.local is shared global file, so put something more specific in your variable names, such as REAL_TIME_CHAT_API_KEY. MM: i think i mentioned all the steps that i took above, but i encountered errors and i had to revert the changes. i added console.log and got the server running correctly, i don't what could be the problem. i will try again and see if i can get it working. DM: OK, eventually you will have to use .env.local vars, so go ahead now and rename them everywhere as I suggested because REACT_APP_ is not specific at all.
+  (done)DM: only put the secrets in .env.local. the API key definitely, and maybe your messaging sender but only if it is a secret.  
+  (done)DM: .env.local is shared global file, so put something more specific in your variable names, such as REAL_TIME_CHAT_API_KEY. MM: i think i mentioned all the steps that i took above, but i encountered errors and i had to revert the changes. i added console.log and got the server running correctly, i don't what could be the problem. i will try again and see if i can get it working. DM: OK, eventually you will have to use .env.local vars, so go ahead now and rename them everywhere as I suggested because REACT_APP_ is not specific at all.
 
     1. add the following to .env.local:
     REACT_APP_API_KEY=AIzaSyDkDSHVPcfg
@@ -193,7 +194,7 @@ export default db
 /*
 
 
-(done)DM: this is good. Keep a careful list of the steps to setup firebase in this project. If you don't you will regret it later, I know from experience.
+
 
 Steps for authentication:
   1. Go to the Firebase console(https://console.firebase.google.com/)
