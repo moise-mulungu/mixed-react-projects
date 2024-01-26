@@ -21,13 +21,14 @@ export default function SolidarityFundContributionsTable() {
     // ... more data rows
   ])
 
-  // const [columns, setColumns] = useState([
-  const columns = useMemo(
-    () => [
+  const [trigger, setTrigger] = useState(false)
+
+  const columns = useMemo(() => {
+    const initialColumns = [
       {
         Header: 'Full Name',
         accessor: 'fullName',
-        Cell: ({ value, updateMyData, rowIndex, column }) => {
+        Cell: ({ value, rowIndex, column }) => {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -43,7 +44,7 @@ export default function SolidarityFundContributionsTable() {
       {
         Header: 'Share',
         accessor: 'share',
-        Cell: ({ value, updateMyData, rowIndex, column }) => {
+        Cell: ({ value, rowIndex, column }) => {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -59,7 +60,7 @@ export default function SolidarityFundContributionsTable() {
       {
         Header: 'Sum',
         accessor: 'sum',
-        Cell: ({ value, updateMyData, rowIndex, column }) => {
+        Cell: ({ value, rowIndex, column }) => {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -75,7 +76,7 @@ export default function SolidarityFundContributionsTable() {
       {
         Header: 'Debt',
         accessor: 'debt',
-        Cell: ({ value, updateMyData, rowIndex, column }) => {
+        Cell: ({ value, rowIndex, column }) => {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -91,7 +92,7 @@ export default function SolidarityFundContributionsTable() {
       {
         Header: 'Reimbursement',
         accessor: 'reimbursement',
-        Cell: ({ value, updateMyData, rowIndex, column }) => {
+        Cell: ({ value, rowIndex, column }) => {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -107,7 +108,7 @@ export default function SolidarityFundContributionsTable() {
       {
         Header: 'Meeting Reg. No',
         accessor: 'meetingRegNo',
-        Cell: ({ value, updateMyData, rowIndex, column }) => {
+        Cell: ({ value, rowIndex, column }) => {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -123,7 +124,7 @@ export default function SolidarityFundContributionsTable() {
       {
         Header: 'Weekly Sum',
         accessor: 'weeklySum',
-        Cell: ({ value, updateMyData, rowIndex, column }) => {
+        Cell: ({ value, rowIndex, column }) => {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -139,7 +140,7 @@ export default function SolidarityFundContributionsTable() {
       {
         Header: 'Weekly',
         accessor: 'weekly',
-        Cell: ({ value, updateMyData, rowIndex, column }) => {
+        Cell: ({ value, rowIndex, column }) => {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -155,7 +156,7 @@ export default function SolidarityFundContributionsTable() {
       {
         Header: 'Observations',
         accessor: 'observations',
-        Cell: ({ value, updateMyData, rowIndex, column }) => {
+        Cell: ({ value, rowIndex, column }) => {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -170,28 +171,48 @@ export default function SolidarityFundContributionsTable() {
       },
 
       // ... more columns
-    ],
-    // []
-    // ])
-    []
-  )
+    ]
 
-  // const addRow = () => {
-  //   setData((old) => [
-  //     ...old,
-  //     {
-  //       fullName: null,
-  //       share: null,
-  //       sum: null,
-  //       debt: null,
-  //       reimbursement: null,
-  //       meetingRegNo: null,
-  //       weeklySum: null,
-  //       weekly: null,
-  //       observations: null,
-  //     },
-  //   ])
-  // }
+    if (trigger) {
+      return [
+        ...initialColumns,
+        {
+          Header: 'New Column',
+          accessor: 'newColumn',
+          Cell: ({ value, rowIndex, column }) => {
+            const updateMyData = useContext(UpdateDataContext)
+            return (
+              <input
+                type="text"
+                value={value}
+                onChange={(e) => {
+                  updateMyData(rowIndex, column.id, e.target.value)
+                }}
+              />
+            )
+          },
+        },
+      ]
+    }
+    return initialColumns
+  }, [trigger])
+
+  const addRow = () => {
+    setData((old) => [
+      ...old,
+      {
+        fullName: null,
+        share: null,
+        sum: null,
+        debt: null,
+        reimbursement: null,
+        meetingRegNo: null,
+        weeklySum: null,
+        weekly: null,
+        observations: null,
+      },
+    ])
+  }
   // Create an updater function to use with the input fields
   const updateMyData = (rowIndex, columnId, value) => {
     setData((old) =>
@@ -207,41 +228,21 @@ export default function SolidarityFundContributionsTable() {
     )
   }
 
-  // const addColumn = () => {
-  //   setColumns((old) => [
-  //     ...old,
-  //     {
-  //       Header: 'New Column',
-  //       accessor: 'newColumn',
-  //       Cell: ({ value, rowIndex, column }) => {
-  //         const updateMyData = useContext(UpdateDataContext)
-  //         return (
-  //           <input
-  //             type="text"
-  //             value={value}
-  //             onChange={(e) => {
-  //               updateMyData(rowIndex, column.id, e.target.value)
-  //             }}
-  //           />
-  //         )
-  //       },
-  //     },
-  //   ])
-  // }
+  const addColumn = () => {
+    setTrigger(true)
+  }
 
   // Pass the updater function to the useTable hook
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
     columns,
     data,
-    // updateMyData,
-    // cellProps: { updateMyData },
   })
 
   return (
     <UpdateDataContext.Provider value={updateMyData}>
-      <h1 className="text-2xl font-semibold text-gray-900">Solidarity Fund Contributions</h1>
-      {/* <button onClick={addRow}>Add Row</button>
-      <button onClick={addColumn}>Add Column</button> */}
+      {/* <h1 className="text-2xl font-semibold text-gray-900">Solidarity Fund Contributions</h1> */}
+      <button onClick={addRow}>Add Row</button>
+      <button onClick={addColumn}>Add Column</button>
       <div className="w-full h-full mt-4 mx-4 rounded-lg overflow-hidden shadow-lg">
         <table
           {...getTableProps()}
