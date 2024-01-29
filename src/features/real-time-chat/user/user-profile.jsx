@@ -21,6 +21,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
 
   //(done) DM: should this run on every render? or only when the user (or some other data) changes? MM: The getStorage() function is used to initialize a reference to Firebase Storage. This line of code is outside of any React hooks, so it will run every time the component re-renders. However, the getStorage() function is a memoized function, which means that it will only initialize a reference to Firebase Storage once. The reference will be stored in memory and returned on subsequent calls to getStorage(). So, the getStorage() function will only run once, even though it's outside of any React hooks. DM: super, it is called upon each render but the return value is cached and returned on subsequent calls. I'll add a comment as it is not obvious that it is cached.(ok)
   const storage = getStorage() // return value is cached
+  // DM: it looks like user is always the current user.
   const { user, setUser } = useContext(UserContext)
   const router = useRouter()
 
@@ -89,7 +90,6 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
     setIsLoading(true)
 
     try {
-
       //(done) DM:: I don't see an ELSE clause for this IF clause. How will you handle the case where the user does not upload a photo? That scenario is not handled in the code, nothing happens if no photo uploaded. Ask yourself: what is the difference between photo uploaded or not? Then, think of how you can adjust the code so that the differences between selectedProfilePhoto or not are held in variables. MM: hum! that's was the solution to the username update! good
       let userPhotoUrl = user.photoURL // default to the existing photo URL
       if (selectedProfilePhoto) {
@@ -129,11 +129,11 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
         // userPhotoUrl = await getDownloadURL(uploadTask.snapshot.ref)
       } else {
         await updateProfileAndFirestore(userPhotoUrl)
-     
+
         /*
         MM: DM: I attempted for a second time to fix the username update, but it still doesn't work. i don't know why. i tried to console.log the displayName and userPhotoUrl, but i don't find any clue. i tried to look back to commit history but i didn't see any major change that could have caused this bug.
         */
-        
+
         // DM: this is a question only, no need to code anything now: how is this listener cleaned up when the component unmounts? Usually we do that by returning a "cleanup function" from the useEffect callback. DM: your answer? MM: The unsubscribe function returned by auth.onAuthStateChanged is called to clean up the listener when the user is signed in.
         // sets up a listener for changes in the user's authentication state. If the user is still authenticated after the profile update, it updates the user object in the local state again, deselects the user, and hides the profile. DM: these comments are very helpful
         const unsubscribe = auth.onAuthStateChanged((updatedUser) => {
@@ -290,6 +290,7 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
               Cancel
             </button>
           </div>
+          {`user.uid: ${user.uid}`} {/* while debugging */}
         </div>
       )}
     </div>

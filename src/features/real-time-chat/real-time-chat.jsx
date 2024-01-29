@@ -47,7 +47,6 @@ import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
 import { doc, getDoc, deleteDoc } from 'firebase/firestore'
 import { FiLogOut } from 'react-icons/fi'
-//(done) DM: todoMM: you could remove no-longer-needed comments like the below 2 comments, right?
 export default function RealTimeChat() {
   console.log('RealTimeChat component rendered')
 
@@ -59,6 +58,7 @@ export default function RealTimeChat() {
   const [typingUsers, setTypingUsers] = useState([])
   const [selectedUser, setSelectedUser] = useState(null)
   const [isProfileVisible, setProfileVisible] = useState(false)
+  // DM: todoMM: remove super-obvious comments like this one. That line does nto need commenting.
   // Add a new state variable for loading
   const [loading, setLoading] = useState(true)
 
@@ -228,12 +228,13 @@ export default function RealTimeChat() {
   */
 
   useEffect(() => {
+    // DM: todoMM: avoid abbreviations in general, but specially avoid "Ref" as it can be confused with React Refs (it"s ok to use the abbreviation "Ref" with React refs because it is a common convention like "props")
     const usersStatusRef = createDatabaseReference(database, 'status')
 
     console.log('RealTimeChat listening to database changes at:', 'status')
 
     // DM: this is good, but it will only catch the 1 current user because it runs in the client where that user is logged in.
-    //(done) DM: todoMM: does this listener fire only when the user unsubscribes? or, why do you call it unsubscribe? what other events cause this listener to fire? MM: The unsubscribe function is returned by listenToDatabaseValueChanges. It's called unsubscribe because calling it will stop the listener from listening to changes in the database. The listener fires whenever there's a change in the 'status' node of the database. It doesn't fire when the user unsubscribes, but you call unsubscribe in the cleanup function of useEffect to stop listening to changes when the component unmounts.
+    //() DM: todoMM: does this listener fire only when the user unsubscribes? or, why do you call it unsubscribe? what other events cause this listener to fire? MM: The unsubscribe function is returned by listenToDatabaseValueChanges. It's called unsubscribe because calling it will stop the listener from listening to changes in the database. The listener fires whenever there's a change in the 'status' node of the database. It doesn't fire when the users unsubscribes, but you call unsubscribe in the cleanup function of useEffect to stop listening to changes when the component unmounts. DM: ok, then rename it to something like unsubscribeFromListenToDatabaseValueChangesListener so it wont be confused with something like "unsubscribe from chat room" - note: code grows over time and unspecific file names cause confusion and bugs.
     const unsubscribe = listenToDatabaseValueChanges(usersStatusRef, (snapshot) => {
       console.log('RealTimeChat database value changed:', snapshot.val())
       const updatedUsers = []
@@ -241,11 +242,16 @@ export default function RealTimeChat() {
       snapshot.forEach((childSnapshot) => {
         const userStatus = childSnapshot.val()
         console.log('RealTimeChat UserStatus:', userStatus)
-        console.log('RealTimeChat DisplayName on Connected Users:', userStatus.displayName)
+        console.log('RealTimeChat DisplayName on Connected Users: xxx', {
+          userStatusDisplayName: userStatus.displayName,
+          // DM: uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
+          userStatusUid: userStatus.uid,
+        })
         if (userStatus.state === 'online') {
           const isUserAlreadyConnected = updatedUsers.some(
             (user) => user && user.uid === childSnapshot.key
           )
+          // DM: todoMM: are you sure this works? I dont see any console.logs. If you used console.logs to validate isUserAlreadyConnected and userStatus.state, don't delete them, but comment them out so that I or you can use them in the future and also so that I know what you have already tried to debug this area.
           if (!isUserAlreadyConnected) {
             updatedUsers.push({
               uid: childSnapshot.key,
@@ -330,6 +336,7 @@ export default function RealTimeChat() {
         <div className="flex flex-col h-screen bg-gray-100 mx-2 md:mx-0">
           <Header className="h-10 md:h-10" />
           {isProfileVisible ? (
+            {/* DM: todoMM: you're not passing the selected user to the UserProfile, so it always shows the current user, not other users */}
             <UserProfile setSelectedUser={setSelectedUser} setProfileVisible={setProfileVisible} />
           ) : (
             <div className="flex-1">
@@ -338,6 +345,7 @@ export default function RealTimeChat() {
                   <ChatBox
                     fetchUser={fetchUser}
                     // messages={messages}
+                    // DM: todoMM: you changed the query to "desc" then you reversed that here. Why?
                     messages={[...messages].reverse()}
                     deleteMessage={deleteMessage}
                     currentUser={currentUser}
@@ -360,7 +368,7 @@ export default function RealTimeChat() {
 
                       {connectedUsers.map((user) => {
                         // DM: I put the console log above the !user guard clause so that I can see this console.log when user is undefined. That way, I can see how many of the users are undefined.
-                        // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array.
+                        // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me.
                         console.log('RealTimeChat real-time-chat/index.jsx ', {
                           user,
                           // DM: easier to read the console if you put all values you want to log into the same log statement
@@ -379,13 +387,14 @@ export default function RealTimeChat() {
                         return (
                           //(done) DM: todoMM: check your browser console warnings while you use all the functionality of the app. Fix all the usage of index as key. I don"t want to have to keep reminding you about this same issue.
                           <div
-                            //(done) DM: todoMM: you have a duplicate key warning in the console. First, don't use object values as keys. "user" is an object. When you see [object Object] in the warning: Warning: Encountered two children with the same key, `[object Object]` - this means that the object is converted into a string, so all objects will be [object Object]. Run this code in the node REPO and write here what you get: String({}). Then, you can use that string as the key.
+                            //(done) DM: you have a duplicate key warning in the console. First, don't use object values as keys. "user" is an object. When you see [object Object] in the warning: Warning: Encountered two children with the same key, `[object Object]` - this means that the object is converted into a string, so all objects will be [object Object]. Run this code in the node REPO and write here what you get: String({}). Then, you can use that string as the key.
                             // DM: In general, don't ignore console warnings since they will often give clues for debugging, and they clutter up the browser console
                             // DM: todoMM use user.uid which will be unique. You may still have the duplicate key warning, so then you can deal with that.
                             key={user?.uid} // i added this because each user should be unique
                             className="flex justify-between items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
                             onClick={() => {
                               setSelectedUser(user)
+                              // DM: todoMM: should the current user be able to edit other users? I think you would only allow a click for the current user. If you decide to allow the current user to click on the other users in order to view information about other users, then in that case the UserProfile should be in a "read only" mode, so that the current user cannot edit the profile of other users.
                               setProfileVisible(true)
                             }}
                           >

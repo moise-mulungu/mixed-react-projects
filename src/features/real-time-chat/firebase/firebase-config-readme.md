@@ -79,6 +79,7 @@ i console logged process.env and got all the variables i set in .env.local, then
 
 
  // DM: good!
+ // DM: this is not about firebase config, so put it into a separate file named after the topic: How to create a realtime database in Firebase
 /*
 How to create a realtime database in Firebase:
 To create a Realtime Database in Firebase, follow these steps:
@@ -100,6 +101,7 @@ Remember to replace the databaseURL in your Firebase configuration with the URL 
 You can find this URL in the Realtime Database section of the Firebase console, at the top of the data view.
 */
 
+// DM: this is not about firebase config, so put it into a separate file named after the topic: How to set up authentication in Firebase
 /*
 
 Steps for authentication:

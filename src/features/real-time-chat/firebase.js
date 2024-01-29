@@ -23,7 +23,7 @@ import { getDatabase } from 'firebase/database'
 import { collection } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
-//(done) DM: todoMM: whatever of the comments inside of the firebaseConfig you want to keep, move to a separate file firebase-config.readme.md to avoid cluttering up this file. This file will be much easier to read.
+//(done) DM: whatever of the comments inside of the firebaseConfig you want to keep, move to a separate file firebase-config.readme.md to avoid cluttering up this file. This file will be much easier to read.
 // Your web app's Firebase configuration.
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_REAL_TIME_CHAT_API_KEY,
