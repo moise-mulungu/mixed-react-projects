@@ -47,13 +47,7 @@ import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
 import { doc, getDoc, deleteDoc } from 'firebase/firestore'
 import { FiLogOut } from 'react-icons/fi'
-// DM: todoMM: you could remove no-longer-needed comments like the below 2 comments, right?
-// DM: careful how you rename a directory, because I couldn't see the diffs in Git for index.js, but I could see it for all the other files. MM: i have already a component named RealTimeChat in ./pages/real-time-chat, now this component is in ./features/real-time-chat, so i named it to EasyChat to avoid confusion
-
-/*
-(done)DM: change the name of this directory to be the same as the src/pages directory name (which is in the URL - keeping the names consistent avoids confusion in a large codebase.
-*/
-
+//(done) DM: todoMM: you could remove no-longer-needed comments like the below 2 comments, right?
 export default function RealTimeChat() {
   console.log('RealTimeChat component rendered')
 
