@@ -182,13 +182,13 @@ export default function RealTimeChat() {
 
     //  When a message is sent, move the sender to the top of the connectedUsers list DM: good!
     // DM: this will only catch the 1 current user because it runs in the client where that user is logged in.
-    setConnectedUsers((previousUsers) => {
-      const updatedUsers = [
-        message.user,
-        ...previousUsers.filter((u) => u.uid !== message.sender.uid),
-      ]
-      return updatedUsers
-    })
+    // setConnectedUsers((previousUsers) => {
+    //   const updatedUsers = [
+    //     message.user,
+    //     ...previousUsers.filter((u) => u.uid !== message.sender.uid),
+    //   ]
+    //   return updatedUsers
+    // })
   }
 
   const deleteMessage = async (message) => {
@@ -230,23 +230,32 @@ export default function RealTimeChat() {
   useEffect(() => {
     const usersStatusRef = createDatabaseReference(database, 'status')
 
+    console.log('RealTimeChat listening to database changes at:', 'status')
+
     // DM: this is good, but it will only catch the 1 current user because it runs in the client where that user is logged in.
-    // DM: todoMM: does this listener fire only when the user unsubscribes? aor, why do you call it unsubscribe? what other events cause this listener to fire?
+    //(done) DM: todoMM: does this listener fire only when the user unsubscribes? or, why do you call it unsubscribe? what other events cause this listener to fire? MM: The unsubscribe function is returned by listenToDatabaseValueChanges. It's called unsubscribe because calling it will stop the listener from listening to changes in the database. The listener fires whenever there's a change in the 'status' node of the database. It doesn't fire when the user unsubscribes, but you call unsubscribe in the cleanup function of useEffect to stop listening to changes when the component unmounts.
     const unsubscribe = listenToDatabaseValueChanges(usersStatusRef, (snapshot) => {
+      console.log('RealTimeChat database value changed:', snapshot.val())
       const updatedUsers = []
+      // const updatedUsers = [...connectedUsers]
       snapshot.forEach((childSnapshot) => {
         const userStatus = childSnapshot.val()
-        console.log('RealTimeChat UserStatus:', userStatus) // Log the userStatus object
-        console.log('RealTimeChat DisplayName on Connected Users:', userStatus.displayName) // Log the displayName property
+        console.log('RealTimeChat UserStatus:', userStatus)
+        console.log('RealTimeChat DisplayName on Connected Users:', userStatus.displayName)
         if (userStatus.state === 'online') {
-          updatedUsers.push({
-            uid: childSnapshot.key,
-            displayName: userStatus.displayName, // Include the displayName
-            ...userStatus,
-          })
+          const isUserAlreadyConnected = updatedUsers.some(
+            (user) => user && user.uid === childSnapshot.key
+          )
+          if (!isUserAlreadyConnected) {
+            updatedUsers.push({
+              uid: childSnapshot.key,
+              displayName: userStatus.displayName,
+              ...userStatus,
+            })
+          }
         }
       })
-      console.log('RealTimeChat updated users here:', updatedUsers) // Log the updatedUsers array
+      console.log('RealTimeChat updated users here:', updatedUsers)
       setConnectedUsers(updatedUsers)
     })
 
@@ -254,34 +263,28 @@ export default function RealTimeChat() {
   }, [])
 
   const onConnect = (user) => {
-    // Check if user is defined and has a uid property
     if (!user || !user.uid) {
       console.error('Invalid user object:', user)
       return
     }
-    // DM: if I filter the browser console on RealTimeChat onConnect, I see that this log happens only once. If I click on each item in Connected Users list, it is the same user. Think about where/when this code runs. This runs in the client, and is passed the "user" parameter. but, because it runs in the client, how can it know about other connected users?
+    // DM: if I filter the browser console on RealTimeChat onConnect, I see that this log happens only once. If I click on each item in Connected Users list, it is the same user. Think about where/when this code runs. This runs in the client, and is passed the "user" parameter. but, because it runs in the client, how can it know about other connected users? MM: The onConnect function is called with a user object. It updates the connectedUsers state to include the user if they're not already in the list. It doesn't need to know about other connected users because it's only concerned with adding the user to the list. The list of all connected users is maintained in the connectedUsers state, which is updated by the useEffect hook whenever there's a change in the 'status' node of the database.
     console.log('RealTimeChat onConnect function called with:', user)
-    // Update the local state
-    setConnectedUsers((prevUsers) => {
-      // DM: good name! good guard clause!(ok)
-      const isUserAlreadyConnected = prevUsers.some((prevUser) => prevUser.uid === user.uid)
 
-      // DM: todoMM: as you clean up the code, remove obvious comments that AI adds. Also remove comments that become unnecessary because you have renamed variables to be more descriptive.
-      // If the user is already in the list, return the previous state
-      if (isUserAlreadyConnected) {
-        return prevUsers
-      }
+    // setConnectedUsers((prevUsers) => {
+    //   const isUserAlreadyConnected = prevUsers.some((prevUser) => prevUser.uid === user.uid)
 
-      // If the user is not in the list, add them to the state
-      const updatedUsers = [user, ...prevUsers]
+    //   //(done) DM: todoMM: as you clean up the code, remove obvious comments that AI adds. Also remove comments that become unnecessary because you have renamed variables to be more descriptive.
 
-      // Log the list of connected users
-      console.log('RealTimeChat Connected users:', updatedUsers)
+    //   if (isUserAlreadyConnected) {
+    //     return prevUsers
+    //   }
+    //   const updatedUsers = [user, ...prevUsers]
 
-      return updatedUsers
-    })
+    //   console.log('RealTimeChat Connected users:', updatedUsers)
 
-    // Update the list of connected users in the database
+    //   return updatedUsers
+    // })
+
     const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
 
     setDatabaseValue(userStatusDatabaseRef, {
@@ -289,8 +292,13 @@ export default function RealTimeChat() {
       last_changed: serverTimestamp(),
     })
 
-    // Set isAuthenticated to true
     setIsAuthenticated(true)
+
+    // Add the connected user to the connectedUsers state
+    setConnectedUsers((previousUsers) => {
+      const updatedUsers = [user, ...previousUsers.filter((u) => u.uid !== user.uid)]
+      return updatedUsers
+    })
   }
 
   const onAuthenticate = (isAuthenticated) => {
@@ -308,6 +316,9 @@ export default function RealTimeChat() {
       })
   }
 
+  useEffect(() => {
+    console.log('RealTimeChat connected users:', connectedUsers)
+  }, [connectedUsers])
   //(done) DM: after you have put the user* files into a ./user directory (see todo in user.js), create a file named ./user/user-context-provider.jsx and extract user, setUser into that file. Then, import that file here and use it to wrap the User component here (and also in the top-level return statement). This way, you can keep all the user-related code in one place.
 
   //() DM: todoMM: use the same name in both files to avoid confusion. (I like onUserConnect. Don't worry about being concise - it is more important to be clear.) MM: i don't understand what name you are referring to here, is onConnect or something else, if it's onConnect, there is no other file where it has another name. DM: the idea is to use the same name in both files.
@@ -348,7 +359,7 @@ export default function RealTimeChat() {
 
                       {connectedUsers.map((user) => {
                         // DM: I put the console log above the !user guard clause so that I can see this console.log when user is undefined. That way, I can see how many of the users are undefined.
-                        // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code.
+                        // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array.
                         console.log('RealTimeChat real-time-chat/index.jsx ', {
                           user,
                           // DM: easier to read the console if you put all values you want to log into the same log statement
@@ -367,7 +378,7 @@ export default function RealTimeChat() {
                         return (
                           //(done) DM: todoMM: check your browser console warnings while you use all the functionality of the app. Fix all the usage of index as key. I don"t want to have to keep reminding you about this same issue.
                           <div
-                            // DM: todoMM: you have a duplicate key warning in the console. First, don't use object values as keys. "user" is an object. When you see [object Object] in the warning: Warning: Encountered two children with the same key, `[object Object]` - this means that the object is converted into a string, so all objects will be [object Object]. Run this code in the node REPO and write here what you get: String({}). Then, you can use that string as the key.
+                            //(done) DM: todoMM: you have a duplicate key warning in the console. First, don't use object values as keys. "user" is an object. When you see [object Object] in the warning: Warning: Encountered two children with the same key, `[object Object]` - this means that the object is converted into a string, so all objects will be [object Object]. Run this code in the node REPO and write here what you get: String({}). Then, you can use that string as the key.
                             // DM: In general, don't ignore console warnings since they will often give clues for debugging, and they clutter up the browser console
                             // DM: todoMM use user.uid which will be unique. You may still have the duplicate key warning, so then you can deal with that.
                             key={user?.uid} // i added this because each user should be unique
