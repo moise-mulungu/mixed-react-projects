@@ -96,7 +96,7 @@ export default function RealTimeChat() {
 
   useEffect(() => {
     console.log('RealTimeChat useEffect hook executed') // to check if the useEffect hook is executed
-    const q = query(collection(db, 'messages'), orderBy('timestamp'))
+    const q = query(collection(db, 'messages'), orderBy('timestamp', 'desc'))
     const unsubscribeFirestore = onSnapshot(q, (snapshot) => {
       const messages = []
       snapshot.forEach((doc) => {
@@ -337,7 +337,8 @@ export default function RealTimeChat() {
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
                   <ChatBox
                     fetchUser={fetchUser}
-                    messages={messages}
+                    // messages={messages}
+                    messages={[...messages].reverse()}
                     deleteMessage={deleteMessage}
                     currentUser={currentUser}
                   />
