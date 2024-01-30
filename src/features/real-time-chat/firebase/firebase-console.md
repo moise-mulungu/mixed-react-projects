@@ -1,6 +1,4 @@
-// DM: good!
- // DM: this is not about firebase config, so put it into a separate file named after the topic: How to create a realtime database in Firebase
-/*
+
 How to create a realtime database in Firebase:
 To create a Realtime Database in Firebase, follow these steps:
 
@@ -19,10 +17,11 @@ To create a Realtime Database in Firebase, follow these steps:
 
 Remember to replace the databaseURL in your Firebase configuration with the URL of your new Realtime Database. The URL should look something like this: https://your-project-id-default-rtdb.firebaseio.com/. 
 You can find this URL in the Realtime Database section of the Firebase console, at the top of the data view.
-*/
 
-// DM: this is not about firebase config, so put it into a separate file named after the topic: How to set up authentication in Firebase
-/*
+
+// DM: todoMM: this is not about firebase console, so put it into a separate file named after the topic: How to set up authentication in Firebase
+* this is not about console. attention to detail please! don't waste the leads time with obvious things like this. You will set yourself apart from other Juniors who are sloppy and aren't paying attention. It is really important, not trying to be a a-hole. On the job, a boss will, over time, feel like you are not following instructions and start thinking about firing you. I should know, because it has happened to me in the past. 
+ /*
 
 Steps for authentication:
   1. Go to the Firebase console(https://console.firebase.google.com/)

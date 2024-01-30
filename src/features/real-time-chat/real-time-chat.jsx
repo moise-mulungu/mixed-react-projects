@@ -58,8 +58,6 @@ export default function RealTimeChat() {
   const [typingUsers, setTypingUsers] = useState([])
   const [selectedUser, setSelectedUser] = useState(null)
   const [isProfileVisible, setProfileVisible] = useState(false)
-  //(done) DM: todoMM: remove super-obvious comments like this one. That line does not need commenting.
-
   const [loading, setLoading] = useState(true)
 
   // set up a real-time listener on the 'messages' collection Firestore database
@@ -228,34 +226,48 @@ export default function RealTimeChat() {
   */
 
   useEffect(() => {
-    //(done) DM: todoMM: avoid abbreviations in general, but specially avoid "Ref" as it can be confused with React Refs (it"s ok to use the abbreviation "Ref" with React refs because it is a common convention like "props")
+    //(done) DM: avoid abbreviations in general, but specially avoid "Ref" as it can be confused with React Refs (it"s ok to use the abbreviation "Ref" with React refs because it is a common convention like "props")
     const usersStatusReference = createDatabaseReference(database, 'status')
 
-    console.log('RealTimeChat listening to database changes at:', 'status')
+    // DM: search console on "RealTimeChat useEffect deps []" to see only the comments from this useEffect
+    console.log('RealTimeChat useEffect deps [] triggered')
 
     // DM: this is good, but it will only catch the 1 current user because it runs in the client where that user is logged in.
-    //() DM: todoMM: does this listener fire only when the user unsubscribes? or, why do you call it unsubscribe? what other events cause this listener to fire? MM: The unsubscribe function is returned by listenToDatabaseValueChanges. It's called unsubscribe because calling it will stop the listener from listening to changes in the database. The listener fires whenever there's a change in the 'status' node of the database. It doesn't fire when the users unsubscribes, but you call unsubscribe in the cleanup function of useEffect to stop listening to changes when the component unmounts. DM: ok, then rename it to something like unsubscribeFromListenToDatabaseValueChangesListener so it wont be confused with something like "unsubscribe from chat room" - note: code grows over time and unspecific file names cause confusion and bugs. MM: i renamed it stopListeningToStatusChanges for shortness and conciseness instead of unsubscribeFromListenToDatabaseValueChangesListener.
+    //() DM: does this listener fire only when the user unsubscribes? or, why do you call it unsubscribe? what other events cause this listener to fire? MM: The unsubscribe function is returned by listenToDatabaseValueChanges. It's called unsubscribe because calling it will stop the listener from listening to changes in the database. The listener fires whenever there's a change in the 'status' node of the database. It doesn't fire when the users unsubscribes, but you call unsubscribe in the cleanup function of useEffect to stop listening to changes when the component unmounts. DM: ok, then rename it to something like unsubscribeFromListenToDatabaseValueChangesListener so it wont be confused with something like "unsubscribe from chat room" - note: code grows over time and unspecific file names cause confusion and bugs. MM: i renamed it stopListeningToStatusChanges for shortness and conciseness instead of unsubscribeFromListenToDatabaseValueChangesListener. DM: yes, perfect
     const stopListeningToStatusChanges = listenToDatabaseValueChanges(
       usersStatusReference,
       (snapshot) => {
-        console.log('RealTimeChat database value changed:', snapshot.val())
+        console.log('RealTimeChat useEffect deps [] userStatusChanges:', snapshot.val())
         const updatedUsers = []
         // const updatedUsers = [...connectedUsers]
         snapshot.forEach((childSnapshot) => {
           const userStatus = childSnapshot.val()
-          console.log('RealTimeChat UserStatus:', userStatus)
-          console.log('RealTimeChat DisplayName on Connected Users: xxx', {
+          console.log('RealTimeChat useEffect deps [] userStatusChanges userStatus:', {
             userStatusDisplayName: userStatus.displayName,
             // DM: uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
             userStatusUid: userStatus.uid,
+            userStatusState: userStatus.state,
+            userStatus,
+            childSnapshot,
+            childSnapshotKey: childSnapshot.key,
           })
           if (userStatus.state === 'online') {
             const isUserAlreadyConnected = updatedUsers.some(
               (user) => user && user.uid === childSnapshot.key
             )
-            //(done) DM: todoMM: are you sure this works? I don't see any console.logs. If you used console.logs to validate isUserAlreadyConnected and userStatus.state, don't delete them, but comment them out so that I or you can use them in the future and also so that I know what you have already tried to debug this area. MM: i mentioned in the report file that the same user is till repeated many times in the connectedUsers array despite attempts to debug the code.
-            console.log('isUserAlreadyConnected:', isUserAlreadyConnected)
-            console.log('userStatus.state:', userStatus.state)
+            //(done) DM: todoMM: are you sure this works? I don't see any console.logs. If you used console.logs to validate isUserAlreadyConnected and userStatus.state, don't delete them, but comment them out so that I or you can use them in the future and also so that I know what you have already tried to debug this area. MM: i mentioned in the report file that the same user is till repeated many times in the connectedUsers array despite attempts to debug the code. DM: fine but you still need ocnsole.logs and detailed items should be here commented in the code not in the daily report. In any case "there is one only user listed many times on the list" is a general comment - how am I supposed to know where in the code that is? Ok to repeat things in code comments, but my main concern was no console.logs here which is obviously where in the code the issue is found.
+            // DM: todoMM: please follow my pattern by putting both variables in the same comment using an object for the 2nd console.log argument, because your console has so many logs it is hard to read. Also put searchable detail and context into the first log argument example:
+            console.log(
+              'RealTimeChat useEffect deps [] userStatusChanges userStatusState===online:',
+              {
+                isUserAlreadyConnected,
+                userStatusState: userStatus.state,
+                userStatus,
+                updatedUsers,
+              }
+            )
+            // console.log('isUserAlreadyConnected:', isUserAlreadyConnected)
+            // console.log('userStatus.state:', userStatus.state)
             if (!isUserAlreadyConnected) {
               updatedUsers.push({
                 uid: childSnapshot.key,
@@ -265,13 +277,21 @@ export default function RealTimeChat() {
             }
           }
         })
-        console.log('RealTimeChat updated users here:', updatedUsers)
+        console.log(
+          'RealTimeChat useEffect deps [] userStatusChanges about to setConnectedUsers():',
+          updatedUsers
+        )
         setConnectedUsers(updatedUsers)
       }
     )
 
     return () => stopListeningToStatusChanges()
   }, [])
+  // for debugging changes to connectedUsers
+  useEffect(() => {
+    // DM: I see 9 different users in connectedUsers so ...
+    console.log('RealTimeChat useEffect deps [connectedUsers]', { connectedUsers })
+  }, [connectedUsers])
 
   const onConnect = (user) => {
     if (!user || !user.uid) {
@@ -341,7 +361,11 @@ export default function RealTimeChat() {
         <div className="flex flex-col h-screen bg-gray-100 mx-2 md:mx-0">
           <Header className="h-10 md:h-10" />
           {isProfileVisible ? (
-            /*(done) DM: todoMM: you're not passing the selected user to the UserProfile, so it always shows the current user, not other users. MM: i removed the curly brackets because they were throwing eslint error, and if i replace setSelectedUser with selectedUser the code breaks. in the UserProfile component setSelectedUser is used in the handleUpdateProfile function, where setSelectedUser(null) is called after the user's profile is updated. it's likely indicating that there is no currently selected user after the profile update operation. that's why i kept it there.*/
+            /*(done) DM: todoMM: you're not passing the selected user to the UserProfile, so it always shows the current user, not other users. 
+            MM: i removed the curly brackets because they were throwing eslint error, and if i replace setSelectedUser with selectedUser the code breaks. in the UserProfile component setSelectedUser is used in the handleUpdateProfile function, where setSelectedUser(null) is called after the user's profile is updated. it's likely indicating that there is no currently selected user after the profile update operation. that's why i kept it there.
+            DM: ok. pass seletedUser if you want to show the profile in read-only mode, so that non-current users can see other users profile info. Optional, IMO. 
+            
+            */
             <UserProfile
               setSelectedUser={setSelectedUser}
               // selectedUser={selectedUser}
@@ -354,7 +378,7 @@ export default function RealTimeChat() {
                   <ChatBox
                     fetchUser={fetchUser}
                     // messages={messages}
-                    //(done) DM: todoMM: you changed the query to "desc" then you reversed that here. Why? MM: i reversed it because the messages were not displayed in the chatbox, so i thought it might be the issue, but it wasn't.
+                    //(done) DM: you changed the query to "desc" then you reversed that here. Why? MM: i reversed it because the messages were not displayed in the chatbox, so i thought it might be the issue, but it wasn't.
                     messages={[...messages]}
                     deleteMessage={deleteMessage}
                     currentUser={currentUser}
@@ -377,10 +401,11 @@ export default function RealTimeChat() {
 
                       {connectedUsers.map((user) => {
                         // DM: I put the console log above the !user guard clause so that I can see this console.log when user is undefined. That way, I can see how many of the users are undefined.
-                        // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet.
+                        // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you.
                         console.log('RealTimeChat real-time-chat/index.jsx ', {
                           user,
                           // DM: easier to read the console if you put all values you want to log into the same log statement
+                          // DM: user?.displayName is undefined
                           typeofUserDisplayname: typeof user?.displayName,
                           userDisplayname: user?.displayName,
                           connectedUsers, // DM: so I can see what is in connectedUsers

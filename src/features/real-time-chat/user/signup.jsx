@@ -68,7 +68,8 @@ export default function Signup({ handleSignup, error, toggleAuthenticationMode }
 }
 
 /*
-In order to fix the signup of a newly connected user, i :
+DM: todoMM: I don't understand what you are trying to fix. Your list below is good, but please state the problem in detail before listing your steps.
+ In order to fix the signup of a newly connected user, i :
   1. checked the diff commit of the Signup, User, and firebase config files
   2. checked the firebase console for the new user
   3. i tried to update the signup function in the firebase config file, but it didn't work
