@@ -59,7 +59,7 @@ export default function RealTimeChat() {
   const [selectedUser, setSelectedUser] = useState(null)
   const [isProfileVisible, setProfileVisible] = useState(false)
   //(done) DM: todoMM: remove super-obvious comments like this one. That line does not need commenting.
- 
+
   const [loading, setLoading] = useState(true)
 
   // set up a real-time listener on the 'messages' collection Firestore database
@@ -228,44 +228,49 @@ export default function RealTimeChat() {
   */
 
   useEffect(() => {
-    // DM: todoMM: avoid abbreviations in general, but specially avoid "Ref" as it can be confused with React Refs (it"s ok to use the abbreviation "Ref" with React refs because it is a common convention like "props")
-    const usersStatusRef = createDatabaseReference(database, 'status')
+    //(done) DM: todoMM: avoid abbreviations in general, but specially avoid "Ref" as it can be confused with React Refs (it"s ok to use the abbreviation "Ref" with React refs because it is a common convention like "props")
+    const usersStatusReference = createDatabaseReference(database, 'status')
 
     console.log('RealTimeChat listening to database changes at:', 'status')
 
     // DM: this is good, but it will only catch the 1 current user because it runs in the client where that user is logged in.
-    //() DM: todoMM: does this listener fire only when the user unsubscribes? or, why do you call it unsubscribe? what other events cause this listener to fire? MM: The unsubscribe function is returned by listenToDatabaseValueChanges. It's called unsubscribe because calling it will stop the listener from listening to changes in the database. The listener fires whenever there's a change in the 'status' node of the database. It doesn't fire when the users unsubscribes, but you call unsubscribe in the cleanup function of useEffect to stop listening to changes when the component unmounts. DM: ok, then rename it to something like unsubscribeFromListenToDatabaseValueChangesListener so it wont be confused with something like "unsubscribe from chat room" - note: code grows over time and unspecific file names cause confusion and bugs.
-    const unsubscribe = listenToDatabaseValueChanges(usersStatusRef, (snapshot) => {
-      console.log('RealTimeChat database value changed:', snapshot.val())
-      const updatedUsers = []
-      // const updatedUsers = [...connectedUsers]
-      snapshot.forEach((childSnapshot) => {
-        const userStatus = childSnapshot.val()
-        console.log('RealTimeChat UserStatus:', userStatus)
-        console.log('RealTimeChat DisplayName on Connected Users: xxx', {
-          userStatusDisplayName: userStatus.displayName,
-          // DM: uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
-          userStatusUid: userStatus.uid,
-        })
-        if (userStatus.state === 'online') {
-          const isUserAlreadyConnected = updatedUsers.some(
-            (user) => user && user.uid === childSnapshot.key
-          )
-          // DM: todoMM: are you sure this works? I dont see any console.logs. If you used console.logs to validate isUserAlreadyConnected and userStatus.state, don't delete them, but comment them out so that I or you can use them in the future and also so that I know what you have already tried to debug this area.
-          if (!isUserAlreadyConnected) {
-            updatedUsers.push({
-              uid: childSnapshot.key,
-              displayName: userStatus.displayName,
-              ...userStatus,
-            })
+    //() DM: todoMM: does this listener fire only when the user unsubscribes? or, why do you call it unsubscribe? what other events cause this listener to fire? MM: The unsubscribe function is returned by listenToDatabaseValueChanges. It's called unsubscribe because calling it will stop the listener from listening to changes in the database. The listener fires whenever there's a change in the 'status' node of the database. It doesn't fire when the users unsubscribes, but you call unsubscribe in the cleanup function of useEffect to stop listening to changes when the component unmounts. DM: ok, then rename it to something like unsubscribeFromListenToDatabaseValueChangesListener so it wont be confused with something like "unsubscribe from chat room" - note: code grows over time and unspecific file names cause confusion and bugs. MM: i renamed it stopListeningToStatusChanges for shortness and conciseness instead of unsubscribeFromListenToDatabaseValueChangesListener.
+    const stopListeningToStatusChanges = listenToDatabaseValueChanges(
+      usersStatusReference,
+      (snapshot) => {
+        console.log('RealTimeChat database value changed:', snapshot.val())
+        const updatedUsers = []
+        // const updatedUsers = [...connectedUsers]
+        snapshot.forEach((childSnapshot) => {
+          const userStatus = childSnapshot.val()
+          console.log('RealTimeChat UserStatus:', userStatus)
+          console.log('RealTimeChat DisplayName on Connected Users: xxx', {
+            userStatusDisplayName: userStatus.displayName,
+            // DM: uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
+            userStatusUid: userStatus.uid,
+          })
+          if (userStatus.state === 'online') {
+            const isUserAlreadyConnected = updatedUsers.some(
+              (user) => user && user.uid === childSnapshot.key
+            )
+            //(done) DM: todoMM: are you sure this works? I don't see any console.logs. If you used console.logs to validate isUserAlreadyConnected and userStatus.state, don't delete them, but comment them out so that I or you can use them in the future and also so that I know what you have already tried to debug this area. MM: i mentioned in the report file that the same user is till repeated many times in the connectedUsers array despite attempts to debug the code.
+            console.log('isUserAlreadyConnected:', isUserAlreadyConnected)
+            console.log('userStatus.state:', userStatus.state)
+            if (!isUserAlreadyConnected) {
+              updatedUsers.push({
+                uid: childSnapshot.key,
+                displayName: userStatus.displayName,
+                ...userStatus,
+              })
+            }
           }
-        }
-      })
-      console.log('RealTimeChat updated users here:', updatedUsers)
-      setConnectedUsers(updatedUsers)
-    })
+        })
+        console.log('RealTimeChat updated users here:', updatedUsers)
+        setConnectedUsers(updatedUsers)
+      }
+    )
 
-    return () => unsubscribe()
+    return () => stopListeningToStatusChanges()
   }, [])
 
   const onConnect = (user) => {
@@ -323,8 +328,8 @@ export default function RealTimeChat() {
   }
 
   useEffect(() => {
-    console.log('RealTimeChat connected users:', connectedUsers)
-  }, [connectedUsers])
+    console.log('RealTimeChat connected users:', connectedUsers) // MM: the console.log result is an empty array on the console, i think i'll make a pause on this task as it's a time-consuming one then i'll come back to this after completing the others.
+  }, [])
   //(done) DM: after you have put the user* files into a ./user directory (see todo in user.js), create a file named ./user/user-context-provider.jsx and extract user, setUser into that file. Then, import that file here and use it to wrap the User component here (and also in the top-level return statement). This way, you can keep all the user-related code in one place.
 
   //() DM: todoMM: use the same name in both files to avoid confusion. (I like onUserConnect. Don't worry about being concise - it is more important to be clear.) MM: i don't understand what name you are referring to here, is onConnect or something else, if it's onConnect, there is no other file where it has another name. DM: the idea is to use the same name in both files.
@@ -336,8 +341,12 @@ export default function RealTimeChat() {
         <div className="flex flex-col h-screen bg-gray-100 mx-2 md:mx-0">
           <Header className="h-10 md:h-10" />
           {isProfileVisible ? (
-            {/* DM: todoMM: you're not passing the selected user to the UserProfile, so it always shows the current user, not other users */}
-            <UserProfile setSelectedUser={setSelectedUser} setProfileVisible={setProfileVisible} />
+            /*(done) DM: todoMM: you're not passing the selected user to the UserProfile, so it always shows the current user, not other users. MM: i removed the curly brackets because they were throwing eslint error, and if i replace setSelectedUser with selectedUser the code breaks. in the UserProfile component setSelectedUser is used in the handleUpdateProfile function, where setSelectedUser(null) is called after the user's profile is updated. it's likely indicating that there is no currently selected user after the profile update operation. that's why i kept it there.*/
+            <UserProfile
+              setSelectedUser={setSelectedUser}
+              // selectedUser={selectedUser}
+              setProfileVisible={setProfileVisible}
+            />
           ) : (
             <div className="flex-1">
               <div className="flex flex-col md:flex-row flex-grow h-full md:h-full">
@@ -345,8 +354,8 @@ export default function RealTimeChat() {
                   <ChatBox
                     fetchUser={fetchUser}
                     // messages={messages}
-                    // DM: todoMM: you changed the query to "desc" then you reversed that here. Why?
-                    messages={[...messages].reverse()}
+                    //(done) DM: todoMM: you changed the query to "desc" then you reversed that here. Why? MM: i reversed it because the messages were not displayed in the chatbox, so i thought it might be the issue, but it wasn't.
+                    messages={[...messages]}
                     deleteMessage={deleteMessage}
                     currentUser={currentUser}
                   />
@@ -368,7 +377,7 @@ export default function RealTimeChat() {
 
                       {connectedUsers.map((user) => {
                         // DM: I put the console log above the !user guard clause so that I can see this console.log when user is undefined. That way, I can see how many of the users are undefined.
-                        // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me.
+                        // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet.
                         console.log('RealTimeChat real-time-chat/index.jsx ', {
                           user,
                           // DM: easier to read the console if you put all values you want to log into the same log statement
@@ -393,9 +402,10 @@ export default function RealTimeChat() {
                             key={user?.uid} // i added this because each user should be unique
                             className="flex justify-between items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
                             onClick={() => {
-                              setSelectedUser(user)
-                              // DM: todoMM: should the current user be able to edit other users? I think you would only allow a click for the current user. If you decide to allow the current user to click on the other users in order to view information about other users, then in that case the UserProfile should be in a "read only" mode, so that the current user cannot edit the profile of other users.
-                              setProfileVisible(true)
+                              if (user.uid !== currentUser.uid) {
+                                setSelectedUser(user)
+                                // DM: todoMM: should the current user be able to edit other users? I think you would only allow a click for the current user. If you decide to allow the current user to click on the other users in order to view information about other users, then in that case the UserProfile should be in a "read only" mode, so that the current user cannot edit the profile of other users. MM: I i added a condition in the onClick handler to only allow the current user to view their own profile, but the code doesn't work.                                setProfileVisible(true)
+                              }
                             }}
                           >
                             <div className="flex items-center">
