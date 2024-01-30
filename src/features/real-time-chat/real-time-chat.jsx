@@ -58,8 +58,8 @@ export default function RealTimeChat() {
   const [typingUsers, setTypingUsers] = useState([])
   const [selectedUser, setSelectedUser] = useState(null)
   const [isProfileVisible, setProfileVisible] = useState(false)
-  // DM: todoMM: remove super-obvious comments like this one. That line does nto need commenting.
-  // Add a new state variable for loading
+  //(done) DM: todoMM: remove super-obvious comments like this one. That line does not need commenting.
+ 
   const [loading, setLoading] = useState(true)
 
   // set up a real-time listener on the 'messages' collection Firestore database
