@@ -70,6 +70,7 @@ export const signup = (
   password
   // displayName
 ) => {
+  // DM: createUserWithEmailAndPassword takes "positional parameters". You can see info about createUserWithEmailAndPassword by hovering over it in VSCode while holding down the control button. You'll see that the 3rd (and last) parameter is password. Firebase may have a createUserWithEmailUsernameAndPassword, but "username" typically is just like any other data, so you'd probably store username to the user table in the database here in a separate firebase command after creating the user.
   return createUserWithEmailAndPassword(auth, email, username, password)
   // .then((userCredential) => {
   //   // Set the displayName

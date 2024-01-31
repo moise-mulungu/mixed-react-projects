@@ -227,6 +227,7 @@ After all the above changes, the bug was still there. i went file after file by 
 */
 
 /*
+howtogit:: bisect
 Bisect debugging process after pushing the latest commit, i run the following commands:
   1. git bisect start(this command starts the bisect process)
   2. git bisect bad(this command marks the current state as bad. it means that the bug is present in the current state)
@@ -235,4 +236,6 @@ Bisect debugging process after pushing the latest commit, i run the following co
   5. to test this code, i found the commit where both messages and user-profile worked. here is the command and the commit hash:  git checkout 88295b3399ebdd4fa20c71d6621c4fe402d96372
   6. to revert back to the latest commit, run this command: git checkout development(this command checks out the development branch)
 After finding the commit diff, i will continue with the debugging process tomorrow.
+
+DM: good detail
 */

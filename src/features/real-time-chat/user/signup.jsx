@@ -68,8 +68,9 @@ export default function Signup({ handleSignup, error, toggleAuthenticationMode }
 }
 
 /*
-(done)DM: todoMM: I don't understand what you are trying to fix. Your list below is good, but please state the problem in detail before listing your steps. MM: this assignment frpom the official-ux-review file: bug - upon new signup, the display name is empty, so any messages the user types is not shown in the messages list. Solution: upon signup, automatically populate displayName with username from the signup form
+(done)DM: todoMM: I don't understand what you are trying to fix. Your list below is good, but please state the problem in detail before listing your steps. MM: this assignment frpom the official-ux-review file: bug - upon new signup, the display name is empty, so any messages the user types is not shown in the messages list. Solution: upon signup, automatically populate displayName with username from the signup form DM: ok, good, just add that to the top of your list going forward
  In order to fix the signup of a newly connected user, i :
+  0. bug to fix: display name empty upon new signup
   1. checked the diff commit of the Signup, User, and firebase config files
   2. checked the firebase console for the new user
   3. i tried to update the signup function in the firebase config file, but it didn't work

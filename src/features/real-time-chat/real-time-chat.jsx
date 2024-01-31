@@ -389,7 +389,7 @@ export default function RealTimeChat() {
             */
             <UserProfile
               setSelectedUser={setSelectedUser}
-              // selectedUser={selectedUser}
+              selectedUser={selectedUser}
               setProfileVisible={setProfileVisible}
             />
           ) : (
@@ -422,7 +422,9 @@ export default function RealTimeChat() {
 
                       {connectedUsers.map((user) => {
                         // DM: I put the console log above the !user guard clause so that I can see this console.log when user is undefined. That way, I can see how many of the users are undefined.
-                        // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you.
+                        {
+                          /* // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you. */
+                        }
                         console.log('RealTimeChat real-time-chat/index.jsx ', {
                           user,
                           // DM: easier to read the console if you put all values you want to log into the same log statement
@@ -448,9 +450,15 @@ export default function RealTimeChat() {
                             key={user?.uid} // i added this because each user should be unique
                             className="flex justify-between items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
                             onClick={() => {
+                              console.log('connectedUser clicked', { user, currentUser })
                               if (user.uid !== currentUser.uid) {
+                                console.log(
+                                  'connectedUser clicked and user.uid !== currentUser.uid',
+                                  { user, currentUser }
+                                )
                                 setSelectedUser(user)
-                                // DM: todoMM: should the current user be able to edit other users? I think you would only allow a click for the current user. If you decide to allow the current user to click on the other users in order to view information about other users, then in that case the UserProfile should be in a "read only" mode, so that the current user cannot edit the profile of other users. MM: I i added a condition in the onClick handler to only allow the current user to view their own profile, but the code doesn't work.                                setProfileVisible(true)
+                                // DM: todoMM: should the current user be able to edit other users? I think you would only allow a click for the current user. If you decide to allow the current user to click on the other users in order to view information about other users, then in that case the UserProfile should be in a "read only" mode, so that the current user cannot edit the profile of other users. MM: I i added a condition in the onClick handler to only allow the current user to view their own profile, but the code doesn't work.
+                                setProfileVisible(true)
                               }
                             }}
                           >
