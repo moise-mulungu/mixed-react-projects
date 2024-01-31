@@ -2,6 +2,7 @@ import { useState, useContext, useEffect, useRef } from 'react'
 import { UserContext } from './user/user-context-provider'
 import { addDoc, collection, getDoc, getDocs, updateDoc, doc } from 'firebase/firestore'
 import db from './firebase'
+import { getAuth } from 'firebase/auth'
 //(done) DM: todoMM: don't import the entire lodash, just import the throttle function. This will reduce the size of the bundle.
 import { throttle } from 'lodash' // for throttling
 
@@ -75,7 +76,14 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    if (!user.user?.displayName) {
+
+    const auth = getAuth()
+    if (!auth.currentUser) {
+      console.log('User is not authenticated')
+      return
+    }
+
+    if (!user?.displayName) {
       //(done) DM: explore the user object in the browser console and find out where the displayName is. In general, always log variables so that you can inspect their contents.
       console.error('User or user.displayName is undefined', { user })
       // onAuthenticate(false)
@@ -115,6 +123,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
   */
 
   const handleInputChange = (e) => {
+    console.log('Form submitted')
     setMessage(e.target.value)
     //(done) DM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
     const isInputFieldNotEmpty = e.target.value !== ''
@@ -174,6 +183,9 @@ export default function MessageInput({ onSendMessage, onTyping }) {
   }
 
   const user = useContext(UserContext)
+  console.log({ user })
+  console.log(user.displayName)
+
   const rows = message.split('\n').length
 
   /* 
@@ -184,6 +196,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
   */
   // verify if the onTyping function is being passed correctly as a prop to the MessageInput component
   console.log('onTyping prop:', onTyping)
+  console.log('Is the user sending a message?:', user)
   return (
     <form onSubmit={handleSubmit} className="flex flex-col h-full border-t-2 border-purple-300 p-4">
       <textarea

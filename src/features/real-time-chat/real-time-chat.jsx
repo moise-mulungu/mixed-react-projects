@@ -293,44 +293,63 @@ export default function RealTimeChat() {
     console.log('RealTimeChat useEffect deps [connectedUsers]', { connectedUsers })
   }, [connectedUsers])
 
-  const onConnect = (user) => {
-    if (!user || !user.uid) {
-      console.error('Invalid user object:', user)
-      return
-    }
-    // DM: if I filter the browser console on RealTimeChat onConnect, I see that this log happens only once. If I click on each item in Connected Users list, it is the same user. Think about where/when this code runs. This runs in the client, and is passed the "user" parameter. but, because it runs in the client, how can it know about other connected users? MM: The onConnect function is called with a user object. It updates the connectedUsers state to include the user if they're not already in the list. It doesn't need to know about other connected users because it's only concerned with adding the user to the list. The list of all connected users is maintained in the connectedUsers state, which is updated by the useEffect hook whenever there's a change in the 'status' node of the database.
-    console.log('RealTimeChat onConnect function called with:', user)
-
-    // setConnectedUsers((prevUsers) => {
-    //   const isUserAlreadyConnected = prevUsers.some((prevUser) => prevUser.uid === user.uid)
-
-    //   //(done) DM: todoMM: as you clean up the code, remove obvious comments that AI adds. Also remove comments that become unnecessary because you have renamed variables to be more descriptive.
-
-    //   if (isUserAlreadyConnected) {
-    //     return prevUsers
-    //   }
-    //   const updatedUsers = [user, ...prevUsers]
-
-    //   console.log('RealTimeChat Connected users:', updatedUsers)
-
-    //   return updatedUsers
-    // })
-
+  const handleUserConnect = (user) => {
     const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
 
     setDatabaseValue(userStatusDatabaseRef, {
       state: 'online',
       last_changed: serverTimestamp(),
     })
-
-    setIsAuthenticated(true)
-
-    // Add the connected user to the connectedUsers state
+    // new function to handle user connection
+    //(done) DM: always use the function form of the setter, not the object form. This is because the function form is guaranteed to have the latest state, whereas the object form may not. (This is because the object form is a shortcut that React provides, but it is not guaranteed to have the latest state.)
+    // setConnectedUsers([...connectedUsers, user])
     setConnectedUsers((previousUsers) => {
+      // const updatedUsers = [...previousUsers, user]
       const updatedUsers = [user, ...previousUsers.filter((u) => u.uid !== user.uid)]
+      //(done) DM: don't set another state variable in the setter of a state variable. You are setting the same state var below. What is the reason to set it here?
       return updatedUsers
     })
+    setIsAuthenticated(true)
   }
+
+  // const onConnect = (user) => {
+  //   if (!user || !user.uid) {
+  //     console.error('Invalid user object:', user)
+  //     return
+  //   }
+  //   // DM: if I filter the browser console on RealTimeChat onConnect, I see that this log happens only once. If I click on each item in Connected Users list, it is the same user. Think about where/when this code runs. This runs in the client, and is passed the "user" parameter. but, because it runs in the client, how can it know about other connected users? MM: The onConnect function is called with a user object. It updates the connectedUsers state to include the user if they're not already in the list. It doesn't need to know about other connected users because it's only concerned with adding the user to the list. The list of all connected users is maintained in the connectedUsers state, which is updated by the useEffect hook whenever there's a change in the 'status' node of the database.
+  //   console.log('RealTimeChat onConnect function called with:', user)
+
+  //   // setConnectedUsers((prevUsers) => {
+  //   //   const isUserAlreadyConnected = prevUsers.some((prevUser) => prevUser.uid === user.uid)
+
+  //   //   //(done) DM: todoMM: as you clean up the code, remove obvious comments that AI adds. Also remove comments that become unnecessary because you have renamed variables to be more descriptive.
+
+  //   //   if (isUserAlreadyConnected) {
+  //   //     return prevUsers
+  //   //   }
+  //   //   const updatedUsers = [user, ...prevUsers]
+
+  //   //   console.log('RealTimeChat Connected users:', updatedUsers)
+
+  //   //   return updatedUsers
+  //   // })
+
+  //   const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
+
+  //   setDatabaseValue(userStatusDatabaseRef, {
+  //     state: 'online',
+  //     last_changed: serverTimestamp(),
+  //   })
+
+  //   setIsAuthenticated(true)
+
+  //   // Add the connected user to the connectedUsers state
+  //   setConnectedUsers((previousUsers) => {
+  //     const updatedUsers = [user, ...previousUsers.filter((u) => u.uid !== user.uid)]
+  //     return updatedUsers
+  //   })
+  // }
 
   const onAuthenticate = (isAuthenticated) => {
     setIsAuthenticated(isAuthenticated)
@@ -356,7 +375,9 @@ export default function RealTimeChat() {
   //(done) DM: add some horizontal margin so that the purple box is not flush against the left edge of the screen. Otherwise, looks good.
   return (
     <>
-      {!isAuthenticated && <User onConnect={onConnect} onAuthenticate={onAuthenticate} />}
+      {!isAuthenticated && (
+        <User handleUserConnect={handleUserConnect} onAuthenticate={onAuthenticate} />
+      )}
       {isAuthenticated && (
         <div className="flex flex-col h-screen bg-gray-100 mx-2 md:mx-0">
           <Header className="h-10 md:h-10" />

@@ -1,8 +1,11 @@
 // user/user-context-provider.jsx
 import React, { createContext, useState, useEffect } from 'react'
-import { auth, database } from '@/features/real-time-chat/firebase' // import your Firebase auth object
+import {
+  auth,
+  // database
+} from '@/features/real-time-chat/firebase' // import your Firebase auth object
 import LinearProgress from '@material-ui/core/LinearProgress'
-import { ref, set, serverTimestamp } from 'firebase/database'
+// import { ref, set, serverTimestamp } from 'firebase/database'
 
 export const UserContext = createContext()
 
@@ -17,17 +20,17 @@ export default function UserContextProvider({ children }) {
       setUser(firebaseUser)
       setLoading(false)
       // Update the user's status in the Firebase database
-      if (firebaseUser) {
-        // User is signed in, set their status in the database
-        set(ref(database, '/status/' + firebaseUser.uid), {
-          state: 'online',
-          last_changed: serverTimestamp(),
-          displayName: firebaseUser.displayName,
-        })
-      } else if (firebaseUser === null) {
-        // User is signed out, remove their status from the database
-        // Here we don't have a firebaseUser.uid, so we can't remove a specific user's status
-      }
+      // if (firebaseUser) {
+      //   // User is signed in, set their status in the database
+      //   set(ref(database, '/status/' + firebaseUser.uid), {
+      //     state: 'online',
+      //     last_changed: serverTimestamp(),
+      //     displayName: firebaseUser.displayName,
+      //   })
+      // } else if (firebaseUser === null) {
+      //   // User is signed out, remove their status from the database
+      //   // Here we don't have a firebaseUser.uid, so we can't remove a specific user's status
+      // }
     })
 
     return unsubscribe

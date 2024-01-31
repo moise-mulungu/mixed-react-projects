@@ -9,9 +9,9 @@ import Signup from './signup'
 
 // todoDM: example for lesson on hoisting, const not hoisted, function declarations are hoisted
 // DM: let's get back to function declarations not arrow functions for the main function in a file. It is a more self-documenting that way.(ok)
-export default function User({ onAuthenticate, onConnect }) {
+export default function User({ onAuthenticate, handleUserConnect }) {
   // Inside the User component
-  console.log('User props:', onAuthenticate, onConnect)
+  console.log('User props:', onAuthenticate, handleUserConnect)
 
   const [error, setError] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(true)
@@ -26,7 +26,7 @@ export default function User({ onAuthenticate, onConnect }) {
         // User is signed in
         setUser(user)
         onAuthenticate()
-        onConnect(user)
+        handleUserConnect(user)
       } else {
         // User is signed out
         setUser(null)
@@ -48,7 +48,7 @@ export default function User({ onAuthenticate, onConnect }) {
         setUser(user)
         // ...
         onAuthenticate()
-        onConnect(user) // call onConnect when a user logs in
+        handleUserConnect(user) // call handleUserConnect when a user logs in
       })
       .catch((error) => {
         const errorMessage = error.message
@@ -87,7 +87,7 @@ export default function User({ onAuthenticate, onConnect }) {
             setUser(user)
             setIsLoggedIn(true)
             onAuthenticate()
-            onConnect(user) // call onConnect when a user logs in
+            handleUserConnect(user) // call handleUserConnect when a user logs in
           })
           .catch((error) => {
             console.error('Error updating display name', error)
@@ -177,5 +177,53 @@ DM: RE secrets in the env file: see my new note in the firebase.js file
 DM: RE real-time messaging in your comment above: the point of my last message in the same line is I need specific instructions about what to uncomment. There is a ton of code commented in this file. Either give me exact instructions to reproduce your issue, or push the code in the broken state (which we usually avoid, but if you call it out for the purpose of me helping debug it is ok. There is nothing wrong with what you are coding and debugging, it is just how you are communicating to me that was my difficulty yesterday. So, before you you commit, look at the diff of your today's changes, and  imagine me reading the diff and your comments, and ask yourself, will I know what to do to reproduce the issue? Make it "easy" for me to help you. Clear communication takes work and practice, but it is worth practicing as you'll need in on the job.(MM: i understand. i will try to be more specific in my comments. i will try to push the code in the broken state.)
 
 DM: todays bugs looks like it was difficult to figure out. One possible approach: the reason I had you do the codesandbox exercise, is you can try to implement just the part that is breaking (the login/signup?) in a new clean NextJS project, and once you have it working there, it will be easier to see what is different in your chat project and get clues as to why it is not working. It is your decision. If not, maybe if you leave the code in the broken state, I can see what you tried and get clues as to what is wrong. Definitely look closer at the error object and try to determine from all the details there what went wrong, including google the error messages you get. 
+
+*/
+
+/*
+I started debugging the code to fix the "bug - upon new signup, the display name is empty, so any messages the user types is not shown in the messages list. Solution: upon signup, automatically populate displayName with username from the signup for" bug, i did the following: 
+  1. in the MessageInput component: 
+    - i added the authentication check in the handleSubmit function before trying to access user.user.displayName. This is to make sure that the user is authenticated before they can send a message
+    - i added the user.user.displayName in the handleSubmit function to be passed as a prop to the sendMessage function
+    - i added console.log to the handleSubmit function to check if the auth.currentUser is null or not
+
+  2. in the RealTimeChat component:
+    - i reverted the handleUserConnect function in replace of the onConnect function and passed it as a prop to the MessageInput component and to the useEffect where onConnect was called
+
+  3. in the firebase.js file:
+    - i modified the signup function from its previous state by adding the username parameter to the signup function
+
+  4. in the User context provider:
+    - i removed the condition that updates the user's status in the Firebase database upon signup
+
+After all the above changes, the bug was still there. i went file after file by checking each file's history to see what i have changed, unfortunately i could not find the bug.
+
+  5. I searched on "What is the git command to help trace a bug?", i found this resources about git bisect: https://git-scm.com/docs/git-bisect which provided steps:
+    1. git bisect start
+    2. git bisect bad
+    3. git bisect good <commit>
+    4. git bisect run <command>
+    5. git bisect reset
+
+  6. I also ask for AI suggestions, i got this:
+
+    git bisect is a powerful tool for finding the commit that introduced a bug. Here's a step-by-step guide on how to use it:
+
+      1. Start the bisect process: Run git bisect start to start the bisect process.
+
+      2. Mark the current state as bad: If the bug is present in your current state, run git bisect bad to mark it as bad.
+
+      3. Find a good commit: You need to find a commit where the bug was not present. This could be a commit from a few days ago or a week ago, depending on when you last remember the code working. Once you've found a good commit, check it out with git checkout <commit-hash>, replace <commit-hash> with the actual commit hash. Test your code to make sure the bug is not present. If the bug is not present, mark this commit as good with git bisect good.
+
+      4. Let git bisect do its magic: Git will now checkout a commit halfway between the known good and bad commits. Test your code. If the bug is present, run git bisect bad. If the bug is not present, run git bisect good. Git will continue to checkout commits halfway between the known good and bad commits until it finds the commit that introduced the bug.
+
+      5. End the bisect process: Once git has found the commit that introduced the bug, it will display the commit hash. You can then use git show <commit-hash> to see the changes made in that commit. When you're done, run git bisect reset to end the bisect process and return to your original head.
+
+    Remember, git bisect is a binary search algorithm, so it's most effective when the good and bad commits are relatively far apart. If the good and bad commits are too close together, you might need to manually look through the commit history to find the bug.
+
+  7. when i tried to run the git bisect start command, i got this error: Already on 'development' Your branch is ahead of 'origin/development' by 1 commit. (use "git push" to publish your local commits)
+  8. as i had an uncommitted changes in my working directory, and Git bisect requires a clean working directory, i committed the changes before starting with the git bisect process.
+
+
 
 */

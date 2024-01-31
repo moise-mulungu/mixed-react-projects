@@ -66,10 +66,11 @@ export const auth = getAuth()
 // Export the auth object and the authentication functions
 export const signup = (
   email,
+  username,
   password
   // displayName
 ) => {
-  return createUserWithEmailAndPassword(auth, email, password)
+  return createUserWithEmailAndPassword(auth, email, username, password)
   // .then((userCredential) => {
   //   // Set the displayName
   //   return userCredential.user
