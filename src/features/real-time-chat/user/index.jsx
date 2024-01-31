@@ -224,6 +224,15 @@ After all the above changes, the bug was still there. i went file after file by 
   7. when i tried to run the git bisect start command, i got this error: Already on 'development' Your branch is ahead of 'origin/development' by 1 commit. (use "git push" to publish your local commits)
   8. as i had an uncommitted changes in my working directory, and Git bisect requires a clean working directory, i committed the changes before starting with the git bisect process.
 
+*/
 
-
+/*
+Bisect debugging process after pushing the latest commit, i run the following commands:
+  1. git bisect start(this command starts the bisect process)
+  2. git bisect bad(this command marks the current state as bad. it means that the bug is present in the current state)
+  3. git log (this command shows the commit history, here you'll have manually to find the commit where the bug was not present. This could be a commit from a few days ago or a week ago, depending on when you last remember the code working)
+  4. git bisect good <commit-hash>(this command marks the commit as good. it means that the bug is not present in this commit). once you run this command, git will now checkout a commit halfway between the known good and bad commits. 
+  5. to test this code, i found the commit where both messages and user-profile worked. here is the command and the commit hash:  git checkout 88295b3399ebdd4fa20c71d6621c4fe402d96372
+  6. to revert back to the latest commit, run this command: git checkout development(this command checks out the development branch)
+After finding the commit diff, i will continue with the debugging process tomorrow.
 */
