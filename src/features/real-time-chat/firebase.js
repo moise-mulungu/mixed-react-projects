@@ -86,7 +86,7 @@ export const signup = (
   // })
 }
 
-// DM: fine but make your changes in the above code, rather than starting over. It is much easier to see the diff and you can still revert easily. I'll show you how by commenting out this code and editing the above previous version
+// DM: fine but make your changes in the above code, rather than starting over. It is much easier to see the diff and you can still revert easily. I'll show you how by commenting out this code and editing the above previous version(ok)
 // export const signup = (email, password) => {
 //   return createUserWithEmailAndPassword(auth, email, password)
 // }
