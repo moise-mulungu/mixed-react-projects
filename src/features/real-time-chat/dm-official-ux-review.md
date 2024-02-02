@@ -5,10 +5,6 @@
   * DM: Moise will give an "effort" number for each item: 1-3, 3 being highest amount of time/work needed (is it "hard" or a "quickie")
 * DM: sort these putting the ones you'll do first at the top. Sort by the impact/effort ratio. If impact is 3 and effort is 1, that goes first, then impact 3, effort 2, ...
 bp DM: if I put a new item here, always put the Effort and add any comments, discussion, questions that you may have
-  
-## Reverse sort the messages so that the newest message is at the top
-Impact 3 Cannot see new messages
-Effort 2 - this process can be done in the firebase store. i am not sure how difficult it will be, but i think Effort 2 is appropriate.
 
 ## bug - upon new signup, the display name is empty, so any messages the user types is not shown in the messages list. Solution: upon signup, automatically populate displayName with username from the signup form
 Impact 3 
@@ -16,6 +12,10 @@ Effort TBD while we discuss
 * MM:j there is something that i don't understand here, username vs displayName, when signing up the form requires email, username/displayName and password. when you mentioned "automatically populate displayName with username from the signup form". i understand that i need to use autofill for displayName on the username field? right? (DM: no, the browser handles autofill, not you). I know you always tell me when communicating to not "make you think", but this one makes me think as well. i am sorry for addressing myself this way to my tech lead (may be it's not appropriate) DM: it is appropriate to bring it up and discuss in detail as you did - all Western leads want communication open, and they will actually penalize you if you DONT bring up when lead makes a mistake/miscalculation. I was asked what I would do in this scenario during an interview once. The correct answer was I would constructive-criticism-like bring up the issue to the lead.
 * DM: yeah, my solution may not have made sense. The main problem is that when I signed up, then submitted my first message, there was no display name, it was blank. So, you should signup as a new user then make a post to see if you can reproduce the error, then discuss what you found here.
 * MM: yeah, that makes sense, i understand now what to do next when there is a misunderstanding on a certain level.
+
+## Reverse sort the messages so that the newest message is at the top
+Impact 3 Cannot see new messages
+Effort 2 - this process can be done in the firebase store. i am not sure how difficult it will be, but i think Effort 2 is appropriate.
 
 MM: this could constitute a separate task as the "typing users" above is complete. i updated the task as well.
 ## List all the connected users in the main app page and the user who posted the most recently message could be at the top of the connected users list.
