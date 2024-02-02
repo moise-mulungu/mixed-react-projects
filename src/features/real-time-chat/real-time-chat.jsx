@@ -235,7 +235,7 @@ export default function RealTimeChat() {
     // DM: this is good, but it will only catch the 1 current user because it runs in the client where that user is logged in.
     //() DM: does this listener fire only when the user unsubscribes? or, why do you call it unsubscribe? what other events cause this listener to fire? MM: The unsubscribe function is returned by listenToDatabaseValueChanges. It's called unsubscribe because calling it will stop the listener from listening to changes in the database. The listener fires whenever there's a change in the 'status' node of the database. It doesn't fire when the users unsubscribes, but you call unsubscribe in the cleanup function of useEffect to stop listening to changes when the component unmounts. DM: ok, then rename it to something like unsubscribeFromListenToDatabaseValueChangesListener so it wont be confused with something like "unsubscribe from chat room" - note: code grows over time and unspecific file names cause confusion and bugs. MM: i renamed it stopListeningToStatusChanges for shortness and conciseness instead of unsubscribeFromListenToDatabaseValueChangesListener. DM: yes, perfect
     const stopListeningToStatusChanges = listenToDatabaseValueChanges(
-      usersStatusReference,
+      usersStatusReference, // DM: 3. this database reference must not contain the displayName
       (snapshot) => {
         console.log('RealTimeChat useEffect deps [] userStatusChanges:', snapshot.val())
         const updatedUsers = []
@@ -243,7 +243,7 @@ export default function RealTimeChat() {
         snapshot.forEach((childSnapshot) => {
           const userStatus = childSnapshot.val()
           console.log('RealTimeChat useEffect deps [] userStatusChanges userStatus:', {
-            userStatusDisplayName: userStatus.displayName,
+            userStatusDisplayName: userStatus.displayName, // DM: 2. this is undefined
             // DM: uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
             userStatusUid: userStatus.uid,
             userStatusState: userStatus.state,
@@ -429,8 +429,9 @@ export default function RealTimeChat() {
                           user,
                           // DM: easier to read the console if you put all values you want to log into the same log statement
                           // DM: user?.displayName is undefined
-                          typeofUserDisplayname: typeof user?.displayName,
+                          typeofUserDisplayname: typeof user?.displayName, // DM: 1a. this is undefined
                           userDisplayname: user?.displayName,
+                          userUid: user?.uid, // DM: 1b. this looks correct
                           connectedUsers, // DM: so I can see what is in connectedUsers
                         })
                         if (!user) {

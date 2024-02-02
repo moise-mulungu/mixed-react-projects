@@ -15,7 +15,8 @@ Effort TBD while we discuss
 
 ## Reverse sort the messages so that the newest message is at the top
 Impact 3 Cannot see new messages
-Effort 2 - this process can be done in the firebase store. i am not sure how difficult it will be, but i think Effort 2 is appropriate.
+Effort 1 - this process can be done in the firebase store. i am not sure how difficult it will be, but i think Effort 2 is appropriate.
+  * changing to 1 because the [...array].reverse() approach works, or you can have the data base return provide them in the reversed order.
 
 MM: this could constitute a separate task as the "typing users" above is complete. i updated the task as well.
 ## List all the connected users in the main app page and the user who posted the most recently message could be at the top of the connected users list.
