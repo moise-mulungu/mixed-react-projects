@@ -17,6 +17,7 @@ Effort TBD while we discuss
 Impact 3 Cannot see new messages
 Effort 1 - this process can be done in the firebase store. i am not sure how difficult it will be, but i think Effort 2 is appropriate.
   * changing to 1 because the [...array].reverse() approach works, or you can have the data base return provide them in the reversed order.
+  * MM: i tried before with [...array].reverse() but it didn't work, the solution will be to update the firebase database store which is a bit tricky, so the Effort 2 would be appropriate for this challenge, not 1.
 
 MM: this could constitute a separate task as the "typing users" above is complete. i updated the task as well.
 ## List all the connected users in the main app page and the user who posted the most recently message could be at the top of the connected users list.
