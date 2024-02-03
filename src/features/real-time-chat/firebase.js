@@ -66,26 +66,12 @@ export const auth = getAuth()
 // Export the auth object and the authentication functions
 export const signup = (
   email,
-  username,
+  // username, i commented out username because it is not a parameter of createUserWithEmailAndPassword
   password
   // displayName
 ) => {
   // DM: createUserWithEmailAndPassword takes "positional parameters". You can see info about createUserWithEmailAndPassword by hovering over it in VSCode while holding down the control button. You'll see that the 3rd (and last) parameter is password. Firebase may have a createUserWithEmailUsernameAndPassword, but "username" typically is just like any other data, so you'd probably store username to the user table in the database here in a separate firebase command after creating the user.(ok)
-  return createUserWithEmailAndPassword(auth, email, username, password)
-  // .then((userCredential) => {
-  //   // Set the displayName
-  //   return userCredential.user
-  //     .updateProfile({
-  //       displayName: displayName,
-  //     })
-  //     .then(() => {
-  //       // Reload the user to get the latest data
-  //       return userCredential.user.reload().then(() => {
-  //         // Re-fetch the current user
-  //         return auth.currentUser
-  //       })
-  //     })
-  // })
+  return createUserWithEmailAndPassword(auth, email, password)
 }
 
 // DM: fine but make your changes in the above code, rather than starting over. It is much easier to see the diff and you can still revert easily. I'll show you how by commenting out this code and editing the above previous version(ok)

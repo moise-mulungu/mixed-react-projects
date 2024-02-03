@@ -83,7 +83,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
       return
     }
 
-    if (!user?.displayName) {
+    if (!user.user?.displayName) {
       //(done) DM: explore the user object in the browser console and find out where the displayName is. In general, always log variables so that you can inspect their contents.
       console.error('User or user.displayName is undefined', { user })
       // onAuthenticate(false)

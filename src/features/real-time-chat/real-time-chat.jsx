@@ -95,10 +95,16 @@ export default function RealTimeChat() {
   useEffect(() => {
     console.log('RealTimeChat useEffect hook executed') // to check if the useEffect hook is executed
     const q = query(collection(db, 'messages'), orderBy('timestamp', 'desc'))
-    const unsubscribeFirestore = onSnapshot(q, (snapshot) => {
+    const unsubscribeFirestore = onSnapshot(q, async (snapshot) => {
       const messages = []
+      // for (const doc of snapshot.docs) {
+      //   const messageData = doc.data()
+      //   const userExists = await fetchUser(messageData.uid)
+      //   if (userExists) {
+      //     messages.push({ id: doc.id, ...messageData })
+      //   }
+      // }
       snapshot.forEach((doc) => {
-        // adding an id for each message
         messages.push({ id: doc.id, ...doc.data() })
       })
       setMessages(messages)
@@ -116,8 +122,13 @@ export default function RealTimeChat() {
       return listenToDatabaseValueChanges(userStatusRef, (snapshot) => {
         const status = snapshot.val()
         if (status) {
-          console.log(`User ${user.uid} is ${status.state}`)
+          // const userExists = await fetchUser(user.uid)
+          // if (userStatus.state === 'online' && userExists) {
+          //   // your code here
+          //   console.log(`User ${user.uid} is ${status.state}`)
+          // }
           // Here you can update your state or UI based on the user's status
+          console.log('RealTimeChat User status:', { user, status })
         }
       })
     })
@@ -167,6 +178,16 @@ export default function RealTimeChat() {
     const userRef = doc(db, 'users', uid)
     const userSnapshot = await getDoc(userRef)
     if (userSnapshot.exists()) {
+      // const userData = userSnapshot.data()
+      // if (
+      //   userData &&
+      //   userData.propertyName &&
+      //   typeof userData.propertyName === 'string' &&
+      //   userData.propertyName.indexOf('searchString') !== -1
+      // ) {
+      //   // do something
+      // }
+      // return userData
       return userSnapshot.data()
     } else {
       console.error('User does not exist:', uid)
@@ -251,7 +272,10 @@ export default function RealTimeChat() {
             childSnapshot,
             childSnapshotKey: childSnapshot.key,
           })
-          if (userStatus.state === 'online') {
+          if (
+            userStatus.state === 'online'
+            // && userExists
+          ) {
             const isUserAlreadyConnected = updatedUsers.some(
               (user) => user && user.uid === childSnapshot.key
             )
@@ -271,7 +295,7 @@ export default function RealTimeChat() {
             if (!isUserAlreadyConnected) {
               updatedUsers.push({
                 uid: childSnapshot.key,
-                displayName: userStatus.displayName,
+                // displayName: userStatus.displayName,
                 ...userStatus,
               })
             }
@@ -571,4 +595,29 @@ To list all connected users in the chatbox, i:
 I paused here for today and i am asking for help.
 
 
+*/
+
+/*
+I found something when i delete a user from firebase database, his messages still remains in the ChatBox, so i decided to figure out how i could fix it. i started by: 
+  1. updating the async function fetchUser by declaring an existUser variable and assigning the value of userSnapshot.exists() to it. i then added an if statement to check if existUser is true, and if it is, i returned the userSnapshot.data(). if it's false, i console.logged an error message and returned null.
+  2. i then added a new function to handle the user connection, and i updated the handleUserConnect function to insert new users at the beginning of the connectedUsers array.
+  3. i then checked if the user is online and if the user exists, and if both conditions are true, i added the user to the connectedUsers array.
+
+But after all the changes, the user's messages still remains in the ChatBox after the user is deleted from the firebase database.
+I asked for AI to fix the issue, so it suggested the following:
+  1. Install Firebase CLI: If you haven't done so already, install the Firebase CLI by running npm install -g firebase-tools in your terminal.
+
+  2. Initialize Firebase Functions: In your project directory, run firebase init functions. This will create a new functions directory.
+
+  3. Navigate to the Functions Directory: Change your current directory to the functions directory by running cd functions.
+
+  4. Write the Cloud Function: In the functions directory, you'll find an index.js file. This is where you write your Cloud Functions. Write the function to delete user messages when a user is deleted.
+
+  5. Deploy the Function: Once you've written your function, you can deploy it to Firebase by running firebase deploy --only functions from the root of your project directory. This command uploads your function to Firebase's servers.
+
+  6. Test the Function: Delete a user from the Firebase Authentication console and check if their messages are also deleted from the Firestore database.
+
+Remember, Firebase Cloud Functions run on Firebase's servers, not in the user's app. This means they can execute even when the user's app is not running, which is ideal for tasks like cleaning up data when a user is deleted.
+
+I tried to install the first package, but i found it will a long procedure, i decided to pause here.
 */
