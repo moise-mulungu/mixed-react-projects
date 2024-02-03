@@ -290,7 +290,7 @@ DM: keep going as you are, but note that one of the advantages of putting fireba
               Cancel
             </button>
           </div>
-          {`user.uid: ${user.uid}`} {/* while debugging */}
+          {/* {`user.uid: ${user.uid}`} while debugging */}
         </div>
       )}
     </div>
