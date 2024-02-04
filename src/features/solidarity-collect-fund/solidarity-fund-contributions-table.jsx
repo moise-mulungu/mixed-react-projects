@@ -1,28 +1,66 @@
 // SolidarityFundContributionsTable.jsx
 import React, { useMemo, useState, createContext, useContext } from 'react'
 import { useTable } from 'react-table'
+// import { PlusIcon } from '@heroicons/react/solid'
+import { CheckIcon } from '@heroicons/react/solid'
+import { MdRemoveCircle } from 'react-icons/md'
 
 // Create context
 const UpdateDataContext = createContext()
 
-export default function SolidarityFundContributionsTable() {
-  const [data, setData] = useState([
-    {
-      fullName: null,
-      share: null,
-      sum: null,
-      debt: null,
-      reimbursement: null,
-      meetingRegNo: null,
-      weeklySum: null,
-      weekly: null,
-      observations: null,
-    },
-    // ... more data rows
-  ])
+// Default data row
+const defaultDataRow = {
+  fullName: null,
+  share: null,
+  sum: null,
+  debt: null,
+  reimbursement: null,
+  meetingRegNo: null,
+  weeklySum: null,
+  weekly: null,
+  observations: null,
+}
 
-  // DM: todoMM: what trigger? what kind of trigger. Give it a more descriptive name
-  const [trigger, setTrigger] = useState(false)
+export default function SolidarityFundContributionsTable() {
+  const [data, setData] = useState([defaultDataRow])
+  // const [data, setData] = useState([
+  //   {
+  //     fullName: null,
+  //     share: null,
+  //     sum: null,
+  //     debt: null,
+  //     reimbursement: null,
+  //     meetingRegNo: null,
+  //     weeklySum: null,
+  //     weekly: null,
+  //     observations: null,
+  //   },
+  //   // ... more data rows
+  // ])
+
+  //(done) DM: todoMM: what trigger? what kind of trigger. Give it a more descriptive name
+  // const [trigger, setTrigger] = useState(false)
+
+  // Renamed trigger to dataUpdateTrigger for clarity
+  const [dataUpdateTrigger, setDataUpdateTrigger] = useState(false)
+
+  // Moved useContext outside of the Cell function
+  // const updateMyData = useContext(UpdateDataContext)
+
+  // Create an updater function to use with the input fields
+  const updateMyData = (rowIndex, columnId, value) => {
+    setData((old) =>
+      old.map((row, index) => {
+        if (index === rowIndex) {
+          return {
+            ...old[rowIndex],
+            [columnId]: value,
+          }
+        }
+        return row
+      })
+    )
+  }
 
   const columns = useMemo(() => {
     const initialColumns = [
@@ -30,10 +68,11 @@ export default function SolidarityFundContributionsTable() {
         Header: 'Full Name',
         accessor: 'fullName',
         Cell: ({ value, rowIndex, column }) => {
-          // DM: todoMM: why do you call useContext for each column, when you can call it once at the beginning of the current function (SolidarityFundContributionsTable function) ?
+          //(done) DM: todoMM: why do you call useContext for each column, when you can call it once at the beginning of the current function (SolidarityFundContributionsTable function) ?
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
+              className="p-1 rounded border"
               type="text"
               value={value}
               onChange={(e) => {
@@ -50,6 +89,7 @@ export default function SolidarityFundContributionsTable() {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
+              className="p-1 rounded border"
               type="number"
               value={value}
               onChange={(e) => {
@@ -66,6 +106,7 @@ export default function SolidarityFundContributionsTable() {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
+              className="p-1 rounded border"
               type="number"
               value={value}
               onChange={(e) => {
@@ -82,6 +123,7 @@ export default function SolidarityFundContributionsTable() {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
+              className="p-1 rounded border"
               type="number"
               value={value}
               onChange={(e) => {
@@ -98,6 +140,7 @@ export default function SolidarityFundContributionsTable() {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
+              className="p-1 rounded border"
               type="number"
               value={value}
               onChange={(e) => {
@@ -114,6 +157,7 @@ export default function SolidarityFundContributionsTable() {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
+              className="p-1 rounded border"
               type="number"
               value={value}
               onChange={(e) => {
@@ -130,6 +174,7 @@ export default function SolidarityFundContributionsTable() {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
+              className="p-1 rounded border"
               type="number"
               value={value}
               onChange={(e) => {
@@ -146,6 +191,7 @@ export default function SolidarityFundContributionsTable() {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
+              className="p-1 rounded border"
               type="number"
               value={value}
               onChange={(e) => {
@@ -162,6 +208,7 @@ export default function SolidarityFundContributionsTable() {
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
+              className="p-1 rounded border"
               type="text"
               value={value}
               onChange={(e) => {
@@ -171,70 +218,72 @@ export default function SolidarityFundContributionsTable() {
           )
         },
       },
+      {
+        Header: 'Actions',
+        id: 'actions',
+        Cell: ({ row }) => {
+          return (
+            <button onClick={() => removeRow(row.index)}>
+              <MdRemoveCircle />
+            </button>
+          )
+        },
+      },
 
       // ... more columns
     ]
 
-    if (trigger) {
-      return [
-        ...initialColumns,
-        {
-          Header: 'New Column',
-          accessor: 'newColumn',
-          Cell: ({ value, rowIndex, column }) => {
-            const updateMyData = useContext(UpdateDataContext)
-            return (
-              <input
-                type="text"
-                value={value}
-                onChange={(e) => {
-                  updateMyData(rowIndex, column.id, e.target.value)
-                }}
-              />
-            )
-          },
-        },
-      ]
-    }
+    // if (trigger) {
+    //   return [
+    //     ...initialColumns,
+    //     {
+    //       Header: 'New Column',
+    //       accessor: 'newColumn',
+    //       Cell: ({ value, rowIndex, column }) => {
+    //         const updateMyData = useContext(UpdateDataContext)
+    //         return (
+    //           <input
+    //             type="text"
+    //             value={value}
+    //             onChange={(e) => {
+    //               updateMyData(rowIndex, column.id, e.target.value)
+    //             }}
+    //           />
+    //         )
+    //       },
+    //     },
+    //   ]
+    // }
     return initialColumns
-  }, [trigger])
+  }, [dataUpdateTrigger])
 
   const addRow = () => {
     setData((old) => [
       ...old,
-      /* DM: todoMM: if this is the same as the one above (the default value for setData) assign it to a variable defaultDateRow and put the variable above the function (right after the imports)  */
-      {
-        fullName: null,
-        share: null,
-        sum: null,
-        debt: null,
-        reimbursement: null,
-        meetingRegNo: null,
-        weeklySum: null,
-        weekly: null,
-        observations: null,
-      },
+      /*(done) DM: todoMM: if this is the same as the one above (the default value for setData) assign it to a variable defaultDateRow and put the variable above the function (right after the imports)  */
+      // {
+      //   fullName: null,
+      //   share: null,
+      //   sum: null,
+      //   debt: null,
+      //   reimbursement: null,
+      //   meetingRegNo: null,
+      //   weeklySum: null,
+      //   weekly: null,
+      //   observations: null,
+      // },
+      defaultDataRow,
     ])
   }
-  // Create an updater function to use with the input fields
-  const updateMyData = (rowIndex, columnId, value) => {
-    setData((old) =>
-      old.map((row, index) => {
-        if (index === rowIndex) {
-          return {
-            ...old[rowIndex],
-            [columnId]: value,
-          }
-        }
-        return row
-      })
-    )
+
+  const removeRow = (rowIndex) => {
+    setData((old) => old.filter((row, index) => index !== rowIndex))
   }
 
-  const addColumn = () => {
-    // DM: todoMM: avoid letting user edit/add columns. This is incredibly complex because what column/field do you store the new column in the database. I imagine that the columns would be determined by the requirements provided by the NGO. If not, you should determine the columns needed.
-    setTrigger(true)
-  }
+  // const addColumn = () => {
+  //(done) DM: todoMM: avoid letting user edit/add columns. This is incredibly complex because what column/field do you store the new column in the database. I imagine that the columns would be determined by the requirements provided by the NGO. If not, you should determine the columns needed. MM: i see what you mean here, i will remove the addColumn function and the trigger state and the if statement in the columns array. i'll only keep the add and remove rows functions.
+  //   setTrigger(true)
+  // }
 
   // Pass the updater function to the useTable hook
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable({
@@ -244,46 +293,50 @@ export default function SolidarityFundContributionsTable() {
 
   return (
     <UpdateDataContext.Provider value={updateMyData}>
-      {/* <h1 className="text-2xl font-semibold text-gray-900">Solidarity Fund Contributions</h1> */}
-      <button onClick={addRow}>Add Row</button>
-      <button onClick={addColumn}>Add Column</button>
-      <div className="w-full h-full mt-4 mx-4 rounded-lg overflow-hidden shadow-lg">
-        <table
-          {...getTableProps()}
-          className="min-w-full divide-y divide-gray-200 border border-gray-200"
-        >
-          <thead className="bg-gray-50">
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th
-                    {...column.getHeaderProps()}
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider border-r border-gray-200"
-                  >
-                    {column.render('Header')}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()} className="bg-white divide-y divide-gray-200">
-            {rows.map((row, i) => {
-              prepareRow(row)
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td
-                      {...cell.getCellProps()}
-                      className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200"
+      <button
+        onClick={addRow}
+        className="fixed left-4 bottom-4 bg-blue-500 text-white p-1 rounded-full"
+      >
+        {/* <PlusIcon className="h-6 w-6" />, MM: i want to use a plus-icon but i faced an version conflict when trying to install  */}
+        <CheckIcon className="h-6 w-6" />
+      </button>
+      {/* <button onClick={addColumn}>Add Column</button> */}
+      <div className="w-full h-full mt-4 mx-4 rounded-lg shadow-lg overflow-auto">
+        <div style={{ overflowX: 'auto' }}>
+          <table {...getTableProps()} className="divide-y divide-gray-200 border border-gray-200">
+            <thead className="bg-gray-50">
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <th
+                      {...column.getHeaderProps()}
+                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider border-r border-gray-200"
                     >
-                      {cell.render('Cell')}
-                    </td>
+                      {column.render('Header')}
+                    </th>
                   ))}
                 </tr>
-              )
-            })}
-          </tbody>
-        </table>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()} className="bg-white divide-y divide-gray-200">
+              {rows.map((row, i) => {
+                prepareRow(row)
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map((cell) => (
+                      <td
+                        {...cell.getCellProps()}
+                        className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 border-r border-gray-200"
+                      >
+                        {cell.render('Cell')}
+                      </td>
+                    ))}
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
       </div>
     </UpdateDataContext.Provider>
   )
@@ -340,5 +393,35 @@ and then did the following:
 4. pass the cellProps object to the useTable hook
 5. add the updateMyData function to the Cell property of the columns array
 6. add the updateMyData function to the Cell property of the rows array
+
+*/
+/*
+Here's a summary of the steps I've taken to fix and improve the SolidarityFundContributionsTable component:
+
+
+  1. Icons: i used icons from two different libraries in this component: @heroicons/react and react-icons/md. as i encountered version conflict when installing the PlusIcon from @heroicons/react, i used the CheckIcon instead. i attempted to solve the version conflict by creating a declarations.d.ts file and adding the following code: 
+    - declare module '@heroicons/react/solid'
+    - declare module 'react-table'
+    These lines are module declarations in TypeScript, telling the compiler to treat the '@heroicons/react/solid' and 'react-table' modules as any type, thus preventing TypeScript errors due to missing type definitions. i used them because there was a warning with three dots under each declaration on VSCode that said: "Could not find a declaration file for module '@heroicons/react/outline'. '/home/moise/Take-Home-Assignments/myPortfolio/node_modules/@heroicons/react/outline/index.js' implicitly has an 'any' type. If the '@heroicons/react' package actually exposes this module, try adding a new declaration (.d.ts) file containing declare module '@heroicons/react/outline' ";
+    
+  The CheckIcon from @heroicons/react is used for the button that adds a new row to the table, and the MdRemoveCircle from react-icons/md is used for the button that removes a row from the table.
+
+  2. Context Creation: i created a context UpdateDataContext to provide a function that updates the data in the table.
+
+  3. Default Data Row: i defined a defaultDataRow object to represent the structure of a row in the table. This is used when adding a new row to the table.
+
+  4. State Variables: i defined two state variables, data and dataUpdateTrigger. data holds the table data and dataUpdateTrigger is used to trigger a re-render of the table when the data changes.
+
+  5. Update Function: i defined an updateMyData function that updates a specific cell in the table data. This function is provided through the UpdateDataContext to the cells in the table.
+
+  6. Column Definition: i defined the columns of the table in a useMemo hook. This ensures that the columns are only re-calculated when dataUpdateTrigger changes.
+
+  7. Row Addition and Removal: i defined addRow and removeRow functions to add and remove rows from the table data.
+
+  8. Table Rendering: i used the useTable hook from react-table to get the props and methods needed to render the table. i then rendered the table inside a div with overflowX: 'auto' to add a horizontal scrollbar when the table exceeds the width of its container.
+
+  9. Cell Styling: i reduced the padding of the table cells to decrease the space between columns.
+
+
 
 */
