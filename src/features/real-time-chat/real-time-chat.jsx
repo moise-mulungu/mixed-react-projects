@@ -263,12 +263,14 @@ export default function RealTimeChat() {
         console.log('RealTimeChat useEffect deps [] userStatusChanges:', snapshot.val())
         // const updatedUsers = []
         // const updatedUsers = [...connectedUsers]
+        // DM: todoMM: this can be a const
         let updatedUsers = []
         snapshot.forEach((childSnapshot) => {
           const userStatus = childSnapshot.val()
           console.log('RealTimeChat useEffect deps [] userStatusChanges userStatus:', {
+            // DM: todoMM: you need to deal with this:
             userStatusDisplayName: userStatus.displayName, // DM: 2. this is undefined
-            // DM: uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
+            // DM: no longer important? uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
             userStatusUid: userStatus.uid,
             userStatusState: userStatus.state,
             userStatus,
@@ -332,6 +334,8 @@ export default function RealTimeChat() {
     // setConnectedUsers([...connectedUsers, user])
     setConnectedUsers((previousUsers) => {
       // const updatedUsers = [...previousUsers, user]
+      console.log('RealTimeChat handleUserConnect previousUsers:', { previousUsers, user })
+      // DM: todoMM: you call SetConnectedUsers in 2 places. IN this place, you add user, which is not the same as what you are adding in the other place you call it. Here, user.displayName is not undefined. In the other place, displayName is undefined. also remember, this runs only once, for the current user, so you should see only 1 user in the console.log.
       const updatedUsers = [user, ...previousUsers.filter((u) => u.uid !== user.uid)]
       //(done) DM: don't set another state variable in the setter of a state variable. You are setting the same state var below. What is the reason to set it here?
       return updatedUsers
@@ -608,6 +612,7 @@ I found something when i delete a user from firebase database, his messages stil
 
 But after all the changes, the user's messages still remains in the ChatBox after the user is deleted from the firebase database.
 I asked for AI to fix the issue, so it suggested the following:
+DM: going forward, please show me your AI prompt, so that I can know what you asked. 
   1. Install Firebase CLI: If you haven't done so already, install the Firebase CLI by running npm install -g firebase-tools in your terminal.
 
   2. Initialize Firebase Functions: In your project directory, run firebase init functions. This will create a new functions directory.
@@ -623,6 +628,7 @@ I asked for AI to fix the issue, so it suggested the following:
 Remember, Firebase Cloud Functions run on Firebase's servers, not in the user's app. This means they can execute even when the user's app is not running, which is ideal for tasks like cleaning up data when a user is deleted.
 
 I tried to install the first package, but i found it will a long procedure, i decided to pause here.
+* I would try to use the firebase console (WEb UI) to view data. 
 */
 /*
 In order to fix the connected users in the connectedUsers array, i started by:

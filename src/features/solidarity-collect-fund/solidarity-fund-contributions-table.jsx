@@ -2,6 +2,8 @@
 import React, { useMemo, useState, createContext, useContext } from 'react'
 import { useTable } from 'react-table'
 // import { PlusIcon } from '@heroicons/react/solid'
+
+// DM: todoMM: you downgraded "@heroicons/react" to an older version  "^1.0.6". Never go backwards. So update to the pervious version: 2.0.14 and make that work or choose another icon. You can also go to the heroicons wrbsite and copy the React code for that icon and use it directly in your code.
 import { CheckIcon } from '@heroicons/react/solid'
 import { MdRemoveCircle } from 'react-icons/md'
 
