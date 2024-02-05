@@ -62,6 +62,18 @@ export default function SolidarityFundContributionsTable() {
     )
   }
 
+  const handleSubmit = () => {
+    const result = data
+      .map((row) => {
+        return Object.entries(row)
+          .map(([key, value]) => `${key}: ${value}`)
+          .join(', ')
+      })
+      .join('\n')
+
+    alert(result)
+  }
+
   const columns = useMemo(() => {
     const initialColumns = [
       {
@@ -299,6 +311,12 @@ export default function SolidarityFundContributionsTable() {
       >
         {/* <PlusIcon className="h-6 w-6" />, MM: i want to use a plus-icon but i faced an version conflict when trying to install  */}
         <CheckIcon className="h-6 w-6" />
+      </button>
+      <button
+        onClick={handleSubmit}
+        className="fixed left-4 bottom-14 bg-green-500 text-white p-1 rounded-full"
+      >
+        Submit
       </button>
       {/* <button onClick={addColumn}>Add Column</button> */}
       <div className="w-full h-full mt-4 mx-4 rounded-lg shadow-lg overflow-auto">
