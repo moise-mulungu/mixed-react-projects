@@ -59,7 +59,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
       setUserData(newUserData)
     }
     // DM: another solution is to have firestore "push" the latest user info to you when user info is changed by user, or, if that is not possible, every 5 minutes or so. Or, you could "pull" every 5 minutes by using setInterval to query the DB for latest user info ("pull" might configurable in firebase, so be sure to query Google/AI for your top-level goal "how do I avoid user data getting stale over time?")
-    
+
     //(done) DM: todoMM: use a guard clause at the beginning of the useEffect to handle when !db. That way you don't have to use `let unsubscribe` and `unsubscribe && unsubscribe()`. Following the rule to avoid `let` whenever possible will help you write better code.
     // if (db) {
     const unsubscribe = onSnapshot(usersCollection, (snapshot) => {
@@ -98,7 +98,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
       className="flex-grow overflow-y-auto rounded p-4 bg-purple-500 text-white h-96"
     >
       {messages?.map((message, index) => {
-        const sender = message.senderName || message.sender 
+        const sender = message.senderName || message.sender
         const user = userData[message.sender]
         console.log({ sender })
         console.log('sender type:', typeof message.sender)
@@ -116,7 +116,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
           <div
             key={
               // ahem!(MM: In the context of code comments, "ahem!" is often used to draw attention to a particular piece of code. It's a way for the developer to say, "Pay attention to this," or "This might not be ideal, but it's necessary for now. is that the meaning you intended?) (done)DM: hehe, no "ahem!" means in this case: "take a look at this" and a friendly scolding, indicating "something's amiss here" - in this case implying that you'll remember you're not supposed to use index for a ReactJS key.
-              message.timestamp // i used message.timestamp because timestamp records the exact date and time a message was sent. DM: good choice
+              message.timestamp + message.sender // i used message.timestamp because timestamp records the exact date and time a message was sent. DM: good choice
             }
             className="mb-4 border-b-2 border-purple-300 p-2"
           >
