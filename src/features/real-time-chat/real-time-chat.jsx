@@ -180,17 +180,18 @@ export default function RealTimeChat() {
     const userRef = doc(db, 'users', uid)
     const userSnapshot = await getDoc(userRef)
     if (userSnapshot.exists()) {
+      // return userSnapshot.data()
       // const userData = userSnapshot.data()
-      // if (
-      //   userData &&
-      //   userData.propertyName &&
-      //   typeof userData.propertyName === 'string' &&
-      //   userData.propertyName.indexOf('searchString') !== -1
-      // ) {
-      //   // do something
+      // // Use senderName instead of displayName
+      // if (userData && userData.senderName) {
+      //   return {
+      //     ...userData,
+      //     displayName: userData.senderName,
+      //   }
+      // } else {
+      //   console.error('senderName is not set for user:', uid)
+      //   return null
       // }
-      // return userData
-      return userSnapshot.data()
     } else {
       console.error('User does not exist:', uid)
       return null
@@ -448,6 +449,9 @@ export default function RealTimeChat() {
                       </h2>
 
                       {connectedUsers.map((user) => {
+                        const formattedDisplayName =
+                          user?.displayName &&
+                          user.displayName[0].toUpperCase() + user.displayName.slice(1)
                         // DM: I put the console log above the !user guard clause so that I can see this console.log when user is undefined. That way, I can see how many of the users are undefined.
                         {
                           /* // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you. */
@@ -468,6 +472,10 @@ export default function RealTimeChat() {
 
                         // (done)DM: todoMM: why would user or user.displayname be falsy? console.log and validate if this check is currently necessary. If so, add a comment explaining why connectedUsers would contain falsy elements. Do you really need to check if user is truthy? Or, do you just need to check if propertly displayName is on the user object? If it is not, what does it mean? So, in summary, this check raises a lot of questions about the quality of the code that results in connetedUsers having falsy users or users without displayName, so remove it or address them in comments →→ s;for the code-reviewer/boss can know what is going on. MM: This is necessary to check a possibility of user to be be null or undefined, or if user.displayName could be null, undefined, or an empty string. i think it's safer to keep it.
                         const isTyping = typingUsers.includes(user.uid)
+
+                        console.log('User:', user)
+                        console.log('User Display Name:', user?.displayName)
+
                         // optional chaining
                         return (
                           //(done) DM: todoMM: check your browser console warnings while you use all the functionality of the app. Fix all the usage of index as key. I don"t want to have to keep reminding you about this same issue.
@@ -491,11 +499,10 @@ export default function RealTimeChat() {
                             }}
                           >
                             <div className="flex items-center">
+                              {console.log('formatted display name:', formattedDisplayName) || null}
                               <span className="hover:text-purple-500 transition-colors duration-200">
                                 {' '}
-                                Test
-                                {user?.displayName &&
-                                  user.displayName[0].toUpperCase() + user.displayName.slice(1)}
+                                {formattedDisplayName}
                               </span>
                               <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
                             </div>
@@ -637,4 +644,19 @@ In order to fix the connected users in the connectedUsers array, i started by:
   5. Updating the useEffect Hook: Finally, i updated the useEffect hook to implement the changes. This involved modifying the callback function passed to listenToDatabaseValueChanges to clear updatedUsers before adding the connected users to it, and then setting connectedUsers to updatedUsers after the loop.
 
 After those changes, the connected users array was updated, but the discrepancy still persists. i paused again here.
+*/
+
+/*
+To fix the displayName not showing up in the connected users list, i
+1. added console.log to check the user,and the user.displayName, so the result was the values of the user and the user.displayName were showing up on the console.
+
+2. i declared a variable with a descriptive name called "formattedDisplayName" which is assigned the value of user.displayName[0].toUpperCase() + user.displayName.slice(1). i then used the formattedDisplayName variable to display the user's displayName in the jsx return statement of the connected users list. but the displayName was not displayed.
+
+3. Checked the Firestore Data: i checked the Firestore console to see if the displayName field was set in the user documents. i found that the displayName field was not present, but there was a senderName field instead.
+
+4. Checked the fetchUser Function: i reviewed the fetchUser function by replacing displayName with senderName in the return statement.
+
+5. Updated the Code to Use senderName: i updated the fetchUser function to return senderName as displayName. i also updated the console logs and the line where formattedDisplayName is defined to use user.senderName instead of user.displayName.
+
+After following these steps, i wasn't able to resolve the issue with displayName not showing up. There was an error that the User doesn't have a senderName property. i was obliged to comment the updated code and revert the displayName.
 */
