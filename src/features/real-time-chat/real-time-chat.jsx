@@ -42,6 +42,7 @@ import {
 
   // 'set' writes or replaces data at a specific location in your Database. DM: good
   set as setDatabaseValue,
+  get,
 } from 'firebase/database'
 import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
@@ -248,6 +249,9 @@ export default function RealTimeChat() {
 
   From that point, i didn't know what to do next, i paused there and i decided to ask for help.
   */
+  // function createDatabaseReference(database, path) {
+  //   return database.ref(path)
+  // }
 
   useEffect(() => {
     //(done) DM: avoid abbreviations in general, but specially avoid "Ref" as it can be confused with React Refs (it"s ok to use the abbreviation "Ref" with React refs because it is a common convention like "props")
@@ -264,8 +268,8 @@ export default function RealTimeChat() {
         console.log('RealTimeChat useEffect deps [] userStatusChanges:', snapshot.val())
         // const updatedUsers = []
         // const updatedUsers = [...connectedUsers]
-        // DM: todoMM: this can be a const
-        let updatedUsers = []
+        //(done) DM: todoMM: this can be a const
+        const updatedUsers = []
         snapshot.forEach((childSnapshot) => {
           const userStatus = childSnapshot.val()
           console.log('RealTimeChat useEffect deps [] userStatusChanges userStatus:', {
@@ -298,10 +302,15 @@ export default function RealTimeChat() {
             // console.log('isUserAlreadyConnected:', isUserAlreadyConnected)
             // console.log('userStatus.state:', userStatus.state)
             if (!isUserAlreadyConnected) {
-              updatedUsers.push({
-                uid: childSnapshot.key,
-                // displayName: userStatus.displayName,
-                ...userStatus,
+              // Get the displayName from the 'users' node in the database
+              const userReference = createDatabaseReference(database, 'users/' + childSnapshot.key)
+              get(userReference).then((userSnapshot) => {
+                const user = userSnapshot.val()
+                updatedUsers.push({
+                  uid: childSnapshot.key,
+                  displayName: user?.user.displayName,
+                  ...userStatus,
+                })
               })
             }
           }
@@ -405,6 +414,7 @@ export default function RealTimeChat() {
 
   //() DM: todoMM: use the same name in both files to avoid confusion. (I like onUserConnect. Don't worry about being concise - it is more important to be clear.) MM: i don't understand what name you are referring to here, is onConnect or something else, if it's onConnect, there is no other file where it has another name. DM: the idea is to use the same name in both files.
   //(done) DM: add some horizontal margin so that the purple box is not flush against the left edge of the screen. Otherwise, looks good.
+  console.log('RealTimeChat rendered')
   return (
     <>
       {!isAuthenticated && (
@@ -453,10 +463,15 @@ export default function RealTimeChat() {
                       </h2>
 
                       {connectedUsers.map((user) => {
+                        // const formattedDisplayName =
+                        //   user?.displayName &&
+                        //   user.displayName[0].toUpperCase() + user.displayName.slice(1)
                         const formattedDisplayName =
                           user?.displayName &&
                           user.displayName[0].toUpperCase() + user.displayName.slice(1)
+
                         // DM: I put the console log above the !user guard clause so that I can see this console.log when user is undefined. That way, I can see how many of the users are undefined.
+                        console.log('Formatted display name:', formattedDisplayName)
                         {
                           /* // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you. */
                         }
@@ -464,8 +479,8 @@ export default function RealTimeChat() {
                           user,
                           // DM: easier to read the console if you put all values you want to log into the same log statement
                           // DM: user?.displayName is undefined
-                          typeofUserDisplayname: typeof user?.displayName, // DM: 1a. this is undefined
-                          userDisplayname: user?.displayName,
+                          typeofUserDisplayname: typeof user?.displayName, // DM: 1a. this is undefined. MM:i checked and found  the output is a "string" not undefined
+                          userDisplayname: user?.displayName, // this outputs the current connected user
                           userUid: user?.uid, // DM: 1b. this looks correct
                           connectedUsers, // DM: so I can see what is in connectedUsers
                         })
@@ -503,13 +518,15 @@ export default function RealTimeChat() {
                             }}
                           >
                             <div className="flex items-center">
-                              {console.log('formatted display name:', formattedDisplayName) || null}
+                              {/*MM: this console.log  outputs the formatted display name of the connected user as expected, but what is strange is how it doesn't display the formatted display name in the browser. */}
+                              {console.log('formatted display name:', formattedDisplayName) || null} 
                               <span className="hover:text-purple-500 transition-colors duration-200">
                                 {' '}
                                 {formattedDisplayName}
                               </span>
                               <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
                             </div>
+
                             {isTyping && (
                               <span className="ml-2 animate-pulse text-2xl text-blue-500 flex-shrink-0">
                                 ...
@@ -665,4 +682,23 @@ To fix the displayName not showing up in the connected users list, i
 5. Updated the Code to Use senderName: i updated the fetchUser function to return senderName as displayName. i also updated the console logs and the line where formattedDisplayName is defined to use user.senderName instead of user.displayName.
 
 After following these steps, i wasn't able to resolve the issue with displayName not showing up. There was an error that the User doesn't have a senderName property. i was obliged to comment the updated code and revert the displayName.
+*/
+
+/*
+for today's work about debugging the displayName not showing up in the connected users list, i:
+
+  1. Identify the issue The initial problem was identified as the displayName of online users not being displayed in the real-time chat application.
+
+  2. the displayName was stored in a separate users node in the Firebase Realtime Database, while the online status was stored in the status node.
+
+  3. Modify the code to read from users node The code was modified to create a reference to the user's node in the users node and read the data at this reference once, in addition to reading from the status node.
+
+  4. Encounter a permission error After modifying the code, a "Permission denied" error was encountered. This was because the Firebase Realtime Database rules did not allow reading from the users node.
+
+  5. Update Firebase Realtime Database rules The Firebase Realtime Database rules were updated to allow reading from the users node.
+
+  6. Verify the solution After updating the rules, the code was not able to display the displayName of online users, th issue is still there.
+
+MM: I want to know what can be done in a work environment when one is stuck on an issue for longer time, even after trying all the possibilities suggested by other team mates or even the Lead? i mentioned for help because this task has taken more time than expected.
+ 
 */
