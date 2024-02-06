@@ -1,5 +1,5 @@
 MM: here is the link with the AI support that i read and helped to create this blog: https://medium.com/quark-works/tips-on-how-to-write-your-first-successful-technical-blog-4cb65e5b4ce4
-DM: anything after the "#" in a URL is not needed
+DM: anything after the "#" in a URL is not needed(cool)
 
 # Real-Time Chat Application with React and Firebase
 

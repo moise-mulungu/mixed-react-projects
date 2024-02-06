@@ -619,7 +619,7 @@ I found something when i delete a user from firebase database, his messages stil
 
 But after all the changes, the user's messages still remains in the ChatBox after the user is deleted from the firebase database.
 I asked for AI to fix the issue, so it suggested the following:
-DM: going forward, please show me your AI prompt, so that I can know what you asked. 
+DM: going forward, please show me your AI prompt, so that I can know what you asked.(ok) 
   1. Install Firebase CLI: If you haven't done so already, install the Firebase CLI by running npm install -g firebase-tools in your terminal.
 
   2. Initialize Firebase Functions: In your project directory, run firebase init functions. This will create a new functions directory.
