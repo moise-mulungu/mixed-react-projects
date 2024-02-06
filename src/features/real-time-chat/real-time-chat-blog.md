@@ -1,6 +1,10 @@
 MM: here is the link with the AI support that i read and helped to create this blog: https://medium.com/quark-works/tips-on-how-to-write-your-first-successful-technical-blog-4cb65e5b4ce4
 DM: anything after the "#" in a URL is not needed(cool)
 
+DM: review:
+* I don't think you need to put all those phrases in `` but maybe it looks good in the browser. What do you mean to indicate by putting a phrase in ``?
+* this looks pretty good. i'll review it more in detail later after you complete the database schema below
+
 # Real-Time Chat Application with React and Firebase
 
 ## Introduction
@@ -40,3 +44,17 @@ Our application is a real-time chat application that allows users to send and re
 - In this post, we've taken a deep dive into the code of a real-time chat application built with React and Firebase. We've seen how to use Firebase's Firestore and Realtime Database services to implement real-time messaging and status tracking, and Firebase auth for user authentication.
 
 - Potential improvements to the app could include adding `group chat functionality`, `read receipts`, `notifications` for new messages, `video and audio calls`, and `file sharing capabilities` for images, videos, and audios. With the solid foundation provided by React and Firebase, the possibilities are endless.
+
+DM: todoMM: list your database "schema" here for my reference (not necessarily to include in the blog post). 
+# schema collections:
+* messages
+  * field names (I copied these from above. validate they are exactly correct by looking in the Firebase console)
+    * text 
+    * sender 
+    * senderName  
+    * timestamp
+* users
+  * [add users field names here]
+* status?
+  * [add users field names here]
+* more collections?

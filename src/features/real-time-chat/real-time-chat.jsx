@@ -42,7 +42,7 @@ import {
 
   // 'set' writes or replaces data at a specific location in your Database. DM: good
   set as setDatabaseValue,
-  get,
+  get, // DM: todoMM: give this a more descriptive alias because this is a very large file
 } from 'firebase/database'
 import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
@@ -268,7 +268,6 @@ export default function RealTimeChat() {
         console.log('RealTimeChat useEffect deps [] userStatusChanges:', snapshot.val())
         // const updatedUsers = []
         // const updatedUsers = [...connectedUsers]
-        //(done) DM: todoMM: this can be a const
         const updatedUsers = []
         snapshot.forEach((childSnapshot) => {
           const userStatus = childSnapshot.val()
@@ -301,11 +300,22 @@ export default function RealTimeChat() {
             )
             // console.log('isUserAlreadyConnected:', isUserAlreadyConnected)
             // console.log('userStatus.state:', userStatus.state)
+
             if (!isUserAlreadyConnected) {
               // Get the displayName from the 'users' node in the database
               const userReference = createDatabaseReference(database, 'users/' + childSnapshot.key)
               get(userReference).then((userSnapshot) => {
-                const user = userSnapshot.val()
+                const user = userSnapshot.val() // DM: this doesn't work. is "".val()"" correct way to call it?
+                // DM: todoMM: I added this console.log to see if you new code works. It doesn't work - user is always null. Moise, if you write new code and you say you're blocked and you tell me it's not working, and I don't see any console.logs where you tried to find out where the new code failed, then you are not stuck, you are not blocked, but rather you just stopped before you even tried to debug where exactly is the problem. I feel like I've told you to debug with console.logs many, many times. You are not debugging if you don't try to find out where the code is broken. If you're not debugging, you're not programming.
+                console.log('RealTimeChat useEffect deps [] userStatusChanges userReference:', {
+                  userSnapshot,
+                  // DM: todoMM: user is always null
+                  user,
+                  userStatus,
+                  childSnapshotKey: childSnapshot.key,
+                  childSnapshot,
+                })
+
                 updatedUsers.push({
                   uid: childSnapshot.key,
                   displayName: user?.user.displayName,
@@ -471,7 +481,7 @@ export default function RealTimeChat() {
                           user.displayName[0].toUpperCase() + user.displayName.slice(1)
 
                         // DM: I put the console log above the !user guard clause so that I can see this console.log when user is undefined. That way, I can see how many of the users are undefined.
-                        console.log('Formatted display name:', formattedDisplayName)
+                        console.log('RealTimeChat Formatted display name:', formattedDisplayName)
                         {
                           /* // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you. */
                         }
@@ -518,8 +528,11 @@ export default function RealTimeChat() {
                             }}
                           >
                             <div className="flex items-center">
-                              {/*MM: this console.log  outputs the formatted display name of the connected user as expected, but what is strange is how it doesn't display the formatted display name in the browser. */}
-                              {console.log('formatted display name:', formattedDisplayName) || null} 
+                              {/*MM: this console.log  outputs the formatted display name of the connected user as expected, but what is strange is how it doesn't display the formatted display name in the browser. DM: this shows a username for me only, the current user: Dmdmdm- but is undefined for all other users*/}
+                              {console.log(
+                                'RealTimeChat xxx formatted display name:',
+                                formattedDisplayName
+                              ) || null}
                               <span className="hover:text-purple-500 transition-colors duration-200">
                                 {' '}
                                 {formattedDisplayName}
@@ -698,7 +711,11 @@ for today's work about debugging the displayName not showing up in the connected
   5. Update Firebase Realtime Database rules The Firebase Realtime Database rules were updated to allow reading from the users node.
 
   6. Verify the solution After updating the rules, the code was not able to display the displayName of online users, th issue is still there.
+    * DM: todoMM: "the code was not able to display the displayName of online users" is not helpful because it contains no new information. It contains nothing that helps me help you. You said "The Firebase Realtime Database rules were updated to allow reading from the users node". That sounds good, so where did you verify that username was being returned by Firebase from your user node query/reference? If the query is working, then follow the displayName values through the code from the query to displaying in the JSX. Where did it break?
 
 MM: I want to know what can be done in a work environment when one is stuck on an issue for longer time, even after trying all the possibilities suggested by other team mates or even the Lead? i mentioned for help because this task has taken more time than expected.
- 
+  * DM: you have to try to debug in order to find out exactly where in the code the problem starts. Then you can read the docs to make sure you used firebase or JS correctly in the code just before the problem starts. If you are still stuck, then you can ask for help. If you don't know exactly where the problem starts and you ask for help, you are asking whoever helps you to do basic, junior-level debugging for you, and that will make you look bad or like you can't do basic programming. So, always you should be able to find out exactly where the problem is so that you always have good, hard questions to ask teammates or the lead.
+
+
+
 */
