@@ -1,6 +1,11 @@
-# commit-time (before you commit)
+# commit-time (before! you commit)
 
 - view: "vs code "source control" changes" showing all changes since last commit
+  - look at the diff. is it clear for DM what is new and what is old
+    - copying content to newly created files are a big problem. is it clear what has already been reviewed from previous days commits and what is new today? this is really important.
+    - rename files instead of creating a new file and copy all code into that new file - if you do the latter I cant see what is new
+    - dont comment out a function, then copy it, then edit the copy - I can't see what is new
+    - cleaning up code - do it in a separate commit so that DM can see what is new coding work VS just removing tons of comments.
 - comment lines - always add initials when adding to a comment line
   - // DM: hey, Mr. Moise, do this and that. MM: I did that and the other
   - // MM: moise's comments

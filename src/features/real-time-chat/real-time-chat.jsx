@@ -20,6 +20,8 @@ import { doc, getDoc, deleteDoc } from 'firebase/firestore'
 import { FiLogOut } from 'react-icons/fi'
 
 export default function RealTimeChat() {
+  // console.log('RealTimeChat component rendered')
+
   console.log('RealTimeChat Database object:', database) // to check the database object is available to the RealTimeChat component
 
   const [messages, setMessages] = useState([])
@@ -86,9 +88,11 @@ export default function RealTimeChat() {
         }
       })
     })
-
+    // DM: Im putting the deleted console.logs back and commenting them instead. Best to leave the console.logs there in case you need them again, unless you are completely sure that it is not a valid console.log. ;console.logs take time to write properly, so useful to keep them around instead of deleting.
+    // console.log('RealTimeChat Database object:', database) // Add this line
+    // New subscription for typing status
     const typingRef = createDatabaseReference(database, 'typing')
-
+    // console.log('RealTimeChat Typing reference:', typingRef) // Add this line
     const unsubscribeTyping = listenToDatabaseValueChanges(typingRef, (snapshot) => {
       const typingUsers = []
       snapshot.forEach((childSnapshot) => {
@@ -96,7 +100,8 @@ export default function RealTimeChat() {
           typingUsers.push(childSnapshot.key)
         }
       })
-
+      //2. check the typingUsers value
+      // console.log('RealTimeChat Updated typingUsers state:', typingUsers) // to check the typingUsers value
       setTypingUsers(typingUsers)
     })
 
@@ -138,8 +143,10 @@ export default function RealTimeChat() {
   }
 
   const deleteMessage = async (message) => {
+    // Remove the message from the local state
     setMessages((previousMessages) => previousMessages.filter((m) => m.id !== message.id))
 
+    // Remove the message from Firestore
     try {
       const messageDocRef = doc(db, 'messages', message.id)
       await deleteDoc(messageDocRef)
@@ -181,6 +188,7 @@ export default function RealTimeChat() {
 
             const userReference = createDatabaseReference(database, 'users/' + childSnapshot.key)
             const userPromise = getDatabaseValue(userReference).then((userSnapshot) => {
+              // DM: todoMM: is this code correct? user does nto contain display name. find out why. look into firebase and check that your code in the above 3 lines is correct. does displayName exist in firebase. if so, why does your query here not return it?
               const user = userSnapshot.val()
               //(done) DM: todoMM: are you sure this works? I don't see any console.logs. If you used console.logs to validate isUserAlreadyConnected and userStatus.state, don't delete them, but comment them out so that I or you can use them in the future and also so that I know what you have already tried to debug this area. MM: i mentioned in the report file that the same user is till repeated many times in the connectedUsers array despite attempts to debug the code. DM: fine but you still need console.logs and detailed items should be here commented in the code not in the daily report. In any case "there is one only user listed many times on the list" is a general comment - how am I supposed to know where in the code that is? Ok to repeat things in code comments, but my main concern was no console.logs here which is obviously where in the code the issue is found.
               // DM: todoMM: please follow my pattern by putting both variables in the same comment using an object for the 2nd console.log argument, because your console has so many logs it is hard to read. Also put searchable detail and context into the first log argument example:
@@ -234,6 +242,7 @@ export default function RealTimeChat() {
           }
         })
         Promise.all(userPromises).then((updatedUsers) => {
+          // DM: this is going to show you the same info that is in the .then() block. Your problem is above in the database queries.
           console.log(`Updated users: ${JSON.stringify(updatedUsers)}`)
           const uniqueUsers = Array.from(new Set(updatedUsers.map((user) => user.uid))).map(
             (uid) => {
@@ -421,7 +430,9 @@ export default function RealTimeChat() {
 In order to fix on the same issue of the same user instance in the connected users array, and to display the user's display name in the connected users list, I:
   1. displayName not showing up: i tried to set a condition in the jsx if not formattedDisplayName, then display the user's uid, the user uid displays but not the displayName. i realized that the problem is not with the jsx, but with the user object that doesn't get updated in the firebase database node status. 
   2. Investigated the useEffect that populates the connectedUsers array: i looked for the useEffect that populates the connectedUsers array and found that it's the useEffect that listens to changes in the status node of the database. so i added some console.log in the code and added some promises to fetch the user data from the users node in the database. i found that the user object is not updated in the database. here is the AI prompt that i used to get the updated code: can you fix the comment from the connectedUsers.map in the jsx(i provided the code that includes the DM: todoMMs and the useEffect that populates the connected users)
+    * DM: please put in quotes the exact AI prompt. I can't tell if you're describing what you asked AI or if that is exactly what you sent. In any case, going forward show me exactly what you asked AI, not a description of it. 
   3. debugging one element after the other: i removed unnecessary comments and kept the connected users related ones, i also added new console.logs for each value of the useEffect.
 
 After all of these steps, the issue is not fixed yet. nor the displayName is showing up in the connected users list, nor the user object is updated in the database.
+* DM: todoMM: where is it broken?
 */
