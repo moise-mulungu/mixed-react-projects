@@ -164,7 +164,7 @@ export default function RealTimeChat() {
     // DM: this is good, but it will only catch the 1 current user because it runs in the client where that user is logged in.
     //() DM: does this listener fire only when the user unsubscribes? or, why do you call it unsubscribe? what other events cause this listener to fire? MM: The unsubscribe function is returned by listenToDatabaseValueChanges. It's called unsubscribe because calling it will stop the listener from listening to changes in the database. The listener fires whenever there's a change in the 'status' node of the database. It doesn't fire when the users unsubscribes, but you call unsubscribe in the cleanup function of useEffect to stop listening to changes when the component unmounts. DM: ok, then rename it to something like unsubscribeFromListenToDatabaseValueChangesListener so it wont be confused with something like "unsubscribe from chat room" - note: code grows over time and unspecific file names cause confusion and bugs. MM: i renamed it stopListeningToStatusChanges for shortness and conciseness instead of unsubscribeFromListenToDatabaseValueChangesListener. DM: yes, perfect
     const stopListeningToStatusChanges =
-      //1. This function sets up a listener to the 'status' node in the database. When a change is detected, it triggers the callback function, passing in a snapshot of the updated data.
+      //1. This function sets up a listener to the 'status' node in the database. When a change is detected, it triggers the callback function, passing in a snapshot of the updated data. DM: good description
       listenToDatabaseValueChanges(
         usersStatusReference, // DM: 3. this database reference must not contain the displayName
         (snapshot) => {
@@ -184,6 +184,7 @@ export default function RealTimeChat() {
               childSnapshot,
               childSnapshotKey: childSnapshot.key,
             })
+            // DM: todoMM: see the "..." it's telling you to use a guard clause here, do so
             if (userStatus.state === 'online') {
               // const isUserAlreadyConnected =
               //   updatedUsers && updatedUsers.some((user) => user && user.uid === childSnapshot.key)
