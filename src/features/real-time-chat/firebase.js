@@ -17,6 +17,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 import { getDatabase } from 'firebase/database'
@@ -81,6 +83,12 @@ export const signup = (
 
 export const login = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
+}
+
+export const googleProvider = new GoogleAuthProvider()
+
+export const signInWithGoogle = async () => {
+  return await signInWithPopup(auth, googleProvider);
 }
 
 export const signOut = () => {

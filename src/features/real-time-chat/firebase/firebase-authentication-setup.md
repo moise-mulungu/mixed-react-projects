@@ -9,3 +9,10 @@ Steps for authentication:
   4. You will now be in the "Users" tab of the "Authentication" section.
   5. To enable or configure sign-in methods, click on the "Sign-in method" tab.
 */
+
+Set up the authentication process to the expense-tracker:
+1. import functions(getAuth, GoogleAuthProvider) in your firebase-config file then declare variables that pass those functions
+   1. getAuth: this function is used to manage all aspects of user authentication
+   2. GoogleAuthProvider: this function is used to authenticate users using Google Sign-In. An instance of GoogleAuthProvider can be passed to Firebase's sign-in methods (like signInWithPopup or signInWithRedirect) to sign in a user with Google.
+2. import the same functions from the `firebase/auth` module in the authentication component
+3. import signInWithPopup from `firebase/auth` module, this function will pass two variables; those who hold the getAuth() and the GoogleAuthProvider
