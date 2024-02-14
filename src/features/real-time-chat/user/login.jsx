@@ -110,6 +110,7 @@ In order to fix the "login: usually when I enter email, when I put cursor into t
   DM: it happens sometimes when you do a ton of work but later find out there was a much easier way to do it. In this case, you could have made sure you understand autofill in browsers by asking AI. It's had to tell, but often more planning/research before you start coding is helpful.
 */
 
+// DM: todoMM: good but put this over the firebase.js export for google auth. WHY  so that you can find it when you need it. Put it in a logical place where youd probably look for it.
 /*
 To add the Google-authentication feature to the app, I did the following:
   1. i added a google sign-in method to the firebase console

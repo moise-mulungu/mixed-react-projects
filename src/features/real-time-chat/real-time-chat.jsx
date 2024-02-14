@@ -167,7 +167,10 @@ export default function RealTimeChat() {
       listenToDatabaseValueChanges(
         usersStatusReference, // DM: 3. this database reference must not contain the displayName
         (snapshot) => {
-          console.log('RealTimeChat useEffect deps [] userStatusChanges:', snapshot.val())
+          console.log(
+            'RealTimeChat useEffect deps [] userStatusChanges listener fired:',
+            snapshot.val()
+          )
 
           // const updatedUsers = []
           const userPromises = []
@@ -209,7 +212,7 @@ export default function RealTimeChat() {
                 // )
                 console.log('RealTimeChat useEffect deps [] userStatusChanges userReference:', {
                   userSnapshot,
-                  user,
+                  user, // DM: this is undefined
                   userStatus,
                   childSnapshotKey: childSnapshot.key,
                   childSnapshot,

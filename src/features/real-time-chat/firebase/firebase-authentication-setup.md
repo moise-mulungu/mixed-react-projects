@@ -10,6 +10,7 @@ Steps for authentication:
   5. To enable or configure sign-in methods, click on the "Sign-in method" tab.
 */
 
+// DM: todoMM: great, but the next line does not describe what you have, which is really about Google auth with firebse auth, so rewrite the first line below and move this info to a file named accordingly
 Set up the authentication process to the expense-tracker:
 1. import functions(getAuth, GoogleAuthProvider) in your firebase-config file then declare variables that pass those functions
    1. getAuth: this function is used to manage all aspects of user authentication
