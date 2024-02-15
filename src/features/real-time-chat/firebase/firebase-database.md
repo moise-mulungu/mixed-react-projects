@@ -10,4 +10,28 @@ Setup the firebase database and connect it to the project.
   9. click on the + sign to add a collection, and name it whatever you want. the document can be auto-generated or you can manually add a document.
   10. in order to make the collection work, you can change the rules in the rules tab to allow read and write. the rules by default are set to allow read and write only to authenticated users; *allow read, write, if false;*, but if you want to allow read and write to anyone, just customize the rules according to your preference. to allow read and write to anyone would be like this: *allow read, write: if true;* and click on publish.
   11. back in the data tab, you'll have to add a document to the created collection that will keep track of the user's actions.
+
+
+## firebase-database-query
+* howtofirebase:: database: how to make a query on Firebase Firestore; you can use the `collection`, `query`, `where`, and `get` functions provided by the Firebase Firestore library as follow: 
+- Get a reference to the Firestore collection
+- Get the documents from the query
+- Loop through the documents and do something with each one
+
+  ```js
+  import { collection, getDocs, query, where } from "firebase/firestore"; 
+
+  // Get a reference to the Firestore collection
+  const q = query(collection(db, "your-collection"), where("your-field", "==", "your-value"));
+
+  // Get the documents from the query
+  const querySnapshot = await getDocs(q);
+
+  // Loop through the documents and do something with each one
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data());
+  });
+  ```
+
+
  

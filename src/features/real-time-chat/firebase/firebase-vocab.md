@@ -16,6 +16,10 @@ This is the Cloud Firestore module. It provides a flexible, scalable database fo
 
 ***addDoc***: This function is used to add a new document to a collection in Firestore. It takes two arguments: a reference to the collection where the document should be added, and an object containing the data for the new document. In your code, `addDoc(collection(db, 'transactions'), { description, amount, type })` is adding a new document to the 'transactions' collection. The new document has three fields: 'description', 'amount', and 'type'.
 
+***onSnapshot***: is a method provided by Firebase Firestore to listen for real-time updates in your Firestore database. This method attaches a listener to a document or a collection in your Firestore database. Whenever data in that document or collection changes, the listener triggers, and your application can immediately react to the update.
+
+***collection***: is a function that gets a reference to a Firestore collection. A collection in Firestore is a grouping of documents, similar to a table in a traditional database.
+
 ***getFirestore***: This function is used to get a reference to a Firestore instance. It's often used when initializing your app's connection to Firestore. In your code, getFirestore is not directly used, but it's implied that db is a reference to your Firestore database, which could have been obtained by calling getFirestore.
 
 ## firebase/storage: 
