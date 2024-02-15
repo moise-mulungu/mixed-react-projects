@@ -19,6 +19,8 @@ catchingErrors
     console.log(data[0].name)
   })
   .catch((error) => {
+    console.log()
+    console.log('CATCHING EXPECTED ERROR:')
     console.error(`Could not get products: ${error}`)
   })
 

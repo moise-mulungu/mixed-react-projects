@@ -76,7 +76,7 @@ i console logged process.env and got all the variables i set in .env.local, then
     measurementId: process.env.REACT_APP_MEASUREMENT_ID,
  
   // DM: just to be sure I mentioned it: only apiKey is necessary to be treated as secrets. Maybe one or two others, but not all of them. When you publish to Vercel, it will be a lot of tedious work to set up these env vars for production, so better if you only move them to .env.local if they are truly secret. EX password is secret, username is not. apiKey is secret, authDomain is not. MM: i have updated the .env.local file with the following:
-// DM: please dont use "<!-- -->" in MD as it makes is color faded gray and hard to read(ok)
+// DM: please dont use "<!-- -->" in MD as it makes is color faded gray and hard to read(ok) DM thanks for having mercy an old fart like me :)
  howtofirebase:: connect a project with firebase;
 
   1. Create a Firebase project: Go to the Firebase console (https://console.firebase.google.com/) and create a new project.

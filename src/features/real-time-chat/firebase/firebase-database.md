@@ -1,3 +1,4 @@
+// DM: todoMM: link? or, AI prompt? always include the source of the info! In the future when you come back and read this, source is useful in many ways.
 Setup the firebase database and connect it to the project.
   1. go to firebase console and opened my project.
   2. on the left sidebar, click on firebase database.

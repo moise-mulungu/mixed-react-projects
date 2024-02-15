@@ -85,7 +85,6 @@ export const login = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
 }
 
-//(done) DM: todoMM: don't export if you dont need to import
 const googleProvider = new GoogleAuthProvider()
 
 // DM: this is a good place to put the list of setup steps from the bottom of the login.js file
