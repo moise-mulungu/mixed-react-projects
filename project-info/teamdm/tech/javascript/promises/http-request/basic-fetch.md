@@ -1,6 +1,6 @@
 This is from mdn resources: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Promises
 
-// DM: note: some examples will only work in the browser, but if it is basic JS it will work also in node
+// DM: note: some examples will only work in the browser, but if it is basic JS it will work also in node(ok)
 These exercises were supposed to be done on the browser console.
 
 In this example, we'll download the JSON file from https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json, and log some information about it.

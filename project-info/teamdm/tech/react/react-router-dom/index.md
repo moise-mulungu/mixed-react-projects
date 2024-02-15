@@ -1,11 +1,10 @@
 ## definition
 react-router-dom is a library in React that allows you to create single-page applications with navigation and routing capabilities. It keeps your UI in sync with the URL.
 
-// DM: Moise, this is so basic that is not helpful. I think you learned "npm install" on your first day at Microverse. If you intended it to be related to the other info in this file, rewrite it accordingly, otherwise delete it.
-howtoreact:: react: how to install react-router-dom; npm install react-router-dom 
+// DM: Moise, this is so basic that is not helpful. I think you learned "npm install" on your first day at Microverse. If you intended it to be related to the other info in this file, rewrite it accordingly, otherwise delete it. MM: i removed the two unnecessary howtos.
 
 // DM: good
-// note: the below is all handled by nextjs, but it is useful to understand this when you see it in articles/tutorials on the Web
+// note: the below is all handled by nextjs, but it is useful to understand this when you see it in articles/tutorials on the Web. MM: it's also useful when working on a React project which doesn't involve NextJS i think.
 ## components
 Here are some of the main components provided by react-router-dom:
 1. BrowserRouter: A <BrowserRouter> is used for applications with a dynamic server that knows how to handle any type of URL.
@@ -17,9 +16,9 @@ Here are some of the main components provided by react-router-dom:
 7. useHistory: This is a hook `useHistory()` that gives you access to the history instance that you may use to navigate.
 8. useLocation: This is a hook `useLocation()` that returns the current location object which contains information about the current URL.
 
-DM: howtos go in comments in JS because it would cause errors if not in comments. in MD no need to put in comments.
+DM: howtos go in comments in JS because it would cause errors if not in comments. in MD no need to put in comments.(ok)
 
-// DM: todoMM: this is not useful to you in the future. you already kow how to import. if you want a list of all the items you can import from react-router-dom, then explain that in the howto. 
-howtoreact:: react: how to import react-router-dom components; import { BrowserRouter as Router, Routes, Route, Switch, Link, Redirect, useParams, useHistory, useLocation } from 'react-router-dom'; 
+//(done) DM: todoMM: this is not useful to you in the future. you already kow how to import. if you want a list of all the items you can import from react-router-dom, then explain that in the howto. 
+
 
 howtoreact:: react: define a route; 1. Use the Router component to wrap your entire application, 2. Use Switch/Routes and Route components to define your routes. 3. Each Route component should have a path prop, which is the URL path for that route, when the URL matches this path, the route is activated. 4. The element prop is used to define what should be rendered when the route is activated. This should be a React element or component 

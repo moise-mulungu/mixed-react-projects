@@ -85,10 +85,22 @@ export const login = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
 }
 
-// DM: todoMM: dont export if you dont need to import
-export const googleProvider = new GoogleAuthProvider()
+//(done) DM: todoMM: don't export if you dont need to import
+const googleProvider = new GoogleAuthProvider()
 
 // DM: this is a good place to put the list of setup steps from the bottom of the login.js file
+/*
+To add the Google-authentication feature to the app, I did the following:
+  1. i added a google sign-in method to the firebase console
+  2. i imported  GoogleAuthProvider, signInWithPopup from firebase/auth
+  3. i declared one variable in the firebase-config.js file called googleProvider and assigned it to a new instance of GoogleAuthProvider.
+  4. i created a new signInWithGoogle function that calls the signInWithPopup function and passes the auth and googleProvider to it.
+  5. i created a handleLoginWithGoogle function in the User component and passed the signInWithGoogle function to it.
+  6. i passed the handleLoginWithGoogle function to the Login component as a prop.
+  7. i created a new button in the Login component and passed the handleLoginWithGoogle function to it.
+  8. i tested the login with google feature and it worked.
+
+*/
 export const signInWithGoogle = async () => {
   return await signInWithPopup(auth, googleProvider)
 }
