@@ -14,6 +14,10 @@ Firebase provides two main modules for data storage: "firebase/database" and "fi
 ## firebase/firestore: 
 This is the Cloud Firestore module. It provides a flexible, scalable database for mobile, web, and server development.
 
+***addDoc***: This function is used to add a new document to a collection in Firestore. It takes two arguments: a reference to the collection where the document should be added, and an object containing the data for the new document. In your code, `addDoc(collection(db, 'transactions'), { description, amount, type })` is adding a new document to the 'transactions' collection. The new document has three fields: 'description', 'amount', and 'type'.
+
+***getFirestore***: This function is used to get a reference to a Firestore instance. It's often used when initializing your app's connection to Firestore. In your code, getFirestore is not directly used, but it's implied that db is a reference to your Firestore database, which could have been obtained by calling getFirestore.
+
 ## firebase/storage: 
 This is the Cloud Storage module. It provides secure file uploads and downloads for your Firebase apps.
 
