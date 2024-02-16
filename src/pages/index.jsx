@@ -40,6 +40,9 @@ export default function Pages() {
         <li>
           <Link href="/solidarity-collect-fund-page">Solidarity Collect Fund</Link>
         </li>
+        <li>
+          <Link href="/custom-error">Custom Error</Link>
+        </li>
       </ul>
     </div>
   )
