@@ -11,7 +11,7 @@ fetchPromise.then((response) => {
   const jsonPromise = response.json()
   jsonPromise.then((data) => {
     //  this is an example of "callback hell" where you are nesting callbacks when you need to perform multiple async operations in a sequence (i.e., fetch needs to complete, .json() needs to complete)
-    console.log(data[0].name)
+    console.log('Running .then() fetch:', data[0].name) // console the .then() fetch running
     // what if you needed to perform an async fetch fetch for each data.name in the array? MM: If you need to perform an async fetch for each data.name in the array, you can use Promise.all() to wait for all the fetches to complete. this is how it would look like:
     /*
     fetchPromise.then((response) => {
@@ -48,7 +48,7 @@ fetchPromise2
         'https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json'
       )
       const data = await response.json()
-      console.log(data[0].name)
+      console.log('Running async/await fetch:', data[0].name) // console the async/await fetch running
     } catch (error) {
       console.error(`Error fetching async/await data: ${error}`)
     }

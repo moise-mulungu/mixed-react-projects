@@ -4,7 +4,7 @@ react-router-dom is a library in React that allows you to create single-page app
 // DM: Moise, this is so basic that is not helpful. I think you learned "npm install" on your first day at Microverse. If you intended it to be related to the other info in this file, rewrite it accordingly, otherwise delete it. MM: i removed the two unnecessary howtos.
 
 // DM: good
-// note: the below is all handled by nextjs, but it is useful to understand this when you see it in articles/tutorials on the Web. MM: it's also useful when working on a React project which doesn't involve NextJS i think. DM: not use nextjs? perish the thought! JK BUT really, nextjs is so superior to CRA, however my last job used CRA to start the app, but it was so modified that it was unrecognizable. Also, even with CRA everyone uses a better package for routing than react-router-dom. but still good to know it.
+// note: the below is all handled by nextjs, but it is useful to understand this when you see it in articles/tutorials on the Web. MM: it's also useful when working on a React project which doesn't involve NextJS i think. DM: not use nextjs? perish the thought! JK BUT really, nextjs is so superior to CRA, however my last job used CRA to start the app, but it was so modified that it was unrecognizable. Also, even with CRA everyone uses a better package for routing than react-router-dom. but still good to know it. MM: that make sense, NextJS is straightforward and more concise than working with CRA. but as always new libraries are often more simplified than their predecessors.
 ## components
 Here are some of the main components provided by react-router-dom:
 1. BrowserRouter: A <BrowserRouter> is used for applications with a dynamic server that knows how to handle any type of URL.

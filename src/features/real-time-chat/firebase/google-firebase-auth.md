@@ -7,4 +7,4 @@
 2. Import the same functions from the `firebase/auth` module in the authentication component.
 
 3. Import `signInWithPopup` from `firebase/auth` module. This function will pass two variables; those who hold the `getAuth()` and the `GoogleAuthProvider`.
-// DM: todoMM: no underscores, use snake-case in filenames
+//(done) DM: todoMM: no underscores, use snake-case in filenames. MM: is the hyphen(-) for kebab or snake case?
