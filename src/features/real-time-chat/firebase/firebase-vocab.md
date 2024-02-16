@@ -22,6 +22,8 @@ This is the Cloud Firestore module. It provides a flexible, scalable database fo
 
 ***onSnapshot***: is a method provided by Firebase Firestore to listen for real-time updates in your Firestore database. This method attaches a listener to a document or a collection in your Firestore database. Whenever data in that document or collection changes, the listener triggers, and your application can immediately react to the update.
 
+**howtofirebase:: real-time-update: how to listen for real-time updates in your firebase;** import the necessary Firebase Firestore functions and your Firebase instance, create a query for the Firestore collection you want to listen to, use the onSnapshot function to listen for real-time updates in your Firestore collection,then when you no longer need the snapshot, you can unsubscribe from it.
+
 ***collection***: is a function that gets a reference to a Firestore collection. A collection in Firestore is a grouping of documents, similar to a table in a traditional database.
 
 ***getFirestore***: This function is used to get a reference to a Firestore instance. It's often used when initializing your app's connection to Firestore. In your code, getFirestore is not directly used, but it's implied that db is a reference to your Firestore database, which could have been obtained by calling getFirestore.
