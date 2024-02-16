@@ -10,4 +10,3 @@ Steps for authentication:
   5. To enable or configure sign-in methods, click on the "Sign-in method" tab.
 */
 
-//(done) DM: todoMM: great, but the next line does not describe what you have, which is really about Google auth with firebase auth, so rewrite the first line below and (bump) move this info to a file named accordingly, OR, since I see the new google-firebase-app.md file, do you still want the below in this file? If so fine, you can delete this line

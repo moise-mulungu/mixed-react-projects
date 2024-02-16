@@ -13,7 +13,7 @@ fetchPromise.then((response) => {
 
 console.log('Started the .then() request…')
 
-//(done) DM: todoMM: add the async/await version to the other .js files in this dir following my example below (bump: including the changes to all the console.log which clarifies whether the .then() fetch is running or the async/await fetch is running). DM: you didn't update the console.logs in the other files as I asked. See "bump" above. Please do that now. Attention to detail, please, don't waste my time having to remind you of instructions that you missed!(ok)
+//() DM: todoMM: add the async/await version to the other .js files in this dir following my example below (bump: including the changes to all the console.log which clarifies whether the .then() fetch is running or the async/await fetch is running). DM: you didn't update the console.logs in the other files as I asked. See "bump" above. Please do that now. Attention to detail, please, don't waste my time having to remind you of instructions that you missed!(ok) DM: you left a console.log ambiguous in chaining-promises.js {cause you cant know where it come from}. Attention to detail! You'll thank me later for being so picky. But, really, stop wasting my time on this little stuff! finish the job and finish it right the first time! Both these followup instructions ive written were required in the original todoMM.
 
 // to avoid the error: SyntaxError: await is only valid in async functions and the top level bodies of modules put this into a IIFE (Immediately Invoked Function Expression) like this:
 ;(async () => {
