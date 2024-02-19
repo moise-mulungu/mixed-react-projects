@@ -36,7 +36,7 @@ const fetchPromise2 = fetch(
 fetchPromise2
   .then((response) => response.json())
   .then((data) => {
-    console.log(data[0].name)
+    console.log('Running .then() fetch:', data[0].name) // console the .then() fetch running
   })
 
   // adding an async/await version
@@ -50,7 +50,7 @@ fetchPromise2
       const data = await response.json()
       console.log('Running async/await fetch:', data[0].name) // console the async/await fetch running
     } catch (error) {
-      console.error(`Error fetching async/await data: ${error}`)
+      console.error(`Error fetching async/await data: ${error}`) // console the async/await fetch running
     }
   })()
 
