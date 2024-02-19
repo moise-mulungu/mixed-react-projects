@@ -10,9 +10,10 @@ This is the Firebase Realtime Database module. It allows you to store and sync d
 Firebase offers two distinct data storage services, Firebase Realtime Database and Firestore, each with unique features and use cases.
 * The firebase/database module, also known as Firebase Realtime Database, is an older, yet still used service providing real-time JSON data storage and synchronization 
 * The firebase/firestore module, or Firestore, is a modern, scalable NoSQL cloud database suitable for complex applications due to its advanced querying and scaling capabilities.
+* In the two projects, i am using both, but firebase/firestore is more used in both projects for collections and documents related functions.
 
 
-()DM: todoMM: is firebase/firestore a subset of firebase/database? is firebase/firestore more commonly used, or is it firebase/database an old/rarely-used module? which are you using in your real-time-chat and expense repos? incorporate your answers in the bullet points above. MM: redefine them in a more concise way. DM: you didnt answer the last question. otherwise good changes.
+(done)DM: todoMM: is firebase/firestore a subset of firebase/database? is firebase/firestore more commonly used, or is it firebase/database an old/rarely-used module? which are you using in your real-time-chat and expense repos? incorporate your answers in the bullet points above. MM: redefine them in a more concise way. DM: you didnt answer the last question. otherwise good changes.MM: ok
 
 ## firebase/firestore: 
 This is the Cloud Firestore module. It provides a flexible, scalable database for mobile, web, and server development.
@@ -21,8 +22,7 @@ This is the Cloud Firestore module. It provides a flexible, scalable database fo
 
 ***onSnapshot***: is a method provided by Firebase Firestore to listen for real-time updates in your Firestore database. This method attaches a listener to a document or a collection in your Firestore database. Whenever data in that document or collection changes, the listener triggers, and your application can immediately react to the update.
 
-**howtofirebase:: real-time-update: how to listen for real-time updates in your firebase;** import the necessary Firebase Firestore functions and your Firebase instance, create a query for the Firestore collection you want to listen to, use the onSnapshot function to listen for real-time updates in your Firestore collection,then when you no longer need the snapshot, you can unsubscribe from it.
-// DM: todoMM: howtos are supposed to preceed a code example. Put this howto in your code where you do it.
+//(done) DM: todoMM: howtos are supposed to preceed a code example. Put this howto in your code where you do it. MM: i moved this howto to the expense-tracker repo.
 
 ***collection***: is a function that gets a reference to a Firestore collection. A collection in Firestore is a grouping of documents, similar to a table in a traditional database.
 
