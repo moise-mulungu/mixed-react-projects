@@ -13,7 +13,11 @@ fetchPromise.then((response) => {
 
 console.log('Started the .then() request…')
 
-// DM: todoMM: going forward, for better readability, lets put each of our follou-comments on a new line with extra indentation to indicate the line is a continuation of the previous line. This will make it easier to read and understand when the line gets too long
+/*
+(done)DM: todoMM: going forward, for better readability, lets put each of our follou-comments on a new line with extra indentation to indicate the line is a continuation of the previous line. This will make it easier to read and understand when the line gets too long. 
+MM: i got it.
+*/ 
+
 /*
 (done) DM: todoMM: add the async/await version to the other .js files in this dir following my example below (bump: including the changes to all the console.log which clarifies whether the .then() fetch is running or the async/await fetch is running). 
    DM: you didn't update the console.logs in the other files as I asked. See "bump" above. Please do that now. Attention to detail, please, don't waste my time having to remind you of instructions that you missed! (ok) 

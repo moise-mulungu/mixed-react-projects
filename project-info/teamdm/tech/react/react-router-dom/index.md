@@ -10,6 +10,7 @@ DM: note: the below is all handled by nextjs, but it is useful to understand thi
 	DM: not use nextjs? perish the thought! JK BUT really, nextjs is so superior to CRA, however my last job used CRA to start the app, but it was so modified that it was unrecognizable. Also, even with CRA everyone uses a better package for routing than react-router-dom. but still good to know it. MM: that make sense, NextJS is straightforward and more concise than working with CRA. but as always new libraries are often more simplified than their alternatives. DM: ok, but "predecessor" vocabulary is off - CRA is not a predecessor to nextjs, they are both separate things currently in development. Try picking a better word or change the sentence. 
 	MM: I think alternatives seem to be appropriate here, i referred to that by comparing JavasCript, React CRA, and NextJS.
 	DM: OK, but remember you dont pick CRA vs NextJS due to the routing, but to a lot of other reasons.
+	MM: yes, i found something like server-side rendering, incremental static regeneration which allows you to re-generate static pages at runtime without rebuilding the entire site.
  -->
 ## components
 Here are some of the main components provided by react-router-dom:
