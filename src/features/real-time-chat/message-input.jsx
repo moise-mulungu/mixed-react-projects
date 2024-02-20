@@ -3,7 +3,7 @@ import { UserContext } from './user/user-context-provider'
 import { addDoc, collection, getDoc, getDocs, updateDoc, doc } from 'firebase/firestore'
 import db from './firebase'
 import { getAuth } from 'firebase/auth'
-//(done) DM: todoMM: don't import the entire lodash, just import the throttle function. This will reduce the size of the bundle.
+//(done) DM: don't import the entire lodash, just import the throttle function. This will reduce the size of the bundle.
 import { throttle } from 'lodash' // for throttling
 
 export default function MessageInput({ onSendMessage, onTyping }) {
@@ -163,7 +163,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
 
   For this step, i couldn't see the typing node in the firebase Realtime Database tab suggested by the AI prompt. i would have to double check the code for the realtime database.
 
-  (done)DM: todoMM: OK First step is to get the isTyping status reflected in the database. The next step, read the following:
+  (done)DM: OK First step is to get the isTyping status reflected in the database. The next step, read the following:
   So, I started typing this: "I see that you're sending setDatabaseValue(typingRef, isTyping) up on each keystroke." Then Copilot suggested this:
   "This is not what you want. You want to send it only when the user starts typing and when the user stops typing. You can do this by using a timer. When the user starts typing, you start a timer. When the user stops typing, you clear the timer. If the timer expires, then you send the typing status to the database. This is how you can avoid sending the typing status on each keystroke."
   DM: this is a good point. but it is not really clear. I would think of it this way:

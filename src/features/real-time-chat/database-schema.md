@@ -1,4 +1,4 @@
-(done)DM: todoMM: list your database "schema" here for my reference (not necessarily to include in the blog post). 
+(done)DM: list your database "schema" here for my reference (not necessarily to include in the blog post). 
 # schema collections:
 * messages
   * field names (I copied these from above. validate they are exactly correct by looking in the Firebase console)

@@ -68,7 +68,7 @@ CREATE TABLE users (
   isactive BOOLEAN NOT NULL
 );
 
--- (done)DM: todoMM: just have one message table in this file, not two. Focusing on prosgres. The Ruby comments are helpful, but clean up this file moving the firestore-specific info to a new file in this directory. Be careful to not overthink this. Allocate only 30 minutes to my todoMMs in this directory.
+-- (done)DM: just have one message table in this file, not two. Focusing on prosgres. The Ruby comments are helpful, but clean up this file moving the firestore-specific info to a new file in this directory. Be careful to not overthink this. Allocate only 30 minutes to my todo-MMs in this directory.
 CREATE TABLE messages (
   id VARCHAR(255) PRIMARY KEY,
   text TEXT NOT NULL,

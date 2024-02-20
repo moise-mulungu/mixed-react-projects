@@ -114,7 +114,7 @@ for push
 - work plan
   - focus on all the todoMM for up to 2 hours, then split remaining time as below (temporary until you're caught up on the todoMM)
     - if there are todoMM that you've already completed, mark them as (done) and I'll have a look
-    - please follow up on all my todoMM ASAP, if they are quick tasks - if they are larger tasks, they can be done later. We'll start using Jira soon, but for now, if you can't finish a todoMM before the next 6:45am meeting, leave a note estimating how many hours you estimate you'll need to complete it (this is good practice, and hard - my boss always asks me to estimate ...ugh)
+    - please follow up on all my todoMM ASAP, if they are quick tasks - if they are larger tasks, they can be done later. We'll start using Jira soon, but for now, if you can't finish a todo-MM before the next 6:45am meeting, leave a note estimating how many hours you estimate you'll need to complete it (this is good practice, and hard - my boss always asks me to estimate ...ugh)
   - 33% hours on the portfolio
   - 33% Core JS - any assigned exercises then codeWars when you're done
     - put all solutions in the repo so we can discuss them

@@ -66,7 +66,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
       return
     }
     /* 
-      (done)DM: todoMM: Combine the if and else block into one block. By doing them separately the code is hard to read, and hard to tell what is the difference between with or without uploaded file. Also, the code is repetitive, which is a "code smell". (which will always invite extra scrutiny from reviewers, tech leads, etc.) First step: convert the .then().catch() to async/await.
+      (done)DM: Combine the if and else block into one block. By doing them separately the code is hard to read, and hard to tell what is the difference between with or without uploaded file. Also, the code is repetitive, which is a "code smell". (which will always invite extra scrutiny from reviewers, tech leads, etc.) First step: convert the .then().catch() to async/await.
 
 
       step 1: convert all .then().catch() to async/await and try/catch

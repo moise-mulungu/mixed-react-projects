@@ -1,4 +1,4 @@
-(done)DM: todoMM: good. there are only these two tables`=collections in firestore for real-time-chat? where are you tracking if the user is active or not? I dont want you to write a generic schema and sql for chat app, I want to be exactly what you are using in your real-time-chat app. Later we wil be able to compare and contrast RDBMS and NoSQL databases.
+(done)DM: good. there are only these two tables`=collections in firestore for real-time-chat? where are you tracking if the user is active or not? I dont want you to write a generic schema and sql for chat app, I want to be exactly what you are using in your real-time-chat app. Later we wil be able to compare and contrast RDBMS and NoSQL databases.
    DM: I dont see an answer to the question, are there more collections in your chat app that contain data used by the chat app that you should more tables here?
 
 DM: todoMM: 

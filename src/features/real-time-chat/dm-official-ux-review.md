@@ -34,7 +34,7 @@ Effort  2:
   * MM: i change this to 3 because firebase data storage for retrieval is more complex than expected.
   * DM: I changed it to 2 because you already have the profile image showing on the profile page - this is already done!
   
-//(done) DM: todoMM: this should come before Impact 3 Effort 3. Think of it like Impact - Effort. 3 - 3 is 0. 2 - 1 is 1. Sort again based on that. MM: i sorted them out according to the result of subtraction between Impact/Effort. the bigger the result, the first on the list. right?
+//(done) DM: this should come before Impact 3 Effort 3. Think of it like Impact - Effort. 3 - 3 is 0. 2 - 1 is 1. Sort again based on that. MM: i sorted them out according to the result of subtraction between Impact/Effort. the bigger the result, the first on the list. right?
 ## don't show the login screen if the app is in the process of validating the user. Is it based on cookies or how does the app know that the user is logged in on a previous day?
 Impact 2 - avoid confusion as user may think he/she needs to login. always show the current status if something is happening EX loading... "logging in..."
 Effort 1 - this can be done by just adding some lines of code in the function that handles the login process.
@@ -65,7 +65,7 @@ Effort 2 - what type of communication to use for users? do you mean adding text 
 Impact 2 - option to delete is "de rigueur" for user apps
 * changing it to a 2 because I don't think it is that important for a portfolio app.
 Effort 2 - i think Effort 2 is appropriate ven though accessing firebase database is a bit tricky.
-*(done) DM: todoMM: think about how you would do this and write your approach here. There are various ways. You  don't have to code this item, but think it thru enough to justify an effort of 3. BTW, the items in this file are not requirements, but rather for discussion and prioritizing. We may decide not to do some of them, especially if the impact is low and the effort high.
+*(done) DM: think about how you would do this and write your approach here. There are various ways. You  don't have to code this item, but think it thru enough to justify an effort of 3. BTW, the items in this file are not requirements, but rather for discussion and prioritizing. We may decide not to do some of them, especially if the impact is low and the effort high.
 
 
 ## hit "Enter" 3 times then click "Send". It correctly posts no message, but the empty lines are still there. Remove all "whitespace" if user submits (via Send or via ctrl-Enter)
@@ -76,7 +76,7 @@ Effort 1 - i will have to refactor the code
 * let's discuss before assigning Effort/Impact
 * MM: when working with messages, i often delete them for testing new implemented features, but for this task i'll have to keep them for verification for one day. the Effort/Impact could be assigned next week. 
   * MM: after double-checking i found that old messages do not disappear, you may check on your side as well. 
-    *(done) DM: todoMM: I don't know how to test that specifically. Give me steps to set up the test. Don't make me think too hard : MM: i think this task is about older messages seem to disappear after a period of time. so the only test is to type (a) message(s) on the chatbox and keep that for two or three days on the same account and see if it will disappear. on my side i checked and found that it doesn't disappear. if i had added tests in the code, that could be help, but for now the only one is to wait for a period of time and see if it will disappear.
+    *(done) DM: I don't know how to test that specifically. Give me steps to set up the test. Don't make me think too hard : MM: i think this task is about older messages seem to disappear after a period of time. so the only test is to type (a) message(s) on the chatbox and keep that for two or three days on the same account and see if it will disappear. on my side i checked and found that it doesn't disappear. if i had added tests in the code, that could be help, but for now the only one is to wait for a period of time and see if it will disappear.
 
 # done
 

@@ -2,13 +2,13 @@ note: prefix Google searches with "computer programming" to get the best results
 
 ## Agile methodology
 
-(done) DM: todoMM: use bing chat ai to get a very short definition for this vocab entry; the definition is found in the project-info/teamdm/agile.md file
+(done) DM: use bing chat ai to get a very short definition for this vocab entry; the definition is found in the project-info/teamdm/agile.md file
 
 Agile methodology is a project management framework that breaks projects down into several dynamic phases, commonly known as sprints. It emphasizes continuous collaboration and improvement, and is an iterative methodology.
 
 ## JSON
 
-(done) DM: todoMM: Moise, ask bing chat ai for "give me a very, very, very brief explanation of JSON" and use that to create this JSON vocab entry here
+(done) DM: Moise, ask bing chat ai for "give me a very, very, very brief explanation of JSON" and use that to create this JSON vocab entry here
 
 JSON stands for **JavaScript Object Notation**. It is an open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of attribute–value pairs and arrays (or other serializable values)¹. JSON is a lightweight data-interchange format that is easy for humans to read and write. It is also easy for machines to parse and generate³.
 

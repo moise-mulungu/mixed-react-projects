@@ -1,4 +1,4 @@
-//(done) DM: todoMM: this is not about firebase console, so put it into a separate file named after the topic: How to set up authentication in Firebase
+//(done) DM: this is not about firebase console, so put it into a separate file named after the topic: How to set up authentication in Firebase
 * this is not about console. attention to detail please! don't waste the leads time with obvious things like this. You will set yourself apart from other Juniors who are sloppy and aren't paying attention. It is really important, not trying to be a a-hole. On the job, a boss will, over time, feel like you are not following instructions and start thinking about firing you. I should know, because it has happened to me in the past. 
  /*
 

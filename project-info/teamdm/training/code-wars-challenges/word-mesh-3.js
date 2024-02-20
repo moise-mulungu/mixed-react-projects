@@ -20,7 +20,7 @@ function wordMesh(arrayOfStrings) {
     meshedItemsCharactersToNull || arrayOfStrings.length - matchItemCharacters.length !== 1
 
   console.log({ failedToMesh })
-  //(done) DM: todoMM: you can finish this line by checking the length of  meshedLetters against the expected length
+  //(done) DM: you can finish this line by checking the length of  meshedLetters against the expected length
 
   const isArrayOfStringsMesh = failedToMesh ? 'failed to mesh' : matchItemCharacters.join('')
 

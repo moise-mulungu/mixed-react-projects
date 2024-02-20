@@ -126,7 +126,7 @@ binaryArrayToNumber([1, 0, 1, 1]) // 11
 /* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-//(done) DM: todoMM: you can do step 14 now
+//(done) DM: you can do step 14 now
 function binaryArrayToNumber(binaryNumbers) {
   if (!Array.isArray(binaryNumbers)) throw new Error('input must be an array')
   const isBinaryArray = (binaryNumbers) => {

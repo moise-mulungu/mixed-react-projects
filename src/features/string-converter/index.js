@@ -28,12 +28,12 @@ export default function PascalToCamelCase() {
   // const [copiedText, setCopiedText] = useState(false); MM: DM: after reverting the code this state declaration is no more useful DM, yes good decision.
 
   // DM: good, I'm glad you wrote separate functions for each
-  //(done) DM: todoMM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.(MM: i think the previous version is better than lodash as the lodash doesn't fulfill the case conversion logic; I am still finding the case conversion logic with lodash.) DM: OK, save the lodash stuff below for later when there's more types to convert from.
+  //(done) DM: now, lets use lodash functions camelCase() and pascalCase() instead of the split.map.join; use them inside the two below functions. DM; ok, implement it in the app.(MM: i think the previous version is better than lodash as the lodash doesn't fulfill the case conversion logic; I am still finding the case conversion logic with lodash.) DM: OK, save the lodash stuff below for later when there's more types to convert from.
 
   // lodash version
   // DM: never mix imports ("ES6 Modules") with require ("CommonJS", an older "module system"). in React, you'll never require, the only time you require is in some NodeJS and config files.
   // DM: also, full "namespace imports" increase your "bundle size" (the amount of bytes the browser must download from the hosting website), so use "named imports" to import specifically which functionality you need. NextJS Webpack config can do "tree shaking" to figure out the minimum bundle size.
-  //(done) DM: todoMM: import { camelCase, startCase } from 'lodash' (imports can only be at the top of js files)
+  //(done) DM: import { camelCase, startCase } from 'lodash' (imports can only be at the top of js files)
   // const _ = require('lodash')
 
   // camel to pascal case
@@ -64,7 +64,7 @@ export default function PascalToCamelCase() {
   // this is good
   // pascal to camel case
   // function convertPascalToCamelCase() {
-  //   //(done) DM: todoMM: good, but assign the result of the lodash function to a variable
+  //   //(done) DM: good, but assign the result of the lodash function to a variable
   //   const firstCharacterToLowerCase = _.camelCase(inputString)
   //   return setConvertedString(
   //     // _.camelCase(inputString)

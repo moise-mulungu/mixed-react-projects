@@ -3,14 +3,14 @@
 ### Error: Too many re-renders. React limits the number of renders to prevent an infinite loop.
 * The React error `Too many re-renders. React limits the number of renders to prevent an infinite loop` happens due to the state update in the main body of the component or invoking an event handler, instead of passing as a function
 
-(done)DM: todoMM: good, put an example here because this is not clear to me. DM: it may seem confusing, as I have said that comments apply to the next line. In this case, I was asking for an example right here, on the next line, for the first howto RE re-renders
+(done)DM: good, put an example here because this is not clear to me. DM: it may seem confusing, as I have said that comments apply to the next line. In this case, I was asking for an example right here, on the next line, for the first howto RE re-renders
 ```js
   import React, { useState, useEffect } from 'react';
 
   const ExampleComponent = () => {
     const [count, setCount] = useState(0);
 
-// (MM: you are right, i just realized how it is important to double check everything before committing. done)DM: todoMM: this useEffect would really cause an infinite loop. Do some asking copilot about this useEffect. You might have to change this file to a .js file in order to get Copilot help. DM: good you changed to the updater-type argument to setCount in both places. 
+// (MM: you are right, i just realized how it is important to double check everything before committing. done)DM: this useEffect would really cause an infinite loop. Do some asking copilot about this useEffect. You might have to change this file to a .js file in order to get Copilot help. DM: good you changed to the updater-type argument to setCount in both places. 
 //(done) DM: for this example to be helpful when you see the error message in the future then search the repo and you arrive here, best if you show a before and after example. So, show the useEffect with the error that causes the endless loop (commented out) and below it the correct useEffect (which is what you have now). Also make a note as to why you need the useEffect (i.e., to initialize the count to 1 on the first render)
 // useEffect hook is used to update the count state. [count] is specified as the dependency array for the effect to prevent the infinite loop of re-renders.
 
@@ -105,7 +105,7 @@ DM: todoMM: ask Copilot AI what is a good NextJS solution. Also, search your rep
     * i replaced also `objectFit` with `objectfit` in the src/features/portfolio/content/project-section/project-cards.jsx file -->
 * this error occurs when the prop name is in camelCase, while the DOM would need a lowercase
 
-(done)DM: todoMM: the info after the howtojs line does not provide any further information, so delete it and explain the solution. Or is do you mean: "double check the proper spelling and case of the property name" ? Are all DOM element properties never in camelCase, because that:s what your howtojs solution implies?
+(done)DM: the info after the howtojs line does not provide any further information, so delete it and explain the solution. Or is do you mean: "double check the proper spelling and case of the property name" ? Are all DOM element properties never in camelCase, because that:s what your howtojs solution implies?
 
 
 ***howtojs: warning: react::  each child in a list should have a unique "key" prop ; add a value to the key that will be unique for each child in your map() function***

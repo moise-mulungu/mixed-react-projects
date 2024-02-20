@@ -5,7 +5,7 @@ import { UserContext } from './user-context-provider'
 import Login from './login'
 import Signup from './signup'
 
-//(done) DM: todoMM: move to directory named user/index.jsx and add user-context.jsx to that directory. This way, as this app grows (it seems like it will be come quite large), it will be easier to keep track of what files are imported by what other files.
+//(done) DM: move to directory named user/index.jsx and add user-context.jsx to that directory. This way, as this app grows (it seems like it will be come quite large), it will be easier to keep track of what files are imported by what other files.
 
 // todoDM: example for lesson on hoisting, const not hoisted, function declarations are hoisted
 // DM: let's get back to function declarations not arrow functions for the main function in a file. It is a more self-documenting that way.(ok)
@@ -116,7 +116,6 @@ export default function User({ onAuthenticate, handleUserConnect }) {
 
   const handleLoginWithGoogle = () => {
     signInWithGoogle()
-
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result)
@@ -134,8 +133,6 @@ export default function User({ onAuthenticate, handleUserConnect }) {
         setError(errorMessage)
       })
   }
-
-
 
   console.log({ isLoggedIn })
 
@@ -192,7 +189,7 @@ You might want to consider using the 'react-firebase-hooks' successor library, '
 But the google search didn't mention that the 'react-firebase-hooks' has been deprecated. i paused there, and i'll continue with the tutorial to understand more. DM: yeah AI may be confused, you can check the GitHub page for react-firebase-hooks to see if it is currently being maintained.(ok)
 */
 
-//(done) DM: todoMM: please move the below comment into the file where you are using the new configuration, which is firebase.js I presume?
+//(done) DM: please move the below comment into the file where you are using the new configuration, which is firebase.js I presume?
 
 /*
 MM: DM: i faced blockers when i click a signup button of not loading and crashing the application: firebase error: next-dev.js:25 Error adding document:  FirebaseError: Function addDoc() called with invalid data. Unsupported field value: undefined (found in field user in document messages/tuCI3kKosIYNkT8UtssY). i tried all the solutions suggested by AI by adding console.log to the handleSignup function elements, but the errors still persist.

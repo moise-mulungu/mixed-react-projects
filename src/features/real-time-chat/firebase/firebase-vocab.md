@@ -4,7 +4,7 @@ Firebase is a platform developed by Google for creating mobile and web applicati
 ## firebase/database: 
 This is the Firebase Realtime Database module. It allows you to store and sync data in real-time.
 
-//(done) DM: todoMM: put a note here describing the difference between firebase/database and firebase/firestore
+//(done) DM: put a note here describing the difference between firebase/database and firebase/firestore
 
 ## firebase/database vs firebase/firestore
 Firebase offers two distinct data storage services, Firebase Realtime Database and Firestore, each with unique features and use cases.
@@ -42,7 +42,7 @@ This is the Google Analytics module. It provides free, unlimited reporting on up
 ## firebase/remote-config: 
 This is the Firebase Remote Config module. It allows you to change the behavior and appearance of your app without requiring users to download an app update.
 
-(done)DM: todoMM: add a note for firebase/remote-config saying something about web app VS mobile app WHY it looks like the firebase/remote-config description above is geared toward mobile apps, which is OK, but make a not about that
+(done)DM: add a note for firebase/remote-config saying something about web app VS mobile app WHY it looks like the firebase/remote-config description above is geared toward mobile apps, which is OK, but make a not about that
 
 ### firebase/remote-config web app vs mobile
 The firebase/remote-config module is primarily designed for mobile applications, allowing developers to remotely configure the behavior and appearance of their mobile apps without requiring an app store update. This focus on mobile apps is due to the specific use case of remotely managing app configuration settings and feature flags, which is more commonly associated with mobile applications than web applications.

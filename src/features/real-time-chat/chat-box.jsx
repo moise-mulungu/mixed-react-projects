@@ -53,14 +53,14 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
       const uniqueSenders = [...new Set(messages.map((message) => message.sender))]
       const newUserData = {}
       for (const sender of uniqueSenders) {
-        //(done) DM: todoMM: careful of expensive operations inside a loop. what if there are 200 messages? You can't fetch the user for each message. One solution is to, inside this loop, get a list of unique message.sender, then after the loop, call fetchUser for each unique sender(id).
+        //(done) DM: careful of expensive operations inside a loop. what if there are 200 messages? You can't fetch the user for each message. One solution is to, inside this loop, get a list of unique message.sender, then after the loop, call fetchUser for each unique sender(id).
         newUserData[sender] = await fetchUser(sender)
       }
       setUserData(newUserData)
     }
     // DM: another solution is to have firestore "push" the latest user info to you when user info is changed by user, or, if that is not possible, every 5 minutes or so. Or, you could "pull" every 5 minutes by using setInterval to query the DB for latest user info ("pull" might configurable in firebase, so be sure to query Google/AI for your top-level goal "how do I avoid user data getting stale over time?")
 
-    //(done) DM: todoMM: use a guard clause at the beginning of the useEffect to handle when !db. That way you don't have to use `let unsubscribe` and `unsubscribe && unsubscribe()`. Following the rule to avoid `let` whenever possible will help you write better code.
+    //(done) DM: use a guard clause at the beginning of the useEffect to handle when !db. That way you don't have to use `let unsubscribe` and `unsubscribe && unsubscribe()`. Following the rule to avoid `let` whenever possible will help you write better code.
     // if (db) {
     const unsubscribe = onSnapshot(usersCollection, (snapshot) => {
       //(done) DM: I'm seeing an error when I change my display name, I think it is here. Put a try-catch around the code in this callback so you can know for sure where the error is happening.
@@ -79,7 +79,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUser }) {
 
     fetchAllUserData()
     return () => {
-      //(done) DM todoMM: keep in mind this cleanup function will be called every time one of the dependencies changes. Do you want to unsubscribe each time the messages variable changes?
+      //(done) DM: keep in mind this cleanup function will be called every time one of the dependencies changes. Do you want to unsubscribe each time the messages variable changes?
 
       unsubscribe()
     }
@@ -152,7 +152,7 @@ The error: Objects are not valid as a React child (found: object with keys {text
   4. After all the above attempts nothing was found.
 MM: i'll continue working on it tomorrow. DM: ok, good, keep going.
 
-(done)DM: todoMM: please put this comment near the affected code because I don't know what code this applies to. It is frustrating because I have no idea what you're talking about! Be careful each time you add a comment like this that is is directly above the affected code. And, if instructions are necessary to reproduce the problem, then give those instructions. OK, no I assume this is no longer an issue. If you had put this message immediately/directly in the line above the affected code, when you later did the fix above, you would have realized that this comment was no longer relevant and you would have deleted it. So, please be careful to put comments directly above the affected code. It is extremely frustrating to try to figure out what happened of what I should do with this Git diff! MM: this issue is no more relevant, i already fixed the problem. i think the problem is the day i wrote the comment you didn't get time to review it, then the next day i fixed the problem and forgot to delete the comment. But it's talking about the code above. DM: ok, just reiterating that if you always put comments directly above the affected code, there will never be confusion like this.(ok)
+(done)DM: please put this comment near the affected code because I don't know what code this applies to. It is frustrating because I have no idea what you're talking about! Be careful each time you add a comment like this that is is directly above the affected code. And, if instructions are necessary to reproduce the problem, then give those instructions. OK, no I assume this is no longer an issue. If you had put this message immediately/directly in the line above the affected code, when you later did the fix above, you would have realized that this comment was no longer relevant and you would have deleted it. So, please be careful to put comments directly above the affected code. It is extremely frustrating to try to figure out what happened of what I should do with this Git diff! MM: this issue is no more relevant, i already fixed the problem. i think the problem is the day i wrote the comment you didn't get time to review it, then the next day i fixed the problem and forgot to delete the comment. But it's talking about the code above. DM: ok, just reiterating that if you always put comments directly above the affected code, there will never be confusion like this.(ok)
 
 */
 

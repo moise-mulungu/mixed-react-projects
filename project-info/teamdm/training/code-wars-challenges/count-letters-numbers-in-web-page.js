@@ -28,7 +28,7 @@ console.time('filtering')
 const lettersAndNumbers = allCharacters.filter((char) => {
   // (i declared a variable that hold the char.match function)DM: todoMM: String.match() returns a boolean, so you can just return: DM: this is not done.
   // return char.match(/[a-z0-9]/i)
-  //(done) DM: todoMM: what about capital letters? Also not done.
+  //(done) DM: what about capital letters? Also not done.
   // if (char.match(/[a-z0-9]/i)) {
   //   return true
   // }
@@ -38,7 +38,7 @@ const lettersAndNumbers = allCharacters.filter((char) => {
   return isAlphaNumeric
   // at first, I did not understand what you meant by returning the result of the match, but now I see that you meant to return the
   // DM: yes, glad you figured it out, it was a little unclear.
-  //(done) DM: todoMM: best to always run the code in order to test your code edits. This will help you find typos and errors. When I run you code I see:
+  //(done) DM: best to always run the code in order to test your code edits. This will help you find typos and errors. When I run you code I see:
   /*   return char.match(/[a-Az-Z0-9]/i); I see this error: but i don't run this code because it's freezing my computer
                     ^^^^^^^^^^^^^^ 
 // DM: OK, let me know if you run into this freezing issue again. JS errors shouldn't freeze your machine. In the future, if something like freezing happens, you can write something is the "status" section if each challenge file. Always communicate what is going on. This is the biggest lesson I learned in my last job; now it's working perfectly with return char.match(/[a-zA-Z0-9]/i)

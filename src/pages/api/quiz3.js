@@ -1,7 +1,7 @@
 import axios from 'axios'
 import isEmpty from 'lodash/isEmpty'
 
-//(done) DM: todoMM: test this at localhost:3005/api/quiz3 until the property names and values match what you get in localhost:3005/api/quiz
+//(done) DM: test this at localhost:3005/api/quiz3 until the property names and values match what you get in localhost:3005/api/quiz
 
 export default async (req, res) => {
   /*
@@ -49,7 +49,7 @@ export default async (req, res) => {
     return res.status(200).json(data.default)
   }
 
-  //(done) DM: todoMM: because of  the return statements in the if/else statements above, you don't need an else here because execution will never get here if one of the above conditions was met. So, delete this else statement. it's more readable and there is not the big indent, which makes the code look more complicated and makes the Git diff harder to read, because Git diff shows that ALL the code below has changed (but its only because of the indent caused by else)
+  //(done) DM: because of  the return statements in the if/else statements above, you don't need an else here because execution will never get here if one of the above conditions was met. So, delete this else statement. it's more readable and there is not the big indent, which makes the code look more complicated and makes the Git diff harder to read, because Git diff shows that ALL the code below has changed (but its only because of the indent caused by else)
   // else {
 
   // 3. External API Call: If the category is not 'html', 'javascript', or 'css', the function makes a request to the external API and sends the response as the result. The response is an array of objects. Each object contains a question and its answer choices.

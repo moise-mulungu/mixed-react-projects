@@ -10,7 +10,7 @@ and you had 40 estimated PTO accrued as of Oct 1 (see elsewhere in the git diff)
 so you had 85.5 accrued PTO VS 158 (hours worked less than 40/wk) ... 158 - 85.5 is 72.5 
 I didn't finish the PTO plan or discuss with you, and I don't want you to start the year with -72.5 PTO, so let's start over this year by setting your accrued PTO to 0 as of Jan 1 (bump), but keep in mind that going forward I'm only going to pay you for the hours that you work.MM: alright, thank you for the details!
 
-(done)DM: todoMM: make an hours entry for 1-8-2024 (monday at the meeting) and Friday the 12th where you can do the totals for that week. For both Fridays in this year, add this (as per the daily-reports-template):
+(done)DM: make an hours entry for 1-8-2024 (monday at the meeting) and Friday the 12th where you can do the totals for that week. For both Fridays in this year, add this (as per the daily-reports-template):
 # weekly total [weekly total hours] hrs (Friday only) 
 note: weekly total must be 40. Use PTO to make up the difference if your total hours is less than 40 by Friday. 
 # PTO [weekly total PTO hours used] hrs  (Friday only) 

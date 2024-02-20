@@ -31,7 +31,7 @@
       * DM: more detail on this, please
     * button (submit). MM: there going to be the login/signup buttons
 
-(done)DM: todoMM: for both tables below, list out the functionality you need for each such as search, sorting, adding, editing, etc. This will help choose the best React table solution. the actions will be "adding", and "editing", but "searching" can be incorporated as well for improvement. but the two first are the required for these two tables
+(done)DM: for both tables below, list out the functionality you need for each such as search, sorting, adding, editing, etc. This will help choose the best React table solution. the actions will be "adding", and "editing", but "searching" can be incorporated as well for improvement. but the two first are the required for these two tables
 
 ### user roles
 * project owner 

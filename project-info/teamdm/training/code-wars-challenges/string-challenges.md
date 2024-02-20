@@ -1,7 +1,7 @@
 # RegExp
 
 ```js
-//(done!) DM: todoMM: try these
+//(done!) DM: try these
 
 // check that the string is only (all) alpha-numeric characters using RegExp (hint look at the \d \w \t \s) DM: this line contains the task. Try to do it.
 'abc de!'

@@ -126,7 +126,7 @@ For the first issue, I :
 This error were not displayed on the console, but when i put a city to get the temperature, the degree was over the expected value that the open weather map endpoint offers.
 
 
-(done)DM: todoMM: limit your howtojs to general principles, not to a specific calculation for a specific app. In this case your howtojs line should include text regarding debugging a math formula. When you solve this problem, make a howtojs about what technique you used to debug and solve the error.
+(done)DM: limit your howtojs to general principles, not to a specific calculation for a specific app. In this case your howtojs line should include text regarding debugging a math formula. When you solve this problem, make a howtojs about what technique you used to debug and solve the error.
 
 ***howtojs: function:: to convert celsius to fahrenheit degrees, add a celsius param then return the celsius value times 9, divide by 5 plus 32(formula F = C * 9/5 + 32.).***
 To fix this issue:

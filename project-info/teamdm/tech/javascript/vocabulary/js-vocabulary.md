@@ -140,7 +140,7 @@ An object literal is a _compound data type_ of zero or more pairs of *property n
 
 DM: great work!
 
-(done) DM: todoMM: add to programming vocab: compound data type; I added it in the programming-vocabulary.md file.
+(done) DM: add to programming vocab: compound data type; I added it in the programming-vocabulary.md file.
 
 ## data type
 
@@ -438,7 +438,7 @@ A web API is an application programming interface for either a web server or a w
 
 CommonJS is a project to standardize the module ecosystem for JavaScript outside of web browsers. CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node.js. Increasingly ES Modules is used in NodeJS, and always in nextjs API routes.
 
-(done)DM: todoMM: following the same pattern, add entries for named imports and named exports
+(done)DM: following the same pattern, add entries for named imports and named exports
 DM: made some edits to use a common vocabulary
 * CommonJS
 ```js
@@ -499,7 +499,7 @@ A temporal dead zone (TDZ) is the lines where a variable is inaccessible until t
 A closure is a feature of JavaScript that allows inner functions to access the outer scope of a function. Closure helps in binding a function to its outer boundary and is created automatically whenever a function is created. A block is also treated as a scope since ES6. ***Static scoping is supported via closures in JavaScript. Therefore, every function is
 a closure***
 
-(done)DM: todoMM: great. Add vocab "static scoping" to this file.
+(done)DM: great. Add vocab "static scoping" to this file.
 
 ## lexical scoping AKA static scoping
 

@@ -40,7 +40,7 @@ export default function SolidarityFundContributionsTable() {
   //   // ... more data rows
   // ])
 
-  //(done) DM: todoMM: what trigger? what kind of trigger. Give it a more descriptive name
+  //(done) DM: what trigger? what kind of trigger. Give it a more descriptive name
   // const [trigger, setTrigger] = useState(false)
 
   // Renamed trigger to dataUpdateTrigger for clarity
@@ -82,7 +82,7 @@ export default function SolidarityFundContributionsTable() {
         Header: 'Full Name',
         accessor: 'fullName',
         Cell: ({ value, rowIndex, column }) => {
-          //(done) DM: todoMM: why do you call useContext for each column, when you can call it once at the beginning of the current function (SolidarityFundContributionsTable function) ?
+          //(done) DM: why do you call useContext for each column, when you can call it once at the beginning of the current function (SolidarityFundContributionsTable function) ?
           const updateMyData = useContext(UpdateDataContext)
           return (
             <input
@@ -295,7 +295,7 @@ export default function SolidarityFundContributionsTable() {
   }
 
   // const addColumn = () => {
-  //(done) DM: todoMM: avoid letting user edit/add columns. This is incredibly complex because what column/field do you store the new column in the database. I imagine that the columns would be determined by the requirements provided by the NGO. If not, you should determine the columns needed. MM: i see what you mean here, i will remove the addColumn function and the trigger state and the if statement in the columns array. i'll only keep the add and remove rows functions.
+  //(done) DM: avoid letting user edit/add columns. This is incredibly complex because what column/field do you store the new column in the database. I imagine that the columns would be determined by the requirements provided by the NGO. If not, you should determine the columns needed. MM: i see what you mean here, i will remove the addColumn function and the trigger state and the if statement in the columns array. i'll only keep the add and remove rows functions.
   //   setTrigger(true)
   // }
 
@@ -403,7 +403,7 @@ What is the advantage of using react-table package?:
 */
 
 /*
-(done)DM: todoMM: input fields are editable by default, so I'm not sure what you mean here. "input fields" refers to <input> elements in a form. Please explain what you want to edit, then update the text below using correct vocabulary. MM: i am not sure if inputs are editable by default, if you had time to check the first code, input were not editable. that's why i tried to update the code to make the input editable.
+(done)DM: input fields are editable by default, so I'm not sure what you mean here. "input fields" refers to <input> elements in a form. Please explain what you want to edit, then update the text below using correct vocabulary. MM: i am not sure if inputs are editable by default, if you had time to check the first code, input were not editable. that's why i tried to update the code to make the input editable.
 what i wanted to edit is on each column of the table, for example the full-name should accept text input, the share should accept number input, and so on.
 to make the input fields editable, i first read this article: https://akd3257.medium.com/how-to-make-a-table-in-react-with-hooks-aa55dd8829
 and then did the following:

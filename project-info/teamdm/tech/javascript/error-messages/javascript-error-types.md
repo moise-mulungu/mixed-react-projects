@@ -25,4 +25,4 @@ The URIError object represents an error when a global URI handling function was 
 
 The InternalError object indicates an error that occurred internally in the JavaScript engine.
 
-(done)DM: todoMM: great! Put this in a new file react-errors.md in the appropriate folder
+(done)DM: great! Put this in a new file react-errors.md in the appropriate folder

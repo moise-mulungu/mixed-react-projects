@@ -25,7 +25,7 @@ Here are some of the main components provided by react-router-dom:
 
 DM: howtos go in comments in JS because it would cause errors if not in comments. in MD no need to put in comments.(ok)
 
-//(done) DM: todoMM: this is not useful to you in the future. you already kow how to import. if you want a list of all the items you can import from react-router-dom, then explain that in the howto. 
+//(done) DM: this is not useful to you in the future. you already kow how to import. if you want a list of all the items you can import from react-router-dom, then explain that in the howto. 
 
 
 howtoreact:: react: define a route; 1. Use the Router component to wrap your entire application, 2. Use Switch/Routes and Route components to define your routes. 3. Each Route component should have a path prop, which is the URL path for that route, when the URL matches this path, the route is activated. 4. The element prop is used to define what should be rendered when the route is activated. This should be a React element or component 

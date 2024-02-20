@@ -1,5 +1,5 @@
 
-(done)DM: todoMM: rename the directory to rdb-schema-vs-firestore-schema/ 
+(done)DM: rename the directory to rdb-schema-vs-firestore-schema/ 
 
 DM: copying original instructions from the other repo
 

@@ -98,7 +98,7 @@ i want to count the number of vowels in the string
       this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
    */
 
-  //(done) DM: todoMM: I want you to debug the problem as an exercise (although you won't need the below line using the solution I'm suggesting above). Remember to always use console.log so that you have visibility to what the data is. You can console.log({curr}) to see what is in curr and what you are adding to acc. Then the answer will be obvious. This is the sort of thing that in a work situation, you can't say that you can't solve it, because you should as a first debugging step console.log to see what data is in the variables.
+  //(done) DM: I want you to debug the problem as an exercise (although you won't need the below line using the solution I'm suggesting above). Remember to always use console.log so that you have visibility to what the data is. You can console.log({curr}) to see what is in curr and what you are adding to acc. Then the answer will be obvious. This is the sort of thing that in a work situation, you can't say that you can't solve it, because you should as a first debugging step console.log to see what data is in the variables.
   //   return sumOfAllVowels.reduce((acc, curr) => acc + curr, 0); // this is weird, the reduce method doesn't work here
 
   return sumOfAllVowels

@@ -11,9 +11,9 @@ import GradientGenerator from './gradient-generator'
 // import StickerPad from './dynamic-key-generator/sticker'
 import ShoppingList from './shopping-list'
 import ToggleFooter from './toggle-footer'
-//(done) DM: todoMM: put this file in the right place in the ./src/ directory - no imports should come from outside the ./src directory
+//(done) DM: put this file in the right place in the ./src/ directory - no imports should come from outside the ./src directory
 import LiftingState from './lifting-state'
-//(done) DM: todoMM: with default imports, always use the name that corresponds to the filename: AnchorLinks in this case. Same for the other file.
+//(done) DM: with default imports, always use the name that corresponds to the filename: AnchorLinks in this case. Same for the other file.
 // (ok)DM: fyi, You can rename more self-documenting like this:
 // import {default as AnchorLinksSnakeCase} but that is not necessary here.
 import AnchorLinks from '../components/anchor-links'
@@ -21,7 +21,7 @@ import AnchorLinks from '../components/anchor-links'
 //(done) DM: fix the warnings that are seen in the console and in the terminal
 //(is this still necessary?) DM: improve the UI for the first few examples in this page; I can't see the outlines of dropdowns, fields, etc.
 export default function ComponentExamplesTwo() {
-  //(done)DM: todoMM: rename this for what it really is: exampleAnchorLinks
+  //(done)DM: rename this for what it really is: exampleAnchorLinks
   const anchorLinksExample = [
     'select-countries',
     'two-factor',
@@ -61,7 +61,7 @@ export default function ComponentExamplesTwo() {
               {linkText} | {''}
             </a>
           )
-          //(done) DM: todoMM: also, format this in the UI a little better, putting some space about the line, and a space after each "|"
+          //(done) DM: also, format this in the UI a little better, putting some space about the line, and a space after each "|"
         })} */}
       </>
       <Divider />
