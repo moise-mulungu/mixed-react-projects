@@ -1,4 +1,4 @@
-//(done) DM: todoMM: rename the directory from weather-app to weather-forecast
+//(done) DM: rename the directory from weather-app to weather-forecast
 
 import React from 'react'
 // import Forecast from './components/forecast/forecast'

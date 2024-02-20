@@ -161,7 +161,7 @@ const Weather = () => {
         // DM: todoMM: since errorResponseDataMessage cannot exist unless errorResponseData and errorResponse exist, you don't have to check the latter 2 here, so just check errorResponseDataMessage === 'city not found'
         // if (errorResponse && errorResponseData && errorResponseDataMessage === 'city not found') {
         if (errorResponse?.data?.message === 'city not found') {
-          //(done) DM: todoMM: in the alert message, use the city variable, not the hard-coded string 'city'
+          //(done) DM: in the alert message, use the city variable, not the hard-coded string 'city'
           alert(`"${city}" not found`)
         } else {
           // DM: todoMM: if I type 'Denv' and click the button, I get this alert message. So, see the logs what errorResponseDataMessage is. I see a 404 error in the logs, so I know that the errorResponseDataMessage is 'Not Found'. So, I can use that in the alert message. So, I change the alert message to this: alert('City not found. Please enter a valid city name.')

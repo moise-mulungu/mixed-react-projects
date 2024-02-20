@@ -3,7 +3,7 @@
 --  DM: try to never say "seems to be", always be sure
 -- MM: alright, i will be more careful with my words.
 
--- (done)DM: todoMM: verify all the below code for Postgres (just ask AI to ensure it is all good postgres sql, dont spend much time on itf). Dont bother learning about all relational databases, it will just get mixed up in your mind. Pick one relational database, Postgres is good, and learn it well. After that, how to do stuff in each other variant of relational database will be easy to find out with a search.
+-- (done)DM: verify all the below code for Postgres (just ask AI to ensure it is all good postgres sql, dont spend much time on itf). Dont bother learning about all relational databases, it will just get mixed up in your mind. Pick one relational database, Postgres is good, and learn it well. After that, how to do stuff in each other variant of relational database will be easy to find out with a search.
 -- MM: alright, i will focus on PostgreSQL for now.
 
 CREATE TABLE users (

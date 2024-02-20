@@ -46,4 +46,4 @@ This is a modern way of handling promises, introduced in ES2017. It makes asynch
     ```
 Both methods are valid and can be used depending on the situation and personal preference. However, async/await can lead to cleaner and more readable code, especially when dealing with multiple asynchronous operations that depend on each other. DEVs will see then.catch often in example code because it works the same for older code as well as recent code. If then.catch is shown in example code for a package, for example, it does not necessarily mean that you have to use then.catch. Almost always you can use await.
 
-(done)DM: todoMM: going forward, use async/await unless you absolutely must use then.catch. It is important to keep code clean and to avoid "callback" hell, in which .then() callbacks get deeply nested. MM: yes, i found the async/await more readable than then().catch()
+(done)DM: going forward, use async/await unless you absolutely must use then.catch. It is important to keep code clean and to avoid "callback" hell, in which .then() callbacks get deeply nested. MM: yes, i found the async/await more readable than then().catch()

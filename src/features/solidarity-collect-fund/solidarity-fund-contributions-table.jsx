@@ -274,7 +274,7 @@ export default function SolidarityFundContributionsTable() {
   const addRow = () => {
     setData((old) => [
       ...old,
-      /*(done) DM: todoMM: if this is the same as the one above (the default value for setData) assign it to a variable defaultDateRow and put the variable above the function (right after the imports)  */
+      /*(done) DM: if this is the same as the one above (the default value for setData) assign it to a variable defaultDateRow and put the variable above the function (right after the imports)  */
       // {
       //   fullName: null,
       //   share: null,
@@ -382,7 +382,7 @@ DM: todoMM: the below are not a discussion of why you chose react-table. IT look
   2. react-table is a great choice if our application is going to be client-driven, it provides out-of-the-box features for grouping rows ( pivot tables ) and column header grouping which is not available in the other packages. It is lightweight and performs seamlessly with 100K records. src: https://www.ideas2it.com/blogs/react-table-vs-react-bootstrap-table-2-vs-griddle-react-v0#:~:text=react%2Dtable%20is%20a%20great,performs%20seamlessly%20with%20100K%20records.
 
 
-(done)DM: todoMM: is this from AI? please list the source for these, URL or AI. MM: this is AI generated.
+(done)DM: is this from AI? please list the source for these, URL or AI. MM: this is AI generated.
 What is the advantage of using react-table package?:
   react-table is a lightweight, fast, and flexible library that provides a headless approach to building tables in React. Here are some advantages of using react-table:
 

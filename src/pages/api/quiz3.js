@@ -14,7 +14,7 @@ export default async (req, res) => {
   // const isEmpty = require('lodash/isEmpty')
   if (isEmpty(req.query)) {
     //(done) DM: good. should this be 500 (Error?). If you chose 400 specifically let me know your reasoning
-    //(done) DM: todoMM: back to 400 - don't always take my advice as gospel, esp if I give it in the form of a question, like I did above. Managers expect you to tell them when they are wrong. BTW, in an interview a manager asked me what I would do if  he we're to give me incorrect orders. MM: DM: i found that 500 status is for errors caused by server-side code, and 400 status is for errors caused by client-side code, and is more appropriate for these types of errors(AI prompt: "400 status is for client-side code, and is more appropriate for these types of errors")
+    //(done) DM: back to 400 - don't always take my advice as gospel, esp if I give it in the form of a question, like I did above. Managers expect you to tell them when they are wrong. BTW, in an interview a manager asked me what I would do if  he we're to give me incorrect orders. MM: DM: i found that 500 status is for errors caused by server-side code, and 400 status is for errors caused by client-side code, and is more appropriate for these types of errors(AI prompt: "400 status is for client-side code, and is more appropriate for these types of errors")
     return res.status(400).send('Bad Request: No query parameters provided')
   }
   const { category } = req.query
@@ -29,11 +29,11 @@ export default async (req, res) => {
   //(done) DM: allow category=html to be selected in the UI and passed to this API. Copy the import of "data" from quiz.js. If category=html, return data here. Otherwise, continue with the axios code below. DM: good job!
 
   /* 
-    (done)DM: todoMM: advanced task, since you're doing well. You don't need to import all 3 data files. You can import only the one you need by using "dynamic imports". Read https://nextjs.org/learn-pages-router/seo/improve/dynamic-imports see the example and the line after "// Dynamically load libraries". note you cannot use "@" imports with dynamic imports, so you'll need to use the exact, full relative path.
+    (done)DM: advanced task, since you're doing well. You don't need to import all 3 data files. You can import only the one you need by using "dynamic imports". Read https://nextjs.org/learn-pages-router/seo/improve/dynamic-imports see the example and the line after "// Dynamically load libraries". note you cannot use "@" imports with dynamic imports, so you'll need to use the exact, full relative path.
     DM: todoDM: follow-up with talk about vercel serverless functions (lambdas). Are they constantly running, or are they fired off on demand?MM: DM: the import with "@" works here! DM: cool!
   */
 
-  //(done) DM: todoMM: change all parameter values to be lowercase. It is a (naming) convention so that there is never confusion about case. DM: good
+  //(done) DM: change all parameter values to be lowercase. It is a (naming) convention so that there is never confusion about case. DM: good
 
   // 2. Local Data Import: If the category is 'html', 'javascript', or 'css', the function imports the corresponding local data file and sends it as the response. Otherwise, it continues with the axios code below.
   if (category.toLowerCase() === 'html') {

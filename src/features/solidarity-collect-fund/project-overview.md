@@ -1,5 +1,5 @@
 * This project will be build in French, but for the better understanding of both of us, i will first give the overview in English. it will track deposit, withdrawal, and assistance funds to members of a solidarity fund. data will be collected by a solidarity fund collector who would have the task to record all the provided details below and submit to the one responsible for the project. 
-  * (done)DM: todoMM: good. but keep all notes, plans, etc. in English because you have an non-French-speaking project manager/lead. Create a translation file in ./constants/i18n.js, MM: what does the name of the file i18n.js mean here? (DM: search or ask AI. Avoid asking your team lead questions that you can find out yourself.) a la:
+  * (done)DM: good. but keep all notes, plans, etc. in English because you have an non-French-speaking project manager/lead. Create a translation file in ./constants/i18n.js, MM: what does the name of the file i18n.js mean here? (DM: search or ask AI. Avoid asking your team lead questions that you can find out yourself.) a la:
   ```js
 	const translations = [
     {id: "appTitle", // permanent Ids for referencing in code and for react key props

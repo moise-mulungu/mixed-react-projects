@@ -10,7 +10,7 @@ export default async (req, res) => {
   const isEmpty = require('lodash/isEmpty')
   if (isEmpty(req.query)) {
     //(done) DM: good. should this be 500 (Error?). If you chose 400 specifically let me know your reasoning
-    //(done) DM: todoMM: back to 400 - don't always take my advice as gospel, esp if I give it in the form of a question, like I did above. Managers expect you to tell them when they are wrong. BTW, in an interview a manager asked me what I would do if  he we're to give me incorrect orders. MM: DM: i found that 500 status is for errors caused by server-side code, and 400 status is for errors caused by client-side code, and is more appropriate for these types of errors(AI prompt: "400 status is for client-side code, and is more appropriate for these types of errors")
+    //(done) DM: back to 400 - don't always take my advice as gospel, esp if I give it in the form of a question, like I did above. Managers expect you to tell them when they are wrong. BTW, in an interview a manager asked me what I would do if  he we're to give me incorrect orders. MM: DM: i found that 500 status is for errors caused by server-side code, and 400 status is for errors caused by client-side code, and is more appropriate for these types of errors(AI prompt: "400 status is for client-side code, and is more appropriate for these types of errors")
     return res.status(400).send('Bad Request: No query parameters provided')
   }
   const { category } = req.query
@@ -85,7 +85,7 @@ export default async (req, res) => {
         ],
       }
     */
-    //(done, but i used the above approach ?above?) DM: todoMM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error. Console.log it and you'll figure it out. DM: my instruction said "uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests". You didn't do that. I expect that you'll follow my instructions. If you decide on another approach, fine, but you should have first attempted what I instructed and let me know what you saw. I spend a lot of time writing these instructions. So that you can learn and learn efficiently.
+    //(done, but i used the above approach ?above?) DM: uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests. For me, it was a good start, but there was at least one error. Console.log it and you'll figure it out. DM: my instruction said "uncomment the next line, put cursor at the end of that line, then press Enter, and see what Copilot suggests". You didn't do that. I expect that you'll follow my instructions. If you decide on another approach, fine, but you should have first attempted what I instructed and let me know what you saw. I spend a lot of time writing these instructions. So that you can learn and learn efficiently.
     // const transformedData = data.map((question) => {
 
     // In my large comment above I gave AI examples of 1) a question object that works in client-side code and 2) a question object from the external API. Then I asked it to transform the 2nd object so that the properties match the first object. The property names are good enough that AI can almost get it right.
