@@ -4,7 +4,7 @@
 
 MM: i read this article: https://flowster.app/how-to-make-a-checklist/ and used this AI prompt:how to create a routine checklist as programmer, it has to include the commits details, the starting/end time, the break time for refreshment, and the task timing.
 
-DM: todoMM: somewhere in here, include pushing both repos at 9:30
+(done)DM: todoMM: somewhere in here, include pushing both repos at 9:30
 
 ## Routine Checklist
 
@@ -53,5 +53,7 @@ Date: Name: Project:
    * Tasks Completed:
    * Issues Faced:
    * Plan for Tomorrow:
+  
+7. Pushing at 09h30 am / 6h30pm
 
 Additional Notes/Comments:

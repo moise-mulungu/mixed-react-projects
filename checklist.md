@@ -1,5 +1,5 @@
 
-DM: todoMM: put this in the project directory. this kind of file never goes in the root directory
+(done)DM: todoMM: put this in the project directory. this kind of file never goes in the root directory
 DM: todoMM: give the file a more specific name. what kind of checklist?
 
 MM: i read this article: https://flowster.app/how-to-make-a-checklist/ and used this AI prompt:how to create a routine checklist as programmer, it has to include the commits details, the starting/end time, the break time for refreshment, and the task timing.
