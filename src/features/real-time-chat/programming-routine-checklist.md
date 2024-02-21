@@ -55,5 +55,8 @@ Date: Name: Project:
    * Plan for Tomorrow:
   
 7. Pushing at 09h30 am / 6h30pm
+   * review the diffs in Source Control, Changes
+     * DM: this is very important so that you check what you did to be sure it is correct and clear. You don't need to check the code, specifically, but any communications
+   * add, commit, push
 
 Additional Notes/Comments:
