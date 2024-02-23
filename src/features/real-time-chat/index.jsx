@@ -1,10 +1,13 @@
 import RealTimeChat from './real-time-chat'
 import UserContextProvider from './user/user-context-provider'
+import UsersContextProvider from './user/users-context-provider'
 
 export default function RealTimeChatProvider() {
   return (
     <UserContextProvider>
-      <RealTimeChat />
+      <UsersContextProvider>
+        <RealTimeChat />
+      </UsersContextProvider>
     </UserContextProvider>
   )
 }

@@ -16,8 +16,10 @@ import {
 } from 'firebase/database'
 import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
+import { UsersContext } from './user/users-context-provider'
 import { doc, getDoc, deleteDoc } from 'firebase/firestore'
 import { FiLogOut } from 'react-icons/fi'
+import { fetchUsers } from './user/fetch-users'
 
 export default function RealTimeChat() {
   // console.log('RealTimeChat component rendered')
@@ -31,8 +33,10 @@ export default function RealTimeChat() {
   const [selectedUser, setSelectedUser] = useState(null)
   const [isProfileVisible, setProfileVisible] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [isActive, setIsActive] = useState(false)
 
   const { user: currentUser } = useContext(UserContext)
+  const { users, setUsers } = useContext(UsersContext)
   console.log('RealTimeChat w of RealTimeChat:', { currentUser })
   console.log('connected users in the Array:', connectedUsers)
 
@@ -73,7 +77,8 @@ export default function RealTimeChat() {
     })
 
     console.log('RealTimeChat connectedUsers:', connectedUsers)
-    const unsubscribeDatabaseListeners = connectedUsers.map((user) => {
+    // const unsubscribeDatabaseListeners = connectedUsers.map((user) => {
+    const unsubscribeDatabaseListeners = users.map((user) => {
       console.log('RealTimeChat connectedUsers.map user:', user)
       if (!user) {
         console.error('User is undefined')
@@ -125,17 +130,34 @@ export default function RealTimeChat() {
     }
   }, [connectedUsers])
 
-  // fetch user data from firestore
-  async function fetchUser(uid) {
-    const userRef = doc(db, 'users', uid)
-    const userSnapshot = await getDoc(userRef)
-    if (userSnapshot.exists()) {
-      return userSnapshot.data()
-    } else {
-      console.error('User does not exist:', uid)
-      return null
-    }
-  }
+  // fetch user data from firestore, update it to fetch multiple users
+  // async function fetchUser(uid) {
+  // async function fetchUsers() {
+  //   // const userRef = doc(db, 'users', uid)
+  //   const users = []
+  //   const usersCollectionRef = collection(db, 'users')
+  //   // const userSnapshot = await getDoc(userRef)
+  //   const usersSnapshot = await getDocs(usersCollectionRef)
+  //   // if (userSnapshot.exists()) {
+  //   //   return userSnapshot.data()
+  //   // } else {
+  //   //   console.error('User does not exist:', uid)
+  //   //   return null
+  //   // }
+  //   usersSnapshot.forEach((doc) => {
+  //     users.push(doc.data())
+  //   })
+  //   return users
+  // }
+
+  useEffect(() => {
+    fetchUsers().then((fetchedUsers) => {
+      const activeUsers = fetchedUsers.filter((user) => user.isActive)
+      setUsers(activeUsers)
+      setLoading(false)
+    })
+  }, [])
+
   const onSendMessage = (message) => {
     console.log({ message })
 
@@ -251,7 +273,7 @@ export default function RealTimeChat() {
 
   useEffect(() => {
     // DM: I see 9 different users in connectedUsers so ...
-    console.log('RealTimeChat useEffect deps [connectedUsers]', { connectedUsers })
+    console.log('RealTimeChat useEffect deps [connectedUsers]', { users })
   }, [connectedUsers])
 
   const handleUserConnect = (user) => {
@@ -263,7 +285,7 @@ export default function RealTimeChat() {
       last_changed: serverTimestamp(),
     })
 
-    setConnectedUsers((previousUsers) => {
+    setUsers((previousUsers) => {
       console.log('RealTimeChat handleUserConnect previousUsers:', { previousUsers, user })
       // DM: todoMM: you call SetConnectedUsers in 2 places. IN this place, you add user, which is not the same as what you are adding in the other place you call it. Here, user.displayName is not undefined. In the other place, displayName is undefined. also remember, this runs only once, for the current user, so you should see only 1 user in the console.log.
       // const updatedUsers = [user, ...previousUsers.filter((u) => u.uid !== user.uid)]
@@ -272,6 +294,7 @@ export default function RealTimeChat() {
       return updatedUsers
     })
     setIsAuthenticated(true)
+    setIsActive(true)
   }
 
   const onAuthenticate = (isAuthenticated) => {
@@ -287,6 +310,7 @@ export default function RealTimeChat() {
       .catch((error) => {
         console.error('Error signing out: ', error)
       })
+    setIsActive(false)
   }
 
   return (
@@ -302,13 +326,15 @@ export default function RealTimeChat() {
               setSelectedUser={setSelectedUser}
               selectedUser={selectedUser}
               setProfileVisible={setProfileVisible}
+              isActive={isActive}
             />
           ) : (
             <div className="flex-1">
               <div className="flex flex-col md:flex-row flex-grow h-full md:h-full">
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
                   <ChatBox
-                    fetchUser={fetchUser}
+                    // fetchUser={fetchUser}
+                    fetchUsers={fetchUsers}
                     messages={[...messages]}
                     deleteMessage={deleteMessage}
                     currentUser={currentUser}

@@ -11,7 +11,7 @@ import { FiLogOut } from 'react-icons/fi'
 
 //(done) DM: don't force the user to upload a photo file. Typically that is optional (if someone doesn't want to put up a picture). So, make it an optional field and indicate that in the UI. I tried to change my name without uploading a photo and it threw an error and wouldn't submit. Also, when I chose a file, it didn't work, so I can't test changing my display name.
 
-const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
+const UserProfile = ({ setSelectedUser, setProfileVisible, isActive }) => {
   const [displayName, setDisplayName] = useState(user ? user.displayName : '')
   const [photoURL, setPhotoURL] = useState(user ? user.photoURL : '')
   //(done) DM: give this a more specific name. what kind of file/for what purpose the file?
@@ -54,6 +54,7 @@ const UserProfile = ({ setSelectedUser, setProfileVisible }) => {
     await setDoc(doc(db, 'users', user.uid), {
       displayName,
       photoURL: userPhotoUrl,
+      isActive,
     })
 
     console.log('displayName:', displayName)
