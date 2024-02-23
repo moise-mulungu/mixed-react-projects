@@ -2,6 +2,15 @@ import React, { createContext, useState, useEffect } from 'react'
 import { fetchUsers } from '../../real-time-chat/user/fetch-users' // import your Firebase fetchUsers function
 import LinearProgress from '@material-ui/core/LinearProgress'
 
+/* 
+DM: this looks great! 
+  Now, how can you write this so that it gets updated when isActive changes for some user in the database?
+  Options: setTimeout to perform this query every 60 seconds
+           Or, use a real-time listener to perform this query every time isActive changes
+DM: todoMM: plan your approach out and write it here:
+
+
+*/
 export const UsersContext = createContext()
 
 export default function UsersContextProvider({ children }) {
@@ -15,9 +24,10 @@ export default function UsersContextProvider({ children }) {
     })
   }, [])
 
-  if (loading) return <LinearProgress />
+  // DM: never do this in a React provider because you always want users, setUsers to be available - avoids errors and unnecessary rerenders when users, setUsers disappear then reappear. Later you will add to this file a mechanism so that users is updated when isActive changes in the database
+  // if (loading) return <LinearProgress />
 
-  return <UsersContext.Provider value={{ users, setUsers }}>{children}</UsersContext.Provider>
+  return <UsersContext.Provider value={{ users }}>{children}</UsersContext.Provider>
 }
 
 /*

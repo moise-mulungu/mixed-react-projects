@@ -3,12 +3,13 @@ import UserContextProvider from './user/user-context-provider'
 import UsersContextProvider from './user/users-context-provider'
 
 export default function RealTimeChatProvider() {
+  // DM: I put users provider outside of user provider so that users provider would render less often
   return (
-    <UserContextProvider>
-      <UsersContextProvider>
+    <UsersContextProvider>
+      <UserContextProvider>
         <RealTimeChat />
-      </UsersContextProvider>
-    </UserContextProvider>
+      </UserContextProvider>
+    </UsersContextProvider>
   )
 }
 

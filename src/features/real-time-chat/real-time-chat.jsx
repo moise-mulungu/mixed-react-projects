@@ -36,7 +36,7 @@ export default function RealTimeChat() {
   const [isActive, setIsActive] = useState(false)
 
   const { user: currentUser } = useContext(UserContext)
-  const { users, setUsers } = useContext(UsersContext)
+  const { users } = useContext(UsersContext)
   console.log('RealTimeChat w of RealTimeChat:', { currentUser })
   console.log('connected users in the Array:', connectedUsers)
 
@@ -153,7 +153,8 @@ export default function RealTimeChat() {
   useEffect(() => {
     fetchUsers().then((fetchedUsers) => {
       const activeUsers = fetchedUsers.filter((user) => user.isActive)
-      setUsers(activeUsers)
+      // DM: do not use setUsers from other sources. setUsers should be done in the provider only, not changed by the rest of the code
+      // setUsers(activeUsers)
       setLoading(false)
     })
   }, [])
@@ -285,14 +286,15 @@ export default function RealTimeChat() {
       last_changed: serverTimestamp(),
     })
 
-    setUsers((previousUsers) => {
-      console.log('RealTimeChat handleUserConnect previousUsers:', { previousUsers, user })
-      // DM: todoMM: you call SetConnectedUsers in 2 places. IN this place, you add user, which is not the same as what you are adding in the other place you call it. Here, user.displayName is not undefined. In the other place, displayName is undefined. also remember, this runs only once, for the current user, so you should see only 1 user in the console.log.
-      // const updatedUsers = [user, ...previousUsers.filter((u) => u.uid !== user.uid)]
-      const updatedUsers = [...previousUsers.filter((u) => u.uid !== user.uid), user]
+    // DM: do not use setUsers from other sources. setUsers should be done in the provider only, not changed by the rest of the code
+    // setUsers((previousUsers) => {
+    //   console.log('RealTimeChat handleUserConnect previousUsers:', { previousUsers, user })
+    //   // DM: todoMM: you call SetConnectedUsers in 2 places. IN this place, you add user, which is not the same as what you are adding in the other place you call it. Here, user.displayName is not undefined. In the other place, displayName is undefined. also remember, this runs only once, for the current user, so you should see only 1 user in the console.log.
+    //   // const updatedUsers = [user, ...previousUsers.filter((u) => u.uid !== user.uid)]
+    //   const updatedUsers = [...previousUsers.filter((u) => u.uid !== user.uid), user]
 
-      return updatedUsers
-    })
+    //   return updatedUsers
+    // })
     setIsAuthenticated(true)
     setIsActive(true)
   }
@@ -436,6 +438,12 @@ export default function RealTimeChat() {
           <Footer className="h-10 md:h-10" />
         </div>
       )}
+      {/* 
+          DM: I see only one user, "geny", here, but it does not include me, and I am active.
+              
+      
+       */}
+      <pre>{JSON.stringify(users, null, 2)}</pre>
     </>
   )
 }
