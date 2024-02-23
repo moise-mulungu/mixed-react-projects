@@ -43,6 +43,9 @@ export default function Pages() {
         <li>
           <Link href="/custom-error">Custom Error</Link>
         </li>
+        <li>
+          <Link href="/firebase-subcollections">Operating System</Link>
+        </li>
       </ul>
     </div>
   )
