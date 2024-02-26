@@ -1,5 +1,7 @@
-link resources: https://firebase.google.com/docs/firestore/data-model, https://stackoverflow.com/questions/54266090/are-there-any-benefits-of-using-subcollections-in-firestore
-AI prompt: "how to create collections and subcollections in firebase", "provide steps on manually creating collections, documents and subcollections", "how, when, why, where to use subcollections in a project?"
+link resources: 
+* https://firebase.google.com/docs/firestore/data-model
+* https://stackoverflow.com/questions/54266090/are-there-any-benefits-of-using-subcollections-in-firestore
+* AI prompt: "how to create collections and subcollections in firebase", "provide steps on manually creating collections, documents and subcollections", "how, when, why, where to use subcollections in a project?"
 
 # firebase-subcollections
 In Firestore, a subcollection is a collection that is nested within a document in another collection. This hierarchical structure allows you to organize related data and create more complex data models within your Firestore database. Subcollections can be used to represent ***one-to-many*** or ***parent-child*** relationships between entities.
@@ -14,6 +16,7 @@ Using subcollections to represent one-to-many relationships in Firestore offers 
 ***One-to-Many Relationships***: Subcollections are commonly used to represent one-to-many relationships between entities. For instance, a blog post can have multiple comments, each stored as a document in a subcollection within the post document.
 
 ***Querying***: You can query subcollections using Firestore queries. This allows you to retrieve documents from both the parent collection and its subcollections based on specific criteria.
+* DM: maybe each user collection can contain a subcollection of chat messages?
 
 ***Scalability***: Subcollections can help you organize and scale your data more effectively. Instead of storing all related data in a single document, you can distribute it across multiple documents within subcollections.
 
@@ -49,9 +52,17 @@ There are two ways of creating subcollections in firebase firestore database:
 This way consists of creating subcollections programmatically by directly adding documents to a subcollection within a parent document. 
 This method involves interacting with the Firestore database using the Firestore SDK (such as the Firebase SDK for web, Android, or iOS).
 
-***howtofirebase:: firestore database: how to add subcollections; 1. import necessary Firestore methods from the 'firebase/firestore' module(getFirestore, collection, doc, and addDoc), 2. initialize the Firestore database instance by calling the getFirestore() function to initialize the Firestore database instance and store it in the db variable, 3.create a reference the document within the collection by using the doc() and collection() functions to create a reference to the document within the collection, 4. store this reference in the variable, 5. add a document to the subcollection within the document, 6. create a reference to the subcollection within the document using the collection() function with the reference, 7.use the addDoc() function to add a new document to the subcollection with the specified data .***
+DM: reformatting. old fart can read it easier this way :)
+***howtofirebase:: firestore database: how to add subcollections***
+* 1. import necessary Firestore methods from the 'firebase/firestore' module(getFirestore, collection, doc, and addDoc), 
+* 2. initialize the Firestore database instance by calling the getFirestore() function to initialize the Firestore database instance and store it in the db variable, 
+* 3.create a reference the document within the collection by using the doc() and collection() functions to create a reference to the document within the collection, 
+* 4. store this reference in the variable, 
+* 5. add a document to the subcollection within the document, 
+* 6. create a reference to the subcollection within the document using the collection() function with the reference, 
+* 7. use the addDoc() function to add a new document to the subcollection with the specified data .
 ```js
-// this snippet is from firebase version 8
+// this snippet is from firebase version 8 DM: good - that is an important note
 
 // Reference to the parent document
 const userDocRef = db.collection('users').doc('user1');
@@ -90,7 +101,9 @@ addDoc(postsCollectionRef, {
 
 * When you have a one-to-many relationship between entities. For example, a user can have multiple posts, each of which can have multiple comments.
 * When you want to avoid storing large amounts of data in a single document.
-* When you want to easily query and retrieve related data.
+  * DM: issue solved: if you try to put an array of all user's messages in a field in the user document, you will run into the 1M (megabyte) maximum collection size for the user document. Subcollections do not have that limit.
+* When you want to easily query and retrieve **related data**.
+  * DM: this may be the Firestore equivalent of the RDB join (of 2 tables). I.e., `select * from users, message where user.id = message.userid`g
 
 ## Why to use subcollections:
 
@@ -101,8 +114,8 @@ addDoc(postsCollectionRef, {
 ## Where to use subcollections:
 
 * Subcollections can be used within a document to store related data that belongs to that document.
-* Subcollections can be nested within other subcollections to create a hierarchical structure for your data.
-* They can be used in any part of your Firestore database where a hierarchical structure is needed to represent the relationships between entities.
+* **Subcollections can be nested within other subcollections** to create a hierarchical structure for your data.
+* They can be used in any part of your Firestore database **where a hierarchical structure is needed** to represent the relationships between entities.
 
-
+DM: this is very helpful and clear
 

@@ -1,4 +1,3 @@
-//(done) DM: todoMM: this is great, but there is nothing here about subcollections, so rename the file to represent the content here
 
 ## react-firebase-hooks
 * react-firebase-hooks is a set of reusable React hooks that make it easier to integrate Firebase services into your React applications. These hooks provide a more idiomatic way of using Firebase in React components by encapsulating Firebase API calls within hooks.
