@@ -104,15 +104,15 @@ export default function User({ onAuthenticate, handleUserConnect }) {
       })
   }
 
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        setUser(null)
-      })
-      .catch((error) => {
-        console.error('Error signing out', error)
-      })
-  }
+  // const handleLogout = () => {
+  //   signOut(auth)
+  //     .then(() => {
+  //       setUser(null)
+  //     })
+  //     .catch((error) => {
+  //       console.error('Error signing out', error)
+  //     })
+  // }
 
   const handleLoginWithGoogle = () => {
     signInWithGoogle()

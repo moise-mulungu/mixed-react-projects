@@ -362,6 +362,7 @@ export default function RealTimeChat() {
 
                       {console.log('connected users array in RealTimeChat', connectedUsers) ||
                         connectedUsers.map((user) => {
+                          console.log('RealTimeChat connectedUsers.map user:', user) // the user object has a displayName property of undefined here. in order to fix that i tried to find where displayName is set in the code. i am assuming the problem to be when fetching users from firebase database. i will check the fetchUsers function and the useEffect that populates the connectedUsers array.
                           const formattedDisplayName =
                             user?.displayName &&
                             user?.displayName[0].toUpperCase() + user?.displayName.slice(1)
