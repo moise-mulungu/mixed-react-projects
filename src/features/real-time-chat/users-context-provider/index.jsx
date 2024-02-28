@@ -1,5 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { fetchUsers } from '../../real-time-chat/user/fetch-users' // import your Firebase fetchUsers function
+// DM: dont use fetchUsers in other places in the app. The provider should be the only place that fetchUsers is used. Instead, use the UsersContext to access the users array in the app, after you are getting all the data you want from the database via fetchUsers
+import { fetchUsers } from './fetch-users' // import your Firebase fetchUsers function
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 /* 
@@ -48,8 +49,11 @@ export default function UsersContextProvider({ children }) {
     }
   }, [])
 
-  return <UsersContext.Provider value={{ users }}>{children}</UsersContext.Provider>
+  return <UsersContext.Provider value={{ users, usersLoading: loading }}>{children}</UsersContext.Provider>
 }
+
+DM: this plan (above, in this comment) looks good
+
 */
 export const UsersContext = createContext()
 

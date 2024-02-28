@@ -1,6 +1,6 @@
 import RealTimeChat from './real-time-chat'
 import UserContextProvider from './user/user-context-provider'
-import UsersContextProvider from './user/users-context-provider'
+import UsersContextProvider from './users-context-provider'
 
 export default function RealTimeChatProvider() {
   // DM: I put users provider outside of user provider so that users provider would render less often

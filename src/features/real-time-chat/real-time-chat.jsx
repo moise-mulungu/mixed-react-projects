@@ -16,10 +16,10 @@ import {
 } from 'firebase/database'
 import { serverTimestamp } from 'firebase/database'
 import { UserContext } from './user/user-context-provider'
-import { UsersContext } from './user/users-context-provider'
+import { UsersContext } from './users-context-provider'
 import { doc, getDoc, deleteDoc } from 'firebase/firestore'
 import { FiLogOut } from 'react-icons/fi'
-import { fetchUsers } from './user/fetch-users'
+// dont use it here import { fetchUsers } from './user/fetch-users'
 
 export default function RealTimeChat() {
   // console.log('RealTimeChat component rendered')
@@ -150,19 +150,20 @@ export default function RealTimeChat() {
   //   return users
   // }
 
-  useEffect(() => {
-    // fetchUsers().then((fetchedUsers) => { fix to return the promise from fetchUsers
-    const unsubscribe = fetchUsers((fetchedUsers) => {
-      const activeUsers = fetchedUsers.filter((user) => user.isActive)
-      // DM: do not use setUsers from other sources. setUsers should be done in the provider only, not changed by the rest of the code
-      // setUsers(activeUsers)
-      setLoading(false)
-    })
+  // DM: you dont need to do this, because everything is already in the "users" context variable. React context providers are for sharing state with any component in the app, so each component does not need to call the fetchUsers, which should be used by the provider only.
+  // useEffect(() => {
+  //   // fetchUsers().then((fetchedUsers) => { fix to return the promise from fetchUsers
+  //   const unsubscribe = fetchUsers((fetchedUsers) => {
+  //     const activeUsers = fetchedUsers.filter((user) => user.isActive)
+  //     // DM: do not use setUsers from other sources. setUsers should be done in the provider only, not changed by the rest of the code
+  //     // setUsers(activeUsers)
+  //     setLoading(false)
+  //   })
 
-    return () => {
-      unsubscribe()
-    }
-  }, [])
+  //   return () => {
+  //     unsubscribe()
+  //   }
+  // }, [])
 
   const onSendMessage = (message) => {
     console.log({ message })
@@ -341,7 +342,7 @@ export default function RealTimeChat() {
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
                   <ChatBox
                     // fetchUser={fetchUser}
-                    fetchUsers={fetchUsers}
+                    // dont use fetchUsers here fetchUsers={fetchUsers}
                     messages={[...messages]}
                     deleteMessage={deleteMessage}
                     currentUser={currentUser}
@@ -449,7 +450,7 @@ export default function RealTimeChat() {
               
       
        */}
-      <pre>{JSON.stringify(users, null, 2)}</pre>
+      <pre>users: {JSON.stringify(users, null, 2)}</pre>
     </>
   )
 }

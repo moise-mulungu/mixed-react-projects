@@ -7,7 +7,11 @@ import db from './firebase'
 import { UserContext } from './user/user-context-provider'
 import { globalStateStore } from './global-state-store'
 
-export default function ChatBox({ messages, deleteMessage, fetchUsers }) {
+export default function ChatBox({
+  messages,
+  deleteMessage,
+  // fetchUsers is for the userS provider only  fetchUsers
+}) {
   console.log('messages:', typeof messages)
 
   const [userData, setUserData] = useState({})
@@ -54,7 +58,8 @@ export default function ChatBox({ messages, deleteMessage, fetchUsers }) {
       const newUserData = {}
       for (const sender of uniqueSenders) {
         //(done) DM: careful of expensive operations inside a loop. what if there are 200 messages? You can't fetch the user for each message. One solution is to, inside this loop, get a list of unique message.sender, then after the loop, call fetchUsers for each unique sender(id).
-        newUserData[sender] = await fetchUsers(sender)
+        // DM: dont fetch all users for each message. Also sender is not the param, to fetchUsers which takes param callback (a setter)
+        // newUserData[sender] = await fetchUsers(sender)
       }
       setUserData(newUserData)
     }
@@ -83,7 +88,7 @@ export default function ChatBox({ messages, deleteMessage, fetchUsers }) {
 
       unsubscribe()
     }
-  }, [messages, fetchUsers, db])
+  }, [messages, db])
 
   useEffect(() => {
     if (messagesContainerRef.current) {
