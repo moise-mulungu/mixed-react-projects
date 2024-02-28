@@ -7,9 +7,49 @@ DM: this looks great!
   Now, how can you write this so that it gets updated when isActive changes for some user in the database?
   Options: setTimeout to perform this query every 60 seconds
            Or, use a real-time listener to perform this query every time isActive changes
-DM: todoMM: plan your approach out and write it here:
+           MM: i described the approach below with code modifications in the fetchUsers, and in the UsersContextProvider files. i paused there waiting for what i should do next.
+(done)DM: todoMM: plan your approach out and write it here:
+MM: in real-time-chat app the onSnapshot function is used to listen to changes in the database, so i will use it to listen to changes in the isActive field in the users collection in the database as follows:
+  1. Modify the fetchUsers function to take a callback as an argument.
+  2. Use the onSnapshot function to listen to changes in the users collection in the database.
+  3. In the onSnapshot function, call the callback with the updated users array whenever the users collection changes.
+  4. in the listener, i'll check if the user is active, if it is, i'll add it to the users array, if it is not, i'll remove it from the users array.
+  5. i'll use the useEffect hook to call the fetchUsers function and update the users array whenever the component mounts.
+  6. i'll return a cleanup function from fetchUsers that removes the listener.
 
+I tried to implement them in the fetchUsers file.
 
+But to implement with the setTimeout, i will use the useEffect hook to call the fetchUsers function and update the users array every 60 seconds as follow:
+  1. i'll use the useEffect hook to call the fetchUsers function and update the users array whenever the component mounts.
+  2. i'll use the setTimeout function to call the fetchUsers function and update the users array every 60 seconds.
+  3. Store the interval ID returned by setInterval in a variable.
+  4.Return a cleanup function from the useEffect hook that clears the interval using clearInterval.
+Here is how the code would look like:
+
+export const UsersContext = createContext()
+
+export default function UsersContextProvider({ children }) {
+  const [users, setUsers] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchAndSetUsers = async () => {
+      const fetchedUsers = await fetchUsers()
+      setUsers(fetchedUsers)
+      setLoading(false)
+    }
+
+    fetchAndSetUsers()
+
+    const intervalId = setInterval(fetchAndSetUsers, 60000) // 60000 milliseconds = 60 seconds
+
+    return () => {
+      clearInterval(intervalId)
+    }
+  }, [])
+
+  return <UsersContext.Provider value={{ users }}>{children}</UsersContext.Provider>
+}
 */
 export const UsersContext = createContext()
 
@@ -18,10 +58,14 @@ export default function UsersContextProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetchUsers().then((fetchedUsers) => {
+    // fetchUsers().then((fetchedUsers) => { to return the promise from fetchUsers
+    const unsubscribe = fetchUsers((fetchedUsers) => {
       setUsers(fetchedUsers)
       setLoading(false)
     })
+    return () => {
+      unsubscribe()
+    }
   }, [])
 
   // DM: never do this in a React provider because you always want users, setUsers to be available - avoids errors and unnecessary rerenders when users, setUsers disappear then reappear. Later you will add to this file a mechanism so that users is updated when isActive changes in the database

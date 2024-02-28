@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where } from 'firebase/firestore'
+import { collection, getDocs, query, where, onSnapshot } from 'firebase/firestore'
 import db from '../firebase' // import your Firebase config
 
 /* 
@@ -7,30 +7,48 @@ your new users provider needs to gather all info about a user, except messages, 
 
 */
 
-export async function fetchUsers() {
-  const users = []
+// export async function fetchUsers() {
+export function fetchUsers(callback) {
+  // const users = []
 
   // access the users collection in Firestore
-  // DM: todoMM: dont use abbreviations. ref can be reference. "Ref" abbreviation is allowed in React only as it is customary, like the abbreviation "props"
-  const usersCollectionRef = collection(db, 'users')
+  //(done) DM: todoMM: dont use abbreviations. ref can be reference. "Ref" abbreviation is allowed in React only as it is customary, like the abbreviation "props"
+  const usersCollectionReference = collection(db, 'users')
 
   // query the users collection for users where isActive is true
-  // DM: todoMM: dont use abbreviations. q can be query
-  // const q = query(usersCollectionRef, where('isActive', '==', true))
+  //(done) DM: todoMM: dont use abbreviations. q can be query
+  // const q = query(usersCollectionReference, where('isActive', '==', true))
   // DM: even when I removed the where clause, the query still returns only one user, "geny". why?
-  const q = query(usersCollectionRef)
+    // MM: i am not sure why the where clause is not working. i will work on it next time.
+  // const usersQuery = query(usersCollectionReference)
 
   // get the users from Firestore
-  const usersSnapshot = await getDocs(q)
-  usersSnapshot.forEach((doc, index) => {
-    const user = doc.data()
-    console.log('fetchUsers each usersSnapshot', {
-      usersCollectionRef,
-      q,
-      doc,
-      user,
+  // const usersSnapshot = await getDocs(usersQuery)
+  const unsubscribe = onSnapshot(usersCollectionReference, (snapshot) => {
+    let isActiveChanged = false
+    // usersSnapshot.forEach((doc, index) => {
+    snapshot.docChanges().forEach((change) => {
+      if (
+        change.type === 'modified' &&
+        change.doc.data().isActive !== change.doc.previousData().isActive
+      ) {
+        isActiveChanged = true
+      }
     })
-    users.push(user)
+    if (isActiveChanged) {
+      const users = []
+      snapshot.forEach((doc) => {
+        const user = doc.data()
+        console.log('fetchUsers each usersSnapshot', {
+          usersCollectionReference,
+          usersQuery,
+          doc,
+          user,
+        })
+        users.push(user)
+      })
+      callback(users)
+    }
   })
-  return users
+  return unsubscribe
 }

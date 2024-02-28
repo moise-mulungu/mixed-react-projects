@@ -151,12 +151,17 @@ export default function RealTimeChat() {
   // }
 
   useEffect(() => {
-    fetchUsers().then((fetchedUsers) => {
+    // fetchUsers().then((fetchedUsers) => { fix to return the promise from fetchUsers
+    const unsubscribe = fetchUsers((fetchedUsers) => {
       const activeUsers = fetchedUsers.filter((user) => user.isActive)
       // DM: do not use setUsers from other sources. setUsers should be done in the provider only, not changed by the rest of the code
       // setUsers(activeUsers)
       setLoading(false)
     })
+
+    return () => {
+      unsubscribe()
+    }
   }, [])
 
   const onSendMessage = (message) => {
