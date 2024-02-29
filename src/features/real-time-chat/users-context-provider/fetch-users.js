@@ -27,31 +27,38 @@ export function fetchUsers(callback) {
   const unsubscribe = onSnapshot(usersCollectionReference, (snapshot) => {
     // DM: todoMM: look at the console.logs in this function to see what data is coming back from the database, then work on the database queries to get the data you want
     console.log('fetchUsers onSnapshot', { snapshot })
-    let isActiveChanged = false
-    // usersSnapshot.forEach((doc, index) => {
-    snapshot.docChanges().forEach((change) => {
-      console.log('fetchUsers snapshot.docChanges', { change })
-      if (
-        change.type === 'modified' &&
-        change.doc.data().isActive !== change.doc.previousData().isActive
-      ) {
-        isActiveChanged = true
-      }
+    //   let isActiveChanged = false
+    //   // usersSnapshot.forEach((doc, index) => {
+    //   snapshot.docChanges().forEach((change) => {
+    //     console.log('fetchUsers snapshot.docChanges', { change })
+    //     if (
+    //       change.type === 'modified' &&
+    //       change.doc.data().isActive !== change.doc.previousData().isActive
+    //     ) {
+    //       isActiveChanged = true
+    //     }
+    //   })
+    //   if (isActiveChanged) {
+    //     const users = []
+    //     snapshot.forEach((doc) => {
+    //       const user = doc.data()
+    //       console.log('fetchUsers each usersSnapshot', {
+    //         usersCollectionReference,
+    //         usersQuery,
+    //         doc,
+    //         user,
+    //       })
+    //       users.push(user)
+    //     })
+    //     callback(users)
+    //   }
+    // })
+    const users = []
+    snapshot.forEach((doc) => {
+      const user = doc.data()
+      users.push(user)
     })
-    if (isActiveChanged) {
-      const users = []
-      snapshot.forEach((doc) => {
-        const user = doc.data()
-        console.log('fetchUsers each usersSnapshot', {
-          usersCollectionReference,
-          usersQuery,
-          doc,
-          user,
-        })
-        users.push(user)
-      })
-      callback(users)
-    }
+    callback(users)
   })
   return unsubscribe
 }
