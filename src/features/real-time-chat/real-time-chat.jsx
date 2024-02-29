@@ -207,6 +207,7 @@ export default function RealTimeChat() {
             const userStatus = childSnapshot.val()
             console.log('RealTimeChat useEffect deps [] userStatusChanges userStatus:', {
               // DM: todoMM: you need to deal with this:
+                // MM: i am sure this issue is fixed with the second context provider.
               userStatusDisplayName: userStatus.displayName, // DM: 2. this is undefined
               // DM: no longer important? uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
               userStatusUid: userStatus.uid,
@@ -226,10 +227,10 @@ export default function RealTimeChat() {
             const userPromise =
               //2. For each child in the snapshot, if the user's status is 'online', it fetches the user's data from the 'users' node in the database. This returns a promise, which is pushed into the userPromises array
               getDatabaseValue(userReference).then((userSnapshot) => {
-                // DM: todoMM: is this code correct? user does nto contain display name. find out why. look into firebase and check that your code in the above 3 lines is correct. does displayName exist in firebase. if so, why does your query here not return it? You have known for many days that your problem is already identifiable already here, so how could it help of you debug further below? Find the first place in the code where the problem exists (no display name) and debug the code just before that.
+                //(done) DM: todoMM: is this code correct? user does nto contain display name. find out why. look into firebase and check that your code in the above 3 lines is correct. does displayName exist in firebase. if so, why does your query here not return it? You have known for many days that your problem is already identifiable already here, so how could it help of you debug further below? Find the first place in the code where the problem exists (no display name) and debug the code just before that.
                 const user = userSnapshot.val()
                 //(done) DM: are you sure this works? I don't see any console.logs. If you used console.logs to validate isUserAlreadyConnected and userStatus.state, don't delete them, but comment them out so that I or you can use them in the future and also so that I know what you have already tried to debug this area. MM: i mentioned in the report file that the same user is till repeated many times in the connectedUsers array despite attempts to debug the code. DM: fine but you still need console.logs and detailed items should be here commented in the code not in the daily report. In any case "there is one only user listed many times on the list" is a general comment - how am I supposed to know where in the code that is? Ok to repeat things in code comments, but my main concern was no console.logs here which is obviously where in the code the issue is found.
-                // DM: todoMM: please follow my pattern by putting both variables in the same comment using an object for the 2nd console.log argument, because your console has so many logs it is hard to read. Also put searchable detail and context into the first log argument example:
+                //(done) DM: todoMM: please follow my pattern by putting both variables in the same comment using an object for the 2nd console.log argument, because your console has so many logs it is hard to read. Also put searchable detail and context into the first log argument example:
                 // console.log(
                 //   'RealTimeChat useEffect deps [] userStatusChanges userStatusState===online:',
                 //   {

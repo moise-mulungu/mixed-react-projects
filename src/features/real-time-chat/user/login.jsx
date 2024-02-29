@@ -20,7 +20,7 @@ export default function Login({
             type="email"
             placeholder="Email"
             className="p-2 border-2 border-gray-200 rounded mb-2 w-full text-black"
-            // (in progress)DM: todoMM: name attribute makes it work in windows chrome! Try adding a "name" attribute and see if it works without explicitly setting autoComplete.
+            // (done)DM: todoMM: name attribute makes it work in windows chrome! Try adding a "name" attribute and see if it works without explicitly setting autoComplete.
             // autoComplete="email"
             name="email" //MM: this is the name attribute that the above comment is referring to, right? and below i explained the difference between Chrome and Firefox with the name attribute.
             // i tested the name attribute with type "email" on Chrome it didn't work, but on Firefox it worked. DM: I'm not sure what you mean. Question: in linux Chrome autofill doesn't work regardless of whether you use name or autoComplete attribute, correct? If this is an issue, then document it here permanently.
@@ -104,7 +104,7 @@ In order to fix the "login: usually when I enter email, when I put cursor into t
   14. i finally fixed the issue by setting up a new Firebase auth state listener in the RealTimeChat component that check If a user is authenticated, it will set isAuthenticated to true, otherwise it will set it to false inside the useEffect hook, i also imported the auth from the firebase.js file and passed it to the useEffect hook.
 
   DM: thanks for the detailed explanation. it helps me kow what you did, how you're thinking and is great practice in tech communication for you. 
-  DM: todoMM: put a logout button on the main app page, not just the profile page.
+  (done)DM: todoMM: put a logout button on the main app page, not just the profile page.
   (done)DM: make the signup fields autofill
 
   DM: it happens sometimes when you do a ton of work but later find out there was a much easier way to do it. In this case, you could have made sure you understand autofill in browsers by asking AI. It's had to tell, but often more planning/research before you start coding is helpful.

@@ -12,6 +12,7 @@ Firebase offers two distinct data storage services, Firebase Realtime Database a
 * The firebase/firestore module, or Firestore, is a modern, scalable NoSQL cloud database suitable for complex applications due to its advanced querying and scaling capabilities.
 * In the two projects, i am using both, but firebase/firestore is more used in both projects for collections and documents related functions.
   * DM: todoMM: you said above that they are "distinct data storage services" so why do you say you are using both in both projects? It is not likely that you would need to use two separate databases for one project.
+    * MM: in the app the firebase/firestore is used for fetching users and their messages from the database, but the firebase/real-time is used to exchange real time messages between users, but as i am learning how to use firebase/firestore database first, later after learning the firebase/real-time database i can easily distinguish the two. for now i am not sure.
 
 
 

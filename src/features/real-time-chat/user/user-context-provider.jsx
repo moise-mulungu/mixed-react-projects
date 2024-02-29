@@ -19,7 +19,7 @@ export default function UserContextProvider({ children }) {
       console.log('Firebase with Display Name:', firebaseUser && firebaseUser.displayName) // Log the displayName if it exists.
       setUser(firebaseUser)
       setLoading(false)
-      //(in progress) DM: todoMM: where are you updating user status now? MM: i commented the lines below because i was getting an error. once the error is fixed, i will uncomment the lines below
+      //(done) DM: todoMM: where are you updating user status now? MM: i commented the lines below because i was getting an error. once the error is fixed, i will uncomment the lines below
       // Update the user's status in the Firebase database
       // if (firebaseUser) {
       //   // User is signed in, set their status in the database

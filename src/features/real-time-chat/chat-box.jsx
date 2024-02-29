@@ -51,6 +51,7 @@ export default function ChatBox({
     if (!db) return
     //(done) DM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
     // DM: todoMM: you are fetching, but the ultimate purpose of this function is to setAllUserData, correct?
+      // MM: do i need to use the setAllUserData again ?
     const fetchAllUserData = async () => {
       //(done) DM: write a comment to explain what/why this code
       // The fetchAllUserData function fetches the user data for each sender of the messages and stores it in the userData state. This data is then used to display the sender's information for each message. DM: good

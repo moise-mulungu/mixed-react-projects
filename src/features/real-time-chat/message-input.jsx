@@ -24,6 +24,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
       1. Authentication: Ensure that the user is authenticated when trying to update the documents. If the user is not authenticated, the update operation will fail due to your Firestore rules. MM: for this issue, all users are authenticated, so i don't think this is the issue.
 
       2. Data Consistency: As mentioned before, ensure that the sender field in your messages collection correctly corresponds to a user ID in your users collection. If there's a mismatch or if a user document doesn't exist for a given sender ID, the senderName won't be updated. MM; the issue might be here, but i am not sure. DM: todoMM: how can you find out?
+        MM: this also is no more needed as the issue was fixed.
 
       3. Error Handling: You've added error handling to your updateDoc function, which is great. Check your console to see if any errors are being logged when trying to update the documents. MM: I added the error handling, but i didn't see any errors in the console.
 

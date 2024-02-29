@@ -1,4 +1,4 @@
-//(in progress) DM: todoMM: you names need to match up. MM: i mentioned this naming issue in the ./features/real-time-chat/index.jsx file DM: "mentioned"? I don't see any changes in that file today. I"ll to the solution I expected.
+//(done) DM: todoMM: you names need to match up. MM: i mentioned this naming issue in the ./features/real-time-chat/index.jsx file DM: "mentioned"? I don't see any changes in that file today. I"ll to the solution I expected.
 // import RealTimeChat from '@/features/real-time-chat'
 import RealTimeChatProvider from '@/features/real-time-chat'
 
