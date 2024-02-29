@@ -25,7 +25,7 @@ export function fetchUsers(callback) {
   // get the users from Firestore
   // const usersSnapshot = await getDocs(usersQuery)
   const unsubscribe = onSnapshot(usersCollectionReference, (snapshot) => {
-    //(done) DM: todoMM: look at the console.logs in this function to see what data is coming back from the database, then work on the database queries to get the data you want
+    //(done) DM: look at the console.logs in this function to see what data is coming back from the database, then work on the database queries to get the data you want
     console.log('fetchUsers onSnapshot', { snapshot })
     //   let isActiveChanged = false
     //   // usersSnapshot.forEach((doc, index) => {
