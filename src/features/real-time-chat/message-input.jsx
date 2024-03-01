@@ -114,6 +114,9 @@ export default function MessageInput({ onSendMessage, onTyping }) {
     onSendMessage(messageObj)
     setMessage('')
     // onAuthenticate(true)
+
+    setMessage('')
+    onTyping(false)
   }
 
   /*

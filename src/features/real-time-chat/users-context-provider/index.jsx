@@ -72,10 +72,27 @@ export default function UsersContextProvider({ children }) {
     }
   }, [])
 
+  const updateUserIsTyping = (uid, isTyping) => {
+    setUsers((prevUsers) =>
+      prevUsers.map((user) => (user.uid === uid ? { ...user, isTyping } : user))
+    )
+  }
+
+  const addUser = (user) => {
+    setUsers((prevUsers) => [...prevUsers, user])
+  }
+
+  const value = {
+    users,
+    updateUserIsTyping, // Add this line
+    addUser, // Add this line
+  }
+
   // DM: never do this in a React provider because you always want users, setUsers to be available - avoids errors and unnecessary rerenders when users, setUsers disappear then reappear. Later you will add to this file a mechanism so that users is updated when isActive changes in the database
   // if (loading) return <LinearProgress />
 
-  return <UsersContext.Provider value={{ users }}>{children}</UsersContext.Provider>
+  // return <UsersContext.Provider value={{ users }}>{children}</UsersContext.Provider>
+  return <UsersContext.Provider value={value}>{children}</UsersContext.Provider>
 }
 
 /*

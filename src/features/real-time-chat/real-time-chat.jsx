@@ -36,7 +36,7 @@ export default function RealTimeChat() {
   const [isActive, setIsActive] = useState(false)
 
   const { user: currentUser } = useContext(UserContext)
-  const { users } = useContext(UsersContext)
+  const { users, updateUserIsTyping, addUser } = useContext(UsersContext)
   console.log('RealTimeChat w of RealTimeChat:', { currentUser })
   console.log('connected users in the Array:', connectedUsers)
 
@@ -61,6 +61,15 @@ export default function RealTimeChat() {
       console.log('RealTimeChat Typing ref:', typingRef, 'Is typing:', isTyping) // Add this line
       setDatabaseValue(typingRef, isTyping)
       console.log('RealTimeChat setDatabaseValue executed with:', typingRef, isTyping) // to verify that the setDatabaseValue function is executed
+
+      // Update the corresponding user in the connectedUsers and users arrays
+      setConnectedUsers((prevConnectedUsers) =>
+        prevConnectedUsers.map((connectedUser) =>
+          connectedUser.uid === currentUser.uid ? { ...connectedUser, isTyping } : connectedUser
+        )
+      )
+      // Update the corresponding user in the users array using the updateUserIsTyping function from the context
+      updateUserIsTyping(currentUser.uid, isTyping)
     }
   }
 
@@ -207,7 +216,7 @@ export default function RealTimeChat() {
             const userStatus = childSnapshot.val()
             console.log('RealTimeChat useEffect deps [] userStatusChanges userStatus:', {
               // DM: todoMM: you need to deal with this:
-                // MM: i am sure this issue is fixed with the second context provider.
+              // MM: i am sure this issue is fixed with the second context provider.
               userStatusDisplayName: userStatus.displayName, // DM: 2. this is undefined
               // DM: no longer important? uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
               userStatusUid: userStatus.uid,
@@ -302,6 +311,14 @@ export default function RealTimeChat() {
 
     //   return updatedUsers
     // })
+
+    // Update the connectedUsers and users arrays
+    setConnectedUsers((prevConnectedUsers) => [...prevConnectedUsers, user])
+    // setUsers((prevUsers) => [...prevUsers, user])
+
+    // Use the addUser function from the context to update the users array
+    addUser(user)
+
     setIsAuthenticated(true)
     setIsActive(true)
   }
@@ -626,4 +643,16 @@ useEffect(() => {
 
   return () => stopListeningToStatusChanges()
 }, [])
+*/
+
+/*
+To fix the isTyping issue, i realized that both connectedUsers and users were out of sync, to fix that i should update both arrays  when a user starts or stops typing, should update the typingUsers array and the corresponding user in the connectedUsers and users arrays.:
+1. handleUserConnect() function: i updated the corresponding user in the connectedUsers and users arrays 
+2. onTyping() function: i updated onTyping functions to also update the connectedUsers and users arrays in your local state.
+3. after that, i encountered an error: ReferenceError: setUsers is not defined, which means that the function setUsers is not defined in the scope where it's being used because users is coming from a context and not a local state.
+4. UsersContextProvider: to fix the above issue as i couldn't directly modify it using a setter function like setUsers. Instead, i needed to provide a method in the context to update the users array. i created two functions one is updateUserIsTyping to pass to the onTyping function and addUser to pass to the handleUserConnect function.
+5. i got the two functions from the context and used them to update the users array in the local state.
+6. i tested the app, unfortunately, the isTyping was not updated, i checked the fetchUsers function and the useEffect that populates the connectedUsers array, i found that the user object is not updated in the firebase database node status.
+7. in order to updated the user isActive status, i added conditions to check for the user's status in the function
+8. i tested and the issue ws fixed.
 */

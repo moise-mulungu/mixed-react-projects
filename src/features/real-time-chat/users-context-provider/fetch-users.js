@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where, onSnapshot } from 'firebase/firestore'
 import db from '../firebase' // import your Firebase config
 
-/* 
+/*
 
 your new users provider needs to gather all info about a user, except messages, that is separate. it looks like that info is in two places: realtime and firestore databases
 
@@ -27,38 +27,38 @@ export function fetchUsers(callback) {
   const unsubscribe = onSnapshot(usersCollectionReference, (snapshot) => {
     //(done) DM: look at the console.logs in this function to see what data is coming back from the database, then work on the database queries to get the data you want
     console.log('fetchUsers onSnapshot', { snapshot })
-    //   let isActiveChanged = false
-    //   // usersSnapshot.forEach((doc, index) => {
-    //   snapshot.docChanges().forEach((change) => {
-    //     console.log('fetchUsers snapshot.docChanges', { change })
-    //     if (
-    //       change.type === 'modified' &&
-    //       change.doc.data().isActive !== change.doc.previousData().isActive
-    //     ) {
-    //       isActiveChanged = true
-    //     }
-    //   })
-    //   if (isActiveChanged) {
-    //     const users = []
-    //     snapshot.forEach((doc) => {
-    //       const user = doc.data()
-    //       console.log('fetchUsers each usersSnapshot', {
-    //         usersCollectionReference,
-    //         usersQuery,
-    //         doc,
-    //         user,
-    //       })
-    //       users.push(user)
-    //     })
-    //     callback(users)
-    //   }
-    // })
-    const users = []
-    snapshot.forEach((doc) => {
-      const user = doc.data()
-      users.push(user)
+    let isActiveChanged = false
+    // usersSnapshot.forEach((doc, index) => {
+    snapshot.docChanges().forEach((change) => {
+      console.log('fetchUsers snapshot.docChanges', { change })
+      if (
+        change.type === 'modified' &&
+        change.doc.data().isActive !== change.doc.previousData().isActive
+      ) {
+        isActiveChanged = true
+      }
     })
-    callback(users)
+    if (isActiveChanged) {
+      const users = []
+      snapshot.forEach((doc) => {
+        const user = doc.data()
+        console.log('fetchUsers each usersSnapshot', {
+          usersCollectionReference,
+          usersQuery,
+          doc,
+          user,
+        })
+        users.push(user)
+      })
+      callback(users)
+    }
   })
+  //   const users = []
+  //   snapshot.forEach((doc) => {
+  //     const user = doc.data()
+  //     users.push(user)
+  //   })
+  //   callback(users)
+  // })
   return unsubscribe
 }
