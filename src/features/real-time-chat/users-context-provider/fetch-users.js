@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where, onSnapshot } from 'firebase/firestore'
+import { collection, getDocs, query, where, onSnapshot, orderBy } from 'firebase/firestore'
 import db from '../firebase' // import your Firebase config
 
 /*
@@ -50,6 +50,11 @@ export function fetchUsers(callback) {
         })
         users.push(user)
       })
+      // Calculate whether the user is active or not
+      const lastMessageTimestamp = user.lastMessageTimestamp?.toDate()
+      const oneDayAgo = new Date()
+      oneDayAgo.setDate(oneDayAgo.getDate() - 1)
+      user.isActive = lastMessageTimestamp >= oneDayAgo
       callback(users)
     }
   })
