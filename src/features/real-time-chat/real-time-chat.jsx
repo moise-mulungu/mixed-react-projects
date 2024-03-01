@@ -36,7 +36,7 @@ export default function RealTimeChat() {
   const [isActive, setIsActive] = useState(false)
 
   const { user: currentUser } = useContext(UserContext)
-  const { users, updateUserIsTyping, addUser } = useContext(UsersContext)
+  const { users, updateUserIsTyping, updateUserHasConnected } = useContext(UsersContext)
   console.log('RealTimeChat w of RealTimeChat:', { currentUser })
   console.log('connected users in the Array:', connectedUsers)
 
@@ -316,8 +316,8 @@ export default function RealTimeChat() {
     setConnectedUsers((prevConnectedUsers) => [...prevConnectedUsers, user])
     // setUsers((prevUsers) => [...prevUsers, user])
 
-    // Use the addUser function from the context to update the users array
-    addUser(user)
+    // Use the updateUserHasConnected function from the context to update the users array
+    updateUserHasConnected(user)
 
     setIsAuthenticated(true)
     setIsActive(true)
@@ -650,7 +650,7 @@ To fix the isTyping issue, i realized that both connectedUsers and users were ou
 1. handleUserConnect() function: i updated the corresponding user in the connectedUsers and users arrays 
 2. onTyping() function: i updated onTyping functions to also update the connectedUsers and users arrays in your local state.
 3. after that, i encountered an error: ReferenceError: setUsers is not defined, which means that the function setUsers is not defined in the scope where it's being used because users is coming from a context and not a local state.
-4. UsersContextProvider: to fix the above issue as i couldn't directly modify it using a setter function like setUsers. Instead, i needed to provide a method in the context to update the users array. i created two functions one is updateUserIsTyping to pass to the onTyping function and addUser to pass to the handleUserConnect function.
+4. UsersContextProvider: to fix the above issue as i couldn't directly modify it using a setter function like setUsers. Instead, i needed to provide a method in the context to update the users array. i created two functions one is updateUserIsTyping to pass to the updateUserIsTyping function and updateUserHasConnected to pass to the handleUserConnect function.
 5. i got the two functions from the context and used them to update the users array in the local state.
 6. i tested the app, unfortunately, the isTyping was not updated, i checked the fetchUsers function and the useEffect that populates the connectedUsers array, i found that the user object is not updated in the firebase database node status.
 7. in order to updated the user isActive status, i added conditions to check for the user's status in the function

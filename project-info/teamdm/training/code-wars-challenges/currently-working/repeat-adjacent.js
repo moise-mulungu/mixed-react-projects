@@ -2,7 +2,7 @@
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 // note: You can be working multiple challenges, but always address all todoM-Ms in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 
-import { group } from "console"
+import { group } from 'console'
 
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
    Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. 
@@ -11,7 +11,7 @@ import { group } from "console"
 */
 /* 
 
-STATUS: the code is not working yet as i am still working on the solution. i have written the tests, the function signature, and the first part of the solution.
+STATUS: the code is not working yet as i am still working on the solution. i have written the tests, the "function signature"(good vocab!), and the first part of the solution.
 
 
 NEXT STEP(s): i'll continue working on the solution by writing the rest of the solution and then testing it
@@ -109,16 +109,16 @@ function repeatAdjacent(string) {
           * variable names should express exactly what the variable contains
           * see naming-conventions.md*/
 
-          const splitString = string.split('')
-          console.log({ splitString })
-          const removeNonAlphaCharacters = splitString.filter(char => char.match(/[a-z]/i)) // i used this in case the string has non-alphabetic characters
-        console.log({ removeNonAlphaCharacters })
+  const splitString = string.split('')
+  console.log({ splitString })
+  const removeNonAlphaCharacters = splitString.filter((char) => char.match(/[a-z]/i)) // i used this in case the string has non-alphabetic characters
+  console.log({ removeNonAlphaCharacters })
 
-        const characterGroups = removeNonAlphaCharacters.join('').match(/([a-z])\1+/gi)
-        console.log({ characterGroups })
+  const characterGroups = removeNonAlphaCharacters.join('').match(/([a-z])\1+/gi)
+  console.log({ characterGroups })
 
-        const bigCharacterGroups = characterGroups.filter(group => group.length > 1)
-        console.log({ bigCharacterGroups })
+  const bigCharacterGroups = characterGroups.filter((group) => group.length > 1)
+  console.log({ bigCharacterGroups })
 
   /* 9. use the named parts to create a readable solution. */
 

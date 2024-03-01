@@ -115,6 +115,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
     setMessage('')
     // onAuthenticate(true)
 
+    // DM: why repeat setMessage?
     setMessage('')
     onTyping(false)
   }

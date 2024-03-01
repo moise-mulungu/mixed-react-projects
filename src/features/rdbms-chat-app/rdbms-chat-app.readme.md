@@ -20,4 +20,3 @@
   * skip the remaining steps
 * create tables
 * create test data
-* 

@@ -1,6 +1,8 @@
 import { collection, getDocs, query, where, onSnapshot, orderBy } from 'firebase/firestore'
 import db from '../firebase' // import your Firebase config
 
+// DM: NO CHANGES TO THIS FILE, read, but dont implement my todo-MMs below. But, if you copy some code from here, copy my todo-MMs and implement them in the new file.
+
 /*
 
 your new users provider needs to gather all info about a user, except messages, that is separate. it looks like that info is in two places: realtime and firestore databases
@@ -24,12 +26,14 @@ export function fetchUsers(callback) {
 
   // get the users from Firestore
   // const usersSnapshot = await getDocs(usersQuery)
-  const unsubscribe = onSnapshot(usersCollectionReference, (snapshot) => {
+  const unsubscribe = onSnapshot(usersCollectionReference, (userSnapshot) => {
     //(done) DM: look at the console.logs in this function to see what data is coming back from the database, then work on the database queries to get the data you want
-    console.log('fetchUsers onSnapshot', { snapshot })
+    console.log('fetchUsers onSnapshot', { snapshot: userSnapshot })
     let isActiveChanged = false
     // usersSnapshot.forEach((doc, index) => {
-    snapshot.docChanges().forEach((change) => {
+    userSnapshot.docChanges().forEach((change) => {
+      // DM: todoMM: assign all expressions to a well-named variable. Also console.log them. "change.doc.previousData().isActive" is too long of an expression and is a good candidate for a variable name that makes it clear what is going on. Even if a variable name seems obvious, it is easy to log and logical expressions are easier to read.
+      // DM: todoMM: Also, you can do early returns EX if (change.type !== 'modified') return; to make logical expressions more simple.
       console.log('fetchUsers snapshot.docChanges', { change })
       if (
         change.type === 'modified' &&
@@ -40,9 +44,9 @@ export function fetchUsers(callback) {
     })
     if (isActiveChanged) {
       const users = []
-      snapshot.forEach((doc) => {
+      userSnapshot.forEach((doc) => {
         const user = doc.data()
-        console.log('fetchUsers each usersSnapshot', {
+        console.log('fetchUsers each userSnapshot', {
           usersCollectionReference,
           usersQuery,
           doc,
@@ -57,7 +61,8 @@ export function fetchUsers(callback) {
       user.isActive = lastMessageTimestamp >= oneDayAgo
       callback(users)
     }
-  })
+  }) // each userSnapshot
+
   //   const users = []
   //   snapshot.forEach((doc) => {
   //     const user = doc.data()
