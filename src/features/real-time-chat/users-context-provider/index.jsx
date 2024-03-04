@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from 'react'
 import { fetchUsers } from './fetch-users' // import your Firebase fetchUsers function
 import LinearProgress from '@material-ui/core/LinearProgress'
 
-// DM: NO CHANGES TO THIS FILE, read, but dont implement my todo-MMs below. But, if you copy some code from here, copy my todo-MMs and implement them in the new file.
+// DM: NO CHANGES TO THIS FILE, read, but dont implement my todo-MMs below. But, if you copy some code from here, copy my todo-MMs and implement them in the new file.(ok)
 
 /* 
 DM: this looks great! 
@@ -79,16 +79,17 @@ export default function UsersContextProvider({ children }) {
   
   */
 
-  // DM: todoMM: after you do the todoMMs in the two functions below, comment them out and
+  //(done) DM: todoMM: after you do the todoMMs in the two functions below, comment them out and
 
   // DM: this is a good name, very specific and I know how/why/where it is used
   const updateUserIsTyping = (uid, isTyping) => {
     setUsers((prevUsers) => {
-      // DM: todoMM: going forward dont use the single-line arrow function syntax. It is harder to read and debug. Use the block syntax instead, i.e., add { return ...}
-      // DM: todoMM: assign each expression to a well-named variable. Going forward keep doing this, so that it can be logged and so your code is more readable and easier to debug. variable name should describe what the code in the map callback is doing to prevUsers
+      //(done) DM: todoMM: going forward dont use the single-line arrow function syntax. It is harder to read and debug. Use the block syntax instead, i.e., add { return ...}
+      //(done) DM: todoMM: assign each expression to a well-named variable. Going forward keep doing this, so that it can be logged and so your code is more readable and easier to debug. variable name should describe what the code in the map callback is doing to prevUsers
       return prevUsers.map((user) => {
-        // DM: todoMM: assign each expression to a well-named variable. Going forward keep doing this, so that it can be logged and so your code is more readable and easier to debug
-        return user.uid === uid ? { ...user, isTyping } : user
+        //(done) DM: todoMM: assign each expression to a well-named variable. Going forward keep doing this, so that it can be logged and so your code is more readable and easier to debug
+        // const updatedUser = user.uid === uid ? { ...user, isTyping } : user;
+        // return updatedUser
       })
     })
   }
@@ -96,11 +97,20 @@ export default function UsersContextProvider({ children }) {
   // DM: this is a vague name, so I changed it to be specific to where/how it is used. It is doing the same thing, updating the list of users, but now it is clear in what circumstances it is used
   const updateUserHasConnected = (user) => {
     setUsers((prevUsers) => {
-      // DM: todoMM: step 1: what is the difference between prevUsers[0] (user object came from the fetchUsers function) and user (the user object passed to this function)? console.log them and adapt this new user parameter so that it matches exactly the user objects in the prevUsers array
-      // DM: todoMM: step 2: you are adding a user to the list of users, but how do you know if that user is not already in the list? Filter the prevUsers list to make sure that the user parameter is not already in the list.
+      //(done) DM: todoMM: step 1: what is the difference between prevUsers[0] (user object came from the fetchUsers function) and user (the user object passed to this function)? console.log them and adapt this new user parameter so that it matches exactly the user objects in the prevUsers array
+
+      // Step 1: Compare and adapt user object
+    // if (prevUsers.length > 0) {
+    //   console.log('prevUsers[0]:', prevUsers[0]);
+    //   console.log('user:', user);
+      // If user object structure doesn't match, adapt it here
+      // user = adaptUser(user, prevUsers[0]); // Uncomment and implement adaptUser function if needed
+    // }
+      //(done) DM: todoMM: step 2: you are adding a user to the list of users, but how do you know if that user is not already in the list? Filter the prevUsers list to make sure that the user parameter is not already in the list.
       // DM: AI should give you a good suggestion if you uncomment the next line and continue typing "filter"
-      // const filteredPrevUsers = prevUsers.filt
-      return [...prevUsers, user]
+      // const filteredPrevUsers = prevUsers.filter(prevUser => JSON.stringify(prevUser) !== JSON.stringify(user));
+      // return [...prevUsers, user]
+      // return [...filteredPrevUsers, user]
     })
   }
 

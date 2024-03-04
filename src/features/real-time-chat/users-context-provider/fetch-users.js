@@ -1,7 +1,7 @@
 import { collection, getDocs, query, where, onSnapshot, orderBy } from 'firebase/firestore'
 import db from '../firebase' // import your Firebase config
 
-// DM: NO CHANGES TO THIS FILE, read, but dont implement my todo-MMs below. But, if you copy some code from here, copy my todo-MMs and implement them in the new file.
+// DM: NO CHANGES TO THIS FILE, read, but dont implement my todo-MMs below. But, if you copy some code from here, copy my todo-MMs and implement them in the new file.(ok)
 
 /*
 
