@@ -1,3 +1,4 @@
+// node project-info/teamdm/training/code-wars-challenges/currently-working/repeat-adjacent.js
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 // note: You can be working multiple challenges, but always address all todoM-Ms in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
@@ -12,6 +13,7 @@ import { group } from 'console'
 /* 
 
 STATUS: the code is not working yet as i am still working on the solution. i have written the tests, the "function signature"(good vocab!), and the first part of the solution.
+After updating the code, i'll need to test each line of newly implemented code for testing first. i'll continue with it tomorrow.
 
 
 NEXT STEP(s): i'll continue working on the solution by writing the rest of the solution and then testing it
@@ -117,8 +119,29 @@ function repeatAdjacent(string) {
   const characterGroups = removeNonAlphaCharacters.join('').match(/([a-z])\1+/gi)
   console.log({ characterGroups })
 
-  const bigCharacterGroups = characterGroups.filter((group) => group.length > 1)
-  console.log({ bigCharacterGroups })
+  // const bigCharacterGroups = characterGroups.filter((group) => group.length > 1)
+  // console.log({ bigCharacterGroups })
+
+  const bigGroupCounts = characterGroups.reduce((acc, group, i, arr) => {
+    const prevGroup = arr[i - 1]
+    console.log({ prevGroup })
+
+    const isPrevGroupExist = Boolean(prevGroup)
+    console.log({ isPrevGroupExist })
+
+    const isSameGroup = isPrevGroupExist && prevGroup[0] === group[0]
+    console.log({ isSameGroup })
+
+    if (isSameGroup) {
+      acc[acc.length - 1].push(group)
+    } else {
+      acc.push([group])
+    }
+    return acc
+  }, [])
+
+  const bigGroupCount = bigGroupCounts.filter((groups) => groups.length > 1).length
+  console.log({ bigGroupCount })
 
   /* 9. use the named parts to create a readable solution. */
 
@@ -126,7 +149,7 @@ function repeatAdjacent(string) {
         always return a variable, or, use only variables in return statements
         this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
      */
-  return ''
+  return bigGroupCount
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 repeatAdjacent('ccccoodeffffiiighhhhhhhhhhttttttts') // 3
