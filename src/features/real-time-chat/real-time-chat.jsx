@@ -19,11 +19,8 @@ import { UserContext } from './user/user-context-provider'
 import { UsersContext } from './users-context-provider'
 import { doc, getDoc, deleteDoc } from 'firebase/firestore'
 import { FiLogOut } from 'react-icons/fi'
-// dont use it here import { fetchUsers } from './user/fetch-users'
 
 export default function RealTimeChat() {
-  // console.log('RealTimeChat component rendered')
-
   console.log('RealTimeChat Database object:', database) // to check the database object is available to the RealTimeChat component
 
   const [messages, setMessages] = useState([])
@@ -138,41 +135,6 @@ export default function RealTimeChat() {
       unsubscribeAuth()
     }
   }, [connectedUsers])
-
-  // fetch user data from firestore, update it to fetch multiple users
-  // async function fetchUser(uid) {
-  // async function fetchUsers() {
-  //   // const userRef = doc(db, 'users', uid)
-  //   const users = []
-  //   const usersCollectionRef = collection(db, 'users')
-  //   // const userSnapshot = await getDoc(userRef)
-  //   const usersSnapshot = await getDocs(usersCollectionRef)
-  //   // if (userSnapshot.exists()) {
-  //   //   return userSnapshot.data()
-  //   // } else {
-  //   //   console.error('User does not exist:', uid)
-  //   //   return null
-  //   // }
-  //   usersSnapshot.forEach((doc) => {
-  //     users.push(doc.data())
-  //   })
-  //   return users
-  // }
-
-  // DM: you dont need to do this, because everything is already in the "users" context variable. React context providers are for sharing state with any component in the app, so each component does not need to call the fetchUsers, which should be used by the provider only.
-  // useEffect(() => {
-  //   // fetchUsers().then((fetchedUsers) => { fix to return the promise from fetchUsers
-  //   const unsubscribe = fetchUsers((fetchedUsers) => {
-  //     const activeUsers = fetchedUsers.filter((user) => user.isActive)
-  //     // DM: do not use setUsers from other sources. setUsers should be done in the provider only, not changed by the rest of the code
-  //     // setUsers(activeUsers)
-  //     setLoading(false)
-  //   })
-
-  //   return () => {
-  //     unsubscribe()
-  //   }
-  // }, [])
 
   const onSendMessage = (message) => {
     console.log({ message })
@@ -302,16 +264,6 @@ export default function RealTimeChat() {
       last_changed: serverTimestamp(),
     })
 
-    // DM: do not use setUsers from other sources. setUsers should be done in the provider only, not changed by the rest of the code
-    // setUsers((previousUsers) => {
-    //   console.log('RealTimeChat handleUserConnect previousUsers:', { previousUsers, user })
-    //   // DM: todoMM: you call SetConnectedUsers in 2 places. IN this place, you add user, which is not the same as what you are adding in the other place you call it. Here, user.displayName is not undefined. In the other place, displayName is undefined. also remember, this runs only once, for the current user, so you should see only 1 user in the console.log.
-    //   // const updatedUsers = [user, ...previousUsers.filter((u) => u.uid !== user.uid)]
-    //   const updatedUsers = [...previousUsers.filter((u) => u.uid !== user.uid), user]
-
-    //   return updatedUsers
-    // })
-
     // Update the connectedUsers and users arrays
     setConnectedUsers((prevConnectedUsers) => [...prevConnectedUsers, user])
     // setUsers((prevUsers) => [...prevUsers, user])
@@ -359,8 +311,6 @@ export default function RealTimeChat() {
               <div className="flex flex-col md:flex-row flex-grow h-full md:h-full">
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
                   <ChatBox
-                    // fetchUser={fetchUser}
-                    // dont use fetchUsers here fetchUsers={fetchUsers}
                     messages={[...messages]}
                     deleteMessage={deleteMessage}
                     currentUser={currentUser}
@@ -381,7 +331,7 @@ export default function RealTimeChat() {
 
                       {console.log('connected users array in RealTimeChat', users) ||
                         users.map((user) => {
-                          console.log('RealTimeChat connectedUsers.map user:', user) // the user object has a displayName property of undefined here. in order to fix that i tried to find where displayName is set in the code. i am assuming the problem to be when fetching users from firebase database. i will check the fetchUsers function and the useEffect that populates the connectedUsers array.
+                          console.log('RealTimeChat connectedUsers.map user:', user)
                           const formattedDisplayName =
                             user?.displayName &&
                             user?.displayName[0].toUpperCase() + user?.displayName.slice(1)
@@ -427,10 +377,6 @@ export default function RealTimeChat() {
                               }}
                             >
                               <div className="flex items-center">
-                                {/* {console.log(
-                                  'RealTimeChat xxx formatted display name:',
-                                  formattedDisplayName
-                                ) || null} */}
                                 <span className="hover:text-purple-500 transition-colors duration-200">
                                   {/* user?.uid is showing up, but not the user?.displayName */}
                                   {formattedDisplayName || user?.uid}
@@ -443,14 +389,18 @@ export default function RealTimeChat() {
                                   ...
                                 </span>
                               )}
-                              <div className="flex items-center">
-                                <FiLogOut
-                                  onClick={handleSignOut}
-                                  className="cursor-pointer text-red-500 hover:text-red-700 mr-1"
-                                  size={24}
-                                />
-                                <span className="text-xs text-red-500 mt-0.5">Sign Out</span>
-                              </div>
+                              {/* MM: i started by making a global search for "currentUser.uid" in the repo to see where it's used. i found there is a reverse condition that checks for user profile above the code(if (user.uid !== currentUser.uid)), i used that condition below
+                               */}
+                              {user.uid === currentUser.uid && (
+                                <div className="flex items-center">
+                                  <FiLogOut
+                                    onClick={handleSignOut}
+                                    className="cursor-pointer text-red-500 hover:text-red-700 mr-1"
+                                    size={24}
+                                  />
+                                  <span className="text-xs text-red-500 mt-0.5">Sign Out</span>
+                                </div>
+                              )}
                             </div>
                           )
                         })}
@@ -468,10 +418,10 @@ export default function RealTimeChat() {
               
       
        */}
-      <pre>users: {JSON.stringify(users, null, 2)}</pre>
+      {/* <pre>users: {JSON.stringify(users, null, 2)}</pre>
       {users.map((user, index) => (
         <div key={index}>{user.displayName}</div>
-      ))}
+      ))} */}
     </>
   )
 }
