@@ -97,12 +97,26 @@ export default function MessageInput({ onSendMessage, onTyping }) {
       return
     }
 
+    /*
+    const currentDate = new Date();
+    const messageDate = currentDate.toISOString().slice(0, 10); // Extract only the date part
+    const messageTime = currentDate.toISOString().slice(11, 19); // Extract only the time part
+
+    const messageObj = {
+      text: message,
+      sender: user.user.uid,
+      senderName: user.user.displayName,
+      timestamp: `${messageDate} ${messageTime}`, // Combining date and time
+    };
+    */
+
     const messageObj = {
       text: message,
       sender: user.user.uid, // Store the user's ID instead of the display name
       senderName: user.user.displayName,
-      timestamp: new Date().toISOString(),
+      timestamp: Date.now(),
     }
+
     // await addDoc(collection(db, 'messages'), messageObj)
     const docRef = await addDoc(collection(db, 'messages'), messageObj)
 

@@ -51,7 +51,7 @@ export default function ChatBox({
     if (!db) return
     //(done) DM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
     // DM: todoMM: you are fetching, but the ultimate purpose of this function is to setAllUserData, correct?
-      // MM: do i need to use the setAllUserData again ?
+    // MM: do i need to use the setAllUserData again ?
     const fetchAllUserData = async () => {
       //(done) DM: write a comment to explain what/why this code
       // The fetchAllUserData function fetches the user data for each sender of the messages and stores it in the userData state. This data is then used to display the sender's information for each message. DM: good
@@ -98,6 +98,46 @@ export default function ChatBox({
     }
   }, [messages])
 
+  const getMessageTimestamp = (timestamp) => {
+    // Create a new Date object from the provided timestamp
+    const messageDate = new Date(timestamp)
+
+    // Create a new Date object for the current date and time
+    const currentDate = new Date()
+
+    // Check if the message was sent today
+    if (
+      messageDate.getFullYear() === currentDate.getFullYear() &&
+      messageDate.getMonth() === currentDate.getMonth() &&
+      messageDate.getDate() === currentDate.getDate()
+    ) {
+      // Format the time portion of the message date
+      const timeString = messageDate.toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      })
+
+      // Return a message indicating the message was sent today with the formatted time
+      return `today, ${timeString}`
+    } else if (
+      messageDate.getFullYear() === currentDate.getFullYear() &&
+      messageDate.getMonth() === currentDate.getMonth() &&
+      messageDate.getDate() === currentDate.getDate() - 1
+    ) {
+      // Return a message indicating the message was sent yesterday
+      return 'yesterday'
+    } else {
+      // Return a formatted date string for messages sent on other days
+      return messageDate.toLocaleString('en-US', {
+        weekday: 'long',
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+      })
+    }
+  }
+
   return (
     <div
       ref={messagesContainerRef}
@@ -127,13 +167,32 @@ export default function ChatBox({
             className="mb-4 border-b-2 border-purple-300 p-2"
           >
             <div className="flex justify-between">
-              <div>
+              {/* <div>
                 <strong className="font-bold mr-2">{user?.name || sender}</strong>: {message?.text}{' '}
                 <em className="text-sm text-purple-300">
                   {message?.timestamp ? new Date(message?.timestamp).toLocaleTimeString() : ''}
                 </em>
+              </div> */}
+              <div>
+                <strong className="font-bold mr-2">{user?.name || sender}</strong>: {message?.text}{' '}
+                <em className="text-sm text-purple-300">
+                  {message?.timestamp ? getMessageTimestamp(message.timestamp) : ''}
+                </em>
               </div>
-
+              {/* MM: there is also this way of displaying the full day, month(date) , and year like this : sender: message Friday, March 1, 2024:
+              <div>
+                <strong className="font-bold mr-2">{user?.name || sender}</strong>: {message?.text}{' '}
+                <em className="text-sm text-purple-300">
+                  {message?.timestamp
+                    ? `${new Date(message.timestamp).toLocaleString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}, ${new Date(message.timestamp).toLocaleTimeString()}`
+                    : ''}
+                </em>
+              </div> */}
               {currentUser && currentUser?.uid === message.sender && (
                 <button onClick={() => deleteMessage(message)}>
                   <FontAwesomeIcon icon={faTrash} />
@@ -164,4 +223,32 @@ MM: i'll continue working on it tomorrow. DM: ok, good, keep going.
 
 /*
 DM: THis doesn't help because you're not telling me what was this code for? What did you try? What didn't work? As with my comment in message-input.jsx today, best comment out individual lines (and those lines should have a comment explaining their purpose), otherwise I'm lost.  DM: ok these sound good, but please put them in the code as comments over the code where it happens. Otherwise its too hard for me to follow. You can leave the app in a broken state and then I can help debug, but give me instructions about what is the problem, what you tried, and what I should do to reproduce the bug (ie try to login, try to signup, etc)(ok, it's done!)
+*/
+
+/*
+To display the current date and time in the chat box, i did the following:
+1. i read the documentation for the Date object on the following link: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date
+2. i created three variables as follow: 
+  const currentDate = new Date();
+  const messageDate = currentDate.toISOString().slice(0, 10); // Extract only the date part
+  const messageTime = currentDate.toISOString().slice(11, 19); // Extract only the time part
+And then updated the messageObj in the MessageInput component as follow:
+  const messageObj = {
+    text: message,
+    sender: user.user.uid,
+    senderName: user.user.displayName,
+    timestamp: `${messageDate} ${messageTime}`, // Combining date and time
+  };
+But this resulted in an "Invalid date" response on the browser
+4. to fix that, i asked AI : how to display a date followed by the time?
+5. AI suggested to create a function that takes a timestamp as an argument and returns a formatted date string. then i:
+6. created a function called getMessageTimestamp that takes a timestamp as an argument.
+7. inside the getMessageTimestamp function, i created a new Date object from the provided timestamp.
+8. i created a new Date object for the current date and time.
+9. i checked if the message was sent today, if it was sent today, i formatted the time portion of the message date.
+10. if the message was sent yesterday, i returned a message indicating the message was sent yesterday.
+11. if the message was sent on other days, i returned a formatted date string for messages sent on other days.
+12. i called the getMessageTimestamp function inside the ChatBox component and passed the message.timestamp as an argument to the function.
+13. i displayed the result of the getMessageTimestamp function in the ChatBox component.
+14. i tested the result by sending a message and checking if the date and time was displayed correctly in the chat box. the code worked as expected.
 */
