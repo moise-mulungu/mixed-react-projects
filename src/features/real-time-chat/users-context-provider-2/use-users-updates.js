@@ -10,6 +10,7 @@ useUsersUpdates({ setUsers })
 */
 
 /* 
+
   this custom hook will update the "users" variable in real-time with the following:
   * activity of other users on other computers
   * activity of the current user on this computer (i.e., you when you use/test the app)
@@ -17,7 +18,8 @@ useUsersUpdates({ setUsers })
       * activity should not be stored in memory
       * activity should not be updated here in this component
       * WHY? data in memory or added to this component would ONLY be seen by the current user (i.e., you when you use/test the app) but would NOT be seen by other users on other computers.
-*/
+
+  */
 
 // these functions enable finding and updating user objects from the initial fetch
 const getUserByUid = ({ connectedUsers, uid, allUsers }) => {

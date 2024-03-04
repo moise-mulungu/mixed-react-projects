@@ -9,10 +9,22 @@
 */
 /* 
 
-STATUS: 
+STATUS: (in progress | blocked | done)
 
 
-NEXT STEP(s):
+if in progress:
+
+
+if blocked:
+
+
+if done:
+
+
+NEXT STEPS:
+for MM:
+
+for DM:
 
 
 */
@@ -59,10 +71,18 @@ function myFunction(parameter1, parameter2) {
 
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
+        WHAT are the intermediate things (string, array, object, ...) you want to calculate based on the input? 
         WHAT do you want to calculate based on the input? 
         Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, Yes!)
-        */
+  */
+
   /*
+
+      input: string|number|...
+
+      <list the intermediate variables needed to arrive at the output
+
+      output: string|number|...
 
   */
 

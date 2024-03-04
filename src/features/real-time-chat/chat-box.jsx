@@ -51,7 +51,8 @@ export default function ChatBox({
     if (!db) return
     //(done) DM: rename all the variables in this useEffect and perhaps senderData, setSenderData to reflect exactly/specifically what is being stored.
     // DM: todoMM: you are fetching, but the ultimate purpose of this function is to setAllUserData, correct?
-    // MM: do i need to use the setAllUserData again ?
+    //   MM: do i need to use the setAllUserData again ?
+    //   DM: I was hinting the function name could be better.
     const fetchAllUserData = async () => {
       //(done) DM: write a comment to explain what/why this code
       // The fetchAllUserData function fetches the user data for each sender of the messages and stores it in the userData state. This data is then used to display the sender's information for each message. DM: good
@@ -123,6 +124,7 @@ export default function ChatBox({
     } else if (
       messageDate.getFullYear() === currentDate.getFullYear() &&
       messageDate.getMonth() === currentDate.getMonth() &&
+      // DM: todoDM: good, we'll talk about time zones later since they can affect this comparison
       messageDate.getDate() === currentDate.getDate() - 1
     ) {
       // Return a message indicating the message was sent yesterday

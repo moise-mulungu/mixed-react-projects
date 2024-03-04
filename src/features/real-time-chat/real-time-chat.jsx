@@ -84,6 +84,7 @@ export default function RealTimeChat() {
 
     console.log('RealTimeChat connectedUsers:', connectedUsers)
     // const unsubscribeDatabaseListeners = connectedUsers.map((user) => {
+    // DM: im getting a error because users is undefined. Is that expected? maybe it only happens to me here on my computer but not on yours? I cant use the app today.
     const unsubscribeDatabaseListeners = users.map((user) => {
       console.log('RealTimeChat connectedUsers.map user:', user)
       if (!user) {
@@ -291,6 +292,9 @@ export default function RealTimeChat() {
     setIsActive(false)
   }
 
+  // DM: this will run here same as it did in the JSX where you had it before. dont put console.log inline inside logical expressions like that as it is unreadable and works the same if you put it here just above the return statement
+  console.log('connected users array in RealTimeChat', users)
+
   return (
     <>
       {!isAuthenticated && (
@@ -329,81 +333,80 @@ export default function RealTimeChat() {
                         Connected Users
                       </h2>
 
-                      {console.log('connected users array in RealTimeChat', users) ||
-                        users.map((user) => {
-                          console.log('RealTimeChat connectedUsers.map user:', user)
-                          const formattedDisplayName =
-                            user?.displayName &&
-                            user?.displayName[0].toUpperCase() + user?.displayName.slice(1)
+                      {users.map((user) => {
+                        console.log('RealTimeChat connectedUsers.map user:', user)
+                        const formattedDisplayName =
+                          user?.displayName &&
+                          user?.displayName[0].toUpperCase() + user?.displayName.slice(1)
 
-                          console.log('Formatted Display Name:', formattedDisplayName) // log the formattedDisplayName
-                          console.log('RealTimeChat Formatted display name:', formattedDisplayName)
-                          {
-                            /* // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you. */
-                          }
-                          console.log('RealTimeChat real-time-chat/index.jsx ', {
-                            user,
+                        console.log('Formatted Display Name:', formattedDisplayName) // log the formattedDisplayName
+                        console.log('RealTimeChat Formatted display name:', formattedDisplayName)
+                        {
+                          /* // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you. */
+                        }
+                        console.log('RealTimeChat real-time-chat/index.jsx ', {
+                          user,
 
-                            typeofUserDisplayname: typeof user?.displayName, // DM: 1a. this is undefined. MM:i checked and found  the output is a "string" not undefined
-                            userDisplayname: user?.displayName, // this outputs the current connected user
-                            userUid: user?.uid, // DM: 1b. this looks correct
-                            users, // DM: so I can see what is in connectedUsers
-                          })
-                          if (!user) {
-                            console.error('User is undefined')
-                            return
-                          }
+                          typeofUserDisplayname: typeof user?.displayName, // DM: 1a. this is undefined. MM:i checked and found  the output is a "string" not undefined
+                          userDisplayname: user?.displayName, // this outputs the current connected user
+                          userUid: user?.uid, // DM: 1b. this looks correct
+                          users, // DM: so I can see what is in connectedUsers
+                        })
+                        if (!user) {
+                          console.error('User is undefined')
+                          return
+                        }
 
-                          const isTyping = typingUsers.includes(user.uid)
+                        const isTyping = typingUsers.includes(user.uid)
 
-                          console.log('User:', user)
-                          console.log('User Display Name:', user?.displayName)
+                        console.log('User:', user)
+                        console.log('User Display Name:', user?.displayName)
 
-                          return (
-                            <div
-                              key={user?.uid}
-                              className="flex justify-between items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
-                              onClick={() => {
-                                console.log('connectedUser clicked', { user, currentUser })
-                                if (user.uid !== currentUser.uid) {
-                                  console.log(
-                                    'connectedUser clicked and user.uid !== currentUser.uid',
-                                    { user, currentUser }
-                                  )
-                                  setSelectedUser(user)
+                        return (
+                          <div
+                            key={user?.uid}
+                            className="flex justify-between items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
+                            onClick={() => {
+                              console.log('connectedUser clicked', { user, currentUser })
+                              if (user.uid !== currentUser.uid) {
+                                console.log(
+                                  'connectedUser clicked and user.uid !== currentUser.uid',
+                                  { user, currentUser }
+                                )
+                                setSelectedUser(user)
 
-                                  setProfileVisible(true)
-                                }
-                              }}
-                            >
-                              <div className="flex items-center">
-                                <span className="hover:text-purple-500 transition-colors duration-200">
-                                  {/* user?.uid is showing up, but not the user?.displayName */}
-                                  {formattedDisplayName || user?.uid}
-                                </span>
-                                <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
-                              </div>
-
-                              {isTyping && (
-                                <span className="ml-2 animate-pulse text-2xl text-blue-500 flex-shrink-0">
-                                  ...
-                                </span>
-                              )}
-                              {/* MM: i started by making a global search for "currentUser.uid" in the repo to see where it's used. i found there is a reverse condition that checks for user profile above the code(if (user.uid !== currentUser.uid)), i used that condition below
-                               */}
-                              {user.uid === currentUser.uid && (
-                                <div className="flex items-center">
-                                  <FiLogOut
-                                    onClick={handleSignOut}
-                                    className="cursor-pointer text-red-500 hover:text-red-700 mr-1"
-                                    size={24}
-                                  />
-                                  <span className="text-xs text-red-500 mt-0.5">Sign Out</span>
-                                </div>
-                              )}
+                                setProfileVisible(true)
+                              }
+                            }}
+                          >
+                            <div className="flex items-center">
+                              <span className="hover:text-purple-500 transition-colors duration-200">
+                                {/* user?.uid is showing up, but not the user?.displayName */}
+                                {formattedDisplayName || user?.uid}
+                              </span>
+                              <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
                             </div>
-                          )
-                        })}
+
+                            {isTyping && (
+                              <span className="ml-2 animate-pulse text-2xl text-blue-500 flex-shrink-0">
+                                ...
+                              </span>
+                            )}
+                            {/* MM: i started by making a global search for "currentUser.uid" in the repo to see where it's used. i found there is a reverse condition that checks for user profile above the code(if (user.uid !== currentUser.uid)), i used that condition below
+                             */}
+                            {user.uid === currentUser.uid && (
+                              <div className="flex items-center">
+                                <FiLogOut
+                                  onClick={handleSignOut}
+                                  className="cursor-pointer text-red-500 hover:text-red-700 mr-1"
+                                  size={24}
+                                />
+                                <span className="text-xs text-red-500 mt-0.5">Sign Out</span>
+                              </div>
+                            )}
+                          </div>
+                        )
+                      })}
                     </div>
                   </div>
                 </div>
