@@ -37,3 +37,21 @@ DM: todoMM: take 30 minutes to write two functions for utils in src/utils/date/p
 * why: date practice, practice using AI, SOLID Dependency Inversion Principle, practice writing re-usable code to utilities. 
 * for formatDateString: "write a function to format a date object into a date string called formatDateString. use named parameters and provide default values for locale and options".
   * once you've written formatDateString I'll discuss how to adjust it to be more simple and versatile than vanilla JS allows.
+  * MM: I have done the two tasks above.
+
+<!-- howtojs:: date.parse object: how to parse a date into string; here are the four steps :
+  1. Create a Date String: const dateString = "2021-09-15";
+  2. Use the Date.parse() Method: const milliseconds = Date.parse(dateString);
+  3. Create a new Date Object: const date = new Date(milliseconds);
+  4. Display or Use the Parsed Date: console.log(date);
+ -->
+## Date.parse() 
+The Date.parse() static method parses a string representation of a date, and returns the date's timestamp.
+
+```js
+// with date constructor
+  const dateString = "2021-09-15";
+  const date = new Date(dateString);
+  console.log(date);
+
+```
