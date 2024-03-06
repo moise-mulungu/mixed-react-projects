@@ -16,9 +16,14 @@ const { users, usersLoading, usersError } = useContext(UsersContext)
 import UsersContextProvider2 from './users-context-provider-2'
 <UsersContextProvider2>Content</UsersContextProvider2>
 
+// DM: todoMM: review these tests as you are coding and be sure your code covers all of the test cases. If it doesnt, then make a note of what new functionality you need to add in the future.
+// DM: todoMM: test these (as different users) by using real-time-chat (as different users) to perform the actions below, while looking at /real-time-chat-page/test-users-2 page to be sure you see the changes get updated automatically in real-time, ie; the subscription listener is working and updating the state in real-time. Note which of the tests have passed, and which still need to be implemented.
 TESTING:
 test this in http://localhost:3005/real-time-chat-page/test-users-2
-watch for changes when:
+* you should see the changes updated real-time in /real-time-chat-page/test-users-2 - indicates the subscription listener code works
+* you should see the changes when you reload - indicates the initial fetch data works
+
+watch for changes upon the following actions:
 * user signs up
 * user logs in
 * user arrives at the chat page (user is already logged in, so user goes directly to chat)
@@ -62,6 +67,7 @@ export default function UsersContextProvider2({ children }) {
         // you are in an async function in a try-catch block, so await the promise returned by the database call
         // Map over the documents in the snapshot to create an array of user objects.
         // Each document is converted to an object with the .data() method, and the document ID (which is the user's uid) is added to this object.
+
         const fetchedUsers = snapshot.docs.map((doc) => ({ ...doc.data(), uid: doc.id })) // await yourDatabaseCallHere()
         setAllUsers(fetchedUsers)
 

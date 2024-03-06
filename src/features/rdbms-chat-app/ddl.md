@@ -26,6 +26,7 @@ create table messages
     foreign key (messages_users_id) references users(users_id)
 );
 
+
 -- trigger to update users_last_active_date when a new message is inserted
 create or replace function update_users_last_active_date()
 returns trigger as

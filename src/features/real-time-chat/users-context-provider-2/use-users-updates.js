@@ -45,6 +45,8 @@ const updateUserField = ({ user, propertyName, propertyValue }) => {
 export default function useUsersUpdates({ setConnectedUsers, allUsers, setError }) {
   //
 
+  // DM: good!
+
   // set up subscribe/listen for changes to the users collection
   useEffect(() => {
     // Get a reference to the Firestore database
@@ -69,6 +71,8 @@ export default function useUsersUpdates({ setConnectedUsers, allUsers, setError 
         // Extract the uid and isActive properties from the user object
         const uid = user.uid
         const isActive = user.isActive
+        // DM: todoMM: what if one of the users changes their displayName? how would you handle that? (hint: you would need to update the displayName in the allUsers array, as well as the connectedUsers array). What other data from the users collection might become updated?
+
         // below, we will not make use of the user variable at all. instead we will use the uid and isActive variables
 
         // Update the connectedUsers state
