@@ -88,8 +88,8 @@ export default function UsersContextProvider({ children }) {
       //(done) DM: assign each expression to a well-named variable. Going forward keep doing this, so that it can be logged and so your code is more readable and easier to debug. variable name should describe what the code in the map callback is doing to prevUsers
       return prevUsers.map((user) => {
         //(done) DM: assign each expression to a well-named variable. Going forward keep doing this, so that it can be logged and so your code is more readable and easier to debug
-        // const updatedUser = user.uid === uid ? { ...user, isTyping } : user;
-        // return updatedUser
+        const updatedUser = user.uid === uid ? { ...user, isTyping } : user
+        return updatedUser
       })
     })
   }
@@ -107,11 +107,14 @@ export default function UsersContextProvider({ children }) {
       // }
       //(done) DM: todoMM: step 2: you are adding a user to the list of users, but how do you know if that user is not already in the list? Filter the prevUsers list to make sure that the user parameter is not already in the list.
       // DM: AI should give you a good suggestion if you uncomment the next line and continue typing "filter"
-      // const filteredPrevUsers = prevUsers.filter(prevUser => JSON.stringify(prevUser) !== JSON.stringify(user));
+      const filteredPrevUsers = prevUsers.filter(
+        (prevUser) => JSON.stringify(prevUser) !== JSON.stringify(user)
+      )
       // return [...prevUsers, user]
-      // return [...filteredPrevUsers, user]
+      return [...filteredPrevUsers, user]
     })
   }
+
 
   const value = {
     users,
@@ -141,4 +144,15 @@ To create a new users-context-provider, i:
   11. updated the fetchUsers function by querying data from the database where the isActive is true
   12. declared isActive variable in the RealTimeChat component and used it in the handleUserConnect to insert it into the firebase database, then passed it as props in the UserProfile component
   13. checked in the users collection if it was already added, it was successfully added.
+*/
+
+/*
+To fix the "TypeError: Cannot read properties of undefined (reading 'map')" error that occurs when the app tried to load the users, i:
+  1. added a check before the map function to make sure that the users array is not undefined.
+  2. after checking, the same error occurs in the usersContextProvider, and in the fetchUsers() function
+  3. added again another check before the map and forEach methods in the usersContextProvider, and in the fetchUsers() functions.
+  4. the error  disappeared but the user was not displayed in the connecteUsers list.
+  5. doubled checked the two functions(usersContextProvider, and fetchUsers), i found that the problem was in the UsersContextProvider component seems to be missing the logic to update the isTyping and hasConnected properties of a user.
+  6. uncommented some lines in the updateUserIsTyping and in the updateUserHasConnected functions
+  7. checked the browser and the displayName of the users showed as before.
 */

@@ -61,14 +61,7 @@ export function fetchUsers(callback) {
       user.isActive = lastMessageTimestamp >= oneDayAgo
       callback(users)
     }
-  }) // each userSnapshot
+  })
 
-  //   const users = []
-  //   snapshot.forEach((doc) => {
-  //     const user = doc.data()
-  //     users.push(user)
-  //   })
-  //   callback(users)
-  // })
   return unsubscribe
 }

@@ -36,6 +36,7 @@ export default function RealTimeChat() {
   const { users, updateUserIsTyping, updateUserHasConnected } = useContext(UsersContext)
   console.log('RealTimeChat w of RealTimeChat:', { currentUser })
   console.log('connected users in the Array:', connectedUsers)
+  console.log('RealTimeChat users:', users)
 
   // the useEffect hook will be triggered whenever currentUser changes. If currentUser is defined, it will call onTyping(true).
   useEffect(() => {
