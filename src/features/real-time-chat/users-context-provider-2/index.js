@@ -71,7 +71,9 @@ export default function UsersContextProvider2({ children }) {
         const fetchedUsers = snapshot.docs.map((doc) => ({ ...doc.data(), uid: doc.id })) // await yourDatabaseCallHere()
         setAllUsers(fetchedUsers)
 
-        const connectedUsers = fetchedUsers.filter((user) => user.isActive)
+        // DM: todoMM: I noticed that we I removed the filter on isActive, I still see only one user. This indicates that there is only one user in the database collection (usersCollection) that you are querying here. Check the database using the console. How can this collection be populated when a user signs up or logs in or posts a message? How did you intend for this table to be populated? Is usersCollection the only place that you are storing user data? If there is another collection storing users data, perhaps query that one?
+        // const connectedUsers = fetchedUsers.filter((user) => user.isActive)
+        const connectedUsers = fetchedUsers
         setConnectedUsers(connectedUsers)
 
         setLoading(false)
@@ -82,7 +84,7 @@ export default function UsersContextProvider2({ children }) {
       setLoading(false)
       const errorMessage = `Error fetching users: ${error.message}`
       setError(errorMessage)
-      console.log(errorMessage, error)
+      console.error(errorMessage, error)
     }
   }, [])
 
