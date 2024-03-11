@@ -16,8 +16,8 @@ const { users, usersLoading, usersError } = useContext(UsersContext)
 import UsersContextProvider2 from './users-context-provider-2'
 <UsersContextProvider2>Content</UsersContextProvider2>
 
-// DM: todoMM: review these tests as you are coding and be sure your code covers all of the test cases. If it doesnt, then make a note of what new functionality you need to add in the future.
-// DM: todoMM: test these (as different users) by using real-time-chat (as different users) to perform the actions below, while looking at /real-time-chat-page/test-users-2 page to be sure you see the changes get updated automatically in real-time, ie; the subscription listener is working and updating the state in real-time. Note which of the tests have passed, and which still need to be implemented.
+DM: todoMM: review these tests as you are coding and be sure your code covers all of the test cases. If it doesnt, then make a note of what new functionality you need to add in the future.
+DM: todoMM: test these (as different users) by using real-time-chat (as different users) to perform the actions below, while looking at /real-time-chat-page/test-users-2 page to be sure you see the changes get updated automatically in real-time, ie; the subscription listener is working and updating the state in real-time. Note which of the tests have passed, and which still need to be implemented.
 TESTING:
 test this in http://localhost:3005/real-time-chat-page/test-users-2
 * you should see the changes updated real-time in /real-time-chat-page/test-users-2 - indicates the subscription listener code works
@@ -86,7 +86,7 @@ export default function UsersContextProvider2({ children }) {
     }
   }, [])
 
-  useUsersUpdates({ setConnectedUsers, allUsers, setError })
+  useUsersUpdates({ setConnectedUsers, allUsers, setError, setAllUsers })
 
   const value = { connectedUsers, usersLoading: loading, usersError: error, allUsers }
 

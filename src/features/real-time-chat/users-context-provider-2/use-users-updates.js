@@ -42,12 +42,12 @@ const updateUserField = ({ user, propertyName, propertyValue }) => {
   return updatedUser
 }
 
-export default function useUsersUpdates({ setConnectedUsers, allUsers, setError }) {
-  //
+export default function useUsersUpdates({ setConnectedUsers, setAllUsers, allUsers, setError }) {
 
-  // DM: good!
 
-  // set up subscribe/listen for changes to the users collection
+// DM: good!
+
+// set up subscribe/listen for changes to the users collection
   useEffect(() => {
     // Get a reference to the Firestore database
     // const db = firebase.firestore()
@@ -111,9 +111,10 @@ export default function useUsersUpdates({ setConnectedUsers, allUsers, setError 
       unsubscribe()
     }
     // The effect depends on the allUsers and setConnectedUsers variables, so it runs whenever these variables change
-  }, [allUsers, setConnectedUsers])
+  }, [setConnectedUsers, allUsers, setAllUsers, setError])
+  // [allUsers, setConnectedUsers])
 
-  return
+  return null
 }
 // optional: if you need another subscription to get the needed data, you can add another useEffect here
 // useEffect(() => {
@@ -127,16 +128,57 @@ export default function useUsersUpdates({ setConnectedUsers, allUsers, setError 
 // }, [])
 
 // optional: if you need to schedule a periodic database fetch, you can add another useEffect here
-//   useEffect(() => {
-//     // const interval = setInterval(async () => {
-//     // const users = await yourDatabaseCallHere()
+// useEffect(() => {
+//   // const interval = setInterval(async () => {
+//   // const users = await yourDatabaseCallHere()
 
-//     // }, 60 * 1000)
+//   // }, 60 * 1000)
+
+//   return () => {
+//     // clearInterval(interval)
+//   }
+// }, [])
+
+// import { useEffect } from 'react'
+// import { onSnapshot } from 'firebase/firestore'
+// import { usersCollection } from '../firebase'
+
+// useUsersUpdates.js
+// const useUsersUpdates = ({ setConnectedUsers, allUsers, setError, setAllUsers }) => {
+//   useEffect(() => {
+//     const unsubscribe = onSnapshot(
+//       usersCollection,
+//       (snapshot) => {
+//         snapshot.docChanges().forEach((change) => {
+//           const user = { ...change.doc.data(), uid: change.doc.id }
+
+//           if (change.type === 'added' || change.type === 'modified') {
+//             const updatedAllUsers = allUsers.map((u) => (u.uid === user.uid ? user : u))
+//             setAllUsers(updatedAllUsers)
+
+//             const updatedConnectedUsers = updatedAllUsers.filter((u) => u.isActive)
+//             setConnectedUsers(updatedConnectedUsers)
+//           } else if (change.type === 'removed') {
+//             const updatedAllUsers = allUsers.filter((u) => u.uid !== user.uid)
+//             setAllUsers(updatedAllUsers)
+
+//             const updatedConnectedUsers = updatedAllUsers.filter((u) => u.isActive)
+//             setConnectedUsers(updatedConnectedUsers)
+//           }
+//         })
+//       },
+//       (error) => {
+//         setError(`Error fetching users: ${error.message}`)
+//         console.log(`Error fetching users: ${error.message}`, error)
+//       }
+//     )
 
 //     return () => {
-//       // clearInterval(interval)
+//       unsubscribe()
 //     }
-//   }, [])
+//   }, [setConnectedUsers, allUsers, setAllUsers, setError])
 
-//   return
+//   return null
 // }
+
+// export default useUsersUpdates
