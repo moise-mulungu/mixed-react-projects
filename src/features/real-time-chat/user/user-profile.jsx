@@ -57,8 +57,8 @@ const UserProfile = ({ setSelectedUser, setProfileVisible, isActive }) => {
       isActive,
     })
 
-    console.log('displayName:', displayName)
-    console.log('userPhotoUrl:', userPhotoUrl)
+    // console.log('displayName:', displayName)
+    // console.log('userPhotoUrl:', userPhotoUrl)
   }
 
   const handleUpdateProfile = async () => {

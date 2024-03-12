@@ -56,9 +56,9 @@ export default function RealTimeChat() {
     if (currentUser?.uid) {
       const typingRef = createDatabaseReference(database, `typing/${currentUser.uid}`)
       // DM: you'll see that this line is never executed, so nothing saved to the DB
-      console.log('RealTimeChat Typing ref:', typingRef, 'Is typing:', isTyping) // Add this line
+      // console.log('RealTimeChat Typing ref:', typingRef, 'Is typing:', isTyping) // Add this line
       setDatabaseValue(typingRef, isTyping)
-      console.log('RealTimeChat setDatabaseValue executed with:', typingRef, isTyping) // to verify that the setDatabaseValue function is executed
+      // console.log('RealTimeChat setDatabaseValue executed with:', typingRef, isTyping) // to verify that the setDatabaseValue function is executed
 
       // Update the corresponding user in the connectedUsers and users arrays
       setConnectedUsers((prevConnectedUsers) =>
@@ -72,7 +72,7 @@ export default function RealTimeChat() {
   }
 
   useEffect(() => {
-    console.log('RealTimeChat useEffect hook executed') // to check if the useEffect hook is executed
+    // console.log('RealTimeChat useEffect hook executed') // to check if the useEffect hook is executed
     const q = query(collection(db, 'messages'), orderBy('timestamp', 'desc'))
     const unsubscribeFirestore = onSnapshot(q, async (snapshot) => {
       const messages = []
@@ -83,7 +83,7 @@ export default function RealTimeChat() {
       setMessages(messages)
     })
 
-    console.log('RealTimeChat connectedUsers:', connectedUsers)
+    // console.log('RealTimeChat connectedUsers:', connectedUsers)
     // const unsubscribeDatabaseListeners = connectedUsers.map((user) => {
     // DM: im getting a error because users is undefined. Is that expected? maybe it only happens to me here on my computer but not on yours? I cant use the app today.
     const unsubscribeDatabaseListeners = users.map((user) => {
@@ -139,7 +139,7 @@ export default function RealTimeChat() {
   }, [connectedUsers])
 
   const onSendMessage = (message) => {
-    console.log({ message })
+    // console.log({ message })
 
     setMessages((previousMessages) => [...previousMessages, message])
   }
@@ -161,8 +161,8 @@ export default function RealTimeChat() {
     const usersStatusReference = createDatabaseReference(database, 'status')
 
     // DM: search console on "RealTimeChat useEffect deps []" to see only the comments from this useEffect
-    console.log('RealTimeChat useEffect deps [] triggered')
-    console.log('Created reference to status node in database', usersStatusReference)
+    // console.log('RealTimeChat useEffect deps [] triggered')
+    // console.log('Created reference to status node in database', usersStatusReference)
 
     const stopListeningToStatusChanges =
       //1. This function sets up a listener to the 'status' node in the database. When a change is detected, it triggers the callback function, passing in a snapshot of the updated data. DM: good description
@@ -213,13 +213,13 @@ export default function RealTimeChat() {
                 //     updatedUsers,
                 //   }
                 // )
-                console.log('RealTimeChat useEffect deps [] userStatusChanges userReference:', {
-                  userSnapshot,
-                  user, // DM: this is undefined
-                  userStatus,
-                  childSnapshotKey: childSnapshot.key,
-                  childSnapshot,
-                })
+                // console.log('RealTimeChat useEffect deps [] userStatusChanges userReference:', {
+                //   userSnapshot,
+                //   user, // DM: this is undefined
+                //   userStatus,
+                //   childSnapshotKey: childSnapshot.key,
+                //   childSnapshot,
+                // })
                 console.log(`Fetched user data: ${JSON.stringify(user)}`)
                 return {
                   uid: childSnapshot.key,
@@ -232,7 +232,7 @@ export default function RealTimeChat() {
           //3. This waits for all the promises in the userPromises array to resolve. When they do, it triggers the callback function, passing in an array of the resolved values (i.e., the updated user data).
           Promise.all(userPromises).then((updatedUsers) => {
             // DM: this is going to show you the same info that is in the .then() block. Your problem is above in the database queries.
-            console.log(`Updated users: ${JSON.stringify(updatedUsers)}`)
+            // console.log(`Updated users: ${JSON.stringify(updatedUsers)}`)
             const uniqueUsers = Array.from(new Set(updatedUsers.map((user) => user.uid))).map(
               (uid) => {
                 return updatedUsers.find((user) => user.uid === uid)
@@ -254,7 +254,7 @@ export default function RealTimeChat() {
 
   useEffect(() => {
     // DM: I see 9 different users in connectedUsers so ...
-    console.log('RealTimeChat useEffect deps [connectedUsers]', { users })
+    // console.log('RealTimeChat useEffect deps [connectedUsers]', { users })
   }, [connectedUsers])
 
   const handleUserConnect = (user) => {
@@ -285,7 +285,7 @@ export default function RealTimeChat() {
     auth
       .signOut()
       .then(() => {
-        console.log('RealTimeChat User signed out')
+        // console.log('RealTimeChat User signed out')
       })
       .catch((error) => {
         console.error('Error signing out: ', error)
@@ -294,7 +294,10 @@ export default function RealTimeChat() {
   }
 
   // DM: this will run here same as it did in the JSX where you had it before. dont put console.log inline inside logical expressions like that as it is unreadable and works the same if you put it here just above the return statement
-  console.log('connected users array in RealTimeChat', users)
+  // console.log('connected users array in RealTimeChat', users)
+  useEffect(() => {
+    console.log(selectedUser)
+  }, [selectedUser])
 
   return (
     <>
@@ -334,14 +337,17 @@ export default function RealTimeChat() {
                         Connected Users
                       </h2>
 
+                      {/* {connectedUsers.map((user) => { 
+                        MM: when i replace users.map with connectedUsers.map, everything seem to work perfectly by accessing the user-profile and updating the users collection in the firebase. the only problem with connectedUsers.map is just the displayName which doesn't display as before and it saving all the users even after being removed in the firebase/firestore database, which is strange.
+                        */}
                       {users.map((user) => {
                         console.log('RealTimeChat connectedUsers.map user:', user)
                         const formattedDisplayName =
                           user?.displayName &&
                           user?.displayName[0].toUpperCase() + user?.displayName.slice(1)
 
-                        console.log('Formatted Display Name:', formattedDisplayName) // log the formattedDisplayName
-                        console.log('RealTimeChat Formatted display name:', formattedDisplayName)
+                        // console.log('Formatted Display Name:', formattedDisplayName) // log the formattedDisplayName
+                        // console.log('RealTimeChat Formatted display name:', formattedDisplayName)
                         {
                           /* // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you. */
                         }
@@ -360,20 +366,21 @@ export default function RealTimeChat() {
 
                         const isTyping = typingUsers.includes(user.uid)
 
-                        console.log('User:', user)
-                        console.log('User Display Name:', user?.displayName)
+                        // console.log('User:', user)
+                        // console.log('User Display Name:', user?.displayName)
 
                         return (
                           <div
                             key={user?.uid}
                             className="flex justify-between items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
                             onClick={() => {
-                              console.log('connectedUser clicked', { user, currentUser })
+                              console.log('Clicked user:', user)
                               if (user.uid !== currentUser.uid) {
-                                console.log(
-                                  'connectedUser clicked and user.uid !== currentUser.uid',
-                                  { user, currentUser }
-                                )
+                                console.log('Selected user:', user)
+                                // console.log(
+                                //   'connectedUser clicked and user.uid !== currentUser.uid',
+                                //   { user, currentUser }
+                                // )
                                 setSelectedUser(user)
 
                                 setProfileVisible(true)

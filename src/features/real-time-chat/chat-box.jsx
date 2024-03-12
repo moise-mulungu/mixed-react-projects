@@ -12,7 +12,7 @@ export default function ChatBox({
   deleteMessage,
   // fetchUsers is for the userS provider only  fetchUsers
 }) {
-  console.log('messages:', typeof messages)
+  // console.log('messages:', typeof messages)
 
   const [userData, setUserData] = useState({})
   const messagesContainerRef = useRef(null)
@@ -72,10 +72,10 @@ export default function ChatBox({
     const unsubscribe = onSnapshot(usersCollection, (snapshot) => {
       //(done) DM: I'm seeing an error when I change my display name, I think it is here. Put a try-catch around the code in this callback so you can know for sure where the error is happening.
       try {
-        console.log('onSnapshot callback invoked', { snapshot })
+        // console.log('onSnapshot callback invoked', { snapshot })
         const updatedUserData = { ...userData }
         snapshot.docs.forEach((doc) => {
-          console.log('onSnapshot callback invoked', { doc, docData: doc.data() })
+          // console.log('onSnapshot callback invoked', { doc, docData: doc.data() })
           updatedUserData[doc.id] = doc.data()
         })
         setUserData(updatedUserData)
@@ -148,17 +148,17 @@ export default function ChatBox({
       {messages?.map((message, index) => {
         const sender = message.senderName || message.sender
         const user = userData[message.sender]
-        console.log({ sender })
-        console.log('sender type:', typeof message.sender)
-        console.log('text type:', typeof message.text)
-        console.log('timestamp type:', typeof message.timestamp)
+        // console.log({ sender })
+        // console.log('sender type:', typeof message.sender)
+        // console.log('text type:', typeof message.text)
+        // console.log('timestamp type:', typeof message.timestamp)
         // dm: where is the property sender in the message object: MM: the sender property of the message object is being set to user.displayName in the MessageInput component. This user object is obtained from the UserContext using the useContext hook.?
-        console.log({ message, index })
-        console.log('currentUser', currentUser)
-        console.log('currentUser?.uid', currentUser?.uid)
-        console.log('message.sender', message.sender)
-        console.log('message', JSON.stringify(message, null, 2))
-        console.log('index', index)
+        // console.log({ message, index })
+        // console.log('currentUser', currentUser)
+        // console.log('currentUser?.uid', currentUser?.uid)
+        // console.log('message.sender', message.sender)
+        // console.log('message', JSON.stringify(message, null, 2))
+        // console.log('index', index)
 
         return (
           <div

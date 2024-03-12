@@ -4,6 +4,7 @@ import { updateProfile } from 'firebase/auth'
 import { UserContext } from './user-context-provider'
 import Login from './login'
 import Signup from './signup'
+import db from '../firebase'
 
 //(done) DM: move to directory named user/index.jsx and add user-context.jsx to that directory. This way, as this app grows (it seems like it will be come quite large), it will be easier to keep track of what files are imported by what other files.
 
@@ -11,7 +12,7 @@ import Signup from './signup'
 // DM: let's get back to function declarations not arrow functions for the main function in a file. It is a more self-documenting that way.(ok)
 export default function User({ onAuthenticate, handleUserConnect }) {
   // Inside the User component
-  console.log('User props:', onAuthenticate, handleUserConnect)
+  // console.log('User props:', onAuthenticate, handleUserConnect)
 
   const [error, setError] = useState(null)
   const [isLoggedIn, setIsLoggedIn] = useState(true)
@@ -38,13 +39,13 @@ export default function User({ onAuthenticate, handleUserConnect }) {
   }, [])
 
   const handleLogin = (email, password) => {
-    console.log('handleLogin called')
+    // console.log('handleLogin called')
 
     login(email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user
-        console.log(user.displayName)
+        // console.log(user.displayName)
         setUser(user)
         // ...
         onAuthenticate()
@@ -61,12 +62,12 @@ export default function User({ onAuthenticate, handleUserConnect }) {
   }
 
   const handleSignup = (email, username, password) => {
-    console.log('handleSignup called')
+    // console.log('handleSignup called')
 
     signup(email, password)
       .then((userCredential) => {
         const user = userCredential.user
-        console.log(typeof user) // DM: good, you logged it
+        // console.log(typeof user) // DM: good, you logged it
 
         // DM: this line triggers the error: "user.updateProfile is not a function". What does this mean? If user.updateProfile is not a function, then what data type is it? A string? Undefined? Do a console.log to find out. If it is undefined, then something is wrong with your user object. In the console.log({user}) above the log says it is of type UserImpl so it looks like it a valid user object. Google the error message (adding "firebase signup", for example, as context for the search). Maybe someone had that problem. Also, I imagine it's possible the user object is not created using the correct package? Or, something hasn't been initialized correctly, leaving the user object without a updateProfile property?
         // DM: tomorrow be sure to push the app in the exact broken state you want me to debug, then write me what steps to reproduce the problem, what error I should see, what you tried to debug it, and what you think the problem might be. I'll try to help you debug it.
@@ -82,6 +83,20 @@ export default function User({ onAuthenticate, handleUserConnect }) {
             // the user.reload() function is a Firebase Authentication method that refreshes the local user data with the latest data from the Firebase server. It's used here to ensure that the local user object is up-to-date after updating the user's profile.
             // why return response form user.reload()? because the return user.reload() line is used to chain promises. It ensures that the next .then() block, where setUser(user) is called, doesn't execute until after the user data has been reloaded. Even though user.reload() doesn't return a value used in the next .then() block, it returns a promise that resolves when the user data has been reloaded.
             return user.reload()
+          })
+          .then(() => {
+            const addUsersData = db.collection('users')
+            addUsersData
+              .doc(user.uid)
+              .set({
+                displayName: user.displayName,
+                photoURL: user.photoURL, // Add photoURL field
+                isActive: true, // Add isActive field
+                // Add any other user data you want to store
+              })
+              .catch((error) => {
+                console.error('Error writing to Firestore: ', error)
+              })
           })
           .then(() => {
             setUser(user)
@@ -122,6 +137,13 @@ export default function User({ onAuthenticate, handleUserConnect }) {
         const token = credential.accessToken
         // The signed-in user info.
         const user = result.user
+        // Add the user data to Firestore
+        db.collection('users').doc(user.uid).set({
+          displayName: user.displayName,
+          photoURL: user.photoURL, // Add photoURL field
+          isActive: true, // Add isActive field
+          // Add any other user data you want to store
+        })
         console
         setUser(user)
         onAuthenticate()
@@ -134,7 +156,7 @@ export default function User({ onAuthenticate, handleUserConnect }) {
       })
   }
 
-  console.log({ isLoggedIn })
+  // console.log({ isLoggedIn })
 
   const toggleAuthenticationMode = () => {
     setIsLoggedIn(!isLoggedIn) // Switch between Login and Signup
@@ -259,4 +281,22 @@ Bisect debugging process after pushing the latest commit, i run the following co
 After finding the commit diff, i will continue with the debugging process tomorrow.
 
 DM: good detail
+*/
+
+/*
+To investigate the users collection in firebase/firestore database, i:
+  1. console.logged the usersCollection in the firebase-config file
+  2. commented some console.logs in the MessageInput, ChatBox, UserProfile, UserContextProvider, and in RealTimeChat components to reduce the number of console on devtools.
+  3. found that there was only one user in the users collection, so which means the users collection was not updated.
+  4. investigated three functions: handleLogin, handleLogout, handleSignup and handleLoginWithGoogle. i found that when users where signed up they were not push to the users collection in the firebase/firestore database.
+  5. added a logic to add user to users collection after signing up in the handleSignin function.
+  6. checked but there was no change
+  7. deleted the current document of the users collection and recreated manually the users collection from scratch and restarted the process by signing up to a new user. but no result was there
+  8. double-checked where the users collection is called in the code, i found it in the user-profile component.
+  9. realized that the data that was shown in the test-users-2 page was coming from the users collection that was set in the user profile, so i decide to modify the properties of the users collection in the handle-signup to the ones of the user-profile
+  10. tried to signup with a new user, but there was no change.
+  11. tried to open the user-profile page, but it was not opening, i added console to investigate the reasons by adding console.logs to the jsx where the setSelectedUser and setProfileVisible functions are called, the result showed the user object but i couldn't figure out where the issue was
+  12. to simplify things, i replaced users.map() with connectedUsers.map() function, so the user-profile page opens 
+  13. when i tried to connect with a new user, i checked and found that the new user was added to the users collection successfully. i assumed that the problem was coming with the users from the users-context-provider.
+  14. for that, i paused here and will continue ivestigating the users tomorrow.
 */

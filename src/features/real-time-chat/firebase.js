@@ -111,4 +111,5 @@ export const signOut = () => {
 // Initialize Firestore
 const db = getFirestore()
 export const usersCollection = collection(db, 'users')
+console.log('firebase usersCollection', usersCollection)
 export default db

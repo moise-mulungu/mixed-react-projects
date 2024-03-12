@@ -34,7 +34,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
     const updateAllMessages = async () => {
       // Fetch all messages
       const messagesSnapshot = await getDocs(collection(db, 'messages'))
-
+      console.log('messages snapshot:', messagesSnapshot)
       // Prepare an array to hold all update promises
       const updatePromises = []
 
@@ -142,7 +142,7 @@ export default function MessageInput({ onSendMessage, onTyping }) {
   */
 
   const handleInputChange = (e) => {
-    console.log('Form submitted')
+    // console.log('Form submitted')
     setMessage(e.target.value)
     //(done) DM: assign the logical expression to a well-named variable that expresses exactly what it is.  to me it indicates whether there is text in the field or not. It does not tell you if the user is typing right now. This will help understand the code to distinguish between the two. I see what you're trying to do, it is ok, but keep the names clear and always assign logical expressions to variables with clear names. onTyping name is OK, but the logical expression is not clear.
     const isInputFieldNotEmpty = e.target.value !== ''
@@ -160,10 +160,10 @@ export default function MessageInput({ onSendMessage, onTyping }) {
     // throttle the onTyping function to only call it once every 3 seconds
     const throttledOnTyping = throttle(onTyping, 3000)
     throttledOnTyping(isUserTypingNewContent)
-    console.log('Is input field not empty:', isInputFieldNotEmpty) // Add this line
-    console.log('Is user typing:', isUserTypingNewContent) // Add this line
+    // console.log('Is input field not empty:', isInputFieldNotEmpty) // Add this line
+    // console.log('Is user typing:', isUserTypingNewContent) // Add this line
     // 1. try to debug why the animated typing dots are not showing up
-    console.log('Is input field not empty:', isUserTypingNewContent)
+    // console.log('Is input field not empty:', isUserTypingNewContent)
     onTyping(isUserTypingNewContent)
     setPrevMessage(e.target.value) // update the previous message
   }
@@ -214,8 +214,8 @@ export default function MessageInput({ onSendMessage, onTyping }) {
         otherwise, keep going! looking great. MM: if i remove the multiline, users won't be able to send messages with line breaks. I think it's better to keep it as there is a send button. DM: exactly so, and with they c-Enter option, you have the best of both worlds (use doesn't have to grab mouse to send).
   */
   // verify if the onTyping function is being passed correctly as a prop to the MessageInput component
-  console.log('onTyping prop:', onTyping)
-  console.log('Is the user sending a message?:', user)
+  // console.log('onTyping prop:', onTyping)
+  // console.log('Is the user sending a message?:', user)
   return (
     <form onSubmit={handleSubmit} className="flex flex-col h-full border-t-2 border-purple-300 p-4">
       <textarea
