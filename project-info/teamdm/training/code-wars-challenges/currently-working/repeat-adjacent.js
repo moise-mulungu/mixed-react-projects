@@ -13,7 +13,7 @@
 */
 /* 
 
-STATUS: in progress (in progress | blocked | done)
+STATUS: in progress (in progress | blocked | done). i've extracted groups of repeating characters from the input string using a regular expression by removing the first index of the group. But there is still a test case that is failing. I'll continue working on the solution tomorrow.
 
 
 if in progress: (describe what you have accomplished so far)
@@ -220,7 +220,8 @@ function repeatAdjacent(string) {
     const isPrevGroupExist = Boolean(prevGroup)
     console.log({ isPrevGroupExist })
 
-    const isSameGroup = isPrevGroupExist && prevGroup[0] === group[0]
+    // const isSameGroup = isPrevGroupExist && prevGroup[0] === group[0]
+    const isSameGroup = isPrevGroupExist && prevGroup === group
     console.log({ isSameGroup })
 
     if (isSameGroup) {
