@@ -14,7 +14,8 @@
 /* 
 
 STATUS: in progress (in progress | blocked | done). i've extracted groups of repeating characters from the input string using a regular expression by removing the first index of the group. But there is still a test case that is failing. I'll continue working on the solution tomorrow.
-
+DM: ok, but there are some todoMMs that you havent addressed, which you should do before continuing with the solution.
+DM: also, give this code to AI to see what it says. 
 
 if in progress: (describe what you have accomplished so far)
 DM: todoMM: describe what you have accomplished so far

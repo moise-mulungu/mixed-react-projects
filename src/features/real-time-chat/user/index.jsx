@@ -298,5 +298,7 @@ To investigate the users collection in firebase/firestore database, i:
   11. tried to open the user-profile page, but it was not opening, i added console to investigate the reasons by adding console.logs to the jsx where the setSelectedUser and setProfileVisible functions are called, the result showed the user object but i couldn't figure out where the issue was
   12. to simplify things, i replaced users.map() with connectedUsers.map() function, so the user-profile page opens 
   13. when i tried to connect with a new user, i checked and found that the new user was added to the users collection successfully. i assumed that the problem was coming with the users from the users-context-provider.
-  14. for that, i paused here and will continue ivestigating the users tomorrow.
+  14. for that, i paused here and will continue investigating the users tomorrow.
+
+  DM: when a new user is created, can a trigger automatically add user to the users collection?
 */
