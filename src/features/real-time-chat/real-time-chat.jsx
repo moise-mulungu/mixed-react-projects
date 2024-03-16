@@ -264,6 +264,7 @@ export default function RealTimeChat() {
     setDatabaseValue(userStatusDatabaseRef, {
       state: 'online',
       last_changed: serverTimestamp(),
+      displayName: user.displayName, // Add the displayName here,
     })
 
     // Update the connectedUsers and users arrays
@@ -340,7 +341,8 @@ export default function RealTimeChat() {
                       {/* {connectedUsers.map((user) => { 
                         MM: when i replace users.map with connectedUsers.map, everything seem to work perfectly by accessing the user-profile and updating the users collection in the firebase. the only problem with connectedUsers.map is just the displayName which doesn't display as before and it saving all the users even after being removed in the firebase/firestore database, which is strange.
                         */}
-                      {users.map((user) => {
+                      {/* {users.map((user) => { */}
+                      {connectedUsers.map((user) => {
                         console.log('RealTimeChat connectedUsers.map user:', user)
                         const formattedDisplayName =
                           user?.displayName &&
@@ -455,158 +457,6 @@ After all of these steps, the issue is not fixed yet. nor the displayName is sho
 */
 
 /*
-the jsx code that includes the DM: todoMMs: 
- {console.log('connected users array in RealTimeChat', connectedUsers) ||
-                        connectedUsers.map((user) => {
-                          const formattedDisplayName =
-                            user?.displayName &&
-                            user?.displayName[0].toUpperCase() + user?.displayName.slice(1)
-
-                          console.log('Formatted Display Name:', formattedDisplayName) // log the formattedDisplayName
-                          console.log('RealTimeChat Formatted display name:', formattedDisplayName)
-                          {
-                            /* // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you. */
-//   }
-//   console.log('RealTimeChat real-time-chat/index.jsx ', {
-//     user,
-
-//     typeofUserDisplayname: typeof user?.displayName, // DM: 1a. this is undefined. MM:i checked and found  the output is a "string" not undefined
-//     userDisplayname: user?.displayName, // this outputs the current connected user
-//     userUid: user?.uid, // DM: 1b. this looks correct
-//     connectedUsers, // DM: so I can see what is in connectedUsers
-//   })
-//   if (!user) {
-//     console.error('User is undefined')
-//     return
-//   }
-
-//   const isTyping = typingUsers.includes(user.uid)
-
-//   console.log('User:', user)
-//   console.log('User Display Name:', user?.displayName)
-
-//   return (
-//     <div
-//       key={user?.uid}
-//       className="flex justify-between items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
-//       onClick={() => {
-//         console.log('connectedUser clicked', { user, currentUser })
-//         if (user.uid !== currentUser.uid) {
-//           console.log(
-//             'connectedUser clicked and user.uid !== currentUser.uid',
-//             { user, currentUser }
-//           )
-//           setSelectedUser(user)
-
-//           setProfileVisible(true)
-//         }
-//       }}
-//     >
-//       <div className="flex items-center">
-//         {/* {console.log(
-//           'RealTimeChat xxx formatted display name:',
-//           formattedDisplayName
-//         ) || null} */}
-//         <span className="hover:text-purple-500 transition-colors duration-200">
-//           {/* user?.uid is showing up, but not the user?.displayName */}
-//           {formattedDisplayName || user?.uid}
-//         </span>
-//         <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
-//       </div>
-
-//       {isTyping && (
-//         <span className="ml-2 animate-pulse text-2xl text-blue-500 flex-shrink-0">
-//           ...
-//         </span>
-//       )}
-//       <div className="flex items-center">
-//         <FiLogOut
-//           onClick={handleSignOut}
-//           className="cursor-pointer text-red-500 hover:text-red-700 mr-1"
-//           size={24}
-//         />
-//         <span className="text-xs text-red-500 mt-0.5">Sign Out</span>
-//       </div>
-//     </div>
-//   )
-// })}
-/*the useEffect that populates the connected users:
-
-useEffect(() => {
-  const usersStatusReference = createDatabaseReference(database, 'status')
-
-  // DM: search console on "RealTimeChat useEffect deps []" to see only the comments from this useEffect
-  console.log('RealTimeChat useEffect deps [] triggered')
-
-  const stopListeningToStatusChanges = listenToDatabaseValueChanges(
-    usersStatusReference, // DM: 3. this database reference must not contain the displayName
-    (snapshot) => {
-      console.log('RealTimeChat useEffect deps [] userStatusChanges:', snapshot.val())
-
-      const updatedUsers = []
-      snapshot.forEach((childSnapshot) => {
-        const userStatus = childSnapshot.val()
-        console.log('RealTimeChat useEffect deps [] userStatusChanges userStatus:', {
-          // DM: todoMM: you need to deal with this:
-          userStatusDisplayName: userStatus.displayName, // DM: 2. this is undefined
-          // DM: no longer important? uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
-          userStatusUid: userStatus.uid,
-          userStatusState: userStatus.state,
-          userStatus,
-          childSnapshot,
-          childSnapshotKey: childSnapshot.key,
-        })
-        if (userStatus.state === 'online') {
-          const isUserAlreadyConnected =
-            updatedUsers && updatedUsers.some((user) => user && user.uid === childSnapshot.key)
-
-          console.log(
-            'RealTimeChat useEffect deps [] userStatusChanges userStatusState===online:',
-            {
-              isUserAlreadyConnected,
-              userStatusState: userStatus.state,
-              userStatus,
-              updatedUsers,
-            }
-          )
-
-          if (!isUserAlreadyConnected) {
-            // Get the displayName from the 'users' node in the database
-            const userReference = createDatabaseReference(database, 'users/' + childSnapshot.key)
-            getDatabaseValue(userReference).then((userSnapshot) => {
-              const user = userSnapshot.val() // DM: this doesn't work. is "".val()"" correct way to call it?
-              // DM: todoMM: I added this console.log to see if you new code works. It doesn't work - user is always null. Moise, if you write new code and you say you're blocked and you tell me it's not working, and I don't see any console.logs where you tried to find out where the new code failed, then you are not stuck, you are not blocked, but rather you just stopped before you even tried to debug where exactly is the problem. I feel like I've told you to debug with console.logs many, many times. You are not debugging if you don't try to find out where the code is broken. If you're not debugging, you're not programming. MM: i am not sure if the problem is console.log here, you told me to follow your listed steps when you described DM: 1a/1b/3/2. i followed them as you prescribed, but i found that the console results were the values of the object properties, i don't if you double-checked that. (DM: this is not enough, debug further to find out why the console.log results were not what you wanted) for debugging i am doing my best to follow your debugging rules of adding console logs anytime when i want to check for something. if the first approach didn't work, i'll work on your second approach of adding a new user-context-provider for users and try if that one will work. DM: before you do that, debug this code here. You are trying to get the user info here. Why does it not work? Fix that first, because you'll need that in the user-context-provider solution anyway. It must be possible to query the database for user info based on the uid, which I assume is what is contained in childSnapshot.key, but you should be sure. Find out if you are calling createDatabaseReference and getDatabaseValue correctly and using the results correctly (the console.log below shows something is not right.)
-              console.log('RealTimeChat useEffect deps [] userStatusChanges userReference:', {
-                userSnapshot,
-                // DM: todoMM: user is always null
-                user,
-                userStatus,
-                childSnapshotKey: childSnapshot.key,
-                childSnapshot,
-              })
-
-              updatedUsers.push({
-                uid: childSnapshot.key,
-                displayName: user?.user.displayName,
-                ...userStatus,
-              })
-            })
-          }
-        }
-      })
-      console.log(
-        'RealTimeChat useEffect deps [] userStatusChanges about to setConnectedUsers():',
-        updatedUsers
-      )
-      setConnectedUsers(updatedUsers)
-    }
-  )
-
-  return () => stopListeningToStatusChanges()
-}, [])
-*/
-
-/*
 To fix the isTyping issue, i realized that both connectedUsers and users were out of sync, to fix that i should update both arrays  when a user starts or stops typing, should update the typingUsers array and the corresponding user in the connectedUsers and users arrays.:
 1. handleUserConnect() function: i updated the corresponding user in the connectedUsers and users arrays 
 2. onTyping() function: i updated onTyping functions to also update the connectedUsers and users arrays in your local state.
@@ -616,4 +466,20 @@ To fix the isTyping issue, i realized that both connectedUsers and users were ou
 6. i tested the app, unfortunately, the isTyping was not updated, i checked the fetchUsers function and the useEffect that populates the connectedUsers array, i found that the user object is not updated in the firebase database node status.
 7. in order to updated the user isActive status, i added conditions to check for the user's status in the function
 8. i tested and the issue ws fixed.
+*/
+
+/*
+To display the displayName using connectedUsers.map, i:
+  1. investigated the connected-users list on the browser to find where the data was coming from
+  2. checked in the firebase console, and found that data was coming from the firebase/realtime database not from the firebase/firestore database
+  3. compared the two firebase databases and realized that firebase/firestore database uses documents that are stored in collections, meanwhile Firebase/realtime database stores data as one large JSON tree.
+  4. opened the realtime database where i found the status JSON tree, expanded it and found it has only two fields; state, and last_changed.
+  5. checked in the real-time-chat.jsx file to find out where that json-like tree was created. i found it was created inside the handleUserConnect() function
+  6. in the handleUserConnect() function, i added a new field "displayName" with the value of "user.displayName"
+  7. refreshed the page, and the problem was solved, all the connected users were showing up with their displayName.
+  8. tried to update the user profile, later an error appeared on the screen: TypeError: change.doc.previousData is not a function Source
+  9. fixed the error by replacing 'change.doc.previousData().isActive' with 'change.previous.data().isActive' code in the src/features/real-time-chat/users-context-provider/fetch-users.js file
+  10. fixed another error: TypeError: Cannot read properties of undefined (reading 'data') where change.previous is undefined in the fetchUsers function in the src/features/real-time-chat/users-context-provider/fetch-users.js file as the Firestore client SDK does not provide a direct way to access the previous data before a change, so i need to manually keep track of the previous state by comparing the current data with the previous data.
+  11. tested the http://localhost:3005/real-time-chat-page/test-users-2 page, and all data were successfully showing on the browser.
+  
 */

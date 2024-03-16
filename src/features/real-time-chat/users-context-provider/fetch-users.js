@@ -16,6 +16,7 @@ export function fetchUsers(callback) {
   // access the users collection in Firestore
   const usersCollectionReference = collection(db, 'users')
 
+  const previousData = {}
   // query the users collection for users where isActive is true
   //(done) DM: dont use abbreviations. q can be query
   // const q = query(usersCollectionReference, where('isActive', '==', true))
@@ -35,11 +36,16 @@ export function fetchUsers(callback) {
       // DM: todoMM: assign all expressions to a well-named variable. Also console.log them. "change.doc.previousData().isActive" is too long of an expression and is a good candidate for a variable name that makes it clear what is going on. Even if a variable name seems obvious, it is easy to log and logical expressions are easier to read.
       // DM: todoMM: Also, you can do early returns EX if (change.type !== 'modified') return; to make logical expressions more simple.
       console.log('fetchUsers snapshot.docChanges', { change })
-      if (
-        change.type === 'modified' &&
-        change.doc.data().isActive !== change.doc.previousData().isActive
-      ) {
-        isActiveChanged = true
+      if (change.type === 'modified') {
+        const currentData = change.doc.data()
+        const previousIsActive = previousData[change.doc.id]?.isActive
+
+        if (currentData.isActive !== previousIsActive) {
+          isActiveChanged = true
+        }
+
+        // Update previousData with the current data
+        previousData[change.doc.id] = currentData
       }
     })
     if (isActiveChanged) {
@@ -48,17 +54,17 @@ export function fetchUsers(callback) {
         const user = doc.data()
         console.log('fetchUsers each userSnapshot', {
           usersCollectionReference,
-          usersQuery,
+          // usersQuery,
           doc,
           user,
         })
+        // Calculate whether the user is active or not
+        const lastMessageTimestamp = user.lastMessageTimestamp?.toDate()
+        const oneDayAgo = new Date()
+        oneDayAgo.setDate(oneDayAgo.getDate() - 1)
+        user.isActive = lastMessageTimestamp >= oneDayAgo
         users.push(user)
       })
-      // Calculate whether the user is active or not
-      const lastMessageTimestamp = user.lastMessageTimestamp?.toDate()
-      const oneDayAgo = new Date()
-      oneDayAgo.setDate(oneDayAgo.getDate() - 1)
-      user.isActive = lastMessageTimestamp >= oneDayAgo
       callback(users)
     }
   })
