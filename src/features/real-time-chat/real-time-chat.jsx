@@ -278,20 +278,68 @@ export default function RealTimeChat() {
     setIsActive(true)
   }
 
+  const handleUserDisconnect = (user) => {
+    // console.log('handleUserDisconnect called with user:', user)
+    // const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
+
+    // setDatabaseValue(userStatusDatabaseRef, {
+    //   state: 'offline',
+    //   last_changed: serverTimestamp(),
+    //   displayName: user.displayName,
+    // })
+
+    // // Remove the user from the connectedUsers array
+    // setConnectedUsers((prevConnectedUsers) => prevConnectedUsers.filter((u) => u.uid !== user.uid))
+
+    // setIsAuthenticated(false)
+    // setIsActive(false)
+    return new Promise((resolve, reject) => {
+      console.log('handleUserDisconnect called with user:', user)
+      const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
+
+      setDatabaseValue(userStatusDatabaseRef, {
+        state: 'offline',
+        last_changed: serverTimestamp(),
+        displayName: user.displayName,
+      })
+        .then(() => {
+          // Remove the user from the connectedUsers array
+          setConnectedUsers((prevConnectedUsers) =>
+            prevConnectedUsers.filter((u) => u.uid !== user.uid)
+          )
+
+          setIsAuthenticated(false)
+          setIsActive(false)
+          resolve()
+        })
+        .catch((error) => {
+          console.error('Error disconnecting user: ', error)
+          reject(error)
+        })
+    })
+  }
+
   const onAuthenticate = (isAuthenticated) => {
     setIsAuthenticated(isAuthenticated)
   }
 
-  const handleSignOut = () => {
-    auth
-      .signOut()
-      .then(() => {
-        // console.log('RealTimeChat User signed out')
-      })
-      .catch((error) => {
-        console.error('Error signing out: ', error)
-      })
-    setIsActive(false)
+  const handleSignOut = async () => {
+    try {
+      await handleUserDisconnect(currentUser)
+      await auth.signOut()
+      console.log('User signed out')
+      setIsActive(false)
+    } catch (error) {
+      // handleUserDisconnect(currentUser)
+
+      // auth
+      //   .signOut()
+      //   .then(() => {
+      //     // console.log('RealTimeChat User signed out')
+      //   })
+      // setIsActive(false)
+      console.error('Error signing out: ', error)
+    }
   }
 
   // DM: this will run here same as it did in the JSX where you had it before. dont put console.log inline inside logical expressions like that as it is unreadable and works the same if you put it here just above the return statement
@@ -377,12 +425,9 @@ export default function RealTimeChat() {
                             className="flex justify-between items-center text-gray-500 p-2 rounded mt-4 mb-4 shadow-md cursor-pointer"
                             onClick={() => {
                               console.log('Clicked user:', user)
-                              if (user.uid !== currentUser.uid) {
+                              if (user.uid == currentUser.uid) {
                                 console.log('Selected user:', user)
-                                // console.log(
-                                //   'connectedUser clicked and user.uid !== currentUser.uid',
-                                //   { user, currentUser }
-                                // )
+
                                 setSelectedUser(user)
 
                                 setProfileVisible(true)
@@ -482,4 +527,20 @@ To display the displayName using connectedUsers.map, i:
   10. fixed another error: TypeError: Cannot read properties of undefined (reading 'data') where change.previous is undefined in the fetchUsers function in the src/features/real-time-chat/users-context-provider/fetch-users.js file as the Firestore client SDK does not provide a direct way to access the previous data before a change, so i need to manually keep track of the previous state by comparing the current data with the previous data.
   11. tested the http://localhost:3005/real-time-chat-page/test-users-2 page, and all data were successfully showing on the browser.
   
+*/
+
+/*
+After fixing the users displayName issue, i realized that if click on the my user displayName to open the user-profile, the user-profile is not showing up, but it opens when i click on other users. To fix that, i:
+  1. checked the onClick event in the connectedUsers.map, and found that the onClick event is only triggered when the user.uid is not equal to the currentUser.uid
+  2. added a condition to check if the user.uid is equal to the currentUser.uid, then set the profileVisible to true
+  3. tested the app, and the problem was fixed.
+
+Another issue that i encountered is that the user is still listed in the connectedUsers array even after signing out. i wanted to list only the users who are currently online. To fix that, i:
+  1. checked in the real-time-chat.jsx file where the state of the user is updated, and found that the user status is updated in the handleUserConnect() function
+  2. created a new function handleUserDisconnect() to update the user status to offline when the user signs out
+  3. checked the status in the firebase console, and found that the user status is updated to offline when the user signs out
+  4. called the handleUserDisconnect() function in the handleSignOut() function
+  5. tested the app, but when i sign out, the browser was crashed. i checked the console and found an error: TypeError: Cannot read properties of undefined (reading 'then')
+  6. fixed the error by returning a new Promise in the handleUserDisconnect() function and made a handleSignOut() function async
+  7. tested the app by connecting two different users in two different browsers, and signed out from one of them, and the user was removed from the connectedUsers array.
 */
