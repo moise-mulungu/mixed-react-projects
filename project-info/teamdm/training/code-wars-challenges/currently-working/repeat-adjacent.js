@@ -3,10 +3,8 @@
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 // note: You can be working multiple challenges, but always address all todoM-Ms in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 
-// DM: what is this for? I had to comment out as it throws a compilation error. MM: i am not sure where it cam from, it's not necessary here. it can be removed
-
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
-   The code works and all the test cases pass
+   The code works and all the test cases pass DM: superb!
    There is no question
    The next step is just the DM's review
    I achieved the solution by:
@@ -25,7 +23,7 @@ DM: ok, but there are some todoMMs that you havent addressed, which you should d
 DM: also, give this code to AI to see what it says. 
 
 if in progress: (describe what you have accomplished so far)
-(done)DM: todoMM: describe what you have accomplished so far
+(done)DM: describe what you have accomplished so far
 
 if blocked: (describe the problem/error you're encountering in a way that allows me to help you)
 
@@ -43,7 +41,7 @@ for DM:
 */
 
 /* 
-(done)DM: todoMM: leave this as is, I added a new "STATUS" section above. Put your status there.
+(done)DM: leave this as is, I added a new "STATUS" section above. Put your status there.
 * DM: this is a non-answer because it simply describes the process of solving any challenge. Can you see how it gives me no information? 
 
 * DM: this is also a non-answer. Always say something specific.
@@ -137,20 +135,20 @@ function repeatAdjacent(string) {
           */
   /*
   I want to count the number of big groups in the given string. A big group is a substring of the parameter string with 2 or more adjacent groups.
-  (done)DM: todoMM: explain also what is a group? (I know you know, but it's good to explain it explicitly here, like you did for "big group". MM: a group here is a concatenate of one or more substrings of identical characters. e.g : this are groups ; "cccc", "oo", "ffff", "iii", from this string: 'ccccooffffiii'
+  
+  a group here is a concatenate of one or more substrings of identical characters. e.g : this are groups ; "cccc", "oo", "ffff", "iii", from this string: 'ccccooffffiii'
 
         DM: you would benefit from listing the "parts" involved in the problem and the solution:
         * a group -repeating identical letters
         * a big group - 2 or more adjacent groups
         * the "delimiter" that defines the beginning and end of a big group
-          * (done)DM: todoMM: describe the delimiter here
-          * MM: delimiter are characters that are between two big groups. eg: this string gztxxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmmitttttttlllllhkppppp" has the character "i" as delimiter because it's between this big group 'xxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmm' and that one 'tttttttlllllhkppppp'
+          * delimiter are single characters that are between two big groups. eg: this string gztxxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmmitttttttlllllhkppppp" has the character "i" as delimiter because it's between this big group 'xxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmm' and that one 'tttttttlllllhkppppp'
            
     DM: todoMM: fill in this below is a new section that I added to the STARTER template.
 
     input: string
 
-    the intermediate things neededto be added before the output are:
+    the intermediate things needed to be added before the output are:
     Boolean, 
     
     output: number
