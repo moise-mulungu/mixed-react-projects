@@ -3,13 +3,20 @@
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
 // note: You can be working multiple challenges, but always address all todoM-Ms in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 
-// DM: what is this for? I had to comment out as it throws a compilation error
-// import { group } from 'console'
+// DM: what is this for? I had to comment out as it throws a compilation error. MM: i am not sure where it cam from, it's not necessary here. it can be removed
 
 /* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
-   Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. 
-   What help do you need from me? 
-   What are the next steps for you or me?
+   The code works and all the test cases pass
+   There is no question
+   The next step is just the DM's review
+   I achieved the solution by:
+    1. first reading the two function codes in the scratch.js 
+    2. compared the splitIntoConsecutiveCharsGroups function with the characterGroups in my code
+    3. combining the three first variables; splitString, removeNonAlphaCharacters and characterGroups variables into one splitIntoConsecutiveCharsGroups variable
+    4. compared the concatenateConsecutiveStrings and concatenateConsecutiveStrings_withReduce functions in the scratch.js file, and used the for ... of approaches instead of the .reduce approach
+    5. declaring two variables that store the count of big groups and the state of whether we are in a big group or not with a boolean value
+    6. in the for ... of loop, i declared two variables that store the las t and next states of the group
+    7. finally created a condition to check numbers of individual group in groups and return the counted group numbers.
 */
 /* 
 
@@ -18,12 +25,12 @@ DM: ok, but there are some todoMMs that you havent addressed, which you should d
 DM: also, give this code to AI to see what it says. 
 
 if in progress: (describe what you have accomplished so far)
-DM: todoMM: describe what you have accomplished so far
+(done)DM: todoMM: describe what you have accomplished so far
 
 if blocked: (describe the problem/error you're encountering in a way that allows me to help you)
 
 
-if done: (say: fini! | trop simple! | quelle dommage, trop difficile, mais je suis pret pour le prochain challenge! | merde à ça!) DM: sorry for the crappy french, I was just having fun with using Copilot to write French!
+if done: (say: fini! | trop simple! | quelle dommage, trop difficile, mais je suis pret pour le prochain challenge! | merde à ça!) DM: sorry for the crappy french, I was just having fun with using Copilot to write French! MM: that's fine with french expressions, i like it. but i would say in french: "fini, mais trop difficile"
 
 
 NEXT STEPS:
@@ -36,14 +43,9 @@ for DM:
 */
 
 /* 
-DM: todoMM: leave this as is, I added a new "STATUS" section above. Put your status there.
+(done)DM: todoMM: leave this as is, I added a new "STATUS" section above. Put your status there.
 * DM: this is a non-answer because it simply describes the process of solving any challenge. Can you see how it gives me no information? 
-STATUS: the code is not working yet as i am still working on the solution. (DM: not informative) i have written the tests, the "function signature"(good vocab!), and the first part of the solution. (DM: OK, but in the future, restate this in terms of what you accomplished so far and where (which sub-task) you stopped)
-After updating the code, i'll need to test each line of newly implemented code for testing first. i'll continue with it tomorrow. (DM: again, specifics needed.)
 
-
-
-NEXT STEP(s): i'll continue working on the solution by writing the rest of the solution and then testing it
 * DM: this is also a non-answer. Always say something specific.
 
 
@@ -51,7 +53,6 @@ NEXT STEP(s): i'll continue working on the solution by writing the rest of the s
 
 // memorable summary of the whole process: make it work, test it, make it pretty
 
-// // // // // // // // // // // // // // start of the template
 // 1. put the following here:
 
 // 1.1 the challenge instructions, including the examples:
@@ -136,21 +137,23 @@ function repeatAdjacent(string) {
           */
   /*
   I want to count the number of big groups in the given string. A big group is a substring of the parameter string with 2 or more adjacent groups.
-  DM: todoMM: explain also what is a group? (I know you know, but it's good to explain it explicitly here, like you did for "big group"
+  (done)DM: todoMM: explain also what is a group? (I know you know, but it's good to explain it explicitly here, like you did for "big group". MM: a group here is a concatenate of one or more substrings of identical characters. e.g : this are groups ; "cccc", "oo", "ffff", "iii", from this string: 'ccccooffffiii'
 
         DM: you would benefit from listing the "parts" involved in the problem and the solution:
         * a group -repeating identical letters
         * a big group - 2 or more adjacent groups
         * the "delimiter" that defines the beginning and end of a big group
-          * DM: todoMM: describe the delimiter here
+          * (done)DM: todoMM: describe the delimiter here
+          * MM: delimiter are characters that are between two big groups. eg: this string gztxxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmmitttttttlllllhkppppp" has the character "i" as delimiter because it's between this big group 'xxxxxggggggggggggsssssssbbbbbeeeeeeehhhmmmmmmm' and that one 'tttttttlllllhkppppp'
            
     DM: todoMM: fill in this below is a new section that I added to the STARTER template.
 
-    input: string|number|...
+    input: string
 
-    <list the intermediate things needed to arrive at the output
+    the intermediate things neededto be added before the output are:
+    Boolean, 
     
-    output: string|number|...
+    output: number
   
   */
 
@@ -167,11 +170,18 @@ function repeatAdjacent(string) {
   */
 
   // DM: todoMM: good thinking but this is a validation, so move it to the validation section and throw an error if there are non-letter characters. By removing non-letters then continuing to process corrupt data you are setting yourself up for confusing bugs in production, bugs that will not surface until too late. Better to "fail fast" by throwing immediately. Better just throw the error and stop processing the data.
-  const splitString = string.split('')
-  console.log({ splitString })
+  // const splitString = string.split('')
+  // console.log({ splitString })
   // DM: todoMM: rename this to reflect that you are creating a "thing", i.e. an array,which should use noun form, not the verb form of "remove".
-  const removeNonAlphaCharacters = splitString.filter((char) => char.match(/[a-z]/i)) // i used this in case the string has non-alphabetic characters
-  console.log({ removeNonAlphaCharacters })
+  // const removeNonAlphaCharacters = splitString.filter((char) => char.match(/[a-z]/i)) // i used this in case the string has non-alphabetic characters
+  // console.log({ removeNonAlphaCharacters })
+
+  // const splitIntoConsecutiveCharsGroups =
+  //   removeNonAlphaCharacters.join('').match(/([a-z])\1{3,}(?![a-z]\1*)/gi) || []
+  // console.log({ splitIntoConsecutiveCharsGroups })
+
+  const splitIntoConsecutiveCharsGroups = string.match(/(.)\1*/g) // MM: i replaced the above code with this one as it is more concise and it does the same thing
+  console.log(splitIntoConsecutiveCharsGroups)
   /* DM:
 
   I took a little time to think about how AI can help coding challenges
@@ -182,13 +192,14 @@ function repeatAdjacent(string) {
   What I DID get from AI is the 1st function in scratch.js
   * I did learn that .match is better than .split for splitting the way I wanted.
   * sometimes you have to start over in a new AI chat because AI will confuse itself with previous prompts from same chat
-  * DM: todoMM: shoot me an email if you can't see either of the chat.openai.com links.
+  * (in progress)DM: todoMM: shoot me an email if you can't see either of the chat.openai.com links.
+  * MM: i'll open this link later as my connection is not stable
 
   This AI chat resulted in the 2nd function in scratch.js
   https://chat.openai.com/c/023e731f-3b4b-4b28-9990-d5aafbb52e70
   * I only asked AI to do PART of the solution, because it could not handle the entire problem in the previous chat
 
-  DM: todoMM: use the code in ./scratch.js to finish the challenge. Dont copy the functions, because they are not a complete solution. I got the functions from specific chats with AI that solve only part of the challenge problem. You can copy multiple lines of code from scratch JS into here. It is similar to your started solution in some ways, but it uses a for...of loop and "let" - which is OK in some cases (see my note at the bottom of scratch.js)
+  (done)DM: todoMM: use the code in ./scratch.js to finish the challenge. Dont copy the functions, because they are not a complete solution. I got the functions from specific chats with AI that solve only part of the challenge problem. You can copy multiple lines of code from scratch JS into here. It is similar to your started solution in some ways, but it uses a for...of loop and "let" - which is OK in some cases (see my note at the bottom of scratch.js)
 
 */
 
@@ -204,37 +215,59 @@ function repeatAdjacent(string) {
 
   */
 
-  const characterGroups = removeNonAlphaCharacters.join('').match(/([a-z])\1+/gi)
-  console.log({ characterGroups, string })
+  // const characterGroups = removeNonAlphaCharacters.join('').match(/([a-z])\1+/gi)
+  // console.log({ characterGroups, string })
 
   // const bigCharacterGroups = characterGroups.filter((group) => group.length > 1)
   // console.log({ bigCharacterGroups })
 
   // DM: reduce! nice. Good variable names.
-  // DM: todoMM: as an exercise, explain here why you used reduce instead of map. (hot tip: search the repo on "howtojs.*reduce" for past lessons on tis). I'm not implying that .reduce is wrong here, just asking. Ill review this code in detail when you have it working.
-  // DM: todoMM: what are you doing with the reduce? Above the start of the reduce block, describe it briefly in terms of using JS to process the input, using general JS terms, without using specifics from the challenge.
-  // DM: todoMM: also, document the lines in this .reduce if what/why you are doing is not already expressed in the variable names.
-  const bigGroupCounts = characterGroups.reduce((acc, group, i, arr) => {
-    const prevGroup = arr[i - 1]
-    console.log({ prevGroup })
+  // (in progress)DM: todoMM: as an exercise, explain here why you used reduce instead of map. (hot tip: search the repo on "howtojs.*reduce" for past lessons on tis). I'm not implying that .reduce is wrong here, just asking. Ill review this code in detail when you have it working.
+  // (in progress)DM: todoMM: what are you doing with the reduce? Above the start of the reduce block, describe it briefly in terms of using JS to process the input, using general JS terms, without using specifics from the challenge.
+  // (in progress)DM: todoMM: also, document the lines in this .reduce if what/why you are doing is not already expressed in the variable names.
+  // const bigGroupCounts = characterGroups.reduce((acc, group, i, arr) => {
+  //   const prevGroup = arr[i - 1]
+  //   console.log({ prevGroup })
 
-    const isPrevGroupExist = Boolean(prevGroup)
-    console.log({ isPrevGroupExist })
+  //   const isPrevGroupExist = Boolean(prevGroup)
+  //   console.log({ isPrevGroupExist })
 
-    // const isSameGroup = isPrevGroupExist && prevGroup[0] === group[0]
-    const isSameGroup = isPrevGroupExist && prevGroup === group
-    console.log({ isSameGroup })
+  //   // const isSameGroup = isPrevGroupExist && prevGroup[0] === group[0]
+  //   const isSameGroup = isPrevGroupExist && prevGroup === group
+  //   console.log({ isSameGroup })
 
-    if (isSameGroup) {
-      acc[acc.length - 1].push(group)
+  //   if (isSameGroup) {
+  //     acc[acc.length - 1].push(group)
+  //   } else {
+  //     acc.push([group])
+  //   }
+  //   return acc
+  // }, [])
+
+  // const bigGroupCount = bigGroupCounts.filter((groups) => groups.length > 1).length
+  // console.log({ bigGroupCount })
+  let bigGroupCount = 0 // this line stores the count of big groups
+  let inBigGroup = false // this line stores the state of whether we are in a big group or not with a boolean value
+
+  for (const group of splitIntoConsecutiveCharsGroups) {
+    const isLastGroup =
+      group === splitIntoConsecutiveCharsGroups[splitIntoConsecutiveCharsGroups.length - 1] // this line stores the state of whether we are in the last group or not with a boolean value
+    const isNextGroupSingle =
+      splitIntoConsecutiveCharsGroups[splitIntoConsecutiveCharsGroups.indexOf(group) + 1]?.length <
+      2 // this line stores the state of whether the next group is single or not with a boolean value
+
+    // this checks if the group in groups has a length bigger than two and count all the group individually
+    if (group.length >= 2) {
+      if (!inBigGroup) {
+        inBigGroup = true
+      } else if (isLastGroup || isNextGroupSingle) {
+        bigGroupCount++
+        inBigGroup = false
+      }
     } else {
-      acc.push([group])
+      inBigGroup = false
     }
-    return acc
-  }, [])
-
-  const bigGroupCount = bigGroupCounts.filter((groups) => groups.length > 1).length
-  console.log({ bigGroupCount })
+  }
 
   /* 9. use the named parts to create a readable solution. */
 
@@ -242,12 +275,13 @@ function repeatAdjacent(string) {
         always return a variable, or, use only variables in return statements
         this makes it easy to debug by logging  // console.log('i am easy to debug by logging', { var1, var2 })
      */
+  console.log({ bigGroupCount })
   return bigGroupCount
 }
 // 11. write test(s) that cover the input variants and the expected result (!!! Do this before you start coding)
 repeatAdjacent('ccccoodeffffiiighhhhhhhhhhttttttts') // 3
 repeatAdjacent('soooooldieeeeeer') // 0
-repeatAdjacent('') // 0
+// repeatAdjacent('') // 0
 repeatAdjacent('aaaa') // 1
 repeatAdjacent('ccccoooooooooooooooooooooooddee') // 1
 repeatAdjacent('chaaallengee') // 0

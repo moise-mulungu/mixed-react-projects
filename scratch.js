@@ -1,5 +1,5 @@
 // node scratch.js
-
+// MM: this one is straightforward. I will try it in the repeat-adjacent solution
 function splitIntoConsecutiveCharsGroups(s) {
   return s.match(/(.)\1*/g)
 }
@@ -16,6 +16,7 @@ console.log('splitIntoConsecutiveCharsGroups', splitResult)
 */
 
 function concatenateConsecutiveStrings({ strings }) {
+  console.log('strings', strings)
   const result = []
   let currentGroup = []
 
@@ -63,3 +64,4 @@ function concatenateConsecutiveStrings_withReduce({ strings }) {
   ).result
 }
 // DM: note: some experts advise against using .reduce, but as a junior, you need to know how/why to use it. That is why I insisted previously on using .reduce and never using "let". However, from now on, choose which is the best solution. If both reduce and for...of work, then which is easier to read. Readability uber alles! However, I dont want you to use `for (let i = 0; i < arr.length; i++) { ... }` because it is messy to read and you can just use .map, .filter, .forEach (for side effects), or, in some cases, use for...of (as in the 2nd function above.)
+// MM: after going through the two concatenateConsecutiveStrings functions, i found that the one with for...of is easier to read and understand. But I will keep in mind to use .reduce in some cases where it is more suitable.
