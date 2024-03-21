@@ -26,6 +26,7 @@ note: total hours should add up to 8 usually. If not, then the total of the week
   
 "MM: forDM: In the new-schedule email, you said There will no longer be a need to write the daily reports or track my hours. will the PTO hours be still effective? if yes, how will i be keeping track of it without tracking my daily hours?
 * DM: yeah, no need to track hours or PTO
+* MM: ok, got it
 
 ## [project/task name] [project/task hours today] hrs
 

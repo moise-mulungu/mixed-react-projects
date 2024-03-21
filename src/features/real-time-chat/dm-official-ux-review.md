@@ -125,3 +125,19 @@ Impact 3 - always provide user all the information. what if user forgets which e
 Effort 1 - for this, i would have to first access firebase data storage and retrieve data from.  
   *(in progress) DM: todoMM: but you already have code to get data from db. This is the most basic thing in a database-backed app, so you'll learn to do it quickly. Changed to 1 because it seems like a copy and paste to fetch from DB in a new location. 
   *(done) DM: see the Zustand package on GitHub for storing global state that can easily be accessed by any component. Make a fake global state variable, such as key: testKey, value: testValue, then access it in any component! You'll see how easy it is to store all user values in one place and access it from anywhere in your component tree.
+
+
+## this how i was thinking of updating the application: 
+
+### to create separate UI components for private chat, such as PrivateChatList and PrivateChatWindow, to manage private conversations.
+  * PrivateChatList: Display a list of ongoing private conversations and provide options to start new private chats.
+  * PrivateChatWindow: Display the conversation between two users in a private chat.
+
+### to modify the ChatBox component to support both group and private chats. 
+  * to add tabs or filters to switch between group and private conversations.
+  * to update the MessageInput component to handle sending messages in both group and private chats.
+
+### to add a button or icon in the UI to initiate a new private chat. 
+  * when clicked, this button can open a modal or dropdown menu to select a user to start a private chat with.
+  * display the list of connected users in a sidebar or dedicated section. Allow users to click on a user's name to start a private chat with them.
+*/

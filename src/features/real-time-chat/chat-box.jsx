@@ -175,8 +175,22 @@ export default function ChatBox({
                   {message?.timestamp ? new Date(message?.timestamp).toLocaleTimeString() : ''}
                 </em>
               </div> */}
-              <div>
-                <strong className="font-bold mr-2">{user?.name || sender}</strong>: {message?.text}{' '}
+              <div className="flex items-center space-x-2">
+                <img
+                  src={currentUser?.uid === message.sender ? currentUser?.photoURL : user?.photoURL}
+                  alt="User Profile"
+                  className="w-10 h-10 rounded-full cursor-pointer"
+                  onClick={() => handleUserClick(user)} // Call handleUserClick when the profile image is clicked
+                />
+                <div className="flex-grow">
+                  <strong
+                    className="font-bold cursor-pointer"
+                    onClick={() => handleUserClick(user)} // Call handleUserClick when the display name is clicked
+                  >
+                    {user?.name || sender}
+                  </strong>
+                  : {message?.text}{' '}
+                </div>
                 <em className="text-sm text-purple-300">
                   {message?.timestamp ? getMessageTimestamp(message.timestamp) : ''}
                 </em>

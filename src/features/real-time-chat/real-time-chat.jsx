@@ -7,6 +7,11 @@ import MessageInput from './message-input'
 import Footer from './footer'
 import User from './user'
 import UserProfile from './user/user-profile'
+// import UserList from './user/users-list'
+// import { AuthProvider } from './auth-context-provider/index'
+import PrivateChatList from './private-chat/private-chat-list'
+import PrivateChatWindow from './private-chat/private-chat-window'
+// import userAvatar from '../../../public/user-avatar.jpg'
 
 import {
   ref as createDatabaseReference,
@@ -31,6 +36,8 @@ export default function RealTimeChat() {
   const [isProfileVisible, setProfileVisible] = useState(false)
   const [loading, setLoading] = useState(true)
   const [isActive, setIsActive] = useState(false)
+  const [isPrivateChatActive, setPrivateChatActive] = useState(false)
+  const [privateChatUser, setPrivateChatUser] = useState(null)
 
   const { user: currentUser } = useContext(UserContext)
   const { users, updateUserIsTyping, updateUserHasConnected } = useContext(UsersContext)
@@ -44,6 +51,10 @@ export default function RealTimeChat() {
       onTyping(true)
     }
   }, [currentUser])
+
+  useEffect(() => {
+    // Fetch initial data, such as connected users and messages
+  }, [])
 
   // New function to handle typing status
   const onTyping = (isTyping) => {
@@ -81,6 +92,20 @@ export default function RealTimeChat() {
         messages.push({ id: doc.id, ...doc.data() })
       })
       setMessages(messages)
+      // Update chatUsers based on the new messages and currentUser.uid
+      // const uniqueChatUsers = [
+      //   ...new Set(
+      //     messages
+      //       .filter(
+      //         (message) =>
+      //           message.sender === currentUser?.uid || message.receiver === currentUser?.uid
+      //       )
+      //       .map((message) =>
+      //         message.sender === currentUser?.uid ? message.receiver : message.sender
+      //       )
+      //   ),
+      // ]
+      // setChatUsers(uniqueChatUsers)
     })
 
     // console.log('RealTimeChat connectedUsers:', connectedUsers)
@@ -348,6 +373,43 @@ export default function RealTimeChat() {
     console.log(selectedUser)
   }, [selectedUser])
 
+  // Function to handle click on a user from the connected-users list
+  // const handleUserClick = (user) => {
+  //   console.log('Clicked user:', user)
+  //   setSelectedUser(user)
+
+  //   if (user?.uid === currentUser.uid) {
+  //     // If the clicked user is the current user, make the profile visible
+  //     setProfileVisible(true)
+  //   } else {
+  //     // If the clicked user is not the current user, filter the messages and show the MessageInput component
+  //     const relatedMessages = messages.filter(
+  //       (message) =>
+  //         (message.sender === currentUser.uid && message.receiver === user.uid) ||
+  //         (message.sender === user.uid && message.receiver === currentUser.uid)
+  //     )
+
+  //     // Set the related messages as the messages to display in the MessageInput component
+  //     setMessages(relatedMessages)
+
+  //     // Show the MessageInput component
+  //     setIsMessageInputVisible(true)
+  //   }
+  // }
+
+  // Functions for handling private chat
+  const startPrivateChat = (user) => {
+    console.log('startPrivateChat called with user:', user);
+    setPrivateChatUser(user)
+    setPrivateChatActive(true)
+  }
+
+  const closePrivateChat = () => {
+    console.log('closePrivateChat called');
+    setPrivateChatUser(null)
+    setPrivateChatActive(false)
+  }
+
   return (
     <>
       {!isAuthenticated && (
@@ -363,22 +425,23 @@ export default function RealTimeChat() {
               setProfileVisible={setProfileVisible}
               isActive={isActive}
             />
+          ) : isPrivateChatActive ? (
+            <PrivateChatWindow
+              currentUser={currentUser}
+              privateChatUser={privateChatUser}
+              closePrivateChat={closePrivateChat}
+            />
           ) : (
             <div className="flex-1">
               <div className="flex flex-col md:flex-row flex-grow h-full md:h-full">
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
                   <ChatBox
-                    messages={[...messages]}
+                    messages={messages}
                     deleteMessage={deleteMessage}
                     currentUser={currentUser}
                   />
                 </div>
-                <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
-                  <MessageInput
-                    onSendMessage={onSendMessage}
-                    onTyping={(isTyping) => onTyping(isTyping)}
-                  />
-                </div>
+
                 <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
                   <div className="flex flex-col h-full">
                     <div className="flex-grow">
@@ -386,7 +449,7 @@ export default function RealTimeChat() {
                         Connected Users
                       </h2>
 
-                      {/* {connectedUsers.map((user) => { 
+                      {/* {connectedUsers.map((user) => {
                         MM: when i replace users.map with connectedUsers.map, everything seem to work perfectly by accessing the user-profile and updating the users collection in the firebase. the only problem with connectedUsers.map is just the displayName which doesn't display as before and it saving all the users even after being removed in the firebase/firestore database, which is strange.
                         */}
                       {/* {users.map((user) => { */}
@@ -433,10 +496,18 @@ export default function RealTimeChat() {
                                 setProfileVisible(true)
                               }
                             }}
+                            // onClick={() => handleUserClick(user)}
                           >
                             <div className="flex items-center">
+                              <img
+                                src={user?.photoURL ? user.photoURL : '/user-avatar.jpg'}
+                                alt="User Profile"
+                                className="w-10 h-10 rounded-full cursor-pointer mr-2"
+                                // onClick={() => handleUserClick(user)}
+                              />
                               <span className="hover:text-purple-500 transition-colors duration-200">
                                 {/* user?.uid is showing up, but not the user?.displayName */}
+
                                 {formattedDisplayName || user?.uid}
                               </span>
                               <span className="ml-2 h-2 w-2 bg-green-500 rounded-full" />
@@ -462,8 +533,25 @@ export default function RealTimeChat() {
                           </div>
                         )
                       })}
+                      <PrivateChatList
+                        currentUser={currentUser}
+                        users={users}
+                        startPrivateChat={startPrivateChat}
+                      />
                     </div>
                   </div>
+                </div>
+                <div className="flex flex-col flex-grow md:w-1/3 border-r-2 border-gray-200">
+                  <MessageInput
+                    onSendMessage={onSendMessage}
+                    onTyping={(isTyping) => onTyping(isTyping)}
+                  />
+                  {/* {isMessageInputVisible && (
+                    <MessageInput
+                      onSendMessage={onSendMessage}
+                      onTyping={(isTyping) => onTyping(isTyping)}
+                    />
+                  )} */}
                 </div>
               </div>
             </div>
@@ -471,10 +559,9 @@ export default function RealTimeChat() {
           <Footer className="h-10 md:h-10" />
         </div>
       )}
-      {/* 
+      {/*
           DM: I see only one user, "geny", here, but it does not include me, and I am active.
-              
-      
+
        */}
       {/* <pre>users: {JSON.stringify(users, null, 2)}</pre>
       {users.map((user, index) => (
@@ -482,6 +569,7 @@ export default function RealTimeChat() {
       ))} */}
     </>
   )
+  
 }
 
 /*
@@ -544,3 +632,4 @@ Another issue that i encountered is that the user is still listed in the connect
   6. fixed the error by returning a new Promise in the handleUserDisconnect() function and made a handleSignOut() function async
   7. tested the app by connecting two different users in two different browsers, and signed out from one of them, and the user was removed from the connectedUsers array.
 */
+
