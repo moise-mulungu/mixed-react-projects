@@ -129,13 +129,17 @@ Effort 1 - for this, i would have to first access firebase data storage and retr
 
 ## this how i was thinking of updating the application: 
 
+DM: sounds like a good feature. I would be sure you have the original functionality working before you start big new enhancements.
+
 ### to create separate UI components for private chat, such as PrivateChatList and PrivateChatWindow, to manage private conversations.
   * PrivateChatList: Display a list of ongoing private conversations and provide options to start new private chats.
   * PrivateChatWindow: Display the conversation between two users in a private chat.
 
 ### to modify the ChatBox component to support both group and private chats. 
   * to add tabs or filters to switch between group and private conversations.
+    * DM: tabs. i would keep data for private conversations in variables separate from the global chat
   * to update the MessageInput component to handle sending messages in both group and private chats.
+    * DM: how will you store private chat messages in the database. keep in mind that youll need to have a unique way to find those private chat messages, perhaps both participants' userids are added to each private chat message.
 
 ### to add a button or icon in the UI to initiate a new private chat. 
   * when clicked, this button can open a modal or dropdown menu to select a user to start a private chat with.
