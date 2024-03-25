@@ -92,6 +92,7 @@ export default function UserAuthentication({ onAuthentication }) {
   return (
     <div>
       <div className="flex justify-between mb-2">
+        {/* MM: forDM: how to return the UserAuthentication by switching without using NexJS routing system(I don't like to create many pages in the pages directory, but to use just the rendering conditioning of react) as tried with the logic below? the further process of the code implementation is found in the  src/features/solidarity-collect-fund/user-authentication/collector-authentication-form.jsx file */}
         <a
           href="#"
           onClick={(e) => {

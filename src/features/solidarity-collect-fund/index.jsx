@@ -28,6 +28,7 @@ export default function SolidarityCollectFund() {
 
   return (
     <div>
+      {/* MM: forDM; how can i display the WeeklyMeetingForm() component after submitting the CollectorAuthenticationForm() according to the attempted logic below. the description of the code is in the src/features/solidarity-collect-fund/user-authentication/collector-authentication-form.jsx file */}
       <Header />
       {!isAuthenticated && <UserAuthentication onFormSubmit={handleAuthentication} />}
       {isAuthenticated && !isCollectorAuthenticated && (
