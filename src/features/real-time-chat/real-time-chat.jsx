@@ -45,6 +45,7 @@ export default function RealTimeChat() {
   console.log('connected users in the Array:', connectedUsers)
   console.log('RealTimeChat users:', users)
 
+  const messagesCollection = collection(db, 'messages')
   // the useEffect hook will be triggered whenever currentUser changes. If currentUser is defined, it will call onTyping(true).
   useEffect(() => {
     if (currentUser) {
@@ -168,6 +169,27 @@ export default function RealTimeChat() {
 
     setMessages((previousMessages) => [...previousMessages, message])
   }
+
+  const receiveMessages = (currentUser, privateChatUser, setMessages) => {
+    const q = query(
+      messagesCollection,
+      where('sender', 'in', [currentUser.uid, privateChatUser.uid]),
+      where('receiver', 'in', [currentUser.uid, privateChatUser.uid]),
+      orderBy('timestamp', 'asc')
+    )
+
+    return onSnapshot(q, (snapshot) => {
+      const messages = snapshot.docs.map((doc) => doc.data())
+      setMessages(messages)
+    })
+  }
+
+  useEffect(() => {
+    if (currentUser && privateChatUser) {
+      const unsubscribe = receiveMessages(currentUser, privateChatUser, setMessages)
+      return unsubscribe
+    }
+  }, [currentUser, privateChatUser])
 
   const deleteMessage = async (message) => {
     // Remove the message from the local state
@@ -304,20 +326,6 @@ export default function RealTimeChat() {
   }
 
   const handleUserDisconnect = (user) => {
-    // console.log('handleUserDisconnect called with user:', user)
-    // const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
-
-    // setDatabaseValue(userStatusDatabaseRef, {
-    //   state: 'offline',
-    //   last_changed: serverTimestamp(),
-    //   displayName: user.displayName,
-    // })
-
-    // // Remove the user from the connectedUsers array
-    // setConnectedUsers((prevConnectedUsers) => prevConnectedUsers.filter((u) => u.uid !== user.uid))
-
-    // setIsAuthenticated(false)
-    // setIsActive(false)
     return new Promise((resolve, reject) => {
       console.log('handleUserDisconnect called with user:', user)
       const userStatusDatabaseRef = createDatabaseReference(database, 'status/' + user.uid)
@@ -355,57 +363,24 @@ export default function RealTimeChat() {
       console.log('User signed out')
       setIsActive(false)
     } catch (error) {
-      // handleUserDisconnect(currentUser)
-
-      // auth
-      //   .signOut()
-      //   .then(() => {
-      //     // console.log('RealTimeChat User signed out')
-      //   })
-      // setIsActive(false)
       console.error('Error signing out: ', error)
     }
   }
 
-  // DM: this will run here same as it did in the JSX where you had it before. dont put console.log inline inside logical expressions like that as it is unreadable and works the same if you put it here just above the return statement
   // console.log('connected users array in RealTimeChat', users)
   useEffect(() => {
     console.log(selectedUser)
   }, [selectedUser])
 
-  // Function to handle click on a user from the connected-users list
-  // const handleUserClick = (user) => {
-  //   console.log('Clicked user:', user)
-  //   setSelectedUser(user)
-
-  //   if (user?.uid === currentUser.uid) {
-  //     // If the clicked user is the current user, make the profile visible
-  //     setProfileVisible(true)
-  //   } else {
-  //     // If the clicked user is not the current user, filter the messages and show the MessageInput component
-  //     const relatedMessages = messages.filter(
-  //       (message) =>
-  //         (message.sender === currentUser.uid && message.receiver === user.uid) ||
-  //         (message.sender === user.uid && message.receiver === currentUser.uid)
-  //     )
-
-  //     // Set the related messages as the messages to display in the MessageInput component
-  //     setMessages(relatedMessages)
-
-  //     // Show the MessageInput component
-  //     setIsMessageInputVisible(true)
-  //   }
-  // }
-
   // Functions for handling private chat
   const startPrivateChat = (user) => {
-    console.log('startPrivateChat called with user:', user);
+    console.log('startPrivateChat called with user:', user)
     setPrivateChatUser(user)
     setPrivateChatActive(true)
   }
 
   const closePrivateChat = () => {
-    console.log('closePrivateChat called');
+    console.log('closePrivateChat called')
     setPrivateChatUser(null)
     setPrivateChatActive(false)
   }
@@ -449,20 +424,13 @@ export default function RealTimeChat() {
                         Connected Users
                       </h2>
 
-                      {/* {connectedUsers.map((user) => {
-                        MM: when i replace users.map with connectedUsers.map, everything seem to work perfectly by accessing the user-profile and updating the users collection in the firebase. the only problem with connectedUsers.map is just the displayName which doesn't display as before and it saving all the users even after being removed in the firebase/firestore database, which is strange.
-                        */}
-                      {/* {users.map((user) => { */}
                       {connectedUsers.map((user) => {
                         console.log('RealTimeChat connectedUsers.map user:', user)
                         const formattedDisplayName =
                           user?.displayName &&
                           user?.displayName[0].toUpperCase() + user?.displayName.slice(1)
 
-                        // console.log('Formatted Display Name:', formattedDisplayName) // log the formattedDisplayName
-                        // console.log('RealTimeChat Formatted display name:', formattedDisplayName)
                         {
-                          /* // DM: apparently, right now, I see 4 users in the console. So, 4 is the expected number of users, this may be correct, but the code populating connectedUsers may simply need to be fixed so that it doesn't have undefined user.displayName. So, go back to where the connectedUsers array is populated and check that code. MM: the issue is why the same user is repeatedly listed many times in the connectedUsers array, to fix that i: 1. tried to add a condition to check if the user is already in the connectedUsers array, so not to add it again, 2. was to keep only the useEffect to add the user to the connectedUsers but not the onConnect function, and 3. was on the nSendMessage when a message is sent, you are adding the sender to the connectedUsers state. This is why you see the same user multiple times when a user sends multiple messages. all of the three steps lead to no changes in the connectedUsers array. DM: but how come among the users, I don"t see any user other than the current user when I click on the users to see user profile. They are all me. MM: yesterday i mentioned that the issue is not fixed yet. DM: I know, but my point was the same current users is in each row. It is a clue for you. */
                         }
                         console.log('RealTimeChat real-time-chat/index.jsx ', {
                           user,
@@ -478,9 +446,6 @@ export default function RealTimeChat() {
                         }
 
                         const isTyping = typingUsers.includes(user.uid)
-
-                        // console.log('User:', user)
-                        // console.log('User Display Name:', user?.displayName)
 
                         return (
                           <div
@@ -518,8 +483,7 @@ export default function RealTimeChat() {
                                 ...
                               </span>
                             )}
-                            {/* MM: i started by making a global search for "currentUser.uid" in the repo to see where it's used. i found there is a reverse condition that checks for user profile above the code(if (user.uid !== currentUser.uid)), i used that condition below
-                             */}
+
                             {user.uid === currentUser.uid && (
                               <div className="flex items-center">
                                 <FiLogOut
@@ -546,12 +510,6 @@ export default function RealTimeChat() {
                     onSendMessage={onSendMessage}
                     onTyping={(isTyping) => onTyping(isTyping)}
                   />
-                  {/* {isMessageInputVisible && (
-                    <MessageInput
-                      onSendMessage={onSendMessage}
-                      onTyping={(isTyping) => onTyping(isTyping)}
-                    />
-                  )} */}
                 </div>
               </div>
             </div>
@@ -559,17 +517,8 @@ export default function RealTimeChat() {
           <Footer className="h-10 md:h-10" />
         </div>
       )}
-      {/*
-          DM: I see only one user, "geny", here, but it does not include me, and I am active.
-
-       */}
-      {/* <pre>users: {JSON.stringify(users, null, 2)}</pre>
-      {users.map((user, index) => (
-        <div key={index}>{user.displayName}</div>
-      ))} */}
     </>
   )
-  
 }
 
 /*
@@ -632,4 +581,3 @@ Another issue that i encountered is that the user is still listed in the connect
   6. fixed the error by returning a new Promise in the handleUserDisconnect() function and made a handleSignOut() function async
   7. tested the app by connecting two different users in two different browsers, and signed out from one of them, and the user was removed from the connectedUsers array.
 */
-

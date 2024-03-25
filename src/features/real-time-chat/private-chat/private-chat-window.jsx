@@ -1,8 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { onSendMessage, receiveMessages } from '../real-time-chat'
 
 function PrivateChatWindow({ currentUser, privateChatUser, closePrivateChat }) {
   const [messageInput, setMessageInput] = useState('')
   const [messages, setMessages] = useState([])
+
+  useEffect(() => {
+    const unsubscribe = receiveMessages(currentUser, privateChatUser, setMessages)
+    return unsubscribe
+  }, [currentUser, privateChatUser])
 
   const handleSendMessage = () => {
     if (messageInput.trim() !== '') {

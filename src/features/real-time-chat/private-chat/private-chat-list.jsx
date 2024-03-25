@@ -1,9 +1,7 @@
 // import React from 'react';
 
 function PrivateChatList({ currentUser, users, startPrivateChat }) {
-  // const handleStartPrivateChat = (user) => {
-  //   startPrivateChat(user)
-  // }
+  console.log('users', users)
 
   return (
     <div className="flex-grow overflow-y-auto">

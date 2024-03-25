@@ -10,7 +10,7 @@ Steps to set up Firebase for your project:
 3. Add Firebase SDK to your app: 
   * After registering your app, you'll be presented with your Firebase SDK snippet. This contains the configuration for your Firebase project.
 */
-import { initializeApp } from 'firebase/app'
+import { getApps, initializeApp } from 'firebase/app'
 
 import {
   getAuth,
@@ -51,7 +51,7 @@ are initialized "in the module scope" (outside of any function or block) so that
 
 */
 
-export const app = initializeApp(firebaseConfig)
+export const app = !getApps().length ? initializeApp(firebaseConfig) : getApps()[0]
 export const storage = getStorage(app)
 
 // Initialize Realtime Database
