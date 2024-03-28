@@ -120,24 +120,11 @@
 
 import React, { useState } from 'react'
 import DataGrid from 'react-data-grid'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, deleteDoc, doc } from 'firebase/firestore'
 import { db } from './firebase'
 
 export default function WeeklyMeetingForm() {
-  const [rows, setRows] = useState([
-    {
-      id: 0,
-      fullName: '',
-      share: '',
-      sum: '',
-      debt: '',
-      reimbursement: '',
-      meetingRegistrationNumber: '',
-      weeklySum: '',
-      weeklyTotal: '',
-      weeklySavings: '',
-    },
-  ])
+  const [rows, setRows] = useState([])
 
   const columns = [
     { key: 'fullName', name: 'Full Name', editable: true },
@@ -152,30 +139,58 @@ export default function WeeklyMeetingForm() {
   ]
 
   const onGridRowsUpdated = async ({ fromRow, toRow, updated }) => {
-    const newRows = rows.map((row, i) => {
-      if (i >= fromRow && i <= toRow) {
-        return { ...row, ...updated }
+    const newRows = [...rows]
+    for (let i = fromRow; i <= toRow; i++) {
+      newRows[i] = { ...newRows[i], ...updated }
+      try {
+        const rowId = newRows[i].id
+        await doc(collection(db, 'meetings'), rowId).set(newRows[i])
+      } catch (e) {
+        console.error('Error updating document: ', e)
       }
-      return row
-    })
+    }
     setRows(newRows)
+  }
 
-    // Save the updated row to Firestore
+  const handleAddRow = () => {
+    const newRow = {
+      id: Date.now(),
+      fullName: '',
+      share: '',
+      sum: '',
+      debt: '',
+      reimbursement: '',
+      meetingRegistrationNumber: '',
+      weeklySum: '',
+      weeklyTotal: '',
+      weeklySavings: '',
+    }
+    setRows([...rows, newRow])
+  }
+
+  const handleDeleteRow = async (rowIdx) => {
+    const deletedRow = rows[rowIdx]
     try {
-      const updatedRow = newRows[fromRow]
-      await addDoc(collection(db, 'meetings'), updatedRow)
+      await deleteDoc(doc(db, 'meetings', deletedRow.id))
+      const newRows = rows.filter((_, idx) => idx !== rowIdx)
+      setRows(newRows)
     } catch (e) {
-      console.error('Error adding document: ', e)
+      console.error('Error deleting document: ', e)
     }
   }
 
   return (
-    <DataGrid
-      columns={columns}
-      rowGetter={(i) => rows[i]}
-      rowsCount={rows.length}
-      onGridRowsUpdated={onGridRowsUpdated}
-      enableCellSelect={true}
-    />
+    <div>
+      <button onClick={handleAddRow}>Add Row</button>
+      <DataGrid
+        columns={columns}
+        rowGetter={(i) => rows[i]}
+        rowsCount={rows.length}
+        onGridRowsUpdated={onGridRowsUpdated}
+        enableCellSelect={true}
+        enableCellAutoFocus={true}
+        rowDeleter={handleDeleteRow}
+      />
+    </div>
   )
 }

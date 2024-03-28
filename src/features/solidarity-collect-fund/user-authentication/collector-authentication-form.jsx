@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { collection, addDoc } from 'firebase/firestore'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from '../firebase'
+import WeeklyMeetingForm from '../weekly-meeting-form'
 
 export default function CollectorAuthenticationForm(props) {
+  // const { onFormSubmit, isAuthenticated } = props
   console.log('props:', props)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,11 +15,6 @@ export default function CollectorAuthenticationForm(props) {
   const [address, setAddress] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isCollectorAuthenticated, setIsCollectorAuthenticated] = useState(false)
-
-  const handleReturnToUserAuthentication = () => {
-    setIsCollectorAuthenticated(false)
-    setIsAuthenticated(false)
-  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -46,6 +43,7 @@ export default function CollectorAuthenticationForm(props) {
       // add document to Firestore
       const docRef = await addDoc(collection(db, 'collectors'), {
         uid: user.uid, // store the user's ID
+        email: user.email,
         collectorCode,
         fullName,
         fundName,
@@ -60,6 +58,7 @@ export default function CollectorAuthenticationForm(props) {
         console.error('onFormSubmit is not a function', props.onFormSubmit)
       }
       // props.onFormSubmit()
+      setIsAuthenticated(true)
       setEmail('')
       setPassword('')
       setCollectorCode('')
@@ -67,16 +66,24 @@ export default function CollectorAuthenticationForm(props) {
       setFundName('')
       setAddress('')
     } catch (e) {
-      console.error('Error adding document: ', e)
+      // Call onFormSubmit prop to update isAuthenticated state
+      // if (typeof props.onFormSubmit === 'function') {
+      //   props.onFormSubmit(false) // Passing false to indicate authentication failure
+      // } else {
+      //   console.error('onFormSubmit is not a function', props.onFormSubmit)
+      // }
+      setIsAuthenticated(false)
     }
   }
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-200">
-      <button type="button" onClick={handleReturnToUserAuthentication}>
-        Return to User Authentication
-      </button>
       <form onSubmit={handleSubmit} className="w-3/4 space-y-4 bg-white p-6 rounded shadow-lg">
+        <div className="mb-4">
+          <a href="#" onClick={() => props.onRoleSwitch('admin')}>
+            Switch to Admin Authentication
+          </a>
+        </div>
         <input
           type="email"
           value={email}
@@ -126,6 +133,7 @@ export default function CollectorAuthenticationForm(props) {
           Submit
         </button>
       </form>
+      {isAuthenticated && <WeeklyMeetingForm />}
     </div>
   )
 }

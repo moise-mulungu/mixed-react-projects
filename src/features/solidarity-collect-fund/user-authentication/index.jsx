@@ -13,10 +13,11 @@ import Login from './login'
 import Signup from './signup'
 import CollectorAuthentication from './collector-authentication-form'
 
-export default function UserAuthentication({ onAuthentication }) {
+export default function UserAuthentication({ onFormSubmit }) {
   const [isLogin, setIsLogin] = useState(true)
   const [error, setError] = useState(null)
   const [role, setRole] = useState(null)
+  const [isAuthenticated, setIsAuthenticated] = useState(false) // New state for authentication
 
   const auth = getAuth(app)
 
@@ -31,8 +32,10 @@ export default function UserAuthentication({ onAuthentication }) {
       await setDoc(userRef, {
         email: user.email,
         displayName: user.displayName,
+        role: role, // Assign the role to the user
       })
-      onAuthentication(true) // Add this line
+      setIsAuthenticated(true) // Set isAuthenticated to true after successful login
+      onFormSubmit(true) // Add this line
     } catch (error) {
       console.error(`Error code: ${error.code}, Error message: ${error.message}`)
     }
@@ -49,8 +52,9 @@ export default function UserAuthentication({ onAuthentication }) {
       await setDoc(userRef, {
         email: user.email,
         displayName: user.displayName,
+        role: role, // Assign the role to the user
       })
-      onAuthentication(true) // Add this line
+      onFormSubmit(true) // Add this line
     } catch (error) {
       console.error(`Error code: ${error.code}, Error message: ${error.message}`)
     }
@@ -66,7 +70,7 @@ export default function UserAuthentication({ onAuthentication }) {
         // The signed-in user info.
         const user = result.user
         // ...
-        onAuthentication(true) // Add this line
+        onFormSubmit(true) // Add this line
       })
       .catch((error) => {
         // Handle Errors here.
@@ -134,8 +138,9 @@ export default function UserAuthentication({ onAuthentication }) {
         )
       ) : role === 'collector' ? (
         <CollectorAuthentication
-          onFormSubmit={onAuthentication}
-          // onReturn={props.onReturn}
+          onFormSubmit={onFormSubmit}
+          isAuthenticated={isAuthenticated}
+          onRoleSwitch={handleRoleSwitch}
         />
       ) : null}
     </div>

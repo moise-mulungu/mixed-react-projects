@@ -15,6 +15,11 @@ export default function SolidarityCollectFund() {
     console.log('Component re-rendered')
     console.log('isAuthenticated:', isAuthenticated)
     console.log('isCollectorAuthenticated:', isCollectorAuthenticated)
+
+      // Check if both authentication and collector authentication are true, then show the meeting form
+      if (isAuthenticated && isCollectorAuthenticated) {
+        setIsMeetingFormVisible(true)
+      }
   }, [isAuthenticated, isCollectorAuthenticated])
 
   const handleAuthentication = (authStatus) => {
@@ -23,8 +28,12 @@ export default function SolidarityCollectFund() {
   const handleCollectorAuthentication = () => {
     setIsCollectorAuthenticated(true)
 
-    setIsMeetingFormVisible(true)
+    // setIsMeetingFormVisible(true)
   }
+
+  // const handleMeetingFormVisibility = () => {
+  //   setIsMeetingFormVisible(true)
+  // }
 
   return (
     <div>
@@ -32,7 +41,12 @@ export default function SolidarityCollectFund() {
       <Header />
       {!isAuthenticated && <UserAuthentication onFormSubmit={handleAuthentication} />}
       {isAuthenticated && !isCollectorAuthenticated && (
-        <CollectorAuthenticationForm onFormSubmit={handleCollectorAuthentication} />
+        <CollectorAuthenticationForm
+          onFormSubmit={() => {
+            handleCollectorAuthentication()
+            // handleMeetingFormVisibility() // Call handleMeetingFormVisibility when collector authentication form is submitted
+          }}
+        />
       )}
       {isMeetingFormVisible && <WeeklyMeetingForm />}
     </div>
