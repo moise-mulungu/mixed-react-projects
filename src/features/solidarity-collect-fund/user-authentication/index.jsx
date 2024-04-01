@@ -1,91 +1,29 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from 'firebase/auth'
-import { setDoc, doc } from 'firebase/firestore'
+
+import { getDoc, setDoc, doc } from 'firebase/firestore'
 import { app, db } from '../firebase'
-import Login from './login'
-import Signup from './signup'
+
 import CollectorAuthentication from './collector-authentication-form'
+
+import AdminAuthentication from './admin-authentication'
 
 export default function UserAuthentication({ onFormSubmit }) {
   const [isLogin, setIsLogin] = useState(true)
-  const [error, setError] = useState(null)
+  // const [error, setError] = useState(null)
   const [role, setRole] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false) // New state for authentication
 
-  const auth = getAuth(app)
+  const fetchUserRole = async (userId) => {
+    const userRef = doc(db, 'users', userId)
+    const userSnap = await getDoc(userRef)
 
-  const handleLogin = async (event) => {
-    event.preventDefault()
-    const email = event.target.elements.email.value
-    const password = event.target.elements.password.value
-    try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password)
-      const user = userCredential.user
-      const userRef = doc(db, 'users', user.uid)
-      await setDoc(userRef, {
-        email: user.email,
-        displayName: user.displayName,
-        role: role, // Assign the role to the user
-      })
-      setIsAuthenticated(true) // Set isAuthenticated to true after successful login
-      onFormSubmit(true) // Add this line
-    } catch (error) {
-      console.error(`Error code: ${error.code}, Error message: ${error.message}`)
+    if (userSnap.exists()) {
+      return userSnap.data().role
+    } else {
+      console.log('No such document!')
+      return null
     }
-  }
-
-  const handleSignup = async (event) => {
-    event.preventDefault()
-    const email = event.target.elements.email.value
-    const password = event.target.elements.password.value
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-      const user = userCredential.user
-      const userRef = doc(db, 'users', user.uid)
-      await setDoc(userRef, {
-        email: user.email,
-        displayName: user.displayName,
-        role: role, // Assign the role to the user
-      })
-      onFormSubmit(true) // Add this line
-    } catch (error) {
-      console.error(`Error code: ${error.code}, Error message: ${error.message}`)
-    }
-  }
-
-  const handleLoginWithGoogle = () => {
-    const provider = new GoogleAuthProvider()
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result)
-        const token = credential.accessToken
-        // The signed-in user info.
-        const user = result.user
-        // ...
-        onFormSubmit(true) // Add this line
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code
-        const errorMessage = error.message
-        // The email of the user's account used.
-        const email = error.email
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error)
-        // ...
-      })
-  }
-
-  const toggleAuthenticationMode = () => {
-    setIsLogin(!isLogin)
   }
 
   const handleRoleSwitch = (newRole) => {
@@ -96,7 +34,6 @@ export default function UserAuthentication({ onFormSubmit }) {
   return (
     <div>
       <div className="flex justify-between mb-2">
-        {/* MM: forDM: how to return the UserAuthentication by switching without using NexJS routing system(I don't like to create many pages in the pages directory, but to use just the rendering conditioning of react) as tried with the logic below? the further process of the code implementation is found in the  src/features/solidarity-collect-fund/user-authentication/collector-authentication-form.jsx file */}
         <a
           href="#"
           onClick={(e) => {
@@ -118,31 +55,22 @@ export default function UserAuthentication({ onFormSubmit }) {
           Collector Authentication
         </a>
       </div>
-      {role === 'admin' ? (
-        isLogin ? (
-          <Login
-            handleLogin={handleLogin}
-            handleSignup={handleSignup}
-            error={error}
-            toggleAuthenticationMode={toggleAuthenticationMode}
-            handleLoginWithGoogle={handleLoginWithGoogle}
-            className="p-10 bg-white flex flex-col items-start pb-5 w-72"
-          />
-        ) : (
-          <Signup
-            handleSignup={handleSignup}
-            error={error}
-            toggleAuthenticationMode={toggleAuthenticationMode}
-            className="p-10 bg-white flex flex-col items-start pb-5 w-72"
-          />
-        )
-      ) : role === 'collector' ? (
+
+      {role === 'admin' && (
+        <AdminAuthentication
+          onFormSubmit={onFormSubmit}
+          isAuthenticated={isAuthenticated}
+          onRoleSwitch={handleRoleSwitch}
+          fetchUserRole={fetchUserRole}
+        />
+      )}
+      {role === 'collector' && (
         <CollectorAuthentication
           onFormSubmit={onFormSubmit}
           isAuthenticated={isAuthenticated}
           onRoleSwitch={handleRoleSwitch}
         />
-      ) : null}
+      )}
     </div>
   )
 }

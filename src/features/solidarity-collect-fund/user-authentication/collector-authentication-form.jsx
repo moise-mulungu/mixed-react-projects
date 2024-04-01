@@ -5,7 +5,6 @@ import { auth, db } from '../firebase'
 import WeeklyMeetingForm from '../weekly-meeting-form'
 
 export default function CollectorAuthenticationForm(props) {
-  // const { onFormSubmit, isAuthenticated } = props
   console.log('props:', props)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -14,7 +13,6 @@ export default function CollectorAuthenticationForm(props) {
   const [fundName, setFundName] = useState('')
   const [address, setAddress] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-  const [isCollectorAuthenticated, setIsCollectorAuthenticated] = useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -53,7 +51,7 @@ export default function CollectorAuthenticationForm(props) {
 
       // Call onFormSubmit prop to update isAuthenticated state
       if (typeof props.onFormSubmit === 'function') {
-        props.onFormSubmit()
+        props.onFormSubmit(true, 'collector')
       } else {
         console.error('onFormSubmit is not a function', props.onFormSubmit)
       }
@@ -66,12 +64,6 @@ export default function CollectorAuthenticationForm(props) {
       setFundName('')
       setAddress('')
     } catch (e) {
-      // Call onFormSubmit prop to update isAuthenticated state
-      // if (typeof props.onFormSubmit === 'function') {
-      //   props.onFormSubmit(false) // Passing false to indicate authentication failure
-      // } else {
-      //   console.error('onFormSubmit is not a function', props.onFormSubmit)
-      // }
       setIsAuthenticated(false)
     }
   }
