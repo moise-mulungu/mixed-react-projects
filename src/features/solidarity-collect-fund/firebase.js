@@ -16,6 +16,7 @@ const firebaseConfig = {
 console.log('Before initialization:', firebaseConfig)
 
 function initializeFirebaseApp() {
+  console.log('getApps()', getApps())
   let app
   if (!getApps().length) {
     app = initializeApp(firebaseConfig)

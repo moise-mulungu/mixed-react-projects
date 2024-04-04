@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import { collection, addDoc, getDocs, query, orderBy } from 'firebase/firestore'
 import { db } from './firebase'
 
-export default function SolidarityFundForm() {
+export default function AdminFundForm() {
   const [fundName, setFundName] = useState('')
   const [collectorName, setCollectorName] = useState('')
   const [generatedCode, setGeneratedCode] = useState('')

@@ -13,6 +13,7 @@ export default function CollectorAuthenticationForm(props) {
   const [fundName, setFundName] = useState('')
   const [address, setAddress] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isCollectorAuthenticated, setIsCollectorAuthenticated] = useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -46,6 +47,7 @@ export default function CollectorAuthenticationForm(props) {
         fullName,
         fundName,
         address,
+        role: 'collector',
       })
       console.log('Document written with ID: ', docRef.id)
 
@@ -64,6 +66,7 @@ export default function CollectorAuthenticationForm(props) {
       setFundName('')
       setAddress('')
     } catch (e) {
+      console.error('Error during form submission:', e)
       setIsAuthenticated(false)
     }
   }
