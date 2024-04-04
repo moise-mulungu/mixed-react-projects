@@ -1,5 +1,3 @@
-// import React from 'react';
-
 function PrivateChatList({ currentUser, users, startPrivateChat }) {
   console.log('users', users)
 

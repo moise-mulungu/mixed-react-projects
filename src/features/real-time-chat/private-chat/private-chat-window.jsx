@@ -12,8 +12,6 @@ function PrivateChatWindow({ currentUser, privateChatUser, closePrivateChat }) {
 
   const handleSendMessage = () => {
     if (messageInput.trim() !== '') {
-      // Send message logic here (e.g., call a function to send message to database)
-      // After sending the message, update the state to include the new message
       setMessages((prevMessages) => [
         ...prevMessages,
         {

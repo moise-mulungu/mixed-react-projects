@@ -7,12 +7,8 @@ import MessageInput from './message-input'
 import Footer from './footer'
 import User from './user'
 import UserProfile from './user/user-profile'
-// import UserList from './user/users-list'
-// import { AuthProvider } from './auth-context-provider/index'
 import PrivateChatList from './private-chat/private-chat-list'
 import PrivateChatWindow from './private-chat/private-chat-window'
-// import userAvatar from '../../../public/user-avatar.jpg'
-
 import {
   ref as createDatabaseReference,
   onValue as listenToDatabaseValueChanges,
@@ -26,7 +22,7 @@ import { doc, getDoc, deleteDoc } from 'firebase/firestore'
 import { FiLogOut } from 'react-icons/fi'
 
 export default function RealTimeChat() {
-  console.log('RealTimeChat Database object:', database) // to check the database object is available to the RealTimeChat component
+  console.log('RealTimeChat Database object:', database)
 
   const [messages, setMessages] = useState([])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -46,7 +42,7 @@ export default function RealTimeChat() {
   console.log('RealTimeChat users:', users)
 
   const messagesCollection = collection(db, 'messages')
-  // the useEffect hook will be triggered whenever currentUser changes. If currentUser is defined, it will call onTyping(true).
+
   useEffect(() => {
     if (currentUser) {
       onTyping(true)
@@ -54,37 +50,33 @@ export default function RealTimeChat() {
   }, [currentUser])
 
   useEffect(() => {
-    // Fetch initial data, such as connected users and messages
+    if (currentUser) {
+      onTyping(false)
+    }
   }, [])
 
   // New function to handle typing status
   const onTyping = (isTyping) => {
     console.log('RealTimeChat onTyping function called with:', isTyping, {
-      //(done) DM: these are both undefined, so the if statement below will never be true.
       currentUserUid: currentUser?.uid,
       currentUser,
     })
 
     if (currentUser?.uid) {
       const typingRef = createDatabaseReference(database, `typing/${currentUser.uid}`)
-      // DM: you'll see that this line is never executed, so nothing saved to the DB
-      // console.log('RealTimeChat Typing ref:', typingRef, 'Is typing:', isTyping) // Add this line
-      setDatabaseValue(typingRef, isTyping)
-      // console.log('RealTimeChat setDatabaseValue executed with:', typingRef, isTyping) // to verify that the setDatabaseValue function is executed
 
-      // Update the corresponding user in the connectedUsers and users arrays
+      setDatabaseValue(typingRef, isTyping)
       setConnectedUsers((prevConnectedUsers) =>
         prevConnectedUsers.map((connectedUser) =>
           connectedUser.uid === currentUser.uid ? { ...connectedUser, isTyping } : connectedUser
         )
       )
-      // Update the corresponding user in the users array using the updateUserIsTyping function from the context
+
       updateUserIsTyping(currentUser.uid, isTyping)
     }
   }
 
   useEffect(() => {
-    // console.log('RealTimeChat useEffect hook executed') // to check if the useEffect hook is executed
     const q = query(collection(db, 'messages'), orderBy('timestamp', 'desc'))
     const unsubscribeFirestore = onSnapshot(q, async (snapshot) => {
       const messages = []
@@ -93,25 +85,8 @@ export default function RealTimeChat() {
         messages.push({ id: doc.id, ...doc.data() })
       })
       setMessages(messages)
-      // Update chatUsers based on the new messages and currentUser.uid
-      // const uniqueChatUsers = [
-      //   ...new Set(
-      //     messages
-      //       .filter(
-      //         (message) =>
-      //           message.sender === currentUser?.uid || message.receiver === currentUser?.uid
-      //       )
-      //       .map((message) =>
-      //         message.sender === currentUser?.uid ? message.receiver : message.sender
-      //       )
-      //   ),
-      // ]
-      // setChatUsers(uniqueChatUsers)
     })
 
-    // console.log('RealTimeChat connectedUsers:', connectedUsers)
-    // const unsubscribeDatabaseListeners = connectedUsers.map((user) => {
-    // DM: im getting a error because users is undefined. Is that expected? maybe it only happens to me here on my computer but not on yours? I cant use the app today.
     const unsubscribeDatabaseListeners = users.map((user) => {
       console.log('RealTimeChat connectedUsers.map user:', user)
       if (!user) {
@@ -127,11 +102,8 @@ export default function RealTimeChat() {
         }
       })
     })
-    // DM: Im putting the deleted console.logs back and commenting them instead. Best to leave the console.logs there in case you need them again, unless you are completely sure that it is not a valid console.log. ;console.logs take time to write properly, so useful to keep them around instead of deleting. MM: ok, i see.
-    // console.log('RealTimeChat Database object:', database) // Add this line
-    // New subscription for typing status
+
     const typingRef = createDatabaseReference(database, 'typing')
-    // console.log('RealTimeChat Typing reference:', typingRef) // Add this line
     const unsubscribeTyping = listenToDatabaseValueChanges(typingRef, (snapshot) => {
       const typingUsers = []
       snapshot.forEach((childSnapshot) => {
@@ -139,8 +111,7 @@ export default function RealTimeChat() {
           typingUsers.push(childSnapshot.key)
         }
       })
-      //2. check the typingUsers value
-      // console.log('RealTimeChat Updated typingUsers state:', typingUsers) // to check the typingUsers value
+
       setTypingUsers(typingUsers)
     })
 
@@ -207,101 +178,66 @@ export default function RealTimeChat() {
   useEffect(() => {
     const usersStatusReference = createDatabaseReference(database, 'status')
 
-    // DM: search console on "RealTimeChat useEffect deps []" to see only the comments from this useEffect
-    // console.log('RealTimeChat useEffect deps [] triggered')
-    // console.log('Created reference to status node in database', usersStatusReference)
+    const stopListeningToStatusChanges = listenToDatabaseValueChanges(
+      usersStatusReference, // DM: 3. this database reference must not contain the displayName
+      (snapshot) => {
+        console.log(
+          'RealTimeChat useEffect deps [] userStatusChanges listener fired:',
+          snapshot.val()
+        )
 
-    const stopListeningToStatusChanges =
-      //1. This function sets up a listener to the 'status' node in the database. When a change is detected, it triggers the callback function, passing in a snapshot of the updated data. DM: good description
-      listenToDatabaseValueChanges(
-        usersStatusReference, // DM: 3. this database reference must not contain the displayName
-        (snapshot) => {
-          console.log(
-            'RealTimeChat useEffect deps [] userStatusChanges listener fired:',
-            snapshot.val()
-          )
+        const userPromises = []
+        snapshot.forEach((childSnapshot) => {
+          const userStatus = childSnapshot.val()
+          console.log('RealTimeChat useEffect deps [] userStatusChanges userStatus:', {
+            userStatusDisplayName: userStatus.displayName,
+            userStatusUid: userStatus.uid,
+            userStatusState: userStatus.state,
+            userStatus,
+            childSnapshot,
+            childSnapshotKey: childSnapshot.key,
+          })
+          //(done) DM: see the "..." it's telling you to use a guard clause here, do so
+          if (userStatus.state !== 'online') {
+            return
+          }
 
-          // const updatedUsers = []
-          const userPromises = []
-          snapshot.forEach((childSnapshot) => {
-            const userStatus = childSnapshot.val()
-            console.log('RealTimeChat useEffect deps [] userStatusChanges userStatus:', {
-              // DM: todoMM: you need to deal with this:
-              // MM: i am sure this issue is fixed with the second context provider.
-              userStatusDisplayName: userStatus.displayName, // DM: 2. this is undefined
-              // DM: no longer important? uid is undefined always, but that may be because quote exceeded, but check more detail in this area of the code when you get quota fixed.
-              userStatusUid: userStatus.uid,
-              userStatusState: userStatus.state,
-              userStatus,
-              childSnapshot,
-              childSnapshotKey: childSnapshot.key,
-            })
-            //(done) DM: see the "..." it's telling you to use a guard clause here, do so
-            if (userStatus.state !== 'online') {
-              return
+          const userReference = createDatabaseReference(database, 'users/' + childSnapshot.key)
+          const userPromise = getDatabaseValue(userReference).then((userSnapshot) => {
+            const user = userSnapshot.val()
+
+            console.log(`Fetched user data: ${JSON.stringify(user)}`)
+            return {
+              uid: childSnapshot.key,
+              displayName: user?.displayName,
+              ...userStatus,
             }
-            // const isUserAlreadyConnected =
-            //   updatedUsers && updatedUsers.some((user) => user && user.uid === childSnapshot.key)
+          })
+          userPromises.push(userPromise)
+        })
 
-            const userReference = createDatabaseReference(database, 'users/' + childSnapshot.key)
-            const userPromise =
-              //2. For each child in the snapshot, if the user's status is 'online', it fetches the user's data from the 'users' node in the database. This returns a promise, which is pushed into the userPromises array
-              getDatabaseValue(userReference).then((userSnapshot) => {
-                //(done) DM: todoMM: is this code correct? user does nto contain display name. find out why. look into firebase and check that your code in the above 3 lines is correct. does displayName exist in firebase. if so, why does your query here not return it? You have known for many days that your problem is already identifiable already here, so how could it help of you debug further below? Find the first place in the code where the problem exists (no display name) and debug the code just before that.
-                const user = userSnapshot.val()
-                //(done) DM: are you sure this works? I don't see any console.logs. If you used console.logs to validate isUserAlreadyConnected and userStatus.state, don't delete them, but comment them out so that I or you can use them in the future and also so that I know what you have already tried to debug this area. MM: i mentioned in the report file that the same user is till repeated many times in the connectedUsers array despite attempts to debug the code. DM: fine but you still need console.logs and detailed items should be here commented in the code not in the daily report. In any case "there is one only user listed many times on the list" is a general comment - how am I supposed to know where in the code that is? Ok to repeat things in code comments, but my main concern was no console.logs here which is obviously where in the code the issue is found.
-                //(done) DM: todoMM: please follow my pattern by putting both variables in the same comment using an object for the 2nd console.log argument, because your console has so many logs it is hard to read. Also put searchable detail and context into the first log argument example:
-                // console.log(
-                //   'RealTimeChat useEffect deps [] userStatusChanges userStatusState===online:',
-                //   {
-                //     isUserAlreadyConnected,
-                //     userStatusState: userStatus.state,
-                //     userStatus,
-                //     updatedUsers,
-                //   }
-                // )
-                // console.log('RealTimeChat useEffect deps [] userStatusChanges userReference:', {
-                //   userSnapshot,
-                //   user, // DM: this is undefined
-                //   userStatus,
-                //   childSnapshotKey: childSnapshot.key,
-                //   childSnapshot,
-                // })
-                console.log(`Fetched user data: ${JSON.stringify(user)}`)
-                return {
-                  uid: childSnapshot.key,
-                  displayName: user?.displayName,
-                  ...userStatus,
-                }
-              })
-            userPromises.push(userPromise)
-          })
-          //3. This waits for all the promises in the userPromises array to resolve. When they do, it triggers the callback function, passing in an array of the resolved values (i.e., the updated user data).
-          Promise.all(userPromises).then((updatedUsers) => {
-            // DM: this is going to show you the same info that is in the .then() block. Your problem is above in the database queries.
-            // console.log(`Updated users: ${JSON.stringify(updatedUsers)}`)
-            const uniqueUsers = Array.from(new Set(updatedUsers.map((user) => user.uid))).map(
-              (uid) => {
-                return updatedUsers.find((user) => user.uid === uid)
-              }
-            )
-            console.log(
-              'RealTimeChat useEffect deps [] userStatusChanges about to setConnectedUsers():',
-              uniqueUsers
-            )
-            //4. This updates the state of the component with the updated user data.
-            setConnectedUsers(uniqueUsers)
-          })
-        }
-      )
+        Promise.all(userPromises).then((updatedUsers) => {
+          const uniqueUsers = Array.from(new Set(updatedUsers.map((user) => user.uid))).map(
+            (uid) => {
+              return updatedUsers.find((user) => user.uid === uid)
+            }
+          )
+          console.log(
+            'RealTimeChat useEffect deps [] userStatusChanges about to setConnectedUsers():',
+            uniqueUsers
+          )
+          //4. This updates the state of the component with the updated user data.
+          setConnectedUsers(uniqueUsers)
+        })
+      }
+    )
 
     //5. at the end is a cleanup function that removes the listener when the component unmounts.
     return () => stopListeningToStatusChanges()
   }, [])
 
   useEffect(() => {
-    // DM: I see 9 different users in connectedUsers so ...
-    // console.log('RealTimeChat useEffect deps [connectedUsers]', { users })
+
   }, [connectedUsers])
 
   const handleUserConnect = (user) => {
@@ -435,7 +371,7 @@ export default function RealTimeChat() {
                         console.log('RealTimeChat real-time-chat/index.jsx ', {
                           user,
 
-                          typeofUserDisplayname: typeof user?.displayName, // DM: 1a. this is undefined. MM:i checked and found  the output is a "string" not undefined
+                          typeofUserDisplayname: typeof user?.displayName, 
                           userDisplayname: user?.displayName, // this outputs the current connected user
                           userUid: user?.uid, // DM: 1b. this looks correct
                           users, // DM: so I can see what is in connectedUsers
