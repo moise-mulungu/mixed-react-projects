@@ -1,2 +1,3 @@
-const isNumber = (value) => typeof value === 'number'
-export default isNumber
+export default function isNumber(value) {
+  return typeof value === 'number'
+}

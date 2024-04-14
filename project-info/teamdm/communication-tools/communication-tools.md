@@ -44,6 +44,23 @@
     - disregard for now: idea, date extension; idea: priority number: ugh ... XX: todoXX[1-3]: YYYY-MM-DD
     - disregard for now: knowledge-base enhancements; write doc with strategy for prioritizing tasks (ease\*impact) - very easy, high impact - do these first.
 
+## comments always refer to the line, statement, block immediately after the comment line. examples:
+```js
+// this refers to the next line
+const myVar = 1
+// this refers to the if-else statement on the next line
+if (myVar === 1) {
+  doSomething()
+}
+// this refers to the block that starts on the next line
+for (const myItem of myItems) {
+  doSomething(myItem)
+  if (myItem === null || myItem === undefined) {
+    show alert(myItem)
+  }
+}
+
+```
 ## knowledge base (KB): this repo will serve as a 'repository' our our accumulated knowledge
 
 - leave notes anywhere (in-context notes are best)
@@ -68,3 +85,12 @@
 ## Slack https://teamdm-global.slack.com
 
 - for the time that we're both online, after 4pm Goma (7am MT), let's use this to stay in touch for quick questions and updates
+
+
+## Process to send Moise the "Joy of React" link: (likely the same process for the CSS course)
+* moise goes to https://www.joyofreact.com/
+* moise clicks login
+* moise clicks login again
+* moise enters duncan's email into the form in order to request a "magic link" (note: the "magic link" arrives in duncan's email account)
+* moise sends duncan a reminder email to forward the "magic link"
+forwards the "magic link" to moise (duncan searches email box for "your login link")

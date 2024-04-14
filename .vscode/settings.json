@@ -1,6 +1,28 @@
 {
-    "liveServer.settings.port": 5501,
-    "prettier.configPath": ".prettierrc.js"
+  "liveServer.settings.port": 5501,
+  "prettier.configPath": ".prettierrc.js",
+
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "markdown.extension.italic.indicator": "_",
+  "markdown.extension.bold.indicator": "__",
+  "markdown.extension.list.toggle.candidate-markers": [
+    // "-",
+    "*",
+    // "+",
+    "1."
+    // "1)"
+  ],
+  // My VSCods is forcing the acceptSuggestionOnEnter setting, you can delete it if you don't need it. DM: let's leave this comment here until I get this fixed.(ok)
+  "editor.acceptSuggestionOnEnter": "on"
+
+  // antfu:
+  // "prettier.enable": false,
+  // "editor.formatOnSave": false,
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": true
+  // }
 }
 
 // (liveServer.settings.port: Customize Port Number of your Live Server. If you want random port number, set it as 0.[Default value is 5500.]). this wasn't added manually by us, here is its source https://ritwickdey.github.io/vscode-live-server/docs/settings.html

@@ -8,7 +8,18 @@ export function formatOptions(array, formatter) {
 }
 
 export default function Dropdown(props) {
-  const { id, options, selectedOptions, setSelectedOptions, className = '', isSearchable = true, isMulti = true, styles, placeholder = 'Select ...', ...restProps } = props
+  const {
+    id,
+    options,
+    selectedOptions,
+    setSelectedOptions,
+    className = '',
+    isSearchable = true,
+    isMulti = true,
+    styles,
+    placeholder = 'Select ...',
+    ...restProps
+  } = props
 
   // https://react-select.com/styles#select-props
   const customSelectStyles = {

@@ -1,11 +1,9 @@
 import Head from 'next/head'
+
 import ComponentExamples from '@/features/component-examples'
-
-/* 
-
-DM: todoDM: start a portfolio main template for stuff like <div className="m-4"> which is common to each page
-
-*/
+import Heading from '@/ui/heading'
+import Link from '@/ui//link'
+import Dropdown from '@/ui/form/dropdown'
 
 export default function ComponentExamplesPage() {
   return (
@@ -13,7 +11,13 @@ export default function ComponentExamplesPage() {
       <Head>
         <title>Component Examples</title>
       </Head>
+      <Heading level="1">Component Examples</Heading>
 
+      <ul className="list-style-type: disc; ">
+        <li>
+          <Link href="/component-examples/component-example-pages-two">Component Examples 2</Link>
+        </li>
+      </ul>
       <ComponentExamples />
     </div>
   )

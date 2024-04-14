@@ -8,11 +8,9 @@ export default function Portfolio(props) {
   const { data } = props
 
   return (
-    <div className="bg-white">
+    <div className="bg-gray-200">
       <TopNav />
-      <main>
-        <Content />
-      </main>
+      <Content />
       <Footer />
     </div>
   )

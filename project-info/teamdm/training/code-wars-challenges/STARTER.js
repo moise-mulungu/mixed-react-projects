@@ -1,10 +1,35 @@
 // always copy this template into each new coding challenge file
 // !!! always fill out each empty multiline comments like below; you can put "n/a" (non applicable) if that's the case
-// note: You can be working multiple challenges, but always address all todoMMs in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
-/*
- */
+// note: You can be working multiple challenges, but always address all todoM-Ms in the code-wars-challenges directory before moving on to a new challenge. If you get stuck on one, leave a question in the todo-MM and you can do a new challenge. We just don't want to leave challenges unfinished. And, it makes for extra work to have to return to it later after memory has faded.
 
-// memorable summary: make it work, test it, make it pretty
+/* CURRENT STATUS and NEXT STEPS (update this section before each commit of the file)
+   Does the code work, i.e., do all the tests pass? If not, say you're stuck and there are questions above. 
+   What help do you need from me? 
+   What are the next steps for you or me?
+*/
+/* 
+
+STATUS: (in progress | blocked | done)
+
+
+if in progress:
+
+
+if blocked:
+
+
+if done:
+
+
+NEXT STEPS:
+for MM:
+
+for DM:
+
+
+*/
+
+// memorable summary of the whole process: make it work, test it, make it pretty
 
 // // // // // // // // // // // // // // start of the template
 // 1. put the following here:
@@ -46,10 +71,18 @@ function myFunction(parameter1, parameter2) {
 
   /* 7. state the solution in terms of WHAT (declarative), not HOW (imperative)
 	  WHAT do you want to change in the input to get the output?
+        WHAT are the intermediate things (string, array, object, ...) you want to calculate based on the input? 
         WHAT do you want to calculate based on the input? 
-        Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, DM: yes!)
-        */
+        Think in terms of avoiding mutating variables. Create new variables instead of manipulating existing variables(not mutating variables, but creating new variables. great!, Yes!)
+  */
+
   /*
+
+      input: string|number|...
+
+      <list the intermediate variables needed to arrive at the output
+
+      output: string|number|...
 
   */
 
@@ -85,7 +118,12 @@ myFunction('', '') // expected result
 /* 13. code review and approval*/
 /*  */
 
-/* 14. Final step: after code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
+/* 14. AFTER code review and approval (like we do at work), copy the solution below this line, remove all comments and console.log below this line  
        OK to rename variables here if it seems better while looking at the code in concise form*/
 
-/* 15. Duncan moves the file out of this directory when it is complete */
+/* 15. Copy here which of the other coders' solutions do you like the best? (Be sure in codewars.com to sort others' solutions by "Best Practices".)
+       Add comments to the code, discussing why it is best, mentioning readability (and possibly efficiency).
+       Note: the best solution should be readable as the highest priority, but not unnecessarily inefficient.
+*/
+
+/* 16. Duncan moves the file out of this directory when it is complete */

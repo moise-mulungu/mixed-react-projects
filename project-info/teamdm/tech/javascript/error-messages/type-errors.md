@@ -1,5 +1,5 @@
 
-# howtojs: type error:: 
+# howtojs: typeError; type error:: 
 * a variable is expected to be of a certain type, based on how it is used, ex: called as a function myVariable()
 * however, the variable is of a different type
 * types: primitives and objects

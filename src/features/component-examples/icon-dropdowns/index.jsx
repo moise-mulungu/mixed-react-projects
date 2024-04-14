@@ -21,7 +21,7 @@ import MenuItem from './menu-item'
 export default function IconDropdowns() {
   const active = true // temporary
   return (
-    <div>
+    <div id="IconDropdowns">
       <Menu
         as="div"
         className={classNames(

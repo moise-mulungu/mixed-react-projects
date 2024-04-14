@@ -1,3 +1,5 @@
+//(done) DM: good, and also add here a short description of what is in the document, so I don't have to open it to see what it is.
+Google Documents in the cloud that contains react project ideas, javascript interview questions, and array methods: https://drive.google.com/file/d/1RuIqi-2ljew9bP1M92dQNcgOi7-iFyy9/view?usp=drive_link
 
 # difference between quotes(“ ”) and backticks(`` );
 Quotes are used for creating strings while backticks are for embedding variables in a string

@@ -8,6 +8,8 @@ import Heading from '@ui/heading'
   <Heading level="1" >My Heading</Heading>
 
 */
+// howtotailwind: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own tailwindcss even for headers.
+
 export default function Heading({ children, level, className = '' }) {
   // level can be either h1 or 1, h2 or 2, ...
   const hTagName = 'h' + level.replace('h', '')

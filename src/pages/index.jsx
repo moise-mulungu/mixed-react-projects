@@ -21,6 +21,31 @@ export default function Pages() {
         <li>
           <Link href="/react-games">React Games</Link>
         </li>
+        <li>
+          {/* good organization */}
+          <Link href="/react-custom-hooks">React Custom Hooks</Link>
+        </li>
+        <li>
+          <Link href="/string-converter">String Converter</Link>
+        </li>
+        <li>
+          <Link href="/weather-forecast-page">Weather Forecast</Link>
+        </li>
+        <li>
+          <Link href="/quiz">Quiz App With Timer</Link>
+        </li>
+        <li>
+          <Link href="/real-time-chat-page">Real Time Chat</Link>
+        </li>
+        <li>
+          <Link href="/solidarity-collect-fund-page">Solidarity Collect Fund</Link>
+        </li>
+        <li>
+          <Link href="/custom-error">Custom Error</Link>
+        </li>
+        <li>
+          <Link href="/firebase-subcollections">Operating System</Link>
+        </li>
       </ul>
     </div>
   )

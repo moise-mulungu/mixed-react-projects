@@ -94,14 +94,10 @@
 * internet outages
 * talk about holidays, vacation time
 ## typical US, per year: https://getsling.com/blog/average-vacation-pto-time
-10 days paid holiday 
-14 days paid vacation
-2 days paid personal leave
-8 days paid sick leave
-## how about (yearly)
-24 days PTO (14 paid vacation, 2 paid personal leave, 8 sick)
-(all US work holidays plus DRC work holidays)
-
+10 days paid holiday (accrue at a rate of 1.6 hours/week 10*8/52)
+14 days paid vacation (accrue at a rate of 2.2 hours/week 14*8/52)
+2 days paid personal leave (accrue at a rate of 0.3 hours/week 2*8/52)
+8 days paid sick leave (accrue at a rate of 1.2 hours/week 8*8/52)
 ### Combined holidays
 January 1	New Year's Day[1]	[OK]
 January 17	Patrice Lumumba Assassination	1961 [OK]
@@ -112,6 +108,17 @@ Independence Day (July 4).
 May 1	Labor Day	[OK]
 Labor Day (First Monday in September).
 Thanksgiving Day (Fourth Thursday in November).
+Day after Thanksgiving day is a holiday in the US.
+
 MM: It seems like my vacation days are so many than yours, for that I can pick only the four most important and drop the rest. They are not necessary. DM: OK, I had also removed some 'bank/civil servant holidays' that companies don't usually pay.
 
+## yearly PTO (paid time off)
+24 days (14 paid vacation, 2 paid personal leave, 8 sick)
+10 holidays (all US work holidays plus DRC work holidays)
+Total: 34 paid days off per year 
+  * === 8.5 days / quarter 
+  * === 44hrs / quarter 
+  * === 3.5hrs / week (44hrs divided by 13wks is approximately 3.38) - this is the calculation of how much PTO you accrue each week
+## timesheets (AKA hourly totals in the daily reports)
+see instructions in daily-reports-template.md
 

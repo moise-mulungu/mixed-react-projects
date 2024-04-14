@@ -6,8 +6,6 @@ export default function TopNav(props) {
   const {} = props
 
   return (
-    <>
-      <Example />
-    </>
+    <Example />
   )
 }

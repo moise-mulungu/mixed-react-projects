@@ -1,22 +1,13 @@
-/*
-
-
-   https://tailwindui.com/components/application-ui/navigation/navbars 
-   if you need @tailwindcss/forms, go ahead, install it and config it. While you do, record your steps to install and config, so that I can read. But, if you don't need it for this code to work, no need to install it. 
-*/
-
+import Image from 'next/image'
 import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-
-import { uuid } from 'uuid'
 
 // DM: @ is mapped to /src (see "paths") in the ./tsconfig.json file
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { topNavSiteLinks, defaultTopNavSiteLinkId, theMan } from '@/constants/portfolio/header'
 import { classNames } from '@/ui/utils'
-import MyImage from '../content/image/image'
-// DM: todoDM: add my ES Modules vocabulary to the project-info area
+import profilePic from '../../../../public/my_profile.jpg'
 const defaultSiteLinkId = defaultTopNavSiteLinkId
 
 // change in props or state causes the component to "run"
@@ -27,34 +18,20 @@ export default function Example(props) {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
-        <>
+        <header>
+          {' '}
           <div className="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
               <div className="flex items-center px-2 lg:px-0">
                 <div className="flex-shrink-0">
-                  {/*    <img
-                    className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  /> */}
-                  {/* note: curly brackets means JS goes inside. since this is a variable containing plain text, use curly brackets so JS can evaluate the variable which resolves to text. */}
-                  {/* DM: todoMM: add some TW utility classes for color and size and any other styling you like (bump)*/}
                   <span className="text-2xl font-bold leading-7 text-gray-500 sm:truncate sm:text-1xl sm:tracking-tight">
                     {theMan}
                   </span>
-                  {/*    <img
-                    className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  /> */}
                 </div>
 
-                <div className="hidden lg:ml-6 lg:block">
+                <nav className="hidden lg:ml-6 lg:block">
                   <div className="flex space-x-4">
-                    {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
-
                     {topNavSiteLinks.map(({ id, name, anchor }) => {
-                      // console.log('wut', { id, name, anchor })
                       return (
                         <a
                           key={id}
@@ -70,32 +47,8 @@ export default function Example(props) {
                         </a>
                       )
                     })}
-                    {/*                     <a
-                      href="#"
-                      className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                    >
-                      Dashboard
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                    >
-                      Team
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                    >
-                      Projects
-                    </a>
-                    <a
-                      href="#"
-                      className="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-                    >
-                      Calendar
-                    </a> */}
                   </div>
-                </div>
+                </nav>
               </div>
               <div className="flex flex-1 justify-center px-2 lg:ml-6 lg:justify-end">
                 <div className="w-full max-w-lg lg:max-w-xs">
@@ -142,7 +95,13 @@ export default function Example(props) {
                     <div>
                       <Menu.Button className="flex rounded-full bg-gray-800 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span className="sr-only">Open user menu</span>
-                        <img className="h-8 w-8 rounded-full" src={MyImage} alt="" />
+                        <Image
+                          className="h-8 w-8 rounded-full"
+                          src={profilePic}
+                          alt="My profile picture"
+                          width={50}
+                          height={50}
+                        />
                       </Menu.Button>
                     </div>
                     <Transition
@@ -201,10 +160,8 @@ export default function Example(props) {
               </div>
             </div>
           </div>
-
           <Disclosure.Panel className="lg:hidden">
             <div className="space-y-1 px-2 pt-2 pb-3">
-              {/* Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" */}
               <Disclosure.Button
                 as="a"
                 href="#"
@@ -280,7 +237,7 @@ export default function Example(props) {
               </div>
             </div>
           </Disclosure.Panel>
-        </>
+        </header>
       )}
     </Disclosure>
   )

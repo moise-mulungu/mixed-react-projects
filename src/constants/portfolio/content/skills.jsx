@@ -113,3 +113,6 @@ export const skills = [
     ],
   },
 ]
+
+export const myResume =
+  'https://docs.google.com/document/d/14Jk9jCBOfWHd7OEEpFVq7Jjxd08DBk1JVyXch1i_MqM/edit'

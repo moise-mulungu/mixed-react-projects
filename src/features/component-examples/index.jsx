@@ -1,3 +1,5 @@
+import Link from '@/ui/link'
+
 import Hello from './hello'
 import ContactCards from './contact-cards'
 import AvatarSet from './avatar-set'
@@ -12,74 +14,130 @@ import GameCharacter from './game-character'
 import Counter2 from './counter2'
 import SelectLanguages from '@/ui/form/select-languages'
 import MultipleCheckbox from '@/ui/form/multiple-checkbox'
-import SelectCountries from '@/ui/form/select/select-countries'
-import Colors from './colors'
 import IconDropdowns from './icon-dropdowns'
-import TwoFactor from './two-factor/two-factor'
+import AnchorLinks from '../component-examples/components/anchor-links'
 
-import Popup from './popup'
-import ReactAccordion from './react-accordion'
-import ComplexObject from './complex-object'
-// howtotailwind: note: TW clears out all the default browser CSS, such as h1. This insures that TS looks the same in all browsers, but you have to write all your own TW even for headers
-import Heading from '@/ui/heading'
-// DM: todoDM: get ctrl-click on object to work for @/ imports
 import Divider from '@/ui/divider'
+// import { colors } from 'react-select/dist/declarations/src/theme'
 
 export default function ComponentExamples() {
+  // want to add the styling when you hover over each link, but i am unable to do it. // DM: todoMM: google: "site:tailwindcss.com on hover"
+  // DM: todoMM: read this: https://nextjs.org/docs/pages/building-your-application/configuring/debugging#client-side-code (just the "client side code") to see how you can debug in Chrome. ;after you open Dev Tools and go to the Sources tab, you may need to to a hard-reload.
+  // // stops execution here and you can see the value of activeStyle in the browser
+  const exampleAnchorLinks = [
+    'hello',
+    'icon-dropdowns',
+    'contact-cards',
+    'avatar-set',
+    'side-note',
+    'counter',
+    'counter2',
+    'click-ball-game',
+    'select-languages',
+    'multiple-checkbox',
+    'game-character',
+    'movie-ratings-animations',
+  ]
+
+  const color = 'hover:bg-sky-400'
   return (
-    <div>
-      <Heading level="1">Component Examples</Heading>
+    <>
+      {/*
+        DM: todoMM: we see repeated code, so make a separate component that will work in both locations. See the starter component I put in the ./components directory. Then, use it like this in both places:
+        <AnchorLinks exampleAnchorLinks={exampleAnchorLinks} />
+        */}
 
-      {/* new components at the top */}
+      <>
+        <AnchorLinks anchorLinks={exampleAnchorLinks} styleColor={color} />
+        {/* {exampleAnchorLinks.map((link) => {
+          const linkText = link
+            .replace(/[-]/g, ' ')
+            .split(' ')
+            .map((word) => {
+              return word.charAt(0).toUpperCase() + word.substr(1).toLowerCase()
+            })
+            .join(' ')
+          return (
+            <a className={`hover:${activeStyle.color}`} key={link} href={`#${link}`}>
+              {linkText} | {''}
+            </a>
+          )
+        })} */}
+      </>
 
+      {/* DM: try this sometime: instead of a separate page, put a searchable dropdown here so it is easy to find an example by searching on the name of the example in the dropdown. You can use src/ui/form/dropdown to build the searchable dropdown. 
+      this is a better place to do it
+      (done)DM: don't do the dropdown for now, but rather do this step first: make a list of links to each example below that looks like this:
+      ComponentName | ComponentName | ComponentName | ComponentName | ComponentName | ...
+      Each (ComponentName) item should be an anchor link to the corresponding part of the page below
+      ex: <a href="#hello">Hello</a>IconDropdowns
+          <a href="#IconDropdowns">IconDropdowns</a>
+          will take you to the Hello component below
+          see explanation of how it works here: https://www.w3docs.com/snippets/html/how-to-create-an-anchor-link-to-jump-to-a-specific-part-of-a-page.html
+      once you have made this, I'll give you the next step
+      
+      {/* <Dropdown
+        props={
+          <ul className="list-style-type: disc; ">
+            <li>
+              <Link href="/component-examples/component-example-pages-two">
+                Component Examples 2
+              </Link>
+            </li>
+          </ul>
+        }
+        MM: DM: when adding a Dropdown to the page, it does not render the link page, as the there is no option to add a link to the page. i am not sure what is the issue.
+      /> */}
       <MyNewJoyOfReactComponent />
-
       <Divider />
-
-      <div className=" bg-slate-100">
+      <div id="hello" className=" bg-slate-100">
         <Hello />
         <Hello name="Moïse" />
       </div>
       <Divider />
-      <IconDropdowns />
+      <div id="icon-dropdowns" className=" bg-slate-100">
+        <IconDropdowns />
+      </div>
+      <div id="contact-cards" className=" bg-slate-100">
+        <ContactCards />
+      </div>
       <Divider />
-      <ContactCards />
+      <div id="avatar-set" className=" bg-slate-100">
+        <AvatarSet />
+      </div>
       <Divider />
-      <AvatarSet />
+      <div id="side-note" className=" bg-slate-100">
+        <SideNote />
+      </div>
       <Divider />
-      <SideNote />
+      <div id="movie-ratings-animations" className=" bg-slate-100">
+        <MovieRatingsAnimations />
+      </div>
       <Divider />
-      <MovieRatingsAnimations />
+      <div id="click-ball-game" className=" bg-slate-100">
+        <ClickBallGame />
+      </div>
       <Divider />
-      <ClickBallGame />
+      <div id="counter" className=" bg-slate-100">
+        <Counter />
+      </div>
       <Divider />
-      <Counter />
+      <div id="counter2" className=" bg-slate-100">
+        <Counter2 />
+      </div>
       <Divider />
-      <GameCharacter />
+      <div id="select-languages" className=" bg-slate-100">
+        <SelectLanguages />
+      </div>
       <Divider />
-      <Counter2 />
+      <div id="multiple-checkbox" className=" bg-slate-100">
+        <MultipleCheckbox />
+      </div>
       <Divider />
-      <SelectLanguages />
+      <div id="game-character" className=" bg-slate-100">
+        <GameCharacter />
+      </div>
       <Divider />
-      <MultipleCheckbox />
-      <Divider />
-      <SelectCountries />
-      <Divider />
-      <TwoFactor />
-      <Divider />
-      <Colors />
-      <Divider />
-      <Popup />
-      <Divider />
-      <ReactAccordion />
-      <Divider />
-      <ComplexObject />
-    </div>
+    </>
   )
 }
-/*
-
-DM: todoMM: it's time to refactor this page because there are so many items here. You could make sub pages, but that is a lot of work making new pages in src/pages/component-examples. So, have a look at tailwindui and check out a few examples that look good. Something that is a big show/hide basically, to demo lots of things on one page.
-(read, but not started yet)
-
-*/

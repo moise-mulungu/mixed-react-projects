@@ -9,6 +9,7 @@ function Movie({ movie }) {
   return (
     <article className={styles.movie}>
       <div className={styles.thumbnailWrapper}>
+        {/* DM: read nextjs documentation about how to best work with images. */}
         <img alt="Movie poster" src={movie.posterSrc} />
       </div>
       <div className={styles.textWrapper}>

@@ -14,12 +14,6 @@
 - a word that cannot be used as an identifier, such as the name of a variable, function, or labels.
 - ex: `let`, `sort`, `this`, `charAt`, `function`
 
-## Type coercion
-
-Type Coercion refers to the process of automatic or implicit conversion of values from one data type to another. This includes conversion from Number to String, String to Number, Boolean to Number etc. when different types of operators are applied to the values.
-
-// DM: good choice. just say "the logical AND operator" - so many DEVs say junk like "the double ampersand operator" ... sigh...
-
 ## Logical AND(&&) and OR(||) operators
 
 - logical AND operator - uses the double `ampersand(&&)` to represent the logical AND operator.
@@ -33,15 +27,7 @@ Type Coercion refers to the process of automatic or implicit conversion of value
 
 ## difference between string interpolation and template literal
 
-<!-- MM: These two expressions seem to be confusing at first to me, but I think string interpolation is the *process* to insert or embed, but template literal or string literal is the *place* to insert the string interpolation. DM: exactly!
-For example, a box with pens inside, a box is a template literal and pens are string interpolation
-DM: yes, in the sense that the template literal is what JS employs to make string interpolation happen. This will help clarify the difference - string interpolation is an item for tech-vocabulary.md, and template literal belongs in this file.
-DM: but yes the ${} is where the string interpolation happens in `text, text ${} more text`
-DM: and: `text, text ${ 'any expression here will be coerced to a String' } more text`
-DM: todoMM: summarize my answer into a 'definition' for this vocab entry
-
 A template literal is a placeholder used in JavaScript for string interpolation and expressions with a dollar sign and curly braces, while string interpolation is used to concatenate string with the plus sign.
--->
 
 ## template literal
 
@@ -49,7 +35,36 @@ Template literals are literals delimited with backtick ( ` ) characters, allowin
 
 ## short-circuiting evaluation
 
-the semantics of some Boolean operators in some programming languages in which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression
+the semantics of some Boolean operators in some programming languages in which the second argument is executed or evaluated only if the first argument does not suffice to determine the value of the expression or refers to the behavior of `logical operators (&& and ||)` where the second operand is not evaluated if the result can be determined by the first operand alone. This behavior can be useful in conditional statements and can help simplify code.
+
+```js
+//1. Using the logical AND operator (&&):
+  const x = 5;
+  const y = 10;
+
+  // If x is truthy, evaluate y
+  const result = x && y;
+  console.log(result); // Output: 10
+
+  // If x is falsy, skip evaluating y
+  const result2 = 0 && y;
+  console.log(result2); // Output: 0
+
+```
+```js
+// 2. Using the logical OR operator (||);
+  const x = 0;
+  const y = 10;
+
+  // If x is falsy, then evaluate y
+  const result = x || y;
+  console.log(result); // Output: 10
+
+  // If the first operand is "false", the second operand is evaluated instead!
+  const result2 = false || y;
+  console.log(result2); // Output: 10
+
+```
 DM: todoDM: concise examples from my Anki
 
 ## destructuring assignment(object and array destructuring)
@@ -91,9 +106,9 @@ Prototypes are the mechanism by which JavaScript objects inherit features from o
 
 ## the number type - truthy/falsy
 
-Every number in JavaScript is `truthy`(a truthy value is a value that is considered true when encountered in a Boolean context), except zero(`0`) which is `falsy` just like how an empty string (`''`) is the only `falsy` string.
+Every number in JavaScript is `truthy`(a truthy value is a value that is considered true when encountered in a Boolean context), except zero(`0`) which is "falsy" just like how an empty string (`''`) is the only "falsy" string.
 
-- other falsy values are : `false`, `null`, `undefined`, `NaN`
+- other falsy values are : `false`, `null`, `undefined`, `NaN`, `0n`
 
 ## boolean constructor
 
@@ -120,14 +135,38 @@ An array literal is a _list_ of zero or more _expressions_, each of which repres
 
 ## object literal
 
-An object literal is a _compound data type_ of zero or more pairs of *property name*s and associated 3s of an object, enclosed in _curly brackets_ ( {} )
-```const myObj = {}```
+An object literal is a _compound data type_ of zero or more pairs of *property name*s and associated values of an object, enclosed in _curly brackets_ ( {} )
+`const myObj = {propertyName: 'value'}`
 
 DM: great work!
 
-DM: todoMM: add to programming vocab: compound data type
+(done) DM: add to programming vocab: compound data type; I added it in the programming-vocabulary.md file.
 
-curly|square|angle|round brackets - DM: I like to pick one word, "brackets", to keep it simple. You can say curly braces and parentheses (instead of round brackets). This is also more internationalized (i18n)
+## data type
+
+There are four 'primitive' or basic data types, from which all others can be created
+
+These are known as:
+
+- integer (whole numbers)
+- real (numbers with a fraction part)
+- Boolean (True/False)
+- char (characters)
+
+But in JavaScript there are eight:
+
+- String
+- Number
+- Boolean
+- Undefined
+- Null as primitive
+- Bigint
+- Symbol
+- Object as non-primitive
+
+# curly|square|angle|round brackets
+
+- DM: I like to pick one word, "brackets", to keep it simple. This is also more internationalized (i18n) You can say curly braces and parentheses (instead of round brackets).
 
 ## css-in-js
 
@@ -135,9 +174,9 @@ CSS-in-JS is different from inline styles. We still write all our CSS in JavaScr
 
 ## recursive function
 
-A recursive function is a function that calls itself until it doesn’t.
+A recursive function is a function that **calls itself** _until it doesn’t_.
 
-<!-- MM: i need to understand in depth the concept and train a lot on it -->
+verb form: "to recurse"; ex: "the algorithm recurses on the children of the current item"
 
 ## property access: dot notation vs. bracket notation
 
@@ -163,28 +202,376 @@ const myPropertyNameInAVariable = 'myPropertyName'
 myObject[myPropertyNameInAVariable] // myPropertyNameInAVariable is an expression
 myObject.myPropertyNameInAVariable // error! myPropertyNameInAVariable is undefined (not a property of myObject)
 ```
+## Compile Phase
+
+In this phase, the JavaScript engine reads through the entire code without executing it. It looks for variable and function declarations and creates memory spaces for them in what's called the `Variable Environment`. This is where hoisting takes place. The engine assigns memory space for variables and initializes them with a default value of undefined, and for functions, it stores the entire function's code. It also checks for syntax errors during this phase.
+
+https://www.scaler.com/topics/hoisting-in-javascript/ and AI-Sider
+
+
+DM: going forward, know that you're dealing with more advanced topics that I may not know "off the top of my head", show your references for the definitions, i.e., a URL or put "AI" if that's the case. EX above I'm not familiar with the term "variable environment" so I wouldn't know if AI invented the term or borrowed it from another programming language or context. If I google search "js compile "Variable Environment"" I see little mention of it, but there are some. 
+(done)DM: I think "variable environment" means "memory space" but double check it with a google search. MM: src: 
+
+## Execution Phase
+
+After the compile phase, the JavaScript engine starts executing the code line by line. It assigns real values to the variables and executes the function calls. It's in this phase that the code actually performs actions.
 
 ## hoisting
 
-JavaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code.
+the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code that creates the functions, variables or classes
+
+
+### main javascript hoisting issues
+  There are a few key issues to be aware of when it comes to JavaScript hoisting:
+
+  see ./javascript-hoisting-issues
+  
+## Assignment (=)
+
+The assignment ( = ) operator is used to assign a value to a variable. The assignment operation evaluates to the assigned value. Chaining the assignment operator is possible in order to assign a single value to multiple variables
 
 ## mutation
 
-* A value is said to be mutable if it can be changed, altered
-* a mutation is the act of changing the properties of an object, or the value of a declared variable. 
-* but, all primitive values in JavaScript are immutable: 
-  * you can't change their properties — ever
-  * they cannot be altered
-  * but their value can be reassigned
-* let - you can reassign and mutate (objects)
-* const - cannot reassign, but can mutate
-* often an interview question. memorize a short answer. be careful to not get 'lost in the weeds'
+- A value is said to be mutable if it can be changed, altered
+- a mutation is the act of changing the properties of an object, or the value of a declared variable.
+- but, all primitive values in JavaScript are immutable:
+  - you can't change their properties — ever
+  - they cannot be altered
+  - but their value can be reassigned
+- let - you can reassign and mutate (objects)
+- const - cannot reassign, but can mutate
+- often an interview question. memorize a short answer. be careful to not get 'lost in the weeds'
 
 # object
-* { property: value }
-* anything that is not a primitive: array, regExp, date
-  * note: all can be instantiated via the 'new' operator: const date = new Date()
-    * but, so can a string: const myString = new String('hello') // DM: todoDM: is myString an object or primitive
-    * also, number: const myNumber = new Number(1);
-    * 
 
+- { property: value }
+- anything that is not a primitive: array, regExp, date
+  - note: all can be instantiated via the 'new' operator: const date = new Date()
+    - but, so can a string: const myString = new String('hello') // DM: todoDM: is myString an object or primitive
+    - also, number: const myNumber = new Number(1);
+    -
+
+## type coercion
+
+- automatic or implicit conversion of values from one data type to another
+- happens implicitly when operators or functions are applied to values of different types
+- examples:
+
+  - 4 + '5' // '45' // 4 was coerced to '4' then concatenated with '5'
+  - 4 + Number(5) // 9 // '5' was converted to 5 then added to 4
+  - [].filter(mySubstring => [].find(myString => myString.includes(mySubstring)))
+    - Array.filter() expects a Boolean
+    - but Array.find() returns the matching myString || undefined
+    - therefore, Array.filter() code coerces myString || undefined to Boolean
+
+  return firstArray
+  .filter((substring) => {
+  return secondArray.find((string) => string.includes(substring))
+  /_
+  'arp' || undefined || '' || '0' || 0
+  Boolean('arp') === true // string to true
+  Boolean(undefined) === false // undefined to false
+  type coercion
+  _/
+  })
+  .sort()
+  Boolean('arp') // converts 'arp' to Boolean "explicitly"; "explicit conversion"
+  'arp' === true // false
+  'arp' == true // true - "==" "implicitly" coerces 'arp' to Boolean; "implicit conversion"
+
+## abstract equality comparison operator(==) vs strict equality comparison operator(===)
+
+- The abstract equality operator performs a _**loose** equality_ comparison that performs type coercion if necessary to make the comparison possible.
+- The strict equality operator, on the other hand, performs a _strict equality_ comparison that does not perform type coercion and requires the operands to have the same type (as well as the same value).
+
+https://www.pluralsight.com/blog/software-development/vs-javascript-abstract-vs-strict-equality
+
+## truthy/falsy VS Boolean()
+
+- the 7 falsy values: false, 0, 0n, '', null, undefined, NaN (mnemonic: F00'nun)
+- truthy = NOT falsy
+- truthy/falsy is implemented by
+  - `if ()`
+  - `Boolean()`
+  - (but not `==`, which follow the JS rules of type coercion, which are weird).
+  - exit conditions on constructs like `for` and `while`.
+  - By extension, _predicate functions_, like those passed to Array.filter and Array.find, also operate based on truthiness.
+  - operators:
+    - `!` negation operator
+    - `&&` and `||` logical operators
+      - called short-circuiting operators because they evaluate their operands from left to right and stop at the first value that guarantees the value of the expression.
+      - Short-circuiting expressions produce whatever value determined the truthiness of the expression, not necessarily a boolean:
+        - `0 || 42 // 42`
+        - `const obj = { ...( truthy && { foo: 'bar' } ) }`
+          - note: `{ ...anyFalsyValue } // {}`
+          - also: `{ ...[] } // {}`
+    - ?...: conditional (ternary) operator
+  - Truthiness is inherent in every JavaScript value and is used implicitly by the runtime anytime a boolean evaluation of the value is required.
+
+// == (JS "abstract equality" is weird, so DON'T USE ==, DO USE ===)
+false == 0 // true
+0 == 0n // true
+0n == '' // true
+'' == null // false // empty string can't be coerced to null or vice versa
+null == undefined // true
+undefined == NaN // false // undefined can't be coerced to NaN or vice versa
+
+// if ()
+if (false || 0 || 0n || '' || null || undefined || NaN) console.log('never logged')
+
+// Boolean()
+Boolean(false) === Boolean(0) // true
+Boolean(0) === Boolean(0n) // true
+Boolean(0n) === Boolean('') // true
+Boolean('') === Boolean(null) // true
+Boolean(null) === Boolean(undefined) // true
+Boolean(undefined) === Boolean(NaN) // true
+
+// ?? nullish coalescing operator handles both `null` and `undefined` and solves some of the drawbacks of truthiness/falsiness
+const foo = null ?? 'default string'; // 'default string'
+const baz = 0 ?? 42; // 0 // however, 0 is a valid number value that happens to be falsy
+const bar = 0 || 42; // 42
+const boo = '' || 'some string value' // 'some string value' // however, '' may be a valid value
+const fax = '' ?? 'some string value' // ''
+
+## escape sequences
+
+Escape sequences are typically used to specify actions such as carriage returns and tab movements on terminals and printers. They are also used to provide literal representations of non printing characters and characters that usually have special meanings, such as the double quotation mark (")
+
+## array methods
+
+Array methods are functions built-in to JavaScript that we can apply to the arrays — Each method has a unique function that performs a change or calculation to the array and saves us from writing common functions from scratch.
+
+- e.g: `array.map(), array.startsWith()`
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+## object property
+
+Properties are the values associated with a JavaScript object. A JavaScript object is a collection of unordered properties. Properties can usually be changed, added, and deleted, but some are read only.
+
+- e.g: `array.length`
+
+## method
+
+a function that is a property of an object
+
+- ex: built-in methods: String methods, Number methods
+- ex: custom: we can create an object with properties that are functions:
+  ```js
+  const myObj = {
+    myMethod: () => {},
+    // howtojs: object: method: call another method that is defined in the same object; only works with regular functions (not arrow functions)
+    anotherMethod: function () {}, // arrow methods cannot be called directly in the same object
+    methodThatCallsAMethod: () => this.anotherMethod(),
+  }
+  myOby.myMethod()
+  ```
+
+## reassignment
+
+Reassignment is the process of changing variable assignment or when their value changes to that of the newer value specified, and the previous value is lost by using the `let` key word
+
+- for example:
+  ```js
+  let person = 'Joe'
+  person = 'Doe'
+  ```
+
+## nodejs
+
+Node.js is a back-end JavaScript runtime environment, runs on the V8 JavaScript Engine, and executes JavaScript code outside a web browser.
+
+## NodeJS vs JavaScript
+
+- NodeJS is a javascript runtime environment that runs on the server
+- JavaScript runs in the browser.
+
+## when edit an API endpoint, are you writing NodeJS or JavaScript?
+
+Both. An API endpoint is written in NodeJS (which is server-side JavaScript)
+
+## argument object
+
+In JavaScript, inside a function, the arguments object has the values of arguments passed to that function. Using the arguments object, we can point to all of the functions passed to a function. The arguments object has properties similar to an array, so we can pick individual values by using the array indexing notation
+
+- e.g:
+
+```js
+function argumentsObject(a, b, c) {
+  console.log(arguments[0]) // 1
+  console.log(arguments[1]) // 2
+}
+
+argumentsObject('a', 'b')
+```
+
+- Note: The object arguments is not an Array. It is similar to an Array, but does not have any Array properties except `length`. However, it can be converted to a real array using the `Array.prototype.slice`. Technically, it is called an "array-like object".
+
+// DM: nice, good job on these new entries (delete this line after you read it, Moise)
+
+```js
+function argumentsObject() {
+  return Array.prototype.slice.call(arguments)
+}
+argumentsObject()
+```
+
+note: not available in array functions
+
+## web API
+
+A web API is an application programming interface for either a web server or a web browser. As a web development concept, it can be related to a web application's client side.
+
+## ECMAScript
+
+- Is a standard for scripting languages including JavaScript (and technically also JScript, and ActionScript). It is also best known as a JavaScript standard intended to ensure the interoperability of web pages across different web browsers.
+- basically it is THE JS specification
+- the origin of the ES in the "ES6" version of JS
+
+### ECMAScript vs JavaScript
+
+- JavaScript is the programming language that is implemented by various platforms (browsers, Node.js, Deno, etc.)
+- ECMAScript is its standard, as described in the ECMAScript language specification.
+- FAQ: https://2ality.com/2022/06/ecmascript-2022.html#faq (cool!)
+
+## CommonJS NOTE: not used in this repo, we use ES Modules
+
+CommonJS is a project to standardize the module ecosystem for JavaScript outside of web browsers. CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node.js. Increasingly ES Modules is used in NodeJS, and always in nextjs API routes.
+
+(done)DM: following the same pattern, add entries for named imports and named exports
+DM: made some edits to use a common vocabulary
+* CommonJS
+```js
+// default import
+const YourModule = require('./YourModule')
+// default export
+module.exports = YourModule;
+
+// named import
+const { myFunction, myVariable } = require('./lib')
+
+// named export
+module.exports = { myFunction, myVariable }
+exports.myFunction = function() {}
+exports.myVariable = 'some value'
+//  In CommonJS, "exports" is an alias to module.exports
+```
+* ES Modules
+```js
+/// default import
+import YourModule from './YourModule.js'
+// default export
+export default YourModule
+
+// named import
+import { myFunction, myVariable } from './lib'
+
+// named export
+export const myFunction = () => {}
+export const myVariable = 'some value'
+```
+
+
+## why are functions called first class objects in js?
+
+In JavaScript, functions are first-class objects, because they can be passed to other functions, returned from functions, and assigned to variables and properties.
+
+## scope
+
+Scope in JavaScript refers to the current context of code, which determines the accessibility of variables to JavaScript. The two types of scope are ***local and global***: 
+  **Global variables** are those declared outside of a block. 
+  ***Local variables*** are those declared inside of a block.
+
+## global scope
+The global scope is JavaScript’s outermost scope. It has two kinds of variables: `object variables` (managed via the global object) and normal `declarative variables`. Each ECMAScript module has its own scope which is contained in the global scope.
+
+## global object 
+The global object in JavaScript is an always defined object that provides variables and functions, and is available anywhere. In a web browser, the global object is the window object, while it is named global in Node.js. The global object can be accessed using the this operator in the global scope. ***They are created in the top level of a script, via var and function declarations***
+
+## global variable
+
+Global Variables are the variables that can be accessed from anywhere in the program. These are the variables that are declared in the main body of the source code and outside all the functions. ***They can only be created while at the top level of a script, via const, ‘let, and class declarations***
+
+## temporal dead zone
+A temporal dead zone (TDZ) is the lines where a variable is inaccessible until the moment the computer initializes it with a value. Initialization occurs when one assigns an initial value to a variable.
+
+## A closure
+A closure is a feature of JavaScript that allows inner functions to access the outer scope of a function. Closure helps in binding a function to its outer boundary and is created automatically whenever a function is created. A block is also treated as a scope since ES6. ***Static scoping is supported via closures in JavaScript. Therefore, every function is
+a closure***
+
+(done)DM: great. Add vocab "static scoping" to this file.
+
+## lexical scoping AKA static scoping
+
+
+Variables in JavaScript are lexically scoped
+so the static structure of a program determines the scope of a variable. Variable scope is not influenced by, say, where a function is called.
+
+```js
+const myVar = 1
+export default function myFunction() { // closure
+  return myVar
+}
+// it doesn't matter where this is called
+// the "scope" is always the same and the value always is 1.
+```
+## function signature
+
+DM: todoMM: RE efficiency, you can make these notes faster to read by avoiding repetitive, conversational conventions, like repeating "The function signature" in the vocab definition. Web articles and AI are written with a lot of those that you can omit. Going forward, keep an eye on how I edit your vocab and howtos to make them more concise and quickly readable, and start doing the same yourself. 
+DM: todoMM:; check your JS vocab and if you don't already have it, make an entry that distinguishes between function and method (i.e., a method is a function that is the property of an object)
+
+consists of
+* function name and the 
+* arguments 
+
+note: the parameters of a function don't need to be declared within the body of the function because they are already declared inside the function header
+note: in Javascript, arguments are passed positionally.
+
+## ES6 modules 
+
+DM: todoMM: try this one again. The below info on "strict mode" is only 1 minor detail about ES6 modules. If you use AI to get answers, you may need to 'start a new conversation" so that AI won't distort the answer by using context from previous questions in the same 'conversation'.
+
+An ES6 module is a JavaScript file that executes in strict mode only. It means that any variables or functions declared in the module won't be added automatically to the global scope
+
+## CommonJS
+ is a project to standardize the module ecosystem for JavaScript outside of web browsers (e.g. on web servers or native desktop applications). CommonJS's specification of how modules should work is widely used today for server-side JavaScript with Node. js
+
+## ES6 modules VS CommonJS 
+DM: todoMM: try your search/prompts The comparison is probably the most important aspect of both.
+
+## module system
+
+JavaScript modules allow you to break up your code into separate files. This makes it easier to maintain a code-base. Modules are imported from external files with the import statement. Modules also rely on type="module" in the <script> tag DM: where is this tag located?
+
+## namespace
+
+A namespace is a programming concept that gives identifiers (names of types, functions, variables, etc.) scope to avoid name conflicts. For instance, a program may need to use the same variable name in many contexts
+
+## namespace import
+new one; show an example
+
+## bundle size
+The js bundle size is the total amount of JavaScript code that your website needs to run
+
+## Named import
+Is the process of import multiple names from the same module. 
+```import { foo, bar } from "/modules/my-module.js"; ```
+You can rename an export when importing it. DM: todoMM: show an example of howto do it
+
+## tree shaking
+tree shaking eliminates unused functions from across the bundle by starting at the entry point and only including functions that may be executed. It is succinctly described as "live code inclusion"
+
+## parameter
+A parameter in JavaScript is a variable used in the declaration of a function. It's a placeholder that will get its value from the actual arguments when the function is called. The value of the parameter can be any JavaScript data type, including objects and arrays. For example, in the function declaration `function myFunc (param1, param2) {...}`, param1 and param2 are parameters.
+
+## parameter VS argument: depends on the context
+* parameter: when _defining a function_, you specify parameters
+* argument: when _calling a function_, you pass arguments to the function
+
+## parsing vs execution code
+
+### parsing
+In this phase, the JavaScript engine reads the source code. It checks the syntax of the code and creates a data structure known as the Abstract Syntax Tree (AST). If there are any syntax errors (like missing brackets or typos), they are detected in this phase and a SyntaxError is thrown. The parsing phase does not involve running the code, it's only about understanding the structure of the code.
+
+### execution
+After the parsing phase, if no syntax errors are found, the JavaScript engine proceeds to the execution phase. In this phase, the engine runs the code line by line. It allocates memory for variables, performs computations, and carries out any actions specified by the code (like modifying the DOM, making network requests, etc.). If there are any errors that occur during the execution of the code (like trying to access an undefined variable or calling a non-existent function), they are detected in this phase and the appropriate error (like a ReferenceError or TypeError) is thrown.
