@@ -1,49 +1,67 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Header from './header'
 import UserAuthentication from './user-authentication'
 import WeeklyMeetingForm from './weekly-meeting-form'
 import CollectorAuthenticationForm from './user-authentication/collector-authentication-form'
+import SubmittedData from './submitted-data'
 
 export default function SolidarityCollectFund() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isCollectorAuthenticated, setIsCollectorAuthenticated] = useState(false)
-  const [isMeetingFormVisible, setIsMeetingFormVisible] = useState(false)
-  const [role, setRole] = useState(null)
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false)
+  const [selectedAuthType, setSelectedAuthType] = useState(null)
 
-  useEffect(() => {
-    // Check if both authentication and collector authentication are true, then show the meeting form
-    if (isAuthenticated && isCollectorAuthenticated) {
-      setIsMeetingFormVisible(true)
-    }
-  }, [isAuthenticated, isCollectorAuthenticated])
-
-  const handleAuthentication = (authStatus, userRole) => {
+  const handleAdminAuthentication = (authStatus, userRole) => {
     setIsAuthenticated(authStatus)
-    setRole(userRole) // Set the role in the state
+    setIsAdminAuthenticated(authStatus && userRole === 'admin')
   }
 
-  const handleCollectorAuthentication = (authStatus, userRole) => {
+  const handleCollectorAuthentication = (authStatus) => {
     setIsAuthenticated(authStatus)
-    if (userRole === 'collector' && authStatus) {
-      // Only set if authenticated
-      setIsCollectorAuthenticated(true)
-    } else {
-      setIsCollectorAuthenticated(false) // Reset if not authenticated or not a collector
-    }
+    setIsCollectorAuthenticated(authStatus)
+  }
+
+  const handleAdminClick = () => {
+    setSelectedAuthType('admin')
+  }
+
+  const handleCollectorClick = () => {
+    setSelectedAuthType('collector')
   }
 
   return (
-    <div>
+    <>
       <Header />
-      {!isAuthenticated && <UserAuthentication onFormSubmit={handleAuthentication} />}
-      {isAuthenticated && !isCollectorAuthenticated && (
-        <CollectorAuthenticationForm
-          onFormSubmit={(authStatus, userRole) => {
-            handleCollectorAuthentication(authStatus, userRole)
-          }}
-        />
+      {!isAuthenticated && (
+        <div className="flex justify-between mb-2">
+          <a
+            href="#"
+            onClick={handleAdminClick}
+            className="text-blue-500 hover:text-red-500 cursor-pointer"
+          >
+            Admin Authentication
+          </a>
+          <a
+            href="#"
+            onClick={handleCollectorClick}
+            className="text-blue-500 hover:text-red-500 cursor-pointer"
+          >
+            Collector Authentication
+          </a>
+        </div>
       )}
-      {isMeetingFormVisible && <WeeklyMeetingForm role={role} />}
-    </div>
+
+      {selectedAuthType === 'admin' && !isAdminAuthenticated && (
+        <UserAuthentication onFormSubmit={handleAdminAuthentication} />
+      )}
+
+      {selectedAuthType === 'collector' && !isCollectorAuthenticated && (
+        <CollectorAuthenticationForm onFormSubmit={handleCollectorAuthentication} />
+      )}
+
+      {isAdminAuthenticated && <SubmittedData />}
+
+      {isCollectorAuthenticated && <WeeklyMeetingForm />}
+    </>
   )
 }

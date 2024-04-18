@@ -6,7 +6,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/DeleteOutlined'
 import SaveIcon from '@mui/icons-material/Save'
 import CancelIcon from '@mui/icons-material/Close'
-import { ListItem, ListItemText, List } from '@mui/material'
+// import { ListItem, ListItemText, List } from '@mui/material'
 import {
   DataGrid,
   GridToolbarContainer,
@@ -14,6 +14,8 @@ import {
   GridRowModes,
   GridRowEditStopReasons,
 } from '@mui/x-data-grid'
+
+import SubmittedData from './submitted-data'
 
 const roles = ['Market', 'Finance', 'Development']
 
@@ -69,7 +71,7 @@ const EditToolbar = (props) => {
     const dataToSubmit = rows.map((row) => ({
       name: row.name,
       age: row.age,
-      joinDate: row.joinDate.toISOString(),
+      joinDate: new Date(row.joinDate).toLocaleDateString('en-CA'),
       role: row.role,
     }))
     setSubmittedData(dataToSubmit)
@@ -90,7 +92,8 @@ const EditToolbar = (props) => {
 export default function WeeklyMeetingForm() {
   const [rows, setRows] = React.useState(initialRows)
   const [rowModesModel, setRowModesModel] = React.useState({})
-  const [submittedData, setSubmittedData] = React.useState(null)
+  const [submittedData, setSubmittedData] = React.useState([])
+  const [processedData, setProcessedData] = React.useState([])
 
   const handleRowEditStop = (params, event) => {
     if (params.reason === GridRowEditStopReasons.rowFocusOut) {
@@ -206,6 +209,23 @@ export default function WeeklyMeetingForm() {
     },
   ]
 
+  const submittedColumns = [
+    { field: 'name', headerName: 'Name', width: 180 },
+    { field: 'age', headerName: 'Age', width: 80 },
+    { field: 'joinDate', headerName: 'Join date', width: 180 },
+    { field: 'role', headerName: 'Department', width: 220 },
+  ]
+
+  React.useEffect(() => {
+    const processedData =
+      submittedData?.map((data, index) => ({
+        id: index,
+        ...data,
+      })) || []
+
+    setProcessedData(processedData)
+  }, [submittedData])
+
   return (
     <Box
       sx={{
@@ -237,28 +257,13 @@ export default function WeeklyMeetingForm() {
         }}
       />
 
-      {submittedData && (
+      {submittedData.length > 0 && (
         <div>
           <h2>Submitted Data</h2>
-          <List>
-            {submittedData.map((data, index) => (
-              <ListItem key={index}>
-                <ListItemText
-                  primary={`Name: ${data.name}`}
-                  secondary={`Age: ${data.age}, Join Date: ${data.joinDate}, Department: ${data.role}`}
-                />
-              </ListItem>
-            ))}
-          </List>
+
+          <SubmittedData submittedData={submittedData} submittedColumns={submittedColumns} />
         </div>
       )}
     </Box>
   )
 }
-
-/*
-MM: forDM:  i have used the @mui/material package that uses DataGrid component. test the code:
-  1. login as a collector (click on the collector authentication)
-  2. fill the form(you'll need to submit the form twice, i don't the reason why. but i'll fix it) to open the WeeklyMeetingForm
-  3. in the WeeklyMeetingForm, you can edit, add and modify cells data; to edit you can click on the "add-record" button to edit. to submit the data you can click on the "submit" button then the data will display below the table in key:value format.
-*/
