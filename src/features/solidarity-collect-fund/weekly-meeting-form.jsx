@@ -1,4 +1,6 @@
 import * as React from 'react'
+import { doc, setDoc, collection, getDocs, addDoc } from 'firebase/firestore'
+import { db } from './firebase'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import AddIcon from '@mui/icons-material/Add'
@@ -47,9 +49,13 @@ const randomRole = () => {
 const initialRows = [
   {
     id: randomId(),
-    name: randomTraderName(),
+    memberNames: randomTraderName(),
+    share: 0,
+    amount: 0,
+    solidarity: 0,
     age: null,
-    joinDate: new Date(),
+    // joinDate: new Date(),
+    joinDate: new Date().toISOString(),
     role: '',
   },
 ]
@@ -59,22 +65,41 @@ const EditToolbar = (props) => {
 
   const handleClick = () => {
     const id = randomId()
-    setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }])
+    setRows((oldRows) => [
+      ...oldRows,
+      { id, memberNames: '', share: '', amount: '', solidarity: '', age: '', isNew: true },
+    ])
     setRowModesModel((oldModel) => ({
       ...oldModel,
-      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
+      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'memberNames' },
     }))
   }
 
-  const handleSubmitClick = () => {
-    // Collect data from rows and set it to submittedData state
-    const dataToSubmit = rows.map((row) => ({
-      name: row.name,
-      age: row.age,
-      joinDate: new Date(row.joinDate).toLocaleDateString('en-CA'),
-      role: row.role,
-    }))
-    setSubmittedData(dataToSubmit)
+  const handleSubmitClick = async () => {
+    try {
+      const dataToSubmit = rows.map((row, index) => ({
+        id: index + 1, // Generate unique id for each row
+        memberNames: row.memberNames,
+        share: row.share,
+        amount: row.amount,
+        solidarity: row.solidarity,
+        age: row.age,
+        joinDate: new Date(row.joinDate).toISOString(), // Convert date to ISO string
+        role: row.role,
+      }))
+      console.log('Data to submit:', dataToSubmit)
+
+      const meetingsRef = collection(db, 'meetings')
+
+      // Loop through each row and add it as a document to the "meetings" collection
+      dataToSubmit.forEach(async (data) => {
+        await addDoc(meetingsRef, data)
+      })
+
+      setSubmittedData(dataToSubmit)
+    } catch (error) {
+      console.error('Error submitting data:', error)
+    }
   }
 
   return (
@@ -82,7 +107,14 @@ const EditToolbar = (props) => {
       <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
         Add record
       </Button>
-      <Button color="primary" startIcon={<SaveIcon />} onClick={handleSubmitClick}>
+      <Button
+        color="primary"
+        startIcon={<SaveIcon />}
+        onClick={(event) => {
+          event.preventDefault()
+          handleSubmitClick()
+        }}
+      >
         Submit
       </Button>
     </GridToolbarContainer>
@@ -136,7 +168,34 @@ export default function WeeklyMeetingForm() {
   }
 
   const columns = [
-    { field: 'name', headerName: 'Name', width: 180, editable: true },
+    { field: 'memberNames', headerName: 'Member Names', width: 180, editable: true },
+    {
+      field: 'share',
+      headerName: 'Share',
+      type: 'number',
+      width: 80,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+    },
+    {
+      field: 'amount',
+      headerName: 'Amount',
+      type: 'number',
+      width: 80,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+    },
+    {
+      field: 'solidarity',
+      headerName: 'Solidarity',
+      type: 'number',
+      width: 80,
+      align: 'left',
+      headerAlign: 'left',
+      editable: true,
+    },
     {
       field: 'age',
       headerName: 'Age',
@@ -152,6 +211,7 @@ export default function WeeklyMeetingForm() {
       type: 'date',
       width: 180,
       editable: true,
+      valueGetter: (params) => new Date(params.value),
     },
     {
       field: 'role',
@@ -210,10 +270,13 @@ export default function WeeklyMeetingForm() {
   ]
 
   const submittedColumns = [
-    { field: 'name', headerName: 'Name', width: 180 },
-    { field: 'age', headerName: 'Age', width: 80 },
-    { field: 'joinDate', headerName: 'Join date', width: 180 },
-    { field: 'role', headerName: 'Department', width: 220 },
+    { field: 'memberNames', headerName: 'Member Names' },
+    { field: 'share', headerName: 'Share' },
+    { field: 'amount', headerName: 'Amount' },
+    { field: 'solidarity', headerName: 'Solidarity' },
+    { field: 'age', headerName: 'Age' },
+    { field: 'joinDate', headerName: 'Join date' },
+    { field: 'role', headerName: 'Department' },
   ]
 
   React.useEffect(() => {
@@ -257,10 +320,9 @@ export default function WeeklyMeetingForm() {
         }}
       />
 
-      {submittedData.length > 0 && (
+      {submittedData && submittedData.length > 0 && (
         <div>
           <h2>Submitted Data</h2>
-
           <SubmittedData submittedData={submittedData} submittedColumns={submittedColumns} />
         </div>
       )}

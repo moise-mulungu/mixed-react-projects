@@ -1,34 +1,66 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid'
+import { collection, getDocs } from 'firebase/firestore'
+import { db } from './firebase' // Import your Firebase app instance
+import { BounceLoader } from 'react-spinners'
 
-const SubmittedData = ({ submittedData, submittedColumns }) => {
-  // Check if submittedColumns is defined and not null, and use an empty array as fallback
-  const columns = submittedColumns || []
+const SubmittedData = () => {
+  const [loading, setLoading] = useState(true)
+  const [submittedData, setSubmittedData] = useState([])
 
-  // Process submittedData only if it's defined and not null
-  const processedData =
-    submittedData?.map((data, index) => ({
-      id: index,
-      ...data,
-    })) || []
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const meetingsRef = collection(db, 'meetings')
+        const querySnapshot = await getDocs(meetingsRef)
+        const data = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }))
+        setSubmittedData(data)
+        setLoading(false)
+      } catch (error) {
+        console.error('Error fetching data:', error)
+        setLoading(false)
+      }
+    }
+
+    fetchData()
+  }, [])
+
+  if (loading) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+        }}
+      >
+        <BounceLoader color="#00BFFF" loading={loading} size={150} />
+      </div>
+    )
+  }
+
+  const columns = [
+    { field: 'memberNames', headerName: 'Member Names' },
+    { field: 'share', headerName: 'Share' },
+    { field: 'amount', headerName: 'Amount' },
+    { field: 'solidarity', headerName: 'Solidarity' },
+    { field: 'age', headerName: 'Age' },
+    { field: 'joinDate', headerName: 'Join date' },
+    { field: 'role', headerName: 'Department' },
+  ]
 
   return (
-    <div>
+    <div style={{ height: '100vh', width: '100%' }}>
       <h2>Submitted Data</h2>
-      <div style={{ height: 400, width: '100%' }}>
-        <DataGrid rows={processedData} columns={columns} pageSize={5} />
+      <div style={{ height: '90%', width: '100%' }}>
+        <DataGrid rows={submittedData} columns={columns} />
       </div>
     </div>
   )
 }
 
 export default SubmittedData
-
-/*
-MM: forDM: i update the components of this project:
-  1. CollectorAuthentication: i added a tailwind UI for authentication
-  2. displayed the SubmittedData component after the admin authentication
-  3. displayed the WeeklyMeetingForm after the collector authentication
-Test the code: click on each of the link to check the output, but the SubmittedData component is empty because to return to the admin authentication after filling the weekly-authentication-form requires to reload the page.
-MM: forDM: how can i save data to show up in the SubmittedData component even after reloading the page?
-*/

@@ -34,6 +34,7 @@ export default function CollectorAuthenticationForm(props) {
       const docRef = await addDoc(collection(db, 'collectors'), {
         uid: user.uid, // store the user's ID
         email: user.email,
+        role: 'collector',
       })
       console.log('Document written with ID: ', docRef.id)
 
@@ -214,7 +215,3 @@ export default function CollectorAuthenticationForm(props) {
     </>
   )
 }
-
-/*
-MM: forDM: Both the Google and GitHub SVGs icon are not working as links, they are just for display purposes for now, i'll fix that later.
-*/
